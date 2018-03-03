@@ -16,8 +16,6 @@ import net.schueller.peertube.model.Video;
 
 import java.util.ArrayList;
 
-import static java.util.Collections.addAll;
-
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 
 

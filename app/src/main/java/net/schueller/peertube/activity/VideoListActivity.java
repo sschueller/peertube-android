@@ -1,12 +1,16 @@
 package net.schueller.peertube.activity;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -31,6 +35,7 @@ public class VideoListActivity extends AppCompatActivity {
 
     private VideoAdapter videoAdapter;
     private RecyclerView recyclerView;
+    private Toolbar toolbar;
 
     private int currentStart = 0;
     private int count = 12;
@@ -43,6 +48,11 @@ public class VideoListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
 
+        // Attaching the layout to the toolbar object
+        toolbar = findViewById(R.id.tool_bar);
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar);
+
         // fix android trying to use SSLv3 for handshake
         updateAndroidSecurityProvider(this);
 
@@ -50,6 +60,31 @@ public class VideoListActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+
+        switch (item.getItemId()) {
+            // action with ID action_refresh was selected
+            case R.id.action_user:
+                Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT)
+                        .show();
+                return true;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     private void createList() {
         recyclerView = findViewById(R.id.recyclerView);
@@ -98,13 +133,13 @@ public class VideoListActivity extends AppCompatActivity {
 
         call.enqueue(new Callback<VideoList>() {
             @Override
-            public void onResponse(Call<VideoList> call, Response<VideoList> response) {
+            public void onResponse(@NonNull Call<VideoList> call, @NonNull Response<VideoList> response) {
                 videoAdapter.setData(response.body().getVideoArrayList());
                 isLoading = false;
             }
 
             @Override
-            public void onFailure(Call<VideoList> call, Throwable t) {
+            public void onFailure(@NonNull Call<VideoList> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
                 Toast.makeText(VideoListActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
                 isLoading = false;

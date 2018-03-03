@@ -17,22 +17,24 @@
 
         <ImageView
             android:id="@+id/thumb"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:contentDescription="" />
         <TextView
+            android:layout_marginStart="75dp"
             android:id="@+id/name"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="username"/>
+            />
 
         <TextView
-            android:id="@+id/description"
+            android:layout_marginStart="75dp"
+            android:id="@+id/videoMeta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             />
 
     </LinearLayout>

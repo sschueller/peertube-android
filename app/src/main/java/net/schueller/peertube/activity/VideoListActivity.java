@@ -2,6 +2,8 @@ package net.schueller.peertube.activity;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -33,8 +35,11 @@ import retrofit2.Response;
 
 public class VideoListActivity extends AppCompatActivity {
 
+    private String TAG = "VideoListActivity";
+
     private VideoAdapter videoAdapter;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private Toolbar toolbar;
 
     private int currentStart = 0;
@@ -42,6 +47,22 @@ public class VideoListActivity extends AppCompatActivity {
     private String sort = "-createdAt";
 
     private boolean isLoading = false;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        Log.v(TAG, "navigation_home");
+                        return true;
+                    case R.id.navigation_trending:
+                        Log.v(TAG, "navigation_trending");
+                        return true;
+                    case R.id.navigation_subscriptions:
+                        Log.v(TAG, "navigation_subscriptions");
+                        return true;
+                }
+                return false;
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +76,10 @@ public class VideoListActivity extends AppCompatActivity {
 
         // fix android trying to use SSLv3 for handshake
         updateAndroidSecurityProvider(this);
+
+        // Bottom Navigation
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         createList();
 
@@ -88,6 +113,7 @@ public class VideoListActivity extends AppCompatActivity {
 
     private void createList() {
         recyclerView = findViewById(R.id.recyclerView);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(VideoListActivity.this);
         recyclerView.setLayoutManager(layoutManager);
@@ -118,6 +144,15 @@ public class VideoListActivity extends AppCompatActivity {
 
             }
         });
+
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            // Refresh items
+            if (!isLoading) {
+                currentStart = 0;
+                loadVideos(currentStart, count, sort);
+            }
+        });
+
     }
 
     private void loadVideos(int start, int count, String sort) {
@@ -129,13 +164,20 @@ public class VideoListActivity extends AppCompatActivity {
         Call<VideoList> call = service.getVideoData(start, count, sort);
 
         /*Log the URL called*/
-        Log.wtf("URL Called", call.request().url() + "");
+        Log.d("URL Called", call.request().url() + "");
+        Toast.makeText(VideoListActivity.this, "URL Called: " + call.request().url(), Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<VideoList>() {
             @Override
             public void onResponse(@NonNull Call<VideoList> call, @NonNull Response<VideoList> response) {
+
+                if (currentStart == 0) {
+                    videoAdapter.clearData();
+                }
+
                 videoAdapter.setData(response.body().getVideoArrayList());
                 isLoading = false;
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
@@ -143,6 +185,7 @@ public class VideoListActivity extends AppCompatActivity {
                 Log.wtf("err", t.fillInStackTrace());
                 Toast.makeText(VideoListActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
                 isLoading = false;
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

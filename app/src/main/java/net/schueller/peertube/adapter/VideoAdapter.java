@@ -43,11 +43,19 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
                 .into(holder.thumb);
 
         holder.name.setText(videoList.get(position).getName());
-        holder.description.setText(videoList.get(position).getDescription());
+        holder.videoMeta.setText(videoList.get(position).getAccountName()
+                .concat("@")
+                .concat(videoList.get(position).getServerHost()).concat(" - ")
+                .concat(videoList.get(position).getViews()+" Views"));
     }
 
     public void setData(ArrayList<Video> data) {
         videoList.addAll(data);
+        this.notifyDataSetChanged();
+    }
+
+    public void clearData() {
+        videoList.clear();
         this.notifyDataSetChanged();
     }
 
@@ -58,14 +66,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     class VideoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, description;
+        TextView name, videoMeta;
         ImageView thumb;
 
         VideoViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             thumb = itemView.findViewById(R.id.thumb);
-            description = itemView.findViewById(R.id.description);
+            videoMeta = itemView.findViewById(R.id.videoMeta);
         }
     }
 

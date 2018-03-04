@@ -5,6 +5,10 @@
 <h4 align="center">
 </h4>
 
+<p align="center">
+    <img src="https://github.com/sschueller/peertube-android/Screenshot.png" alt="screenshot" />
+</p>
+
 ## Features
 
 - [X] Recent Videos

@@ -1,7 +1,9 @@
 package net.schueller.peertube.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -124,7 +126,7 @@ public class VideoListActivity extends AppCompatActivity {
 
         // Set an icon in the ActionBar
         menu.findItem(R.id.action_user).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_user)
+                new IconDrawable(this, FontAwesomeIcons.fa_user_o)
                         .colorRes(R.color.cardview_light_background)
                         .actionBarSize());
 
@@ -201,7 +203,11 @@ public class VideoListActivity extends AppCompatActivity {
 
         isLoading = true;
 
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance().create(GetVideoDataService.class);
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String defaultApiURL = getResources().getString(R.string.api_base_url);
+        String apiURL = sharedPref.getString(getString(R.string.api_url_key_key), defaultApiURL);
+
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiURL).create(GetVideoDataService.class);
 
         Call<VideoList> call = service.getVideoData(start, count, sort);
 

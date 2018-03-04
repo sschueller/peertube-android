@@ -205,9 +205,9 @@ public class VideoListActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String defaultApiURL = getResources().getString(R.string.api_base_url);
-        String apiURL = sharedPref.getString(getString(R.string.api_url_key_key), defaultApiURL);
+        String apiBaseURL = sharedPref.getString(getString(R.string.api_url_key_key), defaultApiURL);
 
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiURL).create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
 
         Call<VideoList> call = service.getVideoData(start, count, sort);
 

@@ -24,7 +24,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
-    <string name="api_base_url" formatted="false">https://troll.tv/api/v1/</string>
-    <string name="api_url_key_key">api_url</string>
+    <string name="api_base_url" formatted="false">https://troll.tv</string>
+    <string name="api_url_key_key">api_base_url</string>
 
 </resources>

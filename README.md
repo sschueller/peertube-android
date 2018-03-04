@@ -1,5 +1,5 @@
 <h1 align="center">
-  PeerTube for Android
+  Android PeerTube Client 
 </h1>
 
 <h4 align="center">
@@ -15,12 +15,15 @@
 - [X] Trending Videos
 - [X] Endless scrolling
 - [X] Pull to refresh
-- [ ] Login
-- [ ] Pick Server
 - [ ] Video Playback via WebRTC
-- [ ] Comment video
+- [ ] Pick Server
+- [ ] Login
 - [ ] Like/dislike video
+- [ ] Comment video
 - [ ] Lots more missing at this point...
 
+# TODO
+- [ ] Unit Tests
+- [ ] App Icon and assets
 
 

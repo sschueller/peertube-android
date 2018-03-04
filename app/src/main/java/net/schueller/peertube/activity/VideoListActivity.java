@@ -209,7 +209,7 @@ public class VideoListActivity extends AppCompatActivity {
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
 
-        Call<VideoList> call = service.getVideoData(start, count, sort);
+        Call<VideoList> call = service.getVideosData(start, count, sort);
 
         /*Log the URL called*/
         Log.d("URL Called", call.request().url() + "");

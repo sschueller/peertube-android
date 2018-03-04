@@ -26,5 +26,6 @@
 
     <string name="api_base_url" formatted="false">https://troll.tv</string>
     <string name="api_url_key_key">api_base_url</string>
+    <string name="title_activity_torrent_video_play">TorrentVideoPlayActivity</string>
 
 </resources>

@@ -25,12 +25,16 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".activity.VideoPlayActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_vide_play"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".activity.TorrentVideoPlayActivity"
+            android:label="@string/title_activity_torrent_video_play"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

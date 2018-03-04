@@ -1,6 +1,7 @@
 package net.schueller.peertube.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -19,6 +21,10 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.security.ProviderInstaller;
+import com.joanzapata.iconify.IconDrawable;
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.FontAwesomeIcons;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
@@ -37,6 +43,8 @@ public class VideoListActivity extends AppCompatActivity {
 
     private String TAG = "VideoListActivity";
 
+    public static final String EXTRA_VIDEOID = "VIDEOID ";
+
     private VideoAdapter videoAdapter;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -52,10 +60,24 @@ public class VideoListActivity extends AppCompatActivity {
             = item -> {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        Log.v(TAG, "navigation_home");
+                        //Log.v(TAG, "navigation_home");
+
+                        if (!isLoading) {
+                            sort = "-createdAt";
+                            currentStart = 0;
+                            loadVideos(currentStart, count, sort);
+                        }
+
                         return true;
                     case R.id.navigation_trending:
-                        Log.v(TAG, "navigation_trending");
+                        //Log.v(TAG, "navigation_trending");
+
+                        if (!isLoading) {
+                            sort = "-views";
+                            currentStart = 0;
+                            loadVideos(currentStart, count, sort);
+                        }
+
                         return true;
                     case R.id.navigation_subscriptions:
                         Log.v(TAG, "navigation_subscriptions");
@@ -69,6 +91,9 @@ public class VideoListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
 
+        // Init icons
+        Iconify.with(new FontAwesomeModule());
+
         // Attaching the layout to the toolbar object
         toolbar = findViewById(R.id.tool_bar);
         // Setting toolbar as the ActionBar with setSupportActionBar() call
@@ -79,6 +104,13 @@ public class VideoListActivity extends AppCompatActivity {
 
         // Bottom Navigation
         BottomNavigationView navigation = findViewById(R.id.navigation);
+        Menu navMenu = navigation.getMenu();
+        navMenu.findItem(R.id.navigation_home).setIcon(
+                new IconDrawable(this, FontAwesomeIcons.fa_home));
+        navMenu.findItem(R.id.navigation_trending).setIcon(
+                new IconDrawable(this, FontAwesomeIcons.fa_fire));
+        navMenu.findItem(R.id.navigation_subscriptions).setIcon(
+                new IconDrawable(this, FontAwesomeIcons.fa_folder));
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         createList();
@@ -87,10 +119,18 @@ public class VideoListActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+
+        // Set an icon in the ActionBar
+        menu.findItem(R.id.action_user).setIcon(
+                new IconDrawable(this, FontAwesomeIcons.fa_user)
+                        .colorRes(R.color.cardview_light_background)
+                        .actionBarSize());
+
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -101,8 +141,10 @@ public class VideoListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.action_user:
-                Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT)
-                        .show();
+//                Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
+
                 return true;
             default:
                 break;

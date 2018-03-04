@@ -4,17 +4,14 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_trending"
-        android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_trending" />
 
     <item
         android:id="@+id/navigation_subscriptions"
-        android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_subscriptions" />
 
 </menu>

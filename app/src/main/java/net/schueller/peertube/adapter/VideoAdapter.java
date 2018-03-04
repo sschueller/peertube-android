@@ -1,8 +1,10 @@
 package net.schueller.peertube.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,12 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.activity.VideoPlayActivity;
 import net.schueller.peertube.model.Video;
 
 import java.util.ArrayList;
+
+import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
 
@@ -47,6 +52,17 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
                 .concat("@")
                 .concat(videoList.get(position).getServerHost()).concat(" - ")
                 .concat(videoList.get(position).getViews()+" Views"));
+
+        holder.mView.setOnClickListener(v -> {
+
+            // Log.v("VideoAdapter", "click: " + videoList.get(position).getName());
+
+            Intent intent = new Intent(context, VideoPlayActivity.class);
+            intent.putExtra(EXTRA_VIDEOID, videoList.get(position).getUuid());
+            context.startActivity(intent);
+
+        });
+
     }
 
     public void setData(ArrayList<Video> data) {
@@ -68,12 +84,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         TextView name, videoMeta;
         ImageView thumb;
+        View mView;
 
         VideoViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             thumb = itemView.findViewById(R.id.thumb);
             videoMeta = itemView.findViewById(R.id.videoMeta);
+            mView = itemView;
         }
     }
 

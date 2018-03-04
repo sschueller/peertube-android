@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="viewBg">#f1f5f8</color>
     <color name="album_title">#4c4c4c</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

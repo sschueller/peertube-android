@@ -51,6 +51,12 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
             <TextView
+                android:id="@+id/videoMeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+            <TextView
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

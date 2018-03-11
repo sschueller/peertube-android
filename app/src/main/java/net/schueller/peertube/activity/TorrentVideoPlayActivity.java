@@ -1,12 +1,10 @@
 package net.schueller.peertube.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -36,6 +34,7 @@ import com.google.android.exoplayer2.util.Util;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Video;
 
 import net.schueller.peertube.network.GetVideoDataService;
@@ -50,7 +49,6 @@ public class TorrentVideoPlayActivity extends AppCompatActivity {
     private static final String TAG = "TorrentVideoPlayActivity";
 
     private ProgressBar progressBar;
-    private PlayerView videoView;
     private SimpleExoPlayer player;
 
     @Override
@@ -66,7 +64,7 @@ public class TorrentVideoPlayActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress);
         progressBar.setMax(100);
 
-        videoView = findViewById(R.id.video_view);
+        PlayerView videoView = findViewById(R.id.video_view);
 
         // 1. Create a default TrackSelector
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
@@ -142,12 +140,21 @@ public class TorrentVideoPlayActivity extends AppCompatActivity {
 
                 TextView videoName = findViewById(R.id.name);
                 TextView videoDescription = findViewById(R.id.description);
+                TextView videoMeta = findViewById(R.id.videoMeta);
 
                 try {
                     streamUrl = response.body().getFiles().get(0).getTorrentUrl();
 
                     videoName.setText(response.body().getName());
                     videoDescription.setText(response.body().getDescription());
+
+                    videoMeta.setText(
+                            MetaDataHelper.getMetaString(
+                                    response.body().getCreatedAt(),
+                                    response.body().getViews(),
+                                    getBaseContext()
+                            )
+                    );
 
                 } catch (NullPointerException e) {
                     e.getStackTrace();

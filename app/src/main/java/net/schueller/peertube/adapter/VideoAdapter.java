@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.squareup.picasso.Picasso;
 import net.schueller.peertube.R;
 import net.schueller.peertube.activity.TorrentVideoPlayActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Video;
 
 import java.util.ArrayList;
@@ -55,15 +57,21 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         holder.name.setText(videoList.get(position).getName());
 
-        // TODO: clean this up
         // set age and view count
-        holder.videoMeta.setText(videoList.get(position).getCreatedAt().toString().concat(" - ")
-                .concat(videoList.get(position).getViews()+" Views"));
+        holder.videoMeta.setText(
+                MetaDataHelper.getMetaString(videoList.get(position).getCreatedAt(),
+                        videoList.get(position).getViews(),
+                        context
+                )
+        );
 
         // set owner
-        holder.videoOwner.setText(videoList.get(position).getAccountName()
-                .concat("@")
-                .concat(videoList.get(position).getServerHost()));
+        holder.videoOwner.setText(
+                MetaDataHelper.getOwnerString(videoList.get(position).getAccountName(),
+                        videoList.get(position).getServerHost(),
+                        context
+                )
+        );
 
         holder.mView.setOnClickListener(v -> {
 

@@ -10,7 +10,7 @@ public class Account {
     private String host;
     private Integer followingCount;
     private Integer followersCount;
-    private String avatar;
+    private Avatar avatar;
     private Date createdAt;
     private Date updatedAt;
     private String displayName;
@@ -72,11 +72,11 @@ public class Account {
         this.followersCount = followersCount;
     }
 
-    public String getAvatar() {
+    public Avatar getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(Avatar avatar) {
         this.avatar = avatar;
     }
 

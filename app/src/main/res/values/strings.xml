@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">PeerTube</string>
+
+    <string name="title_activity_torrent_video_play">TorrentVideoPlayActivity</string>
+    <string name="title_activity_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -16,16 +19,17 @@
         completions."
     </string>
 
-    <string name="title_home">Home</string>
-    <string name="title_trending">Trending</string>
-    <string name="title_subscriptions">Subscriptions</string>
+    <!-- Action bar -->
+    <string name="action_bar_title_settings">Settings</string>
 
-    <string name="title_activity_vide_play">VidePlayActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- Bottom navigation bar -->
+    <string name="bottom_nav_title_home">Home</string>
+    <string name="bottom_nav_title_trending">Trending</string>
+    <string name="bottom_nav_title_subscriptions">Subscriptions</string>
+    <string name="bottom_nav_title_account">Account</string>
 
-    <string name="api_base_url" formatted="false">https://troll.tv</string>
-    <string name="api_url_key_key">api_base_url</string>
-    <string name="title_activity_torrent_video_play">TorrentVideoPlayActivity</string>
+    <!-- Strings related to Settings -->
+    <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
+    <string name="pref_title_peertube_server">PeerTube Server</string>
 
 </resources>

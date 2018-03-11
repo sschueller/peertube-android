@@ -1,12 +1,11 @@
 package net.schueller.peertube.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.activity.TorrentVideoPlayActivity;
-import net.schueller.peertube.activity.VideoPlayActivity;
+import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.Video;
 
 import java.util.ArrayList;
@@ -42,9 +41,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.row_video, parent, false);
 
-        SharedPreferences sharedPref = ((Activity) context).getPreferences(Context.MODE_PRIVATE);
-        String defaultApiURL = context.getResources().getString(R.string.api_base_url);
-        apiBaseURL = sharedPref.getString(context.getString(R.string.api_url_key_key), defaultApiURL);
+        apiBaseURL = APIUrlHelper.getUrl(context);
 
         return new VideoViewHolder(view);
     }

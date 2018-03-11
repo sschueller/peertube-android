@@ -5,10 +5,9 @@
     tools:context="activity.VideoListActivity">
 
     <item
-        android:id="@+id/action_user"
-        android:icon="@drawable/googleg_standard_color_18"
+        android:id="@+id/action_settings"
         android:orderInCategory="300"
-        android:title="User"
+        android:title="@string/action_bar_title_settings"
         app:showAsAction="ifRoom" />
 
 </menu>

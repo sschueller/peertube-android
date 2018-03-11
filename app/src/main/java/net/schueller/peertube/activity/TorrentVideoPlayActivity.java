@@ -1,12 +1,12 @@
 package net.schueller.peertube.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -35,6 +35,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.Video;
 
 import net.schueller.peertube.network.GetVideoDataService;
@@ -126,9 +127,7 @@ public class TorrentVideoPlayActivity extends AppCompatActivity {
         });
 
         // get video details from api
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String defaultApiURL = getResources().getString(R.string.api_base_url);
-        String apiBaseURL = sharedPref.getString(getString(R.string.api_url_key_key), defaultApiURL);
+        String apiBaseURL = APIUrlHelper.getUrl(this);
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
 
         Call<Video> call = service.getVideoData(videoID);

@@ -6,8 +6,8 @@
 </h4>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot1.png" alt="screenshot" />
     <img src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot2.png" alt="screenshot" />
+    <img src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot1.png" alt="screenshot" />
 </p>
 
 ## Features

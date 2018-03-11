@@ -2,10 +2,10 @@ package net.schueller.peertube.activity;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -33,6 +33,8 @@ import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
+import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.BottomNavigationViewHelper;
 import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
@@ -86,7 +88,15 @@ public class VideoListActivity extends AppCompatActivity {
                         return true;
                     case R.id.navigation_subscriptions:
                         Log.v(TAG, "navigation_subscriptions");
-                        return true;
+                        Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
+
+                        return false;
+
+                    case R.id.navigation_account:
+                        Log.v(TAG, "navigation_account");
+                        Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
+
+                        return false;
                 }
                 return false;
             };
@@ -116,8 +126,15 @@ public class VideoListActivity extends AppCompatActivity {
                 new IconDrawable(this, FontAwesomeIcons.fa_fire));
         navMenu.findItem(R.id.navigation_subscriptions).setIcon(
                 new IconDrawable(this, FontAwesomeIcons.fa_folder));
+        navMenu.findItem(R.id.navigation_account).setIcon(
+                new IconDrawable(this, FontAwesomeIcons.fa_user_circle));
+
+        BottomNavigationViewHelper.removeShiftMode(navigation);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+
+        // load Video List
         createList();
 
     }
@@ -128,8 +145,8 @@ public class VideoListActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_main, menu);
 
         // Set an icon in the ActionBar
-        menu.findItem(R.id.action_user).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_user_o)
+        menu.findItem(R.id.action_settings).setIcon(
+                new IconDrawable(this, FontAwesomeIcons.fa_cog)
                         .colorRes(R.color.cardview_light_background)
                         .actionBarSize());
 
@@ -145,9 +162,9 @@ public class VideoListActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
-            case R.id.action_user:
+            case R.id.action_settings:
 //                Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, LoginActivity.class);
+                Intent intent = new Intent(this, SettingsActivity.class);
                 this.startActivity(intent);
 
                 return true;
@@ -206,9 +223,7 @@ public class VideoListActivity extends AppCompatActivity {
 
         isLoading = true;
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String defaultApiURL = getResources().getString(R.string.api_base_url);
-        String apiBaseURL = sharedPref.getString(getString(R.string.api_url_key_key), defaultApiURL);
+        String apiBaseURL = APIUrlHelper.getUrl(this);
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
 

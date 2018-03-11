@@ -17,15 +17,16 @@
 - [X] Endless scrolling
 - [X] Pull to refresh
 - [X] Very Basic Torrent playback
+- [X] Change Server
+
+
+# TODO
 - [ ] Video Playback via WebRTC
-- [ ] Pick Server
 - [ ] Login
 - [ ] Like/dislike video
 - [ ] Comment video
-- [ ] Lots more missing at this point...
-
-# TODO
 - [ ] Unit Tests
 - [ ] App Icon and assets
+- [ ] Lots more missing at this point...
 
 

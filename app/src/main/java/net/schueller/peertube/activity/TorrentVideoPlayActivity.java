@@ -111,15 +111,6 @@ public class TorrentVideoPlayActivity extends AppCompatActivity {
             @Override
             public void onStreamPrepared(Torrent torrent) {
                 Log.d(TAG, "Prepared");
-
-                if(!torrentStream.isStreaming()) {
-                    torrent.startDownload();
-                }
-
-
-
-                // If you set TorrentOptions#autoDownload(false) then this is probably the place to call
-                // torrent.startDownload();
             }
 
             @Override
@@ -185,11 +176,13 @@ public class TorrentVideoPlayActivity extends AppCompatActivity {
 
         // Produces DataSource instances through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getApplicationContext(),
-                Util.getUserAgent(getApplicationContext(), "yourApplicationName"), null);
+                Util.getUserAgent(getApplicationContext(), "PeerTube"), null);
+
         // This is the MediaSource representing the media to be played.
         MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
                 .createMediaSource(Uri.fromFile(torrent.getVideoFile()));
 
+        // Auto play
         player.setPlayWhenReady(true);
 
         // Prepare the player with the source.

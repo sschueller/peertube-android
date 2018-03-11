@@ -6,7 +6,8 @@
 </h4>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/sschueller/peertube-android/master/Screenshot.png" alt="screenshot" />
+    <img src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot2.png" alt="screenshot" />
+    <img src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot1.png" alt="screenshot" />
 </p>
 
 ## Features
@@ -15,6 +16,7 @@
 - [X] Trending Videos
 - [X] Endless scrolling
 - [X] Pull to refresh
+- [X] Very Basic Torrent playback
 - [ ] Video Playback via WebRTC
 - [ ] Pick Server
 - [ ] Login

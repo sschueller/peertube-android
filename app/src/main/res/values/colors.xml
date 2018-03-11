@@ -7,4 +7,5 @@
     <color name="album_title">#4c4c4c</color>
 
     <color name="black_overlay">#66000000</color>
+    <color name="black">#000000</color>
 </resources>

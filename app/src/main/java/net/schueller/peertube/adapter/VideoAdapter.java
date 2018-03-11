@@ -2,9 +2,11 @@ package net.schueller.peertube.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,9 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.activity.VideoPlayActivity;
+import net.schueller.peertube.activity.TorrentVideoPlayActivity;
+import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Video;
 
 import java.util.ArrayList;
@@ -26,6 +30,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     private ArrayList<Video> videoList;
     private Context context;
+    private String apiBaseURL;
 
     public VideoAdapter(ArrayList<Video> videoList, Context context) {
         this.videoList = videoList;
@@ -37,6 +42,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.row_video, parent, false);
+
+        apiBaseURL = APIUrlHelper.getUrl(context);
+
         return new VideoViewHolder(view);
     }
 
@@ -44,20 +52,32 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
 
         Picasso.with(this.context)
-                .load("https://troll.tv" + videoList.get(position).getPreviewPath())
+                .load(apiBaseURL + videoList.get(position).getPreviewPath())
                 .into(holder.thumb);
 
         holder.name.setText(videoList.get(position).getName());
-        holder.videoMeta.setText(videoList.get(position).getAccountName()
-                .concat("@")
-                .concat(videoList.get(position).getServerHost()).concat(" - ")
-                .concat(videoList.get(position).getViews()+" Views"));
+
+        // set age and view count
+        holder.videoMeta.setText(
+                MetaDataHelper.getMetaString(videoList.get(position).getCreatedAt(),
+                        videoList.get(position).getViews(),
+                        context
+                )
+        );
+
+        // set owner
+        holder.videoOwner.setText(
+                MetaDataHelper.getOwnerString(videoList.get(position).getAccountName(),
+                        videoList.get(position).getServerHost(),
+                        context
+                )
+        );
 
         holder.mView.setOnClickListener(v -> {
 
             // Log.v("VideoAdapter", "click: " + videoList.get(position).getName());
 
-            Intent intent = new Intent(context, VideoPlayActivity.class);
+            Intent intent = new Intent(context, TorrentVideoPlayActivity.class);
             intent.putExtra(EXTRA_VIDEOID, videoList.get(position).getUuid());
             context.startActivity(intent);
 
@@ -82,7 +102,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     class VideoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, videoMeta;
+        TextView name, videoMeta, videoOwner;
         ImageView thumb;
         View mView;
 
@@ -91,6 +111,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             name = itemView.findViewById(R.id.name);
             thumb = itemView.findViewById(R.id.thumb);
             videoMeta = itemView.findViewById(R.id.videoMeta);
+            videoOwner = itemView.findViewById(R.id.videoOwner);
             mView = itemView;
         }
     }

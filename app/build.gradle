@@ -38,11 +38,15 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.2'
 
-    implementation 'org.webrtc:google-webrtc:1.0.+'
+//    implementation 'org.webrtc:google-webrtc:1.0.+'
     implementation 'com.android.support:design:27.1.0'
 
     implementation 'com.blackboardtheory:android-iconify-fontawesome:3.0.1-SNAPSHOT'
 
+    implementation 'com.github.TorrentStream:TorrentStream-Android:2.5.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.0'
+//    implementation "com.github.TorrentStream:TorrentStreamServer-Android:1.0.1"
+//    implementation 'com.devbrackets.android:exomedia:4.1.0'
 
     implementation 'com.android.support:support-v4:27.1.0'
     testImplementation 'junit:junit:4.12'

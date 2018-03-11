@@ -1,5 +1,6 @@
 package net.schueller.peertube.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Video {
@@ -27,6 +28,18 @@ public class Video {
     private String embedPath;
     private Date createdAt;
     private Date updatedAt;
+
+    private String privacyLabel;
+    private Integer privacy;
+    private String support;
+    private String descriptionPath;
+
+    private Channel channel;
+    private Account account;
+    private ArrayList tags;
+
+    private Boolean commentsEnabled;
+    private ArrayList<File> files;
 
     public Video() {
 
@@ -214,5 +227,77 @@ public class Video {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getPrivacyLabel() {
+        return privacyLabel;
+    }
+
+    public void setPrivacyLabel(String privacyLabel) {
+        this.privacyLabel = privacyLabel;
+    }
+
+    public Integer getPrivacy() {
+        return privacy;
+    }
+
+    public void setPrivacy(Integer privacy) {
+        this.privacy = privacy;
+    }
+
+    public String getSupport() {
+        return support;
+    }
+
+    public void setSupport(String support) {
+        this.support = support;
+    }
+
+    public String getDescriptionPath() {
+        return descriptionPath;
+    }
+
+    public void setDescriptionPath(String descriptionPath) {
+        this.descriptionPath = descriptionPath;
+    }
+
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public ArrayList getTags() {
+        return tags;
+    }
+
+    public void setTags(ArrayList tags) {
+        this.tags = tags;
+    }
+
+    public Boolean getCommentsEnabled() {
+        return commentsEnabled;
+    }
+
+    public void setCommentsEnabled(Boolean commentsEnabled) {
+        this.commentsEnabled = commentsEnabled;
+    }
+
+    public ArrayList<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(ArrayList<File> files) {
+        this.files = files;
     }
 }

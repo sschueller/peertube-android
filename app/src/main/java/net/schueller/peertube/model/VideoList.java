@@ -12,7 +12,4 @@ public class VideoList {
         return videoList;
     }
 
-    public void setEmployeeArrayList(ArrayList<Video> videoArrayList) {
-        this.videoList = videoArrayList;
-    }
 }

@@ -16,9 +16,7 @@ public class Video {
     private String languageLabel;
     private Boolean nsfw;
     private String description;
-    private String serverHost;
     private Boolean isLocal;
-    private String accountName;
     private Integer duration;
     private Integer views;
     private Integer likes;
@@ -133,28 +131,12 @@ public class Video {
         this.description = description;
     }
 
-    public String getServerHost() {
-        return serverHost;
-    }
-
-    public void setServerHost(String serverHost) {
-        this.serverHost = serverHost;
-    }
-
     public Boolean getLocal() {
         return isLocal;
     }
 
     public void setLocal(Boolean local) {
         isLocal = local;
-    }
-
-    public String getAccountName() {
-        return accountName;
-    }
-
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
     }
 
     public Integer getDuration() {

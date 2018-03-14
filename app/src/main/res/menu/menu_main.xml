@@ -5,6 +5,13 @@
     tools:context="activity.VideoListActivity">
 
     <item
+        android:id="@+id/action_search"
+        android:orderInCategory="300"
+        android:title="@string/action_bar_title_search"
+        app:showAsAction="always" />
+
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="300"
         android:title="@string/action_bar_title_settings"

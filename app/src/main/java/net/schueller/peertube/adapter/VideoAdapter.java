@@ -2,11 +2,8 @@ package net.schueller.peertube.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +16,6 @@ import net.schueller.peertube.R;
 import net.schueller.peertube.activity.TorrentVideoPlayActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
-import net.schueller.peertube.model.Account;
 import net.schueller.peertube.model.Avatar;
 import net.schueller.peertube.model.Video;
 

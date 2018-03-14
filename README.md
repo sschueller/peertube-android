@@ -27,6 +27,7 @@
 - [ ] Comment video
 - [ ] Unit Tests
 - [ ] App Icon and assets
+- [ ] Search
 - [ ] Lots more missing at this point...
 
 

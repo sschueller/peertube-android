@@ -145,6 +145,11 @@ public class VideoListActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_main, menu);
 
         // Set an icon in the ActionBar
+        menu.findItem(R.id.action_search).setIcon(
+                new IconDrawable(this, FontAwesomeIcons.fa_search)
+                        .colorRes(R.color.cardview_light_background)
+                        .actionBarSize());
+
         menu.findItem(R.id.action_settings).setIcon(
                 new IconDrawable(this, FontAwesomeIcons.fa_cog)
                         .colorRes(R.color.cardview_light_background)
@@ -162,6 +167,11 @@ public class VideoListActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
+            case R.id.action_search:
+                // TODO: implement
+                Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
+
+                return false;
             case R.id.action_settings:
 //                Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, SettingsActivity.class);

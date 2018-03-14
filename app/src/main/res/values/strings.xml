@@ -20,6 +20,7 @@
     </string>
 
     <!-- Action bar -->
+    <string name="action_bar_title_search">Search</string>
     <string name="action_bar_title_settings">Settings</string>
 
     <!-- Bottom navigation bar -->

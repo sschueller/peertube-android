@@ -19,6 +19,8 @@ import net.schueller.peertube.R;
 import net.schueller.peertube.activity.TorrentVideoPlayActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
+import net.schueller.peertube.model.Account;
+import net.schueller.peertube.model.Avatar;
 import net.schueller.peertube.model.Video;
 
 import java.util.ArrayList;
@@ -55,6 +57,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
                 .load(apiBaseURL + videoList.get(position).getPreviewPath())
                 .into(holder.thumb);
 
+
+        Avatar avatar = videoList.get(position).getAccount().getAvatar();
+        if (avatar != null) {
+            String avatarPath = avatar.getPath();
+            Picasso.with(this.context)
+                    .load(apiBaseURL + avatarPath)
+                    .into(holder.avatar);
+        }
+
+
         holder.name.setText(videoList.get(position).getName());
 
         // set age and view count
@@ -67,8 +79,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         // set owner
         holder.videoOwner.setText(
-                MetaDataHelper.getOwnerString(videoList.get(position).getAccountName(),
-                        videoList.get(position).getServerHost(),
+                MetaDataHelper.getOwnerString(videoList.get(position).getAccount().getName(),
+                        videoList.get(position).getAccount().getHost(),
                         context
                 )
         );
@@ -103,13 +115,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     class VideoViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, videoMeta, videoOwner;
-        ImageView thumb;
+        ImageView thumb, avatar;
         View mView;
 
         VideoViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             thumb = itemView.findViewById(R.id.thumb);
+            avatar = itemView.findViewById(R.id.avatar);
             videoMeta = itemView.findViewById(R.id.videoMeta);
             videoOwner = itemView.findViewById(R.id.videoOwner);
             mView = itemView;

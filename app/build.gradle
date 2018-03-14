@@ -48,6 +48,8 @@ dependencies {
 //    implementation "com.github.TorrentStream:TorrentStreamServer-Android:1.0.1"
 //    implementation 'com.devbrackets.android:exomedia:4.1.0'
 
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
     implementation 'com.android.support:support-v4:27.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

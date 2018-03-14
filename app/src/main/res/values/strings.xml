@@ -29,6 +29,8 @@
     <string name="bottom_nav_title_account">Account</string>
 
     <!-- Strings related to Settings -->
+    <string name="peertube_required_server_version">1.0.0-alpha.7</string>
+
     <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
     <string name="pref_title_peertube_server">PeerTube Server</string>
 
@@ -37,5 +39,10 @@
     <string name="meta_data_seperator">\u0020-\u0020</string>
     <string name="meta_data_views">\u0020Views</string>
     <string name="meta_data_owner_seperator">\@</string>
+
+
+
+    <string name="video_row_video_thumbnail">Video Thumbnail</string>
+    <string name="video_row_account_avatar">Account Avatar</string>
 
 </resources>

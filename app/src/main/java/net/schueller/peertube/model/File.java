@@ -1,18 +1,18 @@
 package net.schueller.peertube.model;
 
 public class File {
-    private Integer resolution;
+    private Resolution resolution;
     private String resolutionLabel;
     private String magnetUri;
     private Integer size;
     private String torrentUrl;
     private String fileUrl;
 
-    public Integer getResolution() {
+    public Resolution getResolution() {
         return resolution;
     }
 
-    public void setResolution(Integer resolution) {
+    public void setResolution(Resolution resolution) {
         this.resolution = resolution;
     }
 

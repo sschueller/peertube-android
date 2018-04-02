@@ -8,12 +8,9 @@ public class Video {
     private Integer id;
     private String uuid;
     private String name;
-    private String category;
-    private String categoryLabel;
-    private String licence;
-    private String licenceLabel;
-    private String language;
-    private String languageLabel;
+    private Category category;
+    private Licence licence;
+    private Language language;
     private Boolean nsfw;
     private String description;
     private Boolean isLocal;
@@ -27,8 +24,8 @@ public class Video {
     private Date createdAt;
     private Date updatedAt;
 
-    private String privacyLabel;
-    private Integer privacy;
+    private Privacy privacy;
+
     private String support;
     private String descriptionPath;
 
@@ -67,52 +64,28 @@ public class Video {
         this.name = name;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public String getCategoryLabel() {
-        return categoryLabel;
-    }
-
-    public void setCategoryLabel(String categoryLabel) {
-        this.categoryLabel = categoryLabel;
-    }
-
-    public String getLicence() {
+    public Licence getLicence() {
         return licence;
     }
 
-    public void setLicence(String licence) {
+    public void setLicence(Licence licence) {
         this.licence = licence;
     }
 
-    public String getLicenceLabel() {
-        return licenceLabel;
-    }
-
-    public void setLicenceLabel(String licenceLabel) {
-        this.licenceLabel = licenceLabel;
-    }
-
-    public String getLanguage() {
+    public Language getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Language language) {
         this.language = language;
-    }
-
-    public String getLanguageLabel() {
-        return languageLabel;
-    }
-
-    public void setLanguageLabel(String languageLabel) {
-        this.languageLabel = languageLabel;
     }
 
     public Boolean getNsfw() {
@@ -211,19 +184,11 @@ public class Video {
         this.updatedAt = updatedAt;
     }
 
-    public String getPrivacyLabel() {
-        return privacyLabel;
-    }
-
-    public void setPrivacyLabel(String privacyLabel) {
-        this.privacyLabel = privacyLabel;
-    }
-
-    public Integer getPrivacy() {
+    public Privacy getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(Integer privacy) {
+    public void setPrivacy(Privacy privacy) {
         this.privacy = privacy;
     }
 

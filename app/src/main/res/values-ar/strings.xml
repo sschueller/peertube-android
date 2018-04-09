@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">PeerTube</string>
+
+    <string name="title_activity_torrent_video_play">TorrentVideoPlayActivity</string>
+    <string name="title_activity_settings">الإعدادات</string>
+    <string name="title_activity_login">تسجيل الدخول</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_server">الخادوم</string>
+    <string name="prompt_email">البريد الإلكتروني</string>
+    <string name="prompt_password">كلمة السر (إختياري)</string>
+    <string name="action_sign_in">تسجيل الدخول</string>
+    <string name="action_sign_in_short">تسجيل الدخول</string>
+    <string name="error_invalid_email">عنوان البريد الإلكتروني خاطئ</string>
+    <string name="error_invalid_password">كلمة السر قصيرة جدًا</string>
+    <string name="error_incorrect_password">كلمة السر خاطئة</string>
+    <string name="error_field_required">هذا الحقل مطلوب</string>
+    <string name="permission_rationale">"تصريحات النفاذ إلى قائمة مراسليك مطلوبة لتمكين الملئ التلقائي."</string>
+
+    <!-- Action bar -->
+    <string name="action_bar_title_search">البحث</string>
+    <string name="action_bar_title_settings">الإعدادات</string>
+
+    <!-- Bottom navigation bar -->
+    <string name="bottom_nav_title_home">الرئيسية</string>
+    <string name="bottom_nav_title_trending">المشهورة</string>
+    <string name="bottom_nav_title_subscriptions">الإشتراكات</string>
+    <string name="bottom_nav_title_account">الحساب</string>
+
+    <!-- Strings related to Settings -->
+    <string name="peertube_required_server_version">1.0.0-alpha.7</string>
+
+    <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
+    <string name="pref_title_peertube_server">خادوم PeerTube</string>
+
+
+    <!-- Strings related to Video meta data -->
+    <string name="meta_data_seperator">\\u0020-\\u0020</string>
+    <string name="meta_data_views">\\u0020مشاهدات</string>
+    <string name="meta_data_owner_seperator">\\@</string>
+
+
+
+    <string name="video_row_video_thumbnail">الصورة المصغرة للفيديو</string>
+    <string name="video_row_account_avatar">الصورة الرمزية للحساب</string>
+
+</resources>

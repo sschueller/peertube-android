@@ -61,7 +61,7 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_torrent_video_play);
+        setContentView(R.layout.activity_video_play);
 
         // get video ID
         Intent intent = getIntent();

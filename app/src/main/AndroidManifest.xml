@@ -27,6 +27,8 @@
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:launchMode="singleTop"
             android:name=".activity.VideoPlayActivity"
             android:label="@string/title_activity_video_play"
             android:theme="@style/AppTheme" />

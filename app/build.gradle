@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "net.schueller.peertube"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 100
         versionName "1.0.0"

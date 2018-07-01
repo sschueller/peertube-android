@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.schueller.peertube.activity.TorrentVideoPlayActivity">
+    tools:context="net.schueller.peertube.activity.VideoPlayActivity">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
@@ -21,11 +21,7 @@
             app:layout_constraintDimensionRatio="H,3:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            >
-
-        </com.google.android.exoplayer2.ui.PlayerView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
             android:id="@+id/progress"

@@ -10,4 +10,17 @@
         android:singleLine="true"
         android:title="@string/pref_title_peertube_server" />
 
+    <SwitchPreference
+        android:key="pref_show_nsfw"
+        android:title="@string/pref_title_show_nsfw"
+        android:summary="@string/pref_description_show_nsfw"
+        android:defaultValue="false" />
+
+    <SwitchPreference
+        android:key="pref_torrent_player"
+        android:title="@string/pref_title_torrent_player"
+        android:summary="@string/pref_description_torrent_player"
+        android:defaultValue="false" />
+
+
 </PreferenceScreen>

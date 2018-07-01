@@ -27,8 +27,10 @@
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".activity.TorrentVideoPlayActivity"
-            android:label="@string/title_activity_torrent_video_play"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:launchMode="singleTop"
+            android:name=".activity.VideoPlayActivity"
+            android:label="@string/title_activity_video_play"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.SettingsActivity"

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PeerTube</string>
 
-    <string name="title_activity_torrent_video_play">TorrentVideoPlayActivity</string>
+    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="title_activity_settings">الإعدادات</string>
     <string name="title_activity_login">تسجيل الدخول</string>
 

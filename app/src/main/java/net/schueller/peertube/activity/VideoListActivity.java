@@ -60,6 +60,7 @@ public class VideoListActivity extends AppCompatActivity {
     private int currentStart = 0;
     private int count = 12;
     private String sort = "-createdAt";
+    private String filter = "";
 
     private boolean isLoading = false;
 
@@ -72,7 +73,7 @@ public class VideoListActivity extends AppCompatActivity {
                         if (!isLoading) {
                             sort = "-createdAt";
                             currentStart = 0;
-                            loadVideos(currentStart, count, sort);
+                            loadVideos(currentStart, count, sort, filter);
                         }
 
                         return true;
@@ -82,7 +83,7 @@ public class VideoListActivity extends AppCompatActivity {
                         if (!isLoading) {
                             sort = "-views";
                             currentStart = 0;
-                            loadVideos(currentStart, count, sort);
+                            loadVideos(currentStart, count, sort, filter);
                         }
 
                         return true;
@@ -105,6 +106,9 @@ public class VideoListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
+
+        //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        filter = ""; //"nsfw:" + sharedPref.getBoolean("pref_show_nsfw", true);
 
         // Init icons
         Iconify.with(new FontAwesomeModule());
@@ -195,7 +199,7 @@ public class VideoListActivity extends AppCompatActivity {
         videoAdapter = new VideoAdapter(new ArrayList<>(), VideoListActivity.this);
         recyclerView.setAdapter(videoAdapter);
 
-        loadVideos(currentStart, count, sort);
+        loadVideos(currentStart, count, sort, filter);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -211,7 +215,7 @@ public class VideoListActivity extends AppCompatActivity {
                     if(!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)){
                         if (!isLoading) {
                             currentStart = currentStart + count;
-                            loadVideos(currentStart, count, sort);
+                            loadVideos(currentStart, count, sort, filter);
                         }
                     }
                 }
@@ -223,13 +227,13 @@ public class VideoListActivity extends AppCompatActivity {
             // Refresh items
             if (!isLoading) {
                 currentStart = 0;
-                loadVideos(currentStart, count, sort);
+                loadVideos(currentStart, count, sort, filter);
             }
         });
 
     }
 
-    private void loadVideos(int start, int count, String sort) {
+    private void loadVideos(int start, int count, String sort, String filter) {
 
         isLoading = true;
 
@@ -237,7 +241,7 @@ public class VideoListActivity extends AppCompatActivity {
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
 
-        Call<VideoList> call = service.getVideosData(start, count, sort);
+        Call<VideoList> call = service.getVideosData(start, count, sort, filter);
 
         /*Log the URL called*/
         Log.d("URL Called", call.request().url() + "");

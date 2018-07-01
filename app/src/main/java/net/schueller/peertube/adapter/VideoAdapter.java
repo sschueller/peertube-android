@@ -2,6 +2,8 @@ package net.schueller.peertube.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +15,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.activity.TorrentVideoPlayActivity;
+import net.schueller.peertube.activity.VideoPlayActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Avatar;
@@ -85,7 +87,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
             // Log.v("VideoAdapter", "click: " + videoList.get(position).getName());
 
-            Intent intent = new Intent(context, TorrentVideoPlayActivity.class);
+            Intent intent = new Intent(context,VideoPlayActivity.class);
             intent.putExtra(EXTRA_VIDEOID, videoList.get(position).getUuid());
             context.startActivity(intent);
 

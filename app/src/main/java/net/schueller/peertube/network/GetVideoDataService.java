@@ -13,7 +13,8 @@ public interface GetVideoDataService {
     Call<VideoList> getVideosData(
             @Query("start") int start,
             @Query("count") int count,
-            @Query("sort") String sort
+            @Query("sort") String sort,
+            @Query("filter") String filter
     );
 
     @GET("videos/{id}")

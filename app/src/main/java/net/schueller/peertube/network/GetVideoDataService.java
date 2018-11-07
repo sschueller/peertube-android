@@ -14,7 +14,8 @@ public interface GetVideoDataService {
             @Query("start") int start,
             @Query("count") int count,
             @Query("sort") String sort,
-            @Query("filter") String filter
+            @Query("nsfw") String nsfw
+            //@Query("filter") String filter
     );
 
     @GET("videos/{id}")

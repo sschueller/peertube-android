@@ -61,6 +61,7 @@ public class VideoListActivity extends AppCompatActivity {
     private int count = 12;
     private String sort = "-createdAt";
     private String filter = "";
+    private String nsfw = "false";
 
     private boolean isLoading = false;
 
@@ -107,8 +108,7 @@ public class VideoListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
 
-        //SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        filter = ""; //"nsfw:" + sharedPref.getBoolean("pref_show_nsfw", true);
+        filter = "";
 
         // Init icons
         Iconify.with(new FontAwesomeModule());
@@ -237,11 +237,14 @@ public class VideoListActivity extends AppCompatActivity {
 
         isLoading = true;
 
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        nsfw = sharedPref.getBoolean("pref_show_nsfw", true) ? "both" : "false";
+
         String apiBaseURL = APIUrlHelper.getUrl(this);
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
 
-        Call<VideoList> call = service.getVideosData(start, count, sort, filter);
+        Call<VideoList> call = service.getVideosData(start, count, sort, nsfw);
 
         /*Log the URL called*/
         Log.d("URL Called", call.request().url() + "");
@@ -255,7 +258,9 @@ public class VideoListActivity extends AppCompatActivity {
                     videoAdapter.clearData();
                 }
 
-                videoAdapter.setData(response.body().getVideoArrayList());
+                if (response.body() != null) {
+                    videoAdapter.setData(response.body().getVideoArrayList());
+                }
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }

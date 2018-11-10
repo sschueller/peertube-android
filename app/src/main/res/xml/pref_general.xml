@@ -23,6 +23,10 @@
         android:defaultValue="false" />
 
     <Preference
+        android:title="@string/pref_title_version"
+        android:summary="@string/versionName" />
+
+    <Preference
         android:title="@string/pref_title_license"
         android:summary="@string/pref_description_license" />
 

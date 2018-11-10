@@ -248,7 +248,7 @@ public class VideoListActivity extends AppCompatActivity {
 
         /*Log the URL called*/
         Log.d("URL Called", call.request().url() + "");
-        Toast.makeText(VideoListActivity.this, "URL Called: " + call.request().url(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(VideoListActivity.this, "URL Called: " + call.request().url(), Toast.LENGTH_SHORT).show();
 
         call.enqueue(new Callback<VideoList>() {
             @Override

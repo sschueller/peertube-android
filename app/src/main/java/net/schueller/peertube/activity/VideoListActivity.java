@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +26,7 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.security.ProviderInstaller;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeIcons;
@@ -34,7 +35,6 @@ import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
-import net.schueller.peertube.helper.BottomNavigationViewHelper;
 import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
@@ -53,19 +53,16 @@ public class VideoListActivity extends AppCompatActivity {
     public static final String EXTRA_VIDEOID = "VIDEOID ";
 
     private VideoAdapter videoAdapter;
-    private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private Toolbar toolbar;
 
     private int currentStart = 0;
     private int count = 12;
     private String sort = "-createdAt";
     private String filter = "";
-    private String nsfw = "false";
 
     private boolean isLoading = false;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
@@ -82,20 +79,20 @@ public class VideoListActivity extends AppCompatActivity {
                         //Log.v(TAG, "navigation_trending");
 
                         if (!isLoading) {
-                            sort = "-views";
+                            sort = "-trending";
                             currentStart = 0;
                             loadVideos(currentStart, count, sort, filter);
                         }
 
                         return true;
                     case R.id.navigation_subscriptions:
-                        Log.v(TAG, "navigation_subscriptions");
+                        //Log.v(TAG, "navigation_subscriptions");
                         Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
 
                         return false;
 
                     case R.id.navigation_account:
-                        Log.v(TAG, "navigation_account");
+                        //Log.v(TAG, "navigation_account");
                         Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
 
                         return false;
@@ -114,7 +111,7 @@ public class VideoListActivity extends AppCompatActivity {
         Iconify.with(new FontAwesomeModule());
 
         // Attaching the layout to the toolbar object
-        toolbar = findViewById(R.id.tool_bar);
+        Toolbar toolbar = findViewById(R.id.tool_bar);
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
 
@@ -122,7 +119,12 @@ public class VideoListActivity extends AppCompatActivity {
         updateAndroidSecurityProvider(this);
 
         // Bottom Navigation
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        BottomNavigationViewEx navigation = findViewById(R.id.navigation);
+
+        navigation.enableAnimation(false);
+        navigation.enableShiftingMode(false);
+        navigation.enableItemShiftingMode(false);
+
         Menu navMenu = navigation.getMenu();
         navMenu.findItem(R.id.navigation_home).setIcon(
                 new IconDrawable(this, FontAwesomeIcons.fa_home));
@@ -132,8 +134,6 @@ public class VideoListActivity extends AppCompatActivity {
                 new IconDrawable(this, FontAwesomeIcons.fa_folder));
         navMenu.findItem(R.id.navigation_account).setIcon(
                 new IconDrawable(this, FontAwesomeIcons.fa_user_circle));
-
-        BottomNavigationViewHelper.removeShiftMode(navigation);
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -172,8 +172,8 @@ public class VideoListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.action_search:
-                // TODO: implement
-                Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
+                onSearchRequested();
 
                 return false;
             case R.id.action_settings:
@@ -190,7 +190,7 @@ public class VideoListActivity extends AppCompatActivity {
     }
 
     private void createList() {
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(VideoListActivity.this);
@@ -203,12 +203,12 @@ public class VideoListActivity extends AppCompatActivity {
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
             }
 
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
 
                 if (dy > 0) {
                     // is at end of list?
@@ -238,7 +238,7 @@ public class VideoListActivity extends AppCompatActivity {
         isLoading = true;
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        nsfw = sharedPref.getBoolean("pref_show_nsfw", true) ? "both" : "false";
+        String nsfw = sharedPref.getBoolean("pref_show_nsfw", true) ? "both" : "false";
 
         String apiBaseURL = APIUrlHelper.getUrl(this);
 

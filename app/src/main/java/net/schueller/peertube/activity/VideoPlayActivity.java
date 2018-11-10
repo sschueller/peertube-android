@@ -2,6 +2,7 @@ package net.schueller.peertube.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -11,7 +12,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Surface;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -214,6 +220,41 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         // Auto play
         player.setPlayWhenReady(true);
 
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        TextView nameView = findViewById(R.id.name);
+        TextView videoMetaView = findViewById(R.id.videoMeta);
+        TextView descriptionView = findViewById(R.id.description);
+
+        // Checking the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            simpleExoPlayerView.setLayoutParams(params);
+
+            nameView.setVisibility(View.GONE);
+            videoMetaView.setVisibility(View.GONE);
+            descriptionView.setVisibility(View.GONE);
+
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            simpleExoPlayerView.setLayoutParams(params);
+
+            nameView.setVisibility(View.VISIBLE);
+            videoMetaView.setVisibility(View.VISIBLE);
+            descriptionView.setVisibility(View.VISIBLE);
+
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
     }
 
     @Override

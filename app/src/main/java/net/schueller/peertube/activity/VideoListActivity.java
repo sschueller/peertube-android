@@ -238,7 +238,7 @@ public class VideoListActivity extends AppCompatActivity {
         isLoading = true;
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String nsfw = sharedPref.getBoolean("pref_show_nsfw", true) ? "both" : "false";
+        String nsfw = sharedPref.getBoolean("pref_show_nsfw", false) ? "both" : "false";
 
         String apiBaseURL = APIUrlHelper.getUrl(this);
 

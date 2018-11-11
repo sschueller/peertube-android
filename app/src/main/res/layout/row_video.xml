@@ -19,8 +19,10 @@
             android:id="@+id/thumb"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:maxHeight="300dp"
             android:contentDescription="@string/video_row_video_thumbnail"
             android:scaleType="fitXY"
+            android:adjustViewBounds="true"
             />
 
         <de.hdodenhof.circleimageview.CircleImageView

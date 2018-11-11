@@ -23,12 +23,13 @@ public interface GetVideoDataService {
             @Path(value = "id", encoded = true) String id
     );
 
-    @GET("videos/search/")
+    @GET("search/videos/")
     Call<VideoList> searchVideosData(
             @Query("start") int start,
             @Query("count") int count,
             @Query("sort") String sort,
-            @Query("filter") String filter,
+            @Query("nsfw") String nsfw,
             @Query("search") String search
+//            @Query("filter") String filter
     );
 }

@@ -10,6 +10,9 @@
     <img src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot1.png" alt="screenshot" />
 </p>
 
+## Download
+Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schueller.peertube
+
 ## Features
 
 - [X] Recent Videos
@@ -18,6 +21,8 @@
 - [X] Pull to refresh
 - [X] Very Basic Torrent playback
 - [X] Change Server
+- [X] Search
+- [X] App Icon and assets
 
 
 # TODO
@@ -26,8 +31,8 @@
 - [ ] Like/dislike video
 - [ ] Comment video
 - [ ] Unit Tests
-- [ ] App Icon and assets
-- [ ] Search
+
+
 - [ ] Lots more missing at this point...
 
 

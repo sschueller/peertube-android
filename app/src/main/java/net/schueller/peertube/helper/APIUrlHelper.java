@@ -12,4 +12,8 @@ public class APIUrlHelper{
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPref.getString("pref_api_base", context.getResources().getString(R.string.pref_default_api_base_url));
     }
+
+    public static String getUrlWithVersion(Context context) {
+        return APIUrlHelper.getUrl(context) + "/api/v1/";
+    }
 }

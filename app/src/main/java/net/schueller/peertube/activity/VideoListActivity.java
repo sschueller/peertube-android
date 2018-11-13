@@ -242,9 +242,9 @@ public class VideoListActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String nsfw = sharedPref.getBoolean("pref_show_nsfw", false) ? "both" : "false";
 
-        String apiBaseURL = APIUrlHelper.getUrl(this);
+        String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
 
         Call<VideoList> call = service.getVideosData(start, count, sort, nsfw);
 

@@ -92,8 +92,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         simpleExoPlayerView.setPlayer(player);
 
         // get video details from api
-        String apiBaseURL = APIUrlHelper.getUrl(this);
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
+        String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
 
         Call<Video> call = service.getVideoData(videoID);
 

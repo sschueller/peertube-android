@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -124,7 +125,7 @@ public class VideoListActivity extends AppCompatActivity {
         BottomNavigationViewEx navigation = findViewById(R.id.navigation);
 
         navigation.enableAnimation(false);
-        navigation.setLabelVisibilityMode(1); // enableShiftingMode
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED); // enableShiftingMode
         navigation.setItemHorizontalTranslationEnabled(false); // enableItemShiftingMode
 
         Menu navMenu = navigation.getMenu();

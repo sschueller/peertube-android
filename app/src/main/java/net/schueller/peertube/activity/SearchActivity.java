@@ -11,7 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -43,6 +46,9 @@ public class SearchActivity extends AppCompatActivity {
 
     private boolean isLoading = false;
 
+    private TextView emptyView;
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,11 @@ public class SearchActivity extends AppCompatActivity {
 
         // do search
         handleIntent(intent);
+
+        // toolbar
+        Toolbar toolbar = findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // handle search suggestions
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -66,8 +77,10 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void createList(String query) {
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+
+        emptyView = findViewById(R.id.empty_view);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SearchActivity.this);
         recyclerView.setLayoutManager(layoutManager);
@@ -123,10 +136,6 @@ public class SearchActivity extends AppCompatActivity {
 
         Call<VideoList> call = service.searchVideosData(start, count, sort, nsfw, search);
 
-        /*Log the URL called*/
-        Log.d("URL Called", call.request().url() + "");
-//        Toast.makeText(VideoListActivity.this, "URL Called: " + call.request().url(), Toast.LENGTH_SHORT).show();
-
         call.enqueue(new Callback<VideoList>() {
             @Override
             public void onResponse(@NonNull Call<VideoList> call, @NonNull Response<VideoList> response) {
@@ -138,6 +147,20 @@ public class SearchActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     videoAdapter.setData(response.body().getVideoArrayList());
                 }
+
+                Log.d("SearchActivity", "getItemCount: " + videoAdapter.getItemCount());
+                Log.d("SearchActivity", "response: " + response.body());
+
+                // no results show no results message
+                if (response.body() == null && videoAdapter.getItemCount() == 0) {
+                    emptyView.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+
+                } else {
+                    emptyView.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
+
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }

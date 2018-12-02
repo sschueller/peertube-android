@@ -55,5 +55,6 @@
     <string name="pref_title_version">Version</string>
     <string name="search_hint">Search PeerTube</string>
     <string name="title_activity_search">Search</string>
+    <string name="no_data_available">No Results</string>
 
 </resources>

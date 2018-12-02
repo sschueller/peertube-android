@@ -94,8 +94,8 @@ public class VideoListActivity extends AppCompatActivity {
                 //Log.v(TAG, "navigation_account");
                 Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(this, LoginActivity.class);
-                this.startActivity(intent);
+//                Intent intent = new Intent(this, LoginActivity.class);
+//                this.startActivity(intent);
 
                 return false;
         }

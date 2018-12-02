@@ -64,44 +64,44 @@ public class VideoListActivity extends AppCompatActivity {
 
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        //Log.v(TAG, "navigation_home");
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
+                //Log.v(TAG, "navigation_home");
 
-                        if (!isLoading) {
-                            sort = "-createdAt";
-                            currentStart = 0;
-                            loadVideos(currentStart, count, sort, filter);
-                        }
-
-                        return true;
-                    case R.id.navigation_trending:
-                        //Log.v(TAG, "navigation_trending");
-
-                        if (!isLoading) {
-                            sort = "-trending";
-                            currentStart = 0;
-                            loadVideos(currentStart, count, sort, filter);
-                        }
-
-                        return true;
-                    case R.id.navigation_subscriptions:
-                        //Log.v(TAG, "navigation_subscriptions");
-                        Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
-
-                        return false;
-
-                    case R.id.navigation_account:
-                        //Log.v(TAG, "navigation_account");
-                        Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(this, LoginActivity.class);
-                        this.startActivity(intent);
-
-                        return false;
+                if (!isLoading) {
+                    sort = "-createdAt";
+                    currentStart = 0;
+                    loadVideos(currentStart, count, sort, filter);
                 }
+
+                return true;
+            case R.id.navigation_trending:
+                //Log.v(TAG, "navigation_trending");
+
+                if (!isLoading) {
+                    sort = "-trending";
+                    currentStart = 0;
+                    loadVideos(currentStart, count, sort, filter);
+                }
+
+                return true;
+            case R.id.navigation_subscriptions:
+                //Log.v(TAG, "navigation_subscriptions");
+                Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
+
                 return false;
-            };
+
+            case R.id.navigation_account:
+                //Log.v(TAG, "navigation_account");
+                Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
+
+//                Intent intent = new Intent(this, LoginActivity.class);
+//                this.startActivity(intent);
+
+                return false;
+        }
+        return false;
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,7 +215,7 @@ public class VideoListActivity extends AppCompatActivity {
 
                 if (dy > 0) {
                     // is at end of list?
-                    if(!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)){
+                    if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
                         if (!isLoading) {
                             currentStart = currentStart + count;
                             loadVideos(currentStart, count, sort, filter);
@@ -280,8 +280,8 @@ public class VideoListActivity extends AppCompatActivity {
 
     /**
      * Force android to not use SSLv3
-     *
-//     * @param callingActivity Activity
+     * <p>
+     * //     * @param callingActivity Activity
      */
 //    private void updateAndroidSecurityProvider(Activity callingActivity) {
 //        try {
@@ -294,12 +294,13 @@ public class VideoListActivity extends AppCompatActivity {
 //            Log.e("SecurityException", "Google Play Services not available.");
 //        }
 //    }
-
     @Override
     protected void onResume() {
         super.onResume();
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        // only check when we actually need the permission
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
+                sharedPref.getBoolean("pref_torrent_player", false)) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }

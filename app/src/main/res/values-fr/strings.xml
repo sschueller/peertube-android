@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">PeerTube</string>
+
+    <string name="title_activity_video_play">VideoPlayActivity</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="title_activity_login">Connexion</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_server">Serveur</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe (optionnel)</string>
+    <string name="action_sign_in">Connexion</string>
+    <string name="action_sign_in_short">Connexion</string>
+    <string name="error_invalid_email">Cette adresse mail n\'est pas valide</string>
+    <string name="error_invalid_password">Ce mot de passe est trop court</string>
+    <string name="error_incorrect_password">Ce mot de passe est incorrect</string>
+    <string name="error_field_required">Ce champs est requis</string>
+    <string name="permission_rationale">"L\'autorisation sur les contacts est requise pour la complétion des adresses email."
+    </string>
+
+    <!-- Action bar -->
+    <string name="action_bar_title_search">Rechercher</string>
+    <string name="action_bar_title_settings">Paramètres</string>
+
+    <!-- Bottom navigation bar -->
+    <string name="bottom_nav_title_home">Accueil</string>
+    <string name="bottom_nav_title_trending">Tendances</string>
+    <string name="bottom_nav_title_subscriptions">Abonnements</string>
+    <string name="bottom_nav_title_account">Compte</string>
+
+    <!-- Strings related to Settings -->
+    <string name="peertube_required_server_version">1.0.0-alpha.7</string>
+
+    <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
+    <string name="pref_title_peertube_server">PeerTube Server</string>
+
+
+    <!-- Strings related to Video meta data -->
+    <string name="meta_data_seperator">\u0020-\u0020</string>
+    <string name="meta_data_views">\u0020Views</string>
+    <string name="meta_data_owner_seperator">\@</string>
+
+
+    <string name="video_row_video_thumbnail">Miniature vidéo</string>
+    <string name="video_row_account_avatar">Avatar compte</string>
+
+    <string name="pref_title_show_nsfw">Afficher le contenu adulte</string>
+    <string name="pref_description_show_nsfw">Le contenu adulte sera affiché si activé</string>
+    <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
+    <string name="pref_title_torrent_player">Lecteur Vidéo Torrent</string>
+    <string name="pref_description_torrent_player">Lecture de vidéo via un flux torrent</string>
+    <string name="pref_title_license">Licence</string>
+    <string name="pref_description_license">\n<b>GNU Affero General Public License v3.0</b>\n\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
+    <string name="pref_title_version">Version</string>
+    <string name="search_hint">Rechercher sur PeerTube</string>
+    <string name="title_activity_search">Rechercher</string>
+
+</resources>

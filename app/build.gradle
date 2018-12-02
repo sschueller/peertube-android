@@ -6,9 +6,52 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 103
-        versionName "1.0.3"
+        versionCode 104
+        versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        dependencies {
+            implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+            // Layouts and design
+            implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+            implementation 'com.android.support:appcompat-v7:28.0.0'
+            implementation 'com.android.support:cardview-v7:28.0.0'
+            implementation 'com.android.support:recyclerview-v7:28.0.0'
+            implementation 'com.android.support:design:28.0.0'
+            implementation 'de.hdodenhof:circleimageview:2.2.0'
+            implementation 'com.android.support:support-v13:28.0.0'
+
+            // font awesome
+            implementation 'com.blackboardtheory:android-iconify-fontawesome:3.0.1-SNAPSHOT'
+
+            // BottomNavigationViewEx -> https://github.com/ittianyu/BottomNavigationViewEx
+            implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
+
+            // http client / REST
+            implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+            implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+
+            // image downloading and caching library
+            implementation 'com.squareup.picasso:picasso:2.5.2'
+
+            // json decoder/encoder
+            implementation 'com.google.code.gson:gson:2.8.2'
+            implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+            // Torrents and WebRTC
+            implementation 'com.github.TorrentStream:TorrentStream-Android:2.5.0'
+//            implementation "com.github.TorrentStream:TorrentStreamServer-Android:1.0.1"
+//            implementation 'org.webrtc:google-webrtc:1.0.+'
+
+            // video player
+            implementation 'com.google.android.exoplayer:exoplayer:2.8.1'
+//            implementation 'com.devbrackets.android:exomedia:4.1.0'
+
+            // testing
+            testImplementation 'junit:junit:4.12'
+            androidTestImplementation 'com.android.support.test:runner:1.0.2'
+            androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+        }
     }
     buildTypes {
         release {
@@ -26,40 +69,3 @@ android {
     }
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
-
-    implementation 'com.google.android.gms:play-services-auth:16.0.1'
-
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
-
-    implementation 'com.google.code.gson:gson:2.8.2'
-
-//    implementation 'org.webrtc:google-webrtc:1.0.+'
-    implementation 'com.android.support:design:28.0.0'
-
-    // BottomNavigationViewEx -> https://github.com/ittianyu/BottomNavigationViewEx
-    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
-
-
-    implementation 'com.blackboardtheory:android-iconify-fontawesome:3.0.1-SNAPSHOT'
-
-    implementation 'com.github.TorrentStream:TorrentStream-Android:2.5.0'
-    implementation 'com.google.android.exoplayer:exoplayer:2.8.1'
-//    implementation "com.github.TorrentStream:TorrentStreamServer-Android:1.0.1"
-//    implementation 'com.devbrackets.android:exomedia:4.1.0'
-
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
-
-    implementation 'com.android.support:support-v4:28.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-}

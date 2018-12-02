@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,10 +21,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.security.ProviderInstaller;
+//import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+//import com.google.android.gms.common.GooglePlayServicesRepairableException;
+//import com.google.android.gms.common.GooglePlayServicesUtil;
+//import com.google.android.gms.security.ProviderInstaller;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.Iconify;
@@ -64,41 +63,44 @@ public class VideoListActivity extends AppCompatActivity {
 
     private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        //Log.v(TAG, "navigation_home");
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
+                //Log.v(TAG, "navigation_home");
 
-                        if (!isLoading) {
-                            sort = "-createdAt";
-                            currentStart = 0;
-                            loadVideos(currentStart, count, sort, filter);
-                        }
-
-                        return true;
-                    case R.id.navigation_trending:
-                        //Log.v(TAG, "navigation_trending");
-
-                        if (!isLoading) {
-                            sort = "-trending";
-                            currentStart = 0;
-                            loadVideos(currentStart, count, sort, filter);
-                        }
-
-                        return true;
-                    case R.id.navigation_subscriptions:
-                        //Log.v(TAG, "navigation_subscriptions");
-                        Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
-
-                        return false;
-
-                    case R.id.navigation_account:
-                        //Log.v(TAG, "navigation_account");
-                        Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
-
-                        return false;
+                if (!isLoading) {
+                    sort = "-createdAt";
+                    currentStart = 0;
+                    loadVideos(currentStart, count, sort, filter);
                 }
+
+                return true;
+            case R.id.navigation_trending:
+                //Log.v(TAG, "navigation_trending");
+
+                if (!isLoading) {
+                    sort = "-trending";
+                    currentStart = 0;
+                    loadVideos(currentStart, count, sort, filter);
+                }
+
+                return true;
+            case R.id.navigation_subscriptions:
+                //Log.v(TAG, "navigation_subscriptions");
+                Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
+
                 return false;
-            };
+
+            case R.id.navigation_account:
+                //Log.v(TAG, "navigation_account");
+                Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
+
+//                Intent intent = new Intent(this, LoginActivity.class);
+//                this.startActivity(intent);
+
+                return false;
+        }
+        return false;
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,14 +118,14 @@ public class VideoListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // fix android trying to use SSLv3 for handshake
-        updateAndroidSecurityProvider(this);
+//        updateAndroidSecurityProvider(this);
 
         // Bottom Navigation
         BottomNavigationViewEx navigation = findViewById(R.id.navigation);
 
         navigation.enableAnimation(false);
-        navigation.enableShiftingMode(false);
-        navigation.enableItemShiftingMode(false);
+        navigation.setLabelVisibilityMode(1); // enableShiftingMode
+        navigation.setItemHorizontalTranslationEnabled(false); // enableItemShiftingMode
 
         Menu navMenu = navigation.getMenu();
         navMenu.findItem(R.id.navigation_home).setIcon(
@@ -212,7 +214,7 @@ public class VideoListActivity extends AppCompatActivity {
 
                 if (dy > 0) {
                     // is at end of list?
-                    if(!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)){
+                    if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
                         if (!isLoading) {
                             currentStart = currentStart + count;
                             loadVideos(currentStart, count, sort, filter);
@@ -240,9 +242,9 @@ public class VideoListActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String nsfw = sharedPref.getBoolean("pref_show_nsfw", false) ? "both" : "false";
 
-        String apiBaseURL = APIUrlHelper.getUrl(this);
+        String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL + "/api/v1/").create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
 
         Call<VideoList> call = service.getVideosData(start, count, sort, nsfw);
 
@@ -277,26 +279,27 @@ public class VideoListActivity extends AppCompatActivity {
 
     /**
      * Force android to not use SSLv3
-     *
-     * @param callingActivity Activity
+     * <p>
+     * //     * @param callingActivity Activity
      */
-    private void updateAndroidSecurityProvider(Activity callingActivity) {
-        try {
-            ProviderInstaller.installIfNeeded(this);
-        } catch (GooglePlayServicesRepairableException e) {
-            // Thrown when Google Play Services is not installed, up-to-date, or enabled
-            // Show dialog to allow users to install, update, or otherwise enable Google Play services.
-            GooglePlayServicesUtil.getErrorDialog(e.getConnectionStatusCode(), callingActivity, 0);
-        } catch (GooglePlayServicesNotAvailableException e) {
-            Log.e("SecurityException", "Google Play Services not available.");
-        }
-    }
-
+//    private void updateAndroidSecurityProvider(Activity callingActivity) {
+//        try {
+//            ProviderInstaller.installIfNeeded(this);
+//        } catch (GooglePlayServicesRepairableException e) {
+//            // Thrown when Google Play Services is not installed, up-to-date, or enabled
+//            // Show dialog to allow users to install, update, or otherwise enable Google Play services.
+//            GooglePlayServicesUtil.getErrorDialog(e.getConnectionStatusCode(), callingActivity, 0);
+//        } catch (GooglePlayServicesNotAvailableException e) {
+//            Log.e("SecurityException", "Google Play Services not available.");
+//        }
+//    }
     @Override
     protected void onResume() {
         super.onResume();
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        // only check when we actually need the permission
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
+                sharedPref.getBoolean("pref_torrent_player", false)) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }

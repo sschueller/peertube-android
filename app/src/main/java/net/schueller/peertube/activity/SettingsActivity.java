@@ -4,19 +4,14 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-
 import android.view.MenuItem;
-
-
 import net.schueller.peertube.R;
-
 import java.util.List;
 
 

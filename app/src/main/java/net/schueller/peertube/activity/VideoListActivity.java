@@ -1,12 +1,15 @@
 package net.schueller.peertube.activity;
 
 import android.Manifest;
-import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
+import android.provider.SearchRecentSuggestions;
 import android.support.annotation.NonNull;
+import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,11 +17,14 @@ import android.os.Bundle;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -37,6 +43,7 @@ import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
+import net.schueller.peertube.provider.SearchSuggestionsProvider;
 
 
 import java.util.ArrayList;
@@ -58,6 +65,10 @@ public class VideoListActivity extends AppCompatActivity {
     private int count = 12;
     private String sort = "-createdAt";
     private String filter = "";
+    private String searchQuery = "";
+
+    private TextView emptyView;
+    private RecyclerView recyclerView;
 
     private boolean isLoading = false;
 
@@ -124,7 +135,7 @@ public class VideoListActivity extends AppCompatActivity {
         BottomNavigationViewEx navigation = findViewById(R.id.navigation);
 
         navigation.enableAnimation(false);
-        navigation.setLabelVisibilityMode(1); // enableShiftingMode
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED); // enableShiftingMode
         navigation.setItemHorizontalTranslationEnabled(false); // enableItemShiftingMode
 
         Menu navMenu = navigation.getMenu();
@@ -151,15 +162,48 @@ public class VideoListActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_main, menu);
 
         // Set an icon in the ActionBar
-        menu.findItem(R.id.action_search).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_search)
-                        .colorRes(R.color.cardview_light_background)
-                        .actionBarSize());
-
         menu.findItem(R.id.action_settings).setIcon(
                 new IconDrawable(this, FontAwesomeIcons.fa_cog)
                         .colorRes(R.color.cardview_light_background)
                         .actionBarSize());
+
+
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        searchMenuItem.setIcon(
+                new IconDrawable(this, FontAwesomeIcons.fa_search)
+                        .colorRes(R.color.cardview_light_background)
+                        .actionBarSize());
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+        searchView.setQueryRefinementEnabled(true);
+
+        searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+                searchQuery = "";
+                Log.d(TAG, "onMenuItemActionCollapse: ");
+                loadVideos(0, count, sort, filter);
+                return true;
+            }
+        });
+
+        // TODO, this doesn't work
+        searchManager.setOnDismissListener(() -> {
+            searchQuery = "";
+            Log.d(TAG, "onDismiss: ");
+            loadVideos(0, count, sort, filter);
+        });
 
         return true;
     }
@@ -175,7 +219,6 @@ public class VideoListActivity extends AppCompatActivity {
             // action with ID action_refresh was selected
             case R.id.action_search:
                 //Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
-                onSearchRequested();
 
                 return false;
             case R.id.action_settings:
@@ -192,8 +235,10 @@ public class VideoListActivity extends AppCompatActivity {
     }
 
     private void createList() {
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+
+        emptyView = findViewById(R.id.empty_view);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(VideoListActivity.this);
         recyclerView.setLayoutManager(layoutManager);
@@ -246,7 +291,12 @@ public class VideoListActivity extends AppCompatActivity {
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
 
-        Call<VideoList> call = service.getVideosData(start, count, sort, nsfw);
+        Call<VideoList> call;
+        if (!searchQuery.equals("")) {
+            call = service.searchVideosData(start, count, sort, nsfw, searchQuery);
+        } else {
+            call = service.getVideosData(start, count, sort, nsfw);
+        }
 
         /*Log the URL called*/
         Log.d("URL Called", call.request().url() + "");
@@ -263,6 +313,17 @@ public class VideoListActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     videoAdapter.setData(response.body().getVideoArrayList());
                 }
+
+                // no results show no results message
+                if (currentStart == 0 && videoAdapter.getItemCount() == 0) {
+                    emptyView.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+
+                } else {
+                    emptyView.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
+
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -303,4 +364,37 @@ public class VideoListActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+
+            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,
+                    SearchSuggestionsProvider.AUTHORITY,
+                    SearchSuggestionsProvider.MODE);
+
+            // Save recent searches
+            suggestions.saveRecentQuery(query, null);
+
+            searchQuery = query;
+
+            loadVideos(0, count, sort, filter);
+
+        }
+    }
+
+    @Override
+    public boolean onSearchRequested() {
+        Bundle appData = new Bundle();
+        startSearch(null, false, appData, false);
+        return true;
+    }
+
+
 }

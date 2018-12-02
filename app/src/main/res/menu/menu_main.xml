@@ -8,8 +8,8 @@
         android:id="@+id/action_search"
         android:orderInCategory="300"
         android:title="@string/action_bar_title_search"
-        app:showAsAction="always" />
-
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
 
     <item
         android:id="@+id/action_settings"

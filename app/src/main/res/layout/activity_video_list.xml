@@ -18,6 +18,15 @@
             layout="@layout/tool_bar" />
     </android.support.design.widget.AppBarLayout>
 
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:text="@string/no_data_available" />
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
@@ -34,6 +43,8 @@
            >
 
         </android.support.v7.widget.RecyclerView>
+
+
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

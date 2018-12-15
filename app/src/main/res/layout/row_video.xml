@@ -19,38 +19,45 @@
             android:id="@+id/thumb"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:maxHeight="300dp"
-            android:contentDescription="@string/video_row_video_thumbnail"
-            android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            />
+            android:contentDescription="@string/video_row_video_thumbnail"
+            android:maxHeight="300dp"
+            android:scaleType="fitXY" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/avatar"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:paddingTop="12dp"
-            android:paddingEnd="12dp"
+            android:layout_below="@+id/thumb"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="0dp"
             android:contentDescription="@string/video_row_account_avatar"
-            android:layout_below="@id/thumb"
-            android:layout_alignParentStart="true"/>
+            android:paddingStart="12dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="12dp" />
 
         <TextView
             android:id="@+id/name"
-            android:paddingTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/thumb"
-            android:layout_toEndOf="@id/avatar"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/avatar"
+            android:layout_marginEnd="12dp"
+
+            android:paddingTop="0dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
 
         <TextView
             android:id="@+id/videoMeta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/name"
-            android:layout_toEndOf="@id/avatar"
+            android:layout_below="@+id/name"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_toEndOf="@+id/avatar"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
 
         <TextView
@@ -58,8 +65,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/videoMeta"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
             android:layout_toEndOf="@id/avatar"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+            />
+
+        <ImageButton
+            android:id="@+id/moreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_below="@+id/thumb"
+
+            android:layout_marginStart="-16dp"
+            android:layout_marginEnd="0dp"
+
+            android:layout_toEndOf="@+id/name"
+
+            android:background="@null"
+            android:contentDescription="@string/descr_overflow_button"
+            android:src="@drawable/ic_action_more_vert" />
 
     </RelativeLayout>
 

@@ -31,7 +31,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     private ArrayList<Video> videoList;
     private Context context;
-    private String apiBaseURL;
+    private String baseUrl;
 
     public VideoAdapter(ArrayList<Video> videoList, Context context) {
         this.videoList = videoList;
@@ -44,7 +44,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.row_video, parent, false);
 
-        apiBaseURL = APIUrlHelper.getUrl(context);
+        baseUrl = APIUrlHelper.getUrl(context);
 
         return new VideoViewHolder(view);
     }
@@ -53,7 +53,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
 
         Picasso.with(this.context)
-                .load(apiBaseURL + videoList.get(position).getPreviewPath())
+                .load(baseUrl + videoList.get(position).getPreviewPath())
                 .into(holder.thumb);
 
 
@@ -61,7 +61,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         if (avatar != null) {
             String avatarPath = avatar.getPath();
             Picasso.with(this.context)
-                    .load(apiBaseURL + avatarPath)
+                    .load(baseUrl + avatarPath)
                     .into(holder.avatar);
         }
 

@@ -58,5 +58,6 @@
     <string name="no_data_available">No Results</string>
     <string name="descr_overflow_button">More</string>
     <string name="menu_share">Share</string>
+    <string name="playback_channel_name">PeerTube</string>
 
 </resources>

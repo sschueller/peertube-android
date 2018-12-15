@@ -3,10 +3,12 @@ package net.schueller.peertube.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import net.schueller.peertube.R;
 import net.schueller.peertube.activity.VideoPlayActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
+import net.schueller.peertube.intents.Intents;
 import net.schueller.peertube.model.Avatar;
 import net.schueller.peertube.model.Video;
 
@@ -28,7 +31,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     private ArrayList<Video> videoList;
     private Context context;
-    private String apiBaseURL;
+    private String baseUrl;
 
     public VideoAdapter(ArrayList<Video> videoList, Context context) {
         this.videoList = videoList;
@@ -41,7 +44,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.row_video, parent, false);
 
-        apiBaseURL = APIUrlHelper.getUrl(context);
+        baseUrl = APIUrlHelper.getUrl(context);
 
         return new VideoViewHolder(view);
     }
@@ -50,7 +53,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
 
         Picasso.with(this.context)
-                .load(apiBaseURL + videoList.get(position).getPreviewPath())
+                .load(baseUrl + videoList.get(position).getPreviewPath())
                 .into(holder.thumb);
 
 
@@ -58,7 +61,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         if (avatar != null) {
             String avatarPath = avatar.getPath();
             Picasso.with(this.context)
-                    .load(apiBaseURL + avatarPath)
+                    .load(baseUrl + avatarPath)
                     .into(holder.avatar);
         }
 
@@ -91,6 +94,23 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         });
 
+        holder.moreButton.setOnClickListener(v -> {
+
+            PopupMenu popup = new PopupMenu(context, v);
+            popup.setOnMenuItemClickListener(menuItem -> {
+                switch (menuItem.getItemId()) {
+                    case R.id.menu_share:
+                        Intents.Share(context, videoList.get(position));
+                        return true;
+                    default:
+                        return false;
+                }
+            });
+            popup.inflate(R.menu.menu_video_row_mode);
+            popup.show();
+
+        });
+
     }
 
     public void setData(ArrayList<Video> data) {
@@ -112,6 +132,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         TextView name, videoMeta, videoOwner;
         ImageView thumb, avatar;
+        ImageButton moreButton;
         View mView;
 
         VideoViewHolder(View itemView) {
@@ -121,6 +142,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             avatar = itemView.findViewById(R.id.avatar);
             videoMeta = itemView.findViewById(R.id.videoMeta);
             videoOwner = itemView.findViewById(R.id.videoOwner);
+            moreButton = itemView.findViewById(R.id.moreButton);
             mView = itemView;
         }
     }

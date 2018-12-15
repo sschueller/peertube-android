@@ -1,20 +1,27 @@
 package net.schueller.peertube.activity;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.Environment;
+import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,32 +32,21 @@ import com.github.se_bastiaan.torrentstream.Torrent;
 import com.github.se_bastiaan.torrentstream.TorrentOptions;
 import com.github.se_bastiaan.torrentstream.TorrentStream;
 import com.github.se_bastiaan.torrentstream.listeners.TorrentListener;
-import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.decoder.DecoderCounters;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelection;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
-
+import com.squareup.picasso.Picasso;
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
+import net.schueller.peertube.intents.Intents;
+import net.schueller.peertube.model.Avatar;
 import net.schueller.peertube.model.Video;
-
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
-
+import net.schueller.peertube.service.VideoPlayerService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -61,95 +57,61 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
     private ProgressBar progressBar;
     private PlayerView simpleExoPlayerView;
-    private SimpleExoPlayer player;
+    private Intent videoPlayerIntent;
+    private Context context = this;
+
+    boolean mBound = false;
+    VideoPlayerService mService;
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            Log.d(TAG, "onServiceConnected");
+            VideoPlayerService.LocalBinder binder = (VideoPlayerService.LocalBinder) service;
+            mService = binder.getService();
+
+            // 2. Create the player
+            simpleExoPlayerView.setPlayer(mService.player);
+            mBound = true;
+
+            loadVideo();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            Log.d(TAG, "onServiceDisconnected");
+            simpleExoPlayerView.setPlayer(null);
+            mBound = false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_play);
 
-        // get video ID
-        Intent intent = getIntent();
-        String videoID = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
-        Log.v(TAG, "click: " + videoID);
-
         progressBar = findViewById(R.id.progress);
         progressBar.setMax(100);
 
-//        PlayerView videoView = findViewById(R.id.video_view);
         simpleExoPlayerView = new PlayerView(this);
         simpleExoPlayerView = findViewById(R.id.video_view);
 
-        // 1. Create a default TrackSelector
-        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-        TrackSelection.Factory videoTrackSelectionFactory =
-                new AdaptiveTrackSelection.Factory(bandwidthMeter);
-        TrackSelector trackSelector =
-                new DefaultTrackSelector(videoTrackSelectionFactory);
-
-        // 2. Create the player
-        player = ExoPlayerFactory.newSimpleInstance(getApplicationContext(), trackSelector);
-        simpleExoPlayerView.setPlayer(player);
-
-        // get video details from api
-        String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
-
-        Call<Video> call = service.getVideoData(videoID);
-
-        call.enqueue(new Callback<Video>() {
-            @Override
-            public void onResponse(@NonNull Call<Video> call, @NonNull Response<Video> response) {
-
-//                Toast.makeText(TorrentVideoPlayActivity.this, response.body().getDescription(), Toast.LENGTH_SHORT).show();
-
-                TextView videoName = findViewById(R.id.name);
-                TextView videoDescription = findViewById(R.id.description);
-                TextView videoMeta = findViewById(R.id.videoMeta);
-
-                try {
-
-                    videoName.setText(response.body().getName());
-                    videoDescription.setText(response.body().getDescription());
-
-                    videoMeta.setText(
-                            MetaDataHelper.getMetaString(
-                                    response.body().getCreatedAt(),
-                                    response.body().getViews(),
-                                    getBaseContext()
-                            )
-                    );
-
-                    String streamUrl = response.body().getFiles().get(0).getFileUrl();
-
-                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    if (sharedPref.getBoolean("pref_torrent_player",false)) {
-                        streamUrl = response.body().getFiles().get(0).getTorrentUrl();
-                        TorrentStream torrentStream = setupTorrentStream();
-                        torrentStream.startStream(streamUrl);
-                    } else {
-                        setupVideoView(Uri.parse(streamUrl));
-                    }
-
-                    Log.v(TAG, streamUrl);
-
-
-                } catch (NullPointerException e) {
-                    e.getStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Video> call, @NonNull Throwable t) {
-                Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(VideoPlayActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        videoPlayerIntent = new Intent(this, VideoPlayerService.class);
+        bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
 
     }
 
+    private void startPlayer()
+    {
+        Util.startForegroundService(context, videoPlayerIntent);
+    }
+
+    /**
+     * Torrent Playback
+     *
+     * @return torrent stream
+     */
     private TorrentStream setupTorrentStream() {
 
         TorrentOptions torrentOptions = new TorrentOptions.Builder()
@@ -163,9 +125,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
             @Override
             public void onStreamReady(Torrent torrent) {
                 Log.d(TAG, "Ready");
-
-                setupVideoView(Uri.fromFile(torrent.getVideoFile()));
-
+                mService.setCurrentStreamUrl(Uri.fromFile(torrent.getVideoFile()).toString());
+                startPlayer();
             }
 
             @Override
@@ -201,28 +162,12 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         return torrentStream;
     }
 
-    private void setupVideoView(Uri videoStream) {
-
-        Log.d(TAG, "Play Video");
-
-        // Produces DataSource instances through which media data is loaded.
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getApplicationContext(),
-                Util.getUserAgent(getApplicationContext(), "PeerTube"), null);
-
-        // This is the MediaSource representing the media to be played.
-        MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(videoStream);
-
-        // Prepare the player with the source.
-        player.prepare(videoSource);
-
-        // Auto play
-        player.setPlayWhenReady(true);
-
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+
+        Log.v(TAG, "onConfigurationChanged()...");
+
         super.onConfigurationChanged(newConfig);
 
         TextView nameView = findViewById(R.id.name);
@@ -256,8 +201,105 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         }
     }
 
+
+    private void loadVideo()
+    {
+        // get video ID
+        Intent intent = getIntent();
+        String videoID = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
+        Log.v(TAG, "click: " + videoID);
+
+        // get video details from api
+        String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+
+        Call<Video> call = service.getVideoData(videoID);
+
+        call.enqueue(new Callback<Video>() {
+            @Override
+            public void onResponse(@NonNull Call<Video> call, @NonNull Response<Video> response) {
+
+//                Toast.makeText(TorrentVideoPlayActivity.this, response.body().getDescription(), Toast.LENGTH_SHORT).show();
+
+                // TODO: remove this code duplication, similar code as in video list rows
+
+                TextView videoName = findViewById(R.id.name);
+                TextView videoDescription = findViewById(R.id.description);
+                TextView videoOwner = findViewById(R.id.videoOwner);
+                TextView videoMeta = findViewById(R.id.videoMeta);
+                ImageView avatarView = findViewById(R.id.avatar);
+                ImageButton moreButton = findViewById(R.id.moreButton);
+
+                Video video = response.body();
+
+                mService.setCurrentVideo(video);
+
+                String baseUrl = APIUrlHelper.getUrl(context);
+
+                Avatar avatar = video.getAccount().getAvatar();
+                if (avatar != null) {
+                    String avatarPath = avatar.getPath();
+                    Picasso.with(context)
+                            .load(baseUrl + avatarPath)
+                            .into(avatarView);
+                }
+
+                videoName.setText(video.getName());
+                videoMeta.setText(
+                        MetaDataHelper.getMetaString(
+                                video.getCreatedAt(),
+                                video.getViews(),
+                                getBaseContext()
+                        )
+                );
+                videoOwner.setText(
+                        MetaDataHelper.getOwnerString(video.getAccount().getName(),
+                                video.getAccount().getHost(),
+                                context
+                        )
+                );
+                videoDescription.setText(video.getDescription());
+
+                moreButton.setOnClickListener(v -> {
+                    PopupMenu popup = new PopupMenu(context, v);
+                    popup.setOnMenuItemClickListener(menuItem -> {
+                        switch (menuItem.getItemId()) {
+                            case R.id.menu_share:
+                                Intents.Share(context, video);
+                                return true;
+                            default:
+                                return false;
+                        }
+                    });
+                    popup.inflate(R.menu.menu_video_row_mode);
+                    popup.show();
+                });
+
+                mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
+
+                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                if (sharedPref.getBoolean("pref_torrent_player", false)) {
+
+                    String stream = video.getFiles().get(0).getTorrentUrl();
+                    TorrentStream torrentStream = setupTorrentStream();
+                    torrentStream.startStream(stream);
+                } else {
+                    startPlayer();
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Video> call, @NonNull Throwable t) {
+                Log.wtf(TAG, t.fillInStackTrace());
+                Toast.makeText(VideoPlayActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     @Override
     public void onVideoEnabled(DecoderCounters counters) {
+        Log.v(TAG, "onVideoEnabled()...");
 
     }
 
@@ -288,15 +330,14 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
     @Override
     public void onVideoDisabled(DecoderCounters counters) {
-
+        Log.v(TAG, "onVideoDisabled()...");
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.v(TAG, "onDestroy()...");
-        player.release();
+        simpleExoPlayerView.setPlayer(null);
     }
 
     @Override
@@ -314,6 +355,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onStop() {
         super.onStop();
+        unbindService(mConnection);
+        mBound = false;
         Log.v(TAG, "onStop()...");
     }
 
@@ -322,4 +365,5 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         super.onStart();
         Log.v(TAG, "onStart()...");
     }
+
 }

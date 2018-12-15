@@ -50,5 +50,6 @@
             android:exported="false" />
 
         <activity android:name=".activity.SelectServerActivity"/>
+        <service android:name=".service.VideoPlayerService" />
     </application>
 </manifest>

@@ -23,4 +23,8 @@ public class APIUrlHelper{
     public static String getUrlWithVersion(Context context) {
         return APIUrlHelper.getUrl(context) + "/api/v1/";
     }
+
+    public static String getShareUrl(Context context, String videoUuid) {
+        return APIUrlHelper.getUrl(context) + "/videos/watch/" + videoUuid;
+    }
 }

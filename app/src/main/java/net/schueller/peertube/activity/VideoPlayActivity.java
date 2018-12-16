@@ -3,6 +3,7 @@ package net.schueller.peertube.activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -33,6 +34,7 @@ import com.github.se_bastiaan.torrentstream.TorrentOptions;
 import com.github.se_bastiaan.torrentstream.TorrentStream;
 import com.github.se_bastiaan.torrentstream.listeners.TorrentListener;
 import com.google.android.exoplayer2.Format;
+import com.google.android.exoplayer2.PlaybackPreparer;
 import com.google.android.exoplayer2.decoder.DecoderCounters;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.util.Util;
@@ -58,6 +60,7 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     private ProgressBar progressBar;
     private PlayerView simpleExoPlayerView;
     private Intent videoPlayerIntent;
+    private HeadphoneActivity headphoneActivity;
     private Context context = this;
 
     boolean mBound = false;
@@ -100,11 +103,17 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         videoPlayerIntent = new Intent(this, VideoPlayerService.class);
         bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
 
+        headphoneActivity = new HeadphoneActivity(this);
     }
 
     private void startPlayer()
     {
         Util.startForegroundService(context, videoPlayerIntent);
+    }
+
+    public void stopPlayer()
+    {
+        mService.player.setPlayWhenReady(false);
     }
 
     /**
@@ -343,12 +352,19 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onPause() {
         super.onPause();
+
+        unregisterReceiver(headphoneActivity);
+
         Log.v(TAG, "onPause()...");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+        registerReceiver(headphoneActivity, filter);
+
         Log.v(TAG, "onResume()...");
     }
 

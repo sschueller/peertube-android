@@ -355,8 +355,10 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onStop() {
         super.onStop();
-        unbindService(mConnection);
-        mBound = false;
+        if (mBound) {
+            unbindService(mConnection);
+            mBound = false;
+        }
         Log.v(TAG, "onStop()...");
     }
 

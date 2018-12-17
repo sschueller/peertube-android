@@ -4,10 +4,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "net.schueller.peertube"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 28
-        versionCode 106
-        versionName "1.0.6"
+        versionCode 107
+        versionName "1.0.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         dependencies {
             implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -44,11 +44,11 @@ android {
 //            implementation 'org.webrtc:google-webrtc:1.0.+'
 
             // video player
-            implementation 'com.google.android.exoplayer:exoplayer-core:2.8.1'
-            implementation 'com.google.android.exoplayer:exoplayer-dash:2.8.1'
-            implementation 'com.google.android.exoplayer:exoplayer-ui:2.8.1'
-            implementation 'com.google.android.exoplayer:exoplayer-hls:2.8.1'
-            implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.8.1'
+            implementation 'com.google.android.exoplayer:exoplayer-core:2.9.2'
+            implementation 'com.google.android.exoplayer:exoplayer-dash:2.9.2'
+            implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.2'
+            implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.2'
+            implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.2'
 //            implementation 'com.devbrackets.android:exomedia:4.1.0'
 
             // testing

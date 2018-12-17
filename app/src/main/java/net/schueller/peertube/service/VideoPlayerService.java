@@ -1,18 +1,19 @@
 package net.schueller.peertube.service;
 
-
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Player;
@@ -23,16 +24,14 @@ import com.google.android.exoplayer2.ui.PlayerNotificationManager;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
-import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.activity.VideoPlayActivity;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Video;
 
-import java.io.IOException;
-
-import retrofit2.http.FormUrlEncoded;
+import static android.media.session.PlaybackState.ACTION_PAUSE;
+import static android.media.session.PlaybackState.ACTION_PLAY;
 
 public class VideoPlayerService extends Service {
 
@@ -48,13 +47,31 @@ public class VideoPlayerService extends Service {
 
     private PlayerNotificationManager playerNotificationManager;
 
+    private IntentFilter becomeNoisyIntentFilter = new IntentFilter(AudioManager.ACTION_AUDIO_BECOMING_NOISY);
+    private BecomingNoisyReceiver myNoisyAudioStreamReceiver = new BecomingNoisyReceiver();
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        Log.v("VideoPlayerService", "onCreate...");
-
         player = ExoPlayerFactory.newSimpleInstance(getApplicationContext(), new DefaultTrackSelector());
+
+        // Stop player if audio device changes, e.g. headphones unplugged
+        player.addListener(new Player.EventListener() {
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+
+                if (playbackState == ACTION_PAUSE) { // this means that pause is available, hence the audio is playing
+                    Log.v("VideoPlayerService", "ACTION_PLAY: " + playbackState);
+                    registerReceiver(myNoisyAudioStreamReceiver, becomeNoisyIntentFilter);
+                }
+
+                if (playbackState == ACTION_PLAY) { // this means that play is available, hence the audio is paused or stopped
+                    Log.v("VideoPlayerService", "ACTION_PAUSE: " + playbackState);
+                    unregisterReceiver(myNoisyAudioStreamReceiver);
+                }
+            }
+        } );
 
     }
 
@@ -143,7 +160,6 @@ public class VideoPlayerService extends Service {
                                 PendingIntent.FLAG_UPDATE_CURRENT);
                     }
 
-                    @Nullable
                     @Override
                     public String getCurrentContentText(Player player) {
                         return MetaDataHelper.getMetaString(
@@ -182,6 +198,16 @@ public class VideoPlayerService extends Service {
 
         playerNotificationManager.setPlayer(player);
 
+    }
+
+    // pause playback on audio output change
+    private class BecomingNoisyReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (AudioManager.ACTION_AUDIO_BECOMING_NOISY.equals(intent.getAction())) {
+                player.setPlayWhenReady(false);
+            }
+        }
     }
 
 }

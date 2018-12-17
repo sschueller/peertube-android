@@ -8,7 +8,7 @@
     <!-- Strings related to login -->
     <string name="prompt_server">Serveur</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Mot de passe (optionnel)</string>
+    <string name="prompt_password">Mot de passe</string>
     <string name="action_sign_in">Connexion</string>
     <string name="action_sign_in_short">Connexion</string>
     <string name="error_invalid_email">Cette adresse mail n\'est pas valide</string>

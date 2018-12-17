@@ -8,7 +8,7 @@
     <!-- Strings related to login -->
     <string name="prompt_server">Server</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
@@ -59,5 +59,9 @@
     <string name="descr_overflow_button">More</string>
     <string name="menu_share">Share</string>
     <string name="playback_channel_name">PeerTube</string>
+    <string name="pref_token_access">pref_token_access</string>
+    <string name="pref_token_refresh">pref_token_refresh</string>
+    <string name="pref_token_expiration">pref_token_expiration</string>
+    <string name="pref_token_type">pref_token_type</string>
 
 </resources>

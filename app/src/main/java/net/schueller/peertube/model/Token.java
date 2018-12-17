@@ -1,10 +1,19 @@
 package net.schueller.peertube.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Token {
 
+    @SerializedName("access_token")
     private String accessToken;
+
+    @SerializedName("expires_in")
     private String expiresIn;
+
+    @SerializedName("refresh_token")
     private String refreshToken;
+
+    @SerializedName("token_type")
     private String tokenType;
 
     public String getAccessToken() {

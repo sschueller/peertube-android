@@ -1,8 +1,13 @@
 package net.schueller.peertube.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class OauthClient {
 
+    @SerializedName("client_id")
     private String clientId;
+
+    @SerializedName("client_secret")
     private String clientSecret;
 
     public String getClientId() {

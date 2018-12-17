@@ -16,18 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".activity.VideoListActivity"
+        <activity
+            android:name=".activity.VideoListActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable">
-            </meta-data>
+                android:resource="@xml/searchable"></meta-data>
         </activity>
         <activity
             android:name=".activity.LoginActivity"
@@ -49,7 +50,11 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".activity.SelectServerActivity"/>
+        <activity android:name=".activity.SelectServerActivity" />
+
         <service android:name=".service.VideoPlayerService" />
+
+        <activity android:name=".activity.UserActivity"></activity>
     </application>
+
 </manifest>

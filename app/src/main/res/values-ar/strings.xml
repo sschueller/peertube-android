@@ -36,8 +36,8 @@
 
 
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator">\0020-\0020</string>
-    <string name="meta_data_views">\0020مشاهدات</string>
+    <string name="meta_data_seperator">\u0020-\u0020</string>
+    <string name="meta_data_views">\u0020مشاهدات</string>
     <string name="meta_data_owner_seperator">\@</string>
 
 

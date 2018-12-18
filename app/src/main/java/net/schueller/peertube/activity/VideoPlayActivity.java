@@ -206,14 +206,14 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     {
         // get video ID
         Intent intent = getIntent();
-        String videoID = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
-        Log.v(TAG, "click: " + videoID);
+        String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
+        Log.v(TAG, "click: " + videoUuid);
 
         // get video details from api
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
 
-        Call<Video> call = service.getVideoData(videoID);
+        Call<Video> call = service.getVideoData(videoUuid);
 
         call.enqueue(new Callback<Video>() {
             @Override

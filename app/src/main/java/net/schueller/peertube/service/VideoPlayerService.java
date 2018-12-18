@@ -32,6 +32,7 @@ import net.schueller.peertube.model.Video;
 
 import static android.media.session.PlaybackState.ACTION_PAUSE;
 import static android.media.session.PlaybackState.ACTION_PLAY;
+import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
 
 public class VideoPlayerService extends Service {
 
@@ -156,6 +157,7 @@ public class VideoPlayerService extends Service {
                     @Override
                     public PendingIntent createCurrentContentIntent(Player player) {
                         Intent intent = new Intent(context, VideoPlayActivity.class);
+                        intent.putExtra(EXTRA_VIDEOID, currentVideo.getUuid());
                         return PendingIntent.getActivity(context, 0, intent,
                                 PendingIntent.FLAG_UPDATE_CURRENT);
                     }
@@ -178,6 +180,9 @@ public class VideoPlayerService extends Service {
         );
 
         playerNotificationManager.setSmallIcon(R.drawable.ic_peertube_bw);
+
+        // don't show skip buttons in notification
+        playerNotificationManager.setUseNavigationActions(false);
 
         playerNotificationManager.setNotificationListener(
                 new PlayerNotificationManager.NotificationListener() {

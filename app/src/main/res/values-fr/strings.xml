@@ -32,7 +32,7 @@
     <string name="peertube_required_server_version">1.0.0-alpha.7</string>
 
     <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
-    <string name="pref_title_peertube_server">PeerTube Server</string>
+    <string name="pref_title_peertube_server">Serveur Peertube</string>
 
 
     <!-- Strings related to Video meta data -->
@@ -54,5 +54,10 @@
     <string name="pref_title_version">Version</string>
     <string name="search_hint">Rechercher sur PeerTube</string>
     <string name="title_activity_search">Rechercher</string>
+    <string name="no_data_available">Pas de résultat</string>
+    <string name="descr_overflow_button">Plus</string>
+    <string name="menu_share">Partager</string>
+    <string name="playback_channel_name">PeerTube</string>
+    <string name="invalid_url">URL invalide !</string>
 
 </resources>

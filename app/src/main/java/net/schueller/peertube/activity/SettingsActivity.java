@@ -10,7 +10,10 @@ import android.preference.Preference;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.util.Patterns;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import net.schueller.peertube.R;
 import java.util.List;
 
@@ -33,6 +36,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      */
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = (preference, value) -> {
         String stringValue = value.toString();
+
+        // check URL is valid
+        if (preference.getKey().equals("pref_api_base") && !Patterns.WEB_URL.matcher(stringValue).matches()) {
+            Toast.makeText(preference.getContext(), R.string.invalid_url, Toast.LENGTH_LONG).show();
+            return false;
+        }
 
         preference.setSummary(stringValue);
 

@@ -59,6 +59,7 @@
     <string name="descr_overflow_button">More</string>
     <string name="menu_share">Share</string>
     <string name="playback_channel_name">PeerTube</string>
+    <string name="invalid_url">Invalid Url!</string>
     <string name="pref_token_access">pref_token_access</string>
     <string name="pref_token_refresh">pref_token_refresh</string>
     <string name="pref_token_expiration">pref_token_expiration</string>

@@ -15,6 +15,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -116,6 +117,19 @@ public class VideoListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set Night Mode
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        AppCompatDelegate.setDefaultNightMode(sharedPref.getBoolean("pref_dark_mode", false) ?
+                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+
+        // Set theme
+        setTheme(getResources().getIdentifier(
+                sharedPref.getString("pref_theme", "AppTheme.ORANGE"),
+                "style",
+                getPackageName())
+        );
+
         setContentView(R.layout.activity_video_list);
 
         filter = "";
@@ -140,13 +154,17 @@ public class VideoListActivity extends AppCompatActivity {
 
         Menu navMenu = navigation.getMenu();
         navMenu.findItem(R.id.navigation_home).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_home));
+                new IconDrawable(this, FontAwesomeIcons.fa_home)
+                        .colorRes(R.color.primaryDarkColorDeepOrange));
         navMenu.findItem(R.id.navigation_trending).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_fire));
+                new IconDrawable(this, FontAwesomeIcons.fa_fire)
+                        .colorRes(R.color.primaryDarkColorDeepOrange));
         navMenu.findItem(R.id.navigation_subscriptions).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_folder));
+                new IconDrawable(this, FontAwesomeIcons.fa_folder)
+                        .colorRes(R.color.primaryDarkColorDeepOrange));
         navMenu.findItem(R.id.navigation_account).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_user_circle));
+                new IconDrawable(this, FontAwesomeIcons.fa_user_circle)
+                        .colorRes(R.color.primaryDarkColorDeepOrange));
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 

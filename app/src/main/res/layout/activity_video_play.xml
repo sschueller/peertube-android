@@ -17,7 +17,6 @@
             android:id="@+id/video_view"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="@color/black"
 
             app:layout_constraintDimensionRatio="H,3:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +29,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/video_view"
-            android:background="@color/black"
             android:indeterminate="false"
             android:max="100" />
 

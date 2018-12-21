@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="themeArray">
+        <item>@string/red</item>
+        <item>@string/pink</item>
+        <item>@string/purple</item>
+        <item>@string/deeppurple</item>
+        <item>@string/indigo</item>
+        <item>@string/blue</item>
+        <item>@string/lightblue</item>
+        <item>@string/cyan</item>
+        <item>@string/teal</item>
+        <item>@string/green</item>
+        <item>@string/lightgreen</item>
+        <item>@string/lime</item>
+        <item>@string/yellow</item>
+        <item>@string/amber</item>
+        <item>@string/orange</item>
+        <item>@string/deeporange</item>
+        <item>@string/brown</item>
+        <item>@string/gray</item>
+        <item>@string/bluegray</item>
+    </string-array>
+
+    <string-array name="themeValues">
+        <item>AppTheme.RED</item>
+        <item>AppTheme.PINK</item>
+        <item>AppTheme.PURPLE</item>
+        <item>AppTheme.DEEPPURPLE</item>
+        <item>AppTheme.INDIGO</item>
+        <item>AppTheme.BLUE</item>
+        <item>AppTheme.LIGHTBLUE</item>
+        <item>AppTheme.CYAN</item>
+        <item>AppTheme.TEAL</item>
+        <item>AppTheme.GREEN</item>
+        <item>AppTheme.LIGHTGREEN</item>
+        <item>AppTheme.LIME</item>
+        <item>AppTheme.YELLOW</item>
+        <item>AppTheme.AMBER</item>
+        <item>AppTheme.ORANGE</item>
+        <item>AppTheme.DEEPORANGE</item>
+        <item>AppTheme.BROWN</item>
+        <item>AppTheme.GRAY</item>
+        <item>AppTheme.BLUEGRAY</item>
+    </string-array>
+
+</resources>

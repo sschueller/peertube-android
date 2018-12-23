@@ -21,6 +21,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".activity.VideoListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,15 +35,17 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_login" />
         <activity
             android:name=".activity.VideoPlayActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:label="@string/title_activity_video_play"
-            android:launchMode="singleTop"
-            android:theme="@style/AppTheme" />
+            android:launchMode="singleTop" />
         <activity
             android:name=".activity.SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_settings" />
 
         <!-- Content provider for search suggestions -->

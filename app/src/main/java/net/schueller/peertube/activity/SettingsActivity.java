@@ -21,7 +21,6 @@ import java.util.List;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
-
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
     @Override
@@ -84,7 +83,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
         // Set theme
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -93,6 +91,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 "style",
                 getPackageName())
         );
+
+        super.onCreate(savedInstanceState);
 
         setupActionBar();
         getFragmentManager().beginTransaction().replace(android.R.id.content, new GeneralPreferenceFragment()).commit();

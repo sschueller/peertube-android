@@ -12,7 +12,7 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;

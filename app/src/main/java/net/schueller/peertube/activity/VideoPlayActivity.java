@@ -12,9 +12,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
 import android.view.Surface;
 import android.view.View;
@@ -50,6 +50,9 @@ import net.schueller.peertube.service.VideoPlayerService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
+import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class VideoPlayActivity extends AppCompatActivity implements VideoRendererEventListener {
 
@@ -89,6 +92,15 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set theme
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        setTheme(getResources().getIdentifier(
+                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                "style",
+                getPackageName())
+        );
+
         setContentView(R.layout.activity_video_play);
 
         progressBar = findViewById(R.id.progress);

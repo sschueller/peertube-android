@@ -1,35 +1,30 @@
 package net.schueller.peertube.activity;
 
-import android.os.StrictMode;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.OauthClient;
 import net.schueller.peertube.model.Token;
-import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.AuthenticationService;
-import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 
-import java.io.IOException;
-
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Callback;
+
+import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
+import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -48,6 +43,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set theme
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        setTheme(getResources().getIdentifier(
+                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                "style",
+                getPackageName())
+        );
+
         setContentView(R.layout.activity_login);
 
         // bind button click

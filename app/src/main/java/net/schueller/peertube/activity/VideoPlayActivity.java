@@ -8,9 +8,13 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
 import android.view.Surface;
 import android.view.View;
@@ -35,7 +39,6 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
 import com.squareup.picasso.Picasso;
-
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
@@ -45,10 +48,6 @@ import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 import net.schueller.peertube.service.VideoPlayerService;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -59,12 +58,15 @@ import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 public class VideoPlayActivity extends AppCompatActivity implements VideoRendererEventListener {
 
     private static final String TAG = "VideoPlayActivity";
-    boolean mBound = false;
-    VideoPlayerService mService;
+
     private ProgressBar progressBar;
     private PlayerView simpleExoPlayerView;
     private Intent videoPlayerIntent;
     private Context context = this;
+
+    boolean mBound = false;
+    VideoPlayerService mService;
+
     private ServiceConnection mConnection = new ServiceConnection() {
 
         @Override
@@ -113,7 +115,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
     }
 
-    private void startPlayer() {
+    private void startPlayer()
+    {
         Util.startForegroundService(context, videoPlayerIntent);
     }
 
@@ -141,7 +144,7 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
             @Override
             public void onStreamProgress(Torrent torrent, StreamStatus streamStatus) {
-                if (streamStatus.bufferProgress <= 100 && progressBar.getProgress() < 100 && progressBar.getProgress() != streamStatus.bufferProgress) {
+                if(streamStatus.bufferProgress <= 100 && progressBar.getProgress() < 100 && progressBar.getProgress() != streamStatus.bufferProgress) {
                     //Log.d(TAG, "Progress: " + streamStatus.bufferProgress);
                     progressBar.setProgress(streamStatus.bufferProgress);
                 }
@@ -197,7 +200,7 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
             params.width = ViewGroup.LayoutParams.MATCH_PARENT;
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -212,7 +215,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     }
 
 
-    private void loadVideo() {
+    private void loadVideo()
+    {
         // get video ID
         Intent intent = getIntent();
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);

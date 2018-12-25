@@ -20,6 +20,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,6 +40,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
 import com.squareup.picasso.Picasso;
 import net.schueller.peertube.R;
+import net.schueller.peertube.fragment.VideoOptionsFragment;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.intents.Intents;
@@ -241,6 +243,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 TextView videoMeta = findViewById(R.id.videoMeta);
                 ImageView avatarView = findViewById(R.id.avatar);
                 ImageButton moreButton = findViewById(R.id.moreButton);
+                ImageButton videoOptions = findViewById(R.id.exo_more);
+
 
                 Video video = response.body();
 
@@ -287,7 +291,17 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                     popup.show();
                 });
 
+                // video player options
+                videoOptions.setOnClickListener(v -> {
+
+                    VideoOptionsFragment videoOptionsFragment =
+                            VideoOptionsFragment.newInstance(mService);
+                    videoOptionsFragment.show(getSupportFragmentManager(),
+                            "video_options_fragment");
+                });
+
                 mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
+
 
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 if (sharedPref.getBoolean("pref_torrent_player", false)) {

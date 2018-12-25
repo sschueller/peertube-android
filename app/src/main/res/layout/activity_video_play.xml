@@ -17,6 +17,7 @@
             android:id="@+id/video_view"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:background="@color/videoBackgroundColor"
 
             app:layout_constraintDimensionRatio="H,3:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,9 +109,10 @@
                 android:layout_marginEnd="12dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
 
+
         </RelativeLayout>
 
 
-    </RelativeLayout>
 
+    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

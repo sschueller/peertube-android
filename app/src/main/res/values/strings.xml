@@ -84,5 +84,9 @@
     <string name="brown">Brown</string>
     <string name="gray">Gray</string>
     <string name="bluegray">Bluegray</string>
+    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_10">Normal</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_20">2x</string>
 
 </resources>

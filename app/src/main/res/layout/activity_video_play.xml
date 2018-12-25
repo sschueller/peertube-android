@@ -109,6 +109,51 @@
                 android:layout_marginEnd="12dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
 
+            <TextView
+                android:id="@+id/playback_speed_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/description"
+                android:text="Playback Speed"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/speed05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/playback_speed_label"
+                android:text="0.5x"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/speed10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/playback_speed_label"
+                android:layout_toRightOf="@id/speed05"
+                android:text="1.0x"
+                android:textAllCaps="false"
+                android:textColor="@color/primaryColorRed"
+                />
+
+            <Button
+                android:id="@+id/speed15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/playback_speed_label"
+                android:layout_toRightOf="@id/speed10"
+                android:text="1.5x"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/speed20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/playback_speed_label"
+                android:layout_toRightOf="@id/speed15"
+                android:text="2.0x"
+                android:textAllCaps="false"/>
+
         </RelativeLayout>
 
 

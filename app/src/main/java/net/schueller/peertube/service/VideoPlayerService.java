@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import android.util.Log;
 
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
@@ -123,8 +124,14 @@ public class VideoPlayerService extends Service {
         currentStreamUrl = streamUrl;
     }
 
-    public void playVideo()
-    {
+    //Playback speed control
+    public void setPlayBackSpeed(float speed) {
+
+        Log.v("VideoPlayerService", "setPlayBackSpeed...");
+        player.setPlaybackParameters(new PlaybackParameters(speed));
+    }
+
+    public void playVideo() {
         Context context = this;
 
         Log.v("VideoPlayerService", "playVideo...");
@@ -142,6 +149,9 @@ public class VideoPlayerService extends Service {
 
         // Auto play
         player.setPlayWhenReady(true);
+
+        //reset playback speed
+        this.setPlayBackSpeed(1.0f);
 
         playerNotificationManager = PlayerNotificationManager.createWithNotificationChannel(
                 context, PLAYBACK_CHANNEL_ID, R.string.playback_channel_name,

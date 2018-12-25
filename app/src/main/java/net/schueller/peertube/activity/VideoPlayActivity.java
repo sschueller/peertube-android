@@ -20,6 +20,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -244,6 +245,12 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 ImageButton moreButton = findViewById(R.id.moreButton);
                 ImageButton videoOptions = findViewById(R.id.exo_more);
 
+                //Playback speed buttons
+                Button speed05 = findViewById(R.id.speed05);
+                Button speed10 = findViewById(R.id.speed10);
+                Button speed15 = findViewById(R.id.speed15);
+                Button speed20 = findViewById(R.id.speed20);
+
                 Video video = response.body();
 
                 mService.setCurrentVideo(video);
@@ -298,6 +305,41 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 });
 
                 mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
+
+                //Playback speed controls
+                speed05.setOnClickListener(view -> {
+                    mService.setPlayBackSpeed(0.5f);
+                    speed05.setTextColor(getResources().getColor(R.color.primaryColorRed));
+
+                    speed10.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                    speed15.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                    speed20.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+
+                });
+                speed10.setOnClickListener(view -> {
+                    mService.setPlayBackSpeed(1.0f);
+                    speed10.setTextColor(getResources().getColor(R.color.primaryColorRed));
+
+                    speed05.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                    speed15.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                    speed20.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                });
+                speed15.setOnClickListener(view -> {
+                    mService.setPlayBackSpeed(1.5f);
+                    speed15.setTextColor(getResources().getColor(R.color.primaryColorRed));
+
+                    speed05.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                    speed10.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                    speed20.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                });
+                speed20.setOnClickListener(view -> {
+                    mService.setPlayBackSpeed(2.0f);
+                    speed20.setTextColor(getResources().getColor(R.color.primaryColorRed));
+
+                    speed05.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                    speed10.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                    speed15.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
+                });
 
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 if (sharedPref.getBoolean("pref_torrent_player", false)) {

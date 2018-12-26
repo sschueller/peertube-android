@@ -89,4 +89,7 @@
     <string name="video_speed_15">1.5x</string>
     <string name="video_speed_20">2x</string>
 
+
+    <string name="video_speed_active_icon">{faw-check}</string>
+
 </resources>

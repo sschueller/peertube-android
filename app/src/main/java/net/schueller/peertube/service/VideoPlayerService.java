@@ -37,6 +37,8 @@ import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
 
 public class VideoPlayerService extends Service {
 
+    private static final String TAG = "VideoPlayerService";
+
     private final IBinder mBinder = new LocalBinder();
 
     private static final String PLAYBACK_CHANNEL_ID = "playback_channel";
@@ -64,12 +66,12 @@ public class VideoPlayerService extends Service {
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
 
                 if (playbackState == ACTION_PAUSE) { // this means that pause is available, hence the audio is playing
-                    Log.v("VideoPlayerService", "ACTION_PLAY: " + playbackState);
+                    Log.v(TAG, "ACTION_PLAY: " + playbackState);
                     registerReceiver(myNoisyAudioStreamReceiver, becomeNoisyIntentFilter);
                 }
 
                 if (playbackState == ACTION_PLAY) { // this means that play is available, hence the audio is paused or stopped
-                    Log.v("VideoPlayerService", "ACTION_PAUSE: " + playbackState);
+                    Log.v(TAG, "ACTION_PAUSE: " + playbackState);
                     unregisterReceiver(myNoisyAudioStreamReceiver);
                 }
             }
@@ -89,7 +91,7 @@ public class VideoPlayerService extends Service {
     @Override
     public void onDestroy() {
 
-        Log.v("VideoPlayerService", "onDestroy...");
+        Log.v(TAG, "onDestroy...");
 
         playerNotificationManager.setPlayer(null);
         player.release();
@@ -106,7 +108,7 @@ public class VideoPlayerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.v("VideoPlayerService", "onStartCommand...");
+        Log.v(TAG, "onStartCommand...");
         playVideo();
         return START_STICKY;
     }
@@ -114,27 +116,27 @@ public class VideoPlayerService extends Service {
 
     public void setCurrentVideo(Video video)
     {
-        Log.v("VideoPlayerService", "setCurrentVideo...");
+        Log.v(TAG, "setCurrentVideo...");
         currentVideo = video;
     }
 
     public void setCurrentStreamUrl(String streamUrl)
     {
-        Log.v("VideoPlayerService", "setCurrentStreamUrl...");
+        Log.v(TAG, "setCurrentStreamUrl...");
         currentStreamUrl = streamUrl;
     }
 
     //Playback speed control
     public void setPlayBackSpeed(float speed) {
 
-        Log.v("VideoPlayerService", "setPlayBackSpeed...");
+        Log.v(TAG, "setPlayBackSpeed...");
         player.setPlaybackParameters(new PlaybackParameters(speed));
     }
 
     public void playVideo() {
         Context context = this;
 
-        Log.v("VideoPlayerService", "playVideo...");
+        Log.v(TAG, "playVideo...");
 
         // Produces DataSource instances through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getApplicationContext(),
@@ -203,7 +205,7 @@ public class VideoPlayerService extends Service {
 
                     @Override
                     public void onNotificationCancelled(int notificationId) {
-                        Log.v("VideoPlayerService", "onNotificationCancelled...");
+                        Log.v(TAG, "onNotificationCancelled...");
 
                         // TODO: only kill the notification if we no longer have a bound activity
                         stopForeground(true);

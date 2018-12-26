@@ -8,17 +8,20 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
-import android.support.annotation.NonNull;
-import android.support.design.bottomnavigation.LabelVisibilityMode;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import androidx.core.app.ActivityCompat;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,17 +29,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-//import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-//import com.google.android.gms.common.GooglePlayServicesRepairableException;
-//import com.google.android.gms.common.GooglePlayServicesUtil;
-//import com.google.android.gms.security.ProviderInstaller;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
-import com.joanzapata.iconify.IconDrawable;
-import com.joanzapata.iconify.Iconify;
-import com.joanzapata.iconify.fonts.FontAwesomeIcons;
-import com.joanzapata.iconify.fonts.FontAwesomeModule;
-
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
@@ -44,6 +38,7 @@ import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 import net.schueller.peertube.provider.SearchSuggestionsProvider;
+import net.schueller.peertube.service.VideoPlayerService;
 
 
 import java.util.ArrayList;
@@ -51,6 +46,9 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
+import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class VideoListActivity extends AppCompatActivity {
 
@@ -72,84 +70,34 @@ public class VideoListActivity extends AppCompatActivity {
 
     private boolean isLoading = false;
 
-    private BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = item -> {
-        switch (item.getItemId()) {
-            case R.id.navigation_home:
-                //Log.v(TAG, "navigation_home");
-
-                if (!isLoading) {
-                    sort = "-createdAt";
-                    currentStart = 0;
-                    loadVideos(currentStart, count, sort, filter);
-                }
-
-                return true;
-            case R.id.navigation_trending:
-                //Log.v(TAG, "navigation_trending");
-
-                if (!isLoading) {
-                    sort = "-trending";
-                    currentStart = 0;
-                    loadVideos(currentStart, count, sort, filter);
-                }
-
-                return true;
-            case R.id.navigation_subscriptions:
-                //Log.v(TAG, "navigation_subscriptions");
-                Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
-
-                return false;
-
-            case R.id.navigation_account:
-                //Log.v(TAG, "navigation_account");
-//                Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(this, UserActivity.class);
-                this.startActivity(intent);
-
-                return false;
-        }
-        return false;
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        // Set Night Mode
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        AppCompatDelegate.setDefaultNightMode(sharedPref.getBoolean("pref_dark_mode", false) ?
+                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+
+        // Set theme
+        setTheme(getResources().getIdentifier(
+                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                "style",
+                getPackageName())
+        );
+
         setContentView(R.layout.activity_video_list);
 
         filter = "";
 
-        // Init icons
-        Iconify.with(new FontAwesomeModule());
+        createBottomBarNavigation();
 
         // Attaching the layout to the toolbar object
         Toolbar toolbar = findViewById(R.id.tool_bar);
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
-
-        // fix android trying to use SSLv3 for handshake
-//        updateAndroidSecurityProvider(this);
-
-        // Bottom Navigation
-        BottomNavigationViewEx navigation = findViewById(R.id.navigation);
-
-        navigation.enableAnimation(false);
-        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED); // enableShiftingMode
-        navigation.setItemHorizontalTranslationEnabled(false); // enableItemShiftingMode
-
-        Menu navMenu = navigation.getMenu();
-        navMenu.findItem(R.id.navigation_home).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_home));
-        navMenu.findItem(R.id.navigation_trending).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_fire));
-        navMenu.findItem(R.id.navigation_subscriptions).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_folder));
-        navMenu.findItem(R.id.navigation_account).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_user_circle));
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
 
         // load Video List
         createList();
@@ -163,16 +111,12 @@ public class VideoListActivity extends AppCompatActivity {
 
         // Set an icon in the ActionBar
         menu.findItem(R.id.action_settings).setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_cog)
-                        .colorRes(R.color.cardview_light_background)
-                        .actionBarSize());
-
+                new IconicsDrawable(this, FontAwesome.Icon.faw_cog).actionBar());
 
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+
         searchMenuItem.setIcon(
-                new IconDrawable(this, FontAwesomeIcons.fa_search)
-                        .colorRes(R.color.cardview_light_background)
-                        .actionBarSize());
+                new IconicsDrawable(this, FontAwesome.Icon.faw_search).actionBar());
 
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -208,6 +152,11 @@ public class VideoListActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(this, VideoPlayerService.class));
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -338,22 +287,7 @@ public class VideoListActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Force android to not use SSLv3
-     * <p>
-     * //     * @param callingActivity Activity
-     */
-//    private void updateAndroidSecurityProvider(Activity callingActivity) {
-//        try {
-//            ProviderInstaller.installIfNeeded(this);
-//        } catch (GooglePlayServicesRepairableException e) {
-//            // Thrown when Google Play Services is not installed, up-to-date, or enabled
-//            // Show dialog to allow users to install, update, or otherwise enable Google Play services.
-//            GooglePlayServicesUtil.getErrorDialog(e.getConnectionStatusCode(), callingActivity, 0);
-//        } catch (GooglePlayServicesNotAvailableException e) {
-//            Log.e("SecurityException", "Google Play Services not available.");
-//        }
-//    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -396,5 +330,67 @@ public class VideoListActivity extends AppCompatActivity {
         return true;
     }
 
+
+    private void createBottomBarNavigation() {
+
+        // Get Bottom Navigation
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+
+        // Always show text label
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+
+        // Add Icon font
+        Menu navMenu = navigation.getMenu();
+        navMenu.findItem(R.id.navigation_home).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_home));
+        navMenu.findItem(R.id.navigation_trending).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_fire));
+        navMenu.findItem(R.id.navigation_subscriptions).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_folder));
+        navMenu.findItem(R.id.navigation_account).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle));
+
+        // Click Listener
+        navigation.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.navigation_home:
+                    //Log.v(TAG, "navigation_home");
+
+                    if (!isLoading) {
+                        sort = "-createdAt";
+                        currentStart = 0;
+                        loadVideos(currentStart, count, sort, filter);
+                    }
+
+                    return true;
+                case R.id.navigation_trending:
+                    //Log.v(TAG, "navigation_trending");
+
+                    if (!isLoading) {
+                        sort = "-trending";
+                        currentStart = 0;
+                        loadVideos(currentStart, count, sort, filter);
+                    }
+
+                    return true;
+                case R.id.navigation_subscriptions:
+                    //Log.v(TAG, "navigation_subscriptions");
+                    Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
+
+                    return false;
+
+                case R.id.navigation_account:
+                    //Log.v(TAG, "navigation_account");
+                    Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
+
+//                Intent intent = new Intent(this, LoginActivity.class);
+//                this.startActivity(intent);
+
+                    return false;
+            }
+            return false;
+        });
+
+    }
 
 }

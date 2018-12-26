@@ -60,6 +60,37 @@
     <string name="menu_share">Share</string>
     <string name="playback_channel_name">PeerTube</string>
     <string name="invalid_url">Invalid Url!</string>
+    <string name="pref_title_dark_mode">Dark Mode</string>
+    <string name="pref_description_dark_mode">Restart App for Dark Mode to take effect.</string>
+    <string name="pref_title_app_theme">App Theme</string>
+    <string name="pref_description_app_theme">Restart App for theme to take effect.</string>
+
+    <string name="red">Red</string>
+    <string name="pink">Pink</string>
+    <string name="purple">Purple</string>
+    <string name="deeppurple">Deep Purple</string>
+    <string name="indigo">Indigo</string>
+    <string name="blue">Blue</string>
+    <string name="lightblue">Light Blue</string>
+    <string name="cyan">Cyan</string>
+    <string name="teal">Teal</string>
+    <string name="green">Green</string>
+    <string name="lightgreen">Light Green</string>
+    <string name="lime">Lime</string>
+    <string name="yellow">Yellow</string>
+    <string name="amber">Amber</string>
+    <string name="orange">Orange</string>
+    <string name="deeporange">Deep Orange</string>
+    <string name="brown">Brown</string>
+    <string name="gray">Gray</string>
+    <string name="bluegray">Bluegray</string>
+    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_10">Normal</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_20">2x</string>
+
+
+    <string name="video_speed_active_icon">{faw-check}</string>
     <string name="pref_token_access">pref_token_access</string>
     <string name="pref_token_refresh">pref_token_refresh</string>
     <string name="pref_token_expiration">pref_token_expiration</string>

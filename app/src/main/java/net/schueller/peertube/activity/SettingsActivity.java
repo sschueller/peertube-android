@@ -3,11 +3,12 @@ package net.schueller.peertube.activity;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.support.v7.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.util.Patterns;
@@ -17,8 +18,12 @@ import android.widget.Toast;
 import net.schueller.peertube.R;
 import java.util.List;
 
+import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
+import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
+
+    private static String previousThemeColorValue = "";
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -28,6 +33,21 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private static String getSelectedColor(Context context, String colorId){
+
+        String res = "Color not found";
+        String [ ] themeArray = context.getResources().getStringArray(R.array.themeValues);
+        String [ ] colorArray = context.getResources().getStringArray(R.array.themeArray);
+
+        for (int i = 0 ; i < themeArray.length ; i++){
+            if (themeArray[i].equals(colorId)){
+                res = colorArray[i];
+                break;
+            }
+        }
+        return res;
     }
 
     /**
@@ -41,6 +61,19 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         if (preference.getKey().equals("pref_api_base") && !Patterns.WEB_URL.matcher(stringValue).matches()) {
             Toast.makeText(preference.getContext(), R.string.invalid_url, Toast.LENGTH_LONG).show();
             return false;
+        }
+        // Check if Theme color has change & Provide selected color
+        else if (preference.getKey().equals("pref_theme")) {
+
+            stringValue = getSelectedColor(preference.getContext(), stringValue);
+
+            if (!previousThemeColorValue.equals("") && !previousThemeColorValue.equals(stringValue)) {
+                Toast.makeText(preference.getContext(), R.string.pref_description_app_theme, Toast.LENGTH_LONG).show();
+            }
+
+            previousThemeColorValue = stringValue;
+            preference.setSummary(stringValue);
+            return true;
         }
 
         preference.setSummary(stringValue);
@@ -80,10 +113,19 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Set theme
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        setTheme(getResources().getIdentifier(
+                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                "style",
+                getPackageName())
+        );
+
         super.onCreate(savedInstanceState);
+
         setupActionBar();
         getFragmentManager().beginTransaction().replace(android.R.id.content, new GeneralPreferenceFragment()).commit();
-
     }
 
     /**
@@ -140,6 +182,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("pref_api_base"));
+            bindPreferenceSummaryToValue(findPreference("pref_theme"));
         }
 
         @Override

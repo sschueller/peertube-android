@@ -21,6 +21,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
+import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
+
 public class LoginActivity extends AppCompatActivity {
 
     private String TAG = "LoginActivity";
@@ -32,6 +35,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set theme
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        setTheme(getResources().getIdentifier(
+                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                "style",
+                getPackageName())
+        );
+
         setContentView(R.layout.activity_login);
 
         // bind button click

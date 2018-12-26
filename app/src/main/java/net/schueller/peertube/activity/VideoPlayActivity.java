@@ -12,14 +12,15 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,6 +40,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
 import com.squareup.picasso.Picasso;
 import net.schueller.peertube.R;
+import net.schueller.peertube.fragment.VideoOptionsFragment;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.intents.Intents;
@@ -50,6 +52,9 @@ import net.schueller.peertube.service.VideoPlayerService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
+import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class VideoPlayActivity extends AppCompatActivity implements VideoRendererEventListener {
 
@@ -89,6 +94,15 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set theme
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        setTheme(getResources().getIdentifier(
+                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                "style",
+                getPackageName())
+        );
+
         setContentView(R.layout.activity_video_play);
 
         progressBar = findViewById(R.id.progress);
@@ -229,6 +243,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 TextView videoMeta = findViewById(R.id.videoMeta);
                 ImageView avatarView = findViewById(R.id.avatar);
                 ImageButton moreButton = findViewById(R.id.moreButton);
+                ImageButton videoOptions = findViewById(R.id.exo_more);
+
 
                 Video video = response.body();
 
@@ -275,7 +291,17 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                     popup.show();
                 });
 
+                // video player options
+                videoOptions.setOnClickListener(v -> {
+
+                    VideoOptionsFragment videoOptionsFragment =
+                            VideoOptionsFragment.newInstance(mService);
+                    videoOptionsFragment.show(getSupportFragmentManager(),
+                            "video_options_fragment");
+                });
+
                 mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
+
 
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 if (sharedPref.getBoolean("pref_torrent_player", false)) {

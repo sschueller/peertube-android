@@ -6,8 +6,9 @@
 </h4>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot2.jpg" alt="screenshot" />
-    <img src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot1.png" alt="screenshot" />
+    <img width="250" src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot_1545425516.png" alt="screenshot" />
+    <img width="250" src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot_1545425431.png" alt="screenshot" />
+    <img width="250" src="https://raw.githubusercontent.com/sschueller/peertube-android/develop/Screenshot_1545425504.png" alt="screenshot" />
 </p>
 
 ## Download
@@ -23,15 +24,18 @@ Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schu
 - [X] Change Server
 - [X] Search
 - [X] App Icon and assets
+- [X] Themes / Dark mode
+- [X] Background playback
+- [X] NSFW Filter option
+ 
 
+## TODO
 
-# TODO
 - [ ] Video Playback via WebRTC
-- [ ] Login
+- [ ] Authentication / Login
 - [ ] Like/dislike video
 - [ ] Comment video
 - [ ] Unit Tests
-
 
 - [ ] Lots more missing at this point...
 

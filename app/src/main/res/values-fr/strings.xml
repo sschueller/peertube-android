@@ -32,7 +32,7 @@
     <string name="peertube_required_server_version">1.0.0-alpha.7</string>
 
     <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
-    <string name="pref_title_peertube_server">PeerTube Server</string>
+    <string name="pref_title_peertube_server">Serveur Peertube</string>
 
 
     <!-- Strings related to Video meta data -->
@@ -54,5 +54,33 @@
     <string name="pref_title_version">Version</string>
     <string name="search_hint">Rechercher sur PeerTube</string>
     <string name="title_activity_search">Rechercher</string>
+    <string name="no_data_available">Pas de résultat</string>
+    <string name="descr_overflow_button">Plus</string>
+    <string name="menu_share">Partager</string>
+    <string name="playback_channel_name">PeerTube</string>
+    <string name="invalid_url">URL invalide !</string>
+    <string name="pref_title_dark_mode">Mode Sombre</string>
+    <string name="pref_description_dark_mode">Relancez l\'application pour que le Mode Sombre soit activé</string>
+    <string name="pref_title_app_theme">Thème de l\'Application</string>
+    <string name="pref_description_app_theme">Relancez l\'application pour que le nouveau thème soit activé</string>
 
+    <string name="red">Rouge</string>
+    <string name="pink">Rose</string>
+    <string name="purple">Violet</string>
+    <string name="deeppurple">Violet Foncé</string>
+    <string name="indigo">Indigo</string>
+    <string name="blue">Bleu</string>
+    <string name="lightblue">Bleu Clair</string>
+    <string name="cyan">Cyan</string>
+    <string name="teal">Turquoise</string>
+    <string name="green">Vert</string>
+    <string name="lightgreen">Vert Clair</string>
+    <string name="lime">Citron Vert</string>
+    <string name="yellow">Jaune</string>
+    <string name="amber">Ambre</string>
+    <string name="orange">Orange</string>
+    <string name="deeporange">Orange Foncé</string>
+    <string name="brown">Brun</string>
+    <string name="gray">Gris</string>
+    <string name="bluegray">Bleu-Gris</string>
 </resources>

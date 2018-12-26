@@ -11,13 +11,22 @@ import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
+
+import android.support.v4.media.MediaDescriptionCompat;
+import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
 
+import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.audio.AudioAttributes;
+import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector;
+import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
@@ -35,6 +44,9 @@ import static android.media.session.PlaybackState.ACTION_PLAY;
 import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
 
 public class VideoPlayerService extends Service {
+
+    private static final String TAG = "VideoPlayerService";
+    private static final String MEDIA_SESSION_TAG = "peertube_player";
 
     private final IBinder mBinder = new LocalBinder();
 
@@ -63,12 +75,12 @@ public class VideoPlayerService extends Service {
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
 
                 if (playbackState == ACTION_PAUSE) { // this means that pause is available, hence the audio is playing
-                    Log.v("VideoPlayerService", "ACTION_PLAY: " + playbackState);
+                    Log.v(TAG, "ACTION_PLAY: " + playbackState);
                     registerReceiver(myNoisyAudioStreamReceiver, becomeNoisyIntentFilter);
                 }
 
                 if (playbackState == ACTION_PLAY) { // this means that play is available, hence the audio is paused or stopped
-                    Log.v("VideoPlayerService", "ACTION_PAUSE: " + playbackState);
+                    Log.v(TAG, "ACTION_PAUSE: " + playbackState);
                     unregisterReceiver(myNoisyAudioStreamReceiver);
                 }
             }
@@ -88,7 +100,7 @@ public class VideoPlayerService extends Service {
     @Override
     public void onDestroy() {
 
-        Log.v("VideoPlayerService", "onDestroy...");
+        Log.v(TAG, "onDestroy...");
 
         playerNotificationManager.setPlayer(null);
         player.release();
@@ -105,7 +117,7 @@ public class VideoPlayerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.v("VideoPlayerService", "onStartCommand...");
+        Log.v(TAG, "onStartCommand...");
         playVideo();
         return START_STICKY;
     }
@@ -113,21 +125,27 @@ public class VideoPlayerService extends Service {
 
     public void setCurrentVideo(Video video)
     {
-        Log.v("VideoPlayerService", "setCurrentVideo...");
+        Log.v(TAG, "setCurrentVideo...");
         currentVideo = video;
     }
 
     public void setCurrentStreamUrl(String streamUrl)
     {
-        Log.v("VideoPlayerService", "setCurrentStreamUrl...");
+        Log.v(TAG, "setCurrentStreamUrl...");
         currentStreamUrl = streamUrl;
     }
 
-    public void playVideo()
-    {
+    //Playback speed control
+    public void setPlayBackSpeed(float speed) {
+
+        Log.v(TAG, "setPlayBackSpeed...");
+        player.setPlaybackParameters(new PlaybackParameters(speed));
+    }
+
+    public void playVideo() {
         Context context = this;
 
-        Log.v("VideoPlayerService", "playVideo...");
+        Log.v(TAG, "playVideo...");
 
         // Produces DataSource instances through which media data is loaded.
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getApplicationContext(),
@@ -142,6 +160,9 @@ public class VideoPlayerService extends Service {
 
         // Auto play
         player.setPlayWhenReady(true);
+
+        //reset playback speed
+        this.setPlayBackSpeed(1.0f);
 
         playerNotificationManager = PlayerNotificationManager.createWithNotificationChannel(
                 context, PLAYBACK_CHANNEL_ID, R.string.playback_channel_name,
@@ -193,7 +214,7 @@ public class VideoPlayerService extends Service {
 
                     @Override
                     public void onNotificationCancelled(int notificationId) {
-                        Log.v("VideoPlayerService", "onNotificationCancelled...");
+                        Log.v(TAG, "onNotificationCancelled...");
 
                         // TODO: only kill the notification if we no longer have a bound activity
                         stopForeground(true);
@@ -202,6 +223,26 @@ public class VideoPlayerService extends Service {
         );
 
         playerNotificationManager.setPlayer(player);
+
+        // external Media control, Android Wear / Google Home etc.
+        MediaSessionCompat mediaSession = new MediaSessionCompat(context, MEDIA_SESSION_TAG);
+        mediaSession.setActive(true);
+        playerNotificationManager.setMediaSessionToken(mediaSession.getSessionToken());
+        MediaSessionConnector mediaSessionConnector = new MediaSessionConnector(mediaSession);
+        mediaSessionConnector.setQueueNavigator(new TimelineQueueNavigator(mediaSession) {
+            @Override
+            public MediaDescriptionCompat getMediaDescription(Player player, int windowIndex) {
+                return Video.getMediaDescription(context, currentVideo);
+            }
+        });
+        mediaSessionConnector.setPlayer(player, null);
+
+        // Audio Focus
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+            .setUsage(C.USAGE_MEDIA)
+            .setContentType(C.CONTENT_TYPE_MOVIE)
+            .build();
+        player.setAudioAttributes(audioAttributes,true);
 
     }
 
@@ -214,5 +255,6 @@ public class VideoPlayerService extends Service {
             }
         }
     }
+
 
 }

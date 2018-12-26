@@ -11,14 +11,22 @@ import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
+
+import android.support.v4.media.MediaDescriptionCompat;
+import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
 
+import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.audio.AudioAttributes;
+import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector;
+import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
@@ -38,6 +46,7 @@ import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
 public class VideoPlayerService extends Service {
 
     private static final String TAG = "VideoPlayerService";
+    private static final String MEDIA_SESSION_TAG = "peertube_player";
 
     private final IBinder mBinder = new LocalBinder();
 
@@ -215,6 +224,26 @@ public class VideoPlayerService extends Service {
 
         playerNotificationManager.setPlayer(player);
 
+        // external Media control, Android Wear / Google Home etc.
+        MediaSessionCompat mediaSession = new MediaSessionCompat(context, MEDIA_SESSION_TAG);
+        mediaSession.setActive(true);
+        playerNotificationManager.setMediaSessionToken(mediaSession.getSessionToken());
+        MediaSessionConnector mediaSessionConnector = new MediaSessionConnector(mediaSession);
+        mediaSessionConnector.setQueueNavigator(new TimelineQueueNavigator(mediaSession) {
+            @Override
+            public MediaDescriptionCompat getMediaDescription(Player player, int windowIndex) {
+                return Video.getMediaDescription(context, currentVideo);
+            }
+        });
+        mediaSessionConnector.setPlayer(player, null);
+
+        // Audio Focus
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+            .setUsage(C.USAGE_MEDIA)
+            .setContentType(C.CONTENT_TYPE_MOVIE)
+            .build();
+        player.setAudioAttributes(audioAttributes,true);
+
     }
 
     // pause playback on audio output change
@@ -226,5 +255,6 @@ public class VideoPlayerService extends Service {
             }
         }
     }
+
 
 }

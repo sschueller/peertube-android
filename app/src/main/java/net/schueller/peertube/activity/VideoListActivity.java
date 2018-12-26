@@ -38,6 +38,7 @@ import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 import net.schueller.peertube.provider.SearchSuggestionsProvider;
+import net.schueller.peertube.service.VideoPlayerService;
 
 
 import java.util.ArrayList;
@@ -151,6 +152,11 @@ public class VideoListActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(this, VideoPlayerService.class));
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

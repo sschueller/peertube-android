@@ -1,7 +1,20 @@
 package net.schueller.peertube.model;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.media.MediaDescriptionCompat;
+
+import com.squareup.picasso.Picasso;
+
+import net.schueller.peertube.R;
+import net.schueller.peertube.helper.APIUrlHelper;
+
 import java.util.ArrayList;
 import java.util.Date;
+
+import androidx.annotation.DrawableRes;
 
 public class Video {
 
@@ -247,4 +260,31 @@ public class Video {
     public void setFiles(ArrayList<File> files) {
         this.files = files;
     }
+
+
+
+    public static MediaDescriptionCompat getMediaDescription(Context context, Video video) {
+
+//        String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
+
+//        Bundle extras = new Bundle();
+//        Bitmap bitmap = getBitmap(context, Uri.parse(apiBaseURL + video.thumbnailPath));
+//        extras.putParcelable(MediaDescriptionCompat.DESCRIPTION_KEY_MEDIA_URI, bitmap);
+
+        return new MediaDescriptionCompat.Builder()
+                .setMediaId(video.getUuid())
+//                .setIconBitmap(bitmap)
+//                .setExtras(extras)
+                .setTitle(video.getName())
+                .setDescription(video.getDescription())
+                .build();
+    }
+
+//   TODO: add support for the thumbnail
+//    public static Bitmap getBitmap(Context context, Uri fullThumbnailUrl) {
+//
+//         return Picasso.with(context).load(fullThumbnailUrl)
+//                 .placeholder(R.drawable.ic_peertube)
+//                 .error(R.drawable.ic_peertube).get();
+//    }
 }

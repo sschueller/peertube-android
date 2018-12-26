@@ -6,8 +6,8 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1014
-        versionName "1.0.14"
+        versionCode 1015
+        versionName "1.0.15"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         dependencies {
             implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -47,6 +47,7 @@ android {
             implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.2'
             implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.2'
             implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.2'
+            implementation 'com.google.android.exoplayer:extension-mediasession:2.9.2'
 
             // testing
             testImplementation 'junit:junit:4.12'

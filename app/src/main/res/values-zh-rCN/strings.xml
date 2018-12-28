@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PeerTube</string>
+    <string name="action_sign_in_short">登录</string>
+    <string name="action_sign_in">登录</string>
+    <string name="title_activity_login">登录</string>
+    <string name="prompt_server">服务</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="action_bar_title_search">搜索</string>
+    <string name="bottom_nav_title_home">主页</string>
+    <string name="bottom_nav_title_trending">趋势</string>
+    <string name="bottom_nav_title_subscriptions">订阅</string>
+    <string name="bottom_nav_title_account">帐号</string>
+    <string name="descr_overflow_button">更多</string>
+    <string name="menu_share">分享</string>
+    <string name="pref_title_peertube_server">PeerTube 服务器</string>
+    <string name="pref_title_show_nsfw">显示NSFW内容</string>
+    <string name="pref_title_version">版本</string>
+    <string name="prompt_email">邮箱</string>
+    <string name="prompt_password">密码（可选）</string>
+    <string name="search_hint">建议</string>
+    <string name="title_activity_search">搜索</string>
+    <string name="video_speed_10">正常</string>
+    <string name="video_speed_05">0.5倍速</string>
+    <string name="video_speed_15">1.5倍速</string>
+    <string name="video_speed_20">2倍速</string>
+    <string name="yellow">黄色</string>
+    <string name="red">红色</string>
+</resources>

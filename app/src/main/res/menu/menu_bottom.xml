@@ -13,6 +13,11 @@
         app:showAsAction="always|withText"/>
 
     <item
+        android:id="@+id/navigation_local"
+        android:title="@string/bottom_nav_title_local"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
         android:id="@+id/navigation_subscriptions"
         android:title="@string/bottom_nav_title_subscriptions"
         app:showAsAction="ifRoom|withText"/>

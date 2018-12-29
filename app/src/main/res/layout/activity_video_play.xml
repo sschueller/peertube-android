@@ -18,11 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:background="@color/videoBackgroundColor"
+            app:resize_mode="fixed_width"
+            app:controller_layout_id="@layout/video_playback_controls"
 
-            app:layout_constraintDimensionRatio="H,3:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
         <ProgressBar
             android:id="@+id/progress"

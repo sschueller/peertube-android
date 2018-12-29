@@ -35,6 +35,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ import com.github.se_bastiaan.torrentstream.TorrentStream;
 import com.github.se_bastiaan.torrentstream.listeners.TorrentListener;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.decoder.DecoderCounters;
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
@@ -133,6 +135,9 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
         simpleExoPlayerView = new PlayerView(this);
         simpleExoPlayerView = findViewById(R.id.video_view);
+
+        simpleExoPlayerView.setControllerShowTimeoutMs(1000);
+        simpleExoPlayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
 
         // Full screen Icon
         fullscreenButton = findViewById(R.id.exo_fullscreen);
@@ -243,7 +248,7 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
             params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
             simpleExoPlayerView.setLayoutParams(params);
 
             nameView.setVisibility(View.VISIBLE);
@@ -440,11 +445,11 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onStart() {
         super.onStart();
-//
-//        if (!mBound) {
-//            videoPlayerIntent = new Intent(this, VideoPlayerService.class);
-//            bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
-//        }
+
+        if (!mBound) {
+            videoPlayerIntent = new Intent(this, VideoPlayerService.class);
+            bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
+        }
         Log.v(TAG, "onStart()...");
     }
 

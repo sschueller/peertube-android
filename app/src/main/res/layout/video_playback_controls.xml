@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:gravity="center_vertical"
+            android:layout_gravity="center"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:textColor="#FFBEBEBE"
@@ -102,22 +102,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:gravity="center_vertical"
+            android:layout_gravity="center"
             android:paddingLeft="6dp"
             android:paddingRight="6dp"
             android:textColor="#FFBEBEBE"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/exo_fullscreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="true"
-            android:paddingStart="6dp"
-            android:paddingEnd="6dp"
-            android:textColor="#FFBEBEBE"
-            android:textSize="12sp" />
 
+
+        <FrameLayout
+            android:id="@+id/exo_fullscreen_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end">
+
+            <TextView
+                android:id="@+id/exo_fullscreen"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:textColor="#FFBEBEBE"
+                android:textSize="12sp" />
+
+        </FrameLayout>
 
     </LinearLayout>
 

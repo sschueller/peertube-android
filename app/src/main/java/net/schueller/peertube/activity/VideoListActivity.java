@@ -1,3 +1,21 @@
+/*
+ * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ *
+ * License: GPL-3.0+
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.schueller.peertube.activity;
 
 import android.Manifest;
@@ -62,7 +80,7 @@ public class VideoListActivity extends AppCompatActivity {
     private int currentStart = 0;
     private int count = 12;
     private String sort = "-createdAt";
-    private String filter = "";
+    private String filter = null;
     private String searchQuery = "";
 
     private TextView emptyView;
@@ -90,7 +108,7 @@ public class VideoListActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_video_list);
 
-        filter = "";
+        filter = null;
 
         createBottomBarNavigation();
 
@@ -242,9 +260,9 @@ public class VideoListActivity extends AppCompatActivity {
 
         Call<VideoList> call;
         if (!searchQuery.equals("")) {
-            call = service.searchVideosData(start, count, sort, nsfw, searchQuery);
+            call = service.searchVideosData(start, count, sort, nsfw, searchQuery, filter);
         } else {
-            call = service.getVideosData(start, count, sort, nsfw);
+            call = service.getVideosData(start, count, sort, nsfw, filter);
         }
 
         /*Log the URL called*/
@@ -345,6 +363,8 @@ public class VideoListActivity extends AppCompatActivity {
                 new IconicsDrawable(this, FontAwesome.Icon.faw_home));
         navMenu.findItem(R.id.navigation_trending).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_fire));
+        navMenu.findItem(R.id.navigation_local).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_home));
         navMenu.findItem(R.id.navigation_subscriptions).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_folder));
         navMenu.findItem(R.id.navigation_account).setIcon(
@@ -359,6 +379,7 @@ public class VideoListActivity extends AppCompatActivity {
                     if (!isLoading) {
                         sort = "-createdAt";
                         currentStart = 0;
+                        filter = null;
                         loadVideos(currentStart, count, sort, filter);
                     }
 
@@ -368,6 +389,18 @@ public class VideoListActivity extends AppCompatActivity {
 
                     if (!isLoading) {
                         sort = "-trending";
+                        currentStart = 0;
+                        filter = null;
+                        loadVideos(currentStart, count, sort, filter);
+                    }
+
+                    return true;
+                case R.id.navigation_local:
+                    //Log.v(TAG, "navigation_trending");
+
+                    if (!isLoading) {
+                        sort = "-publishedAt";
+                        filter = "local";
                         currentStart = 0;
                         loadVideos(currentStart, count, sort, filter);
                     }

@@ -32,7 +32,6 @@ public class RetrofitInstance {
 
             OkHttpClient.Builder okhttpClientBuilder = new OkHttpClient.Builder();
 
-            okhttpClientBuilder.addInterceptor(new TokenRenewInterceptor());
             okhttpClientBuilder.addInterceptor(new AuthorizationInterceptor());
 
             retrofit = new retrofit2.Retrofit.Builder()

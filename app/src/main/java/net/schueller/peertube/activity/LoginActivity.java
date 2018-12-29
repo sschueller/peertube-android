@@ -18,10 +18,10 @@
 
 package net.schueller.peertube.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.AutoCompleteTextView;
@@ -35,6 +35,8 @@ import net.schueller.peertube.model.Token;
 import net.schueller.peertube.network.AuthenticationService;
 import net.schueller.peertube.network.RetrofitInstance;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,6 +79,8 @@ public class LoginActivity extends AppCompatActivity {
     private void attemptLogin() {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        Context context = this;
 
         // Reset errors.
         mEmailView.setError(null);
@@ -128,6 +132,12 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString(getString(R.string.pref_token_refresh), token.getExpiresIn());
                                 editor.putString(getString(R.string.pref_token_type), token.getTokenType());
                                 editor.commit();
+
+                                Log.wtf(TAG, "Logged in");
+
+                                Intent intent = new Intent(context, AccountActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                context.startActivity(intent);
 
                             } else {
                                 Log.wtf(TAG, response2.toString());

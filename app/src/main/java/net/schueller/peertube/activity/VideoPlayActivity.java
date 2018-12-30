@@ -286,8 +286,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 TextView videoOwner = findViewById(R.id.videoOwner);
                 TextView videoMeta = findViewById(R.id.videoMeta);
                 ImageView avatarView = findViewById(R.id.avatar);
-                ImageButton moreButton = findViewById(R.id.moreButton);
-                ImageButton videoOptions = findViewById(R.id.exo_more);
+                TextView moreButton = findViewById(R.id.moreButton);
+                TextView videoOptions = findViewById(R.id.exo_more);
 
 
                 Video video = response.body();
@@ -320,6 +320,9 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 );
                 videoDescription.setText(video.getDescription());
 
+                moreButton.setText(R.string.video_more_icon);
+                new Iconics.IconicsBuilder().ctx(context).on(moreButton).build();
+
                 moreButton.setOnClickListener(v -> {
                     PopupMenu popup = new PopupMenu(context, v);
                     popup.setOnMenuItemClickListener(menuItem -> {
@@ -336,6 +339,9 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 });
 
                 // video player options
+                videoOptions.setText(R.string.video_more_icon);
+                new Iconics.IconicsBuilder().ctx(context).on(videoOptions).build();
+
                 videoOptions.setOnClickListener(v -> {
 
                     VideoOptionsFragment videoOptionsFragment =

@@ -94,6 +94,7 @@
     <string name="video_speed_active_icon">{faw-check}</string>
     <string name="video_expand_icon">{faw-expand}</string>
     <string name="video_compress_icon">{faw-compress}</string>
+    <string name="video_more_icon">{faw-ellipsis-v}</string>
     <string name="pref_title_background_play">Background Playback</string>
     <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
     <string name="bottom_nav_title_local">Local</string>

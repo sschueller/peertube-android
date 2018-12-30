@@ -6,8 +6,8 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1016
-        versionName "1.0.16"
+        versionCode 1017
+        versionName "1.0.17"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         dependencies {
             implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -26,18 +26,18 @@ android {
             implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
 
             // http client / REST
-            implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-            implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+            implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+            implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
             // image downloading and caching library
             implementation 'com.squareup.picasso:picasso:2.5.2'
 
             // json decoder/encoder
-            implementation 'com.google.code.gson:gson:2.8.2'
-            implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+            implementation 'com.google.code.gson:gson:2.8.5'
+            implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
             // Torrents and WebRTC
-            implementation 'com.github.TorrentStream:TorrentStream-Android:2.5.0'
+            implementation 'com.github.TorrentStream:TorrentStream-Android:2.6.1'
 //            implementation "com.github.TorrentStream:TorrentStreamServer-Android:1.0.1"
 //            implementation 'org.webrtc:google-webrtc:1.0.+'
 

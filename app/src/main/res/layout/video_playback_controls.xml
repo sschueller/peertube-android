@@ -10,28 +10,27 @@
     android:orientation="vertical"
     tools:targetApi="28">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:gravity="bottom"
-        android:orientation="horizontal">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
-        <ImageButton
-            android:id="@+id/exo_more"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:background="@null"
-            android:paddingTop="0dp"
-            android:src="@drawable/ic_action_more_vert"
-            android:tint="#ffffff" />
+        <FrameLayout
+            android:id="@+id/exo_more_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/exo_more"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:paddingTop="12dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:textColor="#FFBEBEBE"
+                android:textSize="12sp" />
+
+        </FrameLayout>
+
 
 
     <View

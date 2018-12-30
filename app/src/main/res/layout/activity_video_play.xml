@@ -86,16 +86,19 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                 />
 
-            <ImageButton
+            <TextView
                 android:id="@+id/moreButton"
-                android:layout_width="wrap_content"
+                android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:layout_below="@+id/thumb"
+                android:layout_marginTop="16dp"
                 android:layout_marginStart="-16dp"
                 android:layout_marginEnd="0dp"
                 android:layout_toEndOf="@+id/name"
                 android:background="@null"
                 android:contentDescription="@string/descr_overflow_button"
-                android:src="@drawable/ic_action_more_vert" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                />
 
             <TextView
                 android:id="@+id/description"

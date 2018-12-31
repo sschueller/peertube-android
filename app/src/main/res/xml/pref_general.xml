@@ -22,6 +22,14 @@
         android:summary="@string/pref_description_show_nsfw"
         android:defaultValue="false" />
 
+    <MultiSelectListPreference
+        android:defaultValue="@array/empty_array"
+        android:entries="@array/languageArray"
+        android:entryValues="@array/languageValues"
+        android:key="pref_language"
+        android:summary="@string/pref_description_language"
+        android:title="@string/pref_language" />
+
     <ListPreference
         android:title="@string/pref_title_app_theme"
         android:summary="@string/pref_description_app_theme"

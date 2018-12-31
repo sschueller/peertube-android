@@ -47,6 +47,8 @@
 
     <string name="pref_title_show_nsfw">Show NSFW</string>
     <string name="pref_description_show_nsfw">NSFW content will be shown if enabled.</string>
+    <string name="pref_language">Show Languages</string>
+    <string name="pref_description_language">Select languages be shown.</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="pref_title_torrent_player">Torrent Video Player</string>
     <string name="pref_description_torrent_player">Video playback via a torrent stream. This requires Storage Permissions. (Alpha, not stable!)</string>
@@ -64,6 +66,9 @@
     <string name="pref_description_dark_mode">Restart App for Dark Mode to take effect.</string>
     <string name="pref_title_app_theme">App Theme</string>
     <string name="pref_description_app_theme">Restart App for theme to take effect.</string>
+
+    <string name="en">English</string>
+    <string name="fr">French</string>
 
     <string name="red">Red</string>
     <string name="pink">Pink</string>

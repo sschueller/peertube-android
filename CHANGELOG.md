@@ -1,3 +1,6 @@
+### Version 1.0.19 Tag: v1.0.19 (2018-12-31)
+ * Video Language Filter (@lishoujun)
+
 ### Version 1.0.18 Tag: v1.0.18 (2018-12-31)
  * Bug Fixes
  * Arabic translation update

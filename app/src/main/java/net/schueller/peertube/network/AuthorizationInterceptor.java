@@ -41,11 +41,14 @@ public class AuthorizationInterceptor implements Interceptor {
 
         if (session.isLoggedIn()) {
 
-//            if (mainResponse.code() == 401 || mainResponse.code() == 403) {
+            if (mainResponse.code() == 401 || mainResponse.code() == 403) {
 //                session.invalidate();
 //                return mainResponse;
-//            }
+                Log.v("Authorization", "Intercept code: " + mainResponse.code());
 
+            }
+
+            // add authentication header to each request if we are logged in
             Request.Builder builder = mainRequest.newBuilder().header("Authorization", session.getToken()).
                     method(mainRequest.method(), mainRequest.body());
             mainResponse = chain.proceed(builder.build());

@@ -421,6 +421,7 @@ public class VideoListActivity extends AppCompatActivity {
                     if (!Session.getInstance().isLoggedIn()) {
                         Intent intent = new Intent(this, LoginActivity.class);
                         this.startActivity(intent);
+                        return false;
                     } else {
 
                         if (!isLoading) {
@@ -430,9 +431,9 @@ public class VideoListActivity extends AppCompatActivity {
                             subscriptions = true;
                             loadVideos(currentStart, count, sort, filter);
                         }
+                        return true;
                     }
 
-                    return true;
 
                 case R.id.navigation_account:
                     //Log.v(TAG, "navigation_account");
@@ -446,7 +447,7 @@ public class VideoListActivity extends AppCompatActivity {
                         this.startActivity(intent);
                     }
 
-                    return true;
+                    return false;
             }
             return false;
         });

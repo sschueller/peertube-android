@@ -1,3 +1,21 @@
+/*
+ * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ *
+ * License: GPL-3.0+
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.schueller.peertube.activity;
 
 import android.content.ComponentName;
@@ -5,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +35,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +55,14 @@ import com.github.se_bastiaan.torrentstream.TorrentStream;
 import com.github.se_bastiaan.torrentstream.listeners.TorrentListener;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.decoder.DecoderCounters;
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
+import com.mikepenz.iconics.Iconics;
 import com.squareup.picasso.Picasso;
 import net.schueller.peertube.R;
+import net.schueller.peertube.fragment.VideoOptionsFragment;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.intents.Intents;
@@ -52,6 +75,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
@@ -63,6 +87,8 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     private PlayerView simpleExoPlayerView;
     private Intent videoPlayerIntent;
     private Context context = this;
+    private TextView fullscreenButton;
+    private Boolean isFullscreen = false;
 
     boolean mBound = false;
     VideoPlayerService mService;
@@ -110,8 +136,27 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         simpleExoPlayerView = new PlayerView(this);
         simpleExoPlayerView = findViewById(R.id.video_view);
 
-        videoPlayerIntent = new Intent(this, VideoPlayerService.class);
-        bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
+        simpleExoPlayerView.setControllerShowTimeoutMs(1000);
+        simpleExoPlayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
+
+        // Full screen Icon
+        fullscreenButton = findViewById(R.id.exo_fullscreen);
+        fullscreenButton.setText(R.string.video_expand_icon);
+        new Iconics.IconicsBuilder().ctx(this).on(fullscreenButton).build();
+
+        fullscreenButton.setOnClickListener(view -> {
+            Log.d(TAG, "Fullscreen");
+            if (!isFullscreen) {
+                isFullscreen = true;
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                fullscreenButton.setText(R.string.video_compress_icon);
+            } else {
+                isFullscreen = false;
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                fullscreenButton.setText(R.string.video_expand_icon);
+            }
+            new Iconics.IconicsBuilder().ctx(this).on(fullscreenButton).build();
+        });
 
     }
 
@@ -203,7 +248,7 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
             params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
             simpleExoPlayerView.setLayoutParams(params);
 
             nameView.setVisibility(View.VISIBLE);
@@ -241,13 +286,9 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 TextView videoOwner = findViewById(R.id.videoOwner);
                 TextView videoMeta = findViewById(R.id.videoMeta);
                 ImageView avatarView = findViewById(R.id.avatar);
-                ImageButton moreButton = findViewById(R.id.moreButton);
+                TextView moreButton = findViewById(R.id.moreButton);
+                TextView videoOptions = findViewById(R.id.exo_more);
 
-                //Playback speed buttons
-                Button speed05 = findViewById(R.id.speed05);
-                Button speed10 = findViewById(R.id.speed10);
-                Button speed15 = findViewById(R.id.speed15);
-                Button speed20 = findViewById(R.id.speed20);
 
                 Video video = response.body();
 
@@ -279,6 +320,9 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 );
                 videoDescription.setText(video.getDescription());
 
+                moreButton.setText(R.string.video_more_icon);
+                new Iconics.IconicsBuilder().ctx(context).on(moreButton).build();
+
                 moreButton.setOnClickListener(v -> {
                     PopupMenu popup = new PopupMenu(context, v);
                     popup.setOnMenuItemClickListener(menuItem -> {
@@ -294,42 +338,20 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                     popup.show();
                 });
 
+                // video player options
+                videoOptions.setText(R.string.video_more_icon);
+                new Iconics.IconicsBuilder().ctx(context).on(videoOptions).build();
+
+                videoOptions.setOnClickListener(v -> {
+
+                    VideoOptionsFragment videoOptionsFragment =
+                            VideoOptionsFragment.newInstance(mService);
+                    videoOptionsFragment.show(getSupportFragmentManager(),
+                            "video_options_fragment");
+                });
+
                 mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
 
-                //Playback speed controls
-                speed05.setOnClickListener(view -> {
-                    mService.setPlayBackSpeed(0.5f);
-                    speed05.setTextColor(getResources().getColor(R.color.primaryColorRed));
-
-                    speed10.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                    speed15.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                    speed20.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-
-                });
-                speed10.setOnClickListener(view -> {
-                    mService.setPlayBackSpeed(1.0f);
-                    speed10.setTextColor(getResources().getColor(R.color.primaryColorRed));
-
-                    speed05.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                    speed15.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                    speed20.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                });
-                speed15.setOnClickListener(view -> {
-                    mService.setPlayBackSpeed(1.5f);
-                    speed15.setTextColor(getResources().getColor(R.color.primaryColorRed));
-
-                    speed05.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                    speed10.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                    speed20.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                });
-                speed20.setOnClickListener(view -> {
-                    mService.setPlayBackSpeed(2.0f);
-                    speed20.setTextColor(getResources().getColor(R.color.primaryColorRed));
-
-                    speed05.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                    speed10.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                    speed15.setTextColor(getResources().getColor(R.color.secondaryTextColorRed));
-                });
 
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 if (sharedPref.getBoolean("pref_torrent_player", false)) {
@@ -409,6 +431,16 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onStop() {
         super.onStop();
+
+//        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+//
+//        Log.v(TAG, "" + sharedPref.getBoolean(BACKGROUND_PLAY_PREF_KEY, false));
+//
+//        if (!sharedPref.getBoolean(BACKGROUND_PLAY_PREF_KEY, false)) {
+//            Log.v(TAG, "BACKGROUND_PLAY_PREF_KEY...");
+//            stopService(new Intent(this, VideoPlayerService.class));
+//        }
+
         if (mBound) {
             unbindService(mConnection);
             mBound = false;
@@ -419,6 +451,11 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     @Override
     protected void onStart() {
         super.onStart();
+
+        if (!mBound) {
+            videoPlayerIntent = new Intent(this, VideoPlayerService.class);
+            bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
+        }
         Log.v(TAG, "onStart()...");
     }
 

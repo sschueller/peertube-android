@@ -10,6 +10,12 @@
         android:singleLine="true"
         android:title="@string/pref_title_peertube_server" />
 
+    <!--<SwitchPreference-->
+        <!--android:key="pref_background_play"-->
+        <!--android:title="@string/pref_title_background_play"-->
+        <!--android:summary="@string/pref_description_background_play"-->
+        <!--android:defaultValue="true" />-->
+
     <SwitchPreference
         android:key="pref_show_nsfw"
         android:title="@string/pref_title_show_nsfw"
@@ -20,7 +26,7 @@
         android:title="@string/pref_title_app_theme"
         android:summary="@string/pref_description_app_theme"
         android:key="pref_theme"
-        android:defaultValue="1"
+        android:defaultValue="AppTheme.ORANGE"
         android:entries="@array/themeArray"
         android:entryValues="@array/themeValues" />
 

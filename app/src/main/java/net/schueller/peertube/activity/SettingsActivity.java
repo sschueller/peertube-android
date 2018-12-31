@@ -1,3 +1,21 @@
+/*
+ * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ *
+ * License: GPL-3.0+
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.schueller.peertube.activity;
 
 import android.annotation.TargetApi;
@@ -23,6 +41,8 @@ import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
+    private static String previousThemeColorValue = "";
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -31,6 +51,21 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private static String getSelectedColor(Context context, String colorId){
+
+        String res = "Color not found";
+        String [ ] themeArray = context.getResources().getStringArray(R.array.themeValues);
+        String [ ] colorArray = context.getResources().getStringArray(R.array.themeArray);
+
+        for (int i = 0 ; i < themeArray.length ; i++){
+            if (themeArray[i].equals(colorId)){
+                res = colorArray[i];
+                break;
+            }
+        }
+        return res;
     }
 
     /**
@@ -44,6 +79,19 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         if (preference.getKey().equals("pref_api_base") && !Patterns.WEB_URL.matcher(stringValue).matches()) {
             Toast.makeText(preference.getContext(), R.string.invalid_url, Toast.LENGTH_LONG).show();
             return false;
+        }
+        // Check if Theme color has change & Provide selected color
+        else if (preference.getKey().equals("pref_theme")) {
+
+            stringValue = getSelectedColor(preference.getContext(), stringValue);
+
+            if (!previousThemeColorValue.equals("") && !previousThemeColorValue.equals(stringValue)) {
+                Toast.makeText(preference.getContext(), R.string.pref_description_app_theme, Toast.LENGTH_LONG).show();
+            }
+
+            previousThemeColorValue = stringValue;
+            preference.setSummary(stringValue);
+            return true;
         }
 
         preference.setSummary(stringValue);
@@ -96,7 +144,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
         setupActionBar();
         getFragmentManager().beginTransaction().replace(android.R.id.content, new GeneralPreferenceFragment()).commit();
-
     }
 
     /**
@@ -153,6 +200,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // updated to reflect the new value, per the Android Design
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("pref_api_base"));
+            bindPreferenceSummaryToValue(findPreference("pref_theme"));
         }
 
         @Override

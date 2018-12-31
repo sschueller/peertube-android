@@ -24,12 +24,12 @@ Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schu
 - [X] Change Server
 - [X] Search
 - [X] App Icon and assets
-- [!] Themes / Dark mode (needs work)
+- [X] Themes / Dark mode
 - [X] Background playback
 - [X] NSFW Filter option
  
 
-# TODO
+## TODO
 
 - [ ] Video Playback via WebRTC
 - [ ] Authentication / Login

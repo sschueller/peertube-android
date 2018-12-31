@@ -1,4 +1,3 @@
-<!-- File "app/src/main/res/values/strings.xml" -->
 <resources>
     <string name="app_name">PeerTube</string>
 
@@ -36,8 +35,8 @@
 
 
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator">\u0020-\u0020</string>
-    <string name="meta_data_views">\u0020مشاهدات</string>
+    <string name="meta_data_seperator">\0020-\0020</string>
+    <string name="meta_data_views">\0020مشاهدات</string>
     <string name="meta_data_owner_seperator">\@</string>
 
 
@@ -45,14 +44,14 @@
     <string name="video_row_account_avatar">الصورة الرمزية للحساب</string>
 
     <string name="pref_title_show_nsfw">عرض NSFW</string>
-    <string name="pref_description_show_nsfw">عند التفعيل سيتم عرض محتويات NSFW</string>
+    <string name="pref_description_show_nsfw">عند التنشيط سيتم عرض محتويات NSFW</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
-    <string name="pref_title_torrent_player">مشغل فديو التورنت</string>
+    <string name="pref_title_torrent_player">مشغل فيديو التورنت</string>
     <string name="pref_description_torrent_player">تشغيل الفيديو عبر بث التورنت . يتطلب هذا أذونات التخزين. (ألفا ، غير مستقر!)</string>
     <string name="pref_title_license">الرخصة</string>
     <string name="pref_description_license"><b >GNU Affero General Public License v3.0</b>\n
- \n
- إن أذونات هذا الترخيص الأقوى للحقوق المتروكة مشروطة بإتاحة الشفرة المصدرية الكاملة للأعمال والتعديلات المرخصة ، والتي تشتمل على أعمال أكبر باستخدام عمل مرخص ، تحت نفس الترخيص. يجب الحفاظ على حقوق النشر وإشعارات الترخيص. يقدم المساهمون منحة صريحة لحقوق البراءة. عند استخدام إصدار معدل لتوفير خدمة عبر شبكة ، يجب توفير شفرة المصدر الكاملة للإصدار المعدل.</string>
+      \n
+      إن أذونات هذا الترخيص الأقوى للحقوق المتروكة مشروطة بإتاحة الشفرة المصدرية الكاملة للأعمال والتعديلات المرخصة ، والتي تشتمل على أعمال أكبر باستخدام عمل مرخص ، تحت نفس الترخيص. يجب الحفاظ على حقوق النشر وإشعارات الترخيص. يقدم المساهمون منحة صريحة لحقوق البراءة. عند استخدام إصدار معدل لتوفير خدمة عبر شبكة ، يجب توفير شفرة المصدر الكاملة للإصدار المعدل.</string>
     <string name="pref_title_version">الإصدار</string>
     <string name="search_hint">مشاركة PeerTube</string>
     <string name="title_activity_search">بحث</string>
@@ -60,5 +59,39 @@
     <string name="descr_overflow_button">المزيد</string>
     <string name="menu_share">مشاركة</string>
     <string name="playback_channel_name">PeerTube</string>
+    <string name="invalid_url">الرابط غير صالح!</string>
+    <string name="pref_title_dark_mode">الوضع الداكن</string>
+    <string name="pref_description_dark_mode">أعد تشغيل التطبيق لتنشيط الوضع الداكن.</string>
+    <string name="pref_title_app_theme">مظهر التطبيق</string>
+    <string name="pref_description_app_theme">أعد تشغيل التطبيق لتفعيل التعديلات التي طرأت على المظهر.</string>
+
+    <string name="red">أحمر</string>
+    <string name="pink">وردي</string>
+    <string name="purple">بنفسجي</string>
+    <string name="deeppurple">بنفسجي قاتم</string>
+    <string name="indigo">نيلي</string>
+    <string name="blue">أزرق</string>
+    <string name="lightblue">أزرق فاتح</string>
+    <string name="cyan">سماوي</string>
+    <string name="teal">أزرق مُخضرّ</string>
+    <string name="green">أخضر</string>
+    <string name="lightgreen">أخضر فاتح</string>
+    <string name="lime">جيري</string>
+    <string name="yellow">أصفر</string>
+    <string name="amber">كهرماني</string>
+    <string name="orange">برتقالي</string>
+    <string name="deeporange">برتقالي قاتم</string>
+    <string name="brown">قهوي</string>
+    <string name="gray">رمادي</string>
+    <string name="bluegray">أزرق رمادي</string>
+    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_10">عادي</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_20">2x</string>
+
+
+    <string name="pref_title_background_play">التشغيل في الخلفية</string>
+    <string name="pref_description_background_play">إن تم تنشيطه، ستواصل الفيديو في الإشتغال في الخلفية.</string>
+    <string name="bottom_nav_title_local">المحلي</string>
 
 </resources>

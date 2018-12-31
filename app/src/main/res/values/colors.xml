@@ -4,6 +4,7 @@
     <color name="themeDeselected">#d69b9b9b</color>
     <color name="themeSelected">#e300aaff</color>
     <color name="seperator">#7ca6a6a6</color>
+    <color name="videoBackgroundColor">#000000</color>
 
 
     <!-- RED Theme -->

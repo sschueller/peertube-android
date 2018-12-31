@@ -17,11 +17,11 @@
             android:id="@+id/video_view"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:background="@color/videoBackgroundColor"
+            app:resize_mode="fixed_width"
+            app:controller_layout_id="@layout/video_playback_controls"
 
-            app:layout_constraintDimensionRatio="H,3:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -86,16 +86,19 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                 />
 
-            <ImageButton
+            <TextView
                 android:id="@+id/moreButton"
-                android:layout_width="wrap_content"
+                android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:layout_below="@+id/thumb"
+                android:layout_marginTop="16dp"
                 android:layout_marginStart="-16dp"
                 android:layout_marginEnd="0dp"
                 android:layout_toEndOf="@+id/name"
                 android:background="@null"
                 android:contentDescription="@string/descr_overflow_button"
-                android:src="@drawable/ic_action_more_vert" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                />
 
             <TextView
                 android:id="@+id/description"
@@ -108,54 +111,10 @@
                 android:layout_marginEnd="12dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
 
-            <TextView
-                android:id="@+id/playback_speed_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/description"
-                android:text="Playback Speed"
-                android:layout_marginTop="16dp"/>
-
-            <Button
-                android:id="@+id/speed05"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/playback_speed_label"
-                android:text="0.5x"
-                android:textAllCaps="false"/>
-
-            <Button
-                android:id="@+id/speed10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/playback_speed_label"
-                android:layout_toRightOf="@id/speed05"
-                android:text="1.0x"
-                android:textAllCaps="false"
-                android:textColor="@color/primaryColorRed"
-                />
-
-            <Button
-                android:id="@+id/speed15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/playback_speed_label"
-                android:layout_toRightOf="@id/speed10"
-                android:text="1.5x"
-                android:textAllCaps="false"/>
-
-            <Button
-                android:id="@+id/speed20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/playback_speed_label"
-                android:layout_toRightOf="@id/speed15"
-                android:text="2.0x"
-                android:textAllCaps="false"/>
 
         </RelativeLayout>
 
 
-    </RelativeLayout>
 
+    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

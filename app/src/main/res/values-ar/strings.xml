@@ -35,8 +35,8 @@
 
 
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator">\0020-\0020</string>
-    <string name="meta_data_views">\0020مشاهدات</string>
+    <string name="meta_data_seperator">\u0020-\u0020</string>
+    <string name="meta_data_views">\u0020 مشاهدات</string>
     <string name="meta_data_owner_seperator">\@</string>
 
 
@@ -49,7 +49,7 @@
     <string name="pref_title_torrent_player">مشغل فيديو التورنت</string>
     <string name="pref_description_torrent_player">تشغيل الفيديو عبر بث التورنت . يتطلب هذا أذونات التخزين. (ألفا ، غير مستقر!)</string>
     <string name="pref_title_license">الرخصة</string>
-    <string name="pref_description_license"><b >GNU Affero General Public License v3.0</b>\n
+    <string name="pref_description_license"><b >رخصة جنو العمومية v3.0</b>\n
       \n
       إن أذونات هذا الترخيص الأقوى للحقوق المتروكة مشروطة بإتاحة الشفرة المصدرية الكاملة للأعمال والتعديلات المرخصة ، والتي تشتمل على أعمال أكبر باستخدام عمل مرخص ، تحت نفس الترخيص. يجب الحفاظ على حقوق النشر وإشعارات الترخيص. يقدم المساهمون منحة صريحة لحقوق البراءة. عند استخدام إصدار معدل لتوفير خدمة عبر شبكة ، يجب توفير شفرة المصدر الكاملة للإصدار المعدل.</string>
     <string name="pref_title_version">الإصدار</string>
@@ -91,7 +91,7 @@
 
 
     <string name="pref_title_background_play">التشغيل في الخلفية</string>
-    <string name="pref_description_background_play">إن تم تنشيطه، ستواصل الفيديو في الإشتغال في الخلفية.</string>
+    <string name="pref_description_background_play">إن تم تنشيطه، سيستمر تشغيل الفيديو في الخلفية.</string>
     <string name="bottom_nav_title_local">المحلي</string>
 
 </resources>

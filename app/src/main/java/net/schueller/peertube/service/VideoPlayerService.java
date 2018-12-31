@@ -118,11 +118,13 @@ public class VideoPlayerService extends Service {
     public void onDestroy() {
 
         Log.v(TAG, "onDestroy...");
-
-        playerNotificationManager.setPlayer(null);
-        player.release();
-        player = null;
-
+        if (playerNotificationManager != null) {
+            playerNotificationManager.setPlayer(null);
+        }
+        if (player != null) {
+            player.release();
+            player = null;
+        }
         super.onDestroy();
     }
 

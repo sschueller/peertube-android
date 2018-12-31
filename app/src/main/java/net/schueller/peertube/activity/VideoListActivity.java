@@ -60,6 +60,7 @@ import net.schueller.peertube.service.VideoPlayerService;
 
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -253,16 +254,16 @@ public class VideoListActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String nsfw = sharedPref.getBoolean("pref_show_nsfw", false) ? "both" : "false";
-
+        Set<String> languages = sharedPref.getStringSet("pref_language", null);
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
 
         Call<VideoList> call;
         if (!searchQuery.equals("")) {
-            call = service.searchVideosData(start, count, sort, nsfw, searchQuery, filter);
+            call = service.searchVideosData(start, count, sort, nsfw, searchQuery, filter, languages);
         } else {
-            call = service.getVideosData(start, count, sort, nsfw, filter);
+            call = service.getVideosData(start, count, sort, nsfw, filter, languages);
         }
 
         /*Log the URL called*/

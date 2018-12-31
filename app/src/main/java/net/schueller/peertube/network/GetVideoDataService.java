@@ -20,6 +20,8 @@ package net.schueller.peertube.network;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.model.VideoList;
 
+import java.util.Set;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -32,7 +34,8 @@ public interface GetVideoDataService {
             @Query("count") int count,
             @Query("sort") String sort,
             @Query("nsfw") String nsfw,
-            @Query("filter") String filter
+            @Query("filter") String filter,
+            @Query("languageOneOf") Set<String> languages
     );
 
     @GET("videos/{id}")
@@ -47,6 +50,7 @@ public interface GetVideoDataService {
             @Query("sort") String sort,
             @Query("nsfw") String nsfw,
             @Query("search") String search,
-            @Query("filter") String filter
+            @Query("filter") String filter,
+            @Query("languageOneOf") Set<String> languages
     );
 }

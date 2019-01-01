@@ -18,16 +18,19 @@
 
 package net.schueller.peertube.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
@@ -36,27 +39,23 @@ import net.schueller.peertube.model.Token;
 import net.schueller.peertube.network.AuthenticationService;
 import net.schueller.peertube.network.RetrofitInstance;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class LoginActivity extends AppCompatActivity {
 
-    OkHttpClient client = new OkHttpClient();
-    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
     private String TAG = "LoginActivity";
-
 
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,17 +78,30 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView = findViewById(R.id.email);
         mPasswordView = findViewById(R.id.password);
 
-//        if (android.os.Build.VERSION.SDK_INT > 9) {
-//            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//            StrictMode.setThreadPolicy(policy);
-//        }
+
+        // Attaching the layout to the toolbar object
+        Toolbar toolbar = findViewById(R.id.tool_bar_login);
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_chevron_left).actionBar()
+        );
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // close this activity as oppose to navigating up
 
+        return false;
+    }
 
     private void attemptLogin() {
 
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        Context context = this;
 
         // Reset errors.
         mEmailView.setError(null);
@@ -106,15 +118,18 @@ public class LoginActivity extends AppCompatActivity {
         AuthenticationService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(AuthenticationService.class);
 
         Call<OauthClient> call = service.getOauthClientLocal();
+
         call.enqueue(new Callback<OauthClient>() {
             @Override
-            public void onResponse(@NonNull Call<OauthClient> call, @NonNull retrofit2.Response<OauthClient> response) {
+            public void onResponse(@NonNull Call<OauthClient> call, @NonNull Response<OauthClient> response) {
 
-                if (response.body() != null) {
+                if (response.isSuccessful()) {
+
+                    OauthClient oauthClient = response.body();
 
                     Call<Token> call2 = service.getAuthenticationToken(
-                        response.body().getClientId(),
-                        response.body().getClientSecret(),
+                            oauthClient.getClientId(),
+                            oauthClient.getClientSecret(),
                             "code",
                             "password",
                             "upload",
@@ -125,13 +140,33 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(@NonNull Call<Token> call2, @NonNull retrofit2.Response<Token> response2) {
 
-                            if (response2.body() != null) {
-                                Log.wtf(TAG, response2.body().getAccessToken());
-                                Log.wtf(TAG, response2.body().getExpiresIn());
-                                Log.wtf(TAG, response2.body().getRefreshToken());
-                                Log.wtf(TAG, response2.body().getTokenType());
+                            if (response2.isSuccessful()) {
+
+                                Token token = response2.body();
+
+                                SharedPreferences.Editor editor = sharedPref.edit();
+
+                                // TODO: calc expiration
+                                //editor.putInt(getString(R.string.pref_token_expiration), token.getRefreshToken());
+
+                                editor.putString(getString(R.string.pref_token_access), token.getAccessToken());
+                                editor.putString(getString(R.string.pref_token_refresh), token.getExpiresIn());
+                                editor.putString(getString(R.string.pref_token_type), token.getTokenType());
+                                editor.commit();
+
+                                Log.wtf(TAG, "Logged in");
+
+                                Intent intent = new Intent(context, AccountActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                context.startActivity(intent);
+
+                                finish(); // close this activity
+
                             } else {
                                 Log.wtf(TAG, response2.toString());
+
+                                Toast.makeText(LoginActivity.this, "Login Error!", Toast.LENGTH_LONG).show();
+
                             }
                         }
 

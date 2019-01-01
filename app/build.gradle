@@ -9,6 +9,11 @@ android {
         versionCode 1019
         versionName "1.0.19"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ext {
+            libVersions = [
+                    exoplayer: '2.9.3'
+            ]
+        }
         dependencies {
             implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -41,13 +46,13 @@ android {
 //            implementation "com.github.TorrentStream:TorrentStreamServer-Android:1.0.1"
 //            implementation 'org.webrtc:google-webrtc:1.0.+'
 
-            // video player
-            implementation 'com.google.android.exoplayer:exoplayer-core:2.9.2'
-            implementation 'com.google.android.exoplayer:exoplayer-dash:2.9.2'
-            implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.2'
-            implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.2'
-            implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.2'
-            implementation 'com.google.android.exoplayer:extension-mediasession:2.9.2'
+            // video player  repo:jcenter()
+            implementation "com.google.android.exoplayer:exoplayer-core:$libVersions.exoplayer"
+            implementation "com.google.android.exoplayer:exoplayer-dash:$libVersions.exoplayer"
+            implementation "com.google.android.exoplayer:exoplayer-ui:$libVersions.exoplayer"
+            implementation "com.google.android.exoplayer:exoplayer-hls:$libVersions.exoplayer"
+            implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:$libVersions.exoplayer"
+            implementation "com.google.android.exoplayer:extension-mediasession:$libVersions.exoplayer"
 
             // testing
             testImplementation 'junit:junit:4.12'

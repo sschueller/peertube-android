@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 public interface GetUserService {
 
     @GET("users/me")
-    Call<Me> getMe(@Header("Authorization") String authorization);
+    Call<Me> getMe();
 
     @GET("users/me/subscriptions/videos")
     Call<VideoList> getVideosSubscripions(

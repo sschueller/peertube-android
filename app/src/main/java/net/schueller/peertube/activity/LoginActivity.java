@@ -27,6 +27,10 @@ import android.util.Log;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
@@ -37,6 +41,7 @@ import net.schueller.peertube.network.RetrofitInstance;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -73,8 +78,24 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView = findViewById(R.id.email);
         mPasswordView = findViewById(R.id.password);
 
+
+        // Attaching the layout to the toolbar object
+        Toolbar toolbar = findViewById(R.id.tool_bar_login);
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_chevron_left).actionBar()
+        );
+
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // close this activity as oppose to navigating up
+
+        return false;
+    }
 
     private void attemptLogin() {
 
@@ -139,8 +160,13 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 context.startActivity(intent);
 
+                                finish(); // close this activity
+
                             } else {
                                 Log.wtf(TAG, response2.toString());
+
+                                Toast.makeText(LoginActivity.this, "Login Error!", Toast.LENGTH_LONG).show();
+
                             }
                         }
 

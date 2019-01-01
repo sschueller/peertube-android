@@ -29,22 +29,36 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.model.Me;
+import net.schueller.peertube.model.OauthClient;
+import net.schueller.peertube.model.Token;
+import net.schueller.peertube.network.AuthenticationService;
+import net.schueller.peertube.network.GetUserService;
+import net.schueller.peertube.network.RetrofitInstance;
 import net.schueller.peertube.network.Session;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class AccountActivity extends AppCompatActivity {
 
+
+    private static final String TAG = "AccountActivity";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,6 +84,7 @@ public class AccountActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, LoginActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 this.startActivity(intent);
+                finish();
                 return true;
             default:
                 break;
@@ -78,6 +93,12 @@ public class AccountActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // close this activity as oppose to navigating up
+
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,10 +114,16 @@ public class AccountActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_account);
 
+
         // Attaching the layout to the toolbar object
         Toolbar toolbar = findViewById(R.id.tool_bar_user);
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_chevron_left).actionBar()
+        );
+
 
         init();
     }
@@ -110,7 +137,41 @@ public class AccountActivity extends AppCompatActivity {
 
         // TODO
 
-        return false;
+
+        String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
+
+        GetUserService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
+
+        Call<Me> call = service.getMe();
+
+        call.enqueue(new Callback<Me>() {
+            @Override
+            public void onResponse(@NonNull Call<Me> call, @NonNull Response<Me> response) {
+
+                if (response.isSuccessful()) {
+
+                    Me me = response.body();
+
+                    TextView username = findViewById(R.id.account_username);
+                    TextView email = findViewById(R.id.account_email);
+
+                    username.setText(me.getUsername());
+                    email.setText(me.getEmail());
+
+                    Log.v(TAG, me.getEmail());
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Me> call, Throwable t) {
+
+            }
+        });
+
+        return true;
     }
 
     @Override

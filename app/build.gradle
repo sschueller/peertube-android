@@ -6,8 +6,8 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1019
-        versionName "1.0.19"
+        versionCode 1020
+        versionName "1.0.20"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
             libVersions = [
@@ -76,3 +76,6 @@ android {
     }
 }
 
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
+}

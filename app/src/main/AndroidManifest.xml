@@ -18,7 +18,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:name=".application.AppApplication">
 
         <activity android:name=".activity.VideoListActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -48,6 +49,14 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_settings" />
 
+        <activity android:name=".activity.SelectServerActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".activity.AccountActivity"
+            android:label="@string/title_activity_account"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+
         <!-- Content provider for search suggestions -->
         <provider
             android:name=".provider.SearchSuggestionsProvider"
@@ -55,7 +64,9 @@
             android:enabled="true"
             android:exported="false" />
 
-        <activity android:name=".activity.SelectServerActivity"/>
+
         <service android:name=".service.VideoPlayerService" />
+
     </application>
+
 </manifest>

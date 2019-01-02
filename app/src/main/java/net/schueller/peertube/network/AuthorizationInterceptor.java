@@ -1,0 +1,65 @@
+/*
+ * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ *
+ * License: GPL-3.0+
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package net.schueller.peertube.network;
+
+import android.util.Log;
+
+import java.io.IOException;
+
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.Response;
+
+public class AuthorizationInterceptor implements Interceptor {
+
+    public AuthorizationInterceptor() {
+    }
+
+
+
+    @Override
+    public Response intercept(Chain chain) throws IOException {
+
+        Session session = Session.getInstance();
+
+        Response mainResponse = chain.proceed(chain.request());
+        Request mainRequest = chain.request();
+
+        if (session.isLoggedIn()) {
+
+            // add authentication header to each request if we are logged in
+            Request.Builder builder = mainRequest.newBuilder().header("Authorization", session.getToken()).
+                    method(mainRequest.method(), mainRequest.body());
+           // Log.v("Authorization", "Intercept: " + session.getToken());
+
+            // build request
+            mainResponse = chain.proceed(builder.build());
+
+            // logout on auth error
+            if (mainResponse.code() == 401 || mainResponse.code() == 403) {
+                session.invalidate();
+                Log.v("Authorization", "Intercept: Logout forced");
+            }
+
+        }
+
+        return mainResponse;
+    }
+
+}

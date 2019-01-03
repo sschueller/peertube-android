@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PeerTube</string>
+    <string name="app_name" translatable="false">PeerTube</string>
 
     <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="title_activity_settings">Settings</string>
@@ -31,16 +31,16 @@
     <string name="bottom_nav_title_account">Account</string>
 
     <!-- Strings related to Settings -->
-    <string name="peertube_required_server_version">1.0.0-alpha.7</string>
+    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
 
-    <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
+    <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
     <string name="pref_title_peertube_server">PeerTube Server</string>
 
 
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator">\u0020-\u0020</string>
+    <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
     <string name="meta_data_views">\u0020Views</string>
-    <string name="meta_data_owner_seperator">\@</string>
+    <string name="meta_data_owner_seperator" translatable="false">\@</string>
 
 
     <string name="video_row_video_thumbnail">Video Thumbnail</string>
@@ -61,7 +61,7 @@
     <string name="no_data_available">No Results</string>
     <string name="descr_overflow_button">More</string>
     <string name="menu_share">Share</string>
-    <string name="playback_channel_name">PeerTube</string>
+    <string name="playback_channel_name" translatable="false">PeerTube</string>
     <string name="invalid_url">Invalid Url!</string>
     <string name="pref_title_dark_mode">Dark Mode</string>
     <string name="pref_description_dark_mode">Restart App for Dark Mode to take effect.</string>

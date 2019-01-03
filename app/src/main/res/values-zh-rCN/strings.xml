@@ -56,4 +56,12 @@
     <string name="gray">灰色</string>
     <string name="bluegray">蓝灰色</string>
     <string name="meta_data_views">次观看</string>
+    <string name="bottom_nav_title_local">本地</string>
+    <string name="title_activity_account">帐号</string>
+    <string name="pref_language">按语言过滤</string>
+    <string name="pref_description_language">选择你使用的语言，不勾选时所有语言的视频都会显示</string>
+    <string name="pref_title_torrent_player">使用种子播放</string>
+    <string name="pref_description_torrent_player">视频通过一个种子下载，此选项需要存储权限（实验阶段，不稳定！）</string>
+    <string name="action_bar_title_logout">退出</string>
+    <string name="zh">中文</string>
 </resources>

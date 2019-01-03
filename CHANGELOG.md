@@ -1,3 +1,10 @@
+### Version 1.0.20 Tag: v1.0.20 (2019-01-02)
+ * Added basic login framework
+ * AR Strings update (@rex07)
+
+### Version 1.0.19 Tag: v1.0.19 (2018-12-31)
+ * Video Language Filter (@lishoujun)
+
 ### Version 1.0.18 Tag: v1.0.18 (2018-12-31)
  * Bug Fixes
  * Arabic translation update

@@ -66,6 +66,7 @@ import net.schueller.peertube.fragment.VideoOptionsFragment;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.intents.Intents;
+import net.schueller.peertube.model.Account;
 import net.schueller.peertube.model.Avatar;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
@@ -89,7 +90,7 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     private Context context = this;
     private TextView fullscreenButton;
     private Boolean isFullscreen = false;
-
+    private TorrentStream torrentStream;
     boolean mBound = false;
     VideoPlayerService mService;
 
@@ -296,7 +297,16 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
                 String baseUrl = APIUrlHelper.getUrl(context);
 
-                Avatar avatar = video.getAccount().getAvatar();
+                if(video == null){
+                    Toast.makeText(VideoPlayActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Account account = video.getAccount();
+                if(account == null){
+                    Toast.makeText(VideoPlayActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Avatar avatar = account.getAvatar();
                 if (avatar != null) {
                     String avatarPath = avatar.getPath();
                     Picasso.with(context)
@@ -349,6 +359,7 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                     videoOptionsFragment.show(getSupportFragmentManager(),
                             "video_options_fragment");
                 });
+                Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
 
                 mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
 
@@ -357,11 +368,13 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
                 if (sharedPref.getBoolean("pref_torrent_player", false)) {
 
                     String stream = video.getFiles().get(0).getTorrentUrl();
-                    TorrentStream torrentStream = setupTorrentStream();
+                    Log.v(TAG, "getTorrentUrl : " + video.getFiles().get(0).getTorrentUrl());
+                    torrentStream = setupTorrentStream();
                     torrentStream.startStream(stream);
                 } else {
                     startPlayer();
                 }
+                Log.v(TAG,"end of load Video");
 
             }
 
@@ -412,8 +425,12 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         simpleExoPlayerView.setPlayer(null);
+        if (torrentStream != null){
+            torrentStream.stopStream();
+        }
+        super.onDestroy();
+        Log.v(TAG, "onDestroy...");
     }
 
     @Override

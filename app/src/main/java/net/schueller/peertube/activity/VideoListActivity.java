@@ -53,13 +53,16 @@ import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.VideoList;
+import net.schueller.peertube.network.GetUserService;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
+import net.schueller.peertube.network.Session;
 import net.schueller.peertube.provider.SearchSuggestionsProvider;
 import net.schueller.peertube.service.VideoPlayerService;
 
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -82,6 +85,7 @@ public class VideoListActivity extends AppCompatActivity {
     private String sort = "-createdAt";
     private String filter = null;
     private String searchQuery = "";
+    private Boolean subscriptions = false;
 
     private TextView emptyView;
     private RecyclerView recyclerView;
@@ -125,7 +129,7 @@ public class VideoListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_top_videolist, menu);
 
         // Set an icon in the ActionBar
         menu.findItem(R.id.action_settings).setIcon(
@@ -253,16 +257,19 @@ public class VideoListActivity extends AppCompatActivity {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String nsfw = sharedPref.getBoolean("pref_show_nsfw", false) ? "both" : "false";
-
+        Set<String> languages = sharedPref.getStringSet("pref_language", null);
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
 
         Call<VideoList> call;
         if (!searchQuery.equals("")) {
-            call = service.searchVideosData(start, count, sort, nsfw, searchQuery, filter);
+            call = service.searchVideosData(start, count, sort, nsfw, searchQuery, filter, languages);
+        } else if (subscriptions) {
+            GetUserService userService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
+            call = userService.getVideosSubscripions(start, count, sort);
         } else {
-            call = service.getVideosData(start, count, sort, nsfw, filter);
+            call = service.getVideosData(start, count, sort, nsfw, filter, languages);
         }
 
         /*Log the URL called*/
@@ -380,6 +387,7 @@ public class VideoListActivity extends AppCompatActivity {
                         sort = "-createdAt";
                         currentStart = 0;
                         filter = null;
+                        subscriptions = false;
                         loadVideos(currentStart, count, sort, filter);
                     }
 
@@ -391,6 +399,7 @@ public class VideoListActivity extends AppCompatActivity {
                         sort = "-trending";
                         currentStart = 0;
                         filter = null;
+                        subscriptions = false;
                         loadVideos(currentStart, count, sort, filter);
                     }
 
@@ -402,22 +411,42 @@ public class VideoListActivity extends AppCompatActivity {
                         sort = "-publishedAt";
                         filter = "local";
                         currentStart = 0;
+                        subscriptions = false;
                         loadVideos(currentStart, count, sort, filter);
                     }
 
                     return true;
                 case R.id.navigation_subscriptions:
                     //Log.v(TAG, "navigation_subscriptions");
-                    Toast.makeText(VideoListActivity.this, "Subscriptions Not Implemented", Toast.LENGTH_SHORT).show();
 
-                    return false;
+                    if (!Session.getInstance().isLoggedIn()) {
+                        Intent intent = new Intent(this, LoginActivity.class);
+                        this.startActivity(intent);
+                        return false;
+                    } else {
+
+                        if (!isLoading) {
+                            sort = "-publishedAt";
+                            filter = null;
+                            currentStart = 0;
+                            subscriptions = true;
+                            loadVideos(currentStart, count, sort, filter);
+                        }
+                        return true;
+                    }
+
 
                 case R.id.navigation_account:
                     //Log.v(TAG, "navigation_account");
-                    Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
 
-//                Intent intent = new Intent(this, LoginActivity.class);
-//                this.startActivity(intent);
+                    if (!Session.getInstance().isLoggedIn()) {
+                        Intent intent = new Intent(this, LoginActivity.class);
+                        this.startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(this, AccountActivity.class);
+                        this.startActivity(intent);
+                    }
 
                     return false;
             }

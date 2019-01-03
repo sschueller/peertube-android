@@ -425,11 +425,11 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         simpleExoPlayerView.setPlayer(null);
         if (torrentStream != null){
             torrentStream.stopStream();
         }
+        super.onDestroy();
         Log.v(TAG, "onDestroy...");
     }
 

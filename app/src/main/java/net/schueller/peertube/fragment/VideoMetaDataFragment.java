@@ -72,9 +72,10 @@ public class VideoMetaDataFragment extends Fragment {
 
             if (Session.getInstance().isLoggedIn()) {
 
+                // TODO: move this out helper/service
                 RequestBody body = RequestBody.create(
-                        okhttp3.MediaType.parse("application/json; charset=utf-8"),
-                        "{rating: \"none\"}"
+                        okhttp3.MediaType.parse("application/json"),
+                        "{\"rating\":\"like\"}"
                 );
 
                 String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
@@ -89,6 +90,7 @@ public class VideoMetaDataFragment extends Fragment {
 
                         Log.v(TAG, response.toString() );
 
+                        // if 20x update likes
                     }
 
                     @Override
@@ -110,7 +112,43 @@ public class VideoMetaDataFragment extends Fragment {
         TextView thumbsDownButton = activity.findViewById(R.id.video_thumbs_down);
         thumbsDownButton.setText(R.string.video_thumbs_down_icon);
         new Iconics.IconicsBuilder().ctx(context).on(thumbsDownButton).build();
-        thumbsDownButton.setOnClickListener(v -> Toast.makeText(context, "Not Implemented", Toast.LENGTH_SHORT).show());
+        thumbsDownButton.setOnClickListener(v -> {
+
+            if (Session.getInstance().isLoggedIn()) {
+
+                // TODO: move this out helper/service
+                RequestBody body = RequestBody.create(
+                        okhttp3.MediaType.parse("application/json"),
+                        "{\"rating\":\"dislike\"}"
+                );
+
+                String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
+                GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+
+                Call<ResponseBody> call = service.rateVideo(video.getId(), body);
+
+                call.enqueue(new Callback<ResponseBody>() {
+
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                        // if 20x update likes
+
+                        Log.v(TAG, response.toString() );
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Toast.makeText(context, "Rating Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                Toast.makeText(context, "You must login to use this service", Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
 
         TextView thumbsDownButtonTotal = activity.findViewById(R.id.video_thumbs_down_total);
         thumbsDownButtonTotal.setText(video.getDislikes().toString());

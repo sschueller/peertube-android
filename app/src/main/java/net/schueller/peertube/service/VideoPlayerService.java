@@ -35,6 +35,7 @@ import androidx.annotation.Nullable;
 import android.support.v4.media.MediaDescriptionCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -82,6 +83,8 @@ public class VideoPlayerService extends Service {
 
     @Override
     public void onCreate() {
+        Log.v(TAG, "onCreate...");
+
         super.onCreate();
 
         player = ExoPlayerFactory.newSimpleInstance(getApplicationContext(), new DefaultTrackSelector());
@@ -136,7 +139,11 @@ public class VideoPlayerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Context context = this;
         Log.v(TAG, "onStartCommand...");
+        if(currentStreamUrl == null){
+            Toast.makeText(context, "currentStreamUrl must not null", Toast.LENGTH_SHORT).show();
+        }
         playVideo();
         return START_STICKY;
     }
@@ -150,7 +157,7 @@ public class VideoPlayerService extends Service {
 
     public void setCurrentStreamUrl(String streamUrl)
     {
-        Log.v(TAG, "setCurrentStreamUrl...");
+        Log.v(TAG, "setCurrentStreamUrl..." + streamUrl);
         currentStreamUrl = streamUrl;
     }
 

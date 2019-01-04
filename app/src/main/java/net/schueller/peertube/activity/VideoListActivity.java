@@ -71,7 +71,7 @@ import retrofit2.Response;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
-public class VideoListActivity extends AppCompatActivity {
+public class VideoListActivity extends CommonActivity {
 
     private String TAG = "VideoListActivity";
 
@@ -97,18 +97,6 @@ public class VideoListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
-        // Set Night Mode
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        AppCompatDelegate.setDefaultNightMode(sharedPref.getBoolean("pref_dark_mode", false) ?
-                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
-
-        // Set theme
-        setTheme(getResources().getIdentifier(
-                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
-                "style",
-                getPackageName())
-        );
 
         setContentView(R.layout.activity_video_list);
 

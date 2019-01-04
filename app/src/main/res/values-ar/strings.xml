@@ -45,6 +45,8 @@
 
     <string name="pref_title_show_nsfw">عرض NSFW</string>
     <string name="pref_description_show_nsfw">عند التنشيط سيتم عرض محتويات NSFW</string>
+    <string name="pref_language">عرض اللغات</string>
+    <string name="pref_description_language">أختيار لغة ليتم عرضها.</string>    
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="pref_title_torrent_player">مشغل فيديو التورنت</string>
     <string name="pref_description_torrent_player">تشغيل الفيديو عبر بث التورنت . يتطلب هذا أذونات التخزين. (ألفا ، غير مستقر!)</string>
@@ -64,7 +66,10 @@
     <string name="pref_description_dark_mode">أعد تشغيل التطبيق لتنشيط الوضع الداكن.</string>
     <string name="pref_title_app_theme">مظهر التطبيق</string>
     <string name="pref_description_app_theme">أعد تشغيل التطبيق لتفعيل التعديلات التي طرأت على المظهر.</string>
-
+    
+    <string name="en">الإنجليزية</string>
+    <string name="fr">الفرنسية</string>
+    
     <string name="red">أحمر</string>
     <string name="pink">وردي</string>
     <string name="purple">بنفسجي</string>

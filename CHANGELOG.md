@@ -1,3 +1,13 @@
+### Version 1.0.21 Tag: v1.0.21 (2019-01-05)
+ * Added more video meta data
+ * Very basic like and dislike functionality
+ * UI changes to video detail page
+ * Torrent stream fatal fix (@lishoujun)
+ * AR Strings update (@rex07)
+ * ZH Strings update (@lishoujun)
+ * RU Strings update (@ferhadnecef)
+ * Refacturing (@lishoujun)
+
 ### Version 1.0.20 Tag: v1.0.20 (2019-01-02)
  * Added basic login framework
  * AR Strings update (@rex07)

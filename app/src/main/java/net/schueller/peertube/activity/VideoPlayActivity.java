@@ -183,8 +183,9 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         torrentStream.addListener(new TorrentListener() {
             @Override
             public void onStreamReady(Torrent torrent) {
-                Log.d(TAG, "Ready");
-                mService.setCurrentStreamUrl(Uri.fromFile(torrent.getVideoFile()).toString());
+                String videopath = Uri.fromFile(torrent.getVideoFile()).toString();
+                Log.d(TAG, "Ready! torrentStream videopath:" + videopath);
+                mService.setCurrentStreamUrl(videopath);
                 startPlayer();
             }
 

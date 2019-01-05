@@ -17,10 +17,22 @@
  */
 package net.schueller.peertube.intents;
 
+import android.Manifest;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.webkit.URLUtil;
+
+import com.github.se_bastiaan.torrentstream.TorrentOptions;
+
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.Video;
+
+import androidx.core.app.ActivityCompat;
 
 
 public class Intents {
@@ -32,6 +44,7 @@ public class Intents {
      * @param context context
      * @param video video
      */
+    // TODO, offer which version to download
     public static void Share(Context context, Video video) {
 
         Intent intent = new Intent();
@@ -42,5 +55,26 @@ public class Intents {
 
         context.startActivity(intent);
 
+    }
+
+    /**
+     *
+     * @param context context
+     * @param video video
+     */
+    // TODO, offer which version to download
+    public static void Download(Context context, Video video) {
+
+        String url = video.getFiles().get(0).getFileDownloadUrl();
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+        request.setDescription(video.getDescription());
+        request.setTitle(video.getName());
+        request.allowScanningByMediaScanner();
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(url, null, null));
+
+        // get download service and enqueue file
+        DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        manager.enqueue(request);
     }
 }

@@ -7,7 +7,7 @@
 
     <!-- Strings related to login -->
     <string name="prompt_server">Server</string>
-    <string name="prompt_email">Email</string>
+    <string name="prompt_email">Email / Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -301,6 +301,20 @@
     <string name="bottom_nav_title_local">Local</string>
 
     <string name="title_activity_account">Account</string>
+    <string name="menu_video_more_report">Report</string>
+    <string name="menu_video_more_blacklist">Blacklist</string>
+    <string name="video_download_permission_error">Can not download video without write permission</string>
+    <string name="video_rating_failed">Rating Failed</string>
+    <string name="video_login_required_for_service">You must login to use this service</string>
+
+    <string name="video_meta_button_share">Share</string>
+    <string name="video_meta_button_download">Download</string>
+    <string name="video_meta_button_privacy">Privacy</string>
+    <string name="video_meta_button_category">Category</string>
+    <string name="video_meta_button_license">License</string>
+    <string name="video_meta_button_language">Language</string>
+    <string name="video_meta_button_tags">Tags</string>
+
 
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
@@ -309,7 +323,9 @@
     <string name="pref_token_type" translatable="false">pref_token_type</string>
     <string name="pref_auth_username" translatable="false">pref_auth_username</string>
     <string name="pref_auth_password" translatable="false">pref_auth_password</string>
-    <string name="menu_video_more_report">Report</string>
-    <string name="menu_video_more_blacklist">Blacklist</string>
+    <string name="video_rating_none" translatable="false">none</string>
+    <string name="video_rating_like" translatable="false">like</string>
+    <string name="video_rating_dislike" translatable="false">dislike</string>
+
 
 </resources>

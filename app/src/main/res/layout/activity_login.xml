@@ -46,7 +46,8 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Alpha! Login is still in heavy development and may not work correctly!" />
+                    android:textSize="16sp"
+                    android:text="Alpha! Login is still in heavy development and may not work correctly! You must have an account on the instance you are connecting to. Registration is currently not supported" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"

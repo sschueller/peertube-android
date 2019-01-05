@@ -17,6 +17,7 @@
  */
 package net.schueller.peertube.network;
 
+import net.schueller.peertube.model.Rating;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.model.VideoList;
 
@@ -57,6 +58,11 @@ public interface GetVideoDataService {
             @Query("search") String search,
             @Query("filter") String filter,
             @Query("languageOneOf") Set<String> languages
+    );
+
+    @GET("users/me/videos/{id}/rating")
+    Call<Rating> getVideoRating(
+            @Path(value = "id", encoded = true) Integer id
     );
 
     @PUT("videos/{id}/rate")

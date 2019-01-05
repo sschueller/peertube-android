@@ -1,3 +1,7 @@
+### Version 1.0.22 Tag: v1.0.22 (2019-01-05)
+ * Cleaned up like/dislike
+ * Added video download
+
 ### Version 1.0.21 Tag: v1.0.21 (2019-01-05)
  * Added more video meta data
  * Very basic like and dislike functionality

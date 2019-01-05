@@ -18,12 +18,49 @@
 package net.schueller.peertube.model;
 
 public class File {
+    private Integer id;
+    private String fileDownloadUrl;
+    private Integer fps;
+    private String label;
     private Resolution resolution;
     private String resolutionLabel;
     private String magnetUri;
     private Integer size;
     private String torrentUrl;
+    private String torrentDownloadUrl;
     private String fileUrl;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFileDownloadUrl() {
+        return fileDownloadUrl;
+    }
+
+    public void setFileDownloadUrl(String fileDownloadUrl) {
+        this.fileDownloadUrl = fileDownloadUrl;
+    }
+
+    public Integer getFps() {
+        return fps;
+    }
+
+    public void setFps(Integer fps) {
+        this.fps = fps;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
 
     public Resolution getResolution() {
         return resolution;
@@ -63,6 +100,14 @@ public class File {
 
     public void setTorrentUrl(String torrentUrl) {
         this.torrentUrl = torrentUrl;
+    }
+
+    public String getTorrentDownloadUrl() {
+        return torrentDownloadUrl;
+    }
+
+    public void setTorrentDownloadUrl(String torrentDownloadUrl) {
+        this.torrentDownloadUrl = torrentDownloadUrl;
     }
 
     public String getFileUrl() {

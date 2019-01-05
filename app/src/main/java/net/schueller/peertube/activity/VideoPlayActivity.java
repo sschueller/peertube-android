@@ -62,6 +62,7 @@ import com.google.android.exoplayer2.video.VideoRendererEventListener;
 import com.mikepenz.iconics.Iconics;
 import com.squareup.picasso.Picasso;
 import net.schueller.peertube.R;
+import net.schueller.peertube.fragment.VideoMetaDataFragment;
 import net.schueller.peertube.fragment.VideoOptionsFragment;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
@@ -183,8 +184,9 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
         torrentStream.addListener(new TorrentListener() {
             @Override
             public void onStreamReady(Torrent torrent) {
-                Log.d(TAG, "Ready");
-                mService.setCurrentStreamUrl(Uri.fromFile(torrent.getVideoFile()).toString());
+                String videopath = Uri.fromFile(torrent.getVideoFile()).toString();
+                Log.d(TAG, "Ready! torrentStream videopath:" + videopath);
+                mService.setCurrentStreamUrl(videopath);
                 startPlayer();
             }
 
@@ -282,83 +284,22 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
                 // TODO: remove this code duplication, similar code as in video list rows
 
-                TextView videoName = findViewById(R.id.name);
-                TextView videoDescription = findViewById(R.id.description);
-                TextView videoOwner = findViewById(R.id.videoOwner);
-                TextView videoMeta = findViewById(R.id.videoMeta);
-                ImageView avatarView = findViewById(R.id.avatar);
-                TextView moreButton = findViewById(R.id.moreButton);
-                TextView videoOptions = findViewById(R.id.exo_more);
-
 
                 Video video = response.body();
 
                 mService.setCurrentVideo(video);
 
-                String baseUrl = APIUrlHelper.getUrl(context);
-
-                if(video == null){
+                if (video == null){
                     Toast.makeText(VideoPlayActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Account account = video.getAccount();
-                if(account == null){
-                    Toast.makeText(VideoPlayActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                Avatar avatar = account.getAvatar();
-                if (avatar != null) {
-                    String avatarPath = avatar.getPath();
-                    Picasso.with(context)
-                            .load(baseUrl + avatarPath)
-                            .into(avatarView);
-                }
 
-                videoName.setText(video.getName());
-                videoMeta.setText(
-                        MetaDataHelper.getMetaString(
-                                video.getCreatedAt(),
-                                video.getViews(),
-                                getBaseContext()
-                        )
-                );
-                videoOwner.setText(
-                        MetaDataHelper.getOwnerString(video.getAccount().getName(),
-                                video.getAccount().getHost(),
-                                context
-                        )
-                );
-                videoDescription.setText(video.getDescription());
+                VideoMetaDataFragment videoMetaDataFragment = (VideoMetaDataFragment)
+                        getSupportFragmentManager().findFragmentById(R.id.video_meta_data_fragment);
 
-                moreButton.setText(R.string.video_more_icon);
-                new Iconics.IconicsBuilder().ctx(context).on(moreButton).build();
+                assert videoMetaDataFragment != null;
+                videoMetaDataFragment.updateVideoMeta(video, mService);
 
-                moreButton.setOnClickListener(v -> {
-                    PopupMenu popup = new PopupMenu(context, v);
-                    popup.setOnMenuItemClickListener(menuItem -> {
-                        switch (menuItem.getItemId()) {
-                            case R.id.menu_share:
-                                Intents.Share(context, video);
-                                return true;
-                            default:
-                                return false;
-                        }
-                    });
-                    popup.inflate(R.menu.menu_video_row_mode);
-                    popup.show();
-                });
-
-                // video player options
-                videoOptions.setText(R.string.video_more_icon);
-                new Iconics.IconicsBuilder().ctx(context).on(videoOptions).build();
-
-                videoOptions.setOnClickListener(v -> {
-
-                    VideoOptionsFragment videoOptionsFragment =
-                            VideoOptionsFragment.newInstance(mService);
-                    videoOptionsFragment.show(getSupportFragmentManager(),
-                            "video_options_fragment");
-                });
                 Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
 
                 mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());

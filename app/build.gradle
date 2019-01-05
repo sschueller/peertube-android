@@ -6,8 +6,8 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1020
-        versionName "1.0.20"
+        versionCode 1021
+        versionName "1.0.21"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
             libVersions = [

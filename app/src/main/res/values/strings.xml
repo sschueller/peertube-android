@@ -286,10 +286,16 @@
     <string name="video_speed_20">2x</string>
 
 
-    <string name="video_speed_active_icon">{faw-check}</string>
-    <string name="video_expand_icon">{faw-expand}</string>
-    <string name="video_compress_icon">{faw-compress}</string>
-    <string name="video_more_icon">{faw-ellipsis-v}</string>
+    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
+    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
+    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
+    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
+    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
+    <string name="video_share_icon" translatable="false">{faw-share}</string>
+    <string name="video_download_icon" translatable="false">{faw-download}</string>
+    <string name="video_save_icon" translatable="false">{faw-save}</string>
+
     <string name="pref_title_background_play">Background Playback</string>
     <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
     <string name="bottom_nav_title_local">Local</string>
@@ -297,11 +303,13 @@
     <string name="title_activity_account">Account</string>
 
     <!-- Constants, Don't translate -->
-    <string name="pref_token_access">pref_token_access</string>
-    <string name="pref_token_refresh">pref_token_refresh</string>
-    <string name="pref_token_expiration">pref_token_expiration</string>
-    <string name="pref_token_type">pref_token_type</string>
-    <string name="pref_auth_username">pref_auth_username</string>
-    <string name="pref_auth_password">pref_auth_password</string>
+    <string name="pref_token_access" translatable="false">pref_token_access</string>
+    <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
+    <string name="pref_token_expiration" translatable="false">pref_token_expiration</string>
+    <string name="pref_token_type" translatable="false">pref_token_type</string>
+    <string name="pref_auth_username" translatable="false">pref_auth_username</string>
+    <string name="pref_auth_password" translatable="false">pref_auth_password</string>
+    <string name="menu_video_more_report">Report</string>
+    <string name="menu_video_more_blacklist">Blacklist</string>
 
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,108 +11,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <com.google.android.exoplayer2.ui.PlayerView
-            android:id="@+id/video_view"
+        <fragment android:name="net.schueller.peertube.fragment.VideoPlayerFragment"
+            android:id="@+id/video_player_fragment"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:background="@color/videoBackgroundColor"
-            app:resize_mode="fixed_width"
-            app:controller_layout_id="@layout/video_playback_controls"
+            android:layout_height="250dp" />
 
-            />
-
-        <ProgressBar
-            android:id="@+id/progress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/video_view"
-            android:indeterminate="false"
-            android:max="100" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/progress"
-            android:padding="6dp"
+            android:layout_below="@id/video_player_fragment"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/avatar"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="0dp"
-                android:contentDescription="@string/video_row_account_avatar"
-                android:paddingStart="12dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="12dp" />
-
-            <TextView
-                android:id="@+id/name"
+            <ScrollView
+                android:id="@+id/login_form"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="24dp"
-                android:layout_toEndOf="@+id/avatar"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/videoMeta"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/name"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="12dp"
-                android:layout_toEndOf="@+id/avatar"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+                <fragment android:name="net.schueller.peertube.fragment.VideoMetaDataFragment"
+                    android:id="@+id/video_meta_data_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/videoOwner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/videoMeta"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_toEndOf="@id/avatar"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                />
-
-            <TextView
-                android:id="@+id/moreButton"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_below="@+id/thumb"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="-16dp"
-                android:layout_marginEnd="0dp"
-                android:layout_toEndOf="@+id/name"
-                android:background="@null"
-                android:contentDescription="@string/descr_overflow_button"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                />
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/videoMeta"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginEnd="12dp"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
-
-
+            </ScrollView>
         </RelativeLayout>
-
 
 
     </RelativeLayout>

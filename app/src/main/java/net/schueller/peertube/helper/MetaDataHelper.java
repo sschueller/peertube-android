@@ -20,6 +20,9 @@ package net.schueller.peertube.helper;
 import android.content.Context;
 import android.text.format.DateUtils;
 import net.schueller.peertube.R;
+
+import java.time.Duration;
+import java.time.Period;
 import java.util.Date;
 
 public class MetaDataHelper {
@@ -37,4 +40,7 @@ public class MetaDataHelper {
                 serverHost;
     }
 
+    public static String getDuration(Long duration) {
+        return DateUtils.formatElapsedTime(duration);
+    }
 }

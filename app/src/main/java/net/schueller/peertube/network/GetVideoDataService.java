@@ -17,13 +17,19 @@
  */
 package net.schueller.peertube.network;
 
+import net.schueller.peertube.model.Rating;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.model.VideoList;
 
 import java.util.Set;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -53,4 +59,16 @@ public interface GetVideoDataService {
             @Query("filter") String filter,
             @Query("languageOneOf") Set<String> languages
     );
+
+    @GET("users/me/videos/{id}/rating")
+    Call<Rating> getVideoRating(
+            @Path(value = "id", encoded = true) Integer id
+    );
+
+    @PUT("videos/{id}/rate")
+    Call<ResponseBody> rateVideo(
+            @Path(value = "id", encoded = true) Integer id,
+            @Body RequestBody params
+    );
+
 }

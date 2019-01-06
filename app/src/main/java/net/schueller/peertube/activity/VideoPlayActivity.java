@@ -18,73 +18,34 @@
 
 package net.schueller.peertube.activity;
 
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
+
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 
-import android.os.Environment;
-import android.os.IBinder;
 import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
+
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Surface;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.github.se_bastiaan.torrentstream.StreamStatus;
-import com.github.se_bastiaan.torrentstream.Torrent;
-import com.github.se_bastiaan.torrentstream.TorrentOptions;
-import com.github.se_bastiaan.torrentstream.TorrentStream;
-import com.github.se_bastiaan.torrentstream.listeners.TorrentListener;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.decoder.DecoderCounters;
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
-import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.util.Util;
-import com.google.android.exoplayer2.video.VideoRendererEventListener;
-import com.mikepenz.iconics.Iconics;
-import com.squareup.picasso.Picasso;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+
+import android.widget.RelativeLayout;
+
 import net.schueller.peertube.R;
-import net.schueller.peertube.fragment.VideoMetaDataFragment;
-import net.schueller.peertube.fragment.VideoOptionsFragment;
 import net.schueller.peertube.fragment.VideoPlayerFragment;
-import net.schueller.peertube.helper.APIUrlHelper;
-import net.schueller.peertube.helper.MetaDataHelper;
-import net.schueller.peertube.intents.Intents;
-import net.schueller.peertube.model.Account;
-import net.schueller.peertube.model.Avatar;
-import net.schueller.peertube.model.Video;
-import net.schueller.peertube.network.GetVideoDataService;
-import net.schueller.peertube.network.RetrofitInstance;
-import net.schueller.peertube.service.VideoPlayerService;
+
+import java.util.Objects;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
+
+//import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
@@ -121,7 +82,6 @@ public class VideoPlayActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
 
@@ -132,39 +92,40 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment videoPlayerFragment = fragmentManager.findFragmentById(R.id.video_player_fragment);
-
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT);
-//        params.weight = 3.0f;
-//        fragment.getView().setLayoutParams(params);
+        Fragment videoMetaFragment = fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
 
         // Checking the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.getView().getLayoutParams();
+            assert videoPlayerFragment != null;
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
             params.width = FrameLayout.LayoutParams.MATCH_PARENT;
             params.height = FrameLayout.LayoutParams.MATCH_PARENT;
-            //simpleExoPlayerView.setLayoutParams(params);
-
             videoPlayerFragment.getView().setLayoutParams(params);
 
-            fragmentManager.beginTransaction()
-                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                    .hide(fragmentManager.findFragmentById(R.id.video_meta_data_fragment))
-                    .commit();
+            if (videoMetaFragment != null) {
+                fragmentManager.beginTransaction()
+                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                        .hide(videoMetaFragment)
+                        .commit();
+            }
 
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.getView().getLayoutParams();
+
+            assert videoPlayerFragment != null;
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
             params.width = FrameLayout.LayoutParams.MATCH_PARENT;
             params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
-            //simpleExoPlayerView.setLayoutParams(params);
-
             videoPlayerFragment.getView().setLayoutParams(params);
 
-            fragmentManager.beginTransaction()
-                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                    .show(fragmentManager.findFragmentById(R.id.video_meta_data_fragment))
-                    .commit();
+
+            if (videoMetaFragment != null) {
+                fragmentManager.beginTransaction()
+                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                        .show(videoMetaFragment)
+                        .commit();
+            }
 
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }

@@ -37,6 +37,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.fragment.VideoMetaDataFragment;
 import net.schueller.peertube.fragment.VideoPlayerFragment;
 
 import java.util.Objects;
@@ -79,6 +80,11 @@ public class VideoPlayActivity extends AppCompatActivity {
         assert videoPlayerFragment != null;
         videoPlayerFragment.start(videoUuid);
 
+        // if we are in landscape set the video to fullscreen
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setOrientation(true);
+        }
     }
 
 
@@ -89,13 +95,23 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         super.onConfigurationChanged(newConfig);
 
+        // Checking the orientation changes of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setOrientation(true);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setOrientation(false);
+        }
+    }
+
+
+
+    private void setOrientation(Boolean isLandscape) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment videoPlayerFragment = fragmentManager.findFragmentById(R.id.video_player_fragment);
-        Fragment videoMetaFragment = fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+        VideoMetaDataFragment videoMetaFragment = (VideoMetaDataFragment) fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
 
-        // Checking the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (isLandscape) {
             assert videoPlayerFragment != null;
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
             params.width = FrameLayout.LayoutParams.MATCH_PARENT;
@@ -108,17 +124,14 @@ public class VideoPlayActivity extends AppCompatActivity {
                         .hide(videoMetaFragment)
                         .commit();
             }
+            videoPlayerFragment.setIsFullscreen(true);
 
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-
+        } else {
             assert videoPlayerFragment != null;
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
             params.width = FrameLayout.LayoutParams.MATCH_PARENT;
             params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
             videoPlayerFragment.getView().setLayoutParams(params);
-
 
             if (videoMetaFragment != null) {
                 fragmentManager.beginTransaction()
@@ -126,11 +139,11 @@ public class VideoPlayActivity extends AppCompatActivity {
                         .show(videoMetaFragment)
                         .commit();
             }
-
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            videoPlayerFragment.setIsFullscreen(false);
         }
-    }
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
 
     @Override
     protected void onDestroy() {

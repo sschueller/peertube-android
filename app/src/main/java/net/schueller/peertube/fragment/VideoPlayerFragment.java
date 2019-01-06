@@ -34,6 +34,7 @@ import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,7 +75,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private PlayerView simpleExoPlayerView;
     private Intent videoPlayerIntent;
     private Boolean mBound = false;
-    private TextView fullscreenButton;
     private Boolean isFullscreen = false;
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
@@ -132,6 +132,21 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         simpleExoPlayerView.setControllerShowTimeoutMs(1000);
         simpleExoPlayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
 
+        // Full screen Icon
+        TextView fullscreenButton = activity.findViewById(R.id.exo_fullscreen);
+        fullscreenButton.setText(R.string.video_expand_icon);
+        new Iconics.IconicsBuilder().ctx(context).on(fullscreenButton).build();
+
+        fullscreenButton.setOnClickListener(view -> {
+            Log.d(TAG, "Fullscreen");
+            if (!isFullscreen) {
+                isFullscreen = true;
+                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            } else {
+                isFullscreen = false;
+                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        });
 
         if (!mBound) {
             videoPlayerIntent = new Intent(context, VideoPlayerService.class);
@@ -192,25 +207,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         videoMetaDataFragment.updateVideoMeta(video, mService);
 
 
-        // Full screen Icon
-        assert activity != null;
-        fullscreenButton = activity.findViewById(R.id.exo_fullscreen);
-        fullscreenButton.setText(R.string.video_expand_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(fullscreenButton).build();
 
-        fullscreenButton.setOnClickListener(view -> {
-            Log.d(TAG, "Fullscreen");
-            if (!isFullscreen) {
-                isFullscreen = true;
-                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                fullscreenButton.setText(R.string.video_compress_icon);
-            } else {
-                isFullscreen = false;
-                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                fullscreenButton.setText(R.string.video_expand_icon);
-            }
-            new Iconics.IconicsBuilder().ctx(context).on(fullscreenButton).build();
-        });
 
 
         Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
@@ -252,6 +249,21 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         }
     }
 
+    public void setIsFullscreen(Boolean fullscreen) {
+        isFullscreen = fullscreen;
+
+        TextView fullscreenButton = getActivity().findViewById(R.id.exo_fullscreen);
+        if (fullscreen) {
+            fullscreenButton.setText(R.string.video_compress_icon);
+        } else {
+            fullscreenButton.setText(R.string.video_expand_icon);
+        }
+        new Iconics.IconicsBuilder().ctx(getContext()).on(fullscreenButton).build();
+    }
+
+    public Boolean getIsFullscreen() {
+        return isFullscreen;
+    }
 
     /**
      * Torrent Playback

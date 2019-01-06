@@ -24,21 +24,17 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,17 +52,17 @@ import com.google.android.exoplayer2.video.VideoRendererEventListener;
 import com.mikepenz.iconics.Iconics;
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.activity.VideoListActivity;
-import net.schueller.peertube.activity.VideoPlayActivity;
+
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 import net.schueller.peertube.service.VideoPlayerService;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -126,6 +122,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         mVideoUuid = videoUuid;
 
+        assert activity != null;
         progressBar = activity.findViewById(R.id.progress);
         progressBar.setMax(100);
 
@@ -187,6 +184,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
 
         // video Meta fragment
+        assert getFragmentManager() != null;
         VideoMetaDataFragment videoMetaDataFragment = (VideoMetaDataFragment)
                 getFragmentManager().findFragmentById(R.id.video_meta_data_fragment);
 
@@ -194,9 +192,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         videoMetaDataFragment.updateVideoMeta(video, mService);
 
 
-
-
         // Full screen Icon
+        assert activity != null;
         fullscreenButton = activity.findViewById(R.id.exo_fullscreen);
         fullscreenButton.setText(R.string.video_expand_icon);
         new Iconics.IconicsBuilder().ctx(context).on(fullscreenButton).build();
@@ -236,7 +233,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     }
 
     private void startPlayer() {
-        Util.startForegroundService(getContext(), videoPlayerIntent);
+        Util.startForegroundService(Objects.requireNonNull(getContext()), videoPlayerIntent);
     }
 
 
@@ -249,13 +246,11 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
     public void stopVideo() {
 
-
         if (mBound) {
-            getContext().unbindService(mConnection);
+            Objects.requireNonNull(getContext()).unbindService(mConnection);
             mBound = false;
         }
     }
-
 
 
     /**

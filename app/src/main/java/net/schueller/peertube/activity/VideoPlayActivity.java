@@ -42,7 +42,6 @@ import net.schueller.peertube.fragment.VideoPlayerFragment;
 
 import java.util.Objects;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 

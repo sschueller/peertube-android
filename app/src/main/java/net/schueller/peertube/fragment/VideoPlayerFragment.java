@@ -34,7 +34,6 @@ import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -193,10 +192,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
     private void playVideo(Video video) {
 
-
         Context context = getContext();
-        Activity activity = getActivity();
-
 
         // video Meta fragment
         assert getFragmentManager() != null;
@@ -205,10 +201,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         assert videoMetaDataFragment != null;
         videoMetaDataFragment.updateVideoMeta(video, mService);
-
-
-
-
 
         Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
 

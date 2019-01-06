@@ -70,7 +70,8 @@ public class VideoListActivity extends CommonActivity {
 
     private String TAG = "VideoListActivity";
 
-    public static final String EXTRA_VIDEOID = "VIDEOID ";
+    public static final String EXTRA_VIDEOID = "VIDEOID";
+    public static final String EXTRA_ACCOUNTDISPLAYNAME = "ACCOUNTDISPLAYNAMEANDHOST";
 
     private VideoAdapter videoAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -288,7 +289,7 @@ public class VideoListActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<VideoList> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
-                Toast.makeText(VideoListActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VideoListActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -427,7 +428,7 @@ public class VideoListActivity extends CommonActivity {
                         Intent intent = new Intent(this, LoginActivity.class);
                         this.startActivity(intent);
                     } else {
-                        Intent intent = new Intent(this, AccountActivity.class);
+                        Intent intent = new Intent(this, MeActivity.class);
                         this.startActivity(intent);
                     }
 

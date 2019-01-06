@@ -40,14 +40,10 @@ import net.schueller.peertube.network.AuthenticationService;
 import net.schueller.peertube.network.RetrofitInstance;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
-import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class LoginActivity extends CommonActivity {
 
@@ -148,7 +144,7 @@ public class LoginActivity extends CommonActivity {
 
                                 Log.wtf(TAG, "Logged in");
 
-                                Intent intent = new Intent(context, AccountActivity.class);
+                                Intent intent = new Intent(context, MeActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 context.startActivity(intent);
 

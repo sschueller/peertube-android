@@ -18,79 +18,138 @@
 
 package net.schueller.peertube.activity;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.adapter.ChannelAdapter;
+import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
-import net.schueller.peertube.model.Me;
-import net.schueller.peertube.model.OauthClient;
-import net.schueller.peertube.model.Token;
-import net.schueller.peertube.network.AuthenticationService;
+import net.schueller.peertube.helper.MetaDataHelper;
+import net.schueller.peertube.model.Account;
+import net.schueller.peertube.model.ChannelList;
+import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetUserService;
+import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
-import net.schueller.peertube.network.Session;
+
+
+import java.util.ArrayList;
+import java.util.Set;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
-import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class AccountActivity extends CommonActivity {
 
+    private String TAG = "AccountActivity";
+    private String apiBaseURL;
 
-    private static final String TAG = "AccountActivity";
+    private Integer videosStart, videosCount, videosCurrentStart;
+    private String videosFilter, videosSort, videosNsfw;
+    private Set<String> videosLanguages;
+
+    private ChannelAdapter channelAdapter;
+    private VideoAdapter videoAdapter;
+
+    private RecyclerView recyclerViewVideos;
+    private RecyclerView recyclerViewChannels;
+
+    private SwipeRefreshLayout swipeRefreshLayoutVideos;
+    private SwipeRefreshLayout swipeRefreshLayoutChannels;
+    private CoordinatorLayout aboutView;
+    //private TextView emptyView;
+
+    private Boolean isLoadingVideos;
+
+    private GetUserService userService;
+
+    private String displayNameAndHost;
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_top_user, menu);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        // Set an icon in the ActionBar
-        menu.findItem(R.id.action_logout).setIcon(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_sign_out_alt).actionBar());
+        setContentView(R.layout.activity_account);
 
-        return true;
-    }
+        apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
+
+        userService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
+
+        recyclerViewVideos = findViewById(R.id.account_video_recyclerView);
+        recyclerViewChannels = findViewById(R.id.account_channel_recyclerView);
+
+        swipeRefreshLayoutVideos = findViewById(R.id.account_swipeRefreshLayout_videos);
+        swipeRefreshLayoutChannels = findViewById(R.id.account_swipeRefreshLayout_channels);
+        aboutView = findViewById(R.id.account_about);
+
+        RecyclerView.LayoutManager layoutManagerVideos = new LinearLayoutManager(AccountActivity.this);
+        recyclerViewVideos.setLayoutManager(layoutManagerVideos);
+
+        RecyclerView.LayoutManager layoutManagerVideosChannels = new LinearLayoutManager(AccountActivity.this);
+        recyclerViewChannels.setLayoutManager(layoutManagerVideosChannels);
+
+        videoAdapter = new VideoAdapter(new ArrayList<>(), AccountActivity.this);
+        recyclerViewVideos.setAdapter(videoAdapter);
+
+        channelAdapter = new ChannelAdapter(new ArrayList<>(), AccountActivity.this);
+        recyclerViewChannels.setAdapter(channelAdapter);
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+        swipeRefreshLayoutVideos.setOnRefreshListener(() -> {
+            // Refresh items
+            if (!isLoadingVideos) {
+                videosCurrentStart = 0;
+                loadAccountVideos(displayNameAndHost);
+            }
+        });
 
-        switch (item.getItemId()) {
-            // action with ID action_refresh was selected
+        // get video ID
+        Intent intent = getIntent();
+        displayNameAndHost = intent.getStringExtra(VideoListActivity.EXTRA_ACCOUNTDISPLAYNAME);
+        Log.v(TAG, "click: " + displayNameAndHost);
 
-            case R.id.action_logout:
-                Session.getInstance().invalidate();
-                Intent intent = new Intent(this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                this.startActivity(intent);
-                finish();
-                return true;
-            default:
-                break;
-        }
 
-        return super.onOptionsItemSelected(item);
+        createBottomBarNavigation();
+
+        videosStart = 0;
+        videosCount = 25;
+        videosCurrentStart = 0;
+        videosFilter = "";
+        videosSort = "-publishedAt";
+        videosNsfw = "";
+
+
+        // Attaching the layout to the toolbar object
+        Toolbar toolbar = findViewById(R.id.tool_bar_account);
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(displayNameAndHost);
+        getSupportActionBar().setHomeAsUpIndicator(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_chevron_left).actionBar()
+        );
+
+        loadAccountVideos(displayNameAndHost);
+
     }
 
     @Override
@@ -100,76 +159,178 @@ public class AccountActivity extends CommonActivity {
         return false;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private void loadAccount(String ownerString) {
 
-        setContentView(R.layout.activity_account);
+        // get video details from api
+        Call<Account> call = userService.getAccount(ownerString);
 
-        // Attaching the layout to the toolbar object
-        Toolbar toolbar = findViewById(R.id.tool_bar_user);
-        // Setting toolbar as the ActionBar with setSupportActionBar() call
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_chevron_left).actionBar()
-        );
-
-
-        init();
-    }
-
-    private void init() {
-        // try to get user data
-        getUserData();
-    }
-
-    private boolean getUserData() {
-
-        // TODO
-
-
-        String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
-
-        GetUserService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
-
-        Call<Me> call = service.getMe();
-
-        call.enqueue(new Callback<Me>() {
+        call.enqueue(new Callback<Account>() {
             @Override
-            public void onResponse(@NonNull Call<Me> call, @NonNull Response<Me> response) {
+            public void onResponse(@NonNull Call<Account> call, @NonNull Response<Account> response) {
+
 
                 if (response.isSuccessful()) {
+                    Account account = response.body();
 
-                    Me me = response.body();
+                    String owner = MetaDataHelper.getOwnerString(account.getName(),
+                            account.getHost(),
+                            AccountActivity.this
+                    );
 
-                    TextView username = findViewById(R.id.account_username);
-                    TextView email = findViewById(R.id.account_email);
+                    // set view data
+                    TextView ownerStringView = findViewById(R.id.account_owner_string);
+                    ownerStringView.setText(owner);
 
-                    username.setText(me.getUsername());
-                    email.setText(me.getEmail());
+                    TextView followers = findViewById(R.id.account_followers);
+                    followers.setText(account.getFollowersCount().toString());
 
-                    Log.v(TAG, me.getEmail());
+                    TextView description = findViewById(R.id.account_description);
+                    description.setText(account.getDescription());
 
+                    TextView joined = findViewById(R.id.account_joined);
+                    joined.setText(account.getCreatedAt().toString());
+
+
+                } else {
+                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
                 }
 
 
             }
 
             @Override
-            public void onFailure(Call<Me> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<Account> call, @NonNull Throwable t) {
+                Log.wtf(TAG, t.fillInStackTrace());
+                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
             }
         });
 
-        return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
 
-        init();
+    private void loadAccountVideos(String displayNameAndHost) {
+
+        isLoadingVideos = false;
+
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+        Call<VideoList> call;
+
+        call = service.getAccountVideosData(displayNameAndHost, videosStart, videosCount, videosSort);
+
+        call.enqueue(new Callback<VideoList>() {
+            @Override
+            public void onResponse(@NonNull Call<VideoList> call, @NonNull Response<VideoList> response) {
+
+                Log.v(TAG, response.toString());
+
+                if (response.isSuccessful()) {
+                    if (videosCurrentStart == 0) {
+                        videoAdapter.clearData();
+                    }
+
+                    if (response.body() != null) {
+                        videoAdapter.setData(response.body().getVideoArrayList());
+                    }
+
+                } else{
+                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+
+                }
+
+                isLoadingVideos = false;
+                swipeRefreshLayoutVideos.setRefreshing(false);
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<VideoList> call, @NonNull Throwable t) {
+                Log.wtf("err", t.fillInStackTrace());
+                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                isLoadingVideos = false;
+                swipeRefreshLayoutVideos.setRefreshing(false);
+            }
+        });
+    }
+
+    private void loadAccountChannels(String displayNameAndHost) {
+
+        // get video details from api
+        Call<ChannelList> call = userService.getAccountChannels(displayNameAndHost);
+
+        call.enqueue(new Callback<ChannelList>() {
+            @Override
+            public void onResponse(@NonNull Call<ChannelList> call, @NonNull Response<ChannelList> response) {
+
+
+                if (response.isSuccessful()) {
+                    ChannelList channelList = response.body();
+
+
+
+                } else {
+                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ChannelList> call, @NonNull Throwable t) {
+                Log.wtf(TAG, t.fillInStackTrace());
+                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+    private void createBottomBarNavigation() {
+
+        // Get Bottom Navigation
+        BottomNavigationView navigation = findViewById(R.id.account_navigation);
+
+        // Always show text label
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+
+        // Add Icon font
+        Menu navMenu = navigation.getMenu();
+        navMenu.findItem(R.id.account_navigation_about).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_user));
+        navMenu.findItem(R.id.account_navigation_channels).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_list));
+        navMenu.findItem(R.id.account_navigation_videos).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_video));
+
+        // Click Listener
+        navigation.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.account_navigation_about:
+
+                    swipeRefreshLayoutVideos.setVisibility(View.GONE);
+                    swipeRefreshLayoutChannels.setVisibility(View.GONE);
+                    aboutView.setVisibility(View.VISIBLE);
+                    loadAccount(displayNameAndHost);
+
+                    return true;
+                case R.id.account_navigation_channels:
+
+                    swipeRefreshLayoutVideos.setVisibility(View.GONE);
+                    swipeRefreshLayoutChannels.setVisibility(View.VISIBLE);
+                    aboutView.setVisibility(View.GONE);
+                    loadAccountChannels(displayNameAndHost);
+
+                    return true;
+                case R.id.account_navigation_videos:
+
+                    swipeRefreshLayoutVideos.setVisibility(View.VISIBLE);
+                    swipeRefreshLayoutChannels.setVisibility(View.GONE);
+                    aboutView.setVisibility(View.GONE);
+                    loadAccountVideos(displayNameAndHost);
+
+                    return true;
+
+            }
+            return false;
+        });
 
     }
 }

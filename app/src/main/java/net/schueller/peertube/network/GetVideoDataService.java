@@ -71,4 +71,14 @@ public interface GetVideoDataService {
             @Body RequestBody params
     );
 
+    // https://troll.tv/api/v1/accounts/theouterlinux@peertube.mastodon.host/videos?start=0&count=8&sort=-publishedAt
+
+    @GET("accounts/{displayNameAndHost}/videos")
+    Call<VideoList> getAccountVideosData(
+            @Path(value = "displayNameAndHost", encoded = true) String displayNameAndHost,
+            @Query("start") int start,
+            @Query("count") int count,
+            @Query("sort") String sort
+    );
+
 }

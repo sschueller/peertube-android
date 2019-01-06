@@ -18,6 +18,7 @@
 
 package net.schueller.peertube.activity;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -41,8 +42,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -64,6 +67,7 @@ import com.squareup.picasso.Picasso;
 import net.schueller.peertube.R;
 import net.schueller.peertube.fragment.VideoMetaDataFragment;
 import net.schueller.peertube.fragment.VideoOptionsFragment;
+import net.schueller.peertube.fragment.VideoPlayerFragment;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.intents.Intents;
@@ -73,6 +77,9 @@ import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 import net.schueller.peertube.service.VideoPlayerService;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -81,42 +88,10 @@ import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
-public class VideoPlayActivity extends AppCompatActivity implements VideoRendererEventListener {
+public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
 
-    private ProgressBar progressBar;
-    private PlayerView simpleExoPlayerView;
-    private Intent videoPlayerIntent;
-    private Context context = this;
-    private TextView fullscreenButton;
-    private Boolean isFullscreen = false;
-    private TorrentStream torrentStream;
-    boolean mBound = false;
-    VideoPlayerService mService;
-
-    private ServiceConnection mConnection = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            Log.d(TAG, "onServiceConnected");
-            VideoPlayerService.LocalBinder binder = (VideoPlayerService.LocalBinder) service;
-            mService = binder.getService();
-
-            // 2. Create the player
-            simpleExoPlayerView.setPlayer(mService.player);
-            mBound = true;
-
-            loadVideo();
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-            Log.d(TAG, "onServiceDisconnected");
-            simpleExoPlayerView.setPlayer(null);
-            mBound = false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,96 +107,19 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
         setContentView(R.layout.activity_video_play);
 
-        progressBar = findViewById(R.id.progress);
-        progressBar.setMax(100);
+        // get video ID
+        Intent intent = getIntent();
+        String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
+        Log.v(TAG, "click: " + videoUuid);
 
-        simpleExoPlayerView = new PlayerView(this);
-        simpleExoPlayerView = findViewById(R.id.video_view);
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
 
-        simpleExoPlayerView.setControllerShowTimeoutMs(1000);
-        simpleExoPlayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
-
-        // Full screen Icon
-        fullscreenButton = findViewById(R.id.exo_fullscreen);
-        fullscreenButton.setText(R.string.video_expand_icon);
-        new Iconics.IconicsBuilder().ctx(this).on(fullscreenButton).build();
-
-        fullscreenButton.setOnClickListener(view -> {
-            Log.d(TAG, "Fullscreen");
-            if (!isFullscreen) {
-                isFullscreen = true;
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                fullscreenButton.setText(R.string.video_compress_icon);
-            } else {
-                isFullscreen = false;
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                fullscreenButton.setText(R.string.video_expand_icon);
-            }
-            new Iconics.IconicsBuilder().ctx(this).on(fullscreenButton).build();
-        });
+        assert videoPlayerFragment != null;
+        videoPlayerFragment.start(videoUuid);
 
     }
 
-    private void startPlayer()
-    {
-        Util.startForegroundService(context, videoPlayerIntent);
-    }
-
-    /**
-     * Torrent Playback
-     *
-     * @return torrent stream
-     */
-    private TorrentStream setupTorrentStream() {
-
-        TorrentOptions torrentOptions = new TorrentOptions.Builder()
-                .saveLocation(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS))
-                .removeFilesAfterStop(true)
-                .build();
-
-        TorrentStream torrentStream = TorrentStream.init(torrentOptions);
-
-        torrentStream.addListener(new TorrentListener() {
-            @Override
-            public void onStreamReady(Torrent torrent) {
-                String videopath = Uri.fromFile(torrent.getVideoFile()).toString();
-                Log.d(TAG, "Ready! torrentStream videopath:" + videopath);
-                mService.setCurrentStreamUrl(videopath);
-                startPlayer();
-            }
-
-            @Override
-            public void onStreamProgress(Torrent torrent, StreamStatus streamStatus) {
-                if(streamStatus.bufferProgress <= 100 && progressBar.getProgress() < 100 && progressBar.getProgress() != streamStatus.bufferProgress) {
-                    //Log.d(TAG, "Progress: " + streamStatus.bufferProgress);
-                    progressBar.setProgress(streamStatus.bufferProgress);
-                }
-            }
-
-            @Override
-            public void onStreamStopped() {
-                Log.d(TAG, "Stopped");
-            }
-
-            @Override
-            public void onStreamPrepared(Torrent torrent) {
-                Log.d(TAG, "Prepared");
-            }
-
-            @Override
-            public void onStreamStarted(Torrent torrent) {
-                Log.d(TAG, "Started");
-            }
-
-            @Override
-            public void onStreamError(Torrent torrent, Exception e) {
-                Log.d(TAG, "Error: " + e.getMessage());
-            }
-
-        });
-
-        return torrentStream;
-    }
 
 
     @Override
@@ -231,145 +129,58 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 
         super.onConfigurationChanged(newConfig);
 
-        TextView nameView = findViewById(R.id.name);
-        TextView videoMetaView = findViewById(R.id.videoMeta);
-        TextView descriptionView = findViewById(R.id.description);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment videoPlayerFragment = fragmentManager.findFragmentById(R.id.video_player_fragment);
+
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT);
+//        params.weight = 3.0f;
+//        fragment.getView().setLayoutParams(params);
 
         // Checking the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
-            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-            params.height = ViewGroup.LayoutParams.MATCH_PARENT;
-            simpleExoPlayerView.setLayoutParams(params);
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.getView().getLayoutParams();
+            params.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            params.height = FrameLayout.LayoutParams.MATCH_PARENT;
+            //simpleExoPlayerView.setLayoutParams(params);
 
-            nameView.setVisibility(View.GONE);
-            videoMetaView.setVisibility(View.GONE);
-            descriptionView.setVisibility(View.GONE);
+            videoPlayerFragment.getView().setLayoutParams(params);
+
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                    .hide(fragmentManager.findFragmentById(R.id.video_meta_data_fragment))
+                    .commit();
 
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) simpleExoPlayerView.getLayoutParams();
-            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.getView().getLayoutParams();
+            params.width = FrameLayout.LayoutParams.MATCH_PARENT;
             params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
-            simpleExoPlayerView.setLayoutParams(params);
+            //simpleExoPlayerView.setLayoutParams(params);
 
-            nameView.setVisibility(View.VISIBLE);
-            videoMetaView.setVisibility(View.VISIBLE);
-            descriptionView.setVisibility(View.VISIBLE);
+            videoPlayerFragment.getView().setLayoutParams(params);
+
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                    .show(fragmentManager.findFragmentById(R.id.video_meta_data_fragment))
+                    .commit();
 
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
     }
 
 
-    private void loadVideo()
-    {
-        // get video ID
-        Intent intent = getIntent();
-        String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
-        Log.v(TAG, "click: " + videoUuid);
-
-        // get video details from api
-        String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
-
-        Call<Video> call = service.getVideoData(videoUuid);
-
-        call.enqueue(new Callback<Video>() {
-            @Override
-            public void onResponse(@NonNull Call<Video> call, @NonNull Response<Video> response) {
-
-//                Toast.makeText(TorrentVideoPlayActivity.this, response.body().getDescription(), Toast.LENGTH_SHORT).show();
-
-                // TODO: remove this code duplication, similar code as in video list rows
-
-
-                Video video = response.body();
-
-                mService.setCurrentVideo(video);
-
-                if (video == null){
-                    Toast.makeText(VideoPlayActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                VideoMetaDataFragment videoMetaDataFragment = (VideoMetaDataFragment)
-                        getSupportFragmentManager().findFragmentById(R.id.video_meta_data_fragment);
-
-                assert videoMetaDataFragment != null;
-                videoMetaDataFragment.updateVideoMeta(video, mService);
-
-                Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
-
-                mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
-
-
-                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                if (sharedPref.getBoolean("pref_torrent_player", false)) {
-
-                    String stream = video.getFiles().get(0).getTorrentUrl();
-                    Log.v(TAG, "getTorrentUrl : " + video.getFiles().get(0).getTorrentUrl());
-                    torrentStream = setupTorrentStream();
-                    torrentStream.startStream(stream);
-                } else {
-                    startPlayer();
-                }
-                Log.v(TAG,"end of load Video");
-
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<Video> call, @NonNull Throwable t) {
-                Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(VideoPlayActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    @Override
-    public void onVideoEnabled(DecoderCounters counters) {
-        Log.v(TAG, "onVideoEnabled()...");
-
-    }
-
-    @Override
-    public void onVideoDecoderInitialized(String decoderName, long initializedTimestampMs, long initializationDurationMs) {
-
-    }
-
-    @Override
-    public void onVideoInputFormatChanged(Format format) {
-
-    }
-
-    @Override
-    public void onDroppedFrames(int count, long elapsedMs) {
-
-    }
-
-    @Override
-    public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees, float pixelWidthHeightRatio) {
-
-    }
-
-    @Override
-    public void onRenderedFirstFrame(Surface surface) {
-
-    }
-
-    @Override
-    public void onVideoDisabled(DecoderCounters counters) {
-        Log.v(TAG, "onVideoDisabled()...");
-    }
-
-
     @Override
     protected void onDestroy() {
-        simpleExoPlayerView.setPlayer(null);
-        if (torrentStream != null){
-            torrentStream.stopStream();
-        }
+
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
+
+        assert videoPlayerFragment != null;
+        videoPlayerFragment.destroyVideo();
+
+
         super.onDestroy();
         Log.v(TAG, "onDestroy...");
     }
@@ -399,10 +210,12 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
 //            stopService(new Intent(this, VideoPlayerService.class));
 //        }
 
-        if (mBound) {
-            unbindService(mConnection);
-            mBound = false;
-        }
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
+
+        assert videoPlayerFragment != null;
+        videoPlayerFragment.stopVideo();
+
         Log.v(TAG, "onStop()...");
     }
 
@@ -410,10 +223,6 @@ public class VideoPlayActivity extends AppCompatActivity implements VideoRendere
     protected void onStart() {
         super.onStart();
 
-        if (!mBound) {
-            videoPlayerIntent = new Intent(this, VideoPlayerService.class);
-            bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
-        }
         Log.v(TAG, "onStart()...");
     }
 

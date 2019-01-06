@@ -10,8 +10,6 @@
     android:orientation="vertical"
     tools:targetApi="28">
 
-
-
         <FrameLayout
             android:id="@+id/exo_more_button"
             android:layout_width="32dp"
@@ -143,6 +141,22 @@
             android:layout_height="26dp"
             android:layout_weight="1"
             app:played_color="?attr/colorPrimary" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/exo_torrent_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/torrent_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:max="100" />
 
     </LinearLayout>
 

@@ -34,6 +34,8 @@ import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +79,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private Boolean isFullscreen = false;
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
+    private LinearLayout torrentStatus;
 
     private static final String TAG = "VideoPlayerFragment";
 
@@ -122,7 +125,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         mVideoUuid = videoUuid;
 
         assert activity != null;
-        progressBar = activity.findViewById(R.id.progress);
+        progressBar = activity.findViewById(R.id.torrent_progress);
         progressBar.setMax(100);
 
         simpleExoPlayerView = new PlayerView(context);
@@ -130,6 +133,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         simpleExoPlayerView.setControllerShowTimeoutMs(1000);
         simpleExoPlayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
+
+        torrentStatus = activity.findViewById(R.id.exo_torrent_status);
 
         // Full screen Icon
         TextView fullscreenButton = activity.findViewById(R.id.exo_fullscreen);
@@ -208,12 +213,13 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         if (sharedPref.getBoolean("pref_torrent_player", false)) {
-
+            torrentStatus.setVisibility(View.VISIBLE);
             String stream = video.getFiles().get(0).getTorrentUrl();
             Log.v(TAG, "getTorrentUrl : " + video.getFiles().get(0).getTorrentUrl());
             torrentStream = setupTorrentStream();
             torrentStream.startStream(stream);
         } else {
+            torrentStatus.setVisibility(View.GONE);
             startPlayer();
         }
         Log.v(TAG, "end of load Video");

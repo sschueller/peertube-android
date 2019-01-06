@@ -93,6 +93,13 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             preference.setSummary(stringValue);
             return true;
         }
+        //check if video quality has changed & provide selected quality
+        else if (preference.getKey().equals("pref_quality")) {
+            Toast.makeText(preference.getContext(), "Quality changed", Toast.LENGTH_LONG).show();
+
+            preference.setSummary(stringValue);
+            return true;
+        }
 
         preference.setSummary(stringValue);
 
@@ -201,6 +208,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("pref_api_base"));
             bindPreferenceSummaryToValue(findPreference("pref_theme"));
+            bindPreferenceSummaryToValue(findPreference("pref_quality"));
         }
 
         @Override

@@ -1,3 +1,8 @@
+### Version 1.0.23 Tag: v1.0.23 (2019-01-06)
+ * Moved video playback into fragment
+ * Added duration to video list
+ * Cleaned up full screen button and activation
+
 ### Version 1.0.22 Tag: v1.0.22 (2019-01-05)
  * Cleaned up like/dislike
  * Added video download

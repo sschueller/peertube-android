@@ -55,7 +55,7 @@ import retrofit2.Response;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
-public class AccountActivity extends AppCompatActivity {
+public class AccountActivity extends CommonActivity {
 
 
     private static final String TAG = "AccountActivity";
@@ -104,16 +104,7 @@ public class AccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Set theme
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        setTheme(getResources().getIdentifier(
-                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
-                "style",
-                getPackageName())
-        );
-
         setContentView(R.layout.activity_account);
-
 
         // Attaching the layout to the toolbar object
         Toolbar toolbar = findViewById(R.id.tool_bar_user);

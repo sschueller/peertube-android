@@ -1,0 +1,331 @@
+<resources>
+    <string name="app_name" translatable="false">PeerTube</string>
+
+    <string name="title_activity_video_play">VideoPlayActivity</string>
+    <string name="title_activity_settings">সেটিং</string>
+    <string name="title_activity_login">সাইন ইন</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_server">সার্ভার</string>
+    <string name="prompt_email">ইমেল / ইয়ুজারনেম</string>
+    <string name="prompt_password">পাসওয়ার্ড</string>
+    <string name="action_sign_in">সাইন ইন</string>
+    <string name="action_sign_in_short">সাইন ইন</string>
+    <string name="error_invalid_email">ভুল ইমেল আইডি</string>
+    <string name="error_invalid_password">পাসওয়ার্ড খুব ছোট</string>
+    <string name="error_incorrect_password">ভুল পাসওয়ার্ড</string>
+    <string name="error_field_required">এটি জরুরি ফিল্ড</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- Action bar -->
+    <string name="action_bar_title_search">সার্চ</string>
+    <string name="action_bar_title_settings">সেটিং</string>
+    <string name="action_bar_title_logout">" লগআউট"</string>
+
+    <!-- Bottom navigation bar -->
+    <string name="bottom_nav_title_home">হোম</string>
+    <string name="bottom_nav_title_trending">"Trending"</string>
+    <string name="bottom_nav_title_subscriptions">Subscriptions</string>
+    <string name="bottom_nav_title_account">একাউন্ট</string>
+
+    <!-- Strings related to Settings -->
+    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
+
+    <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
+    <string name="pref_title_peertube_server">PeerTube Server</string>
+
+
+    <!-- Strings related to Video meta data -->
+    <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
+    <string name="meta_data_views">\u0020Views</string>
+    <string name="meta_data_owner_seperator" translatable="false">\@</string>
+
+
+    <string name="video_row_video_thumbnail">Video Thumbnail</string>
+    <string name="video_row_account_avatar">Account Avatar</string>
+
+    <string name="pref_title_show_nsfw">NSFW দেখাও</string>
+    <string name="pref_description_show_nsfw">NSFW content will be shown if enabled.</string>
+    <string name="pref_language">ভাষা ফিলটার</string>
+    <string name="pref_description_language">" ভিডিওর ভাষা পছন্দ করুন, কিছু পছন্দ না করলে সব ভাষার ভিডিও দেখা যাবে"</string>
+    <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
+    <string name="pref_title_torrent_player">Torrent Video Player</string>
+    <string name="pref_description_torrent_player">Video playback via a torrent stream. This requires Storage Permissions. (Alpha, not stable!)</string>
+    <string name="pref_title_license">লাইসেন্স</string>
+    <string name="pref_description_license">\n<b>GNU Affero General Public License v3.0</b>\n\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
+    <string name="pref_title_version">ভার্সন</string>
+    <string name="search_hint">সার্চ PeerTube</string>
+    <string name="title_activity_search">সার্চ</string>
+    <string name="no_data_available">" কোন উত্তর নেই"</string>
+    <string name="descr_overflow_button">আরও</string>
+    <string name="menu_share">শেয়ার</string>
+    <string name="playback_channel_name" translatable="false">PeerTube</string>
+    <string name="invalid_url">Invalid Url!</string>
+    <string name="pref_title_dark_mode">ডার্ক মোড</string>
+    <string name="pref_description_dark_mode">Restart App for Dark Mode to take effect.</string>
+    <string name="pref_title_app_theme">App Theme</string>
+    <string name="pref_description_app_theme">Restart App for theme to take effect.</string>
+
+    <string name="ab">Abkhazian</string>
+    <string name="aa">Afar</string>
+    <string name="af">Afrikaans</string>
+    <string name="ak">Akan</string>
+    <string name="sq">Albanian</string>
+    <string name="ase">American Sign Language</string>
+    <string name="am">Amharic</string>
+    <string name="ar">Arabic</string>
+    <string name="an">Aragonese</string>
+    <string name="hy">Armenian</string>
+    <string name="as">Assamese</string>
+    <string name="av">Avaric</string>
+    <string name="ay">Aymara</string>
+    <string name="az">Azerbaijani</string>
+    <string name="bm">Bambara</string>
+    <string name="ba">Bashkir</string>
+    <string name="eu">Basque</string>
+    <string name="be">Belarusian</string>
+    <string name="bn">বাংলা</string>
+    <string name="bi">Bislama</string>
+    <string name="bs">Bosnian</string>
+    <string name="bzs">Brazilian Sign Language</string>
+    <string name="br">Breton</string>
+    <string name="bfi">British Sign Language</string>
+    <string name="bg">Bulgarian</string>
+    <string name="my">Burmese</string>
+    <string name="ca">Catalan</string>
+    <string name="ch">Chamorro</string>
+    <string name="ce">Chechen</string>
+    <string name="zh">Chinese</string>
+    <string name="csl">Chinese Sign Language</string>
+    <string name="cv">Chuvash</string>
+    <string name="kw">Cornish</string>
+    <string name="co">Corsican</string>
+    <string name="cr">Cree</string>
+    <string name="hr">Croatian</string>
+    <string name="cs">Czech</string>
+    <string name="cse">Czech Sign Language</string>
+    <string name="da">Danish</string>
+    <string name="dsl">Danish Sign Language</string>
+    <string name="dv">Dhivehi</string>
+    <string name="nl">Dutch</string>
+    <string name="dz">Dzongkha</string>
+    <string name="en">ইংলিশ</string>
+    <string name="eo">Esperanto</string>
+    <string name="et">Estonian</string>
+    <string name="ee">Ewe</string>
+    <string name="fo">Faroese</string>
+    <string name="fj">Fijian</string>
+    <string name="fi">Finnish</string>
+    <string name="fr">French</string>
+    <string name="fsl">French Sign Language</string>
+    <string name="ff">Fulah</string>
+    <string name="gl">Galician</string>
+    <string name="lg">Ganda</string>
+    <string name="ka">Georgian</string>
+    <string name="de">German</string>
+    <string name="gsg">German Sign Language</string>
+    <string name="gn">Guarani</string>
+    <string name="gu">Gujarati</string>
+    <string name="ht">Haitian</string>
+    <string name="ha">Hausa</string>
+    <string name="he">Hebrew</string>
+    <string name="hz">Herero</string>
+    <string name="hi">Hindi</string>
+    <string name="ho">Hiri Motu</string>
+    <string name="hu">Hungarian</string>
+    <string name="is">Icelandic</string>
+    <string name="ig">Igbo</string>
+    <string name="id">Indonesian</string>
+    <string name="iu">Inuktitut</string>
+    <string name="ik">Inupiaq</string>
+    <string name="ga">Irish</string>
+    <string name="it">Italian</string>
+    <string name="ja">Japanese</string>
+    <string name="jsl">Japanese Sign Language</string>
+    <string name="jv">Javanese</string>
+    <string name="kl">Kalaallisut</string>
+    <string name="kn">Kannada</string>
+    <string name="kr">Kanuri</string>
+    <string name="ks">Kashmiri</string>
+    <string name="kk">Kazakh</string>
+    <string name="km">Khmer</string>
+    <string name="ki">Kikuyu</string>
+    <string name="rw">Kinyarwanda</string>
+    <string name="ky">Kirghiz</string>
+    <string name="tlh">Klingon</string>
+    <string name="kv">Komi</string>
+    <string name="kg">Kongo</string>
+    <string name="ko">Korean</string>
+    <string name="avk">Kotava</string>
+    <string name="kj">Kuanyama</string>
+    <string name="ku">Kurdish</string>
+    <string name="lo">Lao</string>
+    <string name="lv">Latvian</string>
+    <string name="li">Limburgan</string>
+    <string name="ln">Lingala</string>
+    <string name="lt">Lithuanian</string>
+    <string name="jbo">Lojban</string>
+    <string name="lu">Luba-Katanga</string>
+    <string name="lb">Luxembourgish</string>
+    <string name="mk">Macedonian</string>
+    <string name="mg">Malagasy</string>
+    <string name="ms">Malay (macrolanguage)</string>
+    <string name="ml">Malayalam</string>
+    <string name="mt">Maltese</string>
+    <string name="gv">Manx</string>
+    <string name="mi">Maori</string>
+    <string name="mr">Marathi</string>
+    <string name="mh">Marshallese</string>
+    <string name="el">Modern Greek (1453-)</string>
+    <string name="mn">Mongolian</string>
+    <string name="na">Nauru</string>
+    <string name="nv">Navajo</string>
+    <string name="ng">Ndonga</string>
+    <string name="ne">Nepali (macrolanguage)</string>
+    <string name="nd">North Ndebele</string>
+    <string name="se">Northern Sami</string>
+    <string name="no">Norwegian</string>
+    <string name="nb">Norwegian Bokmål</string>
+    <string name="nn">Norwegian Nynorsk</string>
+    <string name="ny">Nyanja</string>
+    <string name="oc">Occitan</string>
+    <string name="oj">Ojibwa</string>
+    <string name="or">Oriya (macrolanguage)</string>
+    <string name="om">Oromo</string>
+    <string name="os">Ossetian</string>
+    <string name="pks">Pakistan Sign Language</string>
+    <string name="pa">Panjabi</string>
+    <string name="fa">Persian</string>
+    <string name="pl">Polish</string>
+    <string name="pt">Portuguese</string>
+    <string name="ps">Pushto</string>
+    <string name="qu">Quechua</string>
+    <string name="ro">Romanian</string>
+    <string name="rm">Romansh</string>
+    <string name="rn">Rundi</string>
+    <string name="ru">Russian</string>
+    <string name="rsl">Russian Sign Language</string>
+    <string name="sm">Samoan</string>
+    <string name="sg">Sango</string>
+    <string name="sc">Sardinian</string>
+    <string name="sdl">Saudi Arabian Sign Language</string>
+    <string name="gd">Scottish Gaelic</string>
+    <string name="sr">Serbian</string>
+    <string name="sh">Serbo-Croatian</string>
+    <string name="sn">Shona</string>
+    <string name="ii">Sichuan Yi</string>
+    <string name="sd">Sindhi</string>
+    <string name="si">Sinhala</string>
+    <string name="sk">Slovak</string>
+    <string name="sl">Slovenian</string>
+    <string name="so">Somali</string>
+    <string name="sfs">South African Sign Language</string>
+    <string name="nr">South Ndebele</string>
+    <string name="st">Southern Sotho</string>
+    <string name="es">Spanish</string>
+    <string name="su">Sundanese</string>
+    <string name="sw">Swahili (macrolanguage)</string>
+    <string name="ss">Swati</string>
+    <string name="sv">Swedish</string>
+    <string name="swl">Swedish Sign Language</string>
+    <string name="tl">Tagalog</string>
+    <string name="ty">Tahitian</string>
+    <string name="tg">Tajik</string>
+    <string name="ta">Tamil</string>
+    <string name="tt">Tatar</string>
+    <string name="te">Telugu</string>
+    <string name="th">Thai</string>
+    <string name="bo">Tibetan</string>
+    <string name="ti">Tigrinya</string>
+    <string name="to">Tonga (Tonga Islands)</string>
+    <string name="ts">Tsonga</string>
+    <string name="tn">Tswana</string>
+    <string name="tr">Turkish</string>
+    <string name="tk">Turkmen</string>
+    <string name="tw">Twi</string>
+    <string name="ug">Uighur</string>
+    <string name="uk">Ukrainian</string>
+    <string name="ur">Urdu</string>
+    <string name="uz">Uzbek</string>
+    <string name="ve">Venda</string>
+    <string name="vi">Vietnamese</string>
+    <string name="wa">Walloon</string>
+    <string name="cy">Welsh</string>
+    <string name="fy">Western Frisian</string>
+    <string name="wo">Wolof</string>
+    <string name="xh">Xhosa</string>
+    <string name="yi">Yiddish</string>
+    <string name="yo">Yoruba</string>
+    <string name="za">Zhuang</string>
+    <string name="zu">Zulu</string>
+
+    <string name="red">লাল</string>
+    <string name="pink">গোলাপি</string>
+    <string name="purple">বেগুনি</string>
+    <string name="indigo">Indigo</string>
+    <string name="blue">নীল</string>
+    <string name="lightblue">হালকা নীল</string>
+    <string name="cyan">Cyan</string>
+    <string name="teal">Teal</string>
+    <string name="green">সবুজ</string>
+    <string name="lightgreen">হালকা সবুজ</string>
+    <string name="lime">Lime</string>
+    <string name="yellow">হলুদ</string>
+    <string name="amber">Amber</string>
+    <string name="orange">কমলা</string>
+    <string name="deeporange">Deep Orange</string>
+    <string name="brown">বাদামী</string>
+    <string name="gray">ধুসর</string>
+    <string name="bluegray">Bluegray</string>
+    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_10">Normal</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_20">2x</string>
+
+
+    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
+    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
+    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
+    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
+    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
+    <string name="video_share_icon" translatable="false">{faw-share}</string>
+    <string name="video_download_icon" translatable="false">{faw-download}</string>
+    <string name="video_save_icon" translatable="false">{faw-save}</string>
+
+    <string name="pref_title_background_play">Background Playback</string>
+    <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
+    <string name="bottom_nav_title_local">Local</string>
+
+    <string name="title_activity_account">একাউন্ট</string>
+    <string name="menu_video_more_report">রিপোর্ট</string>
+    <string name="menu_video_more_blacklist">Blacklist</string>
+    <string name="video_download_permission_error">Can not download video without write permission</string>
+    <string name="video_rating_failed">Rating Failed</string>
+    <string name="video_login_required_for_service">You must login to use this service</string>
+
+    <string name="video_meta_button_share">শেয়ার</string>
+    <string name="video_meta_button_download">ডাউনলোড</string>
+    <string name="video_meta_button_privacy">Privacy</string>
+    <string name="video_meta_button_category">Category</string>
+    <string name="video_meta_button_license">License</string>
+    <string name="video_meta_button_language">ভাষা</string>
+    <string name="video_meta_button_tags">Tags</string>
+
+
+    <!-- Constants, Don't translate -->
+    <string name="pref_token_access" translatable="false">pref_token_access</string>
+    <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
+    <string name="pref_token_expiration" translatable="false">pref_token_expiration</string>
+    <string name="pref_token_type" translatable="false">pref_token_type</string>
+    <string name="pref_auth_username" translatable="false">pref_auth_username</string>
+    <string name="pref_auth_password" translatable="false">pref_auth_password</string>
+    <string name="video_rating_none" translatable="false">none</string>
+    <string name="video_rating_like" translatable="false">like</string>
+    <string name="video_rating_dislike" translatable="false">dislike</string>
+    <string name="deeppurple">গাঢ় বেগুনি</string>
+
+
+</resources>

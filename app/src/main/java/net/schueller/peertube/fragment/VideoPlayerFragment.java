@@ -207,11 +207,34 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         assert videoMetaDataFragment != null;
         videoMetaDataFragment.updateVideoMeta(video, mService);
 
-        Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
-
-        mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+
+        String videoQuality = sharedPref.getString("pref_quality", "");
+
+        //get video quality
+        if (video.getFiles().size() > 1 && videoQuality.equals("High")) {
+
+            mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
+            Log.v(TAG, "urlHigh : " + video.getFiles().get(0).getFileUrl());
+
+        } else if (video.getFiles().size() >= 2 && videoQuality.equals("Medium")) {
+
+            mService.setCurrentStreamUrl(video.getFiles().get(1).getFileUrl());
+            Log.v(TAG, "urlMed : " + video.getFiles().get(1).getFileUrl());
+
+        } else if (video.getFiles().size() >= 3 && videoQuality.equals("Low")) {
+
+            mService.setCurrentStreamUrl(video.getFiles().get(2).getFileUrl());
+            Log.v(TAG, "urlLow : " + video.getFiles().get(2).getFileUrl());
+
+        } else {
+            //default quality
+            mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
+            Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
+        }
+
+//        Log.v(TAG, "url : " + video.getFiles().size());
+
         if (sharedPref.getBoolean("pref_torrent_player", false)) {
             torrentStatus.setVisibility(View.VISIBLE);
             String stream = video.getFiles().get(0).getTorrentUrl();

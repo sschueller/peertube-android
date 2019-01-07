@@ -56,6 +56,7 @@ import com.mikepenz.iconics.Iconics;
 import net.schueller.peertube.R;
 
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.model.File;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
@@ -211,26 +212,34 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         String videoQuality = sharedPref.getString("pref_quality", "");
 
-        //get video quality
+        //get video qualities
+
+        for (File file :video.getFiles()) {
+            // Add to menu
+
+
+        }
+
+
         if (video.getFiles().size() > 1 && videoQuality.equals("High")) {
 
             mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
-            Log.v(TAG, "urlHigh : " + video.getFiles().get(0).getFileUrl());
+//            Log.v(TAG, "urlHigh : " + video.getFiles().get(0).getFileUrl());
 
         } else if (video.getFiles().size() >= 2 && videoQuality.equals("Medium")) {
 
             mService.setCurrentStreamUrl(video.getFiles().get(1).getFileUrl());
-            Log.v(TAG, "urlMed : " + video.getFiles().get(1).getFileUrl());
+//            Log.v(TAG, "urlMed : " + video.getFiles().get(1).getFileUrl());
 
         } else if (video.getFiles().size() >= 3 && videoQuality.equals("Low")) {
 
             mService.setCurrentStreamUrl(video.getFiles().get(2).getFileUrl());
-            Log.v(TAG, "urlLow : " + video.getFiles().get(2).getFileUrl());
+ //           Log.v(TAG, "urlLow : " + video.getFiles().get(2).getFileUrl());
 
         } else {
             //default quality
             mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
-            Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
+ //           Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
         }
 
 //        Log.v(TAG, "url : " + video.getFiles().size());

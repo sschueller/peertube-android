@@ -21,7 +21,6 @@ public class File {
     private Integer id;
     private String fileDownloadUrl;
     private Integer fps;
-    private String label;
     private Resolution resolution;
     private String resolutionLabel;
     private String magnetUri;
@@ -52,14 +51,6 @@ public class File {
 
     public void setFps(Integer fps) {
         this.fps = fps;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
     }
 
     public Resolution getResolution() {

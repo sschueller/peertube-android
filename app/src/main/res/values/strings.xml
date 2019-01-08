@@ -46,8 +46,8 @@
     <string name="video_row_video_thumbnail">Video Thumbnail</string>
     <string name="video_row_account_avatar">Account Avatar</string>
 
-    <string name="pref_title_show_nsfw">Show NSFW</string>
-    <string name="pref_description_show_nsfw">NSFW content will be shown if enabled.</string>
+    <string name="pref_title_show_nsfw">NSFW Content</string>
+    <string name="pref_description_show_nsfw">Show NSFW content</string>
     <string name="pref_language">Languages filter</string>
     <string name="pref_description_language">Select video languages that should be shown. None selected will show all videos in all languages.</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>

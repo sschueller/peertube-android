@@ -1,0 +1,274 @@
+<resources>
+
+    <string name="title_activity_settings">Настройки</string>
+    <string name="title_activity_login">Вход</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_server">Сервер</string>
+    <string name="prompt_email">Почта</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="action_sign_in">Войти</string>
+    <string name="action_sign_in_short">Войти</string>
+    <string name="error_invalid_email">Этот адрес электронной почты недействителен</string>
+    <string name="error_invalid_password">Этот пароль слишком короткий</string>
+    <string name="error_incorrect_password">Неверный пароль</string>
+    <string name="error_field_required">Это поле обязательно к заполнению</string>
+    <string name="permission_rationale">«Разрешения на контакты необходимы для предоставления электронных писем».</string>
+
+    <!-- Action bar -->
+    <string name="action_bar_title_search">Поиск</string>
+    <string name="action_bar_title_settings">Настройки</string>
+    <string name="action_bar_title_logout">Выйти</string>
+
+    <!-- Bottom navigation bar -->
+    <string name="bottom_nav_title_home">Главная</string>
+    <string name="bottom_nav_title_trending">Популярные</string>
+    <string name="bottom_nav_title_subscriptions">Подписки</string>
+    <string name="bottom_nav_title_account">Аккаунт</string>
+
+    <!-- Strings related to Settings -->
+
+    <string name="pref_title_peertube_server">Сервер PeerTube</string>
+
+
+    <!-- Strings related to Video meta data -->
+
+
+    <string name="video_row_video_thumbnail">Миниатюра видео</string>
+    <string name="video_row_account_avatar">Аватар</string>
+
+    <string name="pref_title_show_nsfw">Показ NSFW ( контекст сексуального характера)</string>
+    <string name="pref_description_show_nsfw">Содержание NSFW ( контекст сексульного характера)  будет показано, если включено.</string>
+    <string name="pref_language">Фильтр языков</string>
+    <string name="pref_description_language">Выберите языки видео, которые вы хотите видеть. Ни один из выбранных покажет все видео на всех языках.</string>
+    <string name="pref_title_torrent_player">Торрент видео плеер</string>
+    <string name="pref_description_torrent_player">Воспроизведение видео через торрент поток. Это требует разрешения на хранение. (Альфа, не стабильный!)</string>
+    <string name="pref_title_license">Лицензия</string>
+    <string name="pref_description_license"><b >Универсальная общественная лицензия GNU Affero v3.0.</b> Разрешения этой самой мощной лицензии с авторским левом обусловлены предоставлением полного исходного кода лицензированных произведений и модификаций, которые включают в себя более крупные произведения с использованием лицензированных произведений, по той же лицензии. Уведомления об авторских правах и лицензии должны быть сохранены. Авторы предоставляют явное предоставление патентных прав. Когда измененная версия используется для предоставления услуги по сети, должен быть доступен полный исходный код модифицированной версии.</string>
+    <string name="pref_title_version">Версия</string>
+    <string name="search_hint">Поиск PeerTube</string>
+    <string name="title_activity_search">Поиск</string>
+    <string name="no_data_available">Нет результатов</string>
+    <string name="descr_overflow_button">Другое</string>
+    <string name="menu_share">Поделиться</string>
+    <string name="invalid_url">Неверная ссылка!</string>
+    <string name="pref_title_dark_mode">Темный режим</string>
+    <string name="pref_description_dark_mode">Перезапустите приложение для того чтобы изменение вступило в силу.</string>
+    <string name="pref_title_app_theme">Тема приложения</string>
+    <string name="pref_description_app_theme">Перезапустите приложение, чтобы тема вступила в силу.</string>
+
+    <string name="ab">Абхазия</string>
+    <string name="aa">Афар</string>
+    <string name="af">Африканский</string>
+    <string name="ak">Акан</string>
+    <string name="sq">Албанский</string>
+    <string name="ase">Английский США</string>
+    <string name="am">Амхарик</string>
+    <string name="ar">Арабский</string>
+    <string name="an">Арагонский</string>
+    <string name="hy">Америкаский</string>
+    <string name="as">Ассамский</string>
+    <string name="av">Аварский</string>
+    <string name="ay">Аймара</string>
+    <string name="az">Азербайджанский</string>
+    <string name="bm">Бамбара</string>
+    <string name="ba">Башкирский</string>
+    <string name="eu">Баскский</string>
+    <string name="be">Беларусский</string>
+    <string name="bn">Бенгальский</string>
+    <string name="bi">Бислама</string>
+    <string name="bs">Боснийский</string>
+    <string name="bzs">Бразильский язык ввода</string>
+    <string name="br">Бретонский</string>
+    <string name="bfi">Английский ВБ</string>
+    <string name="bg">Болгарский</string>
+    <string name="my">Бирманский</string>
+    <string name="ca">Каталонский</string>
+    <string name="ch">Чаморро</string>
+    <string name="ce">Чешский</string>
+    <string name="zh">Китайский</string>
+    <string name="csl">Китайский язык ввода</string>
+    <string name="cv">Чувашский</string>
+    <string name="kw">Корнуоллский</string>
+    <string name="co">Корсиканский</string>
+    <string name="cr">Ко</string>
+    <string name="hr">Хорватский</string>
+    <string name="cs">Чешия</string>
+    <string name="cse">Чешский язык ввода</string>
+    <string name="da">Дания</string>
+    <string name="dsl">Датский язык ввода</string>
+    <string name="dv">Мальдивский</string>
+    <string name="nl">Голландский</string>
+    <string name="dz">Dzongkha</string>
+    <string name="en">Английский</string>
+    <string name="eo">Esperanto</string>
+    <string name="et">Эстонский</string>
+    <string name="ee">Ewe</string>
+    <string name="fo">Фарерская</string>
+    <string name="fj">Fijian</string>
+    <string name="fi">Финский</string>
+    <string name="fr">Французский</string>
+    <string name="fsl">Французский язык ввода</string>
+    <string name="ff">Fulah</string>
+    <string name="gl">Галицкая</string>
+    <string name="lg">Ганда</string>
+    <string name="ka">Грузинский</string>
+    <string name="de">Германия</string>
+    <string name="gsg">Немецкий язык ввода</string>
+    <string name="gn">Гуарани</string>
+    <string name="gu">Гуджарати</string>
+    <string name="ht">Гаитянский</string>
+    <string name="ha">Хауса</string>
+    <string name="he">Иврит</string>
+    <string name="hz">Гереро</string>
+    <string name="hi">Хинди</string>
+    <string name="ho">Хири Моту</string>
+    <string name="hu">Венгерский</string>
+    <string name="is">Исландский</string>
+    <string name="ig">Игбо</string>
+    <string name="id">Индонезийский</string>
+    <string name="iu">Инуктитут</string>
+    <string name="ik">Инупиак</string>
+    <string name="ga">Ирландский</string>
+    <string name="it">Итальянский</string>
+    <string name="ja">Японский</string>
+    <string name="jsl">Японский язык знаков</string>
+    <string name="jv">Яванский</string>
+    <string name="kl">Гренландский</string>
+    <string name="kn">Каннада</string>
+    <string name="kr">Канури</string>
+    <string name="ks">Кашмирский</string>
+    <string name="kk">Казахский</string>
+    <string name="km">Кхмерский</string>
+    <string name="ki">Кикуйю</string>
+    <string name="rw">Киньяруанда</string>
+    <string name="ky">Киргизский</string>
+    <string name="tlh">Клингон</string>
+    <string name="kv">Коми</string>
+    <string name="kg">Конго</string>
+    <string name="ko">Корейский</string>
+    <string name="avk">Котава</string>
+    <string name="kj">Kuanyama</string>
+    <string name="ku">Курдский</string>
+    <string name="lo">Лао</string>
+    <string name="lv">Латышский</string>
+    <string name="li">Лимбурган</string>
+    <string name="ln">Лингала</string>
+    <string name="lt">Литовский</string>
+    <string name="jbo">Ложбан</string>
+    <string name="lu">Луба-Катанга</string>
+    <string name="lb">Люксембургский</string>
+    <string name="mk">Македонский</string>
+    <string name="mg">Малагасийский</string>
+    <string name="ms">Малайский (макроязык)</string>
+    <string name="mt">Мальтийский</string>
+    <string name="gv">Острова Мэн</string>
+    <string name="mi">Маори</string>
+    <string name="mr">Маратхи</string>
+    <string name="el">Грецкий</string>
+    <string name="mn">Монгольский</string>
+    <string name="na">Науру</string>
+    <string name="nv">Навахо</string>
+    <string name="ne">Непальский (макроязык)</string>
+    <string name="nd">Северный ндебеле</string>
+    <string name="se">Северный саам</string>
+    <string name="no">Норвежский</string>
+    <string name="nb">Норвежский букмол</string>
+    <string name="nn">Норвежский Нюнорск</string>
+    <string name="oj">Оджибва</string>
+    <string name="or">Ория (макроязык)</string>
+    <string name="os">Осетинский</string>
+    <string name="pks">Пакистанский язык знаков</string>
+    <string name="pa">Панжаби</string>
+    <string name="fa">Персидский</string>
+    <string name="pl">Польский</string>
+    <string name="pt">Португальский</string>
+    <string name="ps">Нажмите, чтобы</string>
+    <string name="qu">Кечуа</string>
+    <string name="ro">Румынский</string>
+    <string name="rm">Ретороманский диалект</string>
+    <string name="rn">Рунди</string>
+    <string name="ru">Русский</string>
+    <string name="rsl">Русский язык знаков</string>
+    <string name="sg">Санго</string>
+    <string name="sc">Сардинский</string>
+    <string name="sdl">Саудовская Аравия Арабский Язык знаков</string>
+    <string name="gd">Шотландский гэльский</string>
+    <string name="sr">Сербский</string>
+    <string name="sh">Сербско-хорватский</string>
+    <string name="ii">Сычуань Йи</string>
+    <string name="sk">Словацкий</string>
+    <string name="sl">Словенский</string>
+    <string name="so">Сомалийский</string>
+    <string name="sfs">Южноафриканский язык жестов</string>
+    <string name="nr">Южный Ндебеле</string>
+    <string name="st">Южный Сото</string>
+    <string name="es">Испанский</string>
+    <string name="su">Суданский</string>
+    <string name="sw">Суахили (макроязык)</string>
+    <string name="ss">Свати</string>
+    <string name="sv">Шведский</string>
+    <string name="swl">Шведский язык жестов</string>
+    <string name="tl">Тагальский</string>
+    <string name="ty">Таитянский</string>
+    <string name="tg">Таджикский</string>
+    <string name="ta">Тамильский</string>
+    <string name="tt">Татарский</string>
+    <string name="te">Телугу</string>
+    <string name="th">Тайски</string>
+    <string name="bo">Тибетский</string>
+    <string name="ti">Тигринья</string>
+    <string name="to">Тонга (Острова Тонга)</string>
+    <string name="ts">Тсонга</string>
+    <string name="tr">Турецкий</string>
+    <string name="tk">Туркменский</string>
+    <string name="ug">Уйгурский</string>
+    <string name="uk">Украинский</string>
+    <string name="ur">Урду</string>
+    <string name="uz">Узбекский</string>
+    <string name="vi">Вьетнамский</string>
+    <string name="wa">Валлонский</string>
+    <string name="cy">Валлийский</string>
+    <string name="fy">Западно-фризский</string>
+    <string name="yi">Идиш</string>
+    <string name="yo">Йоруба</string>
+    <string name="za">Чжуан</string>
+
+    <string name="red">Красный</string>
+    <string name="pink">Розовый</string>
+    <string name="purple">Пурпурный</string>
+    <string name="deeppurple">Темно-фиолетовый</string>
+    <string name="indigo">Индиго</string>
+    <string name="blue">Синий</string>
+    <string name="lightblue">Светло-синий</string>
+    <string name="cyan">Сиан</string>
+    <string name="teal">Цвет чирка</string>
+    <string name="green">Зелёный</string>
+    <string name="lightgreen">Светло-зеленый</string>
+    <string name="lime">Лайм</string>
+    <string name="yellow">Желтый</string>
+    <string name="amber">Янтарный</string>
+    <string name="orange">Оранжевый</string>
+    <string name="deeporange">Темно-оранжевый</string>
+    <string name="brown">Коричневый</string>
+    <string name="gray">Серый</string>
+    <string name="bluegray">Серо-голубой</string>
+    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_10">Нормальная</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_20">2x</string>
+
+
+
+    <string name="pref_title_background_play">Фоновое воспроизведение</string>
+    <string name="pref_description_background_play">Если включено, продолжает воспроизводить видео в фоновом режиме.</string>
+    <string name="bottom_nav_title_local">Локаль</string>
+
+    <string name="title_activity_account">Аккаунт</string>
+
+
+
+    <!-- Constants, Don't translate -->
+
+
+</resources>

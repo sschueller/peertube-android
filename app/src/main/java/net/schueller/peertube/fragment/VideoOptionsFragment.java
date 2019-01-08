@@ -50,7 +50,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.bottom_sheet_video_options_fragment, container,
+        View view = inflater.inflate(R.layout.fragment_video_options_popup_menu, container,
                 false);
 
         // Icons

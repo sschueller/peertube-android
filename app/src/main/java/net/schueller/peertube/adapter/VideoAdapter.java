@@ -85,8 +85,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
                     .into(holder.avatar);
         }
 
-
+        // set Name
         holder.name.setText(videoList.get(position).getName());
+
+        // set duration
+        holder.videoDuration.setText( MetaDataHelper.getDuration(videoList.get(position).getDuration().longValue()));
 
         // set age and view count
         holder.videoMeta.setText(
@@ -153,7 +156,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     class VideoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, videoMeta, videoOwner, moreButton;
+        TextView name, videoMeta, videoOwner, moreButton, videoDuration;
         ImageView thumb, avatar;
         View mView;
 
@@ -165,6 +168,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
             videoMeta = itemView.findViewById(R.id.videoMeta);
             videoOwner = itemView.findViewById(R.id.videoOwner);
             moreButton = itemView.findViewById(R.id.moreButton);
+            videoDuration = itemView.findViewById(R.id.video_duration);
             mView = itemView;
         }
     }

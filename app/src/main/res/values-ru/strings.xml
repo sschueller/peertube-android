@@ -13,7 +13,7 @@
     <string name="error_invalid_password">Этот пароль слишком короткий</string>
     <string name="error_incorrect_password">Неверный пароль</string>
     <string name="error_field_required">Это поле обязательно к заполнению</string>
-    <string name="permission_rationale">«Разрешения на контакты необходимы для предоставления электронных писем».</string>
+    <string name="permission_rationale">«Разрешение на контакты необходимо для предоставления электронных писем».</string>
 
     <!-- Action bar -->
     <string name="action_bar_title_search">Поиск</string>
@@ -21,6 +21,7 @@
     <string name="action_bar_title_logout">Выйти</string>
 
     <!-- Bottom navigation bar -->
+
     <string name="bottom_nav_title_home">Главная</string>
     <string name="bottom_nav_title_trending">Популярные</string>
     <string name="bottom_nav_title_subscriptions">Подписки</string>
@@ -56,7 +57,6 @@
     <string name="pref_description_dark_mode">Перезапустите приложение для того чтобы изменение вступило в силу.</string>
     <string name="pref_title_app_theme">Тема приложения</string>
     <string name="pref_description_app_theme">Перезапустите приложение, чтобы тема вступила в силу.</string>
-
     <string name="ab">Абхазия</string>
     <string name="aa">Афар</string>
     <string name="af">Африканский</string>
@@ -91,7 +91,7 @@
     <string name="cv">Чувашский</string>
     <string name="kw">Корнуоллский</string>
     <string name="co">Корсиканский</string>
-    <string name="cr">Ко</string>
+    <string name="cr">Костариканский</string>
     <string name="hr">Хорватский</string>
     <string name="cs">Чешия</string>
     <string name="cse">Чешский язык ввода</string>
@@ -233,7 +233,6 @@
     <string name="yi">Идиш</string>
     <string name="yo">Йоруба</string>
     <string name="za">Чжуан</string>
-
     <string name="red">Красный</string>
     <string name="pink">Розовый</string>
     <string name="purple">Пурпурный</string>
@@ -257,18 +256,8 @@
     <string name="video_speed_10">Нормальная</string>
     <string name="video_speed_15">1.5x</string>
     <string name="video_speed_20">2x</string>
-
-
-
     <string name="pref_title_background_play">Фоновое воспроизведение</string>
     <string name="pref_description_background_play">Если включено, продолжает воспроизводить видео в фоновом режиме.</string>
     <string name="bottom_nav_title_local">Локаль</string>
-
     <string name="title_activity_account">Аккаунт</string>
-
-
-
-    <!-- Constants, Don't translate -->
-
-
 </resources>

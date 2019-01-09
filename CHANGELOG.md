@@ -2,6 +2,7 @@
  * Set video quality (@digiwizkid)
  * BN Strings update (@digiwizkid)
  * RU Strings update (@ferhadnecef)
+ * Added another level in video options menu
  * Moved torrent progressbas into video 
  * Better NSFW Filter labeling
 

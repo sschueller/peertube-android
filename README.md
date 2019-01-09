@@ -22,12 +22,13 @@ Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schu
 - [X] Very Basic Torrent playback
 - [X] Change Server
 - [X] Search
-- [X] App Icon and assets
 - [X] Themes / Dark mode
 - [X] Background playback
 - [X] NSFW Filter option
 - [X] Authentication / Login
 - [X] Like/dislike video
+- [X] Video speed selection
+- [X] Video quality selection
 
 ## TODO
 

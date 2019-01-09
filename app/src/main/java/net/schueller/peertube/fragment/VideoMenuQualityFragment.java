@@ -42,19 +42,21 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
 
     private static ArrayList<File> mFiles;
     public static final String TAG = "VideoMenuQuality";
+    private static File autoQualityFile;
 
     public static VideoMenuQualityFragment newInstance(ArrayList<File> files) {
 
         mFiles = files;
 
         // Auto quality
-        File autoQualityFile = new File();
-        Resolution autoQualityResolution = new Resolution();
-        autoQualityResolution.setId(0);
-        autoQualityResolution.setLabel("Auto");
-        autoQualityFile.setId(0);
-        autoQualityFile.setResolution(autoQualityResolution);
-
+        if (autoQualityFile == null) {
+            autoQualityFile = new File();
+            Resolution autoQualityResolution = new Resolution();
+            autoQualityResolution.setId(0);
+            autoQualityResolution.setLabel("Auto");
+            autoQualityFile.setId(0);
+            autoQualityFile.setResolution(autoQualityResolution);
+        }
         if (!mFiles.contains(autoQualityFile)) {
             mFiles.add(0, autoQualityFile);
         }
@@ -74,11 +76,12 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
         Integer videoQuality = sharedPref.getInt("pref_quality", 0);
 
-        for (File file :mFiles) {
+        for (File file : mFiles) {
 
             LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
 
             TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
+            iconView.setId(file.getId());
             TextView textView = menuRow.findViewById(R.id.video_quality_text);
 
             Log.v(TAG, file.getResolution().getLabel());
@@ -89,6 +92,9 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putInt("pref_quality", file.getResolution().getId());
                 editor.apply();
+
+                // TODO: unset icon on non selected items
+
                 iconView.setText(R.string.video_quality_active_icon);
                 new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
             });

@@ -285,8 +285,10 @@
     <string name="video_speed_15">1.5x</string>
     <string name="video_speed_20">2x</string>
 
-
+    <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
+    <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
     <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_quality_active_icon" translatable="false">{faw-check}</string>
     <string name="video_expand_icon" translatable="false">{faw-expand}</string>
     <string name="video_compress_icon" translatable="false">{faw-compress}</string>
     <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
@@ -315,6 +317,8 @@
     <string name="video_meta_button_language">Language</string>
     <string name="video_meta_button_tags">Tags</string>
 
+    <string name="menu_video_options_playback_speed">Playback speed</string>
+    <string name="menu_video_options_quality">Quality</string>
 
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
@@ -326,6 +330,7 @@
     <string name="video_rating_none" translatable="false">none</string>
     <string name="video_rating_like" translatable="false">like</string>
     <string name="video_rating_dislike" translatable="false">dislike</string>
+
 
 
 </resources>

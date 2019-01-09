@@ -17,6 +17,7 @@
  */
 package net.schueller.peertube.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,8 +65,8 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
         TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
         TextView textView = menuRow.findViewById(R.id.video_quality_text);
-        textView.setText("Video Speed");
-        iconView.setText(R.string.video_speed_active_icon);
+        textView.setText(getString(R.string.menu_video_options_playback_speed));
+        iconView.setText(R.string.video_option_speed_icon);
         new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
         textView.setOnClickListener(view1 -> {
             VideoMenuSpeedFragment videoMenuSpeedFragment =
@@ -79,8 +80,8 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         LinearLayout menuRow2 = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
         TextView iconView2 = menuRow2.findViewById(R.id.video_quality_icon);
         TextView textView2 = menuRow2.findViewById(R.id.video_quality_text);
-        textView2.setText("Video Quality");
-        iconView2.setText(R.string.video_speed_active_icon);
+        textView2.setText(getString(R.string.menu_video_options_quality));
+        iconView2.setText(R.string.video_option_quality_icon);
         new Iconics.IconicsBuilder().ctx(getContext()).on(iconView2).build();
         textView2.setOnClickListener(view1 -> {
             VideoMenuQualityFragment videoMenuQualityFragment =

@@ -81,7 +81,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
             LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
 
             TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
-            iconView.setId(file.getId());
+            iconView.setId(file.getResolution().getId());
             TextView textView = menuRow.findViewById(R.id.video_quality_text);
 
             Log.v(TAG, file.getResolution().getLabel());
@@ -93,16 +93,23 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
                 editor.putInt("pref_quality", file.getResolution().getId());
                 editor.apply();
 
-                // TODO: unset icon on non selected items
+                for (File fileV : mFiles) {
+                    TextView iconViewV = view.findViewById(fileV.getResolution().getId());
+                    iconViewV.setText("");
+                }
 
                 iconView.setText(R.string.video_quality_active_icon);
                 new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
+
+                //TODO: set new video quality on running video
+
             });
 
             // Add to menu
             LinearLayout menuHolder = view.findViewById(R.id.video_quality_menu);
             menuHolder.addView(menuRow);
 
+            // Set current
             if (videoQuality.equals(file.getResolution().getId())) {
                 iconView.setText(R.string.video_quality_active_icon);
                 new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();

@@ -17,10 +17,10 @@
  */
 package net.schueller.peertube.fragment;
 
-import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +28,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.mikepenz.iconics.Iconics;
+
 import net.schueller.peertube.R;
 import net.schueller.peertube.model.File;
+import net.schueller.peertube.model.Resolution;
 
 import java.util.ArrayList;
 
@@ -41,7 +44,21 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
     public static final String TAG = "VideoMenuQuality";
 
     public static VideoMenuQualityFragment newInstance(ArrayList<File> files) {
+
         mFiles = files;
+
+        // Auto quality
+        File autoQualityFile = new File();
+        Resolution autoQualityResolution = new Resolution();
+        autoQualityResolution.setId(0);
+        autoQualityResolution.setLabel("Auto");
+        autoQualityFile.setId(0);
+        autoQualityFile.setResolution(autoQualityResolution);
+
+        if (!mFiles.contains(autoQualityFile)) {
+            mFiles.add(0, autoQualityFile);
+        }
+
         return new VideoMenuQualityFragment();
     }
 
@@ -54,6 +71,9 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.fragment_video_options_quality_popup_menu, container,
                 false);
 
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+
         for (File file :mFiles) {
 
             LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
@@ -64,12 +84,23 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
             Log.v(TAG, file.getResolution().getLabel());
             textView.setText(file.getResolution().getLabel());
 
-            textView.setOnClickListener(view1 -> { Log.v(TAG, file.getResolution().getLabel()); });
-            iconView.setOnClickListener(view1 -> { Log.v(TAG, file.getResolution().getLabel()); });
+            textView.setOnClickListener(view1 -> {
+//                Log.v(TAG, file.getResolution().getLabel());
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putInt("pref_quality", file.getResolution().getId());
+                editor.apply();
+                iconView.setText(R.string.video_quality_active_icon);
+                new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
+            });
 
             // Add to menu
             LinearLayout menuHolder = view.findViewById(R.id.video_quality_menu);
             menuHolder.addView(menuRow);
+
+            if (videoQuality.equals(file.getResolution().getId())) {
+                iconView.setText(R.string.video_quality_active_icon);
+                new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
+            }
 
         }
 

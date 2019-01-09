@@ -31,14 +31,6 @@
         android:title="@string/pref_language" />
 
     <ListPreference
-        android:defaultValue="High"
-        android:entries="@array/quality"
-        android:entryValues="@array/qualityValues"
-        android:key="pref_quality"
-        android:summary="Select Video quality"
-        android:title="Video Quality"/>
-
-    <ListPreference
         android:title="@string/pref_title_app_theme"
         android:summary="@string/pref_description_app_theme"
         android:key="pref_theme"

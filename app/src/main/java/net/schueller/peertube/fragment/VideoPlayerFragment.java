@@ -210,40 +210,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
-        String videoQuality = sharedPref.getString("pref_quality", "");
-
-        //get video qualities
-
-        for (File file :video.getFiles()) {
-            // Add to menu
-
-
-        }
-
-
-        if (video.getFiles().size() > 1 && videoQuality.equals("High")) {
-
-            mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
-//            Log.v(TAG, "urlHigh : " + video.getFiles().get(0).getFileUrl());
-
-        } else if (video.getFiles().size() >= 2 && videoQuality.equals("Medium")) {
-
-            mService.setCurrentStreamUrl(video.getFiles().get(1).getFileUrl());
-//            Log.v(TAG, "urlMed : " + video.getFiles().get(1).getFileUrl());
-
-        } else if (video.getFiles().size() >= 3 && videoQuality.equals("Low")) {
-
-            mService.setCurrentStreamUrl(video.getFiles().get(2).getFileUrl());
- //           Log.v(TAG, "urlLow : " + video.getFiles().get(2).getFileUrl());
-
-        } else {
-            //default quality
-            mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
- //           Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
-        }
-
-//        Log.v(TAG, "url : " + video.getFiles().size());
-
         if (sharedPref.getBoolean("pref_torrent_player", false)) {
             torrentStatus.setVisibility(View.VISIBLE);
             String stream = video.getFiles().get(0).getTorrentUrl();
@@ -251,6 +217,19 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             torrentStream = setupTorrentStream();
             torrentStream.startStream(stream);
         } else {
+
+            Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+
+            //get video qualities
+            String urlToPlay = video.getFiles().get(0).getFileUrl();
+            for (File file :video.getFiles()) {
+                // Set quality if it matches
+                if (file.getResolution().getId().equals(videoQuality)) {
+                    urlToPlay = file.getFileUrl();
+                }
+            }
+            mService.setCurrentStreamUrl(urlToPlay);
+
             torrentStatus.setVisibility(View.GONE);
             startPlayer();
         }

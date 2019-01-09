@@ -17,30 +17,36 @@
  */
 package net.schueller.peertube.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.mikepenz.iconics.Iconics;
 import net.schueller.peertube.R;
+import net.schueller.peertube.model.File;
 import net.schueller.peertube.service.VideoPlayerService;
+
+import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
 
 public class VideoOptionsFragment extends BottomSheetDialogFragment {
 
     private static VideoPlayerService videoPlayerService;
+    private static ArrayList<File> files;
 
-    private TextView speed05Icon;
-    private TextView speed10Icon;
-    private TextView speed15Icon;
-    private TextView speed20Icon;
+    public static final String TAG = "VideoOptions";
 
-    public static VideoOptionsFragment newInstance(VideoPlayerService mService) {
+
+    public static VideoOptionsFragment newInstance(VideoPlayerService mService, ArrayList<File> mFiles) {
         videoPlayerService = mService;
+        files = mFiles;
         return new VideoOptionsFragment();
     }
 
@@ -53,43 +59,40 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.fragment_video_options_popup_menu, container,
                 false);
 
-        // Icons
-        speed05Icon = view.findViewById(R.id.video_speed05_icon);
-        speed10Icon = view.findViewById(R.id.video_speed10_icon);
-        speed15Icon = view.findViewById(R.id.video_speed15_icon);
-        speed20Icon = view.findViewById(R.id.video_speed20_icon);
+        LinearLayout menuHolder = view.findViewById(R.id.video_options_popup);
 
-        // Buttons
-        TextView speed05 = view.findViewById(R.id.video_speed05);
-        TextView speed10 = view.findViewById(R.id.video_speed10);
-        TextView speed15 = view.findViewById(R.id.video_speed15);
-        TextView speed20 = view.findViewById(R.id.video_speed20);
+        // Video Speed
+        LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
+        TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
+        TextView textView = menuRow.findViewById(R.id.video_quality_text);
+        textView.setText(getString(R.string.menu_video_options_playback_speed));
+        iconView.setText(R.string.video_option_speed_icon);
+        new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
+        textView.setOnClickListener(view1 -> {
+            VideoMenuSpeedFragment videoMenuSpeedFragment =
+                    VideoMenuSpeedFragment.newInstance(videoPlayerService);
+            videoMenuSpeedFragment.show(getActivity().getSupportFragmentManager(),
+                    VideoMenuSpeedFragment.TAG);
+        });
+        menuHolder.addView(menuRow);
 
-        // Default
-        setVideoSpeed(1.0f, speed10Icon);
-
-        // Attach the listener
-        speed05.setOnClickListener(v -> setVideoSpeed(0.5f, speed05Icon));
-        speed10.setOnClickListener(v -> setVideoSpeed(1.0f, speed10Icon));
-        speed15.setOnClickListener(v -> setVideoSpeed(1.5f, speed15Icon));
-        speed20.setOnClickListener(v -> setVideoSpeed(2.0f, speed20Icon));
+        // Video Quality
+        LinearLayout menuRow2 = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
+        TextView iconView2 = menuRow2.findViewById(R.id.video_quality_icon);
+        TextView textView2 = menuRow2.findViewById(R.id.video_quality_text);
+        textView2.setText(getString(R.string.menu_video_options_quality));
+        iconView2.setText(R.string.video_option_quality_icon);
+        new Iconics.IconicsBuilder().ctx(getContext()).on(iconView2).build();
+        textView2.setOnClickListener(view1 -> {
+            VideoMenuQualityFragment videoMenuQualityFragment =
+                    VideoMenuQualityFragment.newInstance(files);
+            videoMenuQualityFragment.show(getActivity().getSupportFragmentManager(),
+                    videoMenuQualityFragment.TAG);
+        });
+        menuHolder.addView(menuRow2);
 
         return view;
 
-    }
-
-
-    private void setVideoSpeed(Float speed, TextView icon) {
-
-        speed05Icon.setText("");
-        speed10Icon.setText("");
-        speed15Icon.setText("");
-        speed20Icon.setText("");
-
-        videoPlayerService.setPlayBackSpeed(speed);
-
-        icon.setText(R.string.video_speed_active_icon);
-        new Iconics.IconicsBuilder().ctx(getContext()).on(icon).build();
     }
 
 }

@@ -251,11 +251,10 @@ public class VideoMetaDataFragment extends Fragment {
         new Iconics.IconicsBuilder().ctx(context).on(videoOptions).build();
 
         videoOptions.setOnClickListener(v -> {
-
             VideoOptionsFragment videoOptionsFragment =
-                    VideoOptionsFragment.newInstance(mService);
+                    VideoOptionsFragment.newInstance(mService, video.getFiles());
             videoOptionsFragment.show(getActivity().getSupportFragmentManager(),
-                    "video_options_fragment");
+                    VideoOptionsFragment.TAG);
         });
 
     }

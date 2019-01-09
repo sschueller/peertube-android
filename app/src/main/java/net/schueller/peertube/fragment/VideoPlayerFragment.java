@@ -34,6 +34,8 @@ import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +56,7 @@ import com.mikepenz.iconics.Iconics;
 import net.schueller.peertube.R;
 
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.model.File;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
@@ -77,6 +80,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private Boolean isFullscreen = false;
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
+    private LinearLayout torrentStatus;
 
     private static final String TAG = "VideoPlayerFragment";
 
@@ -122,7 +126,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         mVideoUuid = videoUuid;
 
         assert activity != null;
-        progressBar = activity.findViewById(R.id.progress);
+        progressBar = activity.findViewById(R.id.torrent_progress);
         progressBar.setMax(100);
 
         simpleExoPlayerView = new PlayerView(context);
@@ -130,6 +134,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         simpleExoPlayerView.setControllerShowTimeoutMs(1000);
         simpleExoPlayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
+
+        torrentStatus = activity.findViewById(R.id.exo_torrent_status);
 
         // Full screen Icon
         TextView fullscreenButton = activity.findViewById(R.id.exo_fullscreen);
@@ -202,18 +208,29 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         assert videoMetaDataFragment != null;
         videoMetaDataFragment.updateVideoMeta(video, mService);
 
-        Log.v(TAG, "url : " + video.getFiles().get(0).getFileUrl());
-
-        mService.setCurrentStreamUrl(video.getFiles().get(0).getFileUrl());
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        if (sharedPref.getBoolean("pref_torrent_player", false)) {
 
+        if (sharedPref.getBoolean("pref_torrent_player", false)) {
+            torrentStatus.setVisibility(View.VISIBLE);
             String stream = video.getFiles().get(0).getTorrentUrl();
             Log.v(TAG, "getTorrentUrl : " + video.getFiles().get(0).getTorrentUrl());
             torrentStream = setupTorrentStream();
             torrentStream.startStream(stream);
         } else {
+
+            Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+
+            //get video qualities
+            String urlToPlay = video.getFiles().get(0).getFileUrl();
+            for (File file :video.getFiles()) {
+                // Set quality if it matches
+                if (file.getResolution().getId().equals(videoQuality)) {
+                    urlToPlay = file.getFileUrl();
+                }
+            }
+            mService.setCurrentStreamUrl(urlToPlay);
+
+            torrentStatus.setVisibility(View.GONE);
             startPlayer();
         }
         Log.v(TAG, "end of load Video");

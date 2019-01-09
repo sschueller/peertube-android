@@ -1,3 +1,11 @@
+### Version 1.0.24 Tag: v1.0.24 (2019-01-09)
+ * Set video quality (@digiwizkid)
+ * BN Strings update (@digiwizkid)
+ * RU Strings update (@ferhadnecef)
+ * Added another level in video options menu
+ * Moved torrent progressbas into video 
+ * Better NSFW Filter labeling
+
 ### Version 1.0.23 Tag: v1.0.23 (2019-01-06)
  * Moved video playback into fragment
  * Added duration to video list

@@ -2,33 +2,33 @@
     <string name="app_name" translatable="false">PeerTube</string>
 
     <string name="title_activity_video_play">VideoPlayActivity</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_settings">সেটিং</string>
+    <string name="title_activity_login">সাইন ইন</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_server">Server</string>
-    <string name="prompt_email">Email / Username</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="prompt_server">সার্ভার</string>
+    <string name="prompt_email">ইমেল / ইয়ুজারনেম</string>
+    <string name="prompt_password">পাসওয়ার্ড</string>
+    <string name="action_sign_in">সাইন ইন</string>
+    <string name="action_sign_in_short">সাইন ইন</string>
+    <string name="error_invalid_email">ভুল ইমেল আইডি</string>
+    <string name="error_invalid_password">পাসওয়ার্ড খুব ছোট</string>
+    <string name="error_incorrect_password">ভুল পাসওয়ার্ড</string>
+    <string name="error_field_required">এটি জরুরি ফিল্ড</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
 
     <!-- Action bar -->
-    <string name="action_bar_title_search">Search</string>
-    <string name="action_bar_title_settings">Settings</string>
-    <string name="action_bar_title_logout">Logout</string>
+    <string name="action_bar_title_search">সার্চ</string>
+    <string name="action_bar_title_settings">সেটিং</string>
+    <string name="action_bar_title_logout">" লগআউট"</string>
 
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_home">Home</string>
-    <string name="bottom_nav_title_trending">Trending</string>
+    <string name="bottom_nav_title_home">হোম</string>
+    <string name="bottom_nav_title_trending">"Trending"</string>
     <string name="bottom_nav_title_subscriptions">Subscriptions</string>
-    <string name="bottom_nav_title_account">Account</string>
+    <string name="bottom_nav_title_account">একাউন্ট</string>
 
     <!-- Strings related to Settings -->
     <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
@@ -46,24 +46,24 @@
     <string name="video_row_video_thumbnail">Video Thumbnail</string>
     <string name="video_row_account_avatar">Account Avatar</string>
 
-    <string name="pref_title_show_nsfw">NSFW Content</string>
-    <string name="pref_description_show_nsfw">Show NSFW content</string>
-    <string name="pref_language">Languages filter</string>
-    <string name="pref_description_language">Select video languages that should be shown. None selected will show all videos in all languages.</string>
+    <string name="pref_title_show_nsfw">NSFW দেখাও</string>
+    <string name="pref_description_show_nsfw">NSFW content will be shown if enabled.</string>
+    <string name="pref_language">ভাষা ফিলটার</string>
+    <string name="pref_description_language">" ভিডিওর ভাষা পছন্দ করুন, কিছু পছন্দ না করলে সব ভাষার ভিডিও দেখা যাবে"</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="pref_title_torrent_player">Torrent Video Player</string>
     <string name="pref_description_torrent_player">Video playback via a torrent stream. This requires Storage Permissions. (Alpha, not stable!)</string>
-    <string name="pref_title_license">License</string>
+    <string name="pref_title_license">লাইসেন্স</string>
     <string name="pref_description_license">\n<b>GNU Affero General Public License v3.0</b>\n\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
-    <string name="pref_title_version">Version</string>
-    <string name="search_hint">Search PeerTube</string>
-    <string name="title_activity_search">Search</string>
-    <string name="no_data_available">No Results</string>
-    <string name="descr_overflow_button">More</string>
-    <string name="menu_share">Share</string>
+    <string name="pref_title_version">ভার্সন</string>
+    <string name="search_hint">সার্চ PeerTube</string>
+    <string name="title_activity_search">সার্চ</string>
+    <string name="no_data_available">" কোন উত্তর নেই"</string>
+    <string name="descr_overflow_button">আরও</string>
+    <string name="menu_share">শেয়ার</string>
     <string name="playback_channel_name" translatable="false">PeerTube</string>
     <string name="invalid_url">Invalid Url!</string>
-    <string name="pref_title_dark_mode">Dark Mode</string>
+    <string name="pref_title_dark_mode">ডার্ক মোড</string>
     <string name="pref_description_dark_mode">Restart App for Dark Mode to take effect.</string>
     <string name="pref_title_app_theme">App Theme</string>
     <string name="pref_description_app_theme">Restart App for theme to take effect.</string>
@@ -86,7 +86,7 @@
     <string name="ba">Bashkir</string>
     <string name="eu">Basque</string>
     <string name="be">Belarusian</string>
-    <string name="bn">Bengali</string>
+    <string name="bn">বাংলা</string>
     <string name="bi">Bislama</string>
     <string name="bs">Bosnian</string>
     <string name="bzs">Brazilian Sign Language</string>
@@ -111,7 +111,7 @@
     <string name="dv">Dhivehi</string>
     <string name="nl">Dutch</string>
     <string name="dz">Dzongkha</string>
-    <string name="en">English</string>
+    <string name="en">ইংলিশ</string>
     <string name="eo">Esperanto</string>
     <string name="et">Estonian</string>
     <string name="ee">Ewe</string>
@@ -261,34 +261,31 @@
     <string name="za">Zhuang</string>
     <string name="zu">Zulu</string>
 
-    <string name="red">Red</string>
-    <string name="pink">Pink</string>
-    <string name="purple">Purple</string>
-    <string name="deeppurple">Deep Purple</string>
+    <string name="red">লাল</string>
+    <string name="pink">গোলাপি</string>
+    <string name="purple">বেগুনি</string>
     <string name="indigo">Indigo</string>
-    <string name="blue">Blue</string>
-    <string name="lightblue">Light Blue</string>
+    <string name="blue">নীল</string>
+    <string name="lightblue">হালকা নীল</string>
     <string name="cyan">Cyan</string>
     <string name="teal">Teal</string>
-    <string name="green">Green</string>
-    <string name="lightgreen">Light Green</string>
+    <string name="green">সবুজ</string>
+    <string name="lightgreen">হালকা সবুজ</string>
     <string name="lime">Lime</string>
-    <string name="yellow">Yellow</string>
+    <string name="yellow">হলুদ</string>
     <string name="amber">Amber</string>
-    <string name="orange">Orange</string>
+    <string name="orange">কমলা</string>
     <string name="deeporange">Deep Orange</string>
-    <string name="brown">Brown</string>
-    <string name="gray">Gray</string>
+    <string name="brown">বাদামী</string>
+    <string name="gray">ধুসর</string>
     <string name="bluegray">Bluegray</string>
     <string name="video_speed_05">0.5x</string>
     <string name="video_speed_10">Normal</string>
     <string name="video_speed_15">1.5x</string>
     <string name="video_speed_20">2x</string>
 
-    <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
-    <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
+
     <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
-    <string name="video_quality_active_icon" translatable="false">{faw-check}</string>
     <string name="video_expand_icon" translatable="false">{faw-expand}</string>
     <string name="video_compress_icon" translatable="false">{faw-compress}</string>
     <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
@@ -302,23 +299,21 @@
     <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
     <string name="bottom_nav_title_local">Local</string>
 
-    <string name="title_activity_account">Account</string>
-    <string name="menu_video_more_report">Report</string>
+    <string name="title_activity_account">একাউন্ট</string>
+    <string name="menu_video_more_report">রিপোর্ট</string>
     <string name="menu_video_more_blacklist">Blacklist</string>
     <string name="video_download_permission_error">Can not download video without write permission</string>
     <string name="video_rating_failed">Rating Failed</string>
     <string name="video_login_required_for_service">You must login to use this service</string>
 
-    <string name="video_meta_button_share">Share</string>
-    <string name="video_meta_button_download">Download</string>
+    <string name="video_meta_button_share">শেয়ার</string>
+    <string name="video_meta_button_download">ডাউনলোড</string>
     <string name="video_meta_button_privacy">Privacy</string>
     <string name="video_meta_button_category">Category</string>
     <string name="video_meta_button_license">License</string>
-    <string name="video_meta_button_language">Language</string>
+    <string name="video_meta_button_language">ভাষা</string>
     <string name="video_meta_button_tags">Tags</string>
 
-    <string name="menu_video_options_playback_speed">Playback speed</string>
-    <string name="menu_video_options_quality">Quality</string>
 
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
@@ -330,7 +325,7 @@
     <string name="video_rating_none" translatable="false">none</string>
     <string name="video_rating_like" translatable="false">like</string>
     <string name="video_rating_dislike" translatable="false">dislike</string>
-
+    <string name="deeppurple">গাঢ় বেগুনি</string>
 
 
 </resources>

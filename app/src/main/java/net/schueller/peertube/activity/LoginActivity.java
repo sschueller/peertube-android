@@ -103,6 +103,15 @@ public class LoginActivity extends CommonActivity {
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
+        //check values
+        if (email.isEmpty()) {
+            Toast.makeText(LoginActivity.this, "Email/Username is empty", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (password.isEmpty()) {
+            Toast.makeText(LoginActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
+            return;
+        }
         // make http call to login and save access tokens
 
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);

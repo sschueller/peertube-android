@@ -9,7 +9,7 @@
     <string name="prompt_server">Sunucu</string>
     <string name="prompt_email">E-posta / Kullanıcı adı</string>
     <string name="prompt_password">Şifre</string>
-    <string name="action_sign_in">Oturum aç/string>
+    <string name="action_sign_in">Oturum aç</string>
     <string name="action_sign_in_short">Oturum aç</string>
     <string name="error_invalid_email">Bu e-posta adresi geçersiz</string>
     <string name="error_invalid_password">Bu şifre çok kısa</string>

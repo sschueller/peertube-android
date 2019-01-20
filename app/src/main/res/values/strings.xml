@@ -320,6 +320,17 @@
     <string name="menu_video_options_playback_speed">Playback speed</string>
     <string name="menu_video_options_quality">Quality</string>
 
+    <string name="account_bottom_menu_videos">Videos</string>
+    <string name="account_bottom_menu_channels">Channels</string>
+    <string name="account_bottom_menu_about">About</string>
+    <string name="account_about_account">Account:</string>
+    <string name="account_about_subscribers">Subscribers:</string>
+    <string name="account_about_description">Description:</string>
+    <string name="account_about_joined">Joined:</string>
+
+    <string name="api_error">Something went wrong, please try later!</string>
+
+
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
     <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
@@ -330,7 +341,6 @@
     <string name="video_rating_none" translatable="false">none</string>
     <string name="video_rating_like" translatable="false">like</string>
     <string name="video_rating_dislike" translatable="false">dislike</string>
-
 
 
 </resources>

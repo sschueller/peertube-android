@@ -61,7 +61,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_gravity="bottom"
-        app:menu="@menu/menu_bottom"
+        app:menu="@menu/menu_bottom_video_list"
         android:background="?android:attr/windowBackground"
         />
 

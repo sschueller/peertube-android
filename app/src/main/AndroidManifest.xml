@@ -52,10 +52,12 @@
         <activity android:name=".activity.SelectServerActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".activity.AccountActivity"
+        <activity android:name=".activity.MeActivity"
             android:label="@string/title_activity_account"
             android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity android:name=".activity.AccountActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <!-- Content provider for search suggestions -->
         <provider

@@ -1,3 +1,7 @@
+### Version 1.0.25 Tag: v1.0.25 (2019-01-20)
+ * Account overview page and videos list
+ * Turkish (tr) Translation added (@oktay454)
+
 ### Version 1.0.24 Tag: v1.0.24 (2019-01-09)
  * Set video quality (@digiwizkid)
  * BN Strings update (@digiwizkid)

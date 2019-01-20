@@ -1,0 +1,335 @@
+<resources>
+    <string name="app_name" translatable="false">PeerTube</string>
+
+    <string name="title_activity_video_play">İzleti Oynatma Etkinliği</string>
+    <string name="title_activity_settings">Ayarlar</string>
+    <string name="title_activity_login">Oturum aç</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_server">Sunucu</string>
+    <string name="prompt_email">E-posta / Kullanıcı adı</string>
+    <string name="prompt_password">Şifre</string>
+    <string name="action_sign_in">Oturum aç</string>
+    <string name="action_sign_in_short">Oturum aç</string>
+    <string name="error_invalid_email">Bu e-posta adresi geçersiz</string>
+    <string name="error_invalid_password">Bu şifre çok kısa</string>
+    <string name="error_incorrect_password">Bu şifre yanlış</string>
+    <string name="error_field_required">Bu alan gereklidir</string>
+    <string name="permission_rationale">"E-posta tanımlamaları için Rehber izinleri gerekir."
+    </string>
+
+    <!-- Action bar -->
+    <string name="action_bar_title_search">Arama</string>
+    <string name="action_bar_title_settings">Ayarlar</string>
+    <string name="action_bar_title_logout">Çıkış yap</string>
+
+    <!-- Bottom navigation bar -->
+    <string name="bottom_nav_title_home">Ev</string>
+    <string name="bottom_nav_title_trending">Eğilimler</string>
+    <string name="bottom_nav_title_subscriptions">Abonelikler</string>
+    <string name="bottom_nav_title_account">Hesap</string>
+
+    <!-- Strings related to Settings -->
+    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
+
+    <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
+    <string name="pref_title_peertube_server">PeerTube Sunucusu</string>
+
+
+    <!-- Strings related to Video meta data -->
+    <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
+    <string name="meta_data_views">\u0020 Görüntüleme</string>
+    <string name="meta_data_owner_seperator" translatable="false">\@</string>
+
+
+    <string name="video_row_video_thumbnail">İzleti Küçük Resmi</string>
+    <string name="video_row_account_avatar">Hesap Resmi</string>
+
+    <string name="pref_title_show_nsfw">Ahlaksız İçerik</string>
+    <string name="pref_description_show_nsfw">Ahlaksız içeriği göster</string>
+    <string name="pref_language">Dil süzgeci</string>
+    <string name="pref_description_language">Gösterilmesi gereken izleti dillerini seçin. Hiçbiri seçili değilse tüm izletileri tüm dillerde gösterecek.</string>
+    <string name="title_activity_url_video_play">URL İzleti Oynatma Etkinliği</string>
+    <string name="pref_title_torrent_player">Torrent İzleti Oynatıcı</string>
+    <string name="pref_description_torrent_player">Bir torrent akışı üzerinden izleti oynatma. Bu Depolama İzinlerini gerektirir. (Deneyseldir, kararlı değil!)</string>
+    <string name="pref_title_license">Lisans</string>
+    <string name="pref_description_license">\n<b>GNU Affero Genel Kamu Lisansı v3.0</b>\n\nPBu en güçlü copyleft lisansının izinleri, aynı lisans altında lisanslı bir eser kullanan daha büyük işleri içeren lisanslı eserlerin ve değişikliklerin eksiksiz kaynak kodunu kullanıma sunmakla yükümlüdür. Telif hakkı ve lisans bildirimleri korunmalıdır. Katkıda bulunanlar açık bir patent hakkı verir. Bir ağ üzerinden hizmet sağlamak için değiştirilmiş bir sürüm kullanıldığında, değiştirilmiş sürümün kaynak kodunun tamamı kullanılabilir duruma getirilmelidir.</string>
+    <string name="pref_title_version">Sürüm</string>
+    <string name="search_hint">PeerTube'da Ara</string>
+    <string name="title_activity_search">Arama</string>
+    <string name="no_data_available">Sonuç yok</string>
+    <string name="descr_overflow_button">Daha</string>
+    <string name="menu_share">Paylaş</string>
+    <string name="playback_channel_name" translatable="false">PeerTube</string>
+    <string name="invalid_url">Geçersiz bağlantı!</string>
+    <string name="pref_title_dark_mode">Karanlık Kipi</string>
+    <string name="pref_description_dark_mode">Karanlık kipin etkinleşmesi için uygulamayı yeniden başlatın.</string>
+    <string name="pref_title_app_theme">Uygulama Teması</string>
+    <string name="pref_description_app_theme">Temanın etkinleşmesi için uygulamayı yeniden başlatın.</string>
+
+    <string name="ab">Abhazca</string>
+    <string name="aa">Afar</string>
+    <string name="af">Afrikanca</string>
+    <string name="ak">Akan</string>
+    <string name="sq">Arnavutça</string>
+    <string name="ase">Amerikan İşaret Dili</string>
+    <string name="am">Amharca</string>
+    <string name="ar">Arapça</string>
+    <string name="an">Aragon</string>
+    <string name="hy">Ermenice</string>
+    <string name="as">Assamese</string>
+    <string name="av">Avarca</string>
+    <string name="ay">Aymara</string>
+    <string name="az">Azerice</string>
+    <string name="bm">Bambara</string>
+    <string name="ba">Başkurtca</string>
+    <string name="eu">Baskca</string>
+    <string name="be">Beyaz Rusça</string>
+    <string name="bn">Bengalce</string>
+    <string name="bi">Bislama Dili</string>
+    <string name="bs">Boşnakça</string>
+    <string name="bzs">Brezilya İşaret Dili</string>
+    <string name="br">Bretonca</string>
+    <string name="bfi">İngiliz İşaret Dili</string>
+    <string name="bg">Bulgarca</string>
+    <string name="my">Birmanyaca</string>
+    <string name="ca">Katalanca</string>
+    <string name="ch">Çemorro</string>
+    <string name="ce">Çeçence</string>
+    <string name="zh">Çince</string>
+    <string name="csl">Çin İşaret Dili</string>
+    <string name="cv">Çuvaşça</string>
+    <string name="kw">Kernevekçe</string>
+    <string name="co">Korsikaca</string>
+    <string name="cr">Krice</string>
+    <string name="hr">Hırvatça</string>
+    <string name="cs">Çekçe</string>
+    <string name="cse">Çek İşaret Dili</string>
+    <string name="da">Danimarkaca</string>
+    <string name="dsl">Danimarka İşaret Dili</string>
+    <string name="dv">Maldivce</string>
+    <string name="nl">Flemenkçe</string>
+    <string name="dz">Dzongka</string>
+    <string name="en">İngilizce</string>
+    <string name="eo">Esperanto</string>
+    <string name="et">Estonca</string>
+    <string name="ee">Ewe</string>
+    <string name="fo">Faroece</string>
+    <string name="fj">Fijice</string>
+    <string name="fi">Fince</string>
+    <string name="fr">Fransızca</string>
+    <string name="fsl">Fransız İşaret Dili</string>
+    <string name="ff">Pölce</string>
+    <string name="gl">Galiçyaca</string>
+    <string name="lg">Gandaca</string>
+    <string name="ka">Gürcüce</string>
+    <string name="de">Almanca</string>
+    <string name="gsg">Alman İşaret Dili</string>
+    <string name="gn">Guaranice</string>
+    <string name="gu">Guceratça</string>
+    <string name="ht">Haitice</string>
+    <string name="ha">Hausaca</string>
+    <string name="he">İbranice</string>
+    <string name="hz">Hereroca</string>
+    <string name="hi">Hintçe</string>
+    <string name="ho">Hiri Motu</string>
+    <string name="hu">Macarca</string>
+    <string name="is">İzlandaca</string>
+    <string name="ig">Igbo</string>
+    <string name="id">Endonezce</string>
+    <string name="iu">İnuitçe</string>
+    <string name="ik">İnyupikçe</string>
+    <string name="ga">İrlandaca</string>
+    <string name="it">Italyanca</string>
+    <string name="ja">Japonca</string>
+    <string name="jsl">Japon İşaret Dili</string>
+    <string name="jv">Cava Dili</string>
+    <string name="kl">Grönland Dili</string>
+    <string name="kn">Kannada Dili</string>
+    <string name="kr">Kanuri Dili</string>
+    <string name="ks">Keşmirce</string>
+    <string name="kk">Kazakça</string>
+    <string name="km">Kmerce</string>
+    <string name="ki">Kikuyu Dili</string>
+    <string name="rw">Ruandaca</string>
+    <string name="ky">Kırgızca</string>
+    <string name="tlh">Klingon Dili</string>
+    <string name="kv">Komice</string>
+    <string name="kg">Kongoca</string>
+    <string name="ko">Korece</string>
+    <string name="avk">Kotava Dili</string>
+    <string name="kj">Kuanyama Dili</string>
+    <string name="ku">Kürtçe</string>
+    <string name="lo">Laoca</string>
+    <string name="lv">Latonca</string>
+    <string name="li">Limburgca</string>
+    <string name="ln">Lingala Dili</string>
+    <string name="lt">Litvanca</string>
+    <string name="jbo">Kumanca</string>
+    <string name="lu">Luba-Katanga Dili</string>
+    <string name="lb">Lüksemburgca</string>
+    <string name="mk">Makedonca</string>
+    <string name="mg">Malgaşça</string>
+    <string name="ms">Malay Dili</string>
+    <string name="ml">Malayalamca</string>
+    <string name="mt">Maltaca</string>
+    <string name="gv">Man Dili</string>
+    <string name="mi">Maorice</string>
+    <string name="mr">Marathi</string>
+    <string name="mh">Marşalca</string>
+    <string name="el">Modern Yunanca (1453-)</string>
+    <string name="mn">Moğolca</string>
+    <string name="na">Nauruca</string>
+    <string name="nv">Navahoca</string>
+    <string name="ng">Ndonga Dili</string>
+    <string name="ne">Nepalce</string>
+    <string name="nd">Kuzey Ndebele Dili</string>
+    <string name="se">Kuzey Lapçaca</string>
+    <string name="no">Norveççe</string>
+    <string name="nb">Norveççe Kitap Dili</string>
+    <string name="nn">Yeni Norveççe</string>
+    <string name="ny">Çevaca</string>
+    <string name="oc">Oksitanca</string>
+    <string name="oj">Ojibvaca</string>
+    <string name="or">Oriya Dili</string>
+    <string name="om">Oromca</string>
+    <string name="os">Osetçe</string>
+    <string name="pks">Pakistan İşaret Dili</string>
+    <string name="pa">Pencapça</string>
+    <string name="fa">Farsça</string>
+    <string name="pl">Lehçe</string>
+    <string name="pt">Portekizce</string>
+    <string name="ps">Peştuca</string>
+    <string name="qu">Keçuvaca</string>
+    <string name="ro">Rumence</string>
+    <string name="rm">Romanşça</string>
+    <string name="rn">Rundice</string>
+    <string name="ru">Rusça</string>
+    <string name="rsl">Rus İşaret Dili</string>
+    <string name="sm">Samoaca</string>
+    <string name="sg">Sango Dili</string>
+    <string name="sc">Sarduca</string>
+    <string name="sdl">Suudi Arabistan İşaret Dili</string>
+    <string name="gd">İskoç Gal Dili</string>
+    <string name="sr">Sırpça</string>
+    <string name="sh">Sırp-Hırvatça</string>
+    <string name="sn">Shona</string>
+    <string name="ii">Sichuan Yi</string>
+    <string name="sd">Sintçe</string>
+    <string name="si">Seylanca</string>
+    <string name="sk">Slovakça</string>
+    <string name="sl">Slovence</string>
+    <string name="so">Somalice</string>
+    <string name="sfs">Güney Afrika İşaret Dili</string>
+    <string name="nr">Güney Ndebele</string>
+    <string name="st">Güney Sotho</string>
+    <string name="es">İspanyolca</string>
+    <string name="su">Sundaca</string>
+    <string name="sw">Svahili Dili</string>
+    <string name="ss">Svati Dili</string>
+    <string name="sv">İsveççe</string>
+    <string name="swl">İsveç İşaret Dili</string>
+    <string name="tl">Tagalogça</string>
+    <string name="ty">Tahiti Dili</string>
+    <string name="tg">Tacikçe</string>
+    <string name="ta">Tamilce</string>
+    <string name="tt">Tatarca</string>
+    <string name="te">Teluguca</string>
+    <string name="th">Tayca</string>
+    <string name="bo">Tibetçe</string>
+    <string name="ti">Tigrince</string>
+    <string name="to">Tonga (Tonga Adaları)</string>
+    <string name="ts">Tsongaca</string>
+    <string name="tn">Tsvana Dili</string>
+    <string name="tr">Türkçe</string>
+    <string name="tk">Turkmence</string>
+    <string name="tw">Twi</string>
+    <string name="ug">Uygurca</string>
+    <string name="uk">Ukraynaca</string>
+    <string name="ur">Urduca</string>
+    <string name="uz">Özbekçe</string>
+    <string name="ve">Venda Dili</string>
+    <string name="vi">Vietnamca</string>
+    <string name="wa">Valonca</string>
+    <string name="cy">Galce</string>
+    <string name="fy">Batı Frizcesi</string>
+    <string name="wo">Wolof Dili</string>
+    <string name="xh">Xhosa Dili</string>
+    <string name="yi">Yadişçe</string>
+    <string name="yo">Yorubaca</string>
+    <string name="za">Zhuangca</string>
+    <string name="zu">Zuluca</string>
+
+    <string name="red">Kırmızı</string>
+    <string name="pink">Pembe</string>
+    <string name="purple">Mor</string>
+    <string name="deeppurple">Koyu Mor</string>
+    <string name="indigo">Çivit</string>
+    <string name="blue">Mavi</string>
+    <string name="lightblue">Açık Mavi</string>
+    <string name="cyan">Camgöbeği</string>
+    <string name="teal">Çamurcun</string>
+    <string name="green">Yeşil</string>
+    <string name="lightgreen">Açık Yeşil</string>
+    <string name="lime">Misket Limonu</string>
+    <string name="yellow">Sarı</string>
+    <string name="amber">Kehribar</string>
+    <string name="orange">Turuncu</string>
+    <string name="deeporange">Koyu Turuncu</string>
+    <string name="brown">Kahverengi</string>
+    <string name="gray">Gri</string>
+    <string name="bluegray">Mavi gri</string>
+    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_10">Normal</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_20">2x</string>
+
+    <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
+    <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
+    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_quality_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
+    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
+    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
+    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
+    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
+    <string name="video_share_icon" translatable="false">{faw-share}</string>
+    <string name="video_download_icon" translatable="false">{faw-download}</string>
+    <string name="video_save_icon" translatable="false">{faw-save}</string>
+
+    <string name="pref_title_background_play">Arkaplanda Oynatma</string>
+    <string name="pref_description_background_play">Etkinleştirilirse, arka planda izleti oynatmaya devam eder.</string>
+    <string name="bottom_nav_title_local">Yerel</string>
+
+    <string name="title_activity_account">Hesap</string>
+    <string name="menu_video_more_report">Rapor</string>
+    <string name="menu_video_more_blacklist">Karaliste</string>
+    <string name="video_download_permission_error">Yazma izni olmadan video indirilemiyor</string>
+    <string name="video_rating_failed">Değerlendirme Başarısız</string>
+    <string name="video_login_required_for_service">Bu hizmeti kullanmak için giriş yapmalısınız.</string>
+
+    <string name="video_meta_button_share">Paylaş</string>
+    <string name="video_meta_button_download">İndir</string>
+    <string name="video_meta_button_privacy">Gizlilik</string>
+    <string name="video_meta_button_category">Sınıf</string>
+    <string name="video_meta_button_license">Lisans</string>
+    <string name="video_meta_button_language">Dil</string>
+    <string name="video_meta_button_tags">Etiketler</string>
+
+    <string name="menu_video_options_playback_speed">Oynatma hızı</string>
+    <string name="menu_video_options_quality">Kalite</string>
+
+    <!-- Constants, Don't translate -->
+    <string name="pref_token_access" translatable="false">pref_token_access</string>
+    <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
+    <string name="pref_token_expiration" translatable="false">pref_token_expiration</string>
+    <string name="pref_token_type" translatable="false">pref_token_type</string>
+    <string name="pref_auth_username" translatable="false">pref_auth_username</string>
+    <string name="pref_auth_password" translatable="false">pref_auth_password</string>
+    <string name="video_rating_none" translatable="false">none</string>
+    <string name="video_rating_like" translatable="false">like</string>
+    <string name="video_rating_dislike" translatable="false">dislike</string>
+
+
+
+</resources>

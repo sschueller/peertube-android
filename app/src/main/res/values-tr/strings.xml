@@ -55,7 +55,7 @@
     <string name="pref_title_license">Lisans</string>
     <string name="pref_description_license">\n<b>GNU Affero Genel Kamu Lisansı v3.0</b>\n\nPBu en güçlü copyleft lisansının izinleri, aynı lisans altında lisanslı bir eser kullanan daha büyük işleri içeren lisanslı eserlerin ve değişikliklerin eksiksiz kaynak kodunu kullanıma sunmakla yükümlüdür. Telif hakkı ve lisans bildirimleri korunmalıdır. Katkıda bulunanlar açık bir patent hakkı verir. Bir ağ üzerinden hizmet sağlamak için değiştirilmiş bir sürüm kullanıldığında, değiştirilmiş sürümün kaynak kodunun tamamı kullanılabilir duruma getirilmelidir.</string>
     <string name="pref_title_version">Sürüm</string>
-    <string name="search_hint">PeerTube'da Ara</string>
+    <string name="search_hint">PeerTube\'da Ara</string>
     <string name="title_activity_search">Arama</string>
     <string name="no_data_available">Sonuç yok</string>
     <string name="descr_overflow_button">Daha</string>

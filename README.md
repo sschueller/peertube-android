@@ -1,6 +1,8 @@
 <h1 align="center">
   Android PeerTube Client 
 </h1>
+[![Latest release](https://img.shields.io/github/release/sschueller/peertube-android.svg)](https://github.com/sschueller/peertube-android/releases/latest)
+[![F-Droid](https://img.shields.io/f-droid/v/net.schueller.peertube.svg)](https://f-droid.org/de/packages/net.schueller.peertube/)
 
 <h4 align="center">
 </h4>

@@ -21,7 +21,7 @@
     <string name="action_bar_title_logout">Выйти</string>
 
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_home">Домашняя</string>
+    <string name="bottom_nav_title_overview">Домашняя</string>
     <string name="bottom_nav_title_trending">Популярные</string>
     <string name="bottom_nav_title_subscriptions">Подписки</string>
     <string name="bottom_nav_title_account">Аккаунт</string>

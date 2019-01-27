@@ -107,8 +107,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         );
 
         holder.videoOwner.setText(displayNameAndHost);
-
+        // video owner click
         holder.videoOwner.setOnClickListener(v -> {
+            Intent intent = new Intent(context, AccountActivity.class);
+            intent.putExtra(EXTRA_ACCOUNTDISPLAYNAME, displayNameAndHost);
+            context.startActivity(intent);
+        });
+
+        // avatar click
+        holder.avatar.setOnClickListener(v -> {
             Intent intent = new Intent(context, AccountActivity.class);
             intent.putExtra(EXTRA_ACCOUNTDISPLAYNAME, displayNameAndHost);
             context.startActivity(intent);

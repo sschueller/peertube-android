@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
+import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.ChannelAdapter;
@@ -37,6 +39,7 @@ import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Account;
+import net.schueller.peertube.model.Avatar;
 import net.schueller.peertube.model.ChannelList;
 import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetUserService;
@@ -190,6 +193,17 @@ public class AccountActivity extends CommonActivity {
                     TextView joined = findViewById(R.id.account_joined);
                     joined.setText(account.getCreatedAt().toString());
 
+
+                    ImageView accountAvatar = findViewById(R.id.account_avatar);
+
+                    // set Avatar
+                    Avatar avatar = account.getAvatar();
+                    if (avatar != null) {
+                        String avatarPath = avatar.getPath();
+                        Picasso.with(AccountActivity.this)
+                                .load(APIUrlHelper.getUrl(AccountActivity.this) + avatarPath)
+                                .into(accountAvatar);
+                    }
 
                 } else {
                     Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();

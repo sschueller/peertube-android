@@ -25,7 +25,7 @@
     <string name="action_bar_title_logout">" লগআউট"</string>
 
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_home">হোম</string>
+    <string name="bottom_nav_title_overview">হোম</string>
     <string name="bottom_nav_title_trending">"Trending"</string>
     <string name="bottom_nav_title_subscriptions">Subscriptions</string>
     <string name="bottom_nav_title_account">একাউন্ট</string>

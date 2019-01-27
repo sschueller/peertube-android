@@ -26,18 +26,22 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+
 import androidx.core.app.ActivityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.os.Bundle;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,8 +49,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
+
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
@@ -119,6 +125,9 @@ public class VideoListActivity extends CommonActivity {
         menu.findItem(R.id.action_settings).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_cog).actionBar());
 
+        menu.findItem(R.id.action_account).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle).actionBar());
+
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
         searchMenuItem.setIcon(
@@ -178,10 +187,19 @@ public class VideoListActivity extends CommonActivity {
                 return false;
             case R.id.action_settings:
 //                Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, SettingsActivity.class);
-                this.startActivity(intent);
+                Intent intentSettings = new Intent(this, SettingsActivity.class);
+                this.startActivity(intentSettings);
 
                 return true;
+            case R.id.action_account:
+                if (!Session.getInstance().isLoggedIn()) {
+                    Intent intentLogin = new Intent(this, LoginActivity.class);
+                    this.startActivity(intentLogin);
+                } else {
+                    Intent intentMe = new Intent(this, MeActivity.class);
+                    this.startActivity(intentMe);
+                }
+                return false;
             default:
                 break;
         }
@@ -350,23 +368,24 @@ public class VideoListActivity extends CommonActivity {
 
         // Add Icon font
         Menu navMenu = navigation.getMenu();
-        navMenu.findItem(R.id.navigation_home).setIcon(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_home));
+        navMenu.findItem(R.id.navigation_overview).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_globe));
         navMenu.findItem(R.id.navigation_trending).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_fire));
+        navMenu.findItem(R.id.navigation_recent).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_plus_circle));
         navMenu.findItem(R.id.navigation_local).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_home));
         navMenu.findItem(R.id.navigation_subscriptions).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_folder));
-        navMenu.findItem(R.id.navigation_account).setIcon(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle));
+//        navMenu.findItem(R.id.navigation_account).setIcon(
+//                new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle));
 
         // Click Listener
         navigation.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
-                case R.id.navigation_home:
-                    //Log.v(TAG, "navigation_home");
-
+                case R.id.navigation_overview:
+                    // TODO
                     if (!isLoading) {
                         sort = "-createdAt";
                         currentStart = 0;
@@ -381,6 +400,16 @@ public class VideoListActivity extends CommonActivity {
 
                     if (!isLoading) {
                         sort = "-trending";
+                        currentStart = 0;
+                        filter = null;
+                        subscriptions = false;
+                        loadVideos(currentStart, count, sort, filter);
+                    }
+
+                    return true;
+                case R.id.navigation_recent:
+                    if (!isLoading) {
+                        sort = "-createdAt";
                         currentStart = 0;
                         filter = null;
                         subscriptions = false;
@@ -420,22 +449,62 @@ public class VideoListActivity extends CommonActivity {
                     }
 
 
-                case R.id.navigation_account:
-                    //Log.v(TAG, "navigation_account");
-                    //Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
-
-                    if (!Session.getInstance().isLoggedIn()) {
-                        Intent intent = new Intent(this, LoginActivity.class);
-                        this.startActivity(intent);
-                    } else {
-                        Intent intent = new Intent(this, MeActivity.class);
-                        this.startActivity(intent);
-                    }
-
-                    return false;
+//                case R.id.navigation_account:
+//                    //Log.v(TAG, "navigation_account");
+//                    //Toast.makeText(VideoListActivity.this, "Account Not Implemented", Toast.LENGTH_SHORT).show();
+//
+//                    if (!Session.getInstance().isLoggedIn()) {
+//                        Intent intent = new Intent(this, LoginActivity.class);
+//                        this.startActivity(intent);
+//                    } else {
+//                        Intent intent = new Intent(this, MeActivity.class);
+//                        this.startActivity(intent);
+//                    }
+//
+//                    return false;
             }
             return false;
         });
+
+        // TODO: on double click jump to top and reload
+//        navigation.setOnNavigationItemReselectedListener(menuItemReselected -> {
+//            switch (menuItemReselected.getItemId()) {
+//                case R.id.navigation_home:
+//                    if (!isLoading) {
+//                        sort = "-createdAt";
+//                        currentStart = 0;
+//                        filter = null;
+//                        subscriptions = false;
+//                        loadVideos(currentStart, count, sort, filter);
+//                    }
+//                case R.id.navigation_trending:
+//                    if (!isLoading) {
+//                        sort = "-trending";
+//                        currentStart = 0;
+//                        filter = null;
+//                        subscriptions = false;
+//                        loadVideos(currentStart, count, sort, filter);
+//                    }
+//                case R.id.navigation_local:
+//                    if (!isLoading) {
+//                        sort = "-publishedAt";
+//                        filter = "local";
+//                        currentStart = 0;
+//                        subscriptions = false;
+//                        loadVideos(currentStart, count, sort, filter);
+//                    }
+//                case R.id.navigation_subscriptions:
+//                    if (Session.getInstance().isLoggedIn()) {
+//                        if (!isLoading) {
+//                            sort = "-publishedAt";
+//                            filter = null;
+//                            currentStart = 0;
+//                            subscriptions = true;
+//                            loadVideos(currentStart, count, sort, filter);
+//                        }
+//                    }
+//            }
+//        });
 
     }
 

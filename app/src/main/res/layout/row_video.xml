@@ -5,14 +5,19 @@
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="0dp"
     card_view:cardElevation="0dp"
-    card_view:cardUseCompatPadding="true">
+    card_view:contentPadding="0dp"
+    card_view:cardPreventCornerOverlap="false"
+    card_view:cardUseCompatPadding="false">
 
     <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:paddingTop="0dp"
+        android:paddingRight="0dp"
+        android:paddingLeft="0dp"
+        android:paddingBottom="8dp">
 
 
         <ImageView
@@ -25,6 +30,7 @@
             android:scaleType="fitXY" />
 
             <TextView
+                android:textSize="12sp"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
                 android:layout_margin="2dp"
@@ -35,7 +41,8 @@
                 android:id="@+id/video_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#000000"/>
+                android:textColor="#ffffff"
+                android:background="#232323"/>
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/avatar"

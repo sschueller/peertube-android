@@ -3,14 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_home"
-        android:title="@string/bottom_nav_title_home"
+        android:id="@+id/navigation_overview"
+        android:title="@string/bottom_nav_title_overview"
         app:showAsAction="always|withText" />
 
     <item
         android:id="@+id/navigation_trending"
         android:title="@string/bottom_nav_title_trending"
         app:showAsAction="always|withText"/>
+
+    <item
+        android:id="@+id/navigation_recent"
+        android:title="@string/bottom_nav_title_recent"
+        app:showAsAction="ifRoom|withText" />
 
     <item
         android:id="@+id/navigation_local"
@@ -22,9 +27,9 @@
         android:title="@string/bottom_nav_title_subscriptions"
         app:showAsAction="ifRoom|withText"/>
 
-    <item
-        android:id="@+id/navigation_account"
-        android:title="@string/bottom_nav_title_account"
-        app:showAsAction="ifRoom|withText"/>
+    <!--<item-->
+        <!--android:id="@+id/navigation_account"-->
+        <!--android:title="@string/bottom_nav_title_account"-->
+        <!--app:showAsAction="ifRoom|withText"/>-->
 
 </menu>

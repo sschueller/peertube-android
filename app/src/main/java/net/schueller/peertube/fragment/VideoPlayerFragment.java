@@ -138,9 +138,11 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         torrentStatus = activity.findViewById(R.id.exo_torrent_status);
 
         // Full screen Icon
-        TextView fullscreenButton = activity.findViewById(R.id.exo_fullscreen);
-        fullscreenButton.setText(R.string.video_expand_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(fullscreenButton).build();
+        TextView fullscreenText = activity.findViewById(R.id.exo_fullscreen);
+        FrameLayout fullscreenButton = activity.findViewById(R.id.exo_fullscreen_button);
+
+        fullscreenText.setText(R.string.video_expand_icon);
+        new Iconics.IconicsBuilder().ctx(context).on(fullscreenText).build();
 
         fullscreenButton.setOnClickListener(view -> {
             Log.d(TAG, "Fullscreen");

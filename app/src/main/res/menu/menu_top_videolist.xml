@@ -19,4 +19,11 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_account"
+        android:orderInCategory="300"
+        android:title="@string/action_bar_title_account"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+        app:showAsAction="ifRoom" />
+
 </menu>

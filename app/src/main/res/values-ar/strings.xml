@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PeerTube</string>
 
@@ -51,7 +52,7 @@
     <string name="pref_title_torrent_player">مشغل فيديو التورنت</string>
     <string name="pref_description_torrent_player">تشغيل الفيديو عبر بث التورنت . يتطلب هذا أذونات التخزين. (ألفا ، غير مستقر!)</string>
     <string name="pref_title_license">الرخصة</string>
-    <string name="pref_description_license"><b >رخصة جنو العمومية v3.0</b>\n
+    <string name="pref_description_license"><b>رخصة جنو العمومية v3.0</b>\n
       \n
       إن أذونات هذا الترخيص الأقوى للحقوق المتروكة مشروطة بإتاحة الشفرة المصدرية الكاملة للأعمال والتعديلات المرخصة ، والتي تشتمل على أعمال أكبر باستخدام عمل مرخص ، تحت نفس الترخيص. يجب الحفاظ على حقوق النشر وإشعارات الترخيص. يقدم المساهمون منحة صريحة لحقوق البراءة. عند استخدام إصدار معدل لتوفير خدمة عبر شبكة ، يجب توفير شفرة المصدر الكاملة للإصدار المعدل.</string>
     <string name="pref_title_version">الإصدار</string>
@@ -98,5 +99,79 @@
     <string name="pref_title_background_play">التشغيل في الخلفية</string>
     <string name="pref_description_background_play">إن تم تنشيطه، سيستمر تشغيل الفيديو في الخلفية.</string>
     <string name="bottom_nav_title_local">المحلي</string>
-
+    <string name="action_bar_title_logout">تسجيل خروج</string>
+    <string name="action_bar_title_account">الحساب</string>
+    <string name="bottom_nav_title_recent">الأخيرة</string>
+    <string name="ab">الأبخازية</string>
+    <string name="aa">عفار</string>
+    <string name="af">الأفريكانية</string>
+    <string name="ak">الأكانية</string>
+    <string name="sq">ألبانية</string>
+    <string name="ase">لغة الإشارة الأمريكية</string>
+    <string name="am">الأمهرية</string>
+    <string name="ar">العربية</string>
+    <string name="an">الأراغونية</string>
+    <string name="hy">اﻷرمينية</string>
+    <string name="as">الأساميزية</string>
+    <string name="av">الأوارية</string>
+    <string name="ay">الأيمارا</string>
+    <string name="az">الأذربيجانية</string>
+    <string name="bm">البمبرية</string>
+    <string name="ba">باشكير</string>
+    <string name="eu">الباسك</string>
+    <string name="be">البيلاروسية</string>
+    <string name="bn">البنغالية</string>
+    <string name="bi">البيسلامية</string>
+    <string name="bs">البوسنية</string>
+    <string name="bzs">لغة الإشارة البرازيلية</string>
+    <string name="br">بريتون</string>
+    <string name="bfi">لغة الإشارة البريطانية</string>
+    <string name="bg">البلغارية</string>
+    <string name="my">البورمية</string>
+    <string name="ca">الكتالانية</string>
+    <string name="ch">شامورو</string>
+    <string name="ce">الشيشانية</string>
+    <string name="zh">الصينية</string>
+    <string name="csl">الصينية لغة الإشارة</string>
+    <string name="cv">التشوفاشية</string>
+    <string name="kw">الكورنية</string>
+    <string name="co">الكورسيكية</string>
+    <string name="cr">الكروية</string>
+    <string name="hr">الكرواتية</string>
+    <string name="cs">التشيكية</string>
+    <string name="cse">لغة الإشارات التشيكية</string>
+    <string name="da">الدانماركية</string>
+    <string name="dsl">لغة الإشارة الدانمركية</string>
+    <string name="dv">الديفيهي</string>
+    <string name="nl">الهولندية</string>
+    <string name="dz">الزونخاية</string>
+    <string name="eo">الإسبرانتو</string>
+    <string name="et">الإستونية</string>
+    <string name="ee">الإيوية</string>
+    <string name="fo">الفياروسية</string>
+    <string name="fj">الفيجية</string>
+    <string name="fi">الفنلندية</string>
+    <string name="title_activity_account">الحساب</string>
+    <string name="menu_video_more_report">تقرير</string>
+    <string name="menu_video_more_blacklist">القائمة السوداء</string>
+    <string name="video_download_permission_error">لا يمكن تحميل الفيديو بدون إذن الكتابة</string>
+    <string name="video_rating_failed">فشل التقييم</string>
+    <string name="video_login_required_for_service">يجب عليك تسجيل الدخول لاستخدام هذه الخدمة</string>
+    <string name="video_meta_button_share">مشاركة</string>
+    <string name="video_meta_button_download">تنزيل</string>
+    <string name="video_meta_button_privacy">الخصوصية</string>
+    <string name="video_meta_button_category">الفئة</string>
+    <string name="video_meta_button_license">الرخصة</string>
+    <string name="video_meta_button_language">اللغة</string>
+    <string name="video_meta_button_tags">العلامات</string>
+    <string name="menu_video_options_playback_speed">سرعة التشغيل</string>
+    <string name="menu_video_options_quality">الجودة</string>
+    <string name="account_bottom_menu_videos">الفيديو</string>
+    <string name="account_bottom_menu_channels">القنوات</string>
+    <string name="account_bottom_menu_about">حول</string>
+    <string name="account_about_account">الحساب:</string>
+    <string name="account_about_subscribers">المشتركين:</string>
+    <string name="account_about_description">الوصف:</string>
+    <string name="account_about_joined">انضم :</string>
+    <string name="api_error">حدث خطأ، يرجى المحاولة في وقت لاحق!</string>
 </resources>

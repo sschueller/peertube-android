@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">PeerTube</string>
 
@@ -306,7 +307,7 @@
     <string name="menu_video_more_blacklist">Karaliste</string>
     <string name="video_download_permission_error">Yazma izni olmadan video indirilemiyor</string>
     <string name="video_rating_failed">Değerlendirme Başarısız</string>
-    <string name="video_login_required_for_service">Bu hizmeti kullanmak için giriş yapmalısınız.</string>
+    <string name="video_login_required_for_service">Bu hizmeti kullanmak için giriş yapmalısınız</string>
 
     <string name="video_meta_button_share">Paylaş</string>
     <string name="video_meta_button_download">İndir</string>
@@ -329,7 +330,14 @@
     <string name="video_rating_none" translatable="false">none</string>
     <string name="video_rating_like" translatable="false">like</string>
     <string name="video_rating_dislike" translatable="false">dislike</string>
-
-
-
+    <string name="action_bar_title_account">Hesap</string>
+    <string name="bottom_nav_title_recent">Yeniler</string>
+    <string name="account_bottom_menu_videos">İzletiler</string>
+    <string name="account_bottom_menu_channels">Kanallar</string>
+    <string name="account_bottom_menu_about">Hakkında</string>
+    <string name="account_about_account">Hesap:</string>
+    <string name="account_about_subscribers">Aboneler:</string>
+    <string name="account_about_description">Açıklama:</string>
+    <string name="account_about_joined">Katılım:</string>
+    <string name="api_error">Bir şeyler ters gitti, lütfen daha sonra tekrar deneyin!</string>
 </resources>

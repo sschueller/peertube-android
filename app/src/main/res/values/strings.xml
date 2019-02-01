@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">PeerTube</string>
 
@@ -22,7 +23,7 @@
     <!-- Action bar -->
     <string name="action_bar_title_search">Search</string>
     <string name="action_bar_title_settings">Settings</string>
-    <string name="action_bar_title_logout">Logout</string>
+    <string name="action_bar_title_logout">Log out</string>
     <string name="action_bar_title_account">Account</string>
 
     <!-- Bottom navigation bar -->
@@ -310,7 +311,7 @@
     <string name="menu_video_more_blacklist">Blacklist</string>
     <string name="video_download_permission_error">Can not download video without write permission</string>
     <string name="video_rating_failed">Rating Failed</string>
-    <string name="video_login_required_for_service">You must login to use this service</string>
+    <string name="video_login_required_for_service">You must log in to use this service</string>
 
     <string name="video_meta_button_share">Share</string>
     <string name="video_meta_button_download">Download</string>

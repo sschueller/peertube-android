@@ -1,3 +1,13 @@
+### Version 1.0.26 Tag: v1.0.26 (2019-01-27)
+ * Larger fullscreen button target
+ * Fixed duration colors
+ * Avatar click to owner page
+ * Added avatar to account view
+ * Moved account to top menu 
+ * Added overview placeholder
+ * Fixed download button wrapping
+ * Added fade to player controls
+
 ### Version 1.0.25 Tag: v1.0.25 (2019-01-20)
  * Account overview page and videos list
  * Turkish (tr) Translation added (@oktay454)

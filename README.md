@@ -14,7 +14,8 @@
 </p>
 
 ## Download
-Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schueller.peertube
+* Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schueller.peertube
+* F-Droid: https://f-droid.org/packages/net.schueller.peertube/
 
 ## Features
 

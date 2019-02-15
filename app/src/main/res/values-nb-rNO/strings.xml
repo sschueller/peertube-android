@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><string name="title_activity_settings">Innstillinger</string>
+<resources>
+    <string name="title_activity_settings">Innstillinger</string>
     <string name="title_activity_login">Logg inn</string>
     <string name="prompt_server">Tjener</string>
     <string name="prompt_email">E-post / brukernavn</string>
@@ -60,4 +61,41 @@
     <string name="account_about_description">Beskrivelse:</string>
     <string name="account_about_joined">Tok del:</string>
     <string name="api_error">Noe gikk galt, prøv igjen senere.</string>
+    <string name="title_activity_video_play">VideoPlayActivity</string>
+    <string name="permission_rationale">Innvilg kontakttilgang for fullføring av e-postadresser.</string>
+    <string name="bottom_nav_title_trending">Populært</string>
+    <string name="meta_data_views">" visninger"</string>
+    <string name="video_row_video_thumbnail">Video-miniatyrbilde</string>
+    <string name="pref_title_show_nsfw">VOKSENT innhold</string>
+    <string name="pref_description_show_nsfw">Vis VOKSENT innhold</string>
+    <string name="pref_language">Språkfilter</string>
+    <string name="pref_description_language">Velg videospråk, istedenfor å vise alle videoer på alle språk.</string>
+    <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
+    <string name="pref_title_torrent_player">Torrent-videospiller</string>
+    <string name="pref_description_torrent_player">Videoavspilling via en torrentstrøm. Dette krever lagringstilgang. (Alfa, ikke stabilt!)</string>
+    <string name="pref_title_license">Lisens</string>
+    <string name="pref_description_license">
+\n<b>GNU Affero General Public Lisens v3.0</b>
+\n
+\nRettigheter til denne sterkeste av copyleft-lisenser er prisgitt at hele kildekoden for lisensierte verker og endringer frigis, som inkluderer større utledede arbeider, under samme lisens. Kopirett og lisensmerknader må bevares. Bidragsytere må besørge uttrykt innvilgelse av patentrettigheter. Når en endret versjon brukes for å tilby en tjeneste over et nettverk, må hele kildekoden for den endrede versjonen tilgjengeliggjøres.</string>
+    <string name="pref_title_version">Versjon</string>
+    <string name="search_hint">Søk på PeerTube</string>
+    <string name="title_activity_search">Søk</string>
+    <string name="no_data_available">Resultatløst</string>
+    <string name="descr_overflow_button">Mer</string>
+    <string name="menu_share">Del</string>
+    <string name="invalid_url">Ugyldig nettadresse.</string>
+    <string name="pref_title_dark_mode">Mørkt modus</string>
+    <string name="pref_description_dark_mode">Start programmet for å ikle mørk drakt.</string>
+    <string name="pref_title_app_theme">Programdrakt</string>
+    <string name="pref_description_app_theme">Start programmet på ny for å ikle drakt.</string>
+    <string name="indigo">Indigo</string>
+    <string name="cyan">Turkis</string>
+    <string name="lime">Lime</string>
+    <string name="amber">Rav</string>
+    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_20">2x</string>
+    <string name="pref_description_background_play">Hvis påskrudd vil videoer spilles videre i bakgrunnen.</string>
+    <string name="video_login_required_for_service">Du må logge inn for å bruke denne tjenesten</string>
 </resources>

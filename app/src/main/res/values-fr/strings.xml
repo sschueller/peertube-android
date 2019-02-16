@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PeerTube</string>
+    <string name="app_name">Thorium</string>
 
     <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="title_activity_settings">Paramètres</string>

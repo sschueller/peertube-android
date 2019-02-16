@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PeerTube</string>
+    <string name="app_name">Thorium</string>
     <string name="title_activity_video_play">نشاط تشغيل الفيديو</string>
     <string name="title_activity_settings">الإعدادات</string>
     <string name="title_activity_login">تسجيل الدخول</string>

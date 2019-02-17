@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="title_activity_login">Anmelden</string>
+    <string name="prompt_server">Server</string>
+    <string name="prompt_email">Kontoname</string>
+    <string name="prompt_password">Passwort</string>
+    <string name="action_sign_in">Anmelden</string>
+    <string name="action_sign_in_short">Anmelden</string>
+    <string name="error_invalid_email">Ungültige E-Mail-Adresse</string>
+    <string name="action_bar_title_search">Suche</string>
+    <string name="action_bar_title_logout">Abmelden</string>
+    <string name="action_bar_title_account">Konto</string>
+    <string name="bottom_nav_title_overview">Übersicht</string>
+    <string name="bottom_nav_title_local">Lokal</string>
+    <string name="bottom_nav_title_subscriptions">Abos</string>
+    <string name="bottom_nav_title_account">Konto</string>
+    <string name="pref_title_peertube_server">PeerTube Server</string>
+</resources>

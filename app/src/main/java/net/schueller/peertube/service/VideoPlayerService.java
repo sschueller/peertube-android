@@ -226,7 +226,7 @@ public class VideoPlayerService extends Service {
                 }
         );
 
-        playerNotificationManager.setSmallIcon(R.drawable.ic_peertube_bw);
+        playerNotificationManager.setSmallIcon(R.drawable.ic_logo_bw);
 
         // don't show skip buttons in notification
         playerNotificationManager.setUseNavigationActions(false);

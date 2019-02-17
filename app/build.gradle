@@ -6,8 +6,8 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1026
-        versionName "1.0.26"
+        versionCode 1027
+        versionName "1.0.27"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
             libVersions = [
@@ -24,7 +24,7 @@ android {
             implementation 'androidx.recyclerview:recyclerview:1.0.0'
             implementation 'androidx.legacy:legacy-support-v13:1.0.0'
             implementation 'com.google.android.material:material:1.0.0'
-            implementation 'de.hdodenhof:circleimageview:2.2.0'
+            implementation 'de.hdodenhof:circleimageview:3.0.0'
 
             // font awesome
             implementation "com.mikepenz:iconics-core:3.1.0"

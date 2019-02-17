@@ -1,11 +1,9 @@
 <h1 align="center">
-  Android PeerTube Client 
+  Thorium, a Android PeerTube Client 
 </h1>
 
-<p align="center">
 [![Latest release](https://img.shields.io/github/release/sschueller/peertube-android.svg)](https://github.com/sschueller/peertube-android/releases/latest)
 [![F-Droid](https://img.shields.io/f-droid/v/net.schueller.peertube.svg)](https://f-droid.org/de/packages/net.schueller.peertube/)
-</p>
 
 <h4 align="center">
 </h4>
@@ -16,7 +14,8 @@
 </p>
 
 ## Download
-Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schueller.peertube
+* Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schueller.peertube
+* F-Droid: https://f-droid.org/packages/net.schueller.peertube/
 
 ## Features
 

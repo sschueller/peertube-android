@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">PeerTube</string>
+    <string name="app_name" translatable="false">Thorium</string>
 
     <string name="title_activity_video_play">VideoPlayActivity</string>
-    <string name="title_activity_settings">সেটিং</string>
+    <string name="title_activity_settings">সেটিংস</string>
     <string name="title_activity_login">সাইন ইন</string>
 
     <!-- Strings related to login -->
@@ -22,7 +23,7 @@
     <!-- Action bar -->
     <string name="action_bar_title_search">সার্চ</string>
     <string name="action_bar_title_settings">সেটিং</string>
-    <string name="action_bar_title_logout">" লগআউট"</string>
+    <string name="action_bar_title_logout">লগ আউট</string>
 
     <!-- Bottom navigation bar -->
     <string name="bottom_nav_title_overview">হোম</string>
@@ -304,7 +305,7 @@
     <string name="menu_video_more_blacklist">Blacklist</string>
     <string name="video_download_permission_error">Can not download video without write permission</string>
     <string name="video_rating_failed">Rating Failed</string>
-    <string name="video_login_required_for_service">You must login to use this service</string>
+    <string name="video_login_required_for_service">এই সেবা ব্যবহারের জন্য লগ ইন করুন</string>
 
     <string name="video_meta_button_share">শেয়ার</string>
     <string name="video_meta_button_download">ডাউনলোড</string>
@@ -326,6 +327,16 @@
     <string name="video_rating_like" translatable="false">like</string>
     <string name="video_rating_dislike" translatable="false">dislike</string>
     <string name="deeppurple">গাঢ় বেগুনি</string>
-
-
+    <string name="action_bar_title_account">একাউন্ট</string>
+    <string name="bottom_nav_title_recent">সাম্প্রতিক</string>
+    <string name="menu_video_options_playback_speed">প্লেব্যাক এর গতি</string>
+    <string name="menu_video_options_quality">কোয়ালিটি</string>
+    <string name="account_bottom_menu_videos">ভিডিও</string>
+    <string name="account_bottom_menu_channels">চ্যানেলগুলি</string>
+    <string name="account_bottom_menu_about">সম্পর্কিত</string>
+    <string name="account_about_account">একাউন্ট:</string>
+    <string name="account_about_subscribers">গ্রাহক সমূহ:</string>
+    <string name="account_about_description">বিবরণ:</string>
+    <string name="account_about_joined">যুক্ত হয়েছেন:</string>
+    <string name="api_error">কিছু সমস্যা হয়েছে, অনুগ্রহ করে পরে চেষ্টা করুন!</string>
 </resources>

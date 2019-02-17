@@ -344,5 +344,6 @@
     <string name="video_rating_none" translatable="false">none</string>
     <string name="video_rating_like" translatable="false">like</string>
     <string name="video_rating_dislike" translatable="false">dislike</string>
+    <string name="action_bar_title_server_selection">Select Server</string>
 
 </resources>

@@ -25,7 +25,7 @@ public class Server {
     private String shortDescription;
     private String version;
     private Boolean signupAllowed;
-    private Integer userVideoQuota;
+    private Double userVideoQuota;
     private Integer totalUsers;
     private Integer totalVideos;
     private Integer totalLocalVideos;
@@ -81,11 +81,11 @@ public class Server {
         this.signupAllowed = signupAllowed;
     }
 
-    public Integer getUserVideoQuota() {
+    public Double getUserVideoQuota() {
         return userVideoQuota;
     }
 
-    public void setUserVideoQuota(Integer userVideoQuota) {
+    public void setUserVideoQuota(Double userVideoQuota) {
         this.userVideoQuota = userVideoQuota;
     }
 

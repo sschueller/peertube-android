@@ -44,4 +44,8 @@ public class APIUrlHelper{
     public static String getShareUrl(Context context, String videoUuid) {
         return APIUrlHelper.getUrl(context) + "/videos/watch/" + videoUuid;
     }
+
+    public static String getServerIndexUrl(Context context) {
+        return "https://instances.joinpeertube.org/api/v1/";
+    }
 }

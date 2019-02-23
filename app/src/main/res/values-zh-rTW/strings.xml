@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources><string name="title_activity_video_play">影片播放活動</string>
+<resources>
+    <string name="title_activity_video_play">影片播放活動</string>
     <string name="title_activity_settings">設定</string>
     <string name="title_activity_login">登入</string>
     <string name="prompt_server">伺服器</string>
@@ -11,8 +12,7 @@
     <string name="error_invalid_password">這個密碼太短了</string>
     <string name="error_incorrect_password">這個密碼不正確</string>
     <string name="error_field_required">這個欄位為必填</string>
-    <string name="permission_rationale">"聯絡人權限是電子郵件
-\n        完成功能所必須。"</string>
+    <string name="permission_rationale">授予連絡人電子郵件完成權限。</string>
     <string name="action_bar_title_search">搜尋</string>
     <string name="action_bar_title_settings">設定</string>
     <string name="action_bar_title_logout">登出</string>
@@ -30,7 +30,7 @@
     <string name="pref_title_show_nsfw">NSFW 內容</string>
     <string name="pref_description_show_nsfw">顯示 NSFW 內容</string>
     <string name="pref_language">語言過濾器</string>
-    <string name="pref_description_language">選取要顯示的影片語言。若未選取則將會顯示所有語言的所有影片。</string>
+    <string name="pref_description_language">選取所要的影片語言，而不是以所有的語言顯示全部影片。</string>
     <string name="title_activity_url_video_play">Url影片播放活動</string>
     <string name="pref_title_torrent_player">種子影片播放器</string>
     <string name="pref_description_torrent_player">透過種子串流播放影片。這需要儲存權限。（Alpha 版，不穩定！）</string>
@@ -45,7 +45,7 @@
     <string name="no_data_available">沒有結果</string>
     <string name="descr_overflow_button">更多</string>
     <string name="menu_share">分享</string>
-    <string name="invalid_url">無效的 Url！</string>
+    <string name="invalid_url">無效的 URL。</string>
     <string name="pref_title_dark_mode">深色模式</string>
     <string name="pref_description_dark_mode">重新啟動應用程式以讓深色模式生效。</string>
     <string name="pref_title_app_theme">應用程式主題</string>

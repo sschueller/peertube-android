@@ -26,14 +26,18 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
+
 import androidx.appcompat.app.ActionBar;
+
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.util.Patterns;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import net.schueller.peertube.R;
+
 import java.util.List;
 
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
@@ -53,14 +57,14 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private static String getSelectedColor(Context context, String colorId){
+    private static String getSelectedColor(Context context, String colorId) {
 
         String res = "Color not found";
-        String [ ] themeArray = context.getResources().getStringArray(R.array.themeValues);
-        String [ ] colorArray = context.getResources().getStringArray(R.array.themeArray);
+        String[] themeArray = context.getResources().getStringArray(R.array.themeValues);
+        String[] colorArray = context.getResources().getStringArray(R.array.themeArray);
 
-        for (int i = 0 ; i < themeArray.length ; i++){
-            if (themeArray[i].equals(colorId)){
+        for (int i = 0; i < themeArray.length; i++) {
+            if (themeArray[i].equals(colorId)) {
                 res = colorArray[i];
                 break;
             }
@@ -76,12 +80,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         String stringValue = value.toString();
 
         // check URL is valid
-        if (preference.getKey().equals("pref_api_base") && !Patterns.WEB_URL.matcher(stringValue).matches()) {
-            Toast.makeText(preference.getContext(), R.string.invalid_url, Toast.LENGTH_LONG).show();
-            return false;
-        }
+//        if (preference.getKey().equals("pref_api_base") && !Patterns.WEB_URL.matcher(stringValue).matches()) {
+//            Toast.makeText(preference.getContext(), R.string.invalid_url, Toast.LENGTH_LONG).show();
+//            return false;
+//        }
         // Check if Theme color has change & Provide selected color
-        else if (preference.getKey().equals("pref_theme")) {
+        if (preference.getKey().equals("pref_theme")) {
 
             stringValue = getSelectedColor(preference.getContext(), stringValue);
 
@@ -211,6 +215,18 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 return true;
             }
             return super.onOptionsItemSelected(item);
+        }
+
+        @Override
+        public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
+                                             Preference preference) {
+            String key = preference.getKey();
+            if (key.equals("pref_api_base")) {
+                Intent intentServer = new Intent(preference.getContext(), SelectServerActivity.class);
+                startActivity(intentServer);
+                return true;
+            }
+            return false;
         }
     }
 

@@ -24,14 +24,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="Select a Server from the list below or enter it directly." />
+                android:text="@string/server_selection_select_a_server" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:hint="PeerTube Server URL"
+                    android:hint="@string/server_selection_peertube_server_url"
                     android:id="@+id/serverSelectedUrl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

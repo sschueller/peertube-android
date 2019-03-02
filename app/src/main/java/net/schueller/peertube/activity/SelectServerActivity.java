@@ -9,9 +9,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,9 @@ import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 
 import java.util.ArrayList;
+
+import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
+import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class SelectServerActivity extends AppCompatActivity {
 
@@ -46,6 +52,25 @@ public class SelectServerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_server_selection);
 
         loadList();
+
+        // set url
+        TextView selectedUrl = findViewById(R.id.serverSelectedUrl);
+        selectedUrl.setText(APIUrlHelper.getUrl(SelectServerActivity.this));
+
+        Button setServerButton = findViewById(R.id.server_selection_set);
+        setServerButton.setOnClickListener(v -> {
+
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+            String serverUrl = APIUrlHelper.cleanServerUrl(selectedUrl.getText().toString());
+
+            editor.putString("pref_api_base", serverUrl);
+            editor.apply();
+
+            this.finish();
+        });
+
     }
 
 

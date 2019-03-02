@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import net.schueller.peertube.R;
@@ -77,10 +78,15 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
             SharedPreferences.Editor editor = sharedPref.edit();
 
-            editor.putString("pref_api_base", "https://" + serverList.get(position).getHost());
+            String serverUrl = APIUrlHelper.cleanServerUrl(serverList.get(position).getHost());
+
+            editor.putString("pref_api_base", serverUrl);
             editor.apply();
 
             activity.finish();
+
+            Toast.makeText(activity, activity.getString(R.string.server_selection_set_server, serverUrl), Toast.LENGTH_LONG).show();
+
         });
 
 //

@@ -18,6 +18,8 @@
 package net.schueller.peertube.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.activity.SelectServerActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.Server;
 
@@ -38,12 +41,12 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
 
 
     private ArrayList<Server> serverList;
-    private Context context;
+    private SelectServerActivity activity;
     private String baseUrl;
 
-    public ServerAdapter(ArrayList<Server> serverList, Context context) {
+    public ServerAdapter(ArrayList<Server> serverList, SelectServerActivity activity) {
         this.serverList = serverList;
-        this.context = context;
+        this.activity = activity;
     }
 
     @NonNull
@@ -52,7 +55,7 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.row_server, parent, false);
 
-        baseUrl = APIUrlHelper.getUrl(context);
+        baseUrl = APIUrlHelper.getUrl(activity);
 
         return new AccountViewHolder(view);
     }
@@ -62,7 +65,24 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
 
         holder.name.setText(serverList.get(position).getName());
         holder.host.setText(serverList.get(position).getHost());
+        holder.signupAllowed.setText(activity.getString(R.string.server_selection_signup_allowed, activity.getString(
+                serverList.get(position).getSignupAllowed() ?
+                        R.string.server_selection_signup_allowed_yes :
+                        R.string.server_selection_signup_allowed_no
+        )));
         holder.shortDescription.setText(serverList.get(position).getShortDescription());
+
+        holder.itemView.setOnClickListener(v -> {
+
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+            editor.putString("pref_api_base", "https://" + serverList.get(position).getHost());
+            editor.apply();
+
+            activity.finish();
+        });
+
 //
 //
 //        holder.moreButton.setText(R.string.video_more_icon);
@@ -104,12 +124,13 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
 
     class AccountViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, host, shortDescription;
+        TextView name, host, signupAllowed, shortDescription;
 
         AccountViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             host = itemView.findViewById(R.id.host);
+            signupAllowed = itemView.findViewById(R.id.signupAllowed);
             shortDescription = itemView.findViewById(R.id.shortDescription);
 
         }

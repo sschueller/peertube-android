@@ -302,6 +302,10 @@
     <string name="video_download_icon" translatable="false">{faw-download}</string>
     <string name="video_save_icon" translatable="false">{faw-save}</string>
 
+    <string name="action_set_url">Select Server</string>
+    <string name="server_selection_signup_allowed">Signup Allowed: %s</string>
+    <string name="server_selection_signup_allowed_yes">Yes</string>
+    <string name="server_selection_signup_allowed_no">No</string>
 
     <string name="title_activity_account">Account</string>
     <string name="menu_video_more_report">Report</string>

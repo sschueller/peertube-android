@@ -59,7 +59,7 @@ public class SelectServerActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SelectServerActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        serverAdapter = new ServerAdapter(new ArrayList<>(), SelectServerActivity.this);
+        serverAdapter = new ServerAdapter(new ArrayList<>(), this);
         recyclerView.setAdapter(serverAdapter);
 
         loadServers(currentStart, count);

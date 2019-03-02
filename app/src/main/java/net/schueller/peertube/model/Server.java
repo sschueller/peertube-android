@@ -31,6 +31,10 @@ public class Server {
     private Integer totalLocalVideos;
     private Integer totalInstanceFollowers;
     private Integer totalInstanceFollowing;
+
+    private Boolean supportsIPv6;
+    private String country;
+
     private Integer health;
 
     public Integer getId() {
@@ -127,6 +131,22 @@ public class Server {
 
     public void setTotalInstanceFollowing(Integer totalInstanceFollowing) {
         this.totalInstanceFollowing = totalInstanceFollowing;
+    }
+
+    public Boolean getSupportsIPv6() {
+        return supportsIPv6;
+    }
+
+    public void setSupportsIPv6(Boolean supportsIPv6) {
+        this.supportsIPv6 = supportsIPv6;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Integer getHealth() {

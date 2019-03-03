@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -65,10 +66,14 @@ public class SelectServerActivity extends AppCompatActivity {
 
             String serverUrl = APIUrlHelper.cleanServerUrl(selectedUrl.getText().toString());
 
-            editor.putString("pref_api_base", serverUrl);
-            editor.apply();
+            if (!Patterns.WEB_URL.matcher(serverUrl).matches()) {
+                Toast.makeText(this, R.string.invalid_url, Toast.LENGTH_LONG).show();
+            } else {
+                editor.putString("pref_api_base", serverUrl);
+                editor.apply();
+                this.finish();
+            }
 
-            this.finish();
         });
 
     }

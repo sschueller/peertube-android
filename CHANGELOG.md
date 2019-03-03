@@ -1,3 +1,6 @@
+### Version 1.0.29 Tag: v1.0.29 (2019-03-03)
+* Prevent entry of bad URL
+
 ### Version 1.0.28 Tag: v1.0.28 (2019-03-03)
 * Server selection
 * Lots of translations

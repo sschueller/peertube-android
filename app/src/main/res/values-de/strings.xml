@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="title_activity_login">Anmelden</string>
+    <string name="prompt_server">Server</string>
+    <string name="prompt_email">Kontoname</string>
+    <string name="prompt_password">Passwort</string>
+    <string name="action_sign_in">Anmelden</string>
+    <string name="action_sign_in_short">Anmelden</string>
+    <string name="error_invalid_email">Ungültige E-Mail-Adresse</string>
+    <string name="action_bar_title_search">Suche</string>
+    <string name="action_bar_title_logout">Abmelden</string>
+    <string name="action_bar_title_account">Konto</string>
+    <string name="bottom_nav_title_overview">Übersicht</string>
+    <string name="bottom_nav_title_local">Lokal</string>
+    <string name="bottom_nav_title_subscriptions">Abos</string>
+    <string name="bottom_nav_title_account">Konto</string>
+    <string name="pref_title_peertube_server">PeerTube Server</string>
+    <string name="title_activity_video_play">VideoPlayActivity</string>
+    <string name="error_invalid_password">Dieses Passwort ist zu kurz</string>
+    <string name="error_incorrect_password">Dieses Passwort ist falsch</string>
+    <string name="action_bar_title_settings">Einstellungen</string>
+    <string name="bottom_nav_title_recent">Aktuell</string>
+    <string name="meta_data_views">" Abrufe"</string>
+    <string name="video_row_video_thumbnail">Video Vorschaubild</string>
+    <string name="video_row_account_avatar">Konto Avatar</string>
+    <string name="pref_title_show_nsfw">NSFW Inhalt</string>
+    <string name="pref_description_show_nsfw">Zeigen NSFW Inhalt</string>
+    <string name="pref_language">Sprachfilter</string>
+    <string name="pref_title_license">Lizenz</string>
+    <string name="pref_title_version">Version</string>
+    <string name="search_hint">PeerTube durchsuchen</string>
+    <string name="title_activity_search">Suche</string>
+    <string name="no_data_available">Keine Ergebnisse</string>
+    <string name="descr_overflow_button">Mehr</string>
+    <string name="menu_share">Teilen</string>
+    <string name="invalid_url">Ungültige URL.</string>
+    <string name="pref_title_dark_mode">Dunkler Modus</string>
+    <string name="pref_title_app_theme">Farbschema</string>
+</resources>

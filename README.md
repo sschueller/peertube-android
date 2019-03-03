@@ -1,5 +1,5 @@
 <h1 align="center">
-  Thorium, a Android PeerTube Client 
+  Thorium, an Android PeerTube Client 
 </h1>
 
 [![Latest release](https://img.shields.io/github/release/sschueller/peertube-android.svg)](https://github.com/sschueller/peertube-android/releases/latest)

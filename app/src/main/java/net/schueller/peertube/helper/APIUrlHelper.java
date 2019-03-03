@@ -44,4 +44,23 @@ public class APIUrlHelper{
     public static String getShareUrl(Context context, String videoUuid) {
         return APIUrlHelper.getUrl(context) + "/videos/watch/" + videoUuid;
     }
+
+    public static String getServerIndexUrl(Context context) {
+        return "https://instances.joinpeertube.org/api/v1/";
+    }
+
+    public static String cleanServerUrl(String url) {
+
+        String cleanUrl = url.toLowerCase();
+
+        if (!cleanUrl.startsWith("http")) {
+            cleanUrl = "https://" + cleanUrl;
+        }
+
+        if (cleanUrl.endsWith("/")) {
+            cleanUrl = cleanUrl.substring(0, cleanUrl.length() - 1);
+        }
+
+        return cleanUrl;
+    }
 }

@@ -26,4 +26,11 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
         app:showAsAction="ifRoom" />
 
+    <!--<item-->
+        <!--android:id="@+id/action_server_selection"-->
+        <!--android:orderInCategory="300"-->
+        <!--android:title="@string/action_bar_title_server_selection"-->
+        <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"-->
+        <!--app:showAsAction="ifRoom" />-->
+
 </menu>

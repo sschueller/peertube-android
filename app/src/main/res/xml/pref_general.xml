@@ -1,13 +1,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="@string/pref_default_api_base_url"
-        android:inputType="textUri"
+    <Preference
         android:key="pref_api_base"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
         android:title="@string/pref_title_peertube_server" />
 
     <!--<SwitchPreference-->

@@ -128,6 +128,9 @@ public class VideoListActivity extends CommonActivity {
         menu.findItem(R.id.action_account).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle).actionBar());
 
+//        menu.findItem(R.id.action_server_selection).setIcon(
+//                new IconicsDrawable(this, FontAwesome.Icon.faw_server).actionBar());
+
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
         searchMenuItem.setIcon(
@@ -200,6 +203,10 @@ public class VideoListActivity extends CommonActivity {
                     this.startActivity(intentMe);
                 }
                 return false;
+//            case R.id.action_server_selection:
+//                Intent intentServer = new Intent(this, SelectServerActivity.class);
+//                this.startActivity(intentServer);
+//                return false;
             default:
                 break;
         }

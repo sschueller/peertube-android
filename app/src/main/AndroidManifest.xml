@@ -2,73 +2,65 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="net.schueller.peertube">
-
     <!-- connect to peertube server -->
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- required for torrent downloading -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <!-- required to play video in background via notification -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- required for torrent downloading -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- required to play video in background via notification -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
+        android:name=".application.AppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        android:name=".application.AppApplication">
-
-        <activity android:name=".activity.VideoListActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:launchMode="singleTop">
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".activity.VideoListActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable">
-            </meta-data>
+                android:resource="@xml/searchable"></meta-data>
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.VideoPlayActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:label="@string/title_activity_video_play"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.SettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/title_activity_settings" />
-
-        <activity android:name=".activity.SelectServerActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".activity.MeActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.SelectServerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.MeActivity"
             android:label="@string/title_activity_account"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".activity.AccountActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <!-- Content provider for search suggestions -->
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.AccountActivity"
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- Content provider for search suggestions -->
         <provider
             android:name=".provider.SearchSuggestionsProvider"
             android:authorities="net.schueller.peertube.provider.SearchSuggestionsProvider"
             android:enabled="true"
             android:exported="false" />
 
-
         <service android:name=".service.VideoPlayerService" />
-
     </application>
 
 </manifest>

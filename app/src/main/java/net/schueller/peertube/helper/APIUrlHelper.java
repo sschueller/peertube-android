@@ -20,7 +20,9 @@ package net.schueller.peertube.helper;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Patterns;
 import android.webkit.URLUtil;
+import android.widget.Toast;
 
 import net.schueller.peertube.R;
 
@@ -52,6 +54,8 @@ public class APIUrlHelper{
     public static String cleanServerUrl(String url) {
 
         String cleanUrl = url.toLowerCase();
+
+        cleanUrl = cleanUrl.replace(" ", "");
 
         if (!cleanUrl.startsWith("http")) {
             cleanUrl = "https://" + cleanUrl;

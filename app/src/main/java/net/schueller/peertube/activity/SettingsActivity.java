@@ -228,6 +228,15 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             }
             return false;
         }
+
+        @Override
+        public void onResume() {
+            setPreferenceScreen(null);
+            addPreferencesFromResource(R.xml.pref_general);
+            bindPreferenceSummaryToValue(findPreference("pref_api_base"));
+
+            super.onResume();
+        }
     }
 
 }

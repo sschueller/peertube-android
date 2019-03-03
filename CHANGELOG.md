@@ -1,3 +1,11 @@
+### Version 1.0.28 Tag: v1.0.28 (2019-03-03)
+* Server selection
+* Lots of translations
+
+### Version 1.0.27 Tag: v1.0.27 (2019-02-17)
+* App Rename
+* Lots of translations
+
 ### Version 1.0.26 Tag: v1.0.26 (2019-01-27)
  * Larger fullscreen button target
  * Fixed duration colors

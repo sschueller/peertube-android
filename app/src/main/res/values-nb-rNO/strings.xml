@@ -98,4 +98,5 @@
     <string name="video_speed_20">2x</string>
     <string name="pref_description_background_play">Hvis påskrudd vil videoer spilles videre i bakgrunnen.</string>
     <string name="video_login_required_for_service">Du må logge inn for å bruke denne tjenesten</string>
+    <string name="ko">Koreansk</string>
 </resources>

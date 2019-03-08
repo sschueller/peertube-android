@@ -324,7 +324,7 @@
     <string name="server_selection_signup_allowed_yes">Evet</string>
     <string name="server_selection_signup_allowed_no">Hayır</string>
     <string name="server_selection_set_server">Sunucu ayarlandı: %s</string>
-    <string name="server_selection_select_a_server">Aşağıdaki listeden bir Sunucu seçin veya doğrudan girin.</string>
+    <string name="server_selection_select_a_server">Aşağıdaki listeden bir sunucu seçin veya doğrudan girin.</string>
     <string name="server_selection_peertube_server_url">PeerTube Sunucusu URL\'si</string>
     <string name="action_bar_title_server_selection">Sunucu Seç</string>
 </resources>

@@ -21,10 +21,14 @@
     <!-- Action bar -->
     <string name="action_bar_title_search">Rechercher</string>
     <string name="action_bar_title_settings">Paramètres</string>
+    <string name="action_bar_title_logout">Déconnecion</string>
+    <string name="action_bar_title_account">Compte</string>
 
     <!-- Bottom navigation bar -->
     <string name="bottom_nav_title_overview">Accueil</string>
     <string name="bottom_nav_title_trending">Tendances</string>
+    <string name="bottom_nav_title_recent">Récent</string>
+    <string name="bottom_nav_title_local">Local</string>
     <string name="bottom_nav_title_subscriptions">Abonnements</string>
     <string name="bottom_nav_title_account">Compte</string>
 
@@ -39,19 +43,10 @@
     <string name="meta_data_seperator">\u0020-\u0020</string>
     <string name="meta_data_views">\u0020Views</string>
     <string name="meta_data_owner_seperator">\@</string>
-
-
     <string name="video_row_video_thumbnail">Miniature vidéo</string>
     <string name="video_row_account_avatar">Avatar compte</string>
-
-    <string name="pref_title_show_nsfw">Afficher le contenu adulte</string>
-    <string name="pref_description_show_nsfw">Le contenu adulte sera affiché si activé</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
-    <string name="pref_title_torrent_player">Lecteur Vidéo Torrent</string>
-    <string name="pref_description_torrent_player">Lecture de vidéo via un flux torrent</string>
-    <string name="pref_title_license">Licence</string>
-    <string name="pref_description_license">\n<b>GNU Affero General Public License v3.0</b>\n\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
-    <string name="pref_title_version">Version</string>
+    
     <string name="search_hint">Rechercher sur PeerTube</string>
     <string name="title_activity_search">Rechercher</string>
     <string name="no_data_available">Pas de résultat</string>
@@ -59,11 +54,27 @@
     <string name="menu_share">Partager</string>
     <string name="playback_channel_name">PeerTube</string>
     <string name="invalid_url">URL invalide !</string>
+    
+     <!-- settings/preferences -->
+    
     <string name="pref_title_dark_mode">Mode Sombre</string>
     <string name="pref_description_dark_mode">Relancez l\'application pour que le Mode Sombre soit activé</string>
     <string name="pref_title_app_theme">Thème de l\'Application</string>
     <string name="pref_description_app_theme">Relancez l\'application pour que le nouveau thème soit activé</string>
-
+    <string name="pref_title_torrent_player">Lecteur Vidéo Torrent</string>
+    <string name="pref_description_torrent_player">Lecture de vidéo via un flux torrent</string>
+    <string name="pref_title_license">Licence</string>
+    <string name="pref_description_license">\n<b>GNU Affero General Public License v3.0</b>\n\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
+    <string name="pref_title_version">Version</string>
+    <string name="pref_title_show_nsfw">Afficher le contenu adulte</string>
+    <string name="pref_description_show_nsfw">Le contenu adulte sera affiché si activé</string>
+    <string name="pref_title_peertube_server">PeerTube Serveur</string>
+    <string name="pref_title_background_play">Lecture en arrière-plan</string>
+    <string name="pref_description_background_play">Si activé, continue à lire la vidéo en arrière-plan.</string>
+    
+     <!-- languages (to do)-->
+    
+     <!-- colors -->
     <string name="red">Rouge</string>
     <string name="pink">Rose</string>
     <string name="purple">Violet</string>
@@ -83,4 +94,41 @@
     <string name="brown">Brun</string>
     <string name="gray">Gris</string>
     <string name="bluegray">Bleu-Gris</string>
+    
+    <string name="action_set_url">Sélectionner le Serveur</string>
+    <string name="server_selection_signup_allowed">Enregistremement autorisé: %s</string>
+    <string name="server_selection_signup_allowed_yes">Oui</string>
+    <string name="server_selection_signup_allowed_no">Non</string>
+    <string name="server_selection_set_server">Serveur défini sur: %s</string>
+    <string name="server_selection_select_a_server">Sélectionné un serveur  dans la liste plus bas ou entrer le directement.</string>
+    <string name="server_selection_peertube_server_url">PeerTube Serveur URL</string>
+
+
+    <string name="title_activity_account">Compte</string>
+    <string name="menu_video_more_report">Signaler</string>
+    <string name="menu_video_more_blacklist">Liste de ban</string>
+    <string name="video_download_permission_error">Impossible de télécharger la vidéo sans les droits d'écriture</string>
+    <string name="video_rating_failed">Erreur de notation </string>
+    <string name="video_login_required_for_service">Vous devez être loger pour utiliser ce service</string>
+    <string name="video_meta_button_share">Partage</string>
+    <string name="video_meta_button_download">Téléchargement</string>
+    <string name="video_meta_button_privacy">Vie Privé</string>
+    <string name="video_meta_button_category">Catégorie</string>
+    <string name="video_meta_button_license">License</string>
+    <string name="video_meta_button_language">Langue</string>
+    <string name="video_meta_button_tags">Tags</string>
+    <string name="menu_video_options_playback_speed">Vitesse de lecture</string>
+    <string name="menu_video_options_quality">Qualité</string>
+    <string name="account_bottom_menu_videos">Videos</string>
+    <string name="account_bottom_menu_channels">Cannaux</string>
+    <string name="account_bottom_menu_about">A propos</string>
+    <string name="account_about_account">Compte:</string>
+    <string name="account_about_subscribers">Abonné:</string>
+    <string name="account_about_description">Description:</string>
+    <string name="account_about_joined">A rejoint:</string>
+    <string name="api_error">Si quelque chose ne fonctionne pas, merci d'essayer plus tard!</string>
+
+    <string name="action_bar_title_server_selection">Sélectionner Serveur</string>
+
+    
 </resources>

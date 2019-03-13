@@ -7,8 +7,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_login"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,8 +46,25 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="Alpha! Login is still in heavy development and may not work correctly! You must have an account on the instance you are connecting to. Registration is currently not supported" />
+                    android:text="Alpha! Login is still in heavy development and may not work correctly! You must have an account on the instance you are connecting to. Registration is currently not supported"
+                    android:textSize="16sp" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/login_current_server"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/login_current_server_hint"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"

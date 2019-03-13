@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -76,6 +77,16 @@ public class LoginActivity extends CommonActivity {
                 new IconicsDrawable(this, FontAwesome.Icon.faw_chevron_left).actionBar()
         );
 
+    }
+
+    @Override
+    public void onResume() {
+
+        EditText mServerName = findViewById(R.id.login_current_server);
+        mServerName.setText(APIUrlHelper.getUrl(this));
+        mServerName.setInputType(InputType.TYPE_NULL);
+
+        super.onResume();
     }
 
     @Override

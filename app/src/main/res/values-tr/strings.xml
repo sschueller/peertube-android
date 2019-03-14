@@ -327,4 +327,5 @@
     <string name="server_selection_select_a_server">Aşağıdaki listeden bir sunucu seçin veya doğrudan girin.</string>
     <string name="server_selection_peertube_server_url">PeerTube Sunucusu URL\'si</string>
     <string name="action_bar_title_server_selection">Sunucu Seç</string>
+    <string name="login_current_server_hint">Mevcut Sunucu</string>
 </resources>

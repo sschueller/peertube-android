@@ -109,4 +109,18 @@
     <string name="action_bar_title_server_selection">Velg tjener</string>
     <string name="da">Dansk</string>
     <string name="login_current_server_hint">Nåværende tjener</string>
+    <string name="ase">Amerikansk tegnspråk</string>
+    <string name="ar">Arabisk</string>
+    <string name="be">Hviterussisk</string>
+    <string name="bs">Bosnisk</string>
+    <string name="bzs">Brasiliansk tegnspråk</string>
+    <string name="bg">Bulgarsk</string>
+    <string name="my">Burmesisk</string>
+    <string name="ca">Katalansk</string>
+    <string name="sv">Svensk</string>
+    <string name="swl">Svensk tegnspråk</string>
+    <string name="tr">Tyrkisk</string>
+    <string name="uk">Ukrainsk</string>
+    <string name="ur">Urdu</string>
+    <string name="vi">Vietnamesisk</string>
 </resources>

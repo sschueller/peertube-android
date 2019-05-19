@@ -249,4 +249,20 @@
     <string name="bottom_nav_title_local">Локаль</string>
     <string name="title_activity_account">Аккаунт</string>
     <!-- Constants, Don't translate -->
+    <string name="action_bar_title_account">Учётная запись</string>
+    <string name="bottom_nav_title_recent">Последние</string>
+    <string name="meta_data_views">" Представления"</string>
+    <string name="ml">Малайский</string>
+    <string name="mh">Маршалловых островов</string>
+    <string name="ng">Ндонга</string>
+    <string name="ny">Найаня</string>
+    <string name="oc">Окситанский</string>
+    <string name="om">Оромо</string>
+    <string name="pa">Панджаби</string>
+    <string name="sm">Самоанский</string>
+    <string name="sn">Шона</string>
+    <string name="sd">Синдхи</string>
+    <string name="si">Сингальский</string>
+    <string name="tn">Тсвана</string>
+    <string name="tw">Тви</string>
 </resources>

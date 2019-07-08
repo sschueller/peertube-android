@@ -301,4 +301,13 @@
     <string name="yo">اليوروبا</string>
     <string name="za">الزهيونج</string>
     <string name="zu">الزولوية</string>
+    <string name="action_set_url">اختيار خادوم</string>
+    <string name="server_selection_signup_allowed">تسجيل الدخول المسموح به: %s</string>
+    <string name="server_selection_signup_allowed_yes">نعم</string>
+    <string name="server_selection_signup_allowed_no">لا</string>
+    <string name="server_selection_set_server">تعيين الخادوم إلى: %s</string>
+    <string name="server_selection_select_a_server">حدد خادماً من القائمة أدناه أو قم بأدخاله مباشرة.</string>
+    <string name="server_selection_peertube_server_url">عنوان خادوم PeerTube</string>
+    <string name="action_bar_title_server_selection">حدد الخادوم</string>
+    <string name="login_current_server_hint">الخادوم الحالي</string>
 </resources>

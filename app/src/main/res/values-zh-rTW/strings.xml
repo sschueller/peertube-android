@@ -290,4 +290,13 @@
     <string name="account_about_description">描述：</string>
     <string name="account_about_joined">已加入：</string>
     <string name="api_error">好像有什麼事情出錯了，請再試一次！</string>
+    <string name="action_set_url">選取伺服器</string>
+    <string name="server_selection_signup_allowed">允許註冊：%s</string>
+    <string name="server_selection_signup_allowed_yes">是</string>
+    <string name="server_selection_signup_allowed_no">否</string>
+    <string name="server_selection_set_server">伺服器設定為：%s</string>
+    <string name="server_selection_select_a_server">從下面的清單選取一個伺服器或直接輸入。</string>
+    <string name="server_selection_peertube_server_url">PeerTube 伺服器 URL</string>
+    <string name="action_bar_title_server_selection">選取伺服器</string>
+    <string name="login_current_server_hint">目前的伺服器</string>
 </resources>

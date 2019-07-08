@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_settings">Ρυθμίσεις</string>
+    <string name="title_activity_login">Σύνδεση</string>
+    <string name="prompt_server">Διακομιστής</string>
+    <string name="prompt_email">Ηλεκτρονικό ταχυδρομείο/Όνομα χρήστη</string>
+    <string name="prompt_password">Κωδικός πρόσβασης</string>
+    <string name="action_sign_in">Σύνδεση</string>
+    <string name="action_sign_in_short">Σύνδεση</string>
+    <string name="error_invalid_email">Αυτή η διεύθυνση ηλεκτρονικού ταχυδρομείου δεν είναι έγκυρη</string>
+    <string name="error_invalid_password">Αυτός ο κωδικός πρόσβασης είναι πολύ μικρός</string>
+    <string name="error_incorrect_password">Αυτός ο κωδικός πρόσβασης είναι λανθασμένος</string>
+    <string name="error_field_required">Αυτό το πεδίο απαιτείται</string>
+    <string name="permission_rationale">Εκχώρηση άδειας επικοινωνίας για την ολοκλήρωση του ηλεκτρονικού ταχυδρομείου.</string>
+    <string name="action_bar_title_search">Αναζήτηση</string>
+    <string name="action_bar_title_settings">Ρυθμίσεις</string>
+    <string name="action_bar_title_logout">Αποσύνδεση</string>
+    <string name="action_bar_title_account">Λογαριασμός</string>
+    <string name="bottom_nav_title_overview">Επισκόπηση</string>
+    <string name="bottom_nav_title_trending">Τάσεις</string>
+    <string name="bottom_nav_title_recent">Πρόσφατα</string>
+    <string name="bottom_nav_title_local">Τοπικά</string>
+    <string name="bottom_nav_title_subscriptions">Συνδρομές</string>
+    <string name="bottom_nav_title_account">Λογαριασμός</string>
+    <string name="meta_data_views">" Προβολές"</string>
+    <string name="video_row_video_thumbnail">Μικρογραφία βίντεο</string>
+    <string name="video_row_account_avatar">Είδωλο λογαριασμού</string>
+    <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
+    <string name="search_hint">Αναζήτηση PeerTube</string>
+    <string name="title_activity_search">Αναζήτηση</string>
+    <string name="no_data_available">Χωρίς αποτελέσματα</string>
+    <string name="descr_overflow_button">Περισσότερα</string>
+    <string name="menu_share">Μοιραστείτε</string>
+    <string name="invalid_url">Μη έγκυρο URL.</string>
+</resources>

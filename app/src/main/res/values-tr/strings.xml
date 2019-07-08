@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="title_activity_video_play">İzleti Oynatma Etkinliği</string>
     <string name="title_activity_settings">Ayarlar</string>
     <string name="title_activity_login">Oturum aç</string>
@@ -320,4 +319,13 @@
     <string name="account_about_description">Açıklama:</string>
     <string name="account_about_joined">Katılım:</string>
     <string name="api_error">Bir şeyler ters gitti, lütfen daha sonra tekrar deneyin!</string>
+    <string name="action_set_url">Sunucu Seç</string>
+    <string name="server_selection_signup_allowed">Kaydolma İzin Verilen: %s</string>
+    <string name="server_selection_signup_allowed_yes">Evet</string>
+    <string name="server_selection_signup_allowed_no">Hayır</string>
+    <string name="server_selection_set_server">Sunucu ayarlandı: %s</string>
+    <string name="server_selection_select_a_server">Aşağıdaki listeden bir sunucu seçin veya doğrudan girin.</string>
+    <string name="server_selection_peertube_server_url">PeerTube Sunucusu URL\'si</string>
+    <string name="action_bar_title_server_selection">Sunucu Seç</string>
+    <string name="login_current_server_hint">Mevcut Sunucu</string>
 </resources>

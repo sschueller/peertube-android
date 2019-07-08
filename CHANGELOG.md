@@ -1,3 +1,7 @@
+### Version 1.0.30 Tag: v1.0.30 (2019-08-07)
+* Gradle update
+* Translations
+
 ### Version 1.0.29 Tag: v1.0.29 (2019-03-03)
 * Prevent entry of bad URL
 

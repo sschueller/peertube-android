@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_settings">Nastavení</string>
+    <string name="title_activity_login">Přihlásit se</string>
+    <string name="prompt_server">Server</string>
+    <string name="prompt_email">Email / Uživatelské jméno</string>
+    <string name="prompt_password">Heslo</string>
+    <string name="action_sign_in">Přihlásit se</string>
+    <string name="action_sign_in_short">Přihlásit se</string>
+    <string name="error_invalid_email">Tato emailové adresa je neplatná</string>
+    <string name="error_incorrect_password">Toto heslo je neplatné</string>
+    <string name="error_field_required">Toto pole je povinné</string>
+    <string name="action_bar_title_search">Hledat</string>
+    <string name="action_bar_title_settings">Nastavení</string>
+    <string name="action_bar_title_logout">Odhlásit se</string>
+    <string name="action_bar_title_account">Účet</string>
+    <string name="bottom_nav_title_recent">Nedávné</string>
+    <string name="bottom_nav_title_local">Místní</string>
+    <string name="bottom_nav_title_subscriptions">Odběry</string>
+    <string name="bottom_nav_title_account">Účet</string>
+    <string name="video_row_video_thumbnail">Video Náhled</string>
+    <string name="video_row_account_avatar">Avatar účtu</string>
+    <string name="no_data_available">Žádné výsledky</string>
+    <string name="descr_overflow_button">Více</string>
+    <string name="menu_share">Sdílet</string>
+    <string name="invalid_url">Neplatná URL.</string>
+    <string name="pref_title_dark_mode">Tmavý mód</string>
+    <string name="pref_description_dark_mode">Pro aktivaci tmavého módu restartujte aplikaci.</string>
+    <string name="pref_title_license">Licence</string>
+    <string name="pref_title_version">Verze</string>
+</resources>

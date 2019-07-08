@@ -31,7 +31,7 @@
     <string name="pref_title_show_nsfw">Inhoud voor volwassenen</string>
     <string name="pref_description_show_nsfw">Inhoud voor volwassenen tonen</string>
     <string name="pref_language">Taalfilter</string>
-    <string name="pref_description_language">Kies de te tonen videotalen. Als je niks kiest, dan worden video\'s in alle talen getoond.</string>
+    <string name="pref_description_language">Kies de videotaal. Als je niks kiest, dan worden video\'s in alle talen getoond.</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="pref_title_torrent_player">Torrent-videospeler</string>
     <string name="pref_description_torrent_player">Video\'s afspelen via een torrentstream. Dit vereist de opslagmachtiging. (alfafunctie - instabiel!)</string>
@@ -42,7 +42,7 @@
     <string name="no_data_available">Geen resultaten</string>
     <string name="descr_overflow_button">Meer</string>
     <string name="menu_share">Delen</string>
-    <string name="invalid_url">Ongeldige url!</string>
+    <string name="invalid_url">Ongeldige url.</string>
     <string name="pref_title_dark_mode">Donkere modus</string>
     <string name="pref_description_dark_mode">Herstart de app om de donkere modus toe te passen.</string>
     <string name="pref_title_app_theme">Appthema</string>
@@ -287,4 +287,17 @@
     <string name="account_about_description">Omschrijving:</string>
     <string name="account_about_joined">Lid geworden op:</string>
     <string name="api_error">Er is iets misgegaan; probeer het later opnieuw!</string>
+    <string name="pref_description_license">
+\n<b>GNU Affero General Public License v3.0</b> 
+\n 
+\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
+    <string name="action_set_url">Server kiezen</string>
+    <string name="server_selection_signup_allowed">Registreren toegestaan: %s</string>
+    <string name="server_selection_signup_allowed_yes">Ja</string>
+    <string name="server_selection_signup_allowed_no">Nee</string>
+    <string name="server_selection_set_server">Server is ingesteld op: %s</string>
+    <string name="server_selection_select_a_server">Kies een server uit onderstaande lijst of voer de servernaam in.</string>
+    <string name="server_selection_peertube_server_url">PeerTube-server-url</string>
+    <string name="action_bar_title_server_selection">Server kiezen</string>
+    <string name="login_current_server_hint">Huidige server</string>
 </resources>

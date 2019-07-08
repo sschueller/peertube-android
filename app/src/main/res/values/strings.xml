@@ -4,7 +4,6 @@
     <string name="title_activity_video_play" translatable="false">VideoPlayActivity</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
-
     <!-- Strings related to login -->
     <string name="prompt_server">Server</string>
     <string name="prompt_email">Email / Username</string>
@@ -16,13 +15,11 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">Grant contact permission for e-mail completion.</string>
-
     <!-- Action bar -->
     <string name="action_bar_title_search">Search</string>
     <string name="action_bar_title_settings">Settings</string>
     <string name="action_bar_title_logout">Log out</string>
     <string name="action_bar_title_account">Account</string>
-
     <!-- Bottom navigation bar -->
     <string name="bottom_nav_title_overview">Overview</string>
     <string name="bottom_nav_title_trending">Trending</string>
@@ -31,7 +28,6 @@
     <string name="bottom_nav_title_subscriptions">Subscriptions</string>
     <string name="bottom_nav_title_account">Account</string>
     <!-- Strings related to Settings -->
-
     <!-- Strings related to Video meta data -->
     <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
     <string name="meta_data_views">\u0020Views</string>
@@ -39,7 +35,6 @@
     <string name="video_row_video_thumbnail">Video Thumbnail</string>
     <string name="video_row_account_avatar">Account Avatar</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
-
     <string name="search_hint">Search PeerTube</string>
     <string name="title_activity_search">Search</string>
     <string name="no_data_available">No Results</string>
@@ -47,9 +42,7 @@
     <string name="menu_share">Share</string>
     <string name="playback_channel_name" translatable="false">PeerTube</string>
     <string name="invalid_url">Invalid URL.</string>
-
     <!-- settings/preferences -->
-
     <string name="pref_title_dark_mode">Dark Mode</string>
     <string name="pref_description_dark_mode">Restart App for Dark Mode to take effect.</string>
     <string name="pref_title_app_theme">App Theme</string>
@@ -67,9 +60,7 @@
     <string name="pref_title_peertube_server">PeerTube Server</string>
     <string name="pref_title_background_play">Background Playback</string>
     <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
-
     <!-- languages -->
-
     <string name="ab">Abkhazian</string>
     <string name="aa">Afar</string>
     <string name="af">Afrikaans</string>
@@ -262,7 +253,6 @@
     <string name="yo">Yoruba</string>
     <string name="za">Zhuang</string>
     <string name="zu">Zulu</string>
-
     <!-- colors -->
     <string name="red">Red</string>
     <string name="pink">Pink</string>
@@ -283,12 +273,10 @@
     <string name="brown">Brown</string>
     <string name="gray">Gray</string>
     <string name="bluegray">Bluegray</string>
-
     <string name="video_speed_05">0.5x</string>
     <string name="video_speed_10">Normal</string>
     <string name="video_speed_15">1.5x</string>
     <string name="video_speed_20">2x</string>
-
     <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
     <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
     <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
@@ -301,16 +289,13 @@
     <string name="video_share_icon" translatable="false">{faw-share}</string>
     <string name="video_download_icon" translatable="false">{faw-download}</string>
     <string name="video_save_icon" translatable="false">{faw-save}</string>
-
     <string name="action_set_url">Select Server</string>
     <string name="server_selection_signup_allowed">Signup Allowed: %s</string>
     <string name="server_selection_signup_allowed_yes">Yes</string>
     <string name="server_selection_signup_allowed_no">No</string>
     <string name="server_selection_set_server">Server set to: %s</string>
-    <string name="server_selection_select_a_server">Select a Server from the list below or enter it directly.</string>
+    <string name="server_selection_select_a_server">Select a server from the list below or enter it directly.</string>
     <string name="server_selection_peertube_server_url">PeerTube Server URL</string>
-
-
     <string name="title_activity_account">Account</string>
     <string name="menu_video_more_report">Report</string>
     <string name="menu_video_more_blacklist">Blacklist</string>
@@ -334,10 +319,7 @@
     <string name="account_about_description">Description:</string>
     <string name="account_about_joined">Joined:</string>
     <string name="api_error">Something went wrong, please try later!</string>
-
     <string name="action_bar_title_server_selection">Select Server</string>
-
-
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
     <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
@@ -349,5 +331,6 @@
     <string name="video_rating_like" translatable="false">like</string>
     <string name="video_rating_dislike" translatable="false">dislike</string>
     <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
+    <string name="login_current_server_hint">Current Server</string>
 
 </resources>

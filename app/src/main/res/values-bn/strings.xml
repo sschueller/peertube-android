@@ -317,4 +317,8 @@
     <string name="account_about_description">বিবরণ:</string>
     <string name="account_about_joined">যুক্ত হয়েছেন:</string>
     <string name="api_error">কিছু সমস্যা হয়েছে, অনুগ্রহ করে পরে চেষ্টা করুন!</string>
+    <string name="action_set_url">সার্ভার পছন্দ করুন</string>
+    <string name="server_selection_signup_allowed_yes">হ্যা</string>
+    <string name="server_selection_signup_allowed_no">না</string>
+    <string name="server_selection_peertube_server_url">পিয়ারটিউব সার্ভার URL</string>
 </resources>

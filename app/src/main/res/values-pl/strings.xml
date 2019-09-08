@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_settings">Ustawienia</string>
+    <string name="title_activity_login">Logowanie</string>
+    <string name="prompt_server">Serwer</string>
+    <string name="prompt_email">E-mail / Nazwa Użytkownika</string>
+    <string name="prompt_password">Hasło</string>
+    <string name="action_sign_in">Zaloguj</string>
+    <string name="action_sign_in_short">Zaloguj</string>
+    <string name="error_invalid_email">Adres e-mail jest nieprawidłowy</string>
+    <string name="error_invalid_password">Hasło jest zbyt krótkie</string>
+    <string name="error_incorrect_password">Hasło jest błędne</string>
+    <string name="error_field_required">To pole jest wymagane</string>
+    <string name="action_bar_title_search">Wyszukiwanie</string>
+    <string name="action_bar_title_settings">Ustawienia</string>
+    <string name="action_bar_title_logout">Wyloguj się</string>
+    <string name="action_bar_title_account">Konto</string>
+    <string name="bottom_nav_title_overview">Przegląd</string>
+    <string name="bottom_nav_title_trending">Popularne</string>
+    <string name="bottom_nav_title_recent">Nowe</string>
+    <string name="bottom_nav_title_local">Lokalne</string>
+    <string name="bottom_nav_title_subscriptions">Subskrypcje</string>
+    <string name="bottom_nav_title_account">Konto</string>
+    <string name="meta_data_views">" Wyświetlenia"</string>
+    <string name="video_row_video_thumbnail">Miniatura filmu</string>
+    <string name="video_row_account_avatar">Zdjęcie profilowe</string>
+    <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
+    <string name="search_hint">Wyszukaj na PeerTube</string>
+    <string name="title_activity_search">Wyszukiwanie</string>
+    <string name="no_data_available">Brak wyników</string>
+    <string name="descr_overflow_button">Więcej</string>
+    <string name="menu_share">Udostępnij</string>
+    <string name="invalid_url">Nieprawidłowy URL.</string>
+    <string name="pref_title_dark_mode">Tryb Ciemny</string>
+    <string name="pref_description_dark_mode">Uruchom ponownie by Tryb Ciemny został włączony.</string>
+    <string name="pref_title_app_theme">Motyw Aplikacji</string>
+    <string name="pref_description_app_theme">Uruchom ponownie by zmiany motywu były widoczne.</string>
+    <string name="pref_title_torrent_player">Odtwarzacz filmów torrent</string>
+</resources>

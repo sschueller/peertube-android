@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_activity_settings">सेटिंग्स</string>
+    <string name="title_activity_login">दाखिल करना</string>
+    <string name="prompt_server">सर्वर</string>
+    <string name="prompt_email">ईमेल / उपयोगकर्ता नाम</string>
+    <string name="prompt_password">पारण शब्द</string>
+    <string name="action_sign_in">दाखिल करना</string>
+    <string name="action_sign_in_short">दाखिल करना</string>
+    <string name="error_invalid_email">यह ईमेल पता अमान्य है</string>
+    <string name="error_invalid_password">यह पासवर्ड बहुत छोटा है</string>
+    <string name="error_incorrect_password">यह पासवर्ड गलत है</string>
+    <string name="error_field_required">यह फ़ील्ड आवश्यक है</string>
+    <string name="permission_rationale">ई-मेल पूरा करने के लिए संपर्क की अनुमति दें।</string>
+    <string name="action_bar_title_search">खोज</string>
+    <string name="action_bar_title_settings">सेटिंग्स</string>
+</resources>

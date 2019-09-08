@@ -37,7 +37,7 @@
     <string name="pref_title_show_nsfw">NSFW দেখাও</string>
     <string name="pref_description_show_nsfw">NSFW content will be shown if enabled.</string>
     <string name="pref_language">ভাষা ফিলটার</string>
-    <string name="pref_description_language">" ভিডিওর ভাষা পছন্দ করুন, কিছু পছন্দ না করলে সব ভাষার ভিডিও দেখা যাবে"</string>
+    <string name="pref_description_language">ভিডিওর ভাষা পছন্দ করুন, কিছু পছন্দ না করলে সব ভাষার ভিডিও দেখা যাবে.</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="pref_title_torrent_player">Torrent Video Player</string>
     <string name="pref_description_torrent_player">Video playback via a torrent stream. This requires Storage Permissions. (Alpha, not stable!)</string>
@@ -317,4 +317,8 @@
     <string name="account_about_description">বিবরণ:</string>
     <string name="account_about_joined">যুক্ত হয়েছেন:</string>
     <string name="api_error">কিছু সমস্যা হয়েছে, অনুগ্রহ করে পরে চেষ্টা করুন!</string>
+    <string name="action_set_url">সার্ভার পছন্দ করুন</string>
+    <string name="server_selection_signup_allowed_yes">হ্যা</string>
+    <string name="server_selection_signup_allowed_no">না</string>
+    <string name="server_selection_peertube_server_url">পিয়ারটিউব সার্ভার URL</string>
 </resources>

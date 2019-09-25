@@ -18,7 +18,7 @@
     <string name="action_bar_title_settings">Instellingen</string>
     <string name="action_bar_title_logout">Uitloggen</string>
     <string name="action_bar_title_account">Account</string>
-    <string name="bottom_nav_title_overview">Overzicht</string>
+    <string name="bottom_nav_title_discover">Overzicht</string>
     <string name="bottom_nav_title_trending">Populair</string>
     <string name="bottom_nav_title_recent">Recent</string>
     <string name="bottom_nav_title_local">Lokaal</string>

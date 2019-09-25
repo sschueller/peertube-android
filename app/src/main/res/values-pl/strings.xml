@@ -15,7 +15,7 @@
     <string name="action_bar_title_settings">Ustawienia</string>
     <string name="action_bar_title_logout">Wyloguj się</string>
     <string name="action_bar_title_account">Konto</string>
-    <string name="bottom_nav_title_overview">Przegląd</string>
+    <string name="bottom_nav_title_discover">Przegląd</string>
     <string name="bottom_nav_title_trending">Popularne</string>
     <string name="bottom_nav_title_recent">Nowe</string>
     <string name="bottom_nav_title_local">Lokalne</string>

@@ -40,7 +40,7 @@
     <string name="lightgreen">Vaaleanvihreä</string>
     <string name="lu">luba (Katanga)</string>
     <string name="error_invalid_password">Tämä salasana on liian lyhyt</string>
-    <string name="bottom_nav_title_overview">Yleiskatsaus</string>
+    <string name="bottom_nav_title_discover">Yleiskatsaus</string>
     <string name="id">indonesia</string>
     <string name="ga">iiri</string>
     <string name="bottom_nav_title_subscriptions">Tilaukset</string>

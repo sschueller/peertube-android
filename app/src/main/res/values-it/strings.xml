@@ -16,7 +16,7 @@
     <string name="action_bar_title_settings">Impostazioni</string>
     <string name="action_bar_title_logout">Esci</string>
     <string name="action_bar_title_account">Account</string>
-    <string name="bottom_nav_title_overview">Panoramica</string>
+    <string name="bottom_nav_title_discover">Panoramica</string>
     <string name="bottom_nav_title_trending">Di tendenza</string>
     <string name="bottom_nav_title_recent">Recenti</string>
     <string name="bottom_nav_title_local">Locali</string>

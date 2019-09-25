@@ -16,7 +16,7 @@
     <string name="action_bar_title_settings">Opciones</string>
     <string name="action_bar_title_logout">Cerrar sesión</string>
     <string name="action_bar_title_account">Cuenta</string>
-    <string name="bottom_nav_title_overview">General</string>
+    <string name="bottom_nav_title_discover">General</string>
     <string name="bottom_nav_title_trending">Tendencias</string>
     <string name="bottom_nav_title_recent">Reciente</string>
     <string name="bottom_nav_title_local">Local</string>

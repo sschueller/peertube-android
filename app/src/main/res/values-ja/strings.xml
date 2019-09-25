@@ -16,7 +16,7 @@
     <string name="action_bar_title_settings">設定</string>
     <string name="action_bar_title_logout">ログアウト</string>
     <string name="action_bar_title_account">アカウント</string>
-    <string name="bottom_nav_title_overview">概要</string>
+    <string name="bottom_nav_title_discover">概要</string>
     <string name="bottom_nav_title_trending">トレンド</string>
     <string name="bottom_nav_title_recent">履歴</string>
     <string name="bottom_nav_title_local">ローカル</string>

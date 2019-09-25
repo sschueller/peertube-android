@@ -19,7 +19,7 @@
     <string name="action_bar_title_search">البحث</string>
     <string name="action_bar_title_settings">الإعدادات</string>
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_overview">الرئيسية</string>
+    <string name="bottom_nav_title_discover">الرئيسية</string>
     <string name="bottom_nav_title_trending">المتصدرة</string>
     <string name="bottom_nav_title_subscriptions">الإشتراكات</string>
     <string name="bottom_nav_title_account">الحساب</string>

@@ -16,7 +16,7 @@
     <string name="action_bar_title_settings">Ρυθμίσεις</string>
     <string name="action_bar_title_logout">Αποσύνδεση</string>
     <string name="action_bar_title_account">Λογαριασμός</string>
-    <string name="bottom_nav_title_overview">Επισκόπηση</string>
+    <string name="bottom_nav_title_discover">Επισκόπηση</string>
     <string name="bottom_nav_title_trending">Τάσεις</string>
     <string name="bottom_nav_title_recent">Πρόσφατα</string>
     <string name="bottom_nav_title_local">Τοπικά</string>

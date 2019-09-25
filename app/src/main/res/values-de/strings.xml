@@ -11,7 +11,7 @@
     <string name="action_bar_title_search">Suche</string>
     <string name="action_bar_title_logout">Abmelden</string>
     <string name="action_bar_title_account">Konto</string>
-    <string name="bottom_nav_title_overview">Übersicht</string>
+    <string name="bottom_nav_title_discover">Übersicht</string>
     <string name="bottom_nav_title_local">Lokal</string>
     <string name="bottom_nav_title_subscriptions">Abos</string>
     <string name="bottom_nav_title_account">Konto</string>

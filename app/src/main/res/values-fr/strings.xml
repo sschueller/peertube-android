@@ -19,7 +19,7 @@
     <string name="action_bar_title_search">Rechercher</string>
     <string name="action_bar_title_settings">Paramètres</string>
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_overview">Accueil</string>
+    <string name="bottom_nav_title_discover">Accueil</string>
     <string name="bottom_nav_title_trending">Tendances</string>
     <string name="bottom_nav_title_subscriptions">Abonnements</string>
     <string name="bottom_nav_title_account">Compte</string>

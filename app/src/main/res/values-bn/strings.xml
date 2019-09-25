@@ -20,7 +20,7 @@
     <string name="action_bar_title_settings">সেটিং</string>
     <string name="action_bar_title_logout">লগ আউট</string>
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_overview">হোম</string>
+    <string name="bottom_nav_title_discover">হোম</string>
     <string name="bottom_nav_title_trending">"Trending"</string>
     <string name="bottom_nav_title_subscriptions">Subscriptions</string>
     <string name="bottom_nav_title_account">একাউন্ট</string>

@@ -6,7 +6,7 @@
     <string name="prompt_server">服务</string>
     <string name="title_activity_settings">设置</string>
     <string name="action_bar_title_search">搜索</string>
-    <string name="bottom_nav_title_overview">主页</string>
+    <string name="bottom_nav_title_discover">主页</string>
     <string name="bottom_nav_title_trending">趋势</string>
     <string name="bottom_nav_title_subscriptions">订阅</string>
     <string name="bottom_nav_title_account">帐号</string>

@@ -35,7 +35,7 @@
     <string name="pref_title_dark_mode">Modo oscuro</string>
     <string name="pref_description_dark_mode">Reinicie la aplicación para el modo oscuro tomar efecto.</string>
     <string name="pref_title_app_theme">Tema de la aplicación</string>
-    <string name="pref_description_app_theme">Reinicie la aplicación para el tema tomar efecto.</string>
+    <string name="pref_description_app_theme">Reinicie la aplicación para que el tema surta efecto.</string>
     <string name="pref_title_torrent_player">Reproductor de vídeo Torrent</string>
     <string name="pref_description_torrent_player">Reproducción de vídeo a través de un stream torrent. Esto requiere permisos de almacenamiento de información. (Alfa, no estable)</string>
     <string name="pref_title_license">Licencia</string>

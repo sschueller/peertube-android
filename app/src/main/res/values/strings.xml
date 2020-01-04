@@ -332,5 +332,9 @@
     <string name="video_rating_dislike" translatable="false">dislike</string>
     <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
     <string name="login_current_server_hint">Current Server</string>
+    <string name="title_activity_server_address_book">Address Book</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

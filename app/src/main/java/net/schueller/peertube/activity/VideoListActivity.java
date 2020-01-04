@@ -196,7 +196,7 @@ public class VideoListActivity extends CommonActivity {
                 return true;
             case R.id.action_account:
                 if (!Session.getInstance().isLoggedIn()) {
-                    Intent intentLogin = new Intent(this, LoginActivity.class);
+                    Intent intentLogin = new Intent(this, ServerAddressBookActivity.class);
                     this.startActivity(intentLogin);
                 } else {
                     Intent intentMe = new Intent(this, MeActivity.class);

@@ -16,7 +16,6 @@
     <string name="action_bar_title_settings">Roghainnean</string>
     <string name="action_bar_title_logout">Clàraich a-mach</string>
     <string name="action_bar_title_account">Cunntas</string>
-    <string name="bottom_nav_title_overview">Foir-shealladh</string>
     <string name="bottom_nav_title_trending">A’ treandadh</string>
     <string name="bottom_nav_title_recent">O chionn ghoirid</string>
     <string name="bottom_nav_title_local">Ionadail</string>

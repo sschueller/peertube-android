@@ -15,7 +15,6 @@
     <string name="action_bar_title_settings">تنظیمات</string>
     <string name="action_bar_title_logout">خروج</string>
     <string name="action_bar_title_account">حساب</string>
-    <string name="bottom_nav_title_overview">نگاه کلی</string>
     <string name="bottom_nav_title_trending">داغ</string>
     <string name="bottom_nav_title_recent">اخیر</string>
     <string name="bottom_nav_title_local">محلی</string>

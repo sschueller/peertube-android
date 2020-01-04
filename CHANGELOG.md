@@ -1,3 +1,7 @@
+### Version 1.0.31 Tag: v1.0.31 (2020-01-04)
+* Gradle update
+* Translations
+
 ### Version 1.0.30 Tag: v1.0.30 (2019-08-07)
 * Gradle update
 * Translations

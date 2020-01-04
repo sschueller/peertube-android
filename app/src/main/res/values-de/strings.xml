@@ -11,7 +11,7 @@
     <string name="action_bar_title_search">Suche</string>
     <string name="action_bar_title_logout">Abmelden</string>
     <string name="action_bar_title_account">Konto</string>
-    <string name="bottom_nav_title_overview">Übersicht</string>
+    <string name="bottom_nav_title_discover">Übersicht</string>
     <string name="bottom_nav_title_local">Lokal</string>
     <string name="bottom_nav_title_subscriptions">Abos</string>
     <string name="bottom_nav_title_account">Konto</string>
@@ -83,7 +83,7 @@
     <string name="da">Dänisch</string>
     <string name="dsl">Dänische Gebärdensprache</string>
     <string name="dv">Dhivehi</string>
-    <string name="nl">Holländisch</string>
+    <string name="nl">Niederländisch</string>
     <string name="dz">Dzongkha</string>
     <string name="en">Englisch</string>
     <string name="eo">Esperanto</string>
@@ -254,9 +254,9 @@
     <string name="brown">Braun</string>
     <string name="gray">Grau</string>
     <string name="bluegray">Blaugrau</string>
-    <string name="video_speed_05">0.5×</string>
+    <string name="video_speed_05">0,5×</string>
     <string name="video_speed_10">Normal</string>
-    <string name="video_speed_15">1.5×</string>
+    <string name="video_speed_15">1,5×</string>
     <string name="video_speed_20">2×</string>
     <string name="action_set_url">Server auswählen</string>
     <string name="server_selection_signup_allowed">Anmeldung erlaubt: %s</string>

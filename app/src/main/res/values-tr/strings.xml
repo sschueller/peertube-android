@@ -19,7 +19,7 @@
     <string name="action_bar_title_settings">Ayarlar</string>
     <string name="action_bar_title_logout">Çıkış yap</string>
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_overview">Ev</string>
+    <string name="bottom_nav_title_discover">Ev</string>
     <string name="bottom_nav_title_trending">Eğilimler</string>
     <string name="bottom_nav_title_subscriptions">Abonelikler</string>
     <string name="bottom_nav_title_account">Hesap</string>

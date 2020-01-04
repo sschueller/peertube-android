@@ -21,7 +21,7 @@
     <string name="action_bar_title_logout">Log out</string>
     <string name="action_bar_title_account">Account</string>
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_overview">Overview</string>
+    <string name="bottom_nav_title_discover">Discover</string>
     <string name="bottom_nav_title_trending">Trending</string>
     <string name="bottom_nav_title_recent">Recent</string>
     <string name="bottom_nav_title_local">Local</string>

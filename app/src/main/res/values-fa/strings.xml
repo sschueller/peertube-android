@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_settings">تنظیمات</string>
+    <string name="title_activity_login">ورود</string>
+    <string name="prompt_server">کارساز</string>
+    <string name="prompt_email">رایانه / نام کاربری</string>
+    <string name="prompt_password">گذرواژه</string>
+    <string name="action_sign_in">ورود</string>
+    <string name="action_sign_in_short">ورود</string>
+    <string name="error_invalid_email">نشانی رایانامه نامعتبر است</string>
+    <string name="error_invalid_password">گذرواژه بسیار کوتاه است</string>
+    <string name="error_incorrect_password">این گذرواژه نادرست است</string>
+    <string name="error_field_required">این فیلد ضروری است</string>
+    <string name="action_bar_title_search">جستجو</string>
+    <string name="action_bar_title_settings">تنظیمات</string>
+    <string name="action_bar_title_logout">خروج</string>
+    <string name="action_bar_title_account">حساب</string>
+    <string name="bottom_nav_title_trending">داغ</string>
+    <string name="bottom_nav_title_recent">اخیر</string>
+    <string name="bottom_nav_title_local">محلی</string>
+    <string name="bottom_nav_title_subscriptions">اشتراک‌ها</string>
+    <string name="bottom_nav_title_account">حساب</string>
+    <string name="meta_data_views">" بازدیدها"</string>
+    <string name="video_row_video_thumbnail">تصویر ویدئو</string>
+    <string name="video_row_account_avatar">آواتار حساب</string>
+    <string name="search_hint">جستجو در پیرتیوب</string>
+    <string name="title_activity_search">جستجو</string>
+    <string name="no_data_available">بدون نتیجه</string>
+    <string name="descr_overflow_button">بیشتر</string>
+    <string name="menu_share">هم‌رسانی</string>
+    <string name="invalid_url">نشانی نامعتبر</string>
+    <string name="pref_title_dark_mode">حالت تاریک</string>
+    <string name="pref_description_dark_mode">برای اعمال حالت تاریک، برنامه را از اول راه‌اندازی کنید.</string>
+    <string name="pref_title_app_theme">سبک برنامه</string>
+    <string name="pref_description_app_theme">برای اعمال سبک، برنامه را از اول راه‌اندازی کنید</string>
+    <string name="pref_title_torrent_player">پخش‌کننده ویدئوی تورنت</string>
+    <string name="pref_title_license">پروانه</string>
+    <string name="pref_title_version">نسخه</string>
+    <string name="pref_title_show_nsfw">محتوا NSFW</string>
+    <string name="pref_description_show_nsfw">نمایش محتوای NSFW</string>
+    <string name="pref_language">صافی زبان</string>
+    <string name="pref_title_peertube_server">کارساز پیرتیوب</string>
+    <string name="pref_title_background_play">پخش در پس‌زمینه</string>
+</resources>

@@ -15,7 +15,7 @@
     <string name="action_bar_title_settings">Inställningar</string>
     <string name="action_bar_title_logout">Logga ut</string>
     <string name="action_bar_title_account">Konto</string>
-    <string name="bottom_nav_title_overview">Översikt</string>
+    <string name="bottom_nav_title_discover">Översikt</string>
     <string name="bottom_nav_title_trending">Populärt</string>
     <string name="bottom_nav_title_recent">Nyligen tillagt</string>
     <string name="bottom_nav_title_local">Lokalt</string>
@@ -290,4 +290,13 @@
 \n
 \nRättigheterna den här starka copyleft-licensen ger, ges på villkoret att det licenserade verkets källkods samtliga delar och modifikationer görs tillgänglig under samma licens, detta gäller även större verk som använder det licenserade verket. Copyright- och licensnotiser måste bevaras. Bidragsgivare ger ett uttryckligt godkännande av patenträttigheter. Källkodens samtliga delar och modifikationer måste göras tillgänglig när en modifierad version används för att tillhandahålla en service över ett nätverk.</string>
     <string name="pref_description_background_play">Videor kommer fortsätta spelas i bakgrunden om detta aktiveras.</string>
+    <string name="action_set_url">Välj server</string>
+    <string name="server_selection_signup_allowed">Registrering tillåten: %s</string>
+    <string name="server_selection_signup_allowed_yes">Ja</string>
+    <string name="server_selection_signup_allowed_no">Nej</string>
+    <string name="server_selection_set_server">Server inställd på: %s</string>
+    <string name="server_selection_select_a_server">Välj en server från listan nedan eller ange den direkt.</string>
+    <string name="server_selection_peertube_server_url">PeerTube server URL</string>
+    <string name="action_bar_title_server_selection">Välj server</string>
+    <string name="login_current_server_hint">Aktuell server</string>
 </resources>

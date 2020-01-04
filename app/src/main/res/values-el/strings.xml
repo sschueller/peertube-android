@@ -3,7 +3,7 @@
     <string name="title_activity_settings">Ρυθμίσεις</string>
     <string name="title_activity_login">Σύνδεση</string>
     <string name="prompt_server">Διακομιστής</string>
-    <string name="prompt_email">Ηλεκτρονικό ταχυδρομείο/Όνομα χρήστη</string>
+    <string name="prompt_email">Ηλεκτρονικό ταχυδρομείο / Όνομα χρήστη</string>
     <string name="prompt_password">Κωδικός πρόσβασης</string>
     <string name="action_sign_in">Σύνδεση</string>
     <string name="action_sign_in_short">Σύνδεση</string>
@@ -16,7 +16,7 @@
     <string name="action_bar_title_settings">Ρυθμίσεις</string>
     <string name="action_bar_title_logout">Αποσύνδεση</string>
     <string name="action_bar_title_account">Λογαριασμός</string>
-    <string name="bottom_nav_title_overview">Επισκόπηση</string>
+    <string name="bottom_nav_title_discover">Επισκόπηση</string>
     <string name="bottom_nav_title_trending">Τάσεις</string>
     <string name="bottom_nav_title_recent">Πρόσφατα</string>
     <string name="bottom_nav_title_local">Τοπικά</string>
@@ -32,4 +32,7 @@
     <string name="descr_overflow_button">Περισσότερα</string>
     <string name="menu_share">Μοιραστείτε</string>
     <string name="invalid_url">Μη έγκυρο URL.</string>
+    <string name="pref_title_dark_mode">Σκοτεινή λειτουργία</string>
+    <string name="pref_description_dark_mode">Επανεκκινήστε την εφαρμογή για να τεθεί σε ισχύ η σκοτεινή λειτουργία.</string>
+    <string name="pref_title_app_theme">Θέμα εφαρμογής</string>
 </resources>

@@ -15,7 +15,7 @@
     <string name="action_bar_title_settings">Innstillinger</string>
     <string name="action_bar_title_logout">Logg ut</string>
     <string name="action_bar_title_account">Konto</string>
-    <string name="bottom_nav_title_overview">Oversikt</string>
+    <string name="bottom_nav_title_discover">Oversikt</string>
     <string name="bottom_nav_title_recent">Nylig</string>
     <string name="bottom_nav_title_local">Lokale</string>
     <string name="bottom_nav_title_subscriptions">Abonnementer</string>

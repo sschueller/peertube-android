@@ -101,7 +101,7 @@
     <string name="video_login_required_for_service">Vous devez vous connecter pour utiliser ce service</string>
     <string name="video_meta_button_share">Partager</string>
     <string name="video_meta_button_download">Télécharger</string>
-    <string name="video_meta_button_privacy">Vie privée</string>
+    <string name="video_meta_button_privacy">Confidentialité</string>
     <string name="video_meta_button_category">Catégorie</string>
     <string name="video_meta_button_license">Licence</string>
     <string name="video_meta_button_language">Langue</string>

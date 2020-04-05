@@ -299,4 +299,5 @@
     <string name="account_about_subscribers">Подписчики:</string>
     <string name="account_about_joined">Присоединились:</string>
     <string name="action_bar_title_server_selection">Выберите сервер</string>
+    <string name="server_selection_set_server">Сервер: %s</string>
 </resources>

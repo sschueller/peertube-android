@@ -107,4 +107,8 @@
     <string name="account_about_joined">Se unió:</string>
     <string name="api_error">Algo salió mal, por favor inténtalo más tarde!</string>
     <string name="action_bar_title_server_selection">Seleccionar servidor</string>
+    <string name="pref_description_license">
+\n<b>GNU Affero General Public License v3.0</b>
+\n
+\nLos permisos de esta fuerte licencia copyleft están condicionados a hacer disponible el código fuente completo de los trabajos licenciados y las modificaciones, que incluyen trabajos más grandes usando un trabajo licenciado, bajo la misma licencia. Los derechos de autor y los avisos de licencia deben ser preservados. Los colaboradores proporcionan una concesión expresa de los derechos de patente. Cuando se utiliza una versión modificada para proporcionar un servicio a través de una red, el código fuente completo de la versión modificada debe estar disponible.</string>
 </resources>

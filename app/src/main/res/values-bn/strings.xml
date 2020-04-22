@@ -21,8 +21,8 @@
     <string name="action_bar_title_logout">লগ আউট</string>
     <!-- Bottom navigation bar -->
     <string name="bottom_nav_title_discover">হোম</string>
-    <string name="bottom_nav_title_trending">"Trending"</string>
-    <string name="bottom_nav_title_subscriptions">Subscriptions</string>
+    <string name="bottom_nav_title_trending">আলোচিত</string>
+    <string name="bottom_nav_title_subscriptions">সাবস্ক্রিপশন</string>
     <string name="bottom_nav_title_account">একাউন্ট</string>
     <!-- Strings related to Settings -->
     <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
@@ -32,15 +32,15 @@
     <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
     <string name="meta_data_views">\u0020Views</string>
     <string name="meta_data_owner_seperator" translatable="false">\@</string>
-    <string name="video_row_video_thumbnail">Video Thumbnail</string>
+    <string name="video_row_video_thumbnail">ভিডিও থাম্বনেল</string>
     <string name="video_row_account_avatar">Account Avatar</string>
     <string name="pref_title_show_nsfw">NSFW দেখাও</string>
     <string name="pref_description_show_nsfw">NSFW content will be shown if enabled.</string>
     <string name="pref_language">ভাষা ফিলটার</string>
     <string name="pref_description_language">ভিডিওর ভাষা পছন্দ করুন, কিছু পছন্দ না করলে সব ভাষার ভিডিও দেখা যাবে.</string>
-    <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
-    <string name="pref_title_torrent_player">Torrent Video Player</string>
-    <string name="pref_description_torrent_player">Video playback via a torrent stream. This requires Storage Permissions. (Alpha, not stable!)</string>
+    <string name="title_activity_url_video_play">ইউআরএলভিডিওপ্লেঅ্যাক্টিভিটি</string>
+    <string name="pref_title_torrent_player">টরেন্ট ভিডিও প্লেয়ার</string>
+    <string name="pref_description_torrent_player">একটি টরেন্ট স্ট্রিম মাধ্যমে ভিডিও প্লেব্যাক করুন। এর জন্য স্টোরেজ অনুমতির প্রয়োজন । (আলফা, স্থিতিশীল নয়!)</string>
     <string name="pref_title_license">লাইসেন্স</string>
     <string name="pref_description_license">\n<b>GNU Affero General Public License v3.0</b>\n\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
     <string name="pref_title_version">ভার্সন</string>
@@ -50,11 +50,11 @@
     <string name="descr_overflow_button">আরও</string>
     <string name="menu_share">শেয়ার</string>
     <string name="playback_channel_name" translatable="false">PeerTube</string>
-    <string name="invalid_url">Invalid URL.</string>
+    <string name="invalid_url">অবৈধ ইউআরএল।</string>
     <string name="pref_title_dark_mode">ডার্ক মোড</string>
-    <string name="pref_description_dark_mode">Restart App for Dark Mode to take effect.</string>
-    <string name="pref_title_app_theme">App Theme</string>
-    <string name="pref_description_app_theme">Restart app for theme to take effect.</string>
+    <string name="pref_description_dark_mode">ডার্ক মোড কার্যকর করার জন্য অ্যাপ্লিকেশন রিস্টার্ট করুন।</string>
+    <string name="pref_title_app_theme">অ্যাপ থিম</string>
+    <string name="pref_description_app_theme">থিমটি কার্যকর হওয়ার জন্য অ্যাপ্লিকেশন পুনরায় চালু করুন।</string>
     <string name="ab">আবখাজিয়ান</string>
     <string name="aa">আফার</string>
     <string name="af">আফ্রিকান</string>

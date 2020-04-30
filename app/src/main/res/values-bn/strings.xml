@@ -14,7 +14,7 @@
     <string name="error_invalid_password">পাসওয়ার্ড খুব ছোট</string>
     <string name="error_incorrect_password">ভুল পাসওয়ার্ড</string>
     <string name="error_field_required">এটি জরুরি ফিল্ড</string>
-    <string name="permission_rationale">Grant contact permission for email completion.</string>
+    <string name="permission_rationale">ই-মেইল পূরণ করার জন্য কন্টাক্ট-এর অনুমতি দিন।</string>
     <!-- Action bar -->
     <string name="action_bar_title_search">সার্চ</string>
     <string name="action_bar_title_settings">সেটিং</string>
@@ -27,24 +27,27 @@
     <!-- Strings related to Settings -->
     <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
     <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
-    <string name="pref_title_peertube_server">PeerTube Server</string>
+    <string name="pref_title_peertube_server">পিয়ারটিউব সার্ভার</string>
     <!-- Strings related to Video meta data -->
     <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
     <string name="meta_data_views">\u0020Views</string>
     <string name="meta_data_owner_seperator" translatable="false">\@</string>
     <string name="video_row_video_thumbnail">ভিডিও থাম্বনেল</string>
     <string name="video_row_account_avatar">Account Avatar</string>
-    <string name="pref_title_show_nsfw">NSFW দেখাও</string>
-    <string name="pref_description_show_nsfw">NSFW content will be shown if enabled.</string>
-    <string name="pref_language">ভাষা ফিলটার</string>
+    <string name="pref_title_show_nsfw">নিষিদ্ধ কন্টেন্ট</string>
+    <string name="pref_description_show_nsfw">নিষিদ্ধ কন্টেন্ট দেখাও</string>
+    <string name="pref_language">ভাষা ফিল্টার</string>
     <string name="pref_description_language">ভিডিওর ভাষা পছন্দ করুন, কিছু পছন্দ না করলে সব ভাষার ভিডিও দেখা যাবে.</string>
     <string name="title_activity_url_video_play">ইউআরএলভিডিওপ্লেঅ্যাক্টিভিটি</string>
     <string name="pref_title_torrent_player">টরেন্ট ভিডিও প্লেয়ার</string>
     <string name="pref_description_torrent_player">একটি টরেন্ট স্ট্রিম মাধ্যমে ভিডিও প্লেব্যাক করুন। এর জন্য স্টোরেজ অনুমতির প্রয়োজন । (আলফা, স্থিতিশীল নয়!)</string>
     <string name="pref_title_license">লাইসেন্স</string>
-    <string name="pref_description_license">\n<b>GNU Affero General Public License v3.0</b>\n\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
-    <string name="pref_title_version">ভার্সন</string>
-    <string name="search_hint">সার্চ PeerTube</string>
+    <string name="pref_description_license">
+\n<b>GNU Affero General Public License v3.0</b>
+\n
+\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
+    <string name="pref_title_version">সংস্করণ</string>
+    <string name="search_hint">সার্চ পিয়ারটিউব</string>
     <string name="title_activity_search">সার্চ</string>
     <string name="no_data_available">" কোন উত্তর নেই"</string>
     <string name="descr_overflow_button">আরও</string>
@@ -278,8 +281,8 @@
     <string name="video_share_icon" translatable="false">{faw-share}</string>
     <string name="video_download_icon" translatable="false">{faw-download}</string>
     <string name="video_save_icon" translatable="false">{faw-save}</string>
-    <string name="pref_title_background_play">Background Playback</string>
-    <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
+    <string name="pref_title_background_play">ব্যাকগ্রাউন্ড প্লেব্যাক</string>
+    <string name="pref_description_background_play">সক্রিয় থাকলে ব্যাকগ্রাউন্ডে ভিডিও প্লে করতে থাকুন।</string>
     <string name="bottom_nav_title_local">Local</string>
     <string name="title_activity_account">একাউন্ট</string>
     <string name="menu_video_more_report">রিপোর্ট</string>

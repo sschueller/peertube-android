@@ -97,10 +97,11 @@
     <string name="cs">চেক</string>
     <string name="cse">চেক সাইন ভাষা</string>
     <string name="da">ড্যানিশ</string>
-    <string name="dsl">Danish Sign Language</string>
-    <string name="dv">Dhivehi</string>
-    <string name="nl">Dutch</string>
-    <string name="dz">Dzongkha</string>
+    <string name="dsl">" 
+\nড্যানিশ সাইন ভাষা"</string>
+    <string name="dv">ধিভেসি</string>
+    <string name="nl">ডাচ্</string>
+    <string name="dz">জংখ্যা</string>
     <string name="en">ইংলিশ</string>
     <string name="eo">Esperanto</string>
     <string name="et">Estonian</string>

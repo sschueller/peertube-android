@@ -296,4 +296,6 @@
 \nUprawnienia tej najsilniejszej licencji copyleft są uzależnione od udostępnienia pełnego kodu źródłowego licencjonowanych utworów i modyfikacji, które obejmują większe dzieła przy użyciu licencjonowanego dzieła, na tej samej licencji. Informacje o prawach autorskich i licencjach należy zachować. Autorzy zapewniają wyraźne przyznanie praw patentowych. Gdy zmodyfikowana wersja jest używana do świadczenia usługi przez sieć, należy udostępnić pełny kod źródłowy zmodyfikowanej wersji.</string>
     <string name="pref_description_torrent_player">Odtwarzanie wideo przez strumień torrentów. Wymaga to uprawnień do przechowywania. (Alfa, niestabilny!)</string>
     <string name="permission_rationale">Udziel pozwolenia na kontakt w celu uzupełnienia wiadomości e-mail.</string>
+    <string name="pref_title_version">Wersja</string>
+    <string name="pref_title_license">Licencja</string>
 </resources>

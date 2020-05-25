@@ -71,7 +71,7 @@ public class Intents {
         request.setTitle(video.getName());
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(url, null, null));
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, video.getName());
 
         // get download service and enqueue file
         DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);

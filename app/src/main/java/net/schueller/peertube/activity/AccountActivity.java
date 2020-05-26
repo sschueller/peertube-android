@@ -200,7 +200,7 @@ public class AccountActivity extends CommonActivity {
                     Avatar avatar = account.getAvatar();
                     if (avatar != null) {
                         String avatarPath = avatar.getPath();
-                        Picasso.with(AccountActivity.this)
+                        Picasso.get()
                                 .load(APIUrlHelper.getUrl(AccountActivity.this) + avatarPath)
                                 .into(accountAvatar);
                     }

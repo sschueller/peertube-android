@@ -35,10 +35,10 @@ android {
             implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
             // image downloading and caching library
-            implementation 'com.squareup.picasso:picasso:2.5.2'
+            implementation 'com.squareup.picasso:picasso:2.71828'
 
             // json decoder/encoder
-            implementation 'com.google.code.gson:gson:2.8.5'
+            implementation 'com.google.code.gson:gson:2.8.6'
             implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
             // Torrents and WebRTC

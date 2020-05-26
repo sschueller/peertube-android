@@ -25,10 +25,13 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
+
 
 import com.github.se_bastiaan.torrentstream.TorrentOptions;
 
+import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.Video;
 
@@ -66,12 +69,14 @@ public class Intents {
     public static void Download(Context context, Video video) {
 
         String url = video.getFiles().get(0).getFileDownloadUrl();
+        String destFilename = video.getName() + "." + MimeTypeMap.getFileExtensionFromUrl(URLUtil.guessFileName(url,null,null));
+        //Toast.makeText(context, destFilename, Toast.LENGTH_LONG).show();
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setDescription(video.getDescription());
         request.setTitle(video.getName());
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, video.getName());
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, destFilename);
 
         // get download service and enqueue file
         DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);

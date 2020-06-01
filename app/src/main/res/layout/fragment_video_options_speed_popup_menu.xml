@@ -41,6 +41,35 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/video_speed075_icon"
+            android:layout_width="32dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center|start"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/video_speed075"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center|start"
+            android:text="@string/video_speed_075"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
             android:id="@+id/video_speed10_icon"
             android:layout_width="32dp"
             android:layout_height="56dp"
@@ -65,6 +94,34 @@
             android:textSize="16sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/video_speed125_icon"
+            android:layout_width="32dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center|start"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/video_speed125"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center|start"
+            android:text="@string/video_speed_125"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

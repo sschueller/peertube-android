@@ -99,4 +99,6 @@
     <string name="video_meta_button_language">语言</string>
     <string name="server_selection_signup_allowed_yes">是</string>
     <string name="server_selection_signup_allowed_no">不</string>
+    <string name="video_speed_075">0.75倍速</string>
+    <string name="video_speed_125">1.25倍速</string>
 </resources>

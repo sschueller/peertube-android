@@ -322,4 +322,6 @@
     <string name="server_selection_signup_allowed_no">না</string>
     <string name="server_selection_peertube_server_url">পিয়ারটিউব সার্ভার URL</string>
     <string name="action_bar_title_server_selection">সার্ভার নির্বাচন করুন</string>
+    <string name="video_speed_075">0.75x</string>
+    <string name="video_speed_125">1.25x</string>
 </resources>

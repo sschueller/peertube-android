@@ -310,4 +310,6 @@
     <string name="za">zhuang</string>
     <string name="zu">zoulou</string>
     <string name="login_current_server_hint">Serveur actuel</string>
+    <string name="video_speed_075">0.75x</string>
+    <string name="video_speed_125">1.25x</string>
 </resources>

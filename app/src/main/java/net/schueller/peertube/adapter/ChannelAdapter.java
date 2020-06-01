@@ -70,7 +70,7 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.AccountV
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
 
-        Picasso.with(this.context)
+        Picasso.get()
                 .load(baseUrl + videoList.get(position).getPreviewPath())
                 .into(holder.thumb);
 
@@ -78,7 +78,7 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.AccountV
         Avatar avatar = videoList.get(position).getAccount().getAvatar();
         if (avatar != null) {
             String avatarPath = avatar.getPath();
-            Picasso.with(this.context)
+            Picasso.get()
                     .load(baseUrl + avatarPath)
                     .into(holder.avatar);
         }

@@ -1,3 +1,8 @@
+### Version 1.0.35 Tag: v1.0.35 (2020-06-01)
+ * Gradle und Lib updates (Android Studio 4) (@jmgfr)
+ * Friendly name for downloaded files (@jmgfr)
+ * Add 0.5x and 1.25x to video speed menu (@jmgfr)
+
 ### Version 1.0.34 Tag: v1.0.34 (2020-05-16)
  * Gradle updates
 

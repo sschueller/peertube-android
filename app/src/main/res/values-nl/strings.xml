@@ -300,4 +300,6 @@
     <string name="server_selection_peertube_server_url">PeerTube-server-url</string>
     <string name="action_bar_title_server_selection">Server kiezen</string>
     <string name="login_current_server_hint">Huidige server</string>
+    <string name="video_speed_075">0.75x</string>
+    <string name="video_speed_125">1.25x</string>
 </resources>

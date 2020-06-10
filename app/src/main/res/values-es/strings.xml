@@ -35,7 +35,7 @@
     <string name="pref_title_dark_mode">Modo oscuro</string>
     <string name="pref_description_dark_mode">Reinicie la aplicación para el modo oscuro tomar efecto.</string>
     <string name="pref_title_app_theme">Tema de la aplicación</string>
-    <string name="pref_description_app_theme">Reinicie la aplicación para el tema tomar efecto.</string>
+    <string name="pref_description_app_theme">Reinicie la aplicación para que el tema surta efecto.</string>
     <string name="pref_title_torrent_player">Reproductor de vídeo Torrent</string>
     <string name="pref_description_torrent_player">Reproducción de vídeo a través de un stream torrent. Esto requiere permisos de almacenamiento de información. (Alfa, no estable)</string>
     <string name="pref_title_license">Licencia</string>
@@ -107,4 +107,8 @@
     <string name="account_about_joined">Se unió:</string>
     <string name="api_error">Algo salió mal, por favor inténtalo más tarde!</string>
     <string name="action_bar_title_server_selection">Seleccionar servidor</string>
+    <string name="pref_description_license">
+\n<b>GNU Affero General Public License v3.0</b>
+\n
+\nLos permisos de esta fuerte licencia copyleft están condicionados a hacer disponible el código fuente completo de los trabajos licenciados y las modificaciones, que incluyen trabajos más grandes usando un trabajo licenciado, bajo la misma licencia. Los derechos de autor y los avisos de licencia deben ser preservados. Los colaboradores proporcionan una concesión expresa de los derechos de patente. Cuando se utiliza una versión modificada para proporcionar un servicio a través de una red, el código fuente completo de la versión modificada debe estar disponible.</string>
 </resources>

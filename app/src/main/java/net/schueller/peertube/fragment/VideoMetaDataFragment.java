@@ -165,7 +165,7 @@ public class VideoMetaDataFragment extends Fragment {
             ImageView avatarView = activity.findViewById(R.id.avatar);
             String baseUrl = APIUrlHelper.getUrl(context);
             String avatarPath = avatar.getPath();
-            Picasso.with(context)
+            Picasso.get()
                     .load(baseUrl + avatarPath)
                     .into(avatarView);
         }

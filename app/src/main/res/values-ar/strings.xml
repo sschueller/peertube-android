@@ -310,4 +310,6 @@
     <string name="server_selection_peertube_server_url">عنوان خادوم PeerTube</string>
     <string name="action_bar_title_server_selection">حدد الخادوم</string>
     <string name="login_current_server_hint">الخادوم الحالي</string>
+    <string name="video_speed_075">0.75x</string>
+    <string name="video_speed_125">1.25x</string>
 </resources>

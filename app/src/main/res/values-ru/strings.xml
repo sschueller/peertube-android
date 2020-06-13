@@ -4,7 +4,7 @@
     <string name="title_activity_login">Вход</string>
     <!-- Strings related to login -->
     <string name="prompt_server">Сервер</string>
-    <string name="prompt_email">Почта</string>
+    <string name="prompt_email">Почта / Имя пользователя</string>
     <string name="prompt_password">Пароль</string>
     <string name="action_sign_in">Войти</string>
     <string name="action_sign_in_short">Войти</string>
@@ -12,7 +12,7 @@
     <string name="error_invalid_password">Этот пароль слишком короткий</string>
     <string name="error_incorrect_password">Неверный пароль</string>
     <string name="error_field_required">Это поле обязательно к заполнению</string>
-    <string name="permission_rationale">«Разрешения на контакты необходимы для предоставления электронных писем».</string>
+    <string name="permission_rationale">Разрешите контакты для отправки электронных писем.</string>
     <!-- Action bar -->
     <string name="action_bar_title_search">Поиск</string>
     <string name="action_bar_title_settings">Настройки</string>
@@ -28,14 +28,13 @@
     <string name="video_row_video_thumbnail">Миниатюра видео</string>
     <string name="video_row_account_avatar">Аватар</string>
     <string name="pref_title_show_nsfw">Показ NSFW ( контекст сексуального характера)</string>
-    <string name="pref_description_show_nsfw">Содержание NSFW ( контекст сексульного характера)  будет показано, если включено.</string>
+    <string name="pref_description_show_nsfw">Показывать NSFW (контент сексуального характера)</string>
     <string name="pref_language">Фильтр языков</string>
     <string name="pref_description_language">Выберите язык видео, чтобы не показывались видео на всех языках.</string>
     <string name="pref_title_torrent_player">Торрент видео плеер</string>
     <string name="pref_description_torrent_player">Воспроизведение видео через торрент поток. Это требует разрешения на хранение. (Альфа, не стабильный!)</string>
     <string name="pref_title_license">Лицензия</string>
-    <string name="pref_description_license">
-        <b>Универсальная общественная лицензия GNU Affero v3.0.</b> Разрешения этой самой мощной лицензии с авторским левом обусловлены предоставлением полного исходного кода лицензированных произведений и модификаций, которые включают в себя более крупные произведения с использованием лицензированных произведений, по той же лицензии. Уведомления об авторских правах и лицензии должны быть сохранены. Авторы предоставляют явное предоставление патентных прав. Когда измененная версия используется для предоставления услуги по сети, должен быть доступен полный исходный код модифицированной версии.</string>
+    <string name="pref_description_license"> Strings related to login </string>
     <string name="pref_title_version">Версия</string>
     <string name="search_hint">Поиск PeerTube</string>
     <string name="title_activity_search">Поиск</string>
@@ -246,11 +245,11 @@
     <string name="video_speed_20">2x</string>
     <string name="pref_title_background_play">Фоновое воспроизведение</string>
     <string name="pref_description_background_play">Если включено, продолжает воспроизводить видео в фоновом режиме.</string>
-    <string name="bottom_nav_title_local">Локаль</string>
+    <string name="bottom_nav_title_local">Местоположение</string>
     <string name="title_activity_account">Аккаунт</string>
     <!-- Constants, Don't translate -->
-    <string name="action_bar_title_account">Учётная запись</string>
-    <string name="bottom_nav_title_recent">Последние</string>
+    <string name="action_bar_title_account">Аккаунт</string>
+    <string name="bottom_nav_title_recent">Последний</string>
     <string name="meta_data_views">" Представления"</string>
     <string name="ml">Малайский</string>
     <string name="mh">Маршалловых островов</string>
@@ -289,4 +288,17 @@
     <string name="server_selection_select_a_server">Выберите сервер из приведенного ниже списка или введите его напрямую.</string>
     <string name="server_selection_peertube_server_url">URL-адрес сервера PeerTube</string>
     <string name="login_current_server_hint">Текущий сервер</string>
+    <string name="menu_video_more_report">Жалоба</string>
+    <string name="menu_video_more_blacklist">Черный список</string>
+    <string name="video_rating_failed">Без рейтинга</string>
+    <string name="video_meta_button_privacy">Приватность</string>
+    <string name="account_bottom_menu_videos">Видео</string>
+    <string name="account_bottom_menu_channels">Каналы</string>
+    <string name="account_bottom_menu_about">О программе</string>
+    <string name="account_about_account">Учетная запись:</string>
+    <string name="account_about_subscribers">Подписчики:</string>
+    <string name="account_about_joined">Присоединились:</string>
+    <string name="action_bar_title_server_selection">Выберите сервер</string>
+    <string name="server_selection_set_server">Сервер: %s</string>
+    <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
 </resources>

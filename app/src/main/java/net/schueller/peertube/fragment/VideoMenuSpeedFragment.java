@@ -37,7 +37,9 @@ public class VideoMenuSpeedFragment extends BottomSheetDialogFragment {
     public static final String TAG = "VideoMenuSpeed";
 
     private TextView speed05Icon;
+    private TextView speed075Icon;
     private TextView speed10Icon;
+    private TextView speed125Icon;
     private TextView speed15Icon;
     private TextView speed20Icon;
 
@@ -57,13 +59,17 @@ public class VideoMenuSpeedFragment extends BottomSheetDialogFragment {
 
         // Icons
         speed05Icon = view.findViewById(R.id.video_speed05_icon);
+        speed075Icon = view.findViewById(R.id.video_speed075_icon);
         speed10Icon = view.findViewById(R.id.video_speed10_icon);
+        speed125Icon = view.findViewById(R.id.video_speed125_icon);
         speed15Icon = view.findViewById(R.id.video_speed15_icon);
         speed20Icon = view.findViewById(R.id.video_speed20_icon);
 
         // Buttons
         TextView speed05 = view.findViewById(R.id.video_speed05);
+        TextView speed075 = view.findViewById(R.id.video_speed075);
         TextView speed10 = view.findViewById(R.id.video_speed10);
+        TextView speed125 = view.findViewById(R.id.video_speed125);
         TextView speed15 = view.findViewById(R.id.video_speed15);
         TextView speed20 = view.findViewById(R.id.video_speed20);
 
@@ -72,7 +78,9 @@ public class VideoMenuSpeedFragment extends BottomSheetDialogFragment {
 
         // Attach the listener
         speed05.setOnClickListener(v -> setVideoSpeed(0.5f, speed05Icon));
+        speed075.setOnClickListener(v -> setVideoSpeed(0.75f, speed075Icon));
         speed10.setOnClickListener(v -> setVideoSpeed(1.0f, speed10Icon));
+        speed125.setOnClickListener(v -> setVideoSpeed(1.25f, speed125Icon));
         speed15.setOnClickListener(v -> setVideoSpeed(1.5f, speed15Icon));
         speed20.setOnClickListener(v -> setVideoSpeed(2.0f, speed20Icon));
 
@@ -84,7 +92,9 @@ public class VideoMenuSpeedFragment extends BottomSheetDialogFragment {
     private void setVideoSpeed(Float speed, TextView icon) {
 
         speed05Icon.setText("");
+        speed075Icon.setText("");
         speed10Icon.setText("");
+        speed125Icon.setText("");
         speed15Icon.setText("");
         speed20Icon.setText("");
 

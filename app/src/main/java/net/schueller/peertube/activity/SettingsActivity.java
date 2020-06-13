@@ -32,7 +32,6 @@ import androidx.appcompat.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
-import android.util.Patterns;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -221,7 +220,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
                                              Preference preference) {
             String key = preference.getKey();
-            if (key.equals("pref_api_base")) {
+            if ("pref_api_base".equals(key)) {
                 Intent intentServer = new Intent(preference.getContext(), SelectServerActivity.class);
                 startActivity(intentServer);
                 return true;

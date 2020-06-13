@@ -37,8 +37,7 @@ public class AuthorizationInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
 
         Session session = Session.getInstance();
-
-        Response mainResponse = chain.proceed(chain.request());
+        Response mainResponse;
         Request mainRequest = chain.request();
 
         if (session.isLoggedIn()) {
@@ -49,7 +48,8 @@ public class AuthorizationInterceptor implements Interceptor {
            // Log.v("Authorization", "Intercept: " + session.getToken());
 
             // build request
-            mainResponse = chain.proceed(builder.build());
+            Request req = builder.build();
+            mainResponse = chain.proceed(req);
 
             // logout on auth error
             if (mainResponse.code() == 401 || mainResponse.code() == 403) {
@@ -57,6 +57,8 @@ public class AuthorizationInterceptor implements Interceptor {
                 Log.v("Authorization", "Intercept: Logout forced");
             }
 
+        }else{
+            mainResponse = chain.proceed(chain.request());
         }
 
         return mainResponse;

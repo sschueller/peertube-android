@@ -299,4 +299,6 @@
     <string name="server_selection_peertube_server_url">PeerTube 伺服器 URL</string>
     <string name="action_bar_title_server_selection">選取伺服器</string>
     <string name="login_current_server_hint">目前的伺服器</string>
+    <string name="video_speed_125">1.25x</string>
+    <string name="video_speed_075">0.75x</string>
 </resources>

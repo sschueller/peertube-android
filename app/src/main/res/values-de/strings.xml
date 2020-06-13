@@ -3,7 +3,7 @@
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_activity_login">Anmelden</string>
     <string name="prompt_server">Server</string>
-    <string name="prompt_email">Kontoname</string>
+    <string name="prompt_email">E-Mail / Kontoname</string>
     <string name="prompt_password">Passwort</string>
     <string name="action_sign_in">Anmelden</string>
     <string name="action_sign_in_short">Anmelden</string>

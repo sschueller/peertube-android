@@ -65,7 +65,7 @@ public class LoginActivity extends CommonActivity {
         mEmailSignInButton.setOnClickListener(view -> attemptLogin());
 
         mEmailView = findViewById(R.id.email);
-        mPasswordView = findViewById(R.id.password);
+        mPasswordView = findViewById(R.id.serverPassword);
 
 
         // Attaching the layout to the toolbar object

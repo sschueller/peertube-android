@@ -73,7 +73,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
         }
     }
 
-    void setServers(List<Server> Servers) {
+    public void setServers(List<Server> Servers) {
         mServers = Servers;
         notifyDataSetChanged();
     }

@@ -10,7 +10,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/server_list_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/darker_gray"

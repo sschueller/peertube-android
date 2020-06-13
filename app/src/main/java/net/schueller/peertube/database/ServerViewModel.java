@@ -19,7 +19,7 @@ public class ServerViewModel extends AndroidViewModel {
         mAllServers = mRepository.getAllServers();
     }
 
-    LiveData<List<Server>> getAllServers() { return mAllServers; }
+    public LiveData<List<Server>> getAllServers() { return mAllServers; }
 
     public void insert(Server Server) { mRepository.insert(Server); }
     

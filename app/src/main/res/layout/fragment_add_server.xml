@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="100dp"
+    android:paddingRight="16dp"
     tools:context=".fragment.AddServerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/serverLabel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Label"
+        android:inputType="textPersonName" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/serverUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Server Url"
+        android:inputType="textUri" />
+
+    <EditText
+        android:id="@+id/serverUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/serverPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/testServerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test" />
+
+    <Button
+        android:id="@+id/addServerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add" />
+
+</LinearLayout>

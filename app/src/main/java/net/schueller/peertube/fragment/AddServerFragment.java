@@ -1,5 +1,6 @@
 package net.schueller.peertube.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,53 +11,29 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.activity.ServerAddressBookActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link AddServerFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AddServerFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AddServerFragment extends Fragment {
 
     public static final String TAG = "AddServerFragment";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentInteractionListener mListener;
+
+    private View mView;
 
     public AddServerFragment() {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static AddServerFragment newInstance() {
-        AddServerFragment fragment = new AddServerFragment();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -64,15 +41,29 @@ public class AddServerFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView");
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_server, container, false);
+
+        mView = inflater.inflate(R.layout.fragment_add_server, container, false);
+
+        // bind button click
+        Button addServerButton = mView.findViewById(R.id.addServerButton);
+        addServerButton.setOnClickListener(view -> {
+            Activity act = getActivity();
+            if (act instanceof ServerAddressBookActivity) {
+                ((ServerAddressBookActivity) act).addServer(mView);
+            }
+        });
+
+        Button testServerButton = mView.findViewById(R.id.testServerButton);
+        testServerButton.setOnClickListener(view -> {
+            Activity act = getActivity();
+            if (act instanceof ServerAddressBookActivity) {
+                ((ServerAddressBookActivity) act).testServer();
+            }
+        });
+
+        return mView;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {

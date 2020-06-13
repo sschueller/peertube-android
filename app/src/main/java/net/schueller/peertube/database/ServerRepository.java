@@ -16,7 +16,7 @@ class ServerRepository {
     ServerRepository(Application application) {
         ServerRoomDatabase db = ServerRoomDatabase.getDatabase(application);
         mServerDao = db.serverDao();
-        mAllServers = mServerDao.getAll();
+        mAllServers = mServerDao.getAllServers();
 
     }
 

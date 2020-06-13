@@ -17,6 +17,7 @@
  */
 package net.schueller.peertube.database;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -27,6 +28,7 @@ public class Server {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @NonNull
     @ColumnInfo(name = "server_name")
     private String serverName;
 
@@ -38,6 +40,10 @@ public class Server {
 
     @ColumnInfo(name = "password")
     private String password;
+
+    public Server(@NonNull String serverName)  {
+        this.serverName = serverName;
+    }
 
     public int getId() {
         return id;

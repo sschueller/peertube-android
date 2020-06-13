@@ -15,11 +15,13 @@ public abstract class ServerRoomDatabase extends RoomDatabase {
     public abstract ServerDao serverDao();
 
     private static volatile ServerRoomDatabase INSTANCE;
+
     private static final int NUMBER_OF_THREADS = 4;
+
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static ServerRoomDatabase getDatabase(final Context context) {
+    public static ServerRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (ServerRoomDatabase.class) {
                 if (INSTANCE == null) {

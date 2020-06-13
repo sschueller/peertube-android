@@ -18,36 +18,24 @@
 package net.schueller.peertube.adapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.activity.SelectServerActivity;
-import net.schueller.peertube.helper.APIUrlHelper;
+
 import net.schueller.peertube.database.Server;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.List;
 
 public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.ServerViewHolder> {
 
-    class ServerViewHolder extends RecyclerView.ViewHolder {
-        private final TextView ServerItemView;
-
-        private ServerViewHolder(View itemView) {
-            super(itemView);
-            ServerItemView = itemView.findViewById(R.id.textView);
-        }
-    }
 
     private final LayoutInflater mInflater;
     private List<Server> mServers; // Cached copy of Servers
@@ -56,21 +44,31 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
         mInflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public ServerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ServerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.row_serverbook, parent, false);
         return new ServerViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ServerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ServerViewHolder holder, int position) {
         if (mServers != null) {
             Server current = mServers.get(position);
-            holder.ServerItemView.setText(current.getServerName());
+            holder.serverLabel.setText(current.getServerName());
         } else {
             // Covers the case of data not being ready yet.
-            holder.ServerItemView.setText("No Server");
+            holder.serverLabel.setText("No Servers");
         }
+
+        holder.mView.setOnClickListener(v -> {
+            Log.v("ServerListAdapter", "setOnClickListener " + mServers.get(position).getServerHost());
+        });
+
+
+//        holder.ServerItemView.setOnLongClickListener(v -> {
+//            Log.v("ServerListAdapter", "setOnLongClickListener " + position);
+//        });
     }
 
     public void setServers(List<Server> Servers) {
@@ -87,5 +85,16 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
         else return 0;
     }
 
+    static class ServerViewHolder extends RecyclerView.ViewHolder {
+        TextView serverLabel, serverUrl, serverUsername;
+        View mView;
+
+        private ServerViewHolder(View itemView) {
+            super(itemView);
+            serverLabel = itemView.findViewById(R.id.serverLabelRow);
+            serverUrl = itemView.findViewById(R.id.serverUrlRow);
+            mView = itemView;
+        }
+    }
 
 }

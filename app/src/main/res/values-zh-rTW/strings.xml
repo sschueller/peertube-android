@@ -37,7 +37,7 @@
     <string name="pref_title_license">授權條款</string>
     <string name="pref_description_license">
 \n<b>Affero通用公眾授權條款 v3.0</b>
-\n
+\n 
 \n這份最強的著作傳式授權條款提供作品完整的原始碼與修改，其中包含了使用同一個授權條款的作品。著作權與授權條款聲明都必須保留。貢獻者提供明確的專利權授予。當修改版被用於提供透過網路的服務時，修改版的完整原始碼也必須釋出。</string>
     <string name="pref_title_version">版本</string>
     <string name="search_hint">搜尋 PeerTube</string>

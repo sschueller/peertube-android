@@ -39,7 +39,10 @@
     <string name="pref_title_torrent_player">Lecteur vidéo torrent</string>
     <string name="pref_description_torrent_player">Lecture de vidéo via un flux torrent. Ceci requiert les permissions de stockage. (Alpha, instable !)</string>
     <string name="pref_title_license">Licence</string>
-    <string name="pref_description_license"> Strings related to login </string>
+    <string name="pref_description_license">
+\n<b>GNU Affero General Public License v3.0</b>
+\n
+\nLes autorisations de cette licence de copyleft la plus forte sont conditionnées à la mise à disposition d\'un code source complet des œuvres sous licence et des modifications, qui comprennent des œuvres plus grandes utilisant une œuvre sous licence, sous la même licence. Les avis de droit d\'auteur et de licence doivent être conservés. Les contributeurs accordent expressément des droits de brevet. Lorsqu\'une version modifiée est utilisée pour fournir un service sur un réseau, le code source complet de la version modifiée doit être mis à disposition.</string>
     <string name="pref_title_version">Version</string>
     <string name="search_hint">Rechercher sur PeerTube</string>
     <string name="title_activity_search">Rechercher</string>

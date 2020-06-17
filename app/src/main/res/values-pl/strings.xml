@@ -291,7 +291,7 @@
     <string name="pref_description_show_nsfw">Pokaż zawartość NSFW</string>
     <string name="pref_title_show_nsfw">Zawartość NSFW</string>
     <string name="pref_description_license">
-\n<b> Powszechna Licencja Publiczna GNU Affero v3.0 </b>
+\n<b> Powszechna Licencja Publiczna GNU Affero v3.0</b>
 \n
 \nUprawnienia tej najsilniejszej licencji copyleft są uzależnione od udostępnienia pełnego kodu źródłowego licencjonowanych utworów i modyfikacji, które obejmują większe dzieła przy użyciu licencjonowanego dzieła, na tej samej licencji. Informacje o prawach autorskich i licencjach należy zachować. Autorzy zapewniają wyraźne przyznanie praw patentowych. Gdy zmodyfikowana wersja jest używana do świadczenia usługi przez sieć, należy udostępnić pełny kod źródłowy zmodyfikowanej wersji.</string>
     <string name="pref_description_torrent_player">Odtwarzanie wideo przez strumień torrentów. Wymaga to uprawnień do przechowywania. (Alfa, niestabilny!)</string>

@@ -30,6 +30,12 @@
         android:summary="@string/pref_description_back_pause"
         android:title="@string/pref_title_back_pause" />
 
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="pref_back_pause"
+        android:summary="@string/pref_description_back_pause"
+        android:title="@string/pref_title_back_pause" />
+
     <ListPreference
         android:defaultValue="@array/empty_array"
         android:entries="@array/supportedLanguagesArray"

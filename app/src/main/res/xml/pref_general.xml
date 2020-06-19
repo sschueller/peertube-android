@@ -24,6 +24,27 @@
         android:summary="@string/pref_description_language"
         android:title="@string/pref_language" />
 
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="pref_back_pause"
+        android:summary="@string/pref_description_back_pause"
+        android:title="@string/pref_title_back_pause" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="pref_back_pause"
+        android:summary="@string/pref_description_back_pause"
+        android:title="@string/pref_title_back_pause" />
+
+    <ListPreference
+        android:defaultValue="@array/empty_array"
+        android:entries="@array/supportedLanguagesArray"
+        android:entryValues="@array/supportedLanguagesValues"
+        android:key="pref_language_app"
+        android:summary="@string/pref_description_language_app"
+        android:title="@string/pref_language_app" />
+    />
+
     <ListPreference
         android:title="@string/pref_title_app_theme"
         android:summary="@string/pref_description_app_theme"

@@ -1,3 +1,13 @@
+### Version 1.0.37 Tag: v1.0.37 (2020-06-19)
+ * Making Selecting a search suggestion fill search field (@dhk2)
+ * Adding configuration setting and supporting code to choose language (@dhk2)
+ * Adding configuration setting and code for configurable back button behavior (@dhk2)
+ * Various translations
+
+### Version 1.0.36 Tag: v1.0.36 (2020-06-14)
+ * fix 'cannot make a new request because the previous response (@lishoujun)
+ * Various translations
+
 ### Version 1.0.35 Tag: v1.0.35 (2020-06-01)
  * Gradle und Lib updates (Android Studio 4) (@jmgfr)
  * Friendly name for downloaded files (@jmgfr)

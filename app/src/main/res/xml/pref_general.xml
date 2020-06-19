@@ -24,6 +24,12 @@
         android:summary="@string/pref_description_language"
         android:title="@string/pref_language" />
 
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="pref_back_pause"
+        android:summary="@string/pref_description_back_pause"
+        android:title="@string/pref_title_back_pause" />
+
     <ListPreference
         android:title="@string/pref_title_app_theme"
         android:summary="@string/pref_description_app_theme"

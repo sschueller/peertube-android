@@ -256,6 +256,10 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             torrentStream.stopStream();
         }
     }
+    
+    public void pauseVideo() {
+        mService.player.setPlayWhenReady(false);
+    }
 
     public void stopVideo() {
 

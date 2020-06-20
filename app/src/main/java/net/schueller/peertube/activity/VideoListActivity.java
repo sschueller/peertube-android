@@ -19,8 +19,10 @@
 package net.schueller.peertube.activity;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -145,6 +147,27 @@ public class VideoListActivity extends CommonActivity {
         searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
         searchView.setQueryRefinementEnabled(true);
 
+        searchMenuItem.getActionView().setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Log.d("Search Button", "Long pressed");
+                new AlertDialog.Builder(VideoListActivity.this)
+                        .setTitle(getString(R.string.clear_search_history))
+                        .setMessage(getString(R.string.clear_search_history_prompt))
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getApplicationContext(),
+                                        SearchSuggestionsProvider.AUTHORITY,
+                                        SearchSuggestionsProvider.MODE);
+                                suggestions.clearHistory();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+                return true;
+            }
+        });
         searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {

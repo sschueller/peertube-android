@@ -13,13 +13,6 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="300"
-        android:title="@string/action_bar_title_settings"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/action_account"
         android:orderInCategory="300"
         android:title="@string/action_bar_title_account"

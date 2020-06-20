@@ -8,7 +8,8 @@
     android:paddingLeft="16dp"
     android:paddingTop="100dp"
     android:paddingRight="16dp"
-    tools:context=".fragment.AddServerFragment">
+    tools:context=".fragment.AddServerFragment"
+    android:background="@color/design_default_color_background">
 
     <EditText
         android:id="@+id/serverLabel"
@@ -18,13 +19,28 @@
         android:hint="Label"
         android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/serverUrl"
-        android:layout_width="match_parent"
+    <RelativeLayout
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Server Url"
-        android:inputType="textUri" />
+        android:layout_width="wrap_content">
+
+        <EditText
+            android:layout_alignParentStart="true"
+            android:id="@+id/serverUrl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Server Url"
+            android:inputType="textUri"
+            android:layout_toStartOf="@+id/pickServerUrl"/>
+
+        <Button
+            android:layout_alignParentEnd="true"
+            android:id="@+id/pickServerUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select" />
+
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/serverUsername"

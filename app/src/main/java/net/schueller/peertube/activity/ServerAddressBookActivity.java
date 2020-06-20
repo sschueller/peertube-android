@@ -41,8 +41,7 @@ public class ServerAddressBookActivity extends AppCompatActivity implements AddS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server_address_book);
-        Toolbar toolbar = findViewById(R.id.tool_bar_serveraddressbook);
-        setSupportActionBar(toolbar);
+
 
         mServerViewModel = new ViewModelProvider(this).get(ServerViewModel.class);
 

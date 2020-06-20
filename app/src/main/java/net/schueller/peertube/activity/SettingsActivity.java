@@ -202,7 +202,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("pref_api_base"));
+            //bindPreferenceSummaryToValue(findPreference("pref_api_base"));
             bindPreferenceSummaryToValue(findPreference("pref_theme"));
         }
 
@@ -219,12 +219,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         @Override
         public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
                                              Preference preference) {
-            String key = preference.getKey();
-            if ("pref_api_base".equals(key)) {
-                Intent intentServer = new Intent(preference.getContext(), SelectServerActivity.class);
-                startActivity(intentServer);
-                return true;
-            }
+//            String key = preference.getKey();
+//            if ("pref_api_base".equals(key)) {
+//                Intent intentServer = new Intent(preference.getContext(), SelectServerActivity.class);
+//                startActivity(intentServer);
+//                return true;
+//            }
             return false;
         }
 
@@ -232,7 +232,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         public void onResume() {
             setPreferenceScreen(null);
             addPreferencesFromResource(R.xml.pref_general);
-            bindPreferenceSummaryToValue(findPreference("pref_api_base"));
+            //bindPreferenceSummaryToValue(findPreference("pref_api_base"));
 
             super.onResume();
         }

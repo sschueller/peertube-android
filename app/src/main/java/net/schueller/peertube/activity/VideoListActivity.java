@@ -125,9 +125,6 @@ public class VideoListActivity extends CommonActivity {
         inflater.inflate(R.menu.menu_top_videolist, menu);
 
         // Set an icon in the ActionBar
-        menu.findItem(R.id.action_settings).setIcon(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_cog).actionBar());
-
         menu.findItem(R.id.action_account).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle).actionBar());
 
@@ -231,20 +228,23 @@ public class VideoListActivity extends CommonActivity {
                 //Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
 
                 return false;
-            case R.id.action_settings:
-//                Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT).show();
-                Intent intentSettings = new Intent(this, SettingsActivity.class);
-                this.startActivity(intentSettings);
-
-                return true;
             case R.id.action_account:
-                if (!Session.getInstance().isLoggedIn()) {
-                    Intent intentLogin = new Intent(this, ServerAddressBookActivity.class);
-                    this.startActivity(intentLogin);
-                } else {
+//                if (!Session.getInstance().isLoggedIn()) {
+
+                //Intent intentLogin = new Intent(this, ServerAddressBookActivity.class);
+
                     Intent intentMe = new Intent(this, MeActivity.class);
                     this.startActivity(intentMe);
-                }
+
+                    //overridePendingTransition(R.anim.slide_in_bottom, 0);
+
+
+                  //  this.startActivity(intentLogin);
+
+//                } else {
+//                    Intent intentMe = new Intent(this, MeActivity.class);
+//                    this.startActivity(intentMe);
+//                }
                 return false;
 //            case R.id.action_server_selection:
 //                Intent intentServer = new Intent(this, SelectServerActivity.class);
@@ -378,6 +378,7 @@ public class VideoListActivity extends CommonActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
         setIntent(intent);
         handleIntent(intent);
     }

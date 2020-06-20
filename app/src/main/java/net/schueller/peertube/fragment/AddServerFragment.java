@@ -2,6 +2,7 @@ package net.schueller.peertube.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,9 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.activity.SelectServerActivity;
 import net.schueller.peertube.activity.ServerAddressBookActivity;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class AddServerFragment extends Fragment {
@@ -61,9 +66,33 @@ public class AddServerFragment extends Fragment {
             }
         });
 
+        Button pickServerUrl = mView.findViewById(R.id.pickServerUrl);
+        pickServerUrl.setOnClickListener(view -> {
+            Intent intentServer = new Intent(getActivity(), SelectServerActivity.class);
+            this.startActivityForResult(intentServer, 1);
+        });
+
         return mView;
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+
+                String serverUrlTest = data.getStringExtra("serverUrl");
+                //Log.d(TAG, "serverUrl " + serverUrlTest);
+                EditText serverUrl = mView.findViewById(R.id.serverUrl);
+                serverUrl.setText(serverUrlTest);
+
+                EditText serverLabel = mView.findViewById(R.id.serverLabel);
+                if ("".equals(serverLabel.getText().toString())) {
+                    serverLabel.setText(data.getStringExtra("serverName"));
+                }
+
+            }
+        }
+    }
 
     @Override
     public void onAttach(Context context) {

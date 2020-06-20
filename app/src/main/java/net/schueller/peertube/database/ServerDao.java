@@ -21,6 +21,6 @@ public interface ServerDao {
     @Delete
     void delete(Server server);
 
-    @Query("SELECT * from server_table ORDER BY id ASC")
+    @Query("SELECT * from server_table ORDER BY server_name DESC")
     LiveData<List<Server>> getAllServers();
 }

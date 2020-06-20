@@ -9,6 +9,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -53,28 +54,6 @@ public class SelectServerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_server_selection);
 
         loadList();
-
-        // set url
-        TextView selectedUrl = findViewById(R.id.serverSelectedUrl);
-        selectedUrl.setText(APIUrlHelper.getUrl(SelectServerActivity.this));
-
-        Button setServerButton = findViewById(R.id.server_selection_set);
-        setServerButton.setOnClickListener(v -> {
-
-            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = sharedPref.edit();
-
-            String serverUrl = APIUrlHelper.cleanServerUrl(selectedUrl.getText().toString());
-
-            if (!Patterns.WEB_URL.matcher(serverUrl).matches()) {
-                Toast.makeText(this, R.string.invalid_url, Toast.LENGTH_LONG).show();
-            } else {
-                editor.putString("pref_api_base", serverUrl);
-                editor.apply();
-                this.finish();
-            }
-
-        });
 
     }
 

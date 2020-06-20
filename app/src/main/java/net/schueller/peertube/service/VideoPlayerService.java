@@ -52,6 +52,7 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
+
 import net.schueller.peertube.R;
 import net.schueller.peertube.activity.VideoPlayActivity;
 import net.schueller.peertube.helper.MetaDataHelper;
@@ -93,7 +94,6 @@ public class VideoPlayerService extends Service {
         player.addListener(new Player.EventListener() {
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-
                 if (playbackState == ACTION_PAUSE) { // this means that pause is available, hence the audio is playing
                     Log.v(TAG, "ACTION_PLAY: " + playbackState);
                     registerReceiver(myNoisyAudioStreamReceiver, becomeNoisyIntentFilter);

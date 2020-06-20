@@ -150,7 +150,6 @@ public class VideoListActivity extends CommonActivity {
         searchMenuItem.getActionView().setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Log.d("Search Button", "Long pressed");
                 new AlertDialog.Builder(VideoListActivity.this)
                         .setTitle(getString(R.string.clear_search_history))
                         .setMessage(getString(R.string.clear_search_history_prompt))

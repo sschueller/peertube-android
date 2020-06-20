@@ -26,6 +26,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 
@@ -188,7 +189,27 @@ public class VideoListActivity extends CommonActivity {
             Log.d(TAG, "onDismiss: ");
             loadVideos(0, count, sort, filter);
         });
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionClick(int position) {
+                String suggestion = getSuggestion(position);
+                searchView.setQuery(suggestion, true);
+                return true;
+            }
 
+            private String getSuggestion(int position) {
+                Cursor cursor = (Cursor) searchView.getSuggestionsAdapter().getItem(
+                        position);
+                return cursor.getString(cursor
+                        .getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1));
+            }
+
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                /* Required to implement */
+                return true;
+            }
+        });
         return true;
     }
 

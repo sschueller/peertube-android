@@ -18,18 +18,22 @@
 package net.schueller.peertube.fragment;
 
 import android.app.Activity;
+import android.app.PictureInPictureParams;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.Rational;
 import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
@@ -146,7 +150,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         fullscreenButton.setOnClickListener(view -> {
             Log.d(TAG, "Fullscreen");
-            if (!isFullscreen) {
+               if (!isFullscreen) {
                 isFullscreen = true;
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             } else {
@@ -162,6 +166,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
 
     }
+
 
     private void loadVideo() {
         Context context = getContext();

@@ -18,6 +18,7 @@
 package net.schueller.peertube.fragment;
 
 import android.app.Activity;
+import android.app.AppOpsManager;
 import android.app.PictureInPictureParams;
 import android.content.ComponentName;
 import android.content.Context;
@@ -69,6 +70,7 @@ import net.schueller.peertube.service.VideoPlayerService;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,7 +87,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
     private LinearLayout torrentStatus;
-
+    private Boolean pipAvailable = false;
+    private Boolean isPIP = false;
     private static final String TAG = "VideoPlayerFragment";
 
 
@@ -126,7 +129,11 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         // start service
         Context context = getContext();
         Activity activity = getActivity();
-
+        if (canEnterPiPMode(context)){
+            pipAvailable=true;
+        } else {
+            pipAvailable=false;
+        }
         mVideoUuid = videoUuid;
 
         assert activity != null;
@@ -144,10 +151,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         // Full screen Icon
         TextView fullscreenText = activity.findViewById(R.id.exo_fullscreen);
         FrameLayout fullscreenButton = activity.findViewById(R.id.exo_fullscreen_button);
-
         fullscreenText.setText(R.string.video_expand_icon);
         new Iconics.IconicsBuilder().ctx(context).on(fullscreenText).build();
-
         fullscreenButton.setOnClickListener(view -> {
             Log.d(TAG, "Fullscreen");
                if (!isFullscreen) {
@@ -158,6 +163,15 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             }
         });
+
+        // Picture in picture Icon
+        if (pipAvailable){
+            fullscreenButton.setOnLongClickListener(view -> {
+                Log.d(TAG, "pip");
+                enterPIPMode();
+                return true;
+            });
+        }
 
         if (!mBound) {
             videoPlayerIntent = new Intent(context, VideoPlayerService.class);
@@ -378,4 +392,13 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         Log.v(TAG, "onVideoDisabled()...");
     }
 
+    public static boolean canEnterPiPMode(Context context) {
+        AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+        return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
+    }
+    public void enterPIPMode() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            getActivity().enterPictureInPictureMode();
+        }
+    }
 }

@@ -1,18 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1037
-        versionName "1.0.37"
+        targetSdkVersion 29
+        versionCode 1038
+        versionName "1.0.38"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
             libVersions = [
                     exoplayer: '2.9.3'
             ]
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
         }
         dependencies {
             implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -70,7 +78,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '28.0.3'
 
     applicationVariants.all { variant ->
         variant.resValue "string", "versionName", variant.versionName
@@ -78,6 +85,23 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta6'
+    def room_version = "2.2.5"
+    def archLifecycleVersion = '2.1.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta7'
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    // database lib
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    androidTestImplementation "androidx.room:room-testing:$room_version"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    annotationProcessor "androidx.lifecycle:lifecycle-common-java8:$archLifecycleVersion"
+
 }

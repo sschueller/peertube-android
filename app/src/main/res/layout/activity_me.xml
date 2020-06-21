@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.MeActivity"
+
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool_bar_me"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,26 +24,154 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
+<ScrollView
 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_marginBottom="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/account_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/account_email"
+        <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:id="@+id/a_me_account_line"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/a_me_avatar"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="0dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"/>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/a_me_username"
+                        android:drawablePadding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+                    <TextView
+                        android:id="@+id/a_me_email"
+                        android:drawablePadding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+                    <TextView
+                        android:drawablePadding="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/me_logout_button"
+                        android:id="@+id/a_me_logout"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@android:color/darker_gray" />
+
+
+        <LinearLayout
+            android:id="@+id/a_me_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+        <TextView
+            android:drawableStart="@drawable/ic_baseline_settings_24"
+            android:drawablePadding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_settings"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
     </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/a_me_helpnfeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+        <TextView
+            android:drawableStart="@drawable/ic_baseline_help_24"
+            android:drawablePadding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/me_help_and_feedback_button"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_marginBottom="0dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/account_username"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/account_email"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="" />-->
+<!--    </LinearLayout>-->
 
 
 </LinearLayout>

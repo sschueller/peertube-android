@@ -15,21 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.application;
+package net.schueller.peertube.database;
 
-import android.app.Application;
-import android.content.Context;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
-public class AppApplication extends Application {
-    private static Application instance;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        instance = this;
-    }
-
-    public static Context getContext() {
-        return instance.getApplicationContext();
-    }
+@Database(entities = {Server.class}, version = 1)
+public abstract class AppDatabase extends RoomDatabase {
+    public abstract ServerDao serverDao();
 }

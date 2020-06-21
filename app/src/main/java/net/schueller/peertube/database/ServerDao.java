@@ -15,21 +15,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.application;
+package net.schueller.peertube.database;
 
-import android.app.Application;
-import android.content.Context;
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 
-public class AppApplication extends Application {
-    private static Application instance;
+import java.util.List;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        instance = this;
-    }
+@Dao
+public interface ServerDao {
 
-    public static Context getContext() {
-        return instance.getApplicationContext();
-    }
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Server server);
+
+    @Query("DELETE FROM server_table")
+    void deleteAll();
+
+    @Delete
+    void delete(Server server);
+
+    @Query("SELECT * from server_table ORDER BY server_name DESC")
+    LiveData<List<Server>> getAllServers();
 }

@@ -18,13 +18,19 @@
 package net.schueller.peertube.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.provider.SearchRecentSuggestions;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,12 +41,16 @@ import net.schueller.peertube.R;
 
 import net.schueller.peertube.activity.SelectServerActivity;
 import net.schueller.peertube.activity.ServerAddressBookActivity;
+import net.schueller.peertube.activity.VideoListActivity;
 import net.schueller.peertube.database.Server;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.provider.SearchSuggestionsProvider;
 import net.schueller.peertube.service.LoginService;
 
 
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.ServerViewHolder> {
 
@@ -65,31 +75,45 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
         if (mServers != null) {
             Server current = mServers.get(position);
             holder.serverLabel.setText(current.getServerName());
+            holder.serverUrl.setText(current.getServerHost());
+
+            if (TextUtils.isEmpty(current.getUsername())) {
+                holder.hasLogin.setVisibility(View.GONE);
+            } else {
+                holder.hasLogin.setVisibility(View.VISIBLE);
+            }
+
         } else {
             // Covers the case of data not being ready yet.
-            holder.serverLabel.setText("No Servers");
+            holder.serverLabel.setText(R.string.server_book_no_servers_found);
         }
 
         holder.itemView.setOnClickListener(v -> {
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(mInflater.getContext());
             SharedPreferences.Editor editor = sharedPref.edit();
 
-            String serverUrl = APIUrlHelper.cleanServerUrl(mServers.get(position).getServerHost());
+            String serverUrl = APIUrlHelper.cleanServerUrl(getServerAtPosition(position).getServerHost());
 
             editor.putString("pref_api_base", serverUrl);
             editor.apply();
 
-            // attempt authenication
-            LoginService.Authenticate(
-                    mServers.get(position).getUsername(),
-                    mServers.get(position).getPassword()
-            );
+            // attempt authentication if we have a username
+            if (!TextUtils.isEmpty(getServerAtPosition(position).getUsername())) {
+                LoginService.Authenticate(
+                        getServerAtPosition(position).getUsername(),
+                        getServerAtPosition(position).getPassword()
+                );
+            }
 
+            // tell server list activity to reload list
+            Intent intent = new Intent();
+            ((Activity) mInflater.getContext()).setResult(RESULT_OK, intent);
+
+            // close this activity
             ((Activity) mInflater.getContext()).finish();
 
             Toast.makeText(mInflater.getContext(), mInflater.getContext().getString(R.string.server_selection_set_server, serverUrl), Toast.LENGTH_LONG).show();
 
-            Log.d("ServerListAdapter", "setOnClickListener " + mServers.get(position).getServerHost());
         });
 
 
@@ -118,12 +142,17 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
 
     static class ServerViewHolder extends RecyclerView.ViewHolder {
         TextView serverLabel, serverUrl, serverUsername;
+        ImageView hasLogin;
 
         private ServerViewHolder(View itemView) {
             super(itemView);
             serverLabel = itemView.findViewById(R.id.serverLabelRow);
             serverUrl = itemView.findViewById(R.id.serverUrlRow);
+            hasLogin = itemView.findViewById(R.id.sb_row_has_login_icon);
         }
     }
 
+    public Server getServerAtPosition (int position) {
+        return mServers.get(position);
+    }
 }

@@ -10,8 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.activity.LoginActivity;
-import net.schueller.peertube.activity.MeActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.OauthClient;
 import net.schueller.peertube.model.Token;
@@ -77,28 +75,36 @@ public class LoginService {
 
                                 Log.wtf(TAG, "Logged in");
 
+                                Toast.makeText(context, context.getString(R.string.authentication_login_success), Toast.LENGTH_LONG).show();
+
+
                             } else {
                                 Log.wtf(TAG, response2.toString());
+                                Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
+
                             }
                         }
 
                         @Override
                         public void onFailure(@NonNull Call<Token> call2, @NonNull Throwable t2) {
                             Log.wtf("err", t2.fillInStackTrace());
+                            Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
+
                         }
                     });
 
                 } else {
                     Log.wtf(TAG, response.toString());
+                    Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
+
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<OauthClient> call, @NonNull Throwable t) {
-
-                Log.d("err", call.toString());
-
                 Log.wtf("err", t.fillInStackTrace());
+                Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
+
             }
         });
     }

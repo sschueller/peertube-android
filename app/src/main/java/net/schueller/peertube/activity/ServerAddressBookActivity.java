@@ -4,10 +4,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,16 +87,34 @@ public class ServerAddressBookActivity extends AppCompatActivity implements AddS
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Delete items on swipe
+        ItemTouchHelper helper = new ItemTouchHelper(
+                new ItemTouchHelper.SimpleCallback(0,
+                        ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                    @Override
+                    public boolean onMove(@NonNull RecyclerView recyclerView,
+                                          @NonNull RecyclerView.ViewHolder viewHolder,
+                                          @NonNull RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+                    @Override
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
+                                         int direction) {
+                        int position = viewHolder.getAdapterPosition();
+                        Server server = adapter.getServerAtPosition(position);
+                        Toast.makeText(ServerAddressBookActivity.this, "Deleting " +
+                                server.getServerName(), Toast.LENGTH_LONG).show();
+
+                        // Delete the server
+                        mServerViewModel.delete(server);
+                    }
+                });
+        helper.attachToRecyclerView(recyclerView);
 
 
-        mServerViewModel.getAllServers().observe(this, new Observer<List<Server>>() {
-            @Override
-            public void onChanged(@Nullable final List<Server> servers) {
-                // Update the cached copy of the words in the adapter.
-                adapter.setServers(servers);
-            }
-        });
-
+        // Update the cached copy of the words in the adapter.
+        mServerViewModel.getAllServers().observe(this, adapter::setServers);
 
     }
 
@@ -100,10 +122,10 @@ public class ServerAddressBookActivity extends AppCompatActivity implements AddS
     {
         Log.d(TAG, "addServer");
 
-        TextView serverLabel = view.findViewById(R.id.serverLabel);
-        TextView serverUrl = view.findViewById(R.id.serverUrl);
-        TextView serverUsername = view.findViewById(R.id.serverUsername);
-        TextView serverPassword = view.findViewById(R.id.serverPassword);
+        EditText serverLabel = view.findViewById(R.id.serverLabel);
+        EditText serverUrl = view.findViewById(R.id.serverUrl);
+        EditText serverUsername = view.findViewById(R.id.serverUsername);
+        EditText serverPassword = view.findViewById(R.id.serverPassword);
 
         Server server = new Server(serverLabel.getText().toString());
 

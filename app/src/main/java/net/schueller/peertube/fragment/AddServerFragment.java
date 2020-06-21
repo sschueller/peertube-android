@@ -6,18 +6,24 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.activity.SelectServerActivity;
 import net.schueller.peertube.activity.ServerAddressBookActivity;
+import net.schueller.peertube.helper.APIUrlHelper;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -25,6 +31,7 @@ import static android.app.Activity.RESULT_OK;
 public class AddServerFragment extends Fragment {
 
     public static final String TAG = "AddServerFragment";
+    public static final Integer PICK_SERVER = 1;
 
     private OnFragmentInteractionListener mListener;
 
@@ -33,7 +40,6 @@ public class AddServerFragment extends Fragment {
     public AddServerFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,24 +58,61 @@ public class AddServerFragment extends Fragment {
         // bind button click
         Button addServerButton = mView.findViewById(R.id.addServerButton);
         addServerButton.setOnClickListener(view -> {
+
             Activity act = getActivity();
-            if (act instanceof ServerAddressBookActivity) {
-                ((ServerAddressBookActivity) act).addServer(mView);
+
+            Boolean formValid = true;
+
+            // close keyboard
+            try {
+                InputMethodManager inputManager = (InputMethodManager)
+                        act.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(act.getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+            } catch (Exception e) {
+
             }
+
+            EditText selectedLabel = mView.findViewById(R.id.serverLabel);
+            if ( TextUtils.isEmpty(selectedLabel.getText())){
+                selectedLabel.setError( act.getString(R.string.server_book_label_is_required ));
+                Toast.makeText(act, R.string.invalid_url, Toast.LENGTH_LONG).show();
+                formValid = false;
+            }
+
+            // validate url
+            EditText selectedUrl = mView.findViewById(R.id.serverUrl);
+            String serverUrl = APIUrlHelper.cleanServerUrl(selectedUrl.getText().toString());
+            selectedUrl.setText(serverUrl);
+
+            if (!Patterns.WEB_URL.matcher(serverUrl).matches()) {
+                selectedUrl.setError( act.getString(R.string.server_book_valid_url_is_required ) );
+                Toast.makeText(act, R.string.invalid_url, Toast.LENGTH_LONG).show();
+                formValid = false;
+            }
+
+            if (formValid) {
+                if (act instanceof ServerAddressBookActivity) {
+                    ((ServerAddressBookActivity) act).addServer(mView);
+
+                }
+            }
+
         });
 
-        Button testServerButton = mView.findViewById(R.id.testServerButton);
-        testServerButton.setOnClickListener(view -> {
-            Activity act = getActivity();
-            if (act instanceof ServerAddressBookActivity) {
-                ((ServerAddressBookActivity) act).testServer();
-            }
-        });
+//        Button testServerButton = mView.findViewById(R.id.testServerButton);
+//        testServerButton.setOnClickListener(view -> {
+//            Activity act = getActivity();
+//            if (act instanceof ServerAddressBookActivity) {
+//                ((ServerAddressBookActivity) act).testServer();
+//            }
+//        });
 
         Button pickServerUrl = mView.findViewById(R.id.pickServerUrl);
         pickServerUrl.setOnClickListener(view -> {
             Intent intentServer = new Intent(getActivity(), SelectServerActivity.class);
-            this.startActivityForResult(intentServer, 1);
+            this.startActivityForResult(intentServer, PICK_SERVER);
         });
 
         return mView;
@@ -77,7 +120,7 @@ public class AddServerFragment extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
+        if (requestCode == PICK_SERVER) {
             if(resultCode == RESULT_OK) {
 
                 String serverUrlTest = data.getStringExtra("serverUrl");
@@ -95,7 +138,7 @@ public class AddServerFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
@@ -111,16 +154,6 @@ public class AddServerFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

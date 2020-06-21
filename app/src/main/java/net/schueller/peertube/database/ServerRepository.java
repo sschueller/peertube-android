@@ -24,8 +24,12 @@ class ServerRepository {
         return mAllServers;
     }
 
-    void insert (Server Server) {
-        new insertAsyncTask(mServerDao).execute(Server);
+    void insert (Server server) {
+        new insertAsyncTask(mServerDao).execute(server);
+    }
+
+    public void delete(Server server)  {
+        new deleteServerAsyncTask(mServerDao).execute(server);
     }
 
     private static class insertAsyncTask extends AsyncTask<Server, Void, Void> {
@@ -39,6 +43,20 @@ class ServerRepository {
         @Override
         protected Void doInBackground(final Server... params) {
             mAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class deleteServerAsyncTask extends AsyncTask<Server, Void, Void> {
+        private ServerDao mAsyncTaskDao;
+
+        deleteServerAsyncTask(ServerDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Server... params) {
+            mAsyncTaskDao.delete(params[0]);
             return null;
         }
     }

@@ -9,14 +9,14 @@
     android:paddingTop="100dp"
     android:paddingRight="16dp"
     tools:context=".fragment.AddServerFragment"
-    android:background="@color/design_default_color_background">
+    android:background="?android:colorBackground">
 
     <EditText
         android:id="@+id/serverLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Label"
+        android:hint="@string/server_book_add_label"
         android:inputType="textPersonName" />
 
     <RelativeLayout
@@ -29,7 +29,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Server Url"
+            android:hint="@string/server_book_add_server_url"
             android:inputType="textUri"
             android:layout_toStartOf="@+id/pickServerUrl"/>
 
@@ -38,7 +38,7 @@
             android:id="@+id/pickServerUrl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select" />
+            android:text="@string/server_book_add_pick_server_button" />
 
     </RelativeLayout>
 
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/server_book_add_username"
         android:inputType="textPersonName" />
 
     <EditText
@@ -55,19 +55,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/server_book_add_password"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/testServerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Test" />
+<!--    <Button-->
+<!--        android:id="@+id/testServerButton"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Test" />-->
 
     <Button
         android:id="@+id/addServerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add" />
+        android:text="@string/server_book_add_add_button" />
 
 </LinearLayout>

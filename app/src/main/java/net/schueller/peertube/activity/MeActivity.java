@@ -83,17 +83,10 @@ public class MeActivity extends CommonActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
 
         LinearLayout account = findViewById(R.id.a_me_account_line);
-        LinearLayout serverAddressBook = findViewById(R.id.a_me_server_address_book);
         LinearLayout settings = findViewById(R.id.a_me_settings);
 
         TextView logout = findViewById(R.id.a_me_logout);
 
-        serverAddressBook.setOnClickListener(view -> {
-            Intent serverBookActivity = new Intent(view.getContext(), ServerAddressBookActivity.class);
-            //overridePendingTransition(R.anim.slide_in_bottom, 0);
-            startActivity(serverBookActivity);
-            finish();
-        });
 
         settings.setOnClickListener(view -> {
             Intent settingsActivity = new Intent(view.getContext(), SettingsActivity.class);

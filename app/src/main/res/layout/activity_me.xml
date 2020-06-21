@@ -81,14 +81,14 @@
                         android:drawablePadding="16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Username@domain.com"
+                        android:text=""
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
                     <TextView
                         android:drawablePadding="16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Logout"
+                        android:text="@string/me_logout_button"
                         android:id="@+id/a_me_logout"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
@@ -104,29 +104,6 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:background="@android:color/darker_gray" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="12dp"
-            android:id="@+id/a_me_server_address_book"
-            android:orientation="horizontal">
-                <TextView
-                    android:drawableStart="@drawable/ic_baseline_video_library_24"
-                    android:drawablePadding="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Server Address Book"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
-        </LinearLayout>
-
-
-
-
 
 
         <LinearLayout
@@ -163,7 +140,7 @@
             android:drawablePadding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Help &amp; Feedback"
+            android:text="@string/me_help_and_feedback_button"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
     </LinearLayout>
 

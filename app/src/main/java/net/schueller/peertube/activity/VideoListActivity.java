@@ -50,6 +50,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +82,7 @@ public class VideoListActivity extends CommonActivity {
 
     public static final String EXTRA_VIDEOID = "VIDEOID";
     public static final String EXTRA_ACCOUNTDISPLAYNAME = "ACCOUNTDISPLAYNAMEANDHOST";
+    public static final Integer SWITCH_INSTANCE = 2;
 
     private VideoAdapter videoAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -128,8 +130,8 @@ public class VideoListActivity extends CommonActivity {
         menu.findItem(R.id.action_account).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle).actionBar());
 
-//        menu.findItem(R.id.action_server_selection).setIcon(
-//                new IconicsDrawable(this, FontAwesome.Icon.faw_server).actionBar());
+        menu.findItem(R.id.action_server_address_book).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_server).actionBar());
 
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
@@ -216,6 +218,16 @@ public class VideoListActivity extends CommonActivity {
         stopService(new Intent(this, VideoPlayerService.class));
     }
 
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SWITCH_INSTANCE) {
+            if(resultCode == RESULT_OK) {
+                loadVideos(currentStart, count, sort, filter);
+            }
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -246,10 +258,10 @@ public class VideoListActivity extends CommonActivity {
 //                    this.startActivity(intentMe);
 //                }
                 return false;
-//            case R.id.action_server_selection:
-//                Intent intentServer = new Intent(this, SelectServerActivity.class);
-//                this.startActivity(intentServer);
-//                return false;
+            case R.id.action_server_address_book:
+                Intent addressBookActivityIntent = new Intent(this, ServerAddressBookActivity.class);
+                this.startActivityForResult(addressBookActivityIntent, SWITCH_INSTANCE);
+                return false;
             default:
                 break;
         }
@@ -484,8 +496,10 @@ public class VideoListActivity extends CommonActivity {
                     //Log.v(TAG, "navigation_subscriptions");
 
                     if (!Session.getInstance().isLoggedIn()) {
-                        Intent intent = new Intent(this, LoginActivity.class);
-                        this.startActivity(intent);
+//                        Intent intent = new Intent(this, LoginActivity.class);
+//                        this.startActivity(intent);
+                        Intent addressBookActivityIntent = new Intent(this, ServerAddressBookActivity.class);
+                        this.startActivityForResult(addressBookActivityIntent, SWITCH_INSTANCE);
                         return false;
                     } else {
 

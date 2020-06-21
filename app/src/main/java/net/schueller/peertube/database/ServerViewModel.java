@@ -21,6 +21,8 @@ public class ServerViewModel extends AndroidViewModel {
 
     public LiveData<List<Server>> getAllServers() { return mAllServers; }
 
-    public void insert(Server Server) { mRepository.insert(Server); }
+    public void insert(Server server) { mRepository.insert(server); }
+
+    public void delete(Server server) {mRepository.delete(server);}
     
 }

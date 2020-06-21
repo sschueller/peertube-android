@@ -19,16 +19,22 @@
 package net.schueller.peertube.activity;
 
 
+import android.app.AppOpsManager;
+import android.app.PictureInPictureParams;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.preference.PreferenceManager;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.util.Rational;
 import android.util.TypedValue;
 
 import android.view.WindowManager;
@@ -39,6 +45,7 @@ import android.widget.RelativeLayout;
 import net.schueller.peertube.R;
 import net.schueller.peertube.fragment.VideoMetaDataFragment;
 import net.schueller.peertube.fragment.VideoPlayerFragment;
+import net.schueller.peertube.service.VideoPlayerService;
 
 import java.util.Objects;
 
@@ -52,8 +59,9 @@ import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
-
-
+    public static String playingVideo="";
+    public static VideoPlayerService oldVideo;
+    VideoPlayerFragment videoPlayerFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,10 +78,11 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         // get video ID
         Intent intent = getIntent();
+        Log.v(TAG, "playing video "+playingVideo);
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
         Log.v(TAG, "click: " + videoUuid);
-
-        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
+        playingVideo=videoUuid;
+        videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
 
         assert videoPlayerFragment != null;
@@ -86,11 +95,37 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
+        assert videoPlayerFragment != null;
+        String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
+        Log.v(TAG, "new intent click: " + videoUuid +" + "+playingVideo);
+        setIntent(intent);
+        assert videoPlayerFragment != null;
+        if(!videoUuid.equals(playingVideo)){
+            Log.wtf(TAG,"different video");
+            videoPlayerFragment.stopVideo();
+            playingVideo=videoUuid;
+        } else {
+            Log.wtf(TAG,"same video");
+        }
+        videoPlayerFragment.start(videoUuid);
+
+        // if we are in landscape set the video to fullscreen
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setOrientation(true);
+        }
+
+    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
 
-        Log.v(TAG, "onConfigurationChanged()...");
+        Log.v(TAG, "onConfigurationChanged()..."+playingVideo);
 
         super.onConfigurationChanged(newConfig);
 
@@ -167,6 +202,11 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Intent intent = getIntent();
+        Log.v(TAG, "playing video "+playingVideo);
+        String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
+        Log.v(TAG, "click: " + videoUuid);
+        playingVideo=videoUuid;
         Log.v(TAG, "onResume()...");
     }
 
@@ -199,16 +239,95 @@ public class VideoPlayActivity extends AppCompatActivity {
         Log.v(TAG, "onStart()...");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onUserLeaveHint () {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
+        switch(backgroundBehavior){
+            case "backgroundStop":
+                Log.wtf(TAG,"stop the video");
+                videoPlayerFragment.pauseVideo();
+                stopService(new Intent(this, VideoPlayerService.class));
+                super.onBackPressed();
+                break;
+            case "backgroundAudio":
+                Log.wtf(TAG,"play the Audio");
+                super.onBackPressed();
+                break;
+            case "backgroundFloat":
+                Log.wtf(TAG,"play in floating video");
+                if (canEnterPiPMode(this)) {
+                    Log.v(TAG, "enabling pip");
+                    enterPIPMode();
+                } else {
+                    Log.v(TAG, "unable to use pip");
+                }
+                break;
+        }
+        Log.v(TAG, "onUserLeaveHint()...");
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void onBackPressed() {
 
+
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
+        Log.wtf(TAG,"which background choice:"+backgroundBehavior);
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
         if (sharedPref.getBoolean("pref_back_pause", true)) {
-            VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
             assert videoPlayerFragment != null;
             videoPlayerFragment.pauseVideo();
         }
+        if (backgroundBehavior.equals("backgroundStop")){
+            Log.wtf(TAG,"stop the video");
+            videoPlayerFragment.pauseVideo();
+            stopService(new Intent(this, VideoPlayerService.class));
+            super.onBackPressed();
+        }
+        if (backgroundBehavior.equals("backgroundAudio")){
+           Log.wtf(TAG,"play the Audio");
+           super.onBackPressed();
+        }
+
+        if (backgroundBehavior.equals("backgroundFloat")){
+            Log.wtf(TAG,"play in floating video");
+            if (canEnterPiPMode(this)) {
+                Log.v(TAG, "enabling pip");
+                enterPIPMode();
+            }
+        }
         Log.v(TAG, "onBackPressed()...");
-        super.onBackPressed();
+    }
+    public static boolean canEnterPiPMode(Context context) {
+        AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+        return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
+    }
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void enterPIPMode() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //this.enterPictureInPictureMode();
+            Rational rational = new Rational(4, 3);
+            Log.wtf(TAG,rational.toString());
+            PictureInPictureParams mParams =
+                    new PictureInPictureParams.Builder()
+                            .setAspectRatio(rational)
+                            .build();
+
+            enterPictureInPictureMode(mParams);
+        }
+    }
+    @Override
+    public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
+        if (isInPictureInPictureMode) {
+            Log.d(TAG,"switched to pip ");
+
+        } else {
+            // Restore the full-screen UI.
+
+            Log.d(TAG,"switched to normal");
+
+        }
     }
 }

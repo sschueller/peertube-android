@@ -64,6 +64,7 @@
         <item>@string/eu</item>
         <item>@string/be</item>
         <item>@string/bn</item>
+        <item>@string/bn_rBD</item>
         <item>@string/bi</item>
         <item>@string/bs</item>
         <item>@string/bzs</item>
@@ -259,6 +260,7 @@
         <item>eu</item>
         <item>be</item>
         <item>bn</item>
+        <item>bn_rBD</item>
         <item>bi</item>
         <item>bs</item>
         <item>bzs</item>
@@ -437,6 +439,7 @@
     <string-array name="supportedLanguagesValues">
         <item>ar</item>
         <item>bn</item>
+        <item>bn_rBD</item>
         <item>cs</item>
         <item>de</item>
         <item>el</item>
@@ -462,6 +465,7 @@
     <string-array name = "supportedLanguagesArray">
         <item>@string/ar</item>
         <item>@string/bn</item>
+        <item>@string/bn_rBD</item>
         <item>@string/cs</item>
         <item>@string/de</item>
         <item>@string/el</item>

@@ -125,7 +125,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
 
     public void start(String videoUuid) {
-
+        Log.wtf("tag","start in playerfragment "+mBound);
         // start service
         Context context = getContext();
         Activity activity = getActivity();
@@ -134,6 +134,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         } else {
             pipAvailable=false;
         }
+        Log.wtf(TAG,videoUuid);
         mVideoUuid = videoUuid;
 
         assert activity != null;
@@ -164,21 +165,11 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             }
         });
 
-        // Picture in picture Icon
-        if (pipAvailable){
-            fullscreenButton.setOnLongClickListener(view -> {
-                Log.d(TAG, "pip");
-                enterPIPMode();
-                return true;
-            });
-        }
-
         if (!mBound) {
             videoPlayerIntent = new Intent(context, VideoPlayerService.class);
             activity.bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
         }
-
-
+        Log.d(TAG, "Start");
     }
 
 
@@ -206,7 +197,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
                 }
 
                 playVideo(video);
-
+                Log.d(TAG, "LoadVideo");
             }
 
             @Override
@@ -268,6 +259,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         simpleExoPlayerView.setPlayer(null);
         if (torrentStream != null) {
             torrentStream.stopStream();
+            Log.d(TAG, "Destroy Video");
         }
     }
     
@@ -281,6 +273,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             Objects.requireNonNull(getContext()).unbindService(mConnection);
             mBound = false;
         }
+
+        Log.d(TAG, "StopVideo");
     }
 
     public void setIsFullscreen(Boolean fullscreen) {
@@ -395,10 +389,5 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     public static boolean canEnterPiPMode(Context context) {
         AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
         return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
-    }
-    public void enterPIPMode() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            getActivity().enterPictureInPictureMode();
-        }
     }
 }

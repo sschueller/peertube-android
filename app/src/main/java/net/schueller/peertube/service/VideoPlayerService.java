@@ -19,15 +19,18 @@ package net.schueller.peertube.service;
 
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.app.PictureInPictureParams;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
@@ -35,9 +38,11 @@ import androidx.annotation.Nullable;
 import android.support.v4.media.MediaDescriptionCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
+import android.util.Rational;
 import android.widget.Toast;
 
 import com.google.android.exoplayer2.C;
+import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
@@ -124,8 +129,8 @@ public class VideoPlayerService extends Service {
         if (playerNotificationManager != null) {
             playerNotificationManager.setPlayer(null);
         }
+
         if (player != null) {
-            player.release();
             player = null;
         }
         super.onDestroy();

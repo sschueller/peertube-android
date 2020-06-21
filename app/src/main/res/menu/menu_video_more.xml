@@ -6,4 +6,7 @@
     <item
         android:id="@+id/video_more_blacklist"
         android:title="@string/menu_video_more_blacklist" />
+    <item
+        android:id="@+id/video_more_pip"
+        android:title="@string/menu_video_more_pip" />
 </menu>

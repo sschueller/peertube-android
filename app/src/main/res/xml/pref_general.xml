@@ -37,6 +37,16 @@
     />
 
     <ListPreference
+        android:defaultValue="@array/empty_array"
+        android:entries="@array/backgroundBehavior"
+        android:entryValues="@array/backgroundBehaviorValues"
+        android:key="pref_background_behavior"
+        android:summary="Select how the playing video stream responds to the back button"
+        android:title="@string/background_behavior" />
+    />
+
+
+    <ListPreference
         android:title="@string/pref_title_app_theme"
         android:summary="@string/pref_description_app_theme"
         android:key="pref_theme"

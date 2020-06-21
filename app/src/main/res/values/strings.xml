@@ -361,6 +361,8 @@
     <string name="pref_token_type" translatable="false">pref_token_type</string>
     <string name="pref_auth_username" translatable="false">pref_auth_username</string>
     <string name="pref_auth_password" translatable="false">pref_auth_password</string>
+    <string name="server_book_del_alert_title">Remove Server</string>
+    <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 

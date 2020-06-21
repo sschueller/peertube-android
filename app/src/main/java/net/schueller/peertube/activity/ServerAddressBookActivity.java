@@ -17,8 +17,11 @@
  */
 package net.schueller.peertube.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.SearchRecentSuggestions;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -44,6 +47,7 @@ import net.schueller.peertube.adapter.ServerListAdapter;
 import net.schueller.peertube.database.Server;
 import net.schueller.peertube.database.ServerViewModel;
 import net.schueller.peertube.fragment.AddServerFragment;
+import net.schueller.peertube.provider.SearchSuggestionsProvider;
 
 import java.util.List;
 
@@ -118,13 +122,25 @@ public class ServerAddressBookActivity extends CommonActivity implements AddServ
                     @Override
                     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
                                          int direction) {
-                        int position = viewHolder.getAdapterPosition();
-                        Server server = adapter.getServerAtPosition(position);
-                        Toast.makeText(ServerAddressBookActivity.this, "Deleting " +
-                                server.getServerName(), Toast.LENGTH_LONG).show();
 
-                        // Delete the server
-                        mServerViewModel.delete(server);
+
+                        new AlertDialog.Builder(ServerAddressBookActivity.this)
+                                .setTitle(getString(R.string.server_book_del_alert_title))
+                                .setMessage(getString(R.string.server_book_del_alert_msg))
+                                .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                                    int position = viewHolder.getAdapterPosition();
+                                    Server server = adapter.getServerAtPosition(position);
+//                                    Toast.makeText(ServerAddressBookActivity.this, "Deleting " +
+//                                            server.getServerName(), Toast.LENGTH_LONG).show();
+                                    // Delete the server
+                                    mServerViewModel.delete(server);
+                                })
+                                .setNegativeButton(android.R.string.no, (dialog, which) -> {
+                                    adapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                                })
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+
                     }
                 });
         helper.attachToRecyclerView(recyclerView);

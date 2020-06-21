@@ -1,4 +1,4 @@
-### Version 1.0.38 Tag: v1.0.8 (2020-06-21)
+### Version 1.0.38 Tag: v1.0.38 (2020-06-21)
  * Multi server login address book
  * Clear search history (@dhk2)
  * Android SDK to 29

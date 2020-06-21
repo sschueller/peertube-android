@@ -12,8 +12,7 @@
     <string name="error_invalid_password">Dit wachtwoord is te kort</string>
     <string name="error_incorrect_password">Dit wachtwoord is onjuist</string>
     <string name="error_field_required">Dit veld is vereist</string>
-    <string name="permission_rationale">"Toegang tot contactpersonen is benodigd om e-mailadressen
-\n        aan te vullen."</string>
+    <string name="permission_rationale">Toegang tot contactpersonen is benodigd om e-mailadressen aan te vullen.</string>
     <string name="action_bar_title_search">Zoeken</string>
     <string name="action_bar_title_settings">Instellingen</string>
     <string name="action_bar_title_logout">Uitloggen</string>

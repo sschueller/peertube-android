@@ -135,13 +135,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // Set theme
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        setTheme(getResources().getIdentifier(
-                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
-                "style",
-                getPackageName())
-        );
 
         super.onCreate(savedInstanceState);
 

@@ -19,6 +19,7 @@
 package net.schueller.peertube.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +48,8 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static net.schueller.peertube.application.AppApplication.getContext;
 
 public class MeActivity extends CommonActivity {
 
@@ -84,14 +87,22 @@ public class MeActivity extends CommonActivity {
 
         LinearLayout account = findViewById(R.id.a_me_account_line);
         LinearLayout settings = findViewById(R.id.a_me_settings);
+        LinearLayout help = findViewById(R.id.a_me_helpnfeedback);
 
         TextView logout = findViewById(R.id.a_me_logout);
 
 
         settings.setOnClickListener(view -> {
-            Intent settingsActivity = new Intent(view.getContext(), SettingsActivity.class);
+            Intent settingsActivity = new Intent(getContext(), SettingsActivity.class);
             //overridePendingTransition(R.anim.slide_in_bottom, 0);
             startActivity(settingsActivity);
+        });
+
+        help.setOnClickListener(view -> {
+            String url = "https://github.com/sschueller/peertube-android/issues";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
         });
 
         logout.setOnClickListener(view -> {

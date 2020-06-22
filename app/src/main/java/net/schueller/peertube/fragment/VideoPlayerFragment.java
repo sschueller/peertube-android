@@ -153,8 +153,10 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         // Full screen Icon
         TextView fullscreenText = activity.findViewById(R.id.exo_fullscreen);
         FrameLayout fullscreenButton = activity.findViewById(R.id.exo_fullscreen_button);
+
         fullscreenText.setText(R.string.video_expand_icon);
         new Iconics.IconicsBuilder().ctx(context).on(fullscreenText).build();
+
         fullscreenButton.setOnClickListener(view -> {
             Log.d(TAG, "Fullscreen");
             fullScreenToggle();
@@ -164,10 +166,13 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             videoPlayerIntent = new Intent(context, VideoPlayerService.class);
             activity.bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
         }
+
+
     }
 
     private void loadVideo() {
         Context context = getContext();
+
 
         // get video details from api
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
@@ -189,6 +194,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
                 }
 
                 playVideo(video);
+
             }
 
             @Override
@@ -268,7 +274,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             Objects.requireNonNull(getContext()).unbindService(mConnection);
             mBound = false;
         }
-
     }
 
     public void setIsFullscreen(Boolean fullscreen) {

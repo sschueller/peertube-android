@@ -19,6 +19,7 @@
 package net.schueller.peertube.activity;
 
 
+import android.annotation.SuppressLint;
 import android.app.AppOpsManager;
 import android.app.PictureInPictureParams;
 import android.content.Context;
@@ -34,6 +35,7 @@ import android.preference.PreferenceManager;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Rational;
 import android.util.TypedValue;
@@ -60,8 +62,6 @@ import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
-    public static String playingVideo="";
-//    VideoPlayerFragment videoPlayerFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,17 +75,24 @@ public class VideoPlayActivity extends AppCompatActivity {
         );
 
         setContentView(R.layout.activity_video_play);
-
-        // get video ID
         Intent intent = getIntent();
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
-        Log.v(TAG, "click: " + videoUuid);
-        playingVideo=videoUuid;
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
-
         assert videoPlayerFragment != null;
-        videoPlayerFragment.start(videoUuid);
+        String playingVideo = videoPlayerFragment.getVideoUuid();
+        Log.v(TAG, "oncreate click: " + videoUuid +" is trying to replace: "+playingVideo);
+
+        if (TextUtils.isEmpty(playingVideo)){
+            Log.v(TAG,"oncreate no video currently playing");
+            videoPlayerFragment.start(videoUuid);
+        } else if(!playingVideo.equals(videoUuid)){
+            Log.v(TAG,"oncreate different video playing currently");
+            videoPlayerFragment.stopVideo();
+            videoPlayerFragment.start(videoUuid);
+        } else {
+            Log.v(TAG,"oncreate same video playing currently");
+        }
 
         // if we are in landscape set the video to fullscreen
         int orientation = this.getResources().getConfiguration().orientation;
@@ -97,21 +104,25 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        setIntent(intent);
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
         assert videoPlayerFragment != null;
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
-        Log.v(TAG, "new intent click: " + videoUuid +" is trying to replace: "+playingVideo);
-        setIntent(intent);
+        Log.v(TAG, "new intent click: " + videoUuid +" is trying to replace: "+videoPlayerFragment.getVideoUuid());
         assert videoPlayerFragment != null;
-        if(!videoUuid.equals(playingVideo)){
-            Log.v(TAG,"different video playing currently");
+        String playingVideo = videoPlayerFragment.getVideoUuid();
+
+        if (TextUtils.isEmpty(playingVideo)){
+            Log.v(TAG,"new intent no video currently playing");
+            videoPlayerFragment.start(videoUuid);
+        } else if(!playingVideo.equals(videoUuid)){
+            Log.v(TAG,"new intent different video playing currently");
             videoPlayerFragment.stopVideo();
-            playingVideo=videoUuid;
+            videoPlayerFragment.start(videoUuid);
         } else {
-            Log.v(TAG,"same video playing currently");
+            Log.v(TAG,"new intent same video playing currently");
         }
-        videoPlayerFragment.start(videoUuid);
 
         // if we are in landscape set the video to fullscreen
         int orientation = this.getResources().getConfiguration().orientation;
@@ -244,17 +255,17 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         switch(backgroundBehavior){
             case "backgroundStop":
-                Log.wtf(TAG,"stop the video");
+                Log.v(TAG,"stop the video");
                 videoPlayerFragment.pauseVideo();
                 stopService(new Intent(this, VideoPlayerService.class));
                 super.onBackPressed();
                 break;
             case "backgroundAudio":
-                Log.wtf(TAG,"play the Audio");
+                Log.v(TAG,"play the Audio");
                 super.onBackPressed();
                 break;
             case "backgroundFloat":
-                Log.wtf(TAG,"play in floating video");
+                Log.v(TAG,"play in floating video");
                 if (canEnterPiPMode(this)) {
                     Log.v(TAG, "enabling pip");
                     enterPIPMode();
@@ -266,6 +277,8 @@ public class VideoPlayActivity extends AppCompatActivity {
         Log.v(TAG, "onUserLeaveHint()...");
     }
 
+   // @RequiresApi(api = Build.VERSION_CODES.O)
+    @SuppressLint("NewApi")
     public void onBackPressed() {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -286,26 +299,34 @@ public class VideoPlayActivity extends AppCompatActivity {
             videoPlayerFragment.pauseVideo();
         }
         if (backgroundBehavior.equals("backgroundStop")){
-            Log.wtf(TAG,"stop the video");
+            Log.v(TAG,"stop the video");
             videoPlayerFragment.pauseVideo();
             stopService(new Intent(this, VideoPlayerService.class));
             super.onBackPressed();
         }
         if (backgroundBehavior.equals("backgroundAudio")){
-           Log.wtf(TAG,"play the Audio");
+           Log.v(TAG,"play the Audio");
            super.onBackPressed();
         }
 
         if (backgroundBehavior.equals("backgroundFloat")){
-            Log.wtf(TAG,"play in floating video");
+            Log.v(TAG,"play in floating video");
             if (canEnterPiPMode(this)) {
                 Log.v(TAG, "enabling pip");
+//API check takes place in canEnterPIPMode
                 enterPIPMode();
+            } else {
+                super.onBackPressed();
             }
+
         }
         Log.v(TAG, "onBackPressed()...");
     }
     public boolean canEnterPiPMode(Context context) {
+        Log.v(TAG,"api version "+Build.VERSION.SDK_INT);
+        if (Build.VERSION.SDK_INT<28){
+            return false;
+        }
         AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
         return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
     }
@@ -313,7 +334,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     public void enterPIPMode() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Rational rational = new Rational(239, 100);
-            Log.wtf(TAG,rational.toString());
+            Log.v(TAG,rational.toString());
             PictureInPictureParams mParams =
                     new PictureInPictureParams.Builder()
                             .setAspectRatio(rational)
@@ -326,9 +347,9 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
         if (isInPictureInPictureMode) {
-            Log.d(TAG,"switched to pip ");
+            Log.v(TAG,"switched to pip ");
         } else {
-            Log.d(TAG,"switched to normal");
+            Log.v(TAG,"switched to normal");
         }
     }
 }

@@ -394,6 +394,10 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     }
 
     public static boolean canEnterPiPMode(Context context) {
+        Log.v(TAG,"api version "+Build.VERSION.SDK_INT);
+        if (Build.VERSION.SDK_INT<28){
+            return false;
+        }
         AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
         return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
     }
@@ -404,6 +408,9 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         }
 
     };
+    public String getVideoUuid(){
+        return mVideoUuid;
+    }
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
 /*
         @Override

@@ -62,6 +62,8 @@ import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,10 +77,13 @@ public class VideoPlayActivity extends AppCompatActivity {
         );
 
         setContentView(R.layout.activity_video_play);
+
+        // get video ID
         Intent intent = getIntent();
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
+
         assert videoPlayerFragment != null;
         String playingVideo = videoPlayerFragment.getVideoUuid();
         Log.v(TAG, "oncreate click: " + videoUuid +" is trying to replace: "+playingVideo);
@@ -244,7 +249,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         Log.v(TAG, "onStart()...");
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @SuppressLint("NewApi")
     @Override
     public void onUserLeaveHint () {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -266,6 +271,7 @@ public class VideoPlayActivity extends AppCompatActivity {
                 break;
             case "backgroundFloat":
                 Log.v(TAG,"play in floating video");
+                //canEnterPIPMode makes sure API level is high enough
                 if (canEnterPiPMode(this)) {
                     Log.v(TAG, "enabling pip");
                     enterPIPMode();
@@ -311,9 +317,9 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         if (backgroundBehavior.equals("backgroundFloat")){
             Log.v(TAG,"play in floating video");
+            //canEnterPIPMode makes sure API level is high enough
             if (canEnterPiPMode(this)) {
                 Log.v(TAG, "enabling pip");
-//API check takes place in canEnterPIPMode
                 enterPIPMode();
             } else {
                 super.onBackPressed();

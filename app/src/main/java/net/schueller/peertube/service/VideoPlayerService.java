@@ -129,7 +129,9 @@ public class VideoPlayerService extends Service {
         if (playerNotificationManager != null) {
             playerNotificationManager.setPlayer(null);
         }
-
+        if (null!=myNoisyAudioStreamReceiver) {
+            this.unregisterReceiver(myNoisyAudioStreamReceiver);
+        }
         if (player != null) {
             player = null;
         }

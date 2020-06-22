@@ -27,6 +27,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.gesture.Gesture;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,7 +36,9 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Rational;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +64,7 @@ import com.mikepenz.iconics.Iconics;
 import net.schueller.peertube.R;
 
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.Constants;
 import net.schueller.peertube.model.File;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
@@ -76,7 +80,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VideoPlayerFragment extends Fragment implements VideoRendererEventListener {
+public class VideoPlayerFragment extends Fragment implements VideoRendererEventListener  {
 
     private String mVideoUuid;
     private ProgressBar progressBar;
@@ -87,10 +91,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
     private LinearLayout torrentStatus;
-    private Boolean pipAvailable = false;
-    private Boolean isPIP = false;
     private static final String TAG = "VideoPlayerFragment";
-
+    private GestureDetector mDetector;
 
     private ServiceConnection mConnection = new ServiceConnection() {
 
@@ -118,22 +120,14 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_video_player, container, false);
     }
-
-
     public void start(String videoUuid) {
         Log.wtf("tag","start in playerfragment "+mBound);
         // start service
         Context context = getContext();
         Activity activity = getActivity();
-        if (canEnterPiPMode(context)){
-            pipAvailable=true;
-        } else {
-            pipAvailable=false;
-        }
         Log.wtf(TAG,videoUuid);
         mVideoUuid = videoUuid;
 
@@ -147,6 +141,11 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         simpleExoPlayerView.setControllerShowTimeoutMs(1000);
         simpleExoPlayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
 
+        mDetector = new GestureDetector(context, new MyGestureListener());
+        simpleExoPlayerView.setOnTouchListener(touchListener);
+
+
+
         torrentStatus = activity.findViewById(R.id.exo_torrent_status);
 
         // Full screen Icon
@@ -156,13 +155,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         new Iconics.IconicsBuilder().ctx(context).on(fullscreenText).build();
         fullscreenButton.setOnClickListener(view -> {
             Log.d(TAG, "Fullscreen");
-               if (!isFullscreen) {
-                isFullscreen = true;
-                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-            } else {
-                isFullscreen = false;
-                activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            }
+            fullScreenToggle();
         });
 
         if (!mBound) {
@@ -262,11 +255,13 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             Log.d(TAG, "Destroy Video");
         }
     }
-    
+
     public void pauseVideo() {
         mService.player.setPlayWhenReady(false);
     }
-
+    public void pauseToggle() {
+        mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
+    }
     public void stopVideo() {
 
         if (mBound) {
@@ -292,7 +287,16 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     public Boolean getIsFullscreen() {
         return isFullscreen;
     }
-
+    public void fullScreenToggle() {
+        Log.d(TAG, "Fullscreen");
+        if (!isFullscreen) {
+            setIsFullscreen(true);
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        } else {
+            setIsFullscreen(false);
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
     /**
      * Torrent Playback
      *
@@ -390,4 +394,74 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
         return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
     }
+    View.OnTouchListener touchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            // pass the events to the gesture detector
+            // a return value of true means the detector is handling it
+            // a return value of false means the detector didn't
+            // recognize the event
+            return mDetector.onTouchEvent(event);
+
+        }
+
+    };
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+/*
+        @Override
+        public boolean onDown(MotionEvent event) {
+            Log.d("TAG","onDown: ");
+            return true;
+        }
+
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            Log.i("TAG", "onSingleTapConfirmed: ");
+            pauseToggle();
+            return true;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+            Log.i("TAG", "onLongPress: ");
+        }
+
+        @Override
+        public boolean onDoubleTap(MotionEvent e) {
+            Log.i("TAG", "onDoubleTap: ");
+            return true;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2,
+                                float distanceX, float distanceY) {
+            Log.i("TAG", "onScroll: ");
+            return true;
+        }
+*/
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2,
+                               float velocityX, float velocityY) {
+            Log.d(TAG ,event1.toString());
+            Log.d(TAG,event2.toString());
+            Log.d(TAG, String.valueOf(velocityX));
+            Log.d(TAG , String.valueOf(velocityY));
+            //arbitrarily velocity speeds that seem to work to differentiate events.
+            if (velocityY>4000){
+                Log.d(TAG,"we have a drag down event");
+                if (canEnterPiPMode(getContext())) {
+                    getActivity().enterPictureInPictureMode();
+                }
+            }
+            if ((velocityX>2000) && (Math.abs(velocityY) <2000)){
+                Log.d(TAG,"swipe right "+velocityY);
+            }
+            if ((velocityX<2000) && (Math.abs(velocityY)<2000)){
+                Log.d(TAG,"swipe left "+velocityY);
+            }
+            return true;
+        }
+    }
+
 }

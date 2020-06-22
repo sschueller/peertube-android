@@ -261,12 +261,13 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
     public void pauseVideo() {
         if (mBound){
-
             mService.player.setPlayWhenReady(false);
         }
     }
     public void pauseToggle() {
-        mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
+        if (mBound) {
+            mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
+        }
     }
     public void stopVideo() {
 

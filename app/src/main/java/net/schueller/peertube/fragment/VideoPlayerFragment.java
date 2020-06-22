@@ -91,6 +91,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
     private LinearLayout torrentStatus;
+
     private static final String TAG = "VideoPlayerFragment";
     private GestureDetector mDetector;
 
@@ -120,15 +121,18 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_video_player, container, false);
     }
+
+
     public void start(String videoUuid) {
-        Log.wtf("tag","start in playerfragment "+mBound);
+
         // start service
         Context context = getContext();
         Activity activity = getActivity();
-        Log.wtf(TAG,videoUuid);
+
         mVideoUuid = videoUuid;
 
         assert activity != null;
@@ -258,13 +262,12 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
     public void pauseVideo() {
         if (mBound){
+
             mService.player.setPlayWhenReady(false);
         }
     }
     public void pauseToggle() {
-        if (mBound){
-            mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
-        }
+        mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
     }
     public void stopVideo() {
 

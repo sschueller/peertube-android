@@ -12,7 +12,6 @@
         <item>backgroundAudio</item>
         <item>backgroundStop</item>
         <item>backgroundFloat</item>
-
     </string-array>
 
     <string-array name="themeArray">

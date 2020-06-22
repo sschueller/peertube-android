@@ -54,8 +54,6 @@ import androidx.fragment.app.FragmentManager;
 
 
 //import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
@@ -63,7 +61,6 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
     public static String playingVideo="";
-    public static VideoPlayerService oldVideo;
     VideoPlayerFragment videoPlayerFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +78,6 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         // get video ID
         Intent intent = getIntent();
-        Log.v(TAG, "playing video "+playingVideo);
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
         Log.v(TAG, "click: " + videoUuid);
         playingVideo=videoUuid;
@@ -109,11 +105,11 @@ public class VideoPlayActivity extends AppCompatActivity {
         setIntent(intent);
         assert videoPlayerFragment != null;
         if(!videoUuid.equals(playingVideo)){
-            Log.wtf(TAG,"different video");
+            Log.v(TAG,"different video playing currently");
             videoPlayerFragment.stopVideo();
             playingVideo=videoUuid;
         } else {
-            Log.wtf(TAG,"same video");
+            Log.wtf(TAG,"same video playing currently");
         }
         videoPlayerFragment.start(videoUuid);
 
@@ -205,12 +201,13 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intent = getIntent();
+/*        Intent intent = getIntent();
         Log.v(TAG, "playing video "+playingVideo);
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
         Log.v(TAG, "click: " + videoUuid);
         playingVideo=videoUuid;
-        Log.v(TAG, "onResume()...");
+*/
+Log.v(TAG, "onResume()...");
     }
 
     @Override

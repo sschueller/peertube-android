@@ -109,7 +109,7 @@ public class VideoPlayActivity extends AppCompatActivity {
             videoPlayerFragment.stopVideo();
             playingVideo=videoUuid;
         } else {
-            Log.wtf(TAG,"same video playing currently");
+            Log.v(TAG,"same video playing currently");
         }
         videoPlayerFragment.start(videoUuid);
 
@@ -124,7 +124,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
 
-        Log.v(TAG, "onConfigurationChanged()..."+playingVideo);
+        Log.v(TAG, "onConfigurationChanged()...");
 
         super.onConfigurationChanged(newConfig);
 
@@ -201,13 +201,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-/*        Intent intent = getIntent();
-        Log.v(TAG, "playing video "+playingVideo);
-        String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
-        Log.v(TAG, "click: " + videoUuid);
-        playingVideo=videoUuid;
-*/
-Log.v(TAG, "onResume()...");
+        Log.v(TAG, "onResume()...");
     }
 
     @Override
@@ -271,7 +265,7 @@ Log.v(TAG, "onResume()...");
         }
         Log.v(TAG, "onUserLeaveHint()...");
     }
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     public void onBackPressed() {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -311,7 +305,7 @@ Log.v(TAG, "onResume()...");
         }
         Log.v(TAG, "onBackPressed()...");
     }
-    public static boolean canEnterPiPMode(Context context) {
+    public boolean canEnterPiPMode(Context context) {
         AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
         return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
     }

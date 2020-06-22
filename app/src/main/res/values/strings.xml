@@ -64,6 +64,12 @@
     <string name="pref_description_back_pause">Pause background play when pressing back during video playback.</string>
     <string name="pref_language_app">Application Language</string>
     <string name="pref_description_language_app">Select language for application interface. Restart app for change to take effect.</string>
+    <string name="pref_background_audio">Continue as a background audio stream</string>
+    <string name="pref_background_stop">Stop all playback</string>
+    <string name="pref_background_float">Continue playing video in floating window</string>
+    <string name="pref_background_behavior">Background playing Configuration</string>
+    <string name="settings_api_error_float">Android version does not support floating video</string>
+    <string name="settings_permissions_error_float">Picture in picture permission is disabled for this app in Android Settings</string>
     <string name ="background_audio">Continue as a background audio stream</string>
     <string name ="background_stop">Stop all playback</string>
     <string name ="background_float">Continue playing video in floating window</string>

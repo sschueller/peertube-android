@@ -42,7 +42,7 @@
         android:entryValues="@array/backgroundBehaviorValues"
         android:key="pref_background_behavior"
         android:summary="Select how the playing video stream responds to the back button"
-        android:title="@string/background_behavior" />
+        android:title="@string/pref_background_behavior" />
     />
 
 

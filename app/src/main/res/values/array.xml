@@ -3,9 +3,9 @@
 
 
     <string-array name="backgroundBehavior">
-        <item>@string/background_audio</item>
-        <item>@string/background_stop</item>
-        <item>@string/background_float</item>
+        <item>@string/pref_background_audio</item>
+        <item>@string/pref_background_stop</item>
+        <item>@string/pref_background_float</item>
     </string-array>
 
     <string-array name="backgroundBehaviorValues">

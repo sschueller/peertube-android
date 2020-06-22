@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -53,6 +54,8 @@ import androidx.fragment.app.FragmentManager;
 
 
 //import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
@@ -270,12 +273,19 @@ public class VideoPlayActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void onBackPressed() {
 
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
-        Log.wtf(TAG,"which background choice:"+backgroundBehavior);
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
+        //copying Youtube behavior to have back button exit full screen.
+        if (videoPlayerFragment.getIsFullscreen()){
+            Log.v(TAG,"exiting full screen");
+            //setOrientation(false);
+            //videoPlayerFragment.setIsFullscreen(false);
+            videoPlayerFragment.fullScreenToggle();
+            return;
+        }
+
         if (sharedPref.getBoolean("pref_back_pause", true)) {
             assert videoPlayerFragment != null;
             videoPlayerFragment.pauseVideo();
@@ -307,12 +317,12 @@ public class VideoPlayActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void enterPIPMode() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            //this.enterPictureInPictureMode();
-            Rational rational = new Rational(4, 3);
+            Rational rational = new Rational(239, 100);
             Log.wtf(TAG,rational.toString());
             PictureInPictureParams mParams =
                     new PictureInPictureParams.Builder()
                             .setAspectRatio(rational)
+    //                        .setSourceRectHint(new Rect(0,500,400,600))
                             .build();
 
             enterPictureInPictureMode(mParams);
@@ -322,12 +332,8 @@ public class VideoPlayActivity extends AppCompatActivity {
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
         if (isInPictureInPictureMode) {
             Log.d(TAG,"switched to pip ");
-
         } else {
-            // Restore the full-screen UI.
-
             Log.d(TAG,"switched to normal");
-
         }
     }
 }

@@ -80,7 +80,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VideoPlayerFragment extends Fragment implements VideoRendererEventListener  {
+public class VideoPlayerFragment extends Fragment implements VideoRendererEventListener {
 
     private String mVideoUuid;
     private ProgressBar progressBar;
@@ -148,8 +148,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         mDetector = new GestureDetector(context, new MyGestureListener());
         simpleExoPlayerView.setOnTouchListener(touchListener);
 
-
-
         torrentStatus = activity.findViewById(R.id.exo_torrent_status);
 
         // Full screen Icon
@@ -166,13 +164,10 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             videoPlayerIntent = new Intent(context, VideoPlayerService.class);
             activity.bindService(videoPlayerIntent, mConnection, Context.BIND_AUTO_CREATE);
         }
-        Log.d(TAG, "Start");
     }
-
 
     private void loadVideo() {
         Context context = getContext();
-
 
         // get video details from api
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
@@ -189,18 +184,17 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
                 mService.setCurrentVideo(video);
 
                 if (video == null) {
-                    Toast.makeText(context, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Unable to retrieve video information, try again later.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 playVideo(video);
-                Log.d(TAG, "LoadVideo");
             }
 
             @Override
             public void onFailure(@NonNull Call<Video> call, @NonNull Throwable t) {
                 Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(context, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Something went wrong: "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -256,7 +250,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         simpleExoPlayerView.setPlayer(null);
         if (torrentStream != null) {
             torrentStream.stopStream();
-            Log.d(TAG, "Destroy Video");
         }
     }
 
@@ -276,7 +269,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             mBound = false;
         }
 
-        Log.d(TAG, "StopVideo");
     }
 
     public void setIsFullscreen(Boolean fullscreen) {
@@ -295,7 +287,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         return isFullscreen;
     }
     public void fullScreenToggle() {
-        Log.d(TAG, "Fullscreen");
         if (!isFullscreen) {
             setIsFullscreen(true);
             getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -404,12 +395,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     View.OnTouchListener touchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            // pass the events to the gesture detector
-            // a return value of true means the detector is handling it
-            // a return value of false means the detector didn't
-            // recognize the event
             return mDetector.onTouchEvent(event);
-
         }
 
     };

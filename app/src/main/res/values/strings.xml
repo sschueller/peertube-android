@@ -62,7 +62,6 @@
     <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
     <string name="pref_title_back_pause">Pause on back button</string>
     <string name="pref_description_back_pause">Pause background play when pressing back during video playback.</string>
-    <string name="menu_video_more_pip">Picture-in-picture</string>
     <string name="pref_language_app">Application Language</string>
     <string name="pref_description_language_app">Select language for application interface. Restart app for change to take effect.</string>
     <string name ="background_audio">Continue as a background audio stream</string>

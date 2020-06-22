@@ -10,24 +10,24 @@
     android:orientation="vertical"
     tools:targetApi="28">
 
-    <FrameLayout
-        android:id="@+id/exo_more_button"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_gravity="end">
+        <FrameLayout
+            android:id="@+id/exo_more_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end">
 
-        <TextView
-            android:id="@+id/exo_more"
-            android:layout_width="18dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:paddingTop="12dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:textColor="#FFBEBEBE"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/exo_more"
+                android:layout_width="18dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:paddingTop="12dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:textColor="#FFBEBEBE"
+                android:textSize="12sp" />
 
-    </FrameLayout>
+        </FrameLayout>
 
 
 
@@ -83,9 +83,9 @@
         <TextView
             android:id="@id/exo_position"
             android:layout_width="wrap_content"
-            android:layout_height="5dp"
-            android:layout_gravity="center"
+            android:layout_height="wrap_content"
             android:includeFontPadding="false"
+            android:layout_gravity="center"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:textColor="#FFBEBEBE"

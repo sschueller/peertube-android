@@ -237,10 +237,6 @@ public class VideoMetaDataFragment extends Fragment {
                         Log.v(TAG, "Blacklist");
                         Toast.makeText(context, "Not Implemented", Toast.LENGTH_SHORT).show();
                         return true;
-                    case R.id.video_more_pip:
-                        Log.v(TAG, "PIP");
-
-                        return true;
                     default:
                         return false;
                 }

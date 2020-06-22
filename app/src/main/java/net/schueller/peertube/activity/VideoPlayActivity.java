@@ -61,7 +61,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
     public static String playingVideo="";
-    VideoPlayerFragment videoPlayerFragment;
+//    VideoPlayerFragment videoPlayerFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +81,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
         Log.v(TAG, "click: " + videoUuid);
         playingVideo=videoUuid;
-        videoPlayerFragment = (VideoPlayerFragment)
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
 
         assert videoPlayerFragment != null;
@@ -101,7 +101,7 @@ public class VideoPlayActivity extends AppCompatActivity {
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
         assert videoPlayerFragment != null;
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
-        Log.v(TAG, "new intent click: " + videoUuid +" + "+playingVideo);
+        Log.v(TAG, "new intent click: " + videoUuid +" is trying to replace: "+playingVideo);
         setIntent(intent);
         assert videoPlayerFragment != null;
         if(!videoUuid.equals(playingVideo)){
@@ -244,6 +244,10 @@ Log.v(TAG, "onResume()...");
     public void onUserLeaveHint () {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+        VideoMetaDataFragment videoMetaFragment = (VideoMetaDataFragment) fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
+
         switch(backgroundBehavior){
             case "backgroundStop":
                 Log.wtf(TAG,"stop the video");

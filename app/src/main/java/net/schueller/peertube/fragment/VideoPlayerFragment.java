@@ -399,6 +399,10 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         if (Build.VERSION.SDK_INT<28){
             return false;
         }
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        if (!"BackgroundFloat".equals(sharedPref.getString("pref_background_behavior","backgroundStop"))){
+            return false;
+        }
         AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
         return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
     }

@@ -321,6 +321,10 @@ public class VideoPlayActivity extends AppCompatActivity {
             if (canEnterPiPMode(this)) {
                 Log.v(TAG, "enabling pip");
                 enterPIPMode();
+
+                //fixes problem where back press doesn't bring up video list after returning from PIP mode
+                Intent intentSettings = new Intent(this, VideoListActivity.class);
+                this.startActivity(intentSettings);
             } else {
                 super.onBackPressed();
             }

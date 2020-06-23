@@ -34,7 +34,7 @@
             android:name=".activity.VideoPlayActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:label="@string/title_activity_video_play"
-            android:launchMode="singleTask"
+            android:launchMode="singleInstance"
             android:supportsPictureInPicture="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

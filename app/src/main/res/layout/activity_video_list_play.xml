@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.schueller.peertube.activity.VideoListActivity">
+    tools:context="net.schueller.peertube.activity.VideoListPlayActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -46,6 +46,20 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="205dp"
+            android:layout_height="63dp"
+            android:layout_gravity="left"
+            android:layout_weight="20"
+            app:srcCompat="@android:drawable/btn_dialog" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="59dp"
+            android:text="Button" />
+
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -70,20 +84,16 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="30"
         android:gravity="end"
         android:orientation="horizontal"
-        android:paddingLeft="30dp"
-        android:paddingTop="30dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="30dp">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/btn_dialog" />
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp">
+        <fragment android:name="net.schueller.peertube.fragment.VideoPlayerFragment"
+            android:id="@+id/video_player_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -117,7 +117,7 @@
     <string name="account_about_joined">Inscrit·e le :</string>
     <string name="api_error">Quelque chose s’est mal passé, veuillez essayer plus tard !</string>
     <string name="action_bar_title_server_selection">Sélectionnez un serveur</string>
-    <string name="ab">Abkhaze</string>
+    <string name="ab">abkhaze</string>
     <string name="aa">afar</string>
     <string name="af">afrikaans</string>
     <string name="ak">akan</string>
@@ -310,8 +310,8 @@
     <string name="za">zhuang</string>
     <string name="zu">zoulou</string>
     <string name="login_current_server_hint">Serveur actuel</string>
-    <string name="video_speed_075">0.75x</string>
-    <string name="video_speed_125">1.25x</string>
+    <string name="video_speed_075">0,75×</string>
+    <string name="video_speed_125">1,25×</string>
     <string name="title_activity_server_address_book">Livre d\'adresse</string>
     <string name="authentication_login_success">Identification réussie</string>
     <string name="authentication_login_failed">Identification échouée !</string>

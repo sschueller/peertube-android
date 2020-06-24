@@ -12,12 +12,14 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_server_address_book"
         android:orderInCategory="300"
-        android:title="@string/action_bar_title_settings"
+        android:title="@string/action_bar_title_address_book"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
         app:showAsAction="ifRoom" />
+
 
     <item
         android:id="@+id/action_account"

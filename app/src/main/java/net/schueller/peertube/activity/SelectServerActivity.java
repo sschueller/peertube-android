@@ -1,3 +1,20 @@
+/*
+ * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ *
+ * License: GPL-3.0+
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package net.schueller.peertube.activity;
 
 import androidx.annotation.NonNull;
@@ -9,6 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -53,28 +71,6 @@ public class SelectServerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_server_selection);
 
         loadList();
-
-        // set url
-        TextView selectedUrl = findViewById(R.id.serverSelectedUrl);
-        selectedUrl.setText(APIUrlHelper.getUrl(SelectServerActivity.this));
-
-        Button setServerButton = findViewById(R.id.server_selection_set);
-        setServerButton.setOnClickListener(v -> {
-
-            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-            SharedPreferences.Editor editor = sharedPref.edit();
-
-            String serverUrl = APIUrlHelper.cleanServerUrl(selectedUrl.getText().toString());
-
-            if (!Patterns.WEB_URL.matcher(serverUrl).matches()) {
-                Toast.makeText(this, R.string.invalid_url, Toast.LENGTH_LONG).show();
-            } else {
-                editor.putString("pref_api_base", serverUrl);
-                editor.apply();
-                this.finish();
-            }
-
-        });
 
     }
 

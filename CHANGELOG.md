@@ -1,3 +1,9 @@
+### Version 1.0.38 Tag: v1.0.38 (2020-06-21)
+ * Multi server login address book
+ * Clear search history (@dhk2)
+ * Android SDK to 29
+ * Various translations
+ 
 ### Version 1.0.37 Tag: v1.0.37 (2020-06-19)
  * Making Selecting a search suggestion fill search field (@dhk2)
  * Adding configuration setting and supporting code to choose language (@dhk2)
@@ -22,6 +28,11 @@
 ### Version 1.0.32 Tag: v1.0.32 (2020-01-04)
  * Gradle update
  * Translations
+
+### Version 1.0.31 Tag: v1.0.31 (2019-09-25)
+* Renamed overview to discover (PeerTube v1.4.0)
+* Translations
+* Gradle dependencies updates
 
 ### Version 1.0.30 Tag: v1.0.30 (2019-08-07)
  * Gradle update

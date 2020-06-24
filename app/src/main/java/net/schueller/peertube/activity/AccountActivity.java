@@ -48,6 +48,7 @@ import net.schueller.peertube.network.RetrofitInstance;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Set;
 
 import androidx.annotation.NonNull;
@@ -145,11 +146,10 @@ public class AccountActivity extends CommonActivity {
         Toolbar toolbar = findViewById(R.id.tool_bar_account);
         // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
         getSupportActionBar().setTitle(displayNameAndHost);
-        getSupportActionBar().setHomeAsUpIndicator(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_chevron_left).actionBar()
-        );
 
         loadAccountVideos(displayNameAndHost);
 

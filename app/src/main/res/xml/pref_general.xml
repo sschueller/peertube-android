@@ -1,8 +1,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference
-        android:key="pref_api_base"
-        android:title="@string/pref_title_peertube_server" />
 
     <!--<SwitchPreference-->
         <!--android:key="pref_background_play"-->

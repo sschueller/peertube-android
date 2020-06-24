@@ -1,0 +1,168 @@
+/*
+ * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ *
+ * License: GPL-3.0+
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+package net.schueller.peertube.activity;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import net.schueller.peertube.R;
+import net.schueller.peertube.adapter.ServerListAdapter;
+import net.schueller.peertube.database.Server;
+import net.schueller.peertube.database.ServerViewModel;
+import net.schueller.peertube.fragment.AddServerFragment;
+
+import java.util.List;
+
+
+public class ServerAddressBookActivity extends CommonActivity implements AddServerFragment.OnFragmentInteractionListener {
+
+    private String TAG = "ServerAddressBookActivity";
+    public static final String EXTRA_REPLY = "net.schueller.peertube.room.REPLY";
+
+    private ServerViewModel mServerViewModel;
+    private AddServerFragment addServerFragment;
+    private FloatingActionButton floatingActionButton;
+    private FragmentManager fragmentManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_server_address_book);
+
+
+        mServerViewModel = new ViewModelProvider(this).get(ServerViewModel.class);
+
+        showServers();
+
+        floatingActionButton = findViewById(R.id.add_server);
+        floatingActionButton.setOnClickListener(view -> {
+
+            Log.d(TAG, "Click");
+
+            fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+            addServerFragment = new AddServerFragment();
+            fragmentTransaction.replace(R.id.server_book, addServerFragment);
+            fragmentTransaction.commit();
+
+            floatingActionButton.hide();
+
+        });
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+
+    public void showServers()
+    {
+        RecyclerView recyclerView = findViewById(R.id.server_list_recyclerview);
+        final ServerListAdapter adapter = new ServerListAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Delete items on swipe
+        ItemTouchHelper helper = new ItemTouchHelper(
+                new ItemTouchHelper.SimpleCallback(0,
+                        ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                    @Override
+                    public boolean onMove(@NonNull RecyclerView recyclerView,
+                                          @NonNull RecyclerView.ViewHolder viewHolder,
+                                          @NonNull RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+                    @Override
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
+                                         int direction) {
+                        int position = viewHolder.getAdapterPosition();
+                        Server server = adapter.getServerAtPosition(position);
+                        Toast.makeText(ServerAddressBookActivity.this, "Deleting " +
+                                server.getServerName(), Toast.LENGTH_LONG).show();
+
+                        // Delete the server
+                        mServerViewModel.delete(server);
+                    }
+                });
+        helper.attachToRecyclerView(recyclerView);
+
+
+        // Update the cached copy of the words in the adapter.
+        mServerViewModel.getAllServers().observe(this, adapter::setServers);
+
+    }
+
+    public void addServer(View view)
+    {
+        Log.d(TAG, "addServer");
+
+        EditText serverLabel = view.findViewById(R.id.serverLabel);
+        EditText serverUrl = view.findViewById(R.id.serverUrl);
+        EditText serverUsername = view.findViewById(R.id.serverUsername);
+        EditText serverPassword = view.findViewById(R.id.serverPassword);
+
+        Server server = new Server(serverLabel.getText().toString());
+
+        server.setServerHost(serverUrl.getText().toString());
+        server.setUsername(serverUsername.getText().toString());
+        server.setPassword(serverPassword.getText().toString());
+
+        mServerViewModel.insert(server);
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.remove(addServerFragment);
+        fragmentTransaction.commit();
+
+        floatingActionButton.show();
+
+    }
+
+    public void testServer()
+    {
+
+    }
+
+}

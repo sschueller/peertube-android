@@ -3,10 +3,5 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="activity.VideoListActivity">
-    <item
-        android:id="@+id/action_logout"
-        android:orderInCategory="300"
-        android:title="@string/action_bar_title_logout"
-        app:showAsAction="ifRoom" />
 
 </menu>

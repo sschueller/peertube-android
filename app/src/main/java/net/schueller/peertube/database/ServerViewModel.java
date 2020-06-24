@@ -15,21 +15,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.application;
+package net.schueller.peertube.database;
 
 import android.app.Application;
-import android.content.Context;
 
-public class AppApplication extends Application {
-    private static Application instance;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        instance = this;
+import java.util.List;
+
+public class ServerViewModel extends AndroidViewModel {
+
+    private ServerRepository mRepository;
+
+    private LiveData<List<Server>> mAllServers;
+
+    public ServerViewModel (Application application) {
+        super(application);
+        mRepository = new ServerRepository(application);
+        mAllServers = mRepository.getAllServers();
     }
 
-    public static Context getContext() {
-        return instance.getApplicationContext();
-    }
+    public LiveData<List<Server>> getAllServers() { return mAllServers; }
+
+    public void insert(Server server) { mRepository.insert(server); }
+
+    public void delete(Server server) {mRepository.delete(server);}
+    
 }

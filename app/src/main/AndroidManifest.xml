@@ -2,11 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="net.schueller.peertube">
-    <!-- connect to peertube server -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- required for torrent downloading -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- required to play video in background via notification -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
+    <!-- required for torrent downloading -->
     <application
         android:name=".application.AppApplication"
         android:allowBackup="true"
@@ -15,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".activity.ServerAddressBookActivity"
+            android:label="@string/title_activity_server_address_book"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.VideoListActivity"
             android:launchMode="singleTop"
@@ -28,12 +28,8 @@
 
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"></meta-data>
+                android:resource="@xml/searchable" />
         </activity>
-        <activity
-            android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.VideoPlayActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
@@ -61,6 +57,10 @@
             android:exported="false" />
 
         <service android:name=".service.VideoPlayerService" />
-    </application>
+    </application> <!-- required to play video in background via notification -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- connect to peertube server -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

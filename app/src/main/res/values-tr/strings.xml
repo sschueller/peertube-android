@@ -265,10 +265,10 @@
     <string name="brown">Kahverengi</string>
     <string name="gray">Gri</string>
     <string name="bluegray">Mavi gri</string>
-    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_05">0,5×</string>
     <string name="video_speed_10">Normal</string>
-    <string name="video_speed_15">1.5x</string>
-    <string name="video_speed_20">2x</string>
+    <string name="video_speed_15">1,5×</string>
+    <string name="video_speed_20">2×</string>
     <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
     <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
     <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
@@ -332,8 +332,8 @@
     <string name="server_book_no_servers_found">Sunucu defteri boş</string>
     <string name="pref_description_back_pause">Video oynatımı sırasında geri düğmesine basıldığında arka planda oynatmayı duraklat.</string>
     <string name="pref_title_back_pause">Geri düğmesine basıldığında duraklat</string>
-    <string name="video_speed_125">1.25x</string>
-    <string name="video_speed_075">0.75x</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
     <string name="title_activity_server_address_book">Adres Defteri</string>
     <string name="server_book_add_add_button">Ekle</string>
     <string name="server_book_add_password">Parola</string>

@@ -158,6 +158,26 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         };
         sharedPref.registerOnSharedPreferenceChangeListener(listener);
 
+        //Setup a shared preference listener for background behavior for detecting PIP issues
+        SharedPreferences.OnSharedPreferenceChangeListener listener;
+        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+                if (key.equals("pref_background_behavior")){
+                    if (prefs.getString(key, key).equals("backgroundFloat")){
+                        if (Build.VERSION.SDK_INT < 28) {
+                            Toast.makeText(getContext(), R.string.settings_api_error_float, Toast.LENGTH_LONG).show();
+                        } else {
+                            AppOpsManager appOpsManager = (AppOpsManager) getContext().getSystemService(Context.APP_OPS_SERVICE);
+                            if (!(AppOpsManager.MODE_ALLOWED == appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), getContext().getPackageName()))) {
+                                Toast.makeText(getContext(), R.string.settings_permissions_error_float, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        sharedPref.registerOnSharedPreferenceChangeListener(listener);
+
         super.onCreate(savedInstanceState);
 
         setupActionBar();

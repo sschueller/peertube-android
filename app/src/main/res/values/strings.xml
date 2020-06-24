@@ -70,10 +70,6 @@
     <string name="pref_background_behavior">Background playing Configuration</string>
     <string name="settings_api_error_float">Android version does not support floating video</string>
     <string name="settings_permissions_error_float">Picture in picture permission is disabled for this app in Android Settings</string>
-    <string name ="background_audio">Continue as a background audio stream</string>
-    <string name ="background_stop">Stop all playback</string>
-    <string name ="background_float">Continue playing video in floating window</string>
-    <string name ="background_behavior">Backgrouund playing Configuration</string>
     <string name="clear_search_history">Clear Search History</string>
     <string name="clear_search_history_prompt">Do you want to permanently delete the search history?</string>
     <!-- languages -->
@@ -96,7 +92,6 @@
     <string name="eu">Basque</string>
     <string name="be">Belarusian</string>
     <string name="bn">Bengali</string>
-    <string name="bn_rBD">Bengali (Bangladesh)</string>
     <string name="bi">Bislama</string>
     <string name="bs">Bosnian</string>
     <string name="bzs">Brazilian Sign Language</string>
@@ -337,32 +332,6 @@
     <string name="account_about_joined">Joined:</string>
     <string name="api_error">Something went wrong, please try later!</string>
     <string name="action_bar_title_server_selection">Select Server</string>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="action_bar_title_address_book" />
-    <string name="authentication_login_success">Login Successfull</string>
-    <string name="authentication_login_failed">Login Failed!</string>
-    <string name="server_book_no_servers_found">Server Books is empty</string>
-    <string name="server_book_label_is_required">Server label is required</string>
-    <string name="server_book_valid_url_is_required">Valid URL is required</string>
-    <string name="me_logout_button">Logout</string>
-    <string name="me_help_and_feedback_button"><![CDATA[Help & Feedback]]></string>
-    <string name="server_book_add_label">Label</string>
-    <string name="server_book_add_server_url">Server Url</string>
-    <string name="server_book_add_pick_server_button">Search</string>
-    <string name="server_book_add_username">Username</string>
-    <string name="server_book_add_password">Password</string>
-    <string name="server_book_add_add_button">Add</string>
-    <string name="server_book_list_has_login">Has Login</string>
-    <string name="video_rating_none" translatable="false">none</string>
-    <string name="video_rating_like" translatable="false">like</string>
-    <string name="video_rating_dislike" translatable="false">dislike</string>
-    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
-    <string name="login_current_server_hint">Current Server</string>
-    <string name="title_activity_server_address_book">Address Book</string>
-    <string name="video_speed_075">0.75x</string>
-    <string name="video_speed_125">1.25x</string>
-
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
     <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
@@ -370,10 +339,12 @@
     <string name="pref_token_type" translatable="false">pref_token_type</string>
     <string name="pref_auth_username" translatable="false">pref_auth_username</string>
     <string name="pref_auth_password" translatable="false">pref_auth_password</string>
-    <string name="server_book_del_alert_title">Remove Server</string>
-    <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-
+    <string name="video_rating_none" translatable="false">none</string>
+    <string name="video_rating_like" translatable="false">like</string>
+    <string name="video_rating_dislike" translatable="false">dislike</string>
+    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
+    <string name="login_current_server_hint">Current Server</string>
+    <string name="video_speed_075">0.75x</string>
+    <string name="video_speed_125">1.25x</string>
 
 </resources>

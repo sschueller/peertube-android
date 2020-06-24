@@ -253,10 +253,10 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     public void onUserLeaveHint () {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
         VideoMetaDataFragment videoMetaFragment = (VideoMetaDataFragment) fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
+        String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
 
         switch(backgroundBehavior){
             case "backgroundStop":
@@ -288,14 +288,12 @@ public class VideoPlayActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
+
         //copying Youtube behavior to have back button exit full screen.
         if (videoPlayerFragment.getIsFullscreen()){
             Log.v(TAG,"exiting full screen");
-            //setOrientation(false);
-            //videoPlayerFragment.setIsFullscreen(false);
             videoPlayerFragment.fullScreenToggle();
             return;
         }
@@ -304,31 +302,33 @@ public class VideoPlayActivity extends AppCompatActivity {
             assert videoPlayerFragment != null;
             videoPlayerFragment.pauseVideo();
         }
-        if (backgroundBehavior.equals("backgroundStop")){
-            Log.v(TAG,"stop the video");
-            videoPlayerFragment.pauseVideo();
-            stopService(new Intent(this, VideoPlayerService.class));
-            super.onBackPressed();
-        }
-        if (backgroundBehavior.equals("backgroundAudio")){
-           Log.v(TAG,"play the Audio");
-           super.onBackPressed();
-        }
 
-        if (backgroundBehavior.equals("backgroundFloat")){
-            Log.v(TAG,"play in floating video");
-            //canEnterPIPMode makes sure API level is high enough
-            if (canEnterPiPMode(this)) {
-                Log.v(TAG, "enabling pip");
-                enterPIPMode();
-
-                //fixes problem where back press doesn't bring up video list after returning from PIP mode
-                Intent intentSettings = new Intent(this, VideoListActivity.class);
-                this.startActivity(intentSettings);
-            } else {
+        String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
+        switch (backgroundBehavior){
+            case "backgroundStop":
+                Log.v(TAG,"stop the video");
+                videoPlayerFragment.pauseVideo();
+                stopService(new Intent(this, VideoPlayerService.class));
                 super.onBackPressed();
-            }
-
+                break;
+            case "backgroundAudio":
+               Log.v(TAG,"play the Audio");
+               super.onBackPressed();
+               break;
+            case "backgroundFloat":
+                Log.v(TAG,"play in floating video");
+                //canEnterPIPMode makes sure API level is high enough
+                if (canEnterPiPMode(this)) {
+                    Log.v(TAG, "enabling pip");
+                    enterPIPMode();
+                    //fixes problem where back press doesn't bring up video list after returning from PIP mode
+                    Intent intentSettings = new Intent(this, VideoListActivity.class);
+                    this.startActivity(intentSettings);
+                } else {
+                    Log.v(TAG,"Unable to enter PIP mode");
+                    super.onBackPressed();
+                }
+                break;
         }
         Log.v(TAG, "onBackPressed()...");
     }
@@ -342,17 +342,15 @@ public class VideoPlayActivity extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void enterPIPMode() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Rational rational = new Rational(239, 100);
-            Log.v(TAG,rational.toString());
-            PictureInPictureParams mParams =
-                    new PictureInPictureParams.Builder()
-                            .setAspectRatio(rational)
-    //                        .setSourceRectHint(new Rect(0,500,400,600))
-                            .build();
+        Rational rational = new Rational(239, 100);
+        Log.v(TAG,rational.toString());
+        PictureInPictureParams mParams =
+                new PictureInPictureParams.Builder()
+                        .setAspectRatio(rational)
+//                        .setSourceRectHint(new Rect(0,500,400,600))
+                        .build();
 
-            enterPictureInPictureMode(mParams);
-        }
+        enterPictureInPictureMode(mParams);
     }
     @Override
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {

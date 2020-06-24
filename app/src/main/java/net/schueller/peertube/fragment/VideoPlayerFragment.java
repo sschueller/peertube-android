@@ -64,7 +64,6 @@ import com.mikepenz.iconics.Iconics;
 import net.schueller.peertube.R;
 
 import net.schueller.peertube.helper.APIUrlHelper;
-import net.schueller.peertube.helper.Constants;
 import net.schueller.peertube.model.File;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;

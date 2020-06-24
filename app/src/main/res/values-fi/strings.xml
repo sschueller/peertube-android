@@ -298,6 +298,6 @@
     <string name="na">nauru</string>
     <string name="ky">kirgiisi</string>
     <string name="tk">turkmeeni</string>
-    <string name="video_speed_125">1.25x</string>
-    <string name="video_speed_075">0.75x</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
 </resources>

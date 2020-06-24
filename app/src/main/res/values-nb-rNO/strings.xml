@@ -93,9 +93,9 @@
     <string name="cyan">Turkis</string>
     <string name="lime">Lime</string>
     <string name="amber">Rav</string>
-    <string name="video_speed_05">0.5x</string>
-    <string name="video_speed_15">1.5x</string>
-    <string name="video_speed_20">2x</string>
+    <string name="video_speed_05">0,5×</string>
+    <string name="video_speed_15">1,5×</string>
+    <string name="video_speed_20">2×</string>
     <string name="pref_description_background_play">Hvis påskrudd vil videoer spilles videre i bakgrunnen.</string>
     <string name="video_login_required_for_service">Du må logge inn for å bruke denne tjenesten</string>
     <string name="ko">Koreansk</string>
@@ -123,4 +123,6 @@
     <string name="uk">Ukrainsk</string>
     <string name="ur">Urdu</string>
     <string name="vi">Vietnamesisk</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
 </resources>

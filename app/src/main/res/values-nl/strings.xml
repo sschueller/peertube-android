@@ -257,10 +257,10 @@
     <string name="brown">Bruin</string>
     <string name="gray">Grijs</string>
     <string name="bluegray">Blauwgrijs</string>
-    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_05">0,5×</string>
     <string name="video_speed_10">Normaal</string>
-    <string name="video_speed_15">1.5x</string>
-    <string name="video_speed_20">2x</string>
+    <string name="video_speed_15">1,5×</string>
+    <string name="video_speed_20">2×</string>
     <string name="pref_title_background_play">Afspelen op achtergrond</string>
     <string name="pref_description_background_play">Als dit wordt ingeschakeld, dan speelt de video na minimaliseren af op de achtergrond.</string>
     <string name="title_activity_account">Account</string>
@@ -299,8 +299,8 @@
     <string name="server_selection_peertube_server_url">PeerTube-server-url</string>
     <string name="action_bar_title_server_selection">Server kiezen</string>
     <string name="login_current_server_hint">Huidige server</string>
-    <string name="video_speed_075">0.75x</string>
-    <string name="video_speed_125">1.25x</string>
+    <string name="video_speed_075">0,75×</string>
+    <string name="video_speed_125">1,25×</string>
     <string name="title_activity_server_address_book">Adresboek</string>
     <string name="server_book_list_has_login">Inloggen benodigd</string>
     <string name="server_book_add_add_button">Toevoegen</string>

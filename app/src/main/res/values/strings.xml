@@ -369,9 +369,6 @@
     <string name="pref_auth_password" translatable="false">pref_auth_password</string>
     <string name="server_book_del_alert_title">Remove Server</string>
     <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
-    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
-    <string name="login_current_server_hint">Current Server</string>
-    <string name="video_speed_075">0.75x</string>
-    <string name="video_speed_125">1.25x</string>
+
 
 </resources>

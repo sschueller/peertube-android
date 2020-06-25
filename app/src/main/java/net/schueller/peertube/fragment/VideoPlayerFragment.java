@@ -19,15 +19,12 @@ package net.schueller.peertube.fragment;
 
 import android.app.Activity;
 import android.app.AppOpsManager;
-import android.app.PictureInPictureParams;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.gesture.Gesture;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,7 +32,6 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.util.Rational;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -393,7 +389,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         Log.v(TAG, "onVideoDisabled()...");
     }
 
-    public static boolean canEnterPiPMode(Context context) {
+    public static boolean canEnterPipMode(Context context) {
         Log.v(TAG,"api version "+Build.VERSION.SDK_INT);
         if (Build.VERSION.SDK_INT<28){
             return false;
@@ -459,7 +455,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             //arbitrarily velocity speeds that seem to work to differentiate events.
             if (velocityY>4000){
                 Log.d(TAG,"we have a drag down event");
-                if (canEnterPiPMode(getContext())) {
+                if (canEnterPipMode(getContext())) {
                     getActivity().enterPictureInPictureMode();
                 }
             }

@@ -26,7 +26,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -272,9 +271,9 @@ public class VideoPlayActivity extends AppCompatActivity {
             case "backgroundFloat":
                 Log.v(TAG,"play in floating video");
                 //canEnterPIPMode makes sure API level is high enough
-                if (canEnterPiPMode(this)) {
+                if (canEnterPipMode(this)) {
                     Log.v(TAG, "enabling pip");
-                    enterPIPMode();
+                    enterPipMode();
                 } else {
                     Log.v(TAG, "unable to use pip");
                 }
@@ -318,9 +317,9 @@ public class VideoPlayActivity extends AppCompatActivity {
             case "backgroundFloat":
                 Log.v(TAG,"play in floating video");
                 //canEnterPIPMode makes sure API level is high enough
-                if (canEnterPiPMode(this)) {
+                if (canEnterPipMode(this)) {
                     Log.v(TAG, "enabling pip");
-                    enterPIPMode();
+                    enterPipMode();
                     //fixes problem where back press doesn't bring up video list after returning from PIP mode
                     Intent intentSettings = new Intent(this, VideoListActivity.class);
                     this.startActivity(intentSettings);
@@ -332,7 +331,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
         Log.v(TAG, "onBackPressed()...");
     }
-    public boolean canEnterPiPMode(Context context) {
+    public boolean canEnterPipMode(Context context) {
         Log.v(TAG,"api version "+Build.VERSION.SDK_INT);
         if (Build.VERSION.SDK_INT<28){
             return false;
@@ -341,7 +340,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void enterPIPMode() {
+    public void enterPipMode() {
         Rational rational = new Rational(239, 100);
         Log.v(TAG,rational.toString());
         PictureInPictureParams mParams =

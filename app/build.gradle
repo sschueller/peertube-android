@@ -11,7 +11,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
             libVersions = [
-                    exoplayer: '2.9.3'
+                    exoplayer: '2.11.6'
             ]
         }
         javaCompileOptions {

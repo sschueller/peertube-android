@@ -261,7 +261,7 @@ public class VideoPlayerService extends Service {
                 return Video.getMediaDescription(context, currentVideo);
             }
         });
-        mediaSessionConnector.setPlayer(player, null);
+        mediaSessionConnector.setPlayer(player);
 
         // Audio Focus
         AudioAttributes audioAttributes = new AudioAttributes.Builder()

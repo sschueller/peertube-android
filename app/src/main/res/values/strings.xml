@@ -71,6 +71,7 @@
     <string name="pref_background_behavior">Background playing Configuration</string>
     <string name="settings_api_error_float">Android version does not support floating video</string>
     <string name="settings_permissions_error_float">Picture in picture permission is disabled for this app in Android Settings</string>
+    <string name="pref_background_behavior_summary">How a playing video responds when going to background</string>
     <string name="clear_search_history">Clear Search History</string>
     <string name="clear_search_history_prompt">Do you want to permanently delete the search history?</string>
     <!-- languages -->

@@ -1,6 +1,8 @@
-### Version 1.0.39 Tag: v1.0.39 (2020-06-27)
+### Version 1.0.40 Tag: v1.0.40 (2020-06-27)
  * exoplayer update (@lishoujun)
  * Floating window support (@dhk2)
+ * Style cleanup
+ * new preferences activity
  * Various translations
  
 ### Version 1.0.38 Tag: v1.0.38 (2020-06-21)

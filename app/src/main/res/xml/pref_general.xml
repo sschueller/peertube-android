@@ -37,6 +37,16 @@
     />
 
     <ListPreference
+        android:defaultValue="@array/empty_array"
+        android:entries="@array/backgroundBehavior"
+        android:entryValues="@array/backgroundBehaviorValues"
+        android:key="pref_background_behavior"
+        android:summary="@string/pref_background_behavior_summary"
+        android:title="@string/pref_background_behavior" />
+    />
+
+
+    <ListPreference
         android:title="@string/pref_title_app_theme"
         android:summary="@string/pref_description_app_theme"
         android:key="pref_theme"

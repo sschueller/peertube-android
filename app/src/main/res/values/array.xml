@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <string-array name="backgroundBehavior">
+        <item>@string/pref_background_audio</item>
+        <item>@string/pref_background_stop</item>
+        <item>@string/pref_background_float</item>
+    </string-array>
+
+    <string-array name="backgroundBehaviorValues">
+        <item>backgroundAudio</item>
+        <item>backgroundStop</item>
+        <item>backgroundFloat</item>
+    </string-array>
+
     <string-array name="themeArray">
         <item>@string/red</item>
         <item>@string/pink</item>

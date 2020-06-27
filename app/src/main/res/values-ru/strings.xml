@@ -239,10 +239,10 @@
     <string name="brown">Коричневый</string>
     <string name="gray">Серый</string>
     <string name="bluegray">Серо-голубой</string>
-    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_05">0,5×</string>
     <string name="video_speed_10">Нормальная</string>
-    <string name="video_speed_15">1.5x</string>
-    <string name="video_speed_20">2x</string>
+    <string name="video_speed_15">1,5×</string>
+    <string name="video_speed_20">2×</string>
     <string name="pref_title_background_play">Фоновое воспроизведение</string>
     <string name="pref_description_background_play">Если включено, продолжает воспроизводить видео в фоновом режиме.</string>
     <string name="bottom_nav_title_local">Местоположение</string>
@@ -301,4 +301,6 @@
     <string name="action_bar_title_server_selection">Выберите сервер</string>
     <string name="server_selection_set_server">Сервер: %s</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
 </resources>

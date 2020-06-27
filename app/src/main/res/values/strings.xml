@@ -65,6 +65,13 @@
 
     <string name="pref_language_app">Application Language</string>
     <string name="pref_description_language_app">Select language for application interface. Restart app for change to take effect.</string>
+    <string name="pref_background_audio">Continue as a background audio stream</string>
+    <string name="pref_background_stop">Stop all playback</string>
+    <string name="pref_background_float">Continue playing video in floating window</string>
+    <string name="pref_background_behavior">Background playing Configuration</string>
+    <string name="settings_api_error_float">Android version does not support floating video</string>
+    <string name="settings_permissions_error_float">Picture in picture permission is disabled for this app in Android Settings</string>
+    <string name="pref_background_behavior_summary">How a playing video responds when going to background</string>
     <string name="clear_search_history">Clear Search History</string>
     <string name="clear_search_history_prompt">Do you want to permanently delete the search history?</string>
     <!-- languages -->
@@ -87,6 +94,7 @@
     <string name="eu">Basque</string>
     <string name="be">Belarusian</string>
     <string name="bn">Bengali</string>
+    <string name="bn_rBD">Bengali (Bangladesh)</string>
     <string name="bi">Bislama</string>
     <string name="bs">Bosnian</string>
     <string name="bzs">Brazilian Sign Language</string>
@@ -330,7 +338,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_bar_title_address_book" />
-    <string name="authentication_login_success">Login Successfull</string>
+    <string name="authentication_login_success">Login Successful</string>
     <string name="authentication_login_failed">Login Failed!</string>
     <string name="server_book_no_servers_found">Server Books is empty</string>
     <string name="server_book_label_is_required">Server label is required</string>
@@ -352,6 +360,8 @@
     <string name="title_activity_server_address_book">Address Book</string>
     <string name="video_speed_075">0.75x</string>
     <string name="video_speed_125">1.25x</string>
+    <string name="server_book_del_alert_title">Remove Server</string>
+    <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
 
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
@@ -360,8 +370,6 @@
     <string name="pref_token_type" translatable="false">pref_token_type</string>
     <string name="pref_auth_username" translatable="false">pref_auth_username</string>
     <string name="pref_auth_password" translatable="false">pref_auth_password</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
 
 
 </resources>

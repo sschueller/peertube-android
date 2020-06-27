@@ -70,10 +70,10 @@
     <string name="server_selection_signup_allowed_yes">Tak</string>
     <string name="server_selection_signup_allowed">Rejestracja dozwolona: %s</string>
     <string name="action_set_url">Wybierz serwer</string>
-    <string name="video_speed_20">2x</string>
-    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_20">2×</string>
+    <string name="video_speed_15">1,5×</string>
     <string name="video_speed_10">Normalny</string>
-    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_05">0,5×</string>
     <string name="bluegray">Szaroniebieski</string>
     <string name="gray">Szary</string>
     <string name="brown">Brązowy</string>
@@ -298,4 +298,6 @@
     <string name="permission_rationale">Udziel pozwolenia na kontakt w celu uzupełnienia wiadomości e-mail.</string>
     <string name="pref_title_version">Wersja</string>
     <string name="pref_title_license">Licencja</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
 </resources>

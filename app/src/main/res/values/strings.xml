@@ -363,6 +363,16 @@
     <string name="server_book_del_alert_title">Remove Server</string>
     <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
 
+    <string name="title_activity_select_server">Select Server</string>
+    <string name="title_activity_me">Account</string>
+    <string name="title_activity_settings2">SettingsActivity2</string>
+
+    <string name="settings_activity_video_list_category_title">Video List</string>
+    <string name="settings_activity_video_playback_category_title">Video Playback</string>
+    <string name="settings_activity_about_category_title">About</string>
+    <string name="settings_activity_look_and_feel_category_title"><![CDATA[Look & Feel]]></string>
+
+
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
     <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>

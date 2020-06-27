@@ -20,7 +20,6 @@ package net.schueller.peertube.activity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -108,7 +107,6 @@ public class MeActivity extends CommonActivity {
         logout.setOnClickListener(view -> {
             Session.getInstance().invalidate();
             account.setVisibility(View.GONE);
-
         });
 
         getUserData();

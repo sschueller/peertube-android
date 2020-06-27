@@ -1,3 +1,8 @@
+### Version 1.0.39 Tag: v1.0.39 (2020-06-27)
+ * exoplayer update (@lishoujun)
+ * Floating window support (@dhk2)
+ * Various translations
+ 
 ### Version 1.0.38 Tag: v1.0.38 (2020-06-21)
  * Multi server login address book
  * Clear search history (@dhk2)

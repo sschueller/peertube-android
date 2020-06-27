@@ -338,7 +338,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_bar_title_address_book" />
-    <string name="authentication_login_success">Login Successfull</string>
+    <string name="authentication_login_success">Login Successful</string>
     <string name="authentication_login_failed">Login Failed!</string>
     <string name="server_book_no_servers_found">Server Books is empty</string>
     <string name="server_book_label_is_required">Server label is required</string>
@@ -360,6 +360,8 @@
     <string name="title_activity_server_address_book">Address Book</string>
     <string name="video_speed_075">0.75x</string>
     <string name="video_speed_125">1.25x</string>
+    <string name="server_book_del_alert_title">Remove Server</string>
+    <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
 
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>
@@ -368,8 +370,6 @@
     <string name="pref_token_type" translatable="false">pref_token_type</string>
     <string name="pref_auth_username" translatable="false">pref_auth_username</string>
     <string name="pref_auth_password" translatable="false">pref_auth_password</string>
-    <string name="server_book_del_alert_title">Remove Server</string>
-    <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
 
 
 </resources>

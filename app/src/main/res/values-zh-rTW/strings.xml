@@ -36,7 +36,7 @@
     <string name="pref_description_torrent_player">透過種子串流播放影片。這需要儲存權限。（Alpha 版，不穩定！）</string>
     <string name="pref_title_license">授權條款</string>
     <string name="pref_description_license">
-\n<b>Affero通用公眾授權條款 v3.0</b>
+\n<b>GNU Affero通用公眾授權條款 v3.0</b> 
 \n 
 \n這份最強的著作傳式授權條款提供作品完整的原始碼與修改，其中包含了使用同一個授權條款的作品。著作權與授權條款聲明都必須保留。貢獻者提供明確的專利權授予。當修改版被用於提供透過網路的服務時，修改版的完整原始碼也必須釋出。</string>
     <string name="pref_title_version">版本</string>
@@ -301,4 +301,26 @@
     <string name="login_current_server_hint">目前的伺服器</string>
     <string name="video_speed_125">1.25x</string>
     <string name="video_speed_075">0.75x</string>
+    <string name="title_activity_server_address_book">地址簿</string>
+    <string name="server_book_list_has_login">已登入</string>
+    <string name="server_book_add_add_button">新增</string>
+    <string name="server_book_add_password">密碼</string>
+    <string name="server_book_add_username">使用者名稱</string>
+    <string name="server_book_add_pick_server_button">搜尋</string>
+    <string name="server_book_add_server_url">伺服器 Url</string>
+    <string name="server_book_add_label">標籤</string>
+    <string name="me_help_and_feedback_button">說明與回饋</string>
+    <string name="me_logout_button">登出</string>
+    <string name="server_book_valid_url_is_required">有效的 URL 必填</string>
+    <string name="server_book_label_is_required">伺服器標籤必填</string>
+    <string name="server_book_no_servers_found">伺服器參考書為空</string>
+    <string name="authentication_login_failed">登入失敗！</string>
+    <string name="authentication_login_success">登入成功</string>
+    <string name="hello_blank_fragment">您好空白片段</string>
+    <string name="clear_search_history_prompt">您想要永久刪除搜尋歷史紀錄嗎？</string>
+    <string name="clear_search_history">清除搜尋歷史</string>
+    <string name="pref_description_language_app">選取應用程式界面的語言。重新啟動應用程式以讓變更生效。</string>
+    <string name="pref_language_app">應用程式語言</string>
+    <string name="pref_description_back_pause">當影片播放時按下後退鈕後暫停背景播放。</string>
+    <string name="pref_title_back_pause">在後退鈕上暫停</string>
 </resources>

@@ -31,4 +31,10 @@
     <string name="error_invalid_password">Toto heslo je příliš krátké</string>
     <string name="bottom_nav_title_trending">Trendy</string>
     <string name="title_activity_search">Hledat</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
+    <string name="video_speed_20">2×</string>
+    <string name="video_speed_15">1,5×</string>
+    <string name="video_speed_10">Normální</string>
+    <string name="video_speed_05">0,5×</string>
 </resources>

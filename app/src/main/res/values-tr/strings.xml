@@ -6,12 +6,12 @@
     <!-- Strings related to login -->
     <string name="prompt_server">Sunucu</string>
     <string name="prompt_email">E-posta / Kullanıcı adı</string>
-    <string name="prompt_password">Şifre</string>
+    <string name="prompt_password">Parola</string>
     <string name="action_sign_in">Oturum aç</string>
     <string name="action_sign_in_short">Oturum aç</string>
     <string name="error_invalid_email">Bu e-posta adresi geçersiz</string>
-    <string name="error_invalid_password">Bu şifre çok kısa</string>
-    <string name="error_incorrect_password">Bu şifre yanlış</string>
+    <string name="error_invalid_password">Bu parola çok kısa</string>
+    <string name="error_incorrect_password">Bu parola yanlış</string>
     <string name="error_field_required">Bu alan gereklidir</string>
     <string name="permission_rationale">E-posta tanımlamaları için Rehber izni verin.</string>
     <!-- Action bar -->
@@ -29,7 +29,7 @@
     <string name="pref_title_peertube_server">PeerTube Sunucusu</string>
     <!-- Strings related to Video meta data -->
     <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
-    <string name="meta_data_views">\u0020 Görüntüleme</string>
+    <string name="meta_data_views">" Görüntüleme"</string>
     <string name="meta_data_owner_seperator" translatable="false">\@</string>
     <string name="video_row_video_thumbnail">İzleti Küçük Resmi</string>
     <string name="video_row_account_avatar">Hesap Resmi</string>
@@ -265,10 +265,10 @@
     <string name="brown">Kahverengi</string>
     <string name="gray">Gri</string>
     <string name="bluegray">Mavi gri</string>
-    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_05">0,5×</string>
     <string name="video_speed_10">Normal</string>
-    <string name="video_speed_15">1.5x</string>
-    <string name="video_speed_20">2x</string>
+    <string name="video_speed_15">1,5×</string>
+    <string name="video_speed_20">2×</string>
     <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
     <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
     <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
@@ -328,4 +328,27 @@
     <string name="server_selection_peertube_server_url">PeerTube Sunucusu URL\'si</string>
     <string name="action_bar_title_server_selection">Sunucu Seç</string>
     <string name="login_current_server_hint">Mevcut Sunucu</string>
+    <string name="server_book_list_has_login">Oturum Açma Var</string>
+    <string name="server_book_no_servers_found">Sunucu defteri boş</string>
+    <string name="pref_description_back_pause">Video oynatımı sırasında geri düğmesine basıldığında arka planda oynatmayı duraklat.</string>
+    <string name="pref_title_back_pause">Geri düğmesine basıldığında duraklat</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
+    <string name="title_activity_server_address_book">Adres Defteri</string>
+    <string name="server_book_add_add_button">Ekle</string>
+    <string name="server_book_add_password">Parola</string>
+    <string name="server_book_add_username">Kullanıcı adı</string>
+    <string name="server_book_add_pick_server_button">Arama</string>
+    <string name="server_book_add_server_url">Sunucu URL\'si</string>
+    <string name="server_book_add_label">Etiket</string>
+    <string name="me_help_and_feedback_button">Yardım &amp; Geri Bildirim</string>
+    <string name="me_logout_button">Oturumu kapat</string>
+    <string name="server_book_valid_url_is_required">Geçerli URL gerekli</string>
+    <string name="server_book_label_is_required">Sunucu etiketi gerekli</string>
+    <string name="authentication_login_failed">Oturum Açma Başarısız!</string>
+    <string name="authentication_login_success">Oturum Açma Başarılı</string>
+    <string name="clear_search_history_prompt">Arama geçmişini kalıcı olarak silmek istiyor musunuz\?</string>
+    <string name="clear_search_history">Arama Geçmişini Temizle</string>
+    <string name="pref_description_language_app">Uygulama arayüzü için dil seçin. Değişikliklerin etkili olması için uygulamayı yeniden başlatın.</string>
+    <string name="pref_language_app">Uygulama Dili</string>
 </resources>

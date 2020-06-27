@@ -72,10 +72,10 @@
     <string name="brown">Marrón</string>
     <string name="gray">Gris</string>
     <string name="bluegray">Gris azulado</string>
-    <string name="video_speed_05">0.5x</string>
+    <string name="video_speed_05">0,5×</string>
     <string name="video_speed_10">Normal</string>
-    <string name="video_speed_15">1.5x</string>
-    <string name="video_speed_20">2x</string>
+    <string name="video_speed_15">1,5×</string>
+    <string name="video_speed_20">2×</string>
     <string name="action_set_url">Seleccione servidor</string>
     <string name="server_selection_signup_allowed">Registro permitido: %s</string>
     <string name="server_selection_signup_allowed_yes">Sí</string>
@@ -111,4 +111,6 @@
 \n<b>GNU Affero General Public License v3.0</b>
 \n
 \nLos permisos de esta fuerte licencia copyleft están condicionados a hacer disponible el código fuente completo de los trabajos licenciados y las modificaciones, que incluyen trabajos más grandes usando un trabajo licenciado, bajo la misma licencia. Los derechos de autor y los avisos de licencia deben ser preservados. Los colaboradores proporcionan una concesión expresa de los derechos de patente. Cuando se utiliza una versión modificada para proporcionar un servicio a través de una red, el código fuente completo de la versión modificada debe estar disponible.</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
 </resources>

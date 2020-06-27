@@ -19,6 +19,7 @@ package net.schueller.peertube.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -48,11 +49,12 @@ import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
-public class SelectServerActivity extends AppCompatActivity {
+public class SelectServerActivity extends CommonActivity {
 
     private ServerAdapter serverAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -66,9 +68,22 @@ public class SelectServerActivity extends AppCompatActivity {
     private boolean isLoading = false;
 
     @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // close this activity as oppose to navigating up
+        return false;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server_selection);
+
+        // Attaching the layout to the toolbar object
+        Toolbar toolbar = findViewById(R.id.tool_bar_server_selection);
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
 
         loadList();
 

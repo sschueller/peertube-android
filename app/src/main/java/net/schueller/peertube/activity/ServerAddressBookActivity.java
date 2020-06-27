@@ -21,12 +21,16 @@ import android.app.AlertDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -41,6 +45,8 @@ import net.schueller.peertube.database.ServerViewModel;
 import net.schueller.peertube.fragment.AddServerFragment;
 
 
+import java.util.Objects;
+
 public class ServerAddressBookActivity extends CommonActivity implements AddServerFragment.OnFragmentInteractionListener {
 
     private String TAG = "ServerAddressBookActivity";
@@ -52,10 +58,22 @@ public class ServerAddressBookActivity extends CommonActivity implements AddServ
     private FragmentManager fragmentManager;
 
     @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // close this activity as oppose to navigating up
+        return false;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server_address_book);
 
+        // Attaching the layout to the toolbar object
+        Toolbar toolbar = findViewById(R.id.tool_bar_server_address_book);
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
 
         mServerViewModel = new ViewModelProvider(this).get(ServerViewModel.class);
 

@@ -85,6 +85,7 @@ android {
 }
 
 dependencies {
+
     def room_version = "2.2.5"
     def archLifecycleVersion = '2.1.0'
 
@@ -104,4 +105,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     annotationProcessor "androidx.lifecycle:lifecycle-common-java8:$archLifecycleVersion"
 
+    implementation 'androidx.preference:preference:1.1.1'
 }

@@ -29,6 +29,7 @@ import android.widget.EditText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -42,6 +43,7 @@ import net.schueller.peertube.adapter.ServerListAdapter;
 import net.schueller.peertube.database.Server;
 import net.schueller.peertube.database.ServerViewModel;
 import net.schueller.peertube.fragment.AddServerFragment;
+
 
 import java.util.Objects;
 

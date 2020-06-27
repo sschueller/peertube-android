@@ -49,7 +49,7 @@
     <string name="pref_title_dark_mode">Modo scuro</string>
     <string name="pref_description_license">
 \n<b>GNU Affero General Public License v3.0</b>
-\n 
+\n
 \nLe autorizzazioni di questa licenza copyleft più forte sono condizionate a rendere disponibile il codice sorgente completo delle opere concesse in licenza e delle modifiche, che includono opere più grandi utilizzando un lavoro concesso in licenza, sotto la stessa licenza. Le note di copyright e di licenza devono essere conservate. I contributori forniscono una concessione espressa dei diritti di brevetto. Quando si utilizza una versione modificata per fornire un servizio in rete, è necessario rendere disponibile il codice sorgente completo della versione modificata.</string>
     <string name="ab">abcaso</string>
     <string name="aa">afar</string>
@@ -298,4 +298,22 @@
     <string name="api_error">Qualcosa è andato storto, per favore prova più tardi!</string>
     <string name="action_bar_title_server_selection">Seleziona un server</string>
     <string name="login_current_server_hint">Server attuale</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
+    <string name="server_book_list_has_login">ha dati di accesso</string>
+    <string name="server_book_add_add_button">Aggiungi</string>
+    <string name="server_book_add_password">Password</string>
+    <string name="server_book_add_username">Nome utente</string>
+    <string name="server_book_add_pick_server_button">Cerca</string>
+    <string name="server_book_add_server_url">URL del server</string>
+    <string name="me_help_and_feedback_button">Aiuto &amp; suggerimenti</string>
+    <string name="me_logout_button">Esci</string>
+    <string name="server_book_valid_url_is_required">Un URL valido è richiesto</string>
+    <string name="server_book_no_servers_found">Il libro del server è vuoto</string>
+    <string name="authentication_login_failed">Accesso fallito!</string>
+    <string name="authentication_login_success">Accesso riuscito</string>
+    <string name="clear_search_history_prompt">Vuoi eliminare definitivamente la cronologia delle ricerche\?</string>
+    <string name="clear_search_history">Cancella la cronologia delle ricerche</string>
+    <string name="pref_description_language_app">Seleziona la lingua per l\'interfaccia dell\'applicazione. Riavvia l\'app per rendere effettive le modifiche.</string>
+    <string name="pref_language_app">Lingua dell\'applicazione</string>
 </resources>

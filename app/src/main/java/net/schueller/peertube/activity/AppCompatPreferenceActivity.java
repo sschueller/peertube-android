@@ -18,6 +18,7 @@
 
 package net.schueller.peertube.activity;
 
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -25,9 +26,13 @@ import androidx.annotation.LayoutRes;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.preference.PreferenceManager;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
+import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
@@ -42,6 +47,20 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         getDelegate().installViewFactory();
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
+
+        // TODO: cleanup this duplication
+
+        // Set Night Mode
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        AppCompatDelegate.setDefaultNightMode(sharedPref.getBoolean("pref_dark_mode", false) ?
+                AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+
+        // Set theme
+        setTheme(getResources().getIdentifier(
+                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                "style",
+                getPackageName())
+        );
     }
 
     @Override

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <string-array name="backgroundBehavior">
+        <item>@string/pref_background_audio</item>
+        <item>@string/pref_background_stop</item>
+        <item>@string/pref_background_float</item>
+    </string-array>
+
+    <string-array name="backgroundBehaviorValues">
+        <item>backgroundAudio</item>
+        <item>backgroundStop</item>
+        <item>backgroundFloat</item>
+    </string-array>
+
     <string-array name="themeArray">
         <item>@string/red</item>
         <item>@string/pink</item>
@@ -64,6 +77,7 @@
         <item>@string/eu</item>
         <item>@string/be</item>
         <item>@string/bn</item>
+        <item>@string/bn_rBD</item>
         <item>@string/bi</item>
         <item>@string/bs</item>
         <item>@string/bzs</item>
@@ -259,6 +273,7 @@
         <item>eu</item>
         <item>be</item>
         <item>bn</item>
+        <item>bn_rBD</item>
         <item>bi</item>
         <item>bs</item>
         <item>bzs</item>
@@ -433,6 +448,60 @@
         <item>za</item>
         <item>zu</item>
     </string-array>
+
+    <string-array name="supportedLanguagesValues">
+        <item>ar</item>
+        <item>bn</item>
+        <item>bn_rBD</item>
+        <item>cs</item>
+        <item>de</item>
+        <item>el</item>
+        <item>en</item>
+        <item>es</item>
+        <item>fa</item>
+        <item>fi</item>
+        <item>fr</item>
+        <item>gd</item>
+        <item>hi</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>no</item>
+        <item>nl</item>
+        <item>pl</item>
+        <item>ru</item>
+        <item>sv</item>
+        <item>tr</item>
+        <item>zh-rCN</item>
+        <item>zh-rTW</item>
+    </string-array>
+
+    <string-array name = "supportedLanguagesArray">
+        <item>@string/ar</item>
+        <item>@string/bn</item>
+        <item>@string/bn_rBD</item>
+        <item>@string/cs</item>
+        <item>@string/de</item>
+        <item>@string/el</item>
+        <item>@string/en</item>
+        <item>@string/es</item>
+        <item>@string/fa</item>
+        <item>@string/fi</item>
+        <item>@string/fr</item>
+        <item>@string/gd</item>
+        <item>@string/hi</item>
+        <item>@string/it</item>
+        <item>@string/ja</item>
+        <item>@string/no</item>
+        <item>@string/nl</item>
+        <item>@string/pl</item>
+        <item>@string/ru</item>
+        <item>@string/sv</item>
+        <item>@string/tr</item>
+        <item>@string/zh</item>
+        <item>@string/tw</item>
+    </string-array>
+
+
     <string-array name="empty_array"/>
 
     <string-array name="quality">

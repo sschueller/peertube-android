@@ -19,11 +19,14 @@
 package net.schueller.peertube.activity;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.preference.PreferenceManager;
 import android.provider.SearchRecentSuggestions;
 
@@ -47,6 +50,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +82,7 @@ public class VideoListActivity extends CommonActivity {
 
     public static final String EXTRA_VIDEOID = "VIDEOID";
     public static final String EXTRA_ACCOUNTDISPLAYNAME = "ACCOUNTDISPLAYNAMEANDHOST";
+    public static final Integer SWITCH_INSTANCE = 2;
 
     private VideoAdapter videoAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -122,14 +127,11 @@ public class VideoListActivity extends CommonActivity {
         inflater.inflate(R.menu.menu_top_videolist, menu);
 
         // Set an icon in the ActionBar
-        menu.findItem(R.id.action_settings).setIcon(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_cog).actionBar());
-
         menu.findItem(R.id.action_account).setIcon(
                 new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle).actionBar());
 
-//        menu.findItem(R.id.action_server_selection).setIcon(
-//                new IconicsDrawable(this, FontAwesome.Icon.faw_server).actionBar());
+        menu.findItem(R.id.action_server_address_book).setIcon(
+                new IconicsDrawable(this, FontAwesome.Icon.faw_server).actionBar());
 
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
@@ -145,6 +147,26 @@ public class VideoListActivity extends CommonActivity {
         searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
         searchView.setQueryRefinementEnabled(true);
 
+        searchMenuItem.getActionView().setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new AlertDialog.Builder(VideoListActivity.this)
+                        .setTitle(getString(R.string.clear_search_history))
+                        .setMessage(getString(R.string.clear_search_history_prompt))
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getApplicationContext(),
+                                        SearchSuggestionsProvider.AUTHORITY,
+                                        SearchSuggestionsProvider.MODE);
+                                suggestions.clearHistory();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+                return true;
+            }
+        });
         searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
@@ -166,7 +188,27 @@ public class VideoListActivity extends CommonActivity {
             Log.d(TAG, "onDismiss: ");
             loadVideos(0, count, sort, filter);
         });
+        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
+            @Override
+            public boolean onSuggestionClick(int position) {
+                String suggestion = getSuggestion(position);
+                searchView.setQuery(suggestion, true);
+                return true;
+            }
 
+            private String getSuggestion(int position) {
+                Cursor cursor = (Cursor) searchView.getSuggestionsAdapter().getItem(
+                        position);
+                return cursor.getString(cursor
+                        .getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1));
+            }
+
+            @Override
+            public boolean onSuggestionSelect(int position) {
+                /* Required to implement */
+                return true;
+            }
+        });
         return true;
     }
 
@@ -174,6 +216,16 @@ public class VideoListActivity extends CommonActivity {
     protected void onDestroy() {
         super.onDestroy();
         stopService(new Intent(this, VideoPlayerService.class));
+    }
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SWITCH_INSTANCE) {
+            if(resultCode == RESULT_OK) {
+                loadVideos(currentStart, count, sort, filter);
+            }
+        }
     }
 
     @Override
@@ -188,25 +240,28 @@ public class VideoListActivity extends CommonActivity {
                 //Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
 
                 return false;
-            case R.id.action_settings:
-//                Toast.makeText(this, "Login Selected", Toast.LENGTH_SHORT).show();
-                Intent intentSettings = new Intent(this, SettingsActivity.class);
-                this.startActivity(intentSettings);
-
-                return true;
             case R.id.action_account:
-                if (!Session.getInstance().isLoggedIn()) {
-                    Intent intentLogin = new Intent(this, LoginActivity.class);
-                    this.startActivity(intentLogin);
-                } else {
+//                if (!Session.getInstance().isLoggedIn()) {
+
+                //Intent intentLogin = new Intent(this, ServerAddressBookActivity.class);
+
                     Intent intentMe = new Intent(this, MeActivity.class);
                     this.startActivity(intentMe);
-                }
+
+                    //overridePendingTransition(R.anim.slide_in_bottom, 0);
+
+
+                  //  this.startActivity(intentLogin);
+
+//                } else {
+//                    Intent intentMe = new Intent(this, MeActivity.class);
+//                    this.startActivity(intentMe);
+//                }
                 return false;
-//            case R.id.action_server_selection:
-//                Intent intentServer = new Intent(this, SelectServerActivity.class);
-//                this.startActivity(intentServer);
-//                return false;
+            case R.id.action_server_address_book:
+                Intent addressBookActivityIntent = new Intent(this, ServerAddressBookActivity.class);
+                this.startActivityForResult(addressBookActivityIntent, SWITCH_INSTANCE);
+                return false;
             default:
                 break;
         }
@@ -335,6 +390,7 @@ public class VideoListActivity extends CommonActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
         setIntent(intent);
         handleIntent(intent);
     }
@@ -440,8 +496,10 @@ public class VideoListActivity extends CommonActivity {
                     //Log.v(TAG, "navigation_subscriptions");
 
                     if (!Session.getInstance().isLoggedIn()) {
-                        Intent intent = new Intent(this, LoginActivity.class);
-                        this.startActivity(intent);
+//                        Intent intent = new Intent(this, LoginActivity.class);
+//                        this.startActivity(intent);
+                        Intent addressBookActivityIntent = new Intent(this, ServerAddressBookActivity.class);
+                        this.startActivityForResult(addressBookActivityIntent, SWITCH_INSTANCE);
                         return false;
                     } else {
 

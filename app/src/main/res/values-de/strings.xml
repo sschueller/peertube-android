@@ -88,7 +88,7 @@
     <string name="en">Englisch</string>
     <string name="eo">Esperanto</string>
     <string name="et">Estnisch</string>
-    <string name="pref_title_torrent_player">Torrent-Video-Player</string>
+    <string name="pref_title_torrent_player">Torrent-Videoabspieler</string>
     <string name="ee">Ewe-Sprache</string>
     <string name="fo">Färöisch</string>
     <string name="fj">Fidschianisch</string>
@@ -286,7 +286,7 @@
     <string name="account_about_subscribers">Abonnenten:</string>
     <string name="account_about_description">Beschreibung:</string>
     <string name="account_about_joined">Mitglied seit:</string>
-    <string name="api_error">Etwas ist schief gelaufen, bitte versuchen Sie es später!</string>
+    <string name="api_error">Etwas ist schiefgelaufen, bitte versuche es später noch einmal!</string>
     <string name="action_bar_title_server_selection">Server auswählen</string>
     <string name="permission_rationale">Kontaktberechtigung für die E-Mail-Vervollständigung erteilen.</string>
     <string name="pref_description_language">Eine Videosprache auswählen, statt alle Videos in allen Sprachen anzuzeigen.</string>
@@ -295,8 +295,24 @@
     <string name="login_current_server_hint">Aktueller Server</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="pref_description_license">
-\n<b>GNU Affero General Public License v3.0</b>
-\n
-\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
+\n<b>GNU Affero General Public License v3.0</b> 
+\n 
+\nBerechtigungen dieser stärksten Copyleft-Lizenz bedingen, sämtlichen Quellcode von lizenzierten Werken und Modifikationen, einschließlich größere Werke, die ein lizenziertes Werk verwenden, unter derselben Lizenz bereitzustellen. Urheberrechts- und Lizenzhinweise müssen erhalten bleiben. Mitarbeitende gewähren eine ausdrückliche Genehmigung der Verwertungsrechte. Wenn eine modifizierte Version verwendet wird, um einen Dienst über ein Netzwerk anzubieten, muss der vollständige Quellcode der modifizierten Version verfügbar gemacht werden.</string>
     <string name="pref_description_torrent_player">Videowiedergabe über einen Torrentstream. Dies erfordert Speicherberechtigungen. (Alphastadium, nicht stabil!)</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
+    <string name="server_book_add_add_button">Hinzufügen</string>
+    <string name="server_book_add_password">Passwort</string>
+    <string name="server_book_add_username">Benutzername</string>
+    <string name="server_book_add_pick_server_button">Suchen</string>
+    <string name="server_book_add_server_url">Server-URL</string>
+    <string name="me_help_and_feedback_button">Hilfe &amp; Rückmeldung</string>
+    <string name="me_logout_button">Abmelden</string>
+    <string name="server_book_valid_url_is_required">Gültige URL ist erforderlich</string>
+    <string name="authentication_login_failed">Anmeldung fehlgeschlagen!</string>
+    <string name="authentication_login_success">Anmeldung erfolgreich</string>
+    <string name="clear_search_history_prompt">Möchten Sie den Suchverlauf dauerhaft löschen\?</string>
+    <string name="clear_search_history">Suchverlauf löschen</string>
+    <string name="pref_description_language_app">Wählen Sie die Sprache für die Anwendungsschnittstelle aus. Starten Sie die Anwendung neu, damit die Änderung wirksam wird.</string>
+    <string name="pref_language_app">Sprache der Anwendung</string>
 </resources>

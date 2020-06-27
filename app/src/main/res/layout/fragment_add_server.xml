@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="100dp"
+    android:paddingRight="16dp"
+    tools:context=".fragment.AddServerFragment"
+    android:background="?android:colorBackground">
+
+    <EditText
+        android:id="@+id/serverLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/server_book_add_label"
+        android:inputType="textPersonName" />
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <EditText
+            android:layout_alignParentStart="true"
+            android:id="@+id/serverUrl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/server_book_add_server_url"
+            android:inputType="textUri"
+            android:layout_toStartOf="@+id/pickServerUrl"/>
+
+        <Button
+            android:layout_alignParentEnd="true"
+            android:id="@+id/pickServerUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/server_book_add_pick_server_button" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/serverUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/server_book_add_username"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/serverPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/server_book_add_password"
+        android:inputType="textPassword" />
+
+<!--    <Button-->
+<!--        android:id="@+id/testServerButton"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Test" />-->
+
+    <Button
+        android:id="@+id/addServerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/server_book_add_add_button" />
+
+</LinearLayout>

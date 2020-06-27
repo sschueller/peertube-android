@@ -18,6 +18,7 @@
 package net.schueller.peertube.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -36,6 +37,8 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountViewHolder> {
@@ -75,17 +78,24 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
 
         holder.itemView.setOnClickListener(v -> {
 
-            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
-            SharedPreferences.Editor editor = sharedPref.edit();
+//            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
+//            SharedPreferences.Editor editor = sharedPref.edit();
 
             String serverUrl = APIUrlHelper.cleanServerUrl(serverList.get(position).getHost());
 
-            editor.putString("pref_api_base", serverUrl);
-            editor.apply();
-
-            activity.finish();
+//            editor.putString("pref_api_base", serverUrl);
+//            editor.apply();
+//
+//
 
             Toast.makeText(activity, activity.getString(R.string.server_selection_set_server, serverUrl), Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent();
+            intent.putExtra("serverUrl", serverUrl);
+            intent.putExtra("serverName", serverList.get(position).getName());
+            activity.setResult(RESULT_OK, intent);
+
+            activity.finish();
 
         });
 

@@ -299,4 +299,6 @@
     <string name="server_selection_peertube_server_url">PeerTube server URL</string>
     <string name="action_bar_title_server_selection">Välj server</string>
     <string name="login_current_server_hint">Aktuell server</string>
+    <string name="video_speed_125">1,25×</string>
+    <string name="video_speed_075">0,75×</string>
 </resources>

@@ -1,8 +1,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference
-        android:key="pref_api_base"
-        android:title="@string/pref_title_peertube_server" />
 
     <!--<SwitchPreference-->
         <!--android:key="pref_background_play"-->
@@ -23,6 +20,31 @@
         android:key="pref_language"
         android:summary="@string/pref_description_language"
         android:title="@string/pref_language" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="pref_back_pause"
+        android:summary="@string/pref_description_back_pause"
+        android:title="@string/pref_title_back_pause" />
+
+    <ListPreference
+        android:defaultValue="@array/empty_array"
+        android:entries="@array/supportedLanguagesArray"
+        android:entryValues="@array/supportedLanguagesValues"
+        android:key="pref_language_app"
+        android:summary="@string/pref_description_language_app"
+        android:title="@string/pref_language_app" />
+    />
+
+    <ListPreference
+        android:defaultValue="@array/empty_array"
+        android:entries="@array/backgroundBehavior"
+        android:entryValues="@array/backgroundBehaviorValues"
+        android:key="pref_background_behavior"
+        android:summary="@string/pref_background_behavior_summary"
+        android:title="@string/pref_background_behavior" />
+    />
+
 
     <ListPreference
         android:title="@string/pref_title_app_theme"

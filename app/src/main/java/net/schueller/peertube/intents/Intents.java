@@ -69,7 +69,9 @@ public class Intents {
     public static void Download(Context context, Video video) {
 
         String url = video.getFiles().get(0).getFileDownloadUrl();
-        String destFilename = video.getName() + "." + MimeTypeMap.getFileExtensionFromUrl(URLUtil.guessFileName(url,null,null));
+        // make sure it is a valid filename
+        String destFilename = video.getName().replaceAll("[^a-zA-Z0-9]", "_") + "." + MimeTypeMap.getFileExtensionFromUrl(URLUtil.guessFileName(url,null,null));
+
         //Toast.makeText(context, destFilename, Toast.LENGTH_LONG).show();
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setDescription(video.getDescription());

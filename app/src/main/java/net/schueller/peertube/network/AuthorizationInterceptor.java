@@ -57,7 +57,7 @@ public class AuthorizationInterceptor implements Interceptor {
                 Log.v("Authorization", "Intercept: Logout forced");
             }
 
-        }else{
+        } else {
             mainResponse = chain.proceed(chain.request());
         }
 

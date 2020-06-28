@@ -62,6 +62,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

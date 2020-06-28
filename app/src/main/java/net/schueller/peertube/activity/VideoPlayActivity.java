@@ -108,7 +108,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        VideoPlayerFragment videoPlayerFragment  = (VideoPlayerFragment)
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
         assert videoPlayerFragment != null;
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);

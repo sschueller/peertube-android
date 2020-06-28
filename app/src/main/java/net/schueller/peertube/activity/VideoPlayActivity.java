@@ -287,7 +287,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
+        videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
 
         //copying Youtube behavior to have back button exit full screen.

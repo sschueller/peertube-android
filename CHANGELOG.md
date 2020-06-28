@@ -1,4 +1,8 @@
 ### Version 1.0.40 Tag: v1.0.40 (2020-06-27)
+ * Floating window player controls fix (@dhk2)
+ * Updated app icons
+
+### Version 1.0.40 Tag: v1.0.40 (2020-06-27)
  * exoplayer update (@lishoujun)
  * Floating window support (@dhk2)
  * Style cleanup

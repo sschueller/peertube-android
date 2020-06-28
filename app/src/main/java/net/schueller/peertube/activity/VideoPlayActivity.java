@@ -61,7 +61,6 @@ import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
-    VideoPlayerFragment videoPlayerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +108,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        videoPlayerFragment = (VideoPlayerFragment)
+        VideoPlayerFragment videoPlayerFragment  = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
         assert videoPlayerFragment != null;
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
@@ -287,7 +286,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        videoPlayerFragment = (VideoPlayerFragment)
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
 
         //copying Youtube behavior to have back button exit full screen.
@@ -353,6 +352,9 @@ public class VideoPlayActivity extends AppCompatActivity {
     }
     @Override
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+
         if (isInPictureInPictureMode) {
             Log.v(TAG,"switched to pip ");
             videoPlayerFragment.useController(false);

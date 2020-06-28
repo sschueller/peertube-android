@@ -353,10 +353,16 @@ public class VideoPlayActivity extends AppCompatActivity {
     }
     @Override
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+
         if (isInPictureInPictureMode) {
             Log.v(TAG,"switched to pip ");
+            videoPlayerFragment.useController(false);
         } else {
             Log.v(TAG,"switched to normal");
+            videoPlayerFragment.useController(true);
         }
     }
+
 }

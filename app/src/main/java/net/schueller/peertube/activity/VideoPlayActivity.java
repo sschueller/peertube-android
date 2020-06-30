@@ -61,7 +61,7 @@ import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
-
+    private static boolean floatMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +112,12 @@ public class VideoPlayActivity extends AppCompatActivity {
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
         assert videoPlayerFragment != null;
+        Boolean killFloat=intent.getBooleanExtra("killFloat",false);
+        Log.e(TAG,killFloat.toString()+" "+floatMode);
+            if (killFloat && floatMode){
+                finish();
+                return;
+            }
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
         Log.v(TAG, "new intent click: " + videoUuid +" is trying to replace: "+videoPlayerFragment.getVideoUuid());
         assert videoPlayerFragment != null;
@@ -355,8 +361,10 @@ public class VideoPlayActivity extends AppCompatActivity {
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
         if (isInPictureInPictureMode) {
             Log.v(TAG,"switched to pip ");
+            floatMode=true;
         } else {
             Log.v(TAG,"switched to normal");
+            floatMode=false;
         }
     }
 }

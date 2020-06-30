@@ -239,6 +239,7 @@ public class VideoPlayerService extends Service {
 
         // don't show skip buttons in notification
         playerNotificationManager.setUseNavigationActions(false);
+        playerNotificationManager.setUseStopAction(true);
 
         playerNotificationManager.setNotificationListener(
                 new PlayerNotificationManager.NotificationListener() {
@@ -250,7 +251,10 @@ public class VideoPlayerService extends Service {
                     @Override
                     public void onNotificationCancelled(int notificationId) {
                         Log.v(TAG, "onNotificationCancelled...");
-
+                        Intent killFloatingWindow = new Intent(getApplicationContext(),VideoPlayActivity.class);
+                        killFloatingWindow.putExtra("killFloat",true);
+                        killFloatingWindow.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(killFloatingWindow);
                         // TODO: only kill the notification if we no longer have a bound activity
                         stopForeground(true);
                     }

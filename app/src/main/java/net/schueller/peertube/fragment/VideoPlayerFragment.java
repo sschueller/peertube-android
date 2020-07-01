@@ -264,10 +264,13 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
         }
     }
+    public void showControls(boolean value){
+        simpleExoPlayerView.setUseController(value);
+    }
     public void stopVideo() {
 
         if (mBound) {
-            Objects.requireNonNull(getContext()).unbindService(mConnection);
+            requireContext().unbindService(mConnection);
             mBound = false;
         }
     }

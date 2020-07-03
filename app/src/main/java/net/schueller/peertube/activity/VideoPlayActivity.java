@@ -140,6 +140,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         registerReceiver(receiver, filter);
 
         Log.v(TAG, "switched to pip ");
+        floatMode=true;
         //     videoPlayerFragment.useController(false);
     }
     public void changedToNormalMode(){
@@ -151,6 +152,7 @@ public class VideoPlayActivity extends AppCompatActivity {
             unregisterReceiver(receiver);
         }
         Log.v(TAG,"switched to normal");
+        floatMode=false;
         //          videoPlayerFragment.useController(true);
     }
     @Override

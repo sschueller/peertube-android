@@ -399,7 +399,6 @@ public class VideoPlayActivity extends AppCompatActivity {
         setPictureInPictureParams(params);
 
     }
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void changedToPipMode() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);

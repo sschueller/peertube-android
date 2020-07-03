@@ -406,14 +406,14 @@ public class VideoPlayActivity extends AppCompatActivity {
             registerReceiver(receiver, filter);
 
             Log.v(TAG,"switched to pip ");
-            floatMode=true;
+       //     videoPlayerFragment.useController(false);
         } else {
             videoPlayerFragment.showControls(true);
             if (receiver != null) {
                 unregisterReceiver(receiver);
             }
             Log.v(TAG,"switched to normal");
-            floatMode=false;
+  //          videoPlayerFragment.useController(true);
         }
     }
 

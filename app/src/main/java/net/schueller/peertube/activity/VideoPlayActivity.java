@@ -142,6 +142,17 @@ public class VideoPlayActivity extends AppCompatActivity {
         Log.v(TAG, "switched to pip ");
         //     videoPlayerFragment.useController(false);
     }
+    public void changedToNormalMode(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+
+        videoPlayerFragment.showControls(true);
+        if (receiver != null) {
+            unregisterReceiver(receiver);
+        }
+        Log.v(TAG,"switched to normal");
+        //          videoPlayerFragment.useController(true);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -436,6 +447,7 @@ public class VideoPlayActivity extends AppCompatActivity {
             changedToPipMode();
             Log.v(TAG,"switched to pip ");
         } else {
+            changedToNormalMode();
             Log.v(TAG,"switched to normal");
         }
     }

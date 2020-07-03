@@ -69,6 +69,9 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
 
+    private static boolean floatMode = false;
+    private static final int REQUEST_CODE = 101;
+    private BroadcastReceiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -397,5 +397,4 @@ public class VideoPlayActivity extends AppCompatActivity {
         setPictureInPictureParams(params);
 
     }
-    
 }

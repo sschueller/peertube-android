@@ -368,52 +368,11 @@ public class VideoPlayActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+          if (isInPictureInPictureMode) {
+            changedToPipMode();
 
-        if (isInPictureInPictureMode) {
-            videoPlayerFragment.showControls(false);
-            //create custom actions
-            setActions("");
-
-            //setup receiver to handle customer actions
-            IntentFilter filter = new IntentFilter();
-            filter.addAction(ACTION_STOP);
-            filter.addAction(ACTION_PAUSE);
-            filter.addAction(ACTION_PLAY);
-            filter.addAction((BACKGROUND_AUDIO));
-            receiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    String action = intent.getAction();
-                    if (action.equals(ACTION_PAUSE)){
-                        videoPlayerFragment.pauseVideo();
-                    }
-                    if (action.equals(ACTION_PLAY)){
-                        videoPlayerFragment.pauseToggle();
-                    }
-
-                    if (action.equals(BACKGROUND_AUDIO)) {
-                        unregisterReceiver(receiver);
-                        finish();
-                    }
-                    if (action.equals(ACTION_STOP)){
-                        unregisterReceiver(receiver);
-                        finishAndRemoveTask();
-                    }
-                }
-            };
-            registerReceiver(receiver, filter);
-
-            Log.v(TAG,"switched to pip ");
-       //     videoPlayerFragment.useController(false);
         } else {
-            videoPlayerFragment.showControls(true);
-            if (receiver != null) {
-                unregisterReceiver(receiver);
-            }
-            Log.v(TAG,"switched to normal");
-  //          videoPlayerFragment.useController(true);
+
         }
     }
 
@@ -442,4 +401,56 @@ public class VideoPlayActivity extends AppCompatActivity {
         setPictureInPictureParams(params);
 
     }
+    public void changedToPipMode() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+
+        videoPlayerFragment.showControls(false);
+        //create custom actions
+        setActions("");
+
+        //setup receiver to handle customer actions
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_STOP);
+        filter.addAction(ACTION_PAUSE);
+        filter.addAction(ACTION_PLAY);
+        filter.addAction((BACKGROUND_AUDIO));
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals(ACTION_PAUSE)) {
+                    videoPlayerFragment.pauseVideo();
+                }
+                if (action.equals(ACTION_PLAY)) {
+                    videoPlayerFragment.pauseToggle();
+                }
+
+                if (action.equals(BACKGROUND_AUDIO)) {
+                    unregisterReceiver(receiver);
+                    finish();
+                }
+                if (action.equals(ACTION_STOP)) {
+                    unregisterReceiver(receiver);
+                    finishAndRemoveTask();
+                }
+            }
+        };
+        registerReceiver(receiver, filter);
+
+        Log.v(TAG, "switched to pip ");
+        //     videoPlayerFragment.useController(false);
+    }
+    public void changedToNormalMode(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+
+        videoPlayerFragment.showControls(true);
+        if (receiver != null) {
+            unregisterReceiver(receiver);
+        }
+        Log.v(TAG,"switched to normal");
+        //          videoPlayerFragment.useController(true);
+    }
 }
+

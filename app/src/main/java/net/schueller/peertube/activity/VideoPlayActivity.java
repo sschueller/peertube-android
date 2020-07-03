@@ -56,6 +56,8 @@ import net.schueller.peertube.service.VideoPlayerService;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
+
 import androidx.fragment.app.FragmentManager;
 
 
@@ -173,7 +175,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         if (isLandscape) {
             assert videoPlayerFragment != null;
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.requireView().getLayoutParams();
             params.width = FrameLayout.LayoutParams.MATCH_PARENT;
             params.height = FrameLayout.LayoutParams.MATCH_PARENT;
             videoPlayerFragment.getView().setLayoutParams(params);
@@ -390,7 +392,7 @@ public class VideoPlayActivity extends AppCompatActivity {
                     if (action.equals(ACTION_PLAY)){
                         videoPlayerFragment.pauseToggle();
                     }
-                    */
+
                     if (action.equals(BACKGROUND_AUDIO)) {
                         unregisterReceiver(receiver);
                         finish();

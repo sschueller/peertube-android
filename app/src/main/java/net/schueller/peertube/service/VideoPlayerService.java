@@ -131,13 +131,11 @@ public class VideoPlayerService extends Service {
             playerNotificationManager.setPlayer(null);
         }
         //Was seeing an error when exiting the program about about not unregistering the receiver.
-        //Null check is insufficient to determine if it's been registered
-        try {
-            if (null!=myNoisyAudioStreamReceiver) {
-                this.unregisterReceiver(myNoisyAudioStreamReceiver);
-            }
-        } catch (Exception e) {
-            Log.e(TAG,"attempted to unregister a nonregistered noisy audio service");
+        //TODO figure out how to stop this from crashing sometimes when the non null service is still not registered
+        // try catch fixes it but GIT considers that an unacceptable change to the code
+
+        if (null!=myNoisyAudioStreamReceiver) {
+            this.unregisterReceiver(myNoisyAudioStreamReceiver);
         }
         if (player != null) {
             player.release();

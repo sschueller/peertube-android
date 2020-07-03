@@ -21,16 +21,11 @@ package net.schueller.peertube.activity;
 
 import android.annotation.SuppressLint;
 import android.app.AppOpsManager;
-import android.app.PendingIntent;
 import android.app.PictureInPictureParams;
-import android.app.RemoteAction;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -54,18 +49,12 @@ import net.schueller.peertube.fragment.VideoMetaDataFragment;
 import net.schueller.peertube.fragment.VideoPlayerFragment;
 import net.schueller.peertube.service.VideoPlayerService;
 
-
-import java.util.ArrayList;
 import java.util.Objects;
 
 import androidx.fragment.app.FragmentManager;
 
 
 //import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
-import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PAUSE;
-import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PLAY;
-import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
-import static net.schueller.peertube.helper.Constants.BACKGROUND_AUDIO;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
@@ -74,9 +63,6 @@ public class VideoPlayActivity extends AppCompatActivity {
     private static final String TAG = "VideoPlayActivity";
 
 
-    private static boolean floatMode = false;
-    private static final int REQUEST_CODE = 101;
-    private BroadcastReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -365,92 +351,12 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         enterPictureInPictureMode(mParams);
     }
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
-          if (isInPictureInPictureMode) {
-            changedToPipMode();
-
+        if (isInPictureInPictureMode) {
+            Log.v(TAG,"switched to pip ");
         } else {
-
+            Log.v(TAG,"switched to normal");
         }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void setActions(String actionCommand) {
-
-        ArrayList<RemoteAction> actions = new ArrayList<>();
-
-        Intent actionIntent = new Intent(BACKGROUND_AUDIO);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
-        Icon icon = Icon.createWithResource(getApplicationContext(), android.R.drawable.stat_sys_speakerphone);
-        RemoteAction remoteAction = new RemoteAction(icon, "close pip", "from pip window custom command", pendingIntent);
-        actions.add(remoteAction);
-
-        actionIntent = new Intent(ACTION_STOP);
-        pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
-        icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_stop);
-        remoteAction = new RemoteAction(icon, "play", "stop the media", pendingIntent);
-        actions.add(remoteAction);
-
-        //add custom actions to pip window
-        PictureInPictureParams params =
-                new PictureInPictureParams.Builder()
-                        .setActions(actions)
-                        .build();
-        setPictureInPictureParams(params);
-
-    }
-    public void changedToPipMode() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
-
-        videoPlayerFragment.showControls(false);
-        //create custom actions
-        setActions("");
-
-        //setup receiver to handle customer actions
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(ACTION_STOP);
-        filter.addAction(ACTION_PAUSE);
-        filter.addAction(ACTION_PLAY);
-        filter.addAction((BACKGROUND_AUDIO));
-        receiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
-                if (action.equals(ACTION_PAUSE)) {
-                    videoPlayerFragment.pauseVideo();
-                }
-                if (action.equals(ACTION_PLAY)) {
-                    videoPlayerFragment.pauseToggle();
-                }
-
-                if (action.equals(BACKGROUND_AUDIO)) {
-                    unregisterReceiver(receiver);
-                    finish();
-                }
-                if (action.equals(ACTION_STOP)) {
-                    unregisterReceiver(receiver);
-                    finishAndRemoveTask();
-                }
-            }
-        };
-        registerReceiver(receiver, filter);
-
-        Log.v(TAG, "switched to pip ");
-        //     videoPlayerFragment.useController(false);
-    }
-    public void changedToNormalMode(){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
-
-        videoPlayerFragment.showControls(true);
-        if (receiver != null) {
-            unregisterReceiver(receiver);
-        }
-        Log.v(TAG,"switched to normal");
-        //          videoPlayerFragment.useController(true);
     }
 }
-

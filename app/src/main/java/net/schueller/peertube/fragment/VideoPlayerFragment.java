@@ -270,7 +270,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     public void stopVideo() {
 
         if (mBound) {
-            requireContext().unbindService(mConnection);
+            Objects.requireNonNull(getContext()).unbindService(mConnection);
             mBound = false;
         }
     }

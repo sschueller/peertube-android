@@ -70,6 +70,8 @@ import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
+
+
     private static boolean floatMode = false;
     private static final int REQUEST_CODE = 101;
     private BroadcastReceiver receiver;
@@ -171,7 +173,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         if (isLandscape) {
             assert videoPlayerFragment != null;
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.requireView().getLayoutParams();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
             params.width = FrameLayout.LayoutParams.MATCH_PARENT;
             params.height = FrameLayout.LayoutParams.MATCH_PARENT;
             videoPlayerFragment.getView().setLayoutParams(params);
@@ -186,7 +188,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         } else {
             assert videoPlayerFragment != null;
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.requireView().getLayoutParams();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
             params.width = FrameLayout.LayoutParams.MATCH_PARENT;
             params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
             videoPlayerFragment.getView().setLayoutParams(params);
@@ -388,6 +390,7 @@ public class VideoPlayActivity extends AppCompatActivity {
                     if (action.equals(ACTION_PLAY)){
                         videoPlayerFragment.pauseToggle();
                     }
+                    */
                     if (action.equals(BACKGROUND_AUDIO)) {
                         unregisterReceiver(receiver);
                         finish();

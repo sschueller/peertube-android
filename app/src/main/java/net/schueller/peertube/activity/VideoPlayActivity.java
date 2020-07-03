@@ -21,11 +21,16 @@ package net.schueller.peertube.activity;
 
 import android.annotation.SuppressLint;
 import android.app.AppOpsManager;
+import android.app.PendingIntent;
 import android.app.PictureInPictureParams;
+import android.app.RemoteAction;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -49,6 +54,8 @@ import net.schueller.peertube.fragment.VideoMetaDataFragment;
 import net.schueller.peertube.fragment.VideoPlayerFragment;
 import net.schueller.peertube.service.VideoPlayerService;
 
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 import androidx.fragment.app.FragmentManager;

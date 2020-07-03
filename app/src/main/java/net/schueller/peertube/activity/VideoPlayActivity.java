@@ -62,8 +62,6 @@ import androidx.fragment.app.FragmentManager;
 
 
 //import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
-import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PAUSE;
-import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PLAY;
 import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
 import static net.schueller.peertube.helper.Constants.BACKGROUND_AUDIO;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
@@ -399,44 +397,5 @@ public class VideoPlayActivity extends AppCompatActivity {
         setPictureInPictureParams(params);
 
     }
-    public void changedToPipMode() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
-
-        videoPlayerFragment.showControls(false);
-        //create custom actions
-        setActions("");
-
-        //setup receiver to handle customer actions
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(ACTION_STOP);
-        filter.addAction(ACTION_PAUSE);
-        filter.addAction(ACTION_PLAY);
-        filter.addAction((BACKGROUND_AUDIO));
-        receiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
-                if (action.equals(ACTION_PAUSE)) {
-                    videoPlayerFragment.pauseVideo();
-                }
-                if (action.equals(ACTION_PLAY)) {
-                    videoPlayerFragment.pauseToggle();
-                }
-
-                if (action.equals(BACKGROUND_AUDIO)) {
-                    unregisterReceiver(receiver);
-                    finish();
-                }
-                if (action.equals(ACTION_STOP)) {
-                    unregisterReceiver(receiver);
-                    finishAndRemoveTask();
-                }
-            }
-        };
-        registerReceiver(receiver, filter);
-
-        Log.v(TAG, "switched to pip ");
-        //     videoPlayerFragment.useController(false);
-    }
+    
 }

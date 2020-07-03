@@ -175,7 +175,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         if (isLandscape) {
             assert videoPlayerFragment != null;
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.requireView().getLayoutParams();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
             params.width = FrameLayout.LayoutParams.MATCH_PARENT;
             params.height = FrameLayout.LayoutParams.MATCH_PARENT;
             videoPlayerFragment.getView().setLayoutParams(params);
@@ -368,8 +368,8 @@ public class VideoPlayActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
-        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
 
         if (isInPictureInPictureMode) {
             videoPlayerFragment.showControls(false);

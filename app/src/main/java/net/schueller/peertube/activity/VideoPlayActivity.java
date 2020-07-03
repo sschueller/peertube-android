@@ -372,29 +372,4 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void setActions(String actionCommand) {
-
-        ArrayList<RemoteAction> actions = new ArrayList<>();
-
-        Intent actionIntent = new Intent(BACKGROUND_AUDIO);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
-        Icon icon = Icon.createWithResource(getApplicationContext(), android.R.drawable.stat_sys_speakerphone);
-        RemoteAction remoteAction = new RemoteAction(icon, "close pip", "from pip window custom command", pendingIntent);
-        actions.add(remoteAction);
-
-        actionIntent = new Intent(ACTION_STOP);
-        pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
-        icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_stop);
-        remoteAction = new RemoteAction(icon, "play", "stop the media", pendingIntent);
-        actions.add(remoteAction);
-
-        //add custom actions to pip window
-        PictureInPictureParams params =
-                new PictureInPictureParams.Builder()
-                        .setActions(actions)
-                        .build();
-        setPictureInPictureParams(params);
-
-    }
 }

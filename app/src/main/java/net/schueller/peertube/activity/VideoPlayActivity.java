@@ -76,7 +76,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     private static boolean floatMode = false;
     private static final int REQUEST_CODE = 101;
     private BroadcastReceiver receiver;
-    //This can only be called when in entering pip mode which can only happen on a high enough level to support pip mode.
+    //This can only be called when in entering pip mode which can't happen if the device doesn't support pip mode.
     @SuppressLint("NewApi")
     public void setActions(String actionCommand) {
 
@@ -84,8 +84,8 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         Intent actionIntent = new Intent(BACKGROUND_AUDIO);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
-        @SuppressLint("NewApi") Icon icon = Icon.createWithResource(getApplicationContext(), android.R.drawable.stat_sys_speakerphone);
-        @SuppressLint("NewApi") RemoteAction remoteAction = new RemoteAction(icon, "close pip", "from pip window custom command", pendingIntent);
+        @SuppressLint({"NewApi", "LocalSuppress"}) Icon icon = Icon.createWithResource(getApplicationContext(), android.R.drawable.stat_sys_speakerphone);
+        @SuppressLint({"NewApi", "LocalSuppress"}) RemoteAction remoteAction = new RemoteAction(icon, "close pip", "from pip window custom command", pendingIntent);
         actions.add(remoteAction);
 
         actionIntent = new Intent(ACTION_STOP);

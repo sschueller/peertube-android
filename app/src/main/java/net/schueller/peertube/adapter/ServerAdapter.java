@@ -17,13 +17,11 @@
  */
 package net.schueller.peertube.adapter;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +35,8 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -74,19 +74,37 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
                         R.string.server_selection_signup_allowed_yes :
                         R.string.server_selection_signup_allowed_no
         )));
-        holder.shortDescription.setText(serverList.get(position).getShortDescription());
 
+        holder.videoTotals.setText(
+                activity.getString(R.string.server_selection_video_totals,
+                        serverList.get(position).getTotalVideos().toString(),
+                        serverList.get(position).getTotalLocalVideos().toString()
+                ));
+
+        // don't show description if it hasn't been changes from the default
+        if (!activity.getString(R.string.peertube_instance_search_default_description).equals(serverList.get(position).getShortDescription())) {
+            holder.shortDescription.setText(serverList.get(position).getShortDescription());
+            holder.shortDescription.setVisibility(View.VISIBLE);
+        } else {
+            holder.shortDescription.setVisibility(View.GONE);
+        }
+
+        DefaultArtifactVersion serverVersion = new DefaultArtifactVersion(serverList.get(position).getVersion());
+
+        // at least version 2.2
+        DefaultArtifactVersion minVersion22 = new DefaultArtifactVersion("2.2.0");
+        if (serverVersion.compareTo(minVersion22) >= 0) {
+            // show NSFW Icon
+            if (serverList.get(position).getNSFW()) {
+                holder.isNSFW.setVisibility(View.VISIBLE);
+            }
+        }
+
+
+        // select server
         holder.itemView.setOnClickListener(v -> {
 
-//            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
-//            SharedPreferences.Editor editor = sharedPref.edit();
-
             String serverUrl = APIUrlHelper.cleanServerUrl(serverList.get(position).getHost());
-
-//            editor.putString("pref_api_base", serverUrl);
-//            editor.apply();
-//
-//
 
             Toast.makeText(activity, activity.getString(R.string.server_selection_set_server, serverUrl), Toast.LENGTH_LONG).show();
 
@@ -138,17 +156,19 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
         return serverList.size();
     }
 
-    class AccountViewHolder extends RecyclerView.ViewHolder {
+    static class AccountViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, host, signupAllowed, shortDescription;
+        TextView name, host, signupAllowed, shortDescription, videoTotals;
+        ImageView isNSFW;
 
         AccountViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name);
-            host = itemView.findViewById(R.id.host);
-            signupAllowed = itemView.findViewById(R.id.signupAllowed);
-            shortDescription = itemView.findViewById(R.id.shortDescription);
-
+            name = itemView.findViewById(R.id.sl_row_name);
+            host = itemView.findViewById(R.id.sl_row_host);
+            signupAllowed = itemView.findViewById(R.id.sl_row_signup_allowed);
+            shortDescription = itemView.findViewById(R.id.sl_row_short_description);
+            isNSFW = itemView.findViewById(R.id.sl_row_is_nsfw);
+            videoTotals = itemView.findViewById(R.id.sl_row_video_totals);
         }
     }
 

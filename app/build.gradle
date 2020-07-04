@@ -65,6 +65,9 @@ android {
             // date formatter
             implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
 
+            // Version comparison
+            implementation 'org.apache.maven:maven-artifact:3.0.3'
+
             // testing
             testImplementation 'junit:junit:4.12'
             androidTestImplementation 'androidx.test:runner:1.2.0'

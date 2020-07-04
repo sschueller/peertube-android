@@ -17,6 +17,9 @@
  */
 package net.schueller.peertube.model;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Server {
 
     private Integer id;
@@ -26,16 +29,20 @@ public class Server {
     private String version;
     private Boolean signupAllowed;
     private Double userVideoQuota;
+    private Category category;
+    private ArrayList<String> languages;
+    private Boolean autoBlacklistUserVideosEnabled;
+    private String defaultNSFWPolicy;
+    private Boolean isNSFW;
     private Integer totalUsers;
     private Integer totalVideos;
     private Integer totalLocalVideos;
     private Integer totalInstanceFollowers;
     private Integer totalInstanceFollowing;
-
     private Boolean supportsIPv6;
     private String country;
-
     private Integer health;
+    private Date createdAt;
 
     public Integer getId() {
         return id;
@@ -91,6 +98,46 @@ public class Server {
 
     public void setUserVideoQuota(Double userVideoQuota) {
         this.userVideoQuota = userVideoQuota;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public ArrayList<String> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(ArrayList<String> languages) {
+        this.languages = languages;
+    }
+
+    public Boolean getAutoBlacklistUserVideosEnabled() {
+        return autoBlacklistUserVideosEnabled;
+    }
+
+    public void setAutoBlacklistUserVideosEnabled(Boolean autoBlacklistUserVideosEnabled) {
+        this.autoBlacklistUserVideosEnabled = autoBlacklistUserVideosEnabled;
+    }
+
+    public String getDefaultNSFWPolicy() {
+        return defaultNSFWPolicy;
+    }
+
+    public void setDefaultNSFWPolicy(String defaultNSFWPolicy) {
+        this.defaultNSFWPolicy = defaultNSFWPolicy;
+    }
+
+    public Boolean getNSFW() {
+        return isNSFW;
+    }
+
+    public void setNSFW(Boolean NSFW) {
+        isNSFW = NSFW;
     }
 
     public Integer getTotalUsers() {
@@ -155,5 +202,13 @@ public class Server {
 
     public void setHealth(Integer health) {
         this.health = health;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

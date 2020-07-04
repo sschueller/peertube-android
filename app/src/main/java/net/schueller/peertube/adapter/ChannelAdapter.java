@@ -160,7 +160,7 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.AccountV
 
         AccountViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.name);
+            name = itemView.findViewById(R.id.sl_row_name);
             thumb = itemView.findViewById(R.id.thumb);
             avatar = itemView.findViewById(R.id.avatar);
             videoMeta = itemView.findViewById(R.id.videoMeta);

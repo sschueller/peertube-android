@@ -132,9 +132,12 @@ public class VideoPlayerService extends Service {
             playerNotificationManager.setPlayer(null);
         }
         //Was seeing an error when exiting the program about about not unregistering the receiver.
-        if (null!=myNoisyAudioStreamReceiver) {
-            this.unregisterReceiver(myNoisyAudioStreamReceiver);
-            myNoisyAudioStreamReceiver=null;
+        try {
+            if (null!=myNoisyAudioStreamReceiver) {
+                this.unregisterReceiver(myNoisyAudioStreamReceiver);
+            }
+        } catch (Exception e) {
+            Log.e("VideoPlayerService", "attempted to unregister a nonregistered service");
         }
         if (player != null) {
             player.release();

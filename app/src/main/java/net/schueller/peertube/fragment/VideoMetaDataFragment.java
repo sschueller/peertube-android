@@ -172,7 +172,7 @@ public class VideoMetaDataFragment extends Fragment {
 
 
         // title / name
-        TextView videoName = activity.findViewById(R.id.name);
+        TextView videoName = activity.findViewById(R.id.sl_row_name);
         videoName.setText(video.getName());
 
         // created at / views

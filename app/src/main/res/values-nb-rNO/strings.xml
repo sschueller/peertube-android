@@ -61,7 +61,6 @@
     <string name="account_about_description">Beskrivelse:</string>
     <string name="account_about_joined">Tok del:</string>
     <string name="api_error">Noe gikk galt, prøv igjen senere.</string>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="permission_rationale">Innvilg kontakttilgang for fullføring av e-postadresser.</string>
     <string name="bottom_nav_title_trending">Populært</string>
     <string name="meta_data_views">" visninger"</string>

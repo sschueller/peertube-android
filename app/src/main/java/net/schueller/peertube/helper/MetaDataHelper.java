@@ -18,20 +18,30 @@
 package net.schueller.peertube.helper;
 
 import android.content.Context;
+
 import android.text.format.DateUtils;
+
 import net.schueller.peertube.R;
 
-import java.time.Duration;
-import java.time.Period;
+import org.ocpsoft.prettytime.PrettyTime;
+
 import java.util.Date;
+import java.util.Locale;
+
 
 public class MetaDataHelper {
 
+
     public static String getMetaString(Date getCreatedAt, Integer viewCount, Context context) {
-        return DateUtils.
-                getRelativeTimeSpanString(getCreatedAt.getTime()).toString() +
+
+        // Compatible with SDK 21+
+        String currentLanguage = Locale.getDefault().getDisplayLanguage();
+        PrettyTime p = new PrettyTime(currentLanguage);
+        String relativeTime = p.format(new Date(getCreatedAt.getTime()));
+
+        return (relativeTime +
                 context.getResources().getString(R.string.meta_data_seperator) +
-                viewCount + context.getResources().getString(R.string.meta_data_views);
+                viewCount + context.getResources().getString(R.string.meta_data_views));
     }
 
     public static String getOwnerString(String accountName, String serverHost, Context context) {

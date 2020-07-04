@@ -3,6 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:focusable="true"
     card_view:cardCornerRadius="0dp"
     card_view:cardElevation="0dp"
     card_view:contentPadding="0dp"
@@ -57,7 +58,7 @@
             android:paddingEnd="12dp" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/sl_row_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/thumb"
@@ -73,7 +74,7 @@
             android:id="@+id/videoMeta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/name"
+            android:layout_below="@+id/sl_row_name"
             android:layout_marginStart="6dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="6dp"
@@ -100,7 +101,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="-16dp"
             android:layout_marginEnd="0dp"
-            android:layout_toEndOf="@+id/name"
+            android:layout_toEndOf="@+id/sl_row_name"
             android:background="@null"
             android:contentDescription="@string/descr_overflow_button"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"

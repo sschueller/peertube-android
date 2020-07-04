@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Thorium</string>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="title_activity_settings">সেটিংস</string>
     <string name="title_activity_login">সাইন ইন</string>
     <!-- Strings related to login -->
@@ -25,13 +23,9 @@
     <string name="bottom_nav_title_subscriptions">সাবস্ক্রিপশন</string>
     <string name="bottom_nav_title_account">অ্যাকাউন্ট</string>
     <!-- Strings related to Settings -->
-    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
-    <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
     <string name="pref_title_peertube_server">পিয়ারটিউব সার্ভার</string>
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
     <string name="meta_data_views">" দৃষ্ট"</string>
-    <string name="meta_data_owner_seperator" translatable="false">\@</string>
     <string name="video_row_video_thumbnail">ভিডিও থাম্বনেইল</string>
     <string name="video_row_account_avatar">অ্যাকাউন্ট অবতার</string>
     <string name="pref_title_show_nsfw">নিষিদ্ধ কন্টেন্ট</string>
@@ -43,8 +37,8 @@
     <string name="pref_description_torrent_player">একটি টরেন্ট স্ট্রিমের মাধ্যমে ভিডিও প্লেব্যাক করুন। এর জন্য স্টোরেজ অনুমতির প্রয়োজন । (আলফা, স্থিতিশীল নয়!)</string>
     <string name="pref_title_license">অনুমতিপত্র</string>
     <string name="pref_description_license">
-\n<b>গাহ্নু অফেরও সাধারণ গণ অনুমতিপত্র সং.৩.০</b>
-\n
+\n<b>গাহ্নু অফেরও সাধারণ গণ অনুমতিপত্র সং.৩.০</b> 
+\n 
 \nএই শক্তিশালী কপিলেফট লাইসেন্সের অনুমতি এই চুক্তির উপর নির্ভরশীল যে অনুমতিপত্রের দ্বারা আবদ্ধ সকল কাজ ও পরিবর্তনের সোর্স কোড উপলব্ধ করার মাধ্যমে, যার আওতায় পড়ে অনুমতিপত্রের দ্বারা আবদ্ধ কাজের বৃহত্তর অংশ একই অনুমতিপত্রের আওতায় আনার মাধ্যমে। কপিরাইট এবং লাইসেন্স নোটিশ সংরক্ষণ করা আবশ্যক। অবদানকারীগণ তাদের পেটেন্টর অধিকার অবশ্যই দেয়, যখন একটি পরিমার্জিত সংস্করণ ব্যবহার করে একটি পরিসেবা একটি নেটওয়ার্ক দিয়ে দেয়া হয়, সম্পূর্ণ সোর্স কোড এর পরিমার্জিত সংস্করণ উপলব্ধ তৈরি করা আবশ্যক।</string>
     <string name="pref_title_version">সংস্করণ</string>
     <string name="search_hint">সার্চ পিয়ারটিউব</string>
@@ -52,7 +46,6 @@
     <string name="no_data_available">ফলাফল নেই</string>
     <string name="descr_overflow_button">আরও</string>
     <string name="menu_share">শেয়ার</string>
-    <string name="playback_channel_name" translatable="false">PeerTube</string>
     <string name="invalid_url">অবৈধ ইউআরএল।</string>
     <string name="pref_title_dark_mode">অন্ধকার মোড</string>
     <string name="pref_description_dark_mode">অন্ধকার মোড কার্যকর করার জন্য অ্যাপ্লিকেশন রিস্টার্ট করো।</string>
@@ -157,7 +150,7 @@
     <string name="ln">লিনগালা</string>
     <string name="lt">লিথুনীয়</string>
     <string name="jbo">লোজবান</string>
-    <string name="lu"></string>
+    <string name="lu">লুবা-কাতাঙ্গা</string>
     <string name="lb">লাক্সেমবোর্গীয়</string>
     <string name="mk">ম্যাসিডোনিয়</string>
     <string name="mg">মালাগাসি</string>
@@ -272,15 +265,6 @@
     <string name="video_speed_10">Normal</string>
     <string name="video_speed_15">১.৫x</string>
     <string name="video_speed_20">2x</string>
-    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
-    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
-    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
-    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
-    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
-    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
-    <string name="video_share_icon" translatable="false">{faw-share}</string>
-    <string name="video_download_icon" translatable="false">{faw-download}</string>
-    <string name="video_save_icon" translatable="false">{faw-save}</string>
     <string name="pref_title_background_play">ব্যাকগ্রাউন্ড প্লেব্যাক</string>
     <string name="pref_description_background_play">সক্রিয় থাকলে ব্যাকগ্রাউন্ডে ভিডিও প্লে করতে থাকবে।</string>
     <string name="bottom_nav_title_local">স্থানীয়</string>
@@ -298,15 +282,6 @@
     <string name="video_meta_button_language">ভাষা</string>
     <string name="video_meta_button_tags">Tags</string>
     <!-- Constants, Don't translate -->
-    <string name="pref_token_access" translatable="false">pref_token_access</string>
-    <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
-    <string name="pref_token_expiration" translatable="false">pref_token_expiration</string>
-    <string name="pref_token_type" translatable="false">pref_token_type</string>
-    <string name="pref_auth_username" translatable="false">pref_auth_username</string>
-    <string name="pref_auth_password" translatable="false">pref_auth_password</string>
-    <string name="video_rating_none" translatable="false">none</string>
-    <string name="video_rating_like" translatable="false">like</string>
-    <string name="video_rating_dislike" translatable="false">dislike</string>
     <string name="deeppurple">গাঢ় বেগুনি</string>
     <string name="action_bar_title_account">অ্যাকাউন্ট</string>
     <string name="bottom_nav_title_recent">সাম্প্রতিক</string>
@@ -331,4 +306,41 @@
     <string name="server_selection_select_a_server">নিচের তালিকা থেকে একটি সার্ভার নিন অথবা সরাসরি একটি সার্ভার দিন।</string>
     <string name="video_speed_075">0.75x</string>
     <string name="video_speed_125">1.25x</string>
+    <string name="pref_background_behavior">ব্যাকগ্রউন্ড প্লে এর কনফিগারেশন</string>
+    <string name="settings_activity_look_and_feel_category_title">লুক এবং ফিল</string>
+    <string name="server_book_list_has_login">লগইন আছে</string>
+    <string name="pref_background_audio">পেছনে অডিও স্ট্রিম হিসেবে চালু রাখুন</string>
+    <string name="settings_activity_about_category_title">সম্পর্কিত</string>
+    <string name="settings_activity_video_playback_category_title">ভিডিও প্লেব্যাক</string>
+    <string name="settings_activity_video_list_category_title">ভিডিও এর লিস্ট</string>
+    <string name="title_activity_me">আকাউন্ট</string>
+    <string name="title_activity_select_server">সার্ভার পাছন্দ করুন</string>
+    <string name="server_book_del_alert_msg">আপনি কি এই সার্ভার রিমুভ করতে চান সার্ভার বই থেকে\?</string>
+    <string name="server_book_del_alert_title">সার্ভার রিমুভ করুন</string>
+    <string name="title_activity_server_address_book">এড্রেস বই</string>
+    <string name="server_book_add_add_button">যোগ</string>
+    <string name="server_book_add_password">পাসওয়ার্ড</string>
+    <string name="server_book_add_username">ইউজারনেম</string>
+    <string name="server_book_add_pick_server_button">সার্চ</string>
+    <string name="server_book_add_server_url">সার্ভার ইউআরএল</string>
+    <string name="server_book_add_label">লেবেল</string>
+    <string name="me_help_and_feedback_button">সাহায্য ও মতামত</string>
+    <string name="me_logout_button">লগ আউট</string>
+    <string name="server_book_valid_url_is_required">সঠিক ইউ আর এল দরকার</string>
+    <string name="server_book_label_is_required">সার্ভার লেবেল দরকার</string>
+    <string name="server_book_no_servers_found">সার্ভার বই খালি আছে</string>
+    <string name="authentication_login_failed">লগইন সফল হয় নি!</string>
+    <string name="authentication_login_success">লগইন সফল হয়েছে</string>
+    <string name="bn_rBD">বাংলা (বাংলাদেশ)</string>
+    <string name="clear_search_history_prompt">আপনি কি পুরোপুরি সার্চ ইতিহাস মুছে ফেলতে চান\?</string>
+    <string name="clear_search_history">সার্চ ইতিহাস মুছে ফেলুন</string>
+    <string name="pref_background_behavior_summary">চালু ভিডিও কি করবে যখন পেছনে যাবে</string>
+    <string name="settings_permissions_error_float">অ্যান্ড্রয়েড সেটিং এ পিকচার ইন পিকচার পারমিশন বন্ধ আছে এই আয়াপ এ</string>
+    <string name="settings_api_error_float">অ্যান্ড্রয়েড ভার্সন ভাসমান ভিডিও সাপোর্ট করে</string>
+    <string name="pref_background_float">ভাসমান উইন্ডো তে ভিডিও চালু রাখুন</string>
+    <string name="pref_background_stop">সব প্লেব্যাক বন্ধ করুন</string>
+    <string name="pref_description_language_app">ভাষা পছন্দ করুন অ্যাপ্লিকেশান এর জন্য। রিস্টার্ট করুন পরিবর্তন দেখার জন্য।</string>
+    <string name="pref_language_app">অ্যাপ্লিকেশান এর ভাষা</string>
+    <string name="pref_description_back_pause">ভিডিও চলার সময় ব্যাকগ্রাউন্ড প্লে পজ হবে ব্যাক বাটন প্রেস করলে।</string>
+    <string name="pref_title_back_pause">ব্যাক বাটন এ পজ</string>
 </resources>

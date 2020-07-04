@@ -372,6 +372,10 @@
     <string name="settings_activity_about_category_title">About</string>
     <string name="settings_activity_look_and_feel_category_title"><![CDATA[Look & Feel]]></string>
 
+    <string name="peertube_instance_search_default_description" translatable="false">PeerTube, a federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular.</string>
+    <string name="server_selection_nsfw_instance">NSFW Instance</string>
+    <string name="server_selection_video_totals">Videos: %s, Local Videos: %s</string>
+
 
     <!-- Constants, Don't translate -->
     <string name="pref_token_access" translatable="false">pref_token_access</string>

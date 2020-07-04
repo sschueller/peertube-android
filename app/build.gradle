@@ -6,8 +6,8 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1041
-        versionName "1.0.41"
+        versionCode 1042
+        versionName "1.0.42"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
             libVersions = [
@@ -61,6 +61,12 @@ android {
             implementation "com.google.android.exoplayer:exoplayer-hls:$libVersions.exoplayer"
             implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:$libVersions.exoplayer"
             implementation "com.google.android.exoplayer:extension-mediasession:$libVersions.exoplayer"
+
+            // date formatter
+            implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
+
+            // Version comparison
+            implementation 'org.apache.maven:maven-artifact:3.5.0'
 
             // testing
             testImplementation 'junit:junit:4.12'

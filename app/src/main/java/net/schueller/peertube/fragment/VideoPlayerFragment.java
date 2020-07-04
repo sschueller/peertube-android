@@ -199,11 +199,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             }
         });
     }
-    public void useController(boolean value){
-        if (mBound){
-            simpleExoPlayerView.setUseController(value);
-        }
-    }
+
     private void playVideo(Video video) {
 
         Context context = getContext();

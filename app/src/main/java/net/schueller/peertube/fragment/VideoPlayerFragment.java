@@ -199,7 +199,11 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             }
         });
     }
-
+    public void useController(boolean value){
+        if (mBound){
+            simpleExoPlayerView.setUseController(value);
+        }
+    }
     private void playVideo(Video video) {
 
         Context context = getContext();
@@ -257,6 +261,11 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     public void pauseVideo() {
         if (mBound){
             mService.player.setPlayWhenReady(false);
+        }
+    }
+    public void pauseToggle() {
+        if (mBound) {
+            mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
         }
     }
     public void unPauseVideo() {

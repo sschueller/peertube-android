@@ -64,6 +64,7 @@ import net.schueller.peertube.model.Video;
 
 import static android.media.session.PlaybackState.ACTION_PAUSE;
 import static android.media.session.PlaybackState.ACTION_PLAY;
+import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
 import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
 
 public class VideoPlayerService extends Service {
@@ -107,6 +108,7 @@ public class VideoPlayerService extends Service {
                 if (playbackState == ACTION_PLAY) { // this means that play is available, hence the audio is paused or stopped
                     Log.v(TAG, "ACTION_PAUSE: " + playbackState);
                     unregisterReceiver(myNoisyAudioStreamReceiver);
+                    myNoisyAudioStreamReceiver=null;
                 }
             }
         } );
@@ -243,6 +245,7 @@ public class VideoPlayerService extends Service {
 
         // don't show skip buttons in notification
         playerNotificationManager.setUseNavigationActions(false);
+        playerNotificationManager.setUseStopAction(true);
 
         playerNotificationManager.setNotificationListener(
                 new PlayerNotificationManager.NotificationListener() {
@@ -254,9 +257,18 @@ public class VideoPlayerService extends Service {
                     @Override
                     public void onNotificationCancelled(int notificationId) {
                         Log.v(TAG, "onNotificationCancelled...");
+                        stopForeground(true);
+                        Intent killFloat = new Intent(ACTION_STOP);
+                        sendBroadcast(killFloat);
+                   /*
+                        Intent killFloat = new Intent(BROADCAST_ACTION);
+                        Intent killFloatingWindow = new Intent(getApplicationContext(),VideoPlayActivity.class);
+                        killFloatingWindow.putExtra("killFloat",true);
 
+                        startActivity(killFloatingWindow);
                         // TODO: only kill the notification if we no longer have a bound activity
                         stopForeground(true);
+                    */
                     }
                 }
         );

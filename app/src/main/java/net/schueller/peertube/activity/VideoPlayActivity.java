@@ -21,11 +21,16 @@ package net.schueller.peertube.activity;
 
 import android.annotation.SuppressLint;
 import android.app.AppOpsManager;
+import android.app.PendingIntent;
 import android.app.PictureInPictureParams;
+import android.app.RemoteAction;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -49,12 +54,18 @@ import net.schueller.peertube.fragment.VideoMetaDataFragment;
 import net.schueller.peertube.fragment.VideoPlayerFragment;
 import net.schueller.peertube.service.VideoPlayerService;
 
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 import androidx.fragment.app.FragmentManager;
 
 
 //import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
+import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PAUSE;
+import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PLAY;
+import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
+import static net.schueller.peertube.helper.Constants.BACKGROUND_AUDIO;
 import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
 import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
@@ -62,7 +73,108 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
 
+    private static boolean floatMode = false;
+    private static final int REQUEST_CODE = 101;
+    private BroadcastReceiver receiver;
+    //This can only be called when in entering pip mode which can't happen if the device doesn't support pip mode.
+    @SuppressLint("NewApi")
+    public void makePipControls() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
 
+        ArrayList<RemoteAction> actions = new ArrayList<>();
+
+        Intent actionIntent = new Intent(BACKGROUND_AUDIO);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
+        @SuppressLint({"NewApi", "LocalSuppress"}) Icon icon = Icon.createWithResource(getApplicationContext(), android.R.drawable.stat_sys_speakerphone);
+        @SuppressLint({"NewApi", "LocalSuppress"}) RemoteAction remoteAction = new RemoteAction(icon, "close pip", "from pip window custom command", pendingIntent);
+        actions.add(remoteAction);
+
+        actionIntent = new Intent(ACTION_STOP);
+        pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
+        icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_stop);
+        remoteAction = new RemoteAction(icon, "play", "stop the media", pendingIntent);
+        actions.add(remoteAction);
+
+        if (videoPlayerFragment.isPaused()){
+            Log.e(TAG,"setting actions with play button");
+            actionIntent = new Intent(ACTION_PLAY);
+            pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
+            icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_play);
+            remoteAction = new RemoteAction(icon, "play", "play the media", pendingIntent);
+            actions.add(remoteAction);
+        } else {
+            Log.e(TAG,"setting actions with pause button");
+            actionIntent = new Intent(ACTION_PAUSE);
+            pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
+            icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_pause);
+            remoteAction = new RemoteAction(icon, "pause", "pause the media", pendingIntent);
+            actions.add(remoteAction);
+        }
+
+
+        //add custom actions to pip window
+        PictureInPictureParams params =
+                new PictureInPictureParams.Builder()
+                        .setActions(actions)
+                        .build();
+        setPictureInPictureParams(params);
+
+    }
+    public void changedToPipMode() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+
+        videoPlayerFragment.showControls(false);
+        //create custom actions
+        makePipControls();
+
+        //setup receiver to handle customer actions
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_STOP);
+        filter.addAction(ACTION_PAUSE);
+        filter.addAction(ACTION_PLAY);
+        filter.addAction((BACKGROUND_AUDIO));
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (action.equals(ACTION_PAUSE)) {
+                    videoPlayerFragment.pauseVideo();
+                    makePipControls();
+                }
+                if (action.equals(ACTION_PLAY)) {
+                    videoPlayerFragment.unPauseVideo();
+                    makePipControls();
+                }
+
+                if (action.equals(BACKGROUND_AUDIO)) {
+                    unregisterReceiver(receiver);
+                    finish();
+                }
+                if (action.equals(ACTION_STOP)) {
+                    unregisterReceiver(receiver);
+                    finishAndRemoveTask();
+                }
+            }
+        };
+        registerReceiver(receiver, filter);
+
+        Log.v(TAG, "switched to pip ");
+        floatMode=true;
+        videoPlayerFragment.showControls(false);
+    }
+    public void changedToNormalMode(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+
+        videoPlayerFragment.showControls(true);
+        if (receiver != null) {
+            unregisterReceiver(receiver);
+        }
+        Log.v(TAG,"switched to normal");
+        floatMode=false;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -357,9 +469,11 @@ public class VideoPlayActivity extends AppCompatActivity {
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
 
         if (isInPictureInPictureMode) {
+            changedToPipMode();
             Log.v(TAG,"switched to pip ");
             videoPlayerFragment.useController(false);
         } else {
+            changedToNormalMode();
             Log.v(TAG,"switched to normal");
             videoPlayerFragment.useController(true);
         }

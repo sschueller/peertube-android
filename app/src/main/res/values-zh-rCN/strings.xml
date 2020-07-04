@@ -63,7 +63,6 @@
     <string name="pref_description_torrent_player">视频通过一个种子下载，此选项需要存储权限（实验阶段，不稳定！）</string>
     <string name="action_bar_title_logout">退出</string>
     <string name="zh">中文</string>
-    <string name="title_activity_video_play">视频播放Activity</string>
     <string name="error_field_required">本字段必填</string>
     <string name="action_bar_title_account">账户</string>
     <string name="bottom_nav_title_recent">最近</string>

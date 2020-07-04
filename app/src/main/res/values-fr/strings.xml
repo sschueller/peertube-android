@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Thorium</string>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="title_activity_settings">Paramètres</string>
     <string name="title_activity_login">Se connecter</string>
     <!-- Strings related to login -->
@@ -24,13 +22,9 @@
     <string name="bottom_nav_title_subscriptions">Abonnements</string>
     <string name="bottom_nav_title_account">Compte</string>
     <!-- Strings related to Settings -->
-    <string name="peertube_required_server_version">1.0.0-alpha.7</string>
-    <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
     <string name="pref_title_peertube_server">Serveur Peertube</string>
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator">\u0020-\u0020</string>
     <string name="meta_data_views">" vues"</string>
-    <string name="meta_data_owner_seperator">\@</string>
     <string name="video_row_video_thumbnail">Miniature vidéo</string>
     <string name="video_row_account_avatar">Avatar du compte</string>
     <string name="pref_title_show_nsfw">Contenu pour adultes</string>
@@ -49,7 +43,6 @@
     <string name="no_data_available">Pas de résultat</string>
     <string name="descr_overflow_button">Plus</string>
     <string name="menu_share">Partager</string>
-    <string name="playback_channel_name">PeerTube</string>
     <string name="invalid_url">URL invalide.</string>
     <string name="pref_title_dark_mode">Mode sombre</string>
     <string name="pref_description_dark_mode">Redémarrez l’application pour que le mode sombre soit activé.</string>
@@ -312,7 +305,7 @@
     <string name="login_current_server_hint">Serveur actuel</string>
     <string name="video_speed_075">0,75×</string>
     <string name="video_speed_125">1,25×</string>
-    <string name="title_activity_server_address_book">Livre d\'adresse</string>
+    <string name="title_activity_server_address_book">Carnet d\'adresses</string>
     <string name="authentication_login_success">Identification réussie</string>
     <string name="authentication_login_failed">Identification échouée !</string>
     <string name="server_book_list_has_login">a un identifiant</string>
@@ -333,4 +326,19 @@
     <string name="pref_language_app">Langue de l\'application</string>
     <string name="pref_description_back_pause">Mettre la lecture d\'arrière-plan en pause en appuyant sur la touche de retour pendant la lecture de la vidéo.</string>
     <string name="pref_title_back_pause">Pause sur le bouton retour</string>
+    <string name="settings_activity_about_category_title">À propos</string>
+    <string name="settings_activity_look_and_feel_category_title">Apparence</string>
+    <string name="title_activity_me">Compte</string>
+    <string name="pref_background_behavior">Paramètres de lecture en fond</string>
+    <string name="settings_api_error_float">Votre version Android ne supporte pas la lecture de vidéos dans une fenêtre flottante</string>
+    <string name="settings_permissions_error_float">Le mode Picture-in-Picture est désactivé pour cette applications dans les paramètres Android</string>
+    <string name="settings_activity_video_playback_category_title">Lecture de vidéos</string>
+    <string name="pref_background_audio">Continuer en fond sonore</string>
+    <string name="pref_background_stop">Arrêter de lire la vidéo</string>
+    <string name="pref_background_float">Continuer dans une fenêtre flottante</string>
+    <string name="pref_background_behavior_summary">Sélectionner le mode de fonctionnement de la lecture de vidéo lorsque l\'application est mise en arrière-plan</string>
+    <string name="settings_activity_video_list_category_title">Liste de vidéos</string>
+    <string name="title_activity_select_server">Sélectionner un serveur</string>
+    <string name="server_book_del_alert_title">Retirer un serveur</string>
+    <string name="server_book_del_alert_msg">Voulez-vous vraiment retirer ce serveur de votre carnet d\'adresses ?</string>
 </resources>

@@ -282,7 +282,6 @@
     <string name="account_about_description">Beskrivning:</string>
     <string name="account_about_joined">Gick med:</string>
     <string name="api_error">Någonting gick snett, försök gärna igen om en stund!</string>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="permission_rationale">Ge åtkomst till kontakter för komplettering av e-postadresser.</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="pref_description_license">

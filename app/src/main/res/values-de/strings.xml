@@ -16,7 +16,6 @@
     <string name="bottom_nav_title_subscriptions">Abos</string>
     <string name="bottom_nav_title_account">Konto</string>
     <string name="pref_title_peertube_server">PeerTube-Server</string>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="error_invalid_password">Dieses Passwort ist zu kurz</string>
     <string name="error_incorrect_password">Dieses Passwort ist falsch</string>
     <string name="action_bar_title_settings">Einstellungen</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_activity_video_play">İzleti Oynatma Etkinliği</string>
     <string name="title_activity_settings">Ayarlar</string>
     <string name="title_activity_login">Oturum aç</string>
     <!-- Strings related to login -->
@@ -24,13 +23,9 @@
     <string name="bottom_nav_title_subscriptions">Abonelikler</string>
     <string name="bottom_nav_title_account">Hesap</string>
     <!-- Strings related to Settings -->
-    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
-    <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
     <string name="pref_title_peertube_server">PeerTube Sunucusu</string>
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
     <string name="meta_data_views">" Görüntüleme"</string>
-    <string name="meta_data_owner_seperator" translatable="false">\@</string>
     <string name="video_row_video_thumbnail">İzleti Küçük Resmi</string>
     <string name="video_row_account_avatar">Hesap Resmi</string>
     <string name="pref_title_show_nsfw">Ahlaksız İçerik</string>
@@ -48,7 +43,6 @@
     <string name="no_data_available">Sonuç yok</string>
     <string name="descr_overflow_button">Daha</string>
     <string name="menu_share">Paylaş</string>
-    <string name="playback_channel_name" translatable="false">PeerTube</string>
     <string name="invalid_url">Geçersiz bağlantı.</string>
     <string name="pref_title_dark_mode">Karanlık Kipi</string>
     <string name="pref_description_dark_mode">Karanlık kipin etkinleşmesi için uygulamayı yeniden başlatın.</string>
@@ -269,18 +263,6 @@
     <string name="video_speed_10">Normal</string>
     <string name="video_speed_15">1,5×</string>
     <string name="video_speed_20">2×</string>
-    <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
-    <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
-    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
-    <string name="video_quality_active_icon" translatable="false">{faw-check}</string>
-    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
-    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
-    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
-    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
-    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
-    <string name="video_share_icon" translatable="false">{faw-share}</string>
-    <string name="video_download_icon" translatable="false">{faw-download}</string>
-    <string name="video_save_icon" translatable="false">{faw-save}</string>
     <string name="pref_title_background_play">Arkaplanda Oynatma</string>
     <string name="pref_description_background_play">Etkinleştirilirse, arka planda izleti oynatmaya devam eder.</string>
     <string name="bottom_nav_title_local">Yerel</string>
@@ -300,15 +282,6 @@
     <string name="menu_video_options_playback_speed">Oynatma hızı</string>
     <string name="menu_video_options_quality">Kalite</string>
     <!-- Constants, Don't translate -->
-    <string name="pref_token_access" translatable="false">pref_token_access</string>
-    <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
-    <string name="pref_token_expiration" translatable="false">pref_token_expiration</string>
-    <string name="pref_token_type" translatable="false">pref_token_type</string>
-    <string name="pref_auth_username" translatable="false">pref_auth_username</string>
-    <string name="pref_auth_password" translatable="false">pref_auth_password</string>
-    <string name="video_rating_none" translatable="false">none</string>
-    <string name="video_rating_like" translatable="false">like</string>
-    <string name="video_rating_dislike" translatable="false">dislike</string>
     <string name="action_bar_title_account">Hesap</string>
     <string name="bottom_nav_title_recent">Yeniler</string>
     <string name="account_bottom_menu_videos">İzletiler</string>

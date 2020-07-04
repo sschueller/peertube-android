@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Thorium</string>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="title_activity_settings">সেটিংস</string>
     <string name="title_activity_login">সাইন ইন</string>
     <!-- Strings related to login -->
@@ -25,13 +23,9 @@
     <string name="bottom_nav_title_subscriptions">সাবস্ক্রিপশন</string>
     <string name="bottom_nav_title_account">অ্যাকাউন্ট</string>
     <!-- Strings related to Settings -->
-    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
-    <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
     <string name="pref_title_peertube_server">পিয়ারটিউব সার্ভার</string>
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
     <string name="meta_data_views">" দৃষ্ট"</string>
-    <string name="meta_data_owner_seperator" translatable="false">\@</string>
     <string name="video_row_video_thumbnail">ভিডিও থাম্বনেইল</string>
     <string name="video_row_account_avatar">অ্যাকাউন্ট অবতার</string>
     <string name="pref_title_show_nsfw">নিষিদ্ধ কন্টেন্ট</string>
@@ -52,7 +46,6 @@
     <string name="no_data_available">ফলাফল নেই</string>
     <string name="descr_overflow_button">আরও</string>
     <string name="menu_share">শেয়ার</string>
-    <string name="playback_channel_name" translatable="false">PeerTube</string>
     <string name="invalid_url">অবৈধ ইউআরএল।</string>
     <string name="pref_title_dark_mode">অন্ধকার মোড</string>
     <string name="pref_description_dark_mode">অন্ধকার মোড কার্যকর করার জন্য অ্যাপ্লিকেশন রিস্টার্ট করো।</string>
@@ -272,15 +265,6 @@
     <string name="video_speed_10">Normal</string>
     <string name="video_speed_15">১.৫x</string>
     <string name="video_speed_20">2x</string>
-    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
-    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
-    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
-    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
-    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
-    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
-    <string name="video_share_icon" translatable="false">{faw-share}</string>
-    <string name="video_download_icon" translatable="false">{faw-download}</string>
-    <string name="video_save_icon" translatable="false">{faw-save}</string>
     <string name="pref_title_background_play">ব্যাকগ্রাউন্ড প্লেব্যাক</string>
     <string name="pref_description_background_play">সক্রিয় থাকলে ব্যাকগ্রাউন্ডে ভিডিও প্লে করতে থাকবে।</string>
     <string name="bottom_nav_title_local">স্থানীয়</string>
@@ -298,15 +282,6 @@
     <string name="video_meta_button_language">ভাষা</string>
     <string name="video_meta_button_tags">Tags</string>
     <!-- Constants, Don't translate -->
-    <string name="pref_token_access" translatable="false">pref_token_access</string>
-    <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
-    <string name="pref_token_expiration" translatable="false">pref_token_expiration</string>
-    <string name="pref_token_type" translatable="false">pref_token_type</string>
-    <string name="pref_auth_username" translatable="false">pref_auth_username</string>
-    <string name="pref_auth_password" translatable="false">pref_auth_password</string>
-    <string name="video_rating_none" translatable="false">none</string>
-    <string name="video_rating_like" translatable="false">like</string>
-    <string name="video_rating_dislike" translatable="false">dislike</string>
     <string name="deeppurple">গাঢ় বেগুনি</string>
     <string name="action_bar_title_account">অ্যাকাউন্ট</string>
     <string name="bottom_nav_title_recent">সাম্প্রতিক</string>

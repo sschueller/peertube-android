@@ -285,8 +285,8 @@
     <string name="video_meta_button_license">Ceadachas</string>
     <string name="video_meta_button_language">Cànan</string>
     <string name="video_meta_button_tags">Tagaichean</string>
-    <string name="menu_video_options_playback_speed">Luaths na cluiche</string>
-    <string name="menu_video_options_quality">Càileachd</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Luaths na cluiche (%s)</string>
+    <string name="menu_video_options_quality" formatted="true">Càileachd (%s)</string>
     <string name="account_bottom_menu_videos">Videothan</string>
     <string name="account_bottom_menu_channels">Seanailean</string>
     <string name="account_bottom_menu_about">Mu dhèidhinn</string>

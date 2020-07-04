@@ -18,7 +18,9 @@
 package net.schueller.peertube.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +67,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
         TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
         TextView textView = menuRow.findViewById(R.id.video_quality_text);
-        textView.setText(getString(R.string.menu_video_options_playback_speed));
+        textView.setText(String.format(getString(R.string.menu_video_options_playback_speed), videoPlayerService.getPlayBackSpeed()));
         iconView.setText(R.string.video_option_speed_icon);
         new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
         textView.setOnClickListener(view1 -> {
@@ -80,7 +82,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         LinearLayout menuRow2 = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
         TextView iconView2 = menuRow2.findViewById(R.id.video_quality_icon);
         TextView textView2 = menuRow2.findViewById(R.id.video_quality_text);
-        textView2.setText(getString(R.string.menu_video_options_quality));
+        textView2.setText(String.format(getString(R.string.menu_video_options_quality), getCurrentVideoQuality(files)));
         iconView2.setText(R.string.video_option_quality_icon);
         new Iconics.IconicsBuilder().ctx(getContext()).on(iconView2).build();
         textView2.setOnClickListener(view1 -> {
@@ -95,4 +97,15 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
 
     }
 
+    private String getCurrentVideoQuality(ArrayList<File> files) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+
+        for (File file : files) {
+            if (videoQuality.equals(file.getResolution().getId())) {
+                return file.getResolution().getLabel();
+            }
+        }
+        return "Auto";
+    }
 }

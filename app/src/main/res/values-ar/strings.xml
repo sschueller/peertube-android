@@ -143,9 +143,9 @@
     <string name="video_meta_button_license">الرخصة</string>
     <string name="video_meta_button_language">اللغة</string>
     <string name="video_meta_button_tags">العلامات</string>
-    <string name="menu_video_options_playback_speed">سرعة التشغيل</string>
-    <string name="menu_video_options_quality">الجودة</string>
-    <string name="account_bottom_menu_videos">الفيديو</string>
+    <string name="menu_video_options_playback_speed" formatted="true">سرعة التشغيل</string>
+    <string name="menu_video_options_quality" formatted="true">(%s) الجودة</string>
+    <string name="account_bottom_menu_videos" formatted="true">الفيديو (s%)</string>
     <string name="account_bottom_menu_channels">القنوات</string>
     <string name="account_bottom_menu_about">حول</string>
     <string name="account_about_account">الحساب:</string>

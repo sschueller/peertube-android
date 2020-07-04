@@ -112,8 +112,8 @@
     <string name="video_meta_button_category">类别</string>
     <string name="video_meta_button_license">许可</string>
     <string name="video_meta_button_tags">标签</string>
-    <string name="menu_video_options_playback_speed">播放速度</string>
-    <string name="menu_video_options_quality">画质</string>
+    <string name="menu_video_options_playback_speed" formatted="true">播放速度 (%s)</string>
+    <string name="menu_video_options_quality" formatted="true">画质 (%s)</string>
     <string name="account_bottom_menu_videos">视频</string>
     <string name="account_bottom_menu_channels">频道</string>
     <string name="account_bottom_menu_about">关于</string>

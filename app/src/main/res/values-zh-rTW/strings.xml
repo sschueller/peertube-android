@@ -279,8 +279,8 @@
     <string name="video_meta_button_license">授權條款</string>
     <string name="video_meta_button_language">語言</string>
     <string name="video_meta_button_tags">標籤</string>
-    <string name="menu_video_options_playback_speed">播放速度</string>
-    <string name="menu_video_options_quality">畫質</string>
+    <string name="menu_video_options_playback_speed" formatted="true">播放速度 (%s)</string>
+    <string name="menu_video_options_quality" formatted="true">畫質 (%s)</string>
     <string name="account_bottom_menu_videos">影片</string>
     <string name="account_bottom_menu_channels">頻道</string>
     <string name="account_bottom_menu_about">關於</string>

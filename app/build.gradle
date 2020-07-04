@@ -62,6 +62,9 @@ android {
             implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:$libVersions.exoplayer"
             implementation "com.google.android.exoplayer:extension-mediasession:$libVersions.exoplayer"
 
+            // date formatter
+            implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
+
             // testing
             testImplementation 'junit:junit:4.12'
             androidTestImplementation 'androidx.test:runner:1.2.0'

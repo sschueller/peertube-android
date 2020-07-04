@@ -38,10 +38,23 @@ public class SettingsActivity extends CommonActivity {
                 .beginTransaction()
                 .replace(R.id.settings, new SettingsFragment())
                 .commit();
+
+        // Attaching the layout to the toolbar object
+        Toolbar toolbar = findViewById(R.id.tool_bar_settings);
+        // Setting toolbar as the ActionBar with setSupportActionBar() call
+        setSupportActionBar(toolbar);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // close this activity as oppose to navigating up
+        return false;
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {

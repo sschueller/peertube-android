@@ -108,6 +108,7 @@ public class VideoPlayerService extends Service {
                 if (playbackState == ACTION_PLAY) { // this means that play is available, hence the audio is paused or stopped
                     Log.v(TAG, "ACTION_PAUSE: " + playbackState);
                     unregisterReceiver(myNoisyAudioStreamReceiver);
+                    myNoisyAudioStreamReceiver=null;
                 }
             }
         } );
@@ -131,9 +132,10 @@ public class VideoPlayerService extends Service {
             playerNotificationManager.setPlayer(null);
         }
         //Was seeing an error when exiting the program about about not unregistering the receiver.
-        if (null!=myNoisyAudioStreamReceiver) {
-            this.unregisterReceiver(myNoisyAudioStreamReceiver);
-        }
+            if (null!=myNoisyAudioStreamReceiver) {
+                this.unregisterReceiver(myNoisyAudioStreamReceiver);
+                myNoisyAudioStreamReceiver=null;
+            }
         if (player != null) {
             player.release();
             player = null;

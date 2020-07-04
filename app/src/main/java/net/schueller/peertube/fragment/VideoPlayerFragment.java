@@ -259,10 +259,13 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             mService.player.setPlayWhenReady(false);
         }
     }
-    public void pauseToggle() {
+    public void unPauseVideo() {
         if (mBound) {
-            mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
+            mService.player.setPlayWhenReady(true);
         }
+    }
+    public boolean isPaused(){
+        return !mService.player.getPlayWhenReady();
     }
     public void showControls(boolean value){
         simpleExoPlayerView.setUseController(value);

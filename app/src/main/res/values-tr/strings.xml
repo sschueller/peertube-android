@@ -263,7 +263,19 @@
     <string name="video_speed_10">Normal</string>
     <string name="video_speed_15">1,5×</string>
     <string name="video_speed_20">2×</string>
-    <string name="pref_title_background_play">Arkaplanda Oynatma</string>
+    <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
+    <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
+    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_quality_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
+    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
+    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
+    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
+    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
+    <string name="video_share_icon" translatable="false">{faw-share}</string>
+    <string name="video_download_icon" translatable="false">{faw-download}</string>
+    <string name="video_save_icon" translatable="false">{faw-save}</string>
+    <string name="pref_title_background_play">Arka Planda Oynatma</string>
     <string name="pref_description_background_play">Etkinleştirilirse, arka planda izleti oynatmaya devam eder.</string>
     <string name="bottom_nav_title_local">Yerel</string>
     <string name="title_activity_account">Hesap</string>
@@ -324,4 +336,21 @@
     <string name="clear_search_history">Arama Geçmişini Temizle</string>
     <string name="pref_description_language_app">Uygulama arayüzü için dil seçin. Değişikliklerin etkili olması için uygulamayı yeniden başlatın.</string>
     <string name="pref_language_app">Uygulama Dili</string>
+    <string name="settings_activity_look_and_feel_category_title">Görünüm</string>
+    <string name="settings_activity_about_category_title">Hakkında</string>
+    <string name="settings_activity_video_playback_category_title">Video Oynatma</string>
+    <string name="settings_activity_video_list_category_title">Video Listesi</string>
+    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="title_activity_me">Hesap</string>
+    <string name="title_activity_select_server">Sunucu Seç</string>
+    <string name="server_book_del_alert_msg">Bu sunucuyu adres defterinden kaldırmak istediğinizden emin misiniz\?</string>
+    <string name="server_book_del_alert_title">Sunucuyu Kaldır</string>
+    <string name="bn_rBD">Bengalce (Bangladeş)</string>
+    <string name="pref_background_behavior_summary">Arka plana giderken oynatılan bir videonun nasıl yanıt vereceği</string>
+    <string name="settings_permissions_error_float">Android Ayarlarında bu uygulama için resim içinde resim izni devre dışı</string>
+    <string name="settings_api_error_float">Android sürümü kayan videoyu desteklemiyor</string>
+    <string name="pref_background_float">Kayan pencerede video oynatmaya devam et</string>
+    <string name="pref_background_behavior">Arka planda oynatma yapılandırması</string>
+    <string name="pref_background_stop">Tüm oynatmaları durdur</string>
+    <string name="pref_background_audio">Arka planda ses akışı olarak devam et</string>
 </resources>

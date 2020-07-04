@@ -322,4 +322,21 @@
     <string name="pref_language_app">應用程式語言</string>
     <string name="pref_description_back_pause">當影片播放時按下後退鈕後暫停背景播放。</string>
     <string name="pref_title_back_pause">在後退鈕上暫停</string>
+    <string name="settings_activity_look_and_feel_category_title">外觀與感覺</string>
+    <string name="settings_activity_about_category_title">關於</string>
+    <string name="settings_activity_video_playback_category_title">影片播放</string>
+    <string name="settings_activity_video_list_category_title">影片清單</string>
+    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="title_activity_me">帳號</string>
+    <string name="title_activity_select_server">選取伺服器</string>
+    <string name="server_book_del_alert_msg">您確定您想要從地址簿中移除此伺服器嗎？</string>
+    <string name="server_book_del_alert_title">移除伺服器</string>
+    <string name="bn_rBD">孟加拉語（孟加拉）</string>
+    <string name="pref_background_behavior_summary">播放影片到背景時如何回應</string>
+    <string name="settings_permissions_error_float">在 Android 設定中已停用此應用程式的畫中畫權限</string>
+    <string name="settings_api_error_float">Android 版本不支援懸浮影片</string>
+    <string name="pref_background_behavior">背景播放設定</string>
+    <string name="pref_background_float">繼續以懸浮視窗播放影片</string>
+    <string name="pref_background_stop">停止所有播放</string>
+    <string name="pref_background_audio">以背景音訊串流繼續</string>
 </resources>

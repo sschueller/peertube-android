@@ -322,4 +322,21 @@
     <string name="pref_language_app">App-taal</string>
     <string name="pref_description_back_pause">Pauzeer het afspelen als er op de terugknop wordt gedrukt.</string>
     <string name="pref_title_back_pause">Pauzeren na drukken op terugknop</string>
+    <string name="settings_activity_look_and_feel_category_title">Uiterlijk</string>
+    <string name="settings_activity_about_category_title">Over</string>
+    <string name="settings_activity_video_playback_category_title">Video afspelen</string>
+    <string name="settings_activity_video_list_category_title">Videolijst</string>
+    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="title_activity_me">Account</string>
+    <string name="title_activity_select_server">Server kiezen</string>
+    <string name="server_book_del_alert_msg">Weet je zeker dat je deze server wilt verwijderen uit het adresboek\?</string>
+    <string name="server_book_del_alert_title">Server verwijderen</string>
+    <string name="bn_rBD">Bengaals (Bangladesh)</string>
+    <string name="pref_background_behavior_summary">Hoe een video moet worden afgespeeld op de achtergrond</string>
+    <string name="settings_permissions_error_float">Picture-in-picturemachtiging is niet afgegeven voor deze app in de Android-instellingen</string>
+    <string name="settings_api_error_float">Deze Android-versie ondersteunt geen zwevende video\'s</string>
+    <string name="pref_background_behavior">Afspelen op achtergrond</string>
+    <string name="pref_background_float">Video afspelen in zwevend venster</string>
+    <string name="pref_background_stop">Afspelen stoppen</string>
+    <string name="pref_background_audio">Audio afspelen op achtergrond</string>
 </resources>

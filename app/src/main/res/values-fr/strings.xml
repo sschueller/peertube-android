@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Thorium</string>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="title_activity_settings">Paramètres</string>
     <string name="title_activity_login">Se connecter</string>
     <!-- Strings related to login -->
@@ -24,13 +22,9 @@
     <string name="bottom_nav_title_subscriptions">Abonnements</string>
     <string name="bottom_nav_title_account">Compte</string>
     <!-- Strings related to Settings -->
-    <string name="peertube_required_server_version">1.0.0-alpha.7</string>
-    <string name="pref_default_api_base_url" formatted="false">https://troll.tv</string>
     <string name="pref_title_peertube_server">Serveur Peertube</string>
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_seperator">\u0020-\u0020</string>
     <string name="meta_data_views">" vues"</string>
-    <string name="meta_data_owner_seperator">\@</string>
     <string name="video_row_video_thumbnail">Miniature vidéo</string>
     <string name="video_row_account_avatar">Avatar du compte</string>
     <string name="pref_title_show_nsfw">Contenu pour adultes</string>
@@ -49,7 +43,6 @@
     <string name="no_data_available">Pas de résultat</string>
     <string name="descr_overflow_button">Plus</string>
     <string name="menu_share">Partager</string>
-    <string name="playback_channel_name">PeerTube</string>
     <string name="invalid_url">URL invalide.</string>
     <string name="pref_title_dark_mode">Mode sombre</string>
     <string name="pref_description_dark_mode">Redémarrez l’application pour que le mode sombre soit activé.</string>

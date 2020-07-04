@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_activity_video_play">VideoPlayActivity</string>
     <string name="title_activity_settings">Instellingen</string>
     <string name="title_activity_login">Inloggen</string>
     <string name="prompt_server">Server</string>

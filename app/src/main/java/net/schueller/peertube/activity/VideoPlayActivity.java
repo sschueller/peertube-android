@@ -78,7 +78,9 @@ public class VideoPlayActivity extends AppCompatActivity {
     private BroadcastReceiver receiver;
     //This can only be called when in entering pip mode which can't happen if the device doesn't support pip mode.
     @SuppressLint("NewApi")
-    public void setActions(String actionCommand) {
+    public void makePipControls() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
 
         ArrayList<RemoteAction> actions = new ArrayList<>();
 
@@ -94,6 +96,23 @@ public class VideoPlayActivity extends AppCompatActivity {
         remoteAction = new RemoteAction(icon, "play", "stop the media", pendingIntent);
         actions.add(remoteAction);
 
+        if (videoPlayerFragment.isPaused()){
+            Log.e(TAG,"setting actions with play button");
+            actionIntent = new Intent(ACTION_PLAY);
+            pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
+            icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_play);
+            remoteAction = new RemoteAction(icon, "play", "play the media", pendingIntent);
+            actions.add(remoteAction);
+        } else {
+            Log.e(TAG,"setting actions with pause button");
+            actionIntent = new Intent(ACTION_PAUSE);
+            pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
+            icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_pause);
+            remoteAction = new RemoteAction(icon, "pause", "pause the media", pendingIntent);
+            actions.add(remoteAction);
+        }
+
+
         //add custom actions to pip window
         PictureInPictureParams params =
                 new PictureInPictureParams.Builder()
@@ -108,7 +127,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         videoPlayerFragment.showControls(false);
         //create custom actions
-        setActions("");
+        makePipControls();
 
         //setup receiver to handle customer actions
         IntentFilter filter = new IntentFilter();
@@ -122,9 +141,11 @@ public class VideoPlayActivity extends AppCompatActivity {
                 String action = intent.getAction();
                 if (action.equals(ACTION_PAUSE)) {
                     videoPlayerFragment.pauseVideo();
+                    makePipControls();
                 }
                 if (action.equals(ACTION_PLAY)) {
-                    videoPlayerFragment.pauseToggle();
+                    videoPlayerFragment.unPauseVideo();
+                    makePipControls();
                 }
 
                 if (action.equals(BACKGROUND_AUDIO)) {
@@ -141,7 +162,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         Log.v(TAG, "switched to pip ");
         floatMode=true;
-        //     videoPlayerFragment.useController(false);
+        videoPlayerFragment.showControls(false);
     }
     public void changedToNormalMode(){
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -153,7 +174,6 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
         Log.v(TAG,"switched to normal");
         floatMode=false;
-        //          videoPlayerFragment.useController(true);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

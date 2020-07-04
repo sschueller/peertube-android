@@ -415,6 +415,10 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
 
         String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
+
+
+        // Log.v(TAG,"backgroundBehavior: " + backgroundBehavior);
+
         switch (backgroundBehavior){
             case "backgroundStop":
                 Log.v(TAG,"stop the video");
@@ -439,6 +443,11 @@ public class VideoPlayActivity extends AppCompatActivity {
                     Log.v(TAG,"Unable to enter PIP mode");
                     super.onBackPressed();
                 }
+                break;
+            default:
+                // Deal with bad entries from older version
+                Log.v(TAG,"No setting, fallback");
+                super.onBackPressed();
                 break;
         }
         Log.v(TAG, "onBackPressed()...");

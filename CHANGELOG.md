@@ -1,3 +1,6 @@
+### Version 1.0.43 Tag: v1.0.43 (2020-07-04)
+ * Fix back button issue
+
 ### Version 1.0.42 Tag: v1.0.42 (2020-07-04)
  * Added appbar at the top of the SettingsActivity (@Poslovitch)
  * Improved and added some French translations (@Poslovitch)

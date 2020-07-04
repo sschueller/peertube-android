@@ -21,4 +21,5 @@ public class Constants {
     public static final String THEME_PREF_KEY = "pref_theme";
     public static final String DEFAULT_THEME = "AppTheme.BLUE";
     public static final String BACKGROUND_PLAY_PREF_KEY = "pref_background_play";
+    public static final String BACKGROUND_AUDIO = "BACKGROUND_AUDIO";
 }

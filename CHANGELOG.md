@@ -1,3 +1,11 @@
+### Version 1.0.42 Tag: v1.0.42 (2020-07-04)
+ * Added appbar at the top of the SettingsActivity (@Poslovitch)
+ * Improved and added some French translations (@Poslovitch)
+ * Removed translations for untranslatable strings (@Poslovitch)
+ * Add stop button to expanded notification, and stop and switch to audio in video window (@dhk2)
+ * More data in Server search
+ * VideoList timestamp fix
+
 ### Version 1.0.41 Tag: v1.0.41 (2020-06-28)
  * Floating window player controls fix (@dhk2)
  * Updated app icons

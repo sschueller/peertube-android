@@ -25,8 +25,6 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import net.schueller.peertube.R;
 
-import java.util.Objects;
-
 public class SettingsActivity extends CommonActivity {
 
     @Override

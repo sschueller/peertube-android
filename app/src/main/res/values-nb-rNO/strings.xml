@@ -51,8 +51,8 @@
     <string name="video_meta_button_license">Lisens</string>
     <string name="video_meta_button_language">Språk</string>
     <string name="video_meta_button_tags">Etiketter</string>
-    <string name="menu_video_options_playback_speed" formatted="true">Avspillingshastighet (%s)</string>
-    <string name="menu_video_options_quality" formatted="true">Kvalitet (%s)</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Avspillingshastighet (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Kvalitet (%1$s)</string>
     <string name="account_bottom_menu_videos">Videoer</string>
     <string name="account_bottom_menu_channels">Kanaler</string>
     <string name="account_bottom_menu_about">Om</string>

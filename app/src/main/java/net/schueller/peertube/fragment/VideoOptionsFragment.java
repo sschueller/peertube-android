@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.mikepenz.iconics.Iconics;
+
 import net.schueller.peertube.R;
 import net.schueller.peertube.model.File;
 import net.schueller.peertube.service.VideoPlayerService;
@@ -66,13 +67,22 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
         TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
         TextView textView = menuRow.findViewById(R.id.video_quality_text);
-        textView.setText(String.format(getString(R.string.menu_video_options_playback_speed), getCurrentVideoPlaybackSpeedString(videoPlayerService.getPlayBackSpeed())));
+
+        textView.setText(
+                getString(
+                        R.string.menu_video_options_playback_speed,
+                        getCurrentVideoPlaybackSpeedString(videoPlayerService.getPlayBackSpeed()
+                        )
+                )
+        );
+
+
         iconView.setText(R.string.video_option_speed_icon);
         new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
         textView.setOnClickListener(view1 -> {
             VideoMenuSpeedFragment videoMenuSpeedFragment =
                     VideoMenuSpeedFragment.newInstance(videoPlayerService);
-            videoMenuSpeedFragment.show(getActivity().getSupportFragmentManager(),
+            videoMenuSpeedFragment.show(requireActivity().getSupportFragmentManager(),
                     VideoMenuSpeedFragment.TAG);
         });
         menuHolder.addView(menuRow);
@@ -87,8 +97,8 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         textView2.setOnClickListener(view1 -> {
             VideoMenuQualityFragment videoMenuQualityFragment =
                     VideoMenuQualityFragment.newInstance(getContext(), files);
-            videoMenuQualityFragment.show(getActivity().getSupportFragmentManager(),
-                    videoMenuQualityFragment.TAG);
+            videoMenuQualityFragment.show(requireActivity().getSupportFragmentManager(),
+                    VideoMenuQualityFragment.TAG);
         });
         menuHolder.addView(menuRow2);
 

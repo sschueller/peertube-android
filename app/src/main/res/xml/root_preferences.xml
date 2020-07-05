@@ -62,7 +62,7 @@
             app:defaultValue="@array/empty_array"
             app:entries="@array/backgroundBehavior"
             app:entryValues="@array/backgroundBehaviorValues"
-            app:key="pref_background_behavior"
+            app:key="@string/pref_background_behavior_key"
             app:summary="@string/pref_background_behavior_summary"
             app:title="@string/pref_background_behavior"
             app:iconSpaceReserved="false"/>

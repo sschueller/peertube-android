@@ -277,8 +277,8 @@
     <string name="video_meta_button_license">Лицензия</string>
     <string name="video_meta_button_language">Язык</string>
     <string name="video_meta_button_tags">Теги</string>
-    <string name="menu_video_options_playback_speed" formatted="true">Скорость воспроизведения (%s)</string>
-    <string name="menu_video_options_quality" formatted="true">Качество (%s)</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Скорость воспроизведения (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Качество (%1$s)</string>
     <string name="account_about_description">Описание:</string>
     <string name="api_error">Что-то пошло не так, пожалуйста, попробуйте позже!</string>
     <string name="action_set_url">Выберите сервер</string>

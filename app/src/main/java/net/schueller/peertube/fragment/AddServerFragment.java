@@ -42,6 +42,8 @@ import net.schueller.peertube.activity.SearchServerActivity;
 import net.schueller.peertube.activity.ServerAddressBookActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 
+import java.util.Objects;
+
 import static android.app.Activity.RESULT_OK;
 
 
@@ -78,14 +80,15 @@ public class AddServerFragment extends Fragment {
 
             Activity act = getActivity();
 
-            Boolean formValid = true;
+            boolean formValid = true;
 
             // close keyboard
             try {
+                assert act != null;
                 InputMethodManager inputManager = (InputMethodManager)
                         act.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-                inputManager.hideSoftInputFromWindow(act.getCurrentFocus().getWindowToken(),
+                inputManager.hideSoftInputFromWindow(Objects.requireNonNull(act.getCurrentFocus()).getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (Exception e) {
 

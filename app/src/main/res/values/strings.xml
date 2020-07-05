@@ -308,8 +308,8 @@
     <string name="video_meta_button_license">License</string>
     <string name="video_meta_button_language">Language</string>
     <string name="video_meta_button_tags">Tags</string>
-    <string name="menu_video_options_playback_speed" formatted="true">Playback speed (%s)</string>
-    <string name="menu_video_options_quality" formatted="true">Quality (%s)</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Playback speed (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Quality (%1$s)</string>
     <string name="account_bottom_menu_videos">Videos</string>
     <string name="account_bottom_menu_channels">Channels</string>
     <string name="account_bottom_menu_about">About</string>

@@ -48,8 +48,8 @@
     <string name="account_about_account">Konto:</string>
     <string name="account_bottom_menu_channels">Kanały</string>
     <string name="account_bottom_menu_videos">Filmy</string>
-    <string name="menu_video_options_quality" formatted="true">Jakość (%s)</string>
-    <string name="menu_video_options_playback_speed" formatted="true">Prędkość odtwarzania (%s)</string>
+    <string name="menu_video_options_quality" formatted="true">Jakość (%1$s)</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Prędkość odtwarzania (%1$s)</string>
     <string name="video_meta_button_tags">Znaczniki</string>
     <string name="video_meta_button_language">Język</string>
     <string name="video_meta_button_license">Licencja</string>

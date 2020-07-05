@@ -65,6 +65,7 @@ import androidx.fragment.app.FragmentTransaction;
 import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PAUSE;
 import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PLAY;
 import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
+import static net.schueller.peertube.helper.VideoHelper.canEnterPipMode;
 
 public class VideoPlayActivity extends AppCompatActivity {
 
@@ -351,7 +352,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
 
-        String backgroundBehavior = sharedPref.getString("pref_background_behavior", getString(R.string.pref_background_stop_key));
+        String backgroundBehavior = sharedPref.getString(getString(R.string.pref_background_behavior_key), getString(R.string.pref_background_stop_key));
 
         assert videoPlayerFragment != null;
         assert backgroundBehavior != null;
@@ -410,7 +411,7 @@ public class VideoPlayActivity extends AppCompatActivity {
             videoPlayerFragment.pauseVideo();
         }
 
-        String backgroundBehavior = sharedPref.getString("pref_background_behavior", getString(R.string.pref_background_stop_key));
+        String backgroundBehavior = sharedPref.getString(getString(R.string.pref_background_behavior_key), getString(R.string.pref_background_stop_key));
 
         assert backgroundBehavior != null;
 
@@ -446,15 +447,6 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
 
 
-    }
-
-    public boolean canEnterPipMode(Context context) {
-        Log.v(TAG, "api version " + Build.VERSION.SDK_INT);
-        if (Build.VERSION.SDK_INT > 27) {
-            AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
-            return (AppOpsManager.MODE_ALLOWED == appOpsManager.checkOp(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
-        }
-        return false;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

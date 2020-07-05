@@ -99,8 +99,8 @@
     <string name="video_meta_button_license">Licence</string>
     <string name="video_meta_button_language">Langue</string>
     <string name="video_meta_button_tags">Étiquettes</string>
-    <string name="menu_video_options_playback_speed" formatted="true">Vitesse de lecture (%s)</string>
-    <string name="menu_video_options_quality" formatted="true">Qualité (%s)</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Vitesse de lecture (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Qualité (%1$s)</string>
     <string name="account_bottom_menu_videos">Vidéos</string>
     <string name="account_bottom_menu_channels">Chaînes</string>
     <string name="account_bottom_menu_about">À propos</string>

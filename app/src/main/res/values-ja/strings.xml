@@ -88,8 +88,8 @@
     <string name="video_meta_button_license">ラインセンス</string>
     <string name="video_meta_button_language">言語</string>
     <string name="video_meta_button_tags">タグ</string>
-    <string name="menu_video_options_playback_speed" formatted="true">再生速度 (%s)</string>
-    <string name="menu_video_options_quality" formatted="true">クオリティ(%s)</string>
+    <string name="menu_video_options_playback_speed" formatted="true">再生速度 (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">クオリティ(%1$s)</string>
     <string name="account_bottom_menu_videos">ビデオ</string>
     <string name="account_bottom_menu_channels">チャンネル</string>
     <string name="account_bottom_menu_about">情報</string>

@@ -86,7 +86,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
 
             String serverUrl = APIUrlHelper.cleanServerUrl(getServerAtPosition(position).getServerHost());
 
-            editor.putString("pref_api_base", serverUrl);
+            editor.putString(mInflater.getContext().getString(R.string.pref_api_base_key), serverUrl);
             editor.apply();
 
             // attempt authentication if we have a username

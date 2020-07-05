@@ -108,7 +108,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
 
     private String getCurrentVideoQuality(ArrayList<File> files) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+        Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
 
         for (File file : files) {
             if (videoQuality.equals(file.getResolution().getId())) {

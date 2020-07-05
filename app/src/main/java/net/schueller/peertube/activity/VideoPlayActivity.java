@@ -407,7 +407,7 @@ public class VideoPlayActivity extends AppCompatActivity {
             return;
         }
         // pause video if pref is enabled
-        if (sharedPref.getBoolean("pref_back_pause", true)) {
+        if (sharedPref.getBoolean(getString(R.string.pref_back_pause_key), true)) {
             videoPlayerFragment.pauseVideo();
         }
 

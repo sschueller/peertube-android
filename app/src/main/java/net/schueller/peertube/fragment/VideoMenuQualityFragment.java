@@ -75,7 +75,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
                 false);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+        Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
 
         for (File file : mFiles) {
 
@@ -91,7 +91,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
             textView.setOnClickListener(view1 -> {
 //                Log.v(TAG, file.getResolution().getLabel());
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putInt("pref_quality", file.getResolution().getId());
+                editor.putInt(getString(R.string.pref_quality_key), file.getResolution().getId());
                 editor.apply();
 
                 for (File fileV : mFiles) {

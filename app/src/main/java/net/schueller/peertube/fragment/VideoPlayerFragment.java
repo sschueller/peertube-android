@@ -220,7 +220,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
-        if (sharedPref.getBoolean("pref_torrent_player", false)) {
+        if (sharedPref.getBoolean(getString(R.string.pref_torrent_player_key), false)) {
             torrentStatus.setVisibility(View.VISIBLE);
             String stream = video.getFiles().get(0).getTorrentUrl();
             Log.v(TAG, "getTorrentUrl : " + video.getFiles().get(0).getTorrentUrl());
@@ -228,7 +228,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             torrentStream.startStream(stream);
         } else {
 
-            Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+            Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
 
             //get video qualities
             String urlToPlay = video.getFiles().get(0).getFileUrl();

@@ -38,7 +38,7 @@ public class CommonActivity extends AppCompatActivity {
 
         // Set Night Mode
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        AppCompatDelegate.setDefaultNightMode(sharedPref.getBoolean("pref_dark_mode", false) ?
+        AppCompatDelegate.setDefaultNightMode(sharedPref.getBoolean(getString(R.string.pref_dark_mode_key), false) ?
                 AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
 
         // Set theme
@@ -52,7 +52,7 @@ public class CommonActivity extends AppCompatActivity {
         );
 
         // Set language
-        String countryCode = sharedPref.getString("pref_language_app", "en");
+        String countryCode = sharedPref.getString(getString(R.string.pref_language_app_key), "en");
         assert countryCode != null;
         Locale locale = new Locale(countryCode);
 

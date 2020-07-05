@@ -56,9 +56,9 @@ import net.schueller.peertube.service.VideoPlayerService;
 
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 //import static net.schueller.peertube.helper.Constants.BACKGROUND_PLAY_PREF_KEY;
@@ -119,8 +119,8 @@ public class VideoPlayActivity extends AppCompatActivity {
                         .setActions(actions)
                         .build();
         setPictureInPictureParams(params);
-
     }
+
     public void changedToPipMode() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
@@ -164,6 +164,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         floatMode=true;
         videoPlayerFragment.showControls(false);
     }
+
     public void changedToNormalMode(){
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
@@ -175,6 +176,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         Log.v(TAG,"switched to normal");
         floatMode=false;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -226,7 +228,6 @@ public class VideoPlayActivity extends AppCompatActivity {
         assert videoPlayerFragment != null;
         String videoUuid = intent.getStringExtra(VideoListActivity.EXTRA_VIDEOID);
         Log.v(TAG, "new intent click: " + videoUuid +" is trying to replace: "+videoPlayerFragment.getVideoUuid());
-        assert videoPlayerFragment != null;
         String playingVideo = videoPlayerFragment.getVideoUuid();
 
         if (TextUtils.isEmpty(playingVideo)){
@@ -245,12 +246,10 @@ public class VideoPlayActivity extends AppCompatActivity {
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             setOrientation(true);
         }
-
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-
         Log.v(TAG, "onConfigurationChanged()...");
 
         super.onConfigurationChanged(newConfig);
@@ -263,57 +262,42 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
     }
 
-
-
     private void setOrientation(Boolean isLandscape) {
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
         VideoMetaDataFragment videoMetaFragment = (VideoMetaDataFragment) fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
 
-        if (isLandscape) {
-            assert videoPlayerFragment != null;
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
-            params.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            params.height = FrameLayout.LayoutParams.MATCH_PARENT;
-            videoPlayerFragment.getView().setLayoutParams(params);
+        assert videoPlayerFragment != null;
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.requireView().getLayoutParams();
+        params.width = FrameLayout.LayoutParams.MATCH_PARENT;
+        params.height = isLandscape ? FrameLayout.LayoutParams.MATCH_PARENT : (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
+        videoPlayerFragment.getView().setLayoutParams(params);
 
-            if (videoMetaFragment != null) {
-                fragmentManager.beginTransaction()
-                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                        .hide(videoMetaFragment)
-                        .commit();
+        if (videoMetaFragment != null) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction()
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+
+            if (isLandscape) {
+                transaction.hide(videoMetaFragment);
+            } else {
+                transaction.show(videoMetaFragment);
             }
-            videoPlayerFragment.setIsFullscreen(true);
 
-        } else {
-            assert videoPlayerFragment != null;
-            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Objects.requireNonNull(videoPlayerFragment.getView()).getLayoutParams();
-            params.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            params.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
-            videoPlayerFragment.getView().setLayoutParams(params);
-
-            if (videoMetaFragment != null) {
-                fragmentManager.beginTransaction()
-                        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                        .show(videoMetaFragment)
-                        .commit();
-            }
-            videoPlayerFragment.setIsFullscreen(false);
+            transaction.commit();
         }
+
+        videoPlayerFragment.setIsFullscreen(isLandscape);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override
     protected void onDestroy() {
-
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
 
         assert videoPlayerFragment != null;
         videoPlayerFragment.destroyVideo();
-
 
         super.onDestroy();
         Log.v(TAG, "onDestroy...");
@@ -334,15 +318,6 @@ public class VideoPlayActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
-//        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-//
-//        Log.v(TAG, "" + sharedPref.getBoolean(BACKGROUND_PLAY_PREF_KEY, false));
-//
-//        if (!sharedPref.getBoolean(BACKGROUND_PLAY_PREF_KEY, false)) {
-//            Log.v(TAG, "BACKGROUND_PLAY_PREF_KEY...");
-//            stopService(new Intent(this, VideoPlayerService.class));
-//        }
 
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
@@ -366,7 +341,6 @@ public class VideoPlayActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
-        VideoMetaDataFragment videoMetaFragment = (VideoMetaDataFragment) fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
         String backgroundBehavior = sharedPref.getString("pref_background_behavior","backgroundStop");
 
         switch(backgroundBehavior){
@@ -397,7 +371,6 @@ public class VideoPlayActivity extends AppCompatActivity {
    // @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("NewApi")
     public void onBackPressed() {
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
@@ -410,7 +383,6 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
 
         if (sharedPref.getBoolean("pref_back_pause", true)) {
-            assert videoPlayerFragment != null;
             videoPlayerFragment.pauseVideo();
         }
 
@@ -452,6 +424,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         }
         Log.v(TAG, "onBackPressed()...");
     }
+
     public boolean canEnterPipMode(Context context) {
         Log.v(TAG,"api version "+Build.VERSION.SDK_INT);
         if (Build.VERSION.SDK_INT<28){
@@ -460,6 +433,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
         return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
     }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void enterPipMode() {
         Rational rational = new Rational(239, 100);
@@ -472,6 +446,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         enterPictureInPictureMode(mParams);
     }
+
     @Override
     public void onPictureInPictureModeChanged (boolean isInPictureInPictureMode, Configuration newConfig) {
         FragmentManager fragmentManager = getSupportFragmentManager();

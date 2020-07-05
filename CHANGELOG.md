@@ -1,3 +1,9 @@
+### Version 1.0.44 Tag: v1.0.44 (2020-07-05)
+ * Completed implementation of Likes & Dislikes (@Poslovitch)
+ * Added preview of the current playback speed and video quality in the VideoOptionsFragment (@Poslovitch)
+ * Lots of code cleanup
+ * Various translations
+
 ### Version 1.0.43 Tag: v1.0.43 (2020-07-04)
  * Fix back button issue
 

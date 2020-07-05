@@ -38,10 +38,6 @@
 
     <string name="app_background_audio" translatable="false">BACKGROUND_AUDIO</string>
 
-    <string name="video_rating_none" translatable="false">none</string>
-    <string name="video_rating_like" translatable="false">like</string>
-    <string name="video_rating_dislike" translatable="false">dislike</string>
-
     <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
     <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
     <string name="video_speed_active_icon" translatable="false">{faw-check}</string>

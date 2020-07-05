@@ -38,7 +38,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.activity.SelectServerActivity;
+import net.schueller.peertube.activity.SearchServerActivity;
 import net.schueller.peertube.activity.ServerAddressBookActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 
@@ -128,7 +128,7 @@ public class AddServerFragment extends Fragment {
 
         Button pickServerUrl = mView.findViewById(R.id.pickServerUrl);
         pickServerUrl.setOnClickListener(view -> {
-            Intent intentServer = new Intent(getActivity(), SelectServerActivity.class);
+            Intent intentServer = new Intent(getActivity(), SearchServerActivity.class);
             this.startActivityForResult(intentServer, PICK_SERVER);
         });
 

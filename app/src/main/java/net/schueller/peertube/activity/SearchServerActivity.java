@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.adapter.ServerAdapter;
+import net.schueller.peertube.adapter.ServerSearchAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.ServerList;
 import net.schueller.peertube.network.GetServerListDataService;
@@ -42,9 +42,9 @@ import net.schueller.peertube.network.RetrofitInstance;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class SelectServerActivity extends CommonActivity {
+public class SearchServerActivity extends CommonActivity {
 
-    private ServerAdapter serverAdapter;
+    private ServerSearchAdapter serverAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     private int currentStart = 0;
@@ -64,7 +64,7 @@ public class SelectServerActivity extends CommonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_server_selection);
+        setContentView(R.layout.activity_search_server);
 
         // Attaching the layout to the toolbar object
         Toolbar toolbar = findViewById(R.id.tool_bar_server_selection);
@@ -85,10 +85,10 @@ public class SelectServerActivity extends CommonActivity {
 
         emptyView = findViewById(R.id.empty_server_selection_view);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SelectServerActivity.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SearchServerActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        serverAdapter = new ServerAdapter(new ArrayList<>(), this);
+        serverAdapter = new ServerSearchAdapter(new ArrayList<>(), this);
         recyclerView.setAdapter(serverAdapter);
 
         loadServers(currentStart, count);
@@ -132,7 +132,7 @@ public class SelectServerActivity extends CommonActivity {
         isLoading = true;
 
         GetServerListDataService service = RetrofitInstance.getRetrofitInstance(
-                APIUrlHelper.getServerIndexUrl(SelectServerActivity.this)
+                APIUrlHelper.getServerIndexUrl(SearchServerActivity.this)
         ).create(GetServerListDataService.class);
 
 
@@ -171,7 +171,7 @@ public class SelectServerActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<ServerList> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
-                Toast.makeText(SelectServerActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchServerActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }

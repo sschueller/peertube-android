@@ -49,7 +49,7 @@
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- Server Selection -->
         <activity
-            android:name=".activity.SelectServerActivity"
+            android:name=".activity.SearchServerActivity"
             android:label="@string/title_activity_select_server"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- Me -->
         <activity

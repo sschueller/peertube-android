@@ -344,7 +344,7 @@
     <string name="server_book_del_alert_title">Remove Server</string>
     <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
 
-    <string name="title_activity_select_server">Select Server</string>
+    <string name="title_activity_select_server">Search Server</string>
     <string name="title_activity_me">Account</string>
     <string name="title_activity_settings2">SettingsActivity2</string>
 

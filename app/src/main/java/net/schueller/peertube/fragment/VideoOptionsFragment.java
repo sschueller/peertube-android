@@ -64,7 +64,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         LinearLayout menuHolder = view.findViewById(R.id.video_options_popup);
 
         // Video Speed
-        LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
+        LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, container);
         TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
         TextView textView = menuRow.findViewById(R.id.video_quality_text);
 
@@ -88,7 +88,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         menuHolder.addView(menuRow);
 
         // Video Quality
-        LinearLayout menuRow2 = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
+        LinearLayout menuRow2 = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, container);
         TextView iconView2 = menuRow2.findViewById(R.id.video_quality_icon);
         TextView textView2 = menuRow2.findViewById(R.id.video_quality_text);
         textView2.setText(String.format(getString(R.string.menu_video_options_quality), getCurrentVideoQuality(files)));

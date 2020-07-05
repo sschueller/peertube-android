@@ -79,7 +79,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
 
         for (File file : mFiles) {
 
-            LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
+            LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, container);
 
             TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
             iconView.setId(file.getResolution().getId());

@@ -87,7 +87,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         new Iconics.IconicsBuilder().ctx(getContext()).on(iconView2).build();
         textView2.setOnClickListener(view1 -> {
             VideoMenuQualityFragment videoMenuQualityFragment =
-                    VideoMenuQualityFragment.newInstance(files);
+                    VideoMenuQualityFragment.newInstance(getContext(), files);
             videoMenuQualityFragment.show(getActivity().getSupportFragmentManager(),
                     videoMenuQualityFragment.TAG);
         });
@@ -106,6 +106,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
                 return file.getResolution().getLabel();
             }
         }
-        return "Auto";
+        // Returning Automated as a placeholder
+        return getString(R.string.menu_video_options_quality_automated);
     }
 }

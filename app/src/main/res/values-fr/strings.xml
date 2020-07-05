@@ -343,4 +343,5 @@
     <string name="title_activity_select_server">Sélectionner un serveur</string>
     <string name="server_book_del_alert_title">Retirer un serveur</string>
     <string name="server_book_del_alert_msg">Voulez-vous vraiment retirer ce serveur de votre carnet d\'adresses ?</string>
+    <string name="menu_video_options_quality_automated">Automatique</string>
 </resources>

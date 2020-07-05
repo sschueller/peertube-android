@@ -37,6 +37,7 @@ import net.schueller.peertube.service.VideoPlayerService;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 public class VideoOptionsFragment extends BottomSheetDialogFragment {
 
@@ -67,7 +68,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
         TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
         TextView textView = menuRow.findViewById(R.id.video_quality_text);
-        textView.setText(String.format(getString(R.string.menu_video_options_playback_speed), videoPlayerService.getPlayBackSpeed()));
+        textView.setText(String.format(getString(R.string.menu_video_options_playback_speed), getCurrentVideoPlaybackSpeedString(videoPlayerService.getPlayBackSpeed())));
         iconView.setText(R.string.video_option_speed_icon);
         new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
         textView.setOnClickListener(view1 -> {
@@ -108,5 +109,15 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         }
         // Returning Automated as a placeholder
         return getString(R.string.menu_video_options_quality_automated);
+    }
+
+    private String getCurrentVideoPlaybackSpeedString(float playbackSpeed) {
+        String speed = String.valueOf(playbackSpeed);
+        // Remove all non-digit characters from the string
+        speed = speed.replaceAll("[^0-9]", "");
+
+        // Dynamically get the localized string corresponding to the speed
+        @StringRes int stringId = getResources().getIdentifier("video_speed_" + speed, "string", videoPlayerService.getPackageName());
+        return getString(stringId);
     }
 }

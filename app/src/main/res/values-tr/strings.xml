@@ -342,7 +342,7 @@
     <string name="settings_activity_video_list_category_title">Video Listesi</string>
     <string name="title_activity_settings2">SettingsActivity2</string>
     <string name="title_activity_me">Hesap</string>
-    <string name="title_activity_select_server">Sunucu Seç</string>
+    <string name="title_activity_select_server">Sunucu Ara</string>
     <string name="server_book_del_alert_msg">Bu sunucuyu adres defterinden kaldırmak istediğinizden emin misiniz\?</string>
     <string name="server_book_del_alert_title">Sunucuyu Kaldır</string>
     <string name="bn_rBD">Bengalce (Bangladeş)</string>
@@ -355,4 +355,5 @@
     <string name="pref_background_audio">Arka planda ses akışı olarak devam et</string>
     <string name="server_selection_nsfw_instance">İş Yeri İçin Uygun Olmayan (NSFW) Örnek</string>
     <string name="server_selection_video_totals">Video: %s, Yerel Video: %s</string>
+    <string name="menu_video_options_quality_automated">Otomatik</string>
 </resources>

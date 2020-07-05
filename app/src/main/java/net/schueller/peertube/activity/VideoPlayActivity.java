@@ -36,6 +36,7 @@ import android.os.Bundle;
 
 import android.preference.PreferenceManager;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -72,7 +73,8 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
 
-    private static boolean floatMode = false;
+    static boolean floatMode = false;
+
     private static final int REQUEST_CODE = 101;
     private BroadcastReceiver receiver;
 
@@ -96,21 +98,21 @@ public class VideoPlayActivity extends AppCompatActivity {
         remoteAction = new RemoteAction(icon, "play", "stop the media", pendingIntent);
         actions.add(remoteAction);
 
+        assert videoPlayerFragment != null;
         if (videoPlayerFragment.isPaused()) {
             Log.e(TAG, "setting actions with play button");
             actionIntent = new Intent(ACTION_PLAY);
             pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
             icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_play);
             remoteAction = new RemoteAction(icon, "play", "play the media", pendingIntent);
-            actions.add(remoteAction);
         } else {
             Log.e(TAG, "setting actions with pause button");
             actionIntent = new Intent(ACTION_PAUSE);
             pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
             icon = Icon.createWithResource(getApplicationContext(), com.google.android.exoplayer2.ui.R.drawable.exo_notification_pause);
             remoteAction = new RemoteAction(icon, "pause", "pause the media", pendingIntent);
-            actions.add(remoteAction);
         }
+        actions.add(remoteAction);
 
 
         //add custom actions to pip window
@@ -125,6 +127,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
 
+        assert videoPlayerFragment != null;
         videoPlayerFragment.showControls(false);
         //create custom actions
         makePipControls();
@@ -139,6 +142,7 @@ public class VideoPlayActivity extends AppCompatActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
+                assert action != null;
                 if (action.equals(ACTION_PAUSE)) {
                     videoPlayerFragment.pauseVideo();
                     makePipControls();
@@ -169,6 +173,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
 
+        assert videoPlayerFragment != null;
         videoPlayerFragment.showControls(true);
         if (receiver != null) {
             unregisterReceiver(receiver);
@@ -249,7 +254,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         Log.v(TAG, "onConfigurationChanged()...");
 
         super.onConfigurationChanged(newConfig);
@@ -271,7 +276,8 @@ public class VideoPlayActivity extends AppCompatActivity {
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) videoPlayerFragment.requireView().getLayoutParams();
         params.width = FrameLayout.LayoutParams.MATCH_PARENT;
         params.height = isLandscape ? FrameLayout.LayoutParams.MATCH_PARENT : (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 250, getResources().getDisplayMetrics());
-        videoPlayerFragment.getView().setLayoutParams(params);
+
+        videoPlayerFragment.requireView().setLayoutParams(params);
 
         if (videoMetaFragment != null) {
             FragmentTransaction transaction = fragmentManager.beginTransaction()
@@ -338,100 +344,117 @@ public class VideoPlayActivity extends AppCompatActivity {
     @SuppressLint("NewApi")
     @Override
     public void onUserLeaveHint() {
+
+        Log.v(TAG, "onUserLeaveHint()...");
+
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
-        String backgroundBehavior = sharedPref.getString("pref_background_behavior", "backgroundStop");
 
-        switch (backgroundBehavior) {
-            case "backgroundStop":
-                Log.v(TAG, "stop the video");
-                videoPlayerFragment.pauseVideo();
-                stopService(new Intent(this, VideoPlayerService.class));
-                super.onBackPressed();
-                break;
-            case "backgroundAudio":
-                Log.v(TAG, "play the Audio");
-                super.onBackPressed();
-                break;
-            case "backgroundFloat":
-                Log.v(TAG, "play in floating video");
-                //canEnterPIPMode makes sure API level is high enough
-                if (canEnterPipMode(this)) {
-                    Log.v(TAG, "enabling pip");
-                    enterPipMode();
-                } else {
-                    Log.v(TAG, "unable to use pip");
-                }
-                break;
+        String backgroundBehavior = sharedPref.getString("pref_background_behavior", getString(R.string.pref_background_stop_key));
+
+        assert videoPlayerFragment != null;
+        assert backgroundBehavior != null;
+
+        if (backgroundBehavior.equals(getString(R.string.pref_background_stop_key))) {
+            Log.v(TAG, "stop the video");
+
+            videoPlayerFragment.pauseVideo();
+            stopService(new Intent(this, VideoPlayerService.class));
+            super.onBackPressed();
+
+        } else if (backgroundBehavior.equals(getString(R.string.pref_background_audio_key))) {
+            Log.v(TAG, "play the Audio");
+            super.onBackPressed();
+
+        } else if (backgroundBehavior.equals(getString(R.string.pref_background_float_key))) {
+            Log.v(TAG, "play in floating video");
+            //canEnterPIPMode makes sure API level is high enough
+            if (canEnterPipMode(this)) {
+                Log.v(TAG, "enabling pip");
+                enterPipMode();
+            } else {
+                Log.v(TAG, "unable to use pip");
+            }
+
+        } else {
+            // Deal with bad entries from older version
+            Log.v(TAG, "No setting, fallback");
+            super.onBackPressed();
+
         }
-        Log.v(TAG, "onUserLeaveHint()...");
+
+
     }
 
     // @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("NewApi")
     public void onBackPressed() {
+
+        Log.v(TAG, "onBackPressed()...");
+
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
 
-        //copying Youtube behavior to have back button exit full screen.
+        assert videoPlayerFragment != null;
+
+        // copying Youtube behavior to have back button exit full screen.
         if (videoPlayerFragment.getIsFullscreen()) {
             Log.v(TAG, "exiting full screen");
             videoPlayerFragment.fullScreenToggle();
             return;
         }
-
+        // pause video if pref is enabled
         if (sharedPref.getBoolean("pref_back_pause", true)) {
             videoPlayerFragment.pauseVideo();
         }
 
-        String backgroundBehavior = sharedPref.getString("pref_background_behavior", "backgroundStop");
+        String backgroundBehavior = sharedPref.getString("pref_background_behavior", getString(R.string.pref_background_stop_key));
 
+        assert backgroundBehavior != null;
 
-        // Log.v(TAG,"backgroundBehavior: " + backgroundBehavior);
+        if (backgroundBehavior.equals(getString(R.string.pref_background_stop_key))) {
+            Log.v(TAG, "stop the video");
+            videoPlayerFragment.pauseVideo();
+            stopService(new Intent(this, VideoPlayerService.class));
+            super.onBackPressed();
 
-        switch (backgroundBehavior) {
-            case "backgroundStop":
-                Log.v(TAG, "stop the video");
-                videoPlayerFragment.pauseVideo();
-                stopService(new Intent(this, VideoPlayerService.class));
+        } else if (backgroundBehavior.equals(getString(R.string.pref_background_audio_key))) {
+            Log.v(TAG, "play the Audio");
+            super.onBackPressed();
+
+        } else if (backgroundBehavior.equals(getString(R.string.pref_background_float_key))) {
+            Log.v(TAG, "play in floating video");
+            //canEnterPIPMode makes sure API level is high enough
+            if (canEnterPipMode(this)) {
+                Log.v(TAG, "enabling pip");
+                enterPipMode();
+                //fixes problem where back press doesn't bring up video list after returning from PIP mode
+                Intent intentSettings = new Intent(this, VideoListActivity.class);
+                this.startActivity(intentSettings);
+            } else {
+                Log.v(TAG, "Unable to enter PIP mode");
                 super.onBackPressed();
-                break;
-            case "backgroundAudio":
-                Log.v(TAG, "play the Audio");
-                super.onBackPressed();
-                break;
-            case "backgroundFloat":
-                Log.v(TAG, "play in floating video");
-                //canEnterPIPMode makes sure API level is high enough
-                if (canEnterPipMode(this)) {
-                    Log.v(TAG, "enabling pip");
-                    enterPipMode();
-                    //fixes problem where back press doesn't bring up video list after returning from PIP mode
-                    Intent intentSettings = new Intent(this, VideoListActivity.class);
-                    this.startActivity(intentSettings);
-                } else {
-                    Log.v(TAG, "Unable to enter PIP mode");
-                    super.onBackPressed();
-                }
-                break;
-            default:
-                // Deal with bad entries from older version
-                Log.v(TAG, "No setting, fallback");
-                super.onBackPressed();
-                break;
+            }
+
+        } else {
+            // Deal with bad entries from older version
+            Log.v(TAG, "No setting, fallback");
+            super.onBackPressed();
+
         }
-        Log.v(TAG, "onBackPressed()...");
+
+
     }
 
     public boolean canEnterPipMode(Context context) {
         Log.v(TAG, "api version " + Build.VERSION.SDK_INT);
-        if (Build.VERSION.SDK_INT < 28) {
-            return false;
+        if (Build.VERSION.SDK_INT > 27) {
+            AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+            return (AppOpsManager.MODE_ALLOWED == appOpsManager.checkOp(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
         }
-        AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
-        return (AppOpsManager.MODE_ALLOWED == appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
+        return false;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -452,14 +475,20 @@ public class VideoPlayActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
 
-        if (isInPictureInPictureMode) {
-            changedToPipMode();
-            Log.v(TAG, "switched to pip ");
-            videoPlayerFragment.useController(false);
+        if (videoPlayerFragment != null) {
+
+            if (isInPictureInPictureMode) {
+                changedToPipMode();
+                Log.v(TAG, "switched to pip ");
+                videoPlayerFragment.useController(false);
+            } else {
+                changedToNormalMode();
+                Log.v(TAG, "switched to normal");
+                videoPlayerFragment.useController(true);
+            }
+
         } else {
-            changedToNormalMode();
-            Log.v(TAG, "switched to normal");
-            videoPlayerFragment.useController(true);
+            Log.e(TAG, "videoPlayerFragment is NULL");
         }
     }
 

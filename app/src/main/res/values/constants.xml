@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="pref_background_audio_key" translatable="false">backgroundAudio</string>
+    <string name="pref_background_stop_key" translatable="false">backgroundStop</string>
+    <string name="pref_background_float_key" translatable="false">backgroundFloat</string>
 
     <string-array name="backgroundBehavior">
         <item>@string/pref_background_audio</item>
@@ -9,9 +12,9 @@
     </string-array>
 
     <string-array name="backgroundBehaviorValues">
-        <item>backgroundAudio</item>
-        <item>backgroundStop</item>
-        <item>backgroundFloat</item>
+        <item>@string/pref_background_audio_key</item>
+        <item>@string/pref_background_stop_key</item>
+        <item>@string/pref_background_float_key</item>
     </string-array>
 
     <string-array name="themeArray">

@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="app_name" translatable="false">Thorium</string>
+
+    <!-- Prefs Settings-->
+    <string name="pref_language_app_key" translatable="false">pref_language_app</string>
+    <string name="pref_theme_key" translatable="false">pref_theme</string>
+    <string name="pref_dark_mode_key" translatable="false">pref_dark_mode</string>
+
+    <string name="pref_show_nsfw_key" translatable="false">pref_show_nsfw</string>
+    <string name="pref_video_language_key" translatable="false">pref_language</string>
+
+    <string name="pref_back_pause_key" translatable="false">pref_back_pause</string>
+    <string name="pref_background_behavior_key" translatable="false">pref_background_behavior</string>
+    <string name="pref_torrent_player_key" translatable="false">pref_torrent_player</string>
+
+    <!-- defaults -->
+    <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
+    <string name="app_default_theme" translatable="false">AppTheme.BLUE</string>
+
+    <!-- Pref internal -->
+    <string name="pref_token_access" translatable="false">pref_token_access</string>
+    <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
+    <string name="pref_token_expiration" translatable="false">pref_token_expiration</string>
+    <string name="pref_token_type" translatable="false">pref_token_type</string>
+    <string name="pref_auth_username" translatable="false">pref_auth_username</string>
+    <string name="pref_auth_password" translatable="false">pref_auth_password</string>
+    <string name="pref_api_base_key" translatable="false">pref_api_base</string>
+    <string name="pref_quality_key" translatable="false">pref_quality</string>
+
+    <!-- Pref internal keys -->
+    <string name="pref_background_audio_key" translatable="false">backgroundAudio</string>
+    <string name="pref_background_stop_key" translatable="false">backgroundStop</string>
+    <string name="pref_background_float_key" translatable="false">backgroundFloat</string>
+
+    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
+
+    <string name="app_background_audio" translatable="false">BACKGROUND_AUDIO</string>
+
+    <string name="video_rating_none" translatable="false">none</string>
+    <string name="video_rating_like" translatable="false">like</string>
+    <string name="video_rating_dislike" translatable="false">dislike</string>
+
+    <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
+    <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
+    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_quality_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
+    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
+    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
+    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
+    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
+    <string name="video_share_icon" translatable="false">{faw-share}</string>
+    <string name="video_download_icon" translatable="false">{faw-download}</string>
+    <string name="video_save_icon" translatable="false">{faw-save}</string>
+
+    <string name="meta_data_owner_seperator" translatable="false">\@</string>
+    <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
+
+    <string name="title_activity_video_play" translatable="false">VideoPlayActivity</string>
+
+    <string name="playback_channel_name" translatable="false">PeerTube</string>
+
+    <string name="peertube_instance_search_default_description" translatable="false">PeerTube, a federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular.</string>
 
     <string-array name="backgroundBehavior">
         <item>@string/pref_background_audio</item>
@@ -9,9 +71,9 @@
     </string-array>
 
     <string-array name="backgroundBehaviorValues">
-        <item>backgroundAudio</item>
-        <item>backgroundStop</item>
-        <item>backgroundFloat</item>
+        <item>@string/pref_background_audio_key</item>
+        <item>@string/pref_background_stop_key</item>
+        <item>@string/pref_background_float_key</item>
     </string-array>
 
     <string-array name="themeArray">
@@ -475,7 +537,7 @@
         <item>zh-rTW</item>
     </string-array>
 
-    <string-array name = "supportedLanguagesArray">
+    <string-array name="supportedLanguagesArray">
         <item>@string/ar</item>
         <item>@string/bn</item>
         <item>@string/bn_rBD</item>
@@ -502,7 +564,7 @@
     </string-array>
 
 
-    <string-array name="empty_array"/>
+    <string-array name="empty_array" />
 
     <string-array name="quality">
         <item>Low</item>

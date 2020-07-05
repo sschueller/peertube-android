@@ -99,8 +99,8 @@
     <string name="video_meta_button_license">Licence</string>
     <string name="video_meta_button_language">Langue</string>
     <string name="video_meta_button_tags">Étiquettes</string>
-    <string name="menu_video_options_playback_speed">Vitesse de lecture</string>
-    <string name="menu_video_options_quality">Qualité</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Vitesse de lecture (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Qualité (%1$s)</string>
     <string name="account_bottom_menu_videos">Vidéos</string>
     <string name="account_bottom_menu_channels">Chaînes</string>
     <string name="account_bottom_menu_about">À propos</string>
@@ -343,4 +343,8 @@
     <string name="title_activity_select_server">Sélectionner un serveur</string>
     <string name="server_book_del_alert_title">Retirer un serveur</string>
     <string name="server_book_del_alert_msg">Voulez-vous vraiment retirer ce serveur de votre carnet d\'adresses ?</string>
+    <string name="menu_video_options_quality_automated">Automatique</string>
+    <string name="server_selection_nsfw_instance">Instance avec du contenu adulte</string>
+    <string name="hello_blank_fragment">Bonjour ! Fragment vide</string>
+    <string name="server_selection_video_totals">Vidéos : %s, Vidéos locales : %s</string>
 </resources>

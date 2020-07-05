@@ -291,8 +291,8 @@
     <string name="video_meta_button_license">Lisans</string>
     <string name="video_meta_button_language">Dil</string>
     <string name="video_meta_button_tags">Etiketler</string>
-    <string name="menu_video_options_playback_speed">Oynatma hızı</string>
-    <string name="menu_video_options_quality">Kalite</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Oynatma hızı (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Kalite (%1$s)</string>
     <!-- Constants, Don't translate -->
     <string name="action_bar_title_account">Hesap</string>
     <string name="bottom_nav_title_recent">Yeniler</string>
@@ -353,4 +353,6 @@
     <string name="pref_background_behavior">Arka planda oynatma yapılandırması</string>
     <string name="pref_background_stop">Tüm oynatmaları durdur</string>
     <string name="pref_background_audio">Arka planda ses akışı olarak devam et</string>
+    <string name="server_selection_nsfw_instance">İş Yeri İçin Uygun Olmayan (NSFW) Örnek</string>
+    <string name="server_selection_video_totals">Video: %s, Yerel Video: %s</string>
 </resources>

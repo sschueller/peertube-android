@@ -103,7 +103,7 @@
     <string name="mi">maori</string>
     <string name="or">oriya (makrokieli)</string>
     <string name="bi">bislama</string>
-    <string name="menu_video_options_quality">Laatu</string>
+    <string name="menu_video_options_quality" formatted="true">Laatu (%s)</string>
     <string name="api_error">Jotain meni pieleen, yritä myöhemmin!</string>
     <string name="bg">bulgaria</string>
     <string name="uz">uzbekki</string>
@@ -204,7 +204,7 @@
     <string name="nv">navajo</string>
     <string name="kr">kanuri</string>
     <string name="su">sunda</string>
-    <string name="menu_video_options_playback_speed">Toistonopeus</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Toistonopeus (%1$s)</string>
     <string name="ii">sichuanin-yi</string>
     <string name="red">Punainen</string>
     <string name="video_row_video_thumbnail">Videon esikatselukuva</string>

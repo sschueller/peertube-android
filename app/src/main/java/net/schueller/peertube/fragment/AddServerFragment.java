@@ -38,9 +38,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.activity.SelectServerActivity;
+import net.schueller.peertube.activity.SearchServerActivity;
 import net.schueller.peertube.activity.ServerAddressBookActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
+
+import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -78,14 +80,15 @@ public class AddServerFragment extends Fragment {
 
             Activity act = getActivity();
 
-            Boolean formValid = true;
+            boolean formValid = true;
 
             // close keyboard
             try {
+                assert act != null;
                 InputMethodManager inputManager = (InputMethodManager)
                         act.getSystemService(Context.INPUT_METHOD_SERVICE);
 
-                inputManager.hideSoftInputFromWindow(act.getCurrentFocus().getWindowToken(),
+                inputManager.hideSoftInputFromWindow(Objects.requireNonNull(act.getCurrentFocus()).getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
             } catch (Exception e) {
 
@@ -128,7 +131,7 @@ public class AddServerFragment extends Fragment {
 
         Button pickServerUrl = mView.findViewById(R.id.pickServerUrl);
         pickServerUrl.setOnClickListener(view -> {
-            Intent intentServer = new Intent(getActivity(), SelectServerActivity.class);
+            Intent intentServer = new Intent(getActivity(), SearchServerActivity.class);
             this.startActivityForResult(intentServer, PICK_SERVER);
         });
 

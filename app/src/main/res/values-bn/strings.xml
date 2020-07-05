@@ -285,8 +285,8 @@
     <string name="deeppurple">গাঢ় বেগুনি</string>
     <string name="action_bar_title_account">অ্যাকাউন্ট</string>
     <string name="bottom_nav_title_recent">সাম্প্রতিক</string>
-    <string name="menu_video_options_playback_speed">প্লেব্যাক এর গতি</string>
-    <string name="menu_video_options_quality">কোয়ালিটি</string>
+    <string name="menu_video_options_playback_speed" formatted="true">প্লেব্যাক এর গতি (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">কোয়ালিটি (%1$s)</string>
     <string name="account_bottom_menu_videos">ভিডিও</string>
     <string name="account_bottom_menu_channels">চ্যানেলগুলি</string>
     <string name="account_bottom_menu_about">সম্পর্কিত</string>

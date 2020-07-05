@@ -57,7 +57,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
     @NonNull
     @Override
     public ServerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.row_serverbook, parent, false);
+        View itemView = mInflater.inflate(R.layout.row_server_address_book, parent, false);
         return new ServerViewHolder(itemView);
     }
 

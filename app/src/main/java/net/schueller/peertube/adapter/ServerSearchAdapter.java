@@ -57,7 +57,7 @@ public class ServerSearchAdapter extends RecyclerView.Adapter<ServerSearchAdapte
     @Override
     public AccountViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.row_server, parent, false);
+        View view = layoutInflater.inflate(R.layout.row_search_server, parent, false);
 
         baseUrl = APIUrlHelper.getUrl(activity);
 

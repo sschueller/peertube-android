@@ -63,7 +63,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     @Override
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.row_video, parent, false);
+        View view = layoutInflater.inflate(R.layout.row_video_list, parent, false);
 
         baseUrl = APIUrlHelper.getUrl(context);
 

@@ -65,9 +65,6 @@ import androidx.fragment.app.FragmentTransaction;
 import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PAUSE;
 import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_PLAY;
 import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
-import static net.schueller.peertube.helper.Constants.BACKGROUND_AUDIO;
-import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
-import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class VideoPlayActivity extends AppCompatActivity {
 
@@ -86,7 +83,7 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         ArrayList<RemoteAction> actions = new ArrayList<>();
 
-        Intent actionIntent = new Intent(BACKGROUND_AUDIO);
+        Intent actionIntent = new Intent(getString(R.string.app_background_audio));
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), REQUEST_CODE, actionIntent, 0);
         @SuppressLint({"NewApi", "LocalSuppress"}) Icon icon = Icon.createWithResource(getApplicationContext(), android.R.drawable.stat_sys_speakerphone);
         @SuppressLint({"NewApi", "LocalSuppress"}) RemoteAction remoteAction = new RemoteAction(icon, "close pip", "from pip window custom command", pendingIntent);
@@ -137,7 +134,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         filter.addAction(ACTION_STOP);
         filter.addAction(ACTION_PAUSE);
         filter.addAction(ACTION_PLAY);
-        filter.addAction((BACKGROUND_AUDIO));
+        filter.addAction((getString(R.string.app_background_audio)));
         receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -152,7 +149,7 @@ public class VideoPlayActivity extends AppCompatActivity {
                     makePipControls();
                 }
 
-                if (action.equals(BACKGROUND_AUDIO)) {
+                if (action.equals(getString(R.string.app_background_audio))) {
                     unregisterReceiver(receiver);
                     finish();
                 }
@@ -189,7 +186,10 @@ public class VideoPlayActivity extends AppCompatActivity {
         // Set theme
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         setTheme(getResources().getIdentifier(
-                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                sharedPref.getString(
+                        getString(R.string.pref_theme_key),
+                        getString(R.string.app_default_theme)
+                ),
                 "style",
                 getPackageName())
         );

@@ -26,6 +26,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.application.AppApplication;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.OauthClient;
 import net.schueller.peertube.model.Token;
@@ -42,8 +43,7 @@ public class LoginService {
 
     private static final String TAG = "LoginService";
 
-    public static void Authenticate(String username, String password)
-    {
+    public static void Authenticate(String username, String password) {
         Context context = getContext();
 
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
@@ -62,6 +62,14 @@ public class LoginService {
 
                     OauthClient oauthClient = response.body();
 
+                    SharedPreferences.Editor editor = sharedPref.edit();
+
+                    assert oauthClient != null;
+
+                    editor.putString(context.getString(R.string.pref_client_id), oauthClient.getClientId());
+                    editor.putString(context.getString(R.string.pref_client_secret), oauthClient.getClientSecret());
+                    editor.apply();
+
                     Call<Token> call2 = service.getAuthenticationToken(
                             oauthClient.getClientId(),
                             oauthClient.getClientSecret(),
@@ -79,11 +87,7 @@ public class LoginService {
 
                                 Token token = response2.body();
 
-                                SharedPreferences.Editor editor = sharedPref.edit();
-
-                                // TODO: calc expiration
-                                //editor.putInt(getString(R.string.pref_token_expiration), token.getRefreshToken());
-
+                                assert token != null;
                                 editor.putString(context.getString(R.string.pref_token_access), token.getAccessToken());
                                 editor.putString(context.getString(R.string.pref_token_refresh), token.getExpiresIn());
                                 editor.putString(context.getString(R.string.pref_token_type), token.getTokenType());
@@ -119,6 +123,64 @@ public class LoginService {
             @Override
             public void onFailure(@NonNull Call<OauthClient> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
+                Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+
+    public static void refreshToken() {
+        Context context = getContext();
+
+        String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        AuthenticationService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(AuthenticationService.class);
+
+        String refreshToken = sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_token_refresh), null);
+        String userName = sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_auth_username), null);
+        String clientId = sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_client_id), null);
+        String clientSecret = sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_client_secret), null);
+
+
+        Call<Token> call = service.refreshToken(
+                clientId,
+                clientSecret,
+                "refresh_token",
+                "code",
+                userName,
+                refreshToken
+        );
+        call.enqueue(new Callback<Token>() {
+            @Override
+            public void onResponse(@NonNull Call<Token> call, @NonNull retrofit2.Response<Token> response) {
+
+                if (response.isSuccessful()) {
+
+                    Token token = response.body();
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    assert token != null;
+                    editor.putString(context.getString(R.string.pref_token_access), token.getAccessToken());
+                    editor.putString(context.getString(R.string.pref_token_refresh), token.getExpiresIn());
+                    editor.putString(context.getString(R.string.pref_token_type), token.getTokenType());
+                    editor.apply();
+
+                    Log.wtf(TAG, "Logged in");
+
+                    Toast.makeText(context, context.getString(R.string.authentication_login_success), Toast.LENGTH_LONG).show();
+
+
+                } else {
+                    Log.wtf(TAG, response.toString());
+                    Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Token> call2, @NonNull Throwable t2) {
+                Log.wtf("err", t2.fillInStackTrace());
                 Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
 
             }

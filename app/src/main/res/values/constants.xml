@@ -26,6 +26,8 @@
     <string name="pref_token_type" translatable="false">pref_token_type</string>
     <string name="pref_auth_username" translatable="false">pref_auth_username</string>
     <string name="pref_auth_password" translatable="false">pref_auth_password</string>
+    <string name="pref_client_id" translatable="false">pref_client_id</string>
+    <string name="pref_client_secret" translatable="false">pref_client_secret</string>
     <string name="pref_api_base_key" translatable="false">pref_api_base</string>
     <string name="pref_quality_key" translatable="false">pref_quality</string>
 
@@ -33,6 +35,7 @@
     <string name="pref_background_audio_key" translatable="false">backgroundAudio</string>
     <string name="pref_background_stop_key" translatable="false">backgroundStop</string>
     <string name="pref_background_float_key" translatable="false">backgroundFloat</string>
+
 
     <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
 

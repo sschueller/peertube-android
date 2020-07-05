@@ -20,10 +20,11 @@ package net.schueller.peertube.network;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.application.AppApplication;
+
+import static net.schueller.peertube.service.LoginService.refreshToken;
 
 public class Session {
 
@@ -31,13 +32,13 @@ public class Session {
     private static SharedPreferences sharedPreferences;
 
     //private constructor.
-    private Session(){
+    private Session() {
 
         Context context = AppApplication.getContext();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         //Prevent form the reflection api.
-        if (sSoleInstance != null){
+        if (sSoleInstance != null) {
             throw new RuntimeException("Use getInstance() method to get the single instance of this class.");
         }
     }
@@ -58,7 +59,6 @@ public class Session {
     }
 
 
-
     public boolean isLoggedIn() {
         // check if token exist or not
         // return true if exist otherwise false
@@ -67,13 +67,6 @@ public class Session {
         //Log.v("Session", "isLoggedIn: " + (getToken() != null));
 
         return getToken() != null;
-    }
-
-    public void saveToken(String token) {
-        // save the token
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(AppApplication.getContext().getString(R.string.pref_token_access), token);
-        editor.commit();
     }
 
     public String getToken() {
@@ -89,25 +82,17 @@ public class Session {
         return null;
     }
 
-    public void saveUsername(String username) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(AppApplication.getContext().getString(R.string.pref_auth_username), username);
-        editor.commit();
-    }
-
-    public String getEmail() {
-        return sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_auth_username), null);
-    }
-
-    public void savePassword(String password) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(AppApplication.getContext().getString(R.string.pref_auth_password), password);
-        editor.commit();
-    }
-
     public String getPassword() {
         return sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_auth_password), null);
 
+    }
+
+    public String refreshAccessToken() {
+
+        refreshToken();
+        // refresh token
+
+        return this.getToken();
     }
 
     public void invalidate() {

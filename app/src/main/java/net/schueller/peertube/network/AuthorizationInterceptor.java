@@ -20,6 +20,8 @@ package net.schueller.peertube.network;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -31,8 +33,7 @@ public class AuthorizationInterceptor implements Interceptor {
     public AuthorizationInterceptor() {
     }
 
-
-
+    @NonNull
     @Override
     public Response intercept(Chain chain) throws IOException {
 

@@ -42,4 +42,14 @@ public interface AuthenticationService {
         @Field("password") String password
     );
 
+    @POST("users/token")
+    @FormUrlEncoded
+    Call<Token> refreshToken(
+            @Field("client_id") String clientId,
+            @Field("client_secret") String clientSecret,
+            @Field("grant_type") String grantType,
+            @Field("response_type") String responseType,
+            @Field("username") String username,
+            @Field("refresh_token") String refreshToken
+    );
 }

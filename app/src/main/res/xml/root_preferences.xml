@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/settings_activity_look_and_feel_category_title" app:iconSpaceReserved="false">
 
@@ -81,6 +82,11 @@
         <Preference
             app:summary="@string/versionName"
             app:title="@string/pref_title_version"
+            app:iconSpaceReserved="false"/>
+
+        <Preference
+            app:summary="@string/buildTime"
+            app:title="@string/pref_title_buildtime"
             app:iconSpaceReserved="false"/>
 
         <Preference

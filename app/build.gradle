@@ -1,5 +1,22 @@
 apply plugin: 'com.android.application'
 
+ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
+ext.readPropertyWithDefault = { paramName, defaultValue ->
+    if (project.hasProperty(paramName)) {
+        return project.getProperties().get(paramName)
+    } else {
+        Properties properties = new Properties()
+        if (project.rootProject.file('local.properties').exists()) {
+            properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        }
+        if (properties.getProperty(paramName) != null) {
+            return properties.getProperty(paramName)
+        } else {
+            return defaultValue
+        }
+    }
+}
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -8,6 +25,9 @@ android {
         targetSdkVersion 29
         versionCode 1043
         versionName "1.0.43"
+        //buildTime readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
+        //buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
+        //resValue "string", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
             libVersions = [
@@ -87,6 +107,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.resValue "string", "versionName", variant.versionName
+        variant.resValue "string", "buildTime", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + ''
     }
 }
 

@@ -357,6 +357,7 @@
     <string name="server_selection_video_totals">Videos: %s, Local Videos: %s</string>
 
     <string name="menu_video_options_quality_automated">Automated</string>
+    <string name="pref_title_buildtime">Build Time</string>
 
 
 </resources>

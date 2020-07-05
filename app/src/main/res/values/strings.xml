@@ -352,9 +352,6 @@
     <string name="server_book_add_password">Password</string>
     <string name="server_book_add_add_button">Add</string>
     <string name="server_book_list_has_login">Has Login</string>
-    <string name="video_rating_none" translatable="false">none</string>
-    <string name="video_rating_like" translatable="false">like</string>
-    <string name="video_rating_dislike" translatable="false">dislike</string>
     <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
     <string name="login_current_server_hint">Current Server</string>
     <string name="title_activity_server_address_book">Address Book</string>

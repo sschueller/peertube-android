@@ -65,6 +65,10 @@ public class VideoMetaDataFragment extends Fragment {
 
     private static final String TAG = "VideoMetaDataFragment";
 
+    private static final String RATING_NONE = "none";
+    private static final String RATING_LIKE = "like";
+    private static final String RATING_DISLIKE = "dislike";
+
     private Rating videoRating;
     private ColorStateList defaultTextColor;
 
@@ -72,13 +76,11 @@ public class VideoMetaDataFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_video_meta, container, false);
     }
 
     public void updateVideoMeta(Video video, VideoPlayerService mService) {
-
         Context context = getContext();
         Activity activity = getActivity();
 
@@ -91,26 +93,23 @@ public class VideoMetaDataFragment extends Fragment {
         thumbsUpButton.setText(R.string.video_thumbs_up_icon);
         new Iconics.IconicsBuilder().ctx(context).on(thumbsUpButton).build();
         thumbsUpButton.setOnClickListener(v -> {
-            rateVideo(true, video.getId());
+            rateVideo(true, video);
         });
-
-        TextView thumbsUpButtonTotal = activity.findViewById(R.id.video_thumbs_up_total);
-        thumbsUpButtonTotal.setText(video.getLikes().toString());
 
         // Thumbs Down
         Button thumbsDownButton = activity.findViewById(R.id.video_thumbs_down);
         thumbsDownButton.setText(R.string.video_thumbs_down_icon);
         new Iconics.IconicsBuilder().ctx(context).on(thumbsDownButton).build();
         thumbsDownButton.setOnClickListener(v -> {
-            rateVideo(false, video.getId());
+            rateVideo(false, video);
         });
-
 
         // video rating
         videoRating = new Rating();
-        videoRating.setRating("none"); // default
-        updateVideoRating();
+        videoRating.setRating(RATING_NONE); // default
+        updateVideoRating(video);
 
+        // Retrieve which rating the user gave to this video
         if (Session.getInstance().isLoggedIn()) {
             Call<Rating> call = videoDataService.getVideoRating(video.getId());
             call.enqueue(new Callback<Rating>() {
@@ -118,19 +117,15 @@ public class VideoMetaDataFragment extends Fragment {
                 @Override
                 public void onResponse(Call<Rating> call, Response<Rating> response) {
                     videoRating = response.body();
-                    updateVideoRating();
+                    updateVideoRating(video);
                 }
 
                 @Override
                 public void onFailure(Call<Rating> call, Throwable t) {
-//                    Toast.makeText(context, "Rating Failed", Toast.LENGTH_SHORT).show();
+                    // Do nothing.
                 }
             });
         }
-
-
-        TextView thumbsDownButtonTotal = activity.findViewById(R.id.video_thumbs_down_total);
-        thumbsDownButtonTotal.setText(video.getDislikes().toString());
 
         // Share
         Button videoShareButton = activity.findViewById(R.id.video_share);
@@ -155,7 +150,6 @@ public class VideoMetaDataFragment extends Fragment {
                 Intents.Download(context, video);
             }
         });
-
 
         Account account = video.getAccount();
 
@@ -198,7 +192,6 @@ public class VideoMetaDataFragment extends Fragment {
         TextView videoDescription = activity.findViewById(R.id.description);
         videoDescription.setText(video.getDescription());
 
-
         // video privacy
         TextView videoPrivacy = activity.findViewById(R.id.video_privacy);
         videoPrivacy.setText(video.getPrivacy().getLabel());
@@ -211,14 +204,13 @@ public class VideoMetaDataFragment extends Fragment {
         TextView videoLicense = activity.findViewById(R.id.video_license);
         videoLicense.setText(video.getLicence().getLabel());
 
-        // video langauge
+        // video language
         TextView videoLanguage = activity.findViewById(R.id.video_language);
         videoLanguage.setText(video.getLanguage().getLabel());
 
         // video privacy
         TextView videoTags = activity.findViewById(R.id.video_tags);
         videoTags.setText(android.text.TextUtils.join(", ", video.getTags()));
-
 
         // more button
         TextView moreButton = activity.findViewById(R.id.moreButton);
@@ -259,8 +251,7 @@ public class VideoMetaDataFragment extends Fragment {
 
     }
 
-
-    void updateVideoRating() {
+    void updateVideoRating(Video video) {
         Button thumbsUpButton = getActivity().findViewById(R.id.video_thumbs_up);
         Button thumbsDownButton = getActivity().findViewById(R.id.video_thumbs_down);
 
@@ -269,44 +260,46 @@ public class VideoMetaDataFragment extends Fragment {
         TypedArray a = getContext().obtainStyledAttributes(typedValue.data, new int[]{R.attr.colorPrimary});
         int accentColor = a.getColor(0, 0);
 
-        if (videoRating.getRating().equals(getString(R.string.video_rating_none))) {
-            thumbsUpButton.setTextColor(defaultTextColor);
-            thumbsDownButton.setTextColor(defaultTextColor);
-            //Log.v(TAG, getString(R.string.video_rating_none));
-
-        } else if (videoRating.getRating().equals(getString(R.string.video_rating_like))) {
-            thumbsUpButton.setTextColor(accentColor);
-            thumbsDownButton.setTextColor(defaultTextColor);
-            //Log.v(TAG, getString(R.string.video_rating_like));
-
-        } else if (videoRating.getRating().equals(getString(R.string.video_rating_dislike))) {
-            thumbsUpButton.setTextColor(defaultTextColor);
-            thumbsDownButton.setTextColor(accentColor);
-            //Log.v(TAG, getString(R.string.video_rating_dislike));
-
+        // Change the color of the thumbs
+        switch (videoRating.getRating()) {
+            case RATING_NONE:
+                thumbsUpButton.setTextColor(defaultTextColor);
+                thumbsDownButton.setTextColor(defaultTextColor);
+                break;
+            case RATING_LIKE:
+                thumbsUpButton.setTextColor(accentColor);
+                thumbsDownButton.setTextColor(defaultTextColor);
+                break;
+            case RATING_DISLIKE:
+                thumbsUpButton.setTextColor(defaultTextColor);
+                thumbsDownButton.setTextColor(accentColor);
+                break;
         }
+
+        // Update the texts
+        TextView thumbsDownTotal = getActivity().findViewById(R.id.video_thumbs_down_total);
+        TextView thumbsUpTotal = getActivity().findViewById(R.id.video_thumbs_up_total);
+        thumbsUpTotal.setText(String.valueOf(video.getLikes()));
+        thumbsDownTotal.setText(String.valueOf(video.getDislikes()));
 
         a.recycle();
     }
 
-    void rateVideo(Boolean rate, Integer videoId) {
-
-        // TODO cleanup
-
+    void rateVideo(Boolean like, Video video) {
         if (Session.getInstance().isLoggedIn()) {
+            final String ratePayload;
 
-            String ratePayload = getString(R.string.video_rating_none);
-
-            if (rate) {
-                // thumbsup
-                if (videoRating.getRating().equals(getString(R.string.video_rating_none))) {
-                    ratePayload = getString(R.string.video_rating_like);
-                }
-            } else {
-                // thumbsdown
-                if (videoRating.getRating().equals(getString(R.string.video_rating_none))) {
-                    ratePayload = getString(R.string.video_rating_dislike);
-                }
+            switch (videoRating.getRating()) {
+                case RATING_LIKE:
+                    ratePayload = like ? RATING_NONE : RATING_DISLIKE;
+                    break;
+                case RATING_DISLIKE:
+                    ratePayload = like ? RATING_LIKE : RATING_NONE;
+                    break;
+                case RATING_NONE:
+                default:
+                    ratePayload = like ? RATING_LIKE : RATING_DISLIKE;
+                    break;
             }
 
             RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json"), "{\"rating\":\"" + ratePayload + "\"}");
@@ -314,23 +307,47 @@ public class VideoMetaDataFragment extends Fragment {
             String apiBaseURL = APIUrlHelper.getUrlWithVersion(getContext());
             GetVideoDataService videoDataService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
 
-            Call<ResponseBody> call = videoDataService.rateVideo(videoId, body);
-
-            final String newRating = ratePayload;
+            Call<ResponseBody> call = videoDataService.rateVideo(video.getId(), body);
 
             call.enqueue(new Callback<ResponseBody>() {
 
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
                     //Log.v(TAG, response.toString());
 
-                    // if 20x update likes
+                    // if 20x, update likes/dislikes
                     if (response.isSuccessful()) {
-                        videoRating.setRating(newRating);
-                        updateVideoRating();
+                        String previousRating = videoRating.getRating();
 
-                        // TODO: update count under thumb
+                        // Update the likes/dislikes count of the video, if needed.
+                        // This is only a visual trick, as the actual like/dislike count has
+                        // already been modified on the PeerTube instance.
+                        if (!previousRating.equals(ratePayload)) {
+                            switch (previousRating) {
+                                case RATING_NONE:
+                                    if (ratePayload.equals(RATING_LIKE)) {
+                                        video.setLikes(video.getLikes() + 1);
+                                    } else {
+                                        video.setDislikes(video.getDislikes() + 1);
+                                    }
+                                    break;
+                                case RATING_LIKE:
+                                    video.setLikes(video.getLikes() - 1);
+                                    if (ratePayload.equals(RATING_DISLIKE)) {
+                                        video.setDislikes(video.getDislikes() + 1);
+                                    }
+                                    break;
+                                case RATING_DISLIKE:
+                                    video.setDislikes(video.getDislikes() - 1);
+                                    if (ratePayload.equals(RATING_LIKE)) {
+                                        video.setLikes(video.getLikes() + 1);
+                                    }
+                                    break;
+                            }
+                        }
+
+                        videoRating.setRating(ratePayload);
+                        updateVideoRating(video);
                     }
                 }
 
@@ -341,9 +358,7 @@ public class VideoMetaDataFragment extends Fragment {
             });
         } else {
             Toast.makeText(getContext(), getString(R.string.video_login_required_for_service), Toast.LENGTH_SHORT).show();
-
         }
-
     }
 
 }

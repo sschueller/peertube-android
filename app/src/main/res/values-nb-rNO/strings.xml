@@ -124,4 +124,17 @@
     <string name="vi">Vietnamesisk</string>
     <string name="video_speed_125">1,25×</string>
     <string name="video_speed_075">0,75×</string>
+    <string name="clear_search_history_prompt">Ønsker du å slette all søkehistorikk for godt\?</string>
+    <string name="clear_search_history">Tøm søkehistorikk</string>
+    <string name="pref_background_behavior_summary">Hvordan avspilling av video utføres når den sendes til bakgrunnen</string>
+    <string name="settings_permissions_error_float">Bilde-i-bilde -tilgang er mangler for dette programmet i Android-innstillingene</string>
+    <string name="settings_api_error_float">Android-versjonen støtter ikke flytende video</string>
+    <string name="pref_background_behavior">Oppsett av bakgrunnsavspilling</string>
+    <string name="pref_background_float">Fortsett video|avspilling i flytende vindu</string>
+    <string name="pref_description_back_pause">Opphold i bakgrunnsavspilling når \"Tilbake\" trykkes under videoavspilling.</string>
+    <string name="pref_title_back_pause">Sett på pause med \"Tilbake\"-knapp</string>
+    <string name="pref_background_stop">Stopp all avspilling</string>
+    <string name="pref_background_audio">Fortsett som lydstrøm i bakgrunnen</string>
+    <string name="pref_description_language_app">Velg språk for programgrensesnittet. Start programmet på ny for å utføre endringene.</string>
+    <string name="pref_language_app">Programspråk</string>
 </resources>

@@ -343,4 +343,7 @@
     <string name="title_activity_select_server">Sélectionner un serveur</string>
     <string name="server_book_del_alert_title">Retirer un serveur</string>
     <string name="server_book_del_alert_msg">Voulez-vous vraiment retirer ce serveur de votre carnet d\'adresses ?</string>
+    <string name="server_selection_nsfw_instance">Instance avec du contenu adulte</string>
+    <string name="hello_blank_fragment">Bonjour ! Fragment vide</string>
+    <string name="server_selection_video_totals">Vidéos : %s, Vidéos locales : %s</string>
 </resources>

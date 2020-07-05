@@ -1,82 +1,98 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="@string/settings_activity_look_and_feel_category_title">
+    <PreferenceCategory app:title="@string/settings_activity_look_and_feel_category_title" app:iconSpaceReserved="false">
 
         <ListPreference
             app:defaultValue="@array/empty_array"
             app:entries="@array/supportedLanguagesArray"
             app:entryValues="@array/supportedLanguagesValues"
-            app:key="pref_language_app"
+            app:key="@string/pref_language_app_key"
             app:summary="@string/pref_description_language_app"
-            app:title="@string/pref_language_app" />
+            app:title="@string/pref_language_app"
+            app:iconSpaceReserved="false"/>
 
         <ListPreference
             app:defaultValue="AppTheme.BLUE"
             app:entries="@array/themeArray"
             app:entryValues="@array/themeValues"
-            app:key="pref_theme"
+            app:key="@string/pref_theme_key"
             app:summary="@string/pref_description_app_theme"
-            app:title="@string/pref_title_app_theme" />
+            app:title="@string/pref_title_app_theme"
+            app:iconSpaceReserved="false"/>
 
         <SwitchPreference
             app:defaultValue="false"
-            app:key="pref_dark_mode"
+            app:key="@string/pref_dark_mode_key"
             app:summary="@string/pref_description_dark_mode"
-            app:title="@string/pref_title_dark_mode" />
+            app:title="@string/pref_title_dark_mode"
+            app:iconSpaceReserved="false"/>
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/settings_activity_video_list_category_title">
+    <PreferenceCategory app:title="@string/settings_activity_video_list_category_title" app:iconSpaceReserved="false">
 
         <SwitchPreference
             app:defaultValue="false"
-            app:key="pref_show_nsfw"
+            app:key="@string/pref_show_nsfw_key"
             app:summary="@string/pref_description_show_nsfw"
-            app:title="@string/pref_title_show_nsfw" />
+            app:title="@string/pref_title_show_nsfw"
+            app:iconSpaceReserved="false"/>
 
         <MultiSelectListPreference
             app:defaultValue="@array/empty_array"
             app:entries="@array/languageArray"
             app:entryValues="@array/languageValues"
-            app:key="pref_language"
+            app:key="@string/pref_video_language_key"
             app:summary="@string/pref_description_language"
-            app:title="@string/pref_language" />
+            app:title="@string/pref_language"
+            app:iconSpaceReserved="false"/>
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/settings_activity_video_playback_category_title">
+    <PreferenceCategory app:title="@string/settings_activity_video_playback_category_title" app:iconSpaceReserved="false">
 
         <SwitchPreference
             app:defaultValue="true"
-            app:key="pref_back_pause"
+            app:key="@string/pref_back_pause_key"
             app:summary="@string/pref_description_back_pause"
-            app:title="@string/pref_title_back_pause" />
+            app:title="@string/pref_title_back_pause"
+            app:iconSpaceReserved="false"/>
 
         <ListPreference
             app:defaultValue="@array/empty_array"
             app:entries="@array/backgroundBehavior"
             app:entryValues="@array/backgroundBehaviorValues"
-            app:key="pref_background_behavior"
+            app:key="@string/pref_background_behavior_key"
             app:summary="@string/pref_background_behavior_summary"
-            app:title="@string/pref_background_behavior" />
+            app:title="@string/pref_background_behavior"
+            app:iconSpaceReserved="false"/>
 
         <SwitchPreference
             app:defaultValue="false"
-            app:key="pref_torrent_player"
+            app:key="@string/pref_torrent_player_key"
             app:summary="@string/pref_description_torrent_player"
-            app:title="@string/pref_title_torrent_player" />
+            app:title="@string/pref_title_torrent_player"
+            app:iconSpaceReserved="false"/>
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/settings_activity_about_category_title">
+    <PreferenceCategory app:title="@string/settings_activity_about_category_title" app:iconSpaceReserved="false">
 
         <Preference
             app:summary="@string/versionName"
-            app:title="@string/pref_title_version" />
+            app:title="@string/pref_title_version"
+            app:iconSpaceReserved="false"/>
+
+        <Preference
+            app:summary="@string/buildTime"
+            app:title="@string/pref_title_buildtime"
+            app:iconSpaceReserved="false"/>
 
         <Preference
             app:summary="@string/pref_description_license"
-            app:title="@string/pref_title_license" />
+            app:title="@string/pref_title_license"
+            app:iconSpaceReserved="false"/>
 
 
     </PreferenceCategory>

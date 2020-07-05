@@ -32,7 +32,7 @@ public class APIUrlHelper{
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
         // validate URL is valid
-        String URL = sharedPref.getString("pref_api_base", context.getResources().getString(R.string.pref_default_api_base_url));
+        String URL = sharedPref.getString(context.getString(R.string.pref_api_base_key), context.getResources().getString(R.string.pref_default_api_base_url));
         if (!URLUtil.isValidUrl(URL)) {
             return "http://invalid";
         }

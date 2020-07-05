@@ -26,10 +26,9 @@ import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import java.util.Locale;
+import net.schueller.peertube.R;
 
-import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
-import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
+import java.util.Locale;
 
 public class CommonActivity extends AppCompatActivity {
 
@@ -39,23 +38,28 @@ public class CommonActivity extends AppCompatActivity {
 
         // Set Night Mode
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        AppCompatDelegate.setDefaultNightMode(sharedPref.getBoolean("pref_dark_mode", false) ?
+        AppCompatDelegate.setDefaultNightMode(sharedPref.getBoolean(getString(R.string.pref_dark_mode_key), false) ?
                 AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
 
         // Set theme
         setTheme(getResources().getIdentifier(
-                sharedPref.getString(THEME_PREF_KEY, DEFAULT_THEME),
+                sharedPref.getString(
+                        getString(R.string.pref_theme_key),
+                        getString(R.string.app_default_theme)
+                ),
                 "style",
                 getPackageName())
         );
 
         // Set language
-        String countryCode=sharedPref.getString("pref_language_app","en");
-        Locale locale=new Locale(countryCode);;
+        String countryCode = sharedPref.getString(getString(R.string.pref_language_app_key), "en");
+        assert countryCode != null;
+        Locale locale = new Locale(countryCode);
+
         //Neither Chinese language choice was working, found this fix on stack overflow
-        if(countryCode.equals("zh-rCN"))
+        if (countryCode.equals("zh-rCN"))
             locale = Locale.SIMPLIFIED_CHINESE;
-        if(countryCode.equals("zh-rTW"))
+        if (countryCode.equals("zh-rTW"))
             locale = Locale.TRADITIONAL_CHINESE;
 
         Locale.setDefault(locale);

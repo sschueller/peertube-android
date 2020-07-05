@@ -50,7 +50,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -320,8 +319,8 @@ public class VideoListActivity extends CommonActivity {
         isLoading = true;
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String nsfw = sharedPref.getBoolean("pref_show_nsfw", false) ? "both" : "false";
-        Set<String> languages = sharedPref.getStringSet("pref_language", null);
+        String nsfw = sharedPref.getBoolean(getString(R.string.pref_show_nsfw_key), false) ? "both" : "false";
+        Set<String> languages = sharedPref.getStringSet(getString(R.string.pref_video_language_key), null);
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
@@ -383,7 +382,7 @@ public class VideoListActivity extends CommonActivity {
         // only check when we actually need the permission
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
-                sharedPref.getBoolean("pref_torrent_player", false)) {
+                sharedPref.getBoolean(getString(R.string.pref_torrent_player_key), false)) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }

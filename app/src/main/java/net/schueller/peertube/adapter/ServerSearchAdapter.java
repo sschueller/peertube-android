@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 
 import net.schueller.peertube.R;
-import net.schueller.peertube.activity.SelectServerActivity;
+import net.schueller.peertube.activity.SearchServerActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.Server;
 
@@ -41,14 +41,14 @@ import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 import static android.app.Activity.RESULT_OK;
 
 
-public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountViewHolder> {
+public class ServerSearchAdapter extends RecyclerView.Adapter<ServerSearchAdapter.AccountViewHolder> {
 
 
     private ArrayList<Server> serverList;
-    private SelectServerActivity activity;
+    private SearchServerActivity activity;
     private String baseUrl;
 
-    public ServerAdapter(ArrayList<Server> serverList, SelectServerActivity activity) {
+    public ServerSearchAdapter(ArrayList<Server> serverList, SearchServerActivity activity) {
         this.serverList = serverList;
         this.activity = activity;
     }
@@ -57,7 +57,7 @@ public class ServerAdapter extends RecyclerView.Adapter<ServerAdapter.AccountVie
     @Override
     public AccountViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.row_server, parent, false);
+        View view = layoutInflater.inflate(R.layout.row_search_server, parent, false);
 
         baseUrl = APIUrlHelper.getUrl(activity);
 

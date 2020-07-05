@@ -18,15 +18,11 @@
 package net.schueller.peertube.adapter;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.provider.SearchRecentSuggestions;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,12 +35,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import net.schueller.peertube.R;
 
-import net.schueller.peertube.activity.SelectServerActivity;
-import net.schueller.peertube.activity.ServerAddressBookActivity;
-import net.schueller.peertube.activity.VideoListActivity;
 import net.schueller.peertube.database.Server;
 import net.schueller.peertube.helper.APIUrlHelper;
-import net.schueller.peertube.provider.SearchSuggestionsProvider;
 import net.schueller.peertube.service.LoginService;
 
 
@@ -65,7 +57,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
     @NonNull
     @Override
     public ServerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.row_serverbook, parent, false);
+        View itemView = mInflater.inflate(R.layout.row_server_address_book, parent, false);
         return new ServerViewHolder(itemView);
     }
 
@@ -94,7 +86,7 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
 
             String serverUrl = APIUrlHelper.cleanServerUrl(getServerAtPosition(position).getServerHost());
 
-            editor.putString("pref_api_base", serverUrl);
+            editor.putString(mInflater.getContext().getString(R.string.pref_api_base_key), serverUrl);
             editor.apply();
 
             // attempt authentication if we have a username

@@ -275,8 +275,8 @@
     <string name="video_meta_button_license">Licentie</string>
     <string name="video_meta_button_language">Taal</string>
     <string name="video_meta_button_tags">Labels</string>
-    <string name="menu_video_options_playback_speed">Afspeelsnelheid</string>
-    <string name="menu_video_options_quality">Kwaliteit</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Afspeelsnelheid (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Kwaliteit (%1$s)</string>
     <string name="account_bottom_menu_videos">Video\'s</string>
     <string name="account_bottom_menu_channels">Kanalen</string>
     <string name="account_bottom_menu_about">Over</string>

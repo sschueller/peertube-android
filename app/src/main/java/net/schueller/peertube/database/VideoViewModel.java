@@ -17,16 +17,31 @@
  */
 package net.schueller.peertube.database;
 
-import androidx.room.Database;
-import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import net.schueller.peertube.model.Video;
 
-@Database(entities = {Server.class, Video.class}, version = 2)
-@TypeConverters({Converters.class})
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract ServerDao serverDao();
-    public abstract VideoDao videoDao();
+import java.util.List;
+
+public class VideoViewModel extends AndroidViewModel {
+
+    private VideoRepository mRepository;
+
+    private LiveData<List<Video>> mAllVideos;
+
+    public VideoViewModel(Application application) {
+        super(application);
+        mRepository = new VideoRepository(application);
+        mAllVideos = mRepository.getAllVideos();
+    }
+
+    public LiveData<List<Video>> getAllVideos() { return mAllVideos; }
+
+    public void insert(Video video) { mRepository.insert(video); }
+
+    public void delete(Video video) {mRepository.delete(video);}
 
 }

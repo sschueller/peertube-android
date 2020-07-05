@@ -17,16 +17,29 @@
  */
 package net.schueller.peertube.database;
 
-import androidx.room.Database;
-import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 
 import net.schueller.peertube.model.Video;
 
-@Database(entities = {Server.class, Video.class}, version = 2)
-@TypeConverters({Converters.class})
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract ServerDao serverDao();
-    public abstract VideoDao videoDao();
+import java.util.List;
 
+@Dao
+public interface VideoDao {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Video video);
+
+    @Query("DELETE FROM video_table")
+    void deleteAll();
+
+    @Delete
+    void delete(Video video);
+
+    @Query("SELECT * from video_table ORDER BY name DESC")
+    LiveData<List<Video>> getAllVideos();
 }

@@ -18,71 +18,132 @@
 package net.schueller.peertube.model;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.media.MediaDescriptionCompat;
-
-import com.squareup.picasso.Picasso;
-
-import net.schueller.peertube.R;
-import net.schueller.peertube.helper.APIUrlHelper;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
+import net.schueller.peertube.database.Converters;
+
+@Entity(tableName = "Video_table")
 public class Video {
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
     private Integer id;
+
+    @NonNull
+    @ColumnInfo(name = "uuid")
     private String uuid;
+
+    @ColumnInfo(name = "name")
     private String name;
+
+    @TypeConverters(Converters.class)
+    @ColumnInfo(name = "category")
     private Category category;
+
+    @TypeConverters(Converters.class)
+    @ColumnInfo(name = "licence")
     private Licence licence;
+
+    @TypeConverters(Converters.class)
+    @ColumnInfo(name = "language")
     private Language language;
+
+    @ColumnInfo(name = "nsfw")
     private Boolean nsfw;
+
+    @ColumnInfo(name = "description")
     private String description;
+
+    @ColumnInfo(name = "local")
     private Boolean isLocal;
+
+    @ColumnInfo(name = "duration")
     private Integer duration;
+
+    @ColumnInfo(name = "views")
     private Integer views;
+
+    @ColumnInfo(name = "likes")
     private Integer likes;
+
+    @ColumnInfo(name = "dislikes")
     private Integer dislikes;
+
+    @ColumnInfo(name = "thumbnail_path")
     private String thumbnailPath;
+
+    @ColumnInfo(name = "preview_path")
     private String previewPath;
+
+    @ColumnInfo(name = "embed_path")
     private String embedPath;
+
+    @TypeConverters(Converters.class)
+    @ColumnInfo(name = "created_at")
     private Date createdAt;
+
+    @TypeConverters(Converters.class)
+    @ColumnInfo(name = "updated_at")
     private Date updatedAt;
 
+    @TypeConverters(Converters.class)
+    @ColumnInfo(name = "privacy")
     private Privacy privacy;
 
+    @ColumnInfo(name = "support")
     private String support;
+
+    @ColumnInfo(name = "description_path")
     private String descriptionPath;
 
+    @TypeConverters(Converters.class)
+    @ColumnInfo(name = "channel")
     private Channel channel;
-    private Account account;
-    private ArrayList tags;
 
+    @TypeConverters(Converters.class) // add here
+    @ColumnInfo(name = "account")
+    private Account account;
+
+    @TypeConverters(Converters.class) // add here
+    @ColumnInfo(name = "tags")
+    private ArrayList <String> tags;
+
+    @ColumnInfo(name = "commentsEnabled")
     private Boolean commentsEnabled;
+
+    @TypeConverters(Converters.class)
+    @ColumnInfo(name = "files")
     private ArrayList<File> files;
+
 
     public Video() {
 
     }
 
+    @NonNull
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(@NonNull Integer id) {
         this.id = id;
     }
 
+    @NonNull
     public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(@NonNull String uuid) {
         this.uuid = uuid;
     }
 
@@ -254,11 +315,11 @@ public class Video {
         this.account = account;
     }
 
-    public ArrayList getTags() {
+    public ArrayList<String> getTags() {
         return tags;
     }
 
-    public void setTags(ArrayList tags) {
+    public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
 

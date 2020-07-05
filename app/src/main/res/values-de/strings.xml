@@ -314,4 +314,8 @@
     <string name="clear_search_history">Suchverlauf löschen</string>
     <string name="pref_description_language_app">Wählen Sie die Sprache für die Anwendungsschnittstelle aus. Starten Sie die Anwendung neu, damit die Änderung wirksam wird.</string>
     <string name="pref_language_app">Sprache der Anwendung</string>
+    <string name="settings_activity_about_category_title">Über</string>
+    <string name="settings_activity_video_playback_category_title">Videowiedergabe</string>
+    <string name="settings_activity_video_list_category_title">Videoliste</string>
+    <string name="server_selection_video_totals">Videos: %s, Lokale Videos: %s</string>
 </resources>

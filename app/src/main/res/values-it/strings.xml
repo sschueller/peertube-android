@@ -286,8 +286,8 @@
     <string name="video_meta_button_license">Licenza</string>
     <string name="video_meta_button_language">Lingua</string>
     <string name="video_meta_button_tags">Parole chiave</string>
-    <string name="menu_video_options_playback_speed">Velocità di riproduzione</string>
-    <string name="menu_video_options_quality">Qualità</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Velocità di riproduzione (%s)</string>
+    <string name="menu_video_options_quality" formatted="true">Qualità (%s)</string>
     <string name="account_bottom_menu_videos">Video</string>
     <string name="account_bottom_menu_channels">Canali</string>
     <string name="account_bottom_menu_about">A proposito</string>

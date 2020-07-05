@@ -178,9 +178,16 @@ public class VideoPlayerService extends Service {
 
     //Playback speed control
     public void setPlayBackSpeed(float speed) {
-
         Log.v(TAG, "setPlayBackSpeed...");
         player.setPlaybackParameters(new PlaybackParameters(speed));
+    }
+
+    /**
+     * Returns the current playback speed of the player.
+     * @return the current playback speed of the player.
+     */
+    public float getPlayBackSpeed() {
+        return player.getPlaybackParameters().speed;
     }
 
     public void playVideo() {

@@ -17,6 +17,7 @@
  */
 package net.schueller.peertube.fragment;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -44,7 +45,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
     public static final String TAG = "VideoMenuQuality";
     private static File autoQualityFile;
 
-    public static VideoMenuQualityFragment newInstance(ArrayList<File> files) {
+    public static VideoMenuQualityFragment newInstance(Context context, ArrayList<File> files) {
 
         mFiles = files;
 
@@ -53,7 +54,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
             autoQualityFile = new File();
             Resolution autoQualityResolution = new Resolution();
             autoQualityResolution.setId(0);
-            autoQualityResolution.setLabel("Auto");
+            autoQualityResolution.setLabel(context.getString(R.string.menu_video_options_quality_automated));
             autoQualityFile.setId(0);
             autoQualityFile.setResolution(autoQualityResolution);
         }

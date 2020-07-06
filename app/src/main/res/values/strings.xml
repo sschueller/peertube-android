@@ -5,15 +5,15 @@
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
     <string name="prompt_server">Server</string>
-    <string name="prompt_email">Email / Username</string>
+    <string name="prompt_email">E-mail / Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_email">This e-mail address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">Grant contact permission for e-mail completion.</string>
+    <string name="permission_rationale">Grant the app contact permission in the Android settings for e-mail completion.</string>
     <!-- Action bar -->
     <string name="action_bar_title_search">Search</string>
     <string name="action_bar_title_settings">Settings</string>
@@ -39,14 +39,14 @@
     <string name="menu_share">Share</string>
     <string name="invalid_url">Invalid URL.</string>
     <!-- settings/preferences -->
-    <string name="pref_title_dark_mode">Dark Mode</string>
-    <string name="pref_description_dark_mode">Restart App for Dark Mode to take effect.</string>
-    <string name="pref_title_app_theme">App Theme</string>
-    <string name="pref_description_app_theme">Restart app for theme to take effect.</string>
+    <string name="pref_title_dark_mode">Dark</string>
+    <string name="pref_description_dark_mode">Restart the app to apply the dark mode.</string>
+    <string name="pref_title_app_theme">Theme</string>
+    <string name="pref_description_app_theme">Restart the app to use the new theme.</string>
     <string name="pref_title_torrent_player">Torrent Video Player</string>
-    <string name="pref_description_torrent_player">Video playback via a torrent stream. This requires Storage Permissions. (Alpha, not stable!)</string>
+    <string name="pref_description_torrent_player">Grant storage permission for video playback via torrent streams. (Alpha, not stable!)</string>
     <string name="pref_title_license">License</string>
-    <string name="pref_description_license">\n<b>GNU Affero General Public License v3.0</b>\n\nPermissions of this strongest copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. When a modified version is used to provide a service over a network, the complete source code of the modified version must be made available.</string>
+    <string name="pref_description_license">\n<b>Copylefted libre AGPLv3+</b>\n\n.Use, see, change and share at will, with all. The license always applies to the complete source code and patent rights of PeerTube and modifications of it, and larger works using its code, even when delivered over a network.</string>
     <string name="pref_title_version">Version</string>
     <string name="pref_title_show_nsfw">NSFW Content</string>
     <string name="pref_description_show_nsfw">Show NSFW content</string>
@@ -54,21 +54,21 @@
     <string name="pref_description_language">Select a video language, instead of showing all videos in all languages.</string>
     <string name="pref_title_peertube_server">PeerTube Server</string>
     <string name="pref_title_background_play">Background Playback</string>
-    <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
-    <string name="pref_title_back_pause">Pause on back button</string>
-    <string name="pref_description_back_pause">Pause background play when pressing back during video playback.</string>
+    <string name="pref_description_background_play">Continues video playback out of sight.</string>
+    <string name="pref_title_back_pause">Pause using \"Back\"</string>
+    <string name="pref_description_back_pause">Pause video playback when pressing the \"Back\" button.</string>
 
-    <string name="pref_language_app">Application Language</string>
-    <string name="pref_description_language_app">Select language for application interface. Restart app for change to take effect.</string>
-    <string name="pref_background_audio">Continue as a background audio stream</string>
+    <string name="pref_language_app">Language</string>
+    <string name="pref_description_language_app">Select language for app interface and restart the app to change it.</string>
+    <string name="pref_background_audio">Continue as audio stream in the background</string>
     <string name="pref_background_stop">Stop all playback</string>
-    <string name="pref_background_float">Continue playing video in floating window</string>
-    <string name="pref_background_behavior">Background playing Configuration</string>
-    <string name="settings_api_error_float">Android version does not support floating video</string>
-    <string name="settings_permissions_error_float">Picture in picture permission is disabled for this app in Android Settings</string>
-    <string name="pref_background_behavior_summary">How a playing video responds when going to background</string>
+    <string name="pref_background_float">Continue playing video in a floating window</string>
+    <string name="pref_background_behavior">Background playing configuration</string>
+    <string name="settings_api_error_float">Your Android version does not support floating video</string>
+    <string name="settings_permissions_error_float">Grant the picture-in picture permission for this app in the Android settings first</string>
+    <string name="pref_background_behavior_summary">How a playing video behaves when sent to the background</string>
     <string name="clear_search_history">Clear Search History</string>
-    <string name="clear_search_history_prompt">Do you want to permanently delete the search history?</string>
+    <string name="clear_search_history_prompt">Permanently delete the search history?</string>
     <!-- languages -->
     <string name="ab">Abkhazian</string>
     <string name="aa">Afar</string>
@@ -298,8 +298,8 @@
     <string name="title_activity_account">Account</string>
     <string name="menu_video_more_report">Report</string>
     <string name="menu_video_more_blacklist">Blacklist</string>
-    <string name="video_download_permission_error">Can not download video without write permission</string>
-    <string name="video_rating_failed">Rating Failed</string>
+    <string name="video_download_permission_error">Grant the app write permission in the Android settings to download videos</string>
+    <string name="video_rating_failed">Could not send rating</string>
     <string name="video_login_required_for_service">You must log in to use this service</string>
     <string name="video_meta_button_share">Share</string>
     <string name="video_meta_button_download">Download</string>
@@ -317,20 +317,20 @@
     <string name="account_about_subscribers">Subscribers:</string>
     <string name="account_about_description">Description:</string>
     <string name="account_about_joined">Joined:</string>
-    <string name="api_error">Something went wrong, please try later!</string>
+    <string name="api_error">Something went wrong, please try later.</string>
     <string name="action_bar_title_server_selection">Select Server</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_bar_title_address_book" />
-    <string name="authentication_login_success">Login Successful</string>
-    <string name="authentication_login_failed">Login Failed!</string>
-    <string name="server_book_no_servers_found">Server Books is empty</string>
-    <string name="server_book_label_is_required">Server label is required</string>
-    <string name="server_book_valid_url_is_required">Valid URL is required</string>
-    <string name="me_logout_button">Logout</string>
+    <string name="authentication_login_success">Logged in</string>
+    <string name="authentication_login_failed">Could not log in</string>
+    <string name="server_book_no_servers_found">The Server address book is empty</string>
+    <string name="server_book_label_is_required">Add a server label first</string>
+    <string name="server_book_valid_url_is_required">Type in a URL that works</string>
+    <string name="me_logout_button">Log out</string>
     <string name="me_help_and_feedback_button"><![CDATA[Help & Feedback]]></string>
     <string name="server_book_add_label">Label</string>
-    <string name="server_book_add_server_url">Server Url</string>
+    <string name="server_book_add_server_url">Server URL</string>
     <string name="server_book_add_pick_server_button">Search</string>
     <string name="server_book_add_username">Username</string>
     <string name="server_book_add_password">Password</string>
@@ -342,7 +342,7 @@
     <string name="video_speed_075">0.75x</string>
     <string name="video_speed_125">1.25x</string>
     <string name="server_book_del_alert_title">Remove Server</string>
-    <string name="server_book_del_alert_msg">Are you sure you want to remove this server from the address book?</string>
+    <string name="server_book_del_alert_msg">Remove this server from the address book?</string>
 
     <string name="title_activity_select_server">Search Server</string>
     <string name="title_activity_me">Account</string>
@@ -351,10 +351,10 @@
     <string name="settings_activity_video_list_category_title">Video List</string>
     <string name="settings_activity_video_playback_category_title">Video Playback</string>
     <string name="settings_activity_about_category_title">About</string>
-    <string name="settings_activity_look_and_feel_category_title"><![CDATA[Look & Feel]]></string>
+    <string name="settings_activity_look_and_feel_category_title"><![CDATA[Look and Feel]]></string>
 
     <string name="server_selection_nsfw_instance">NSFW Instance</string>
-    <string name="server_selection_video_totals">Videos: %s, Local Videos: %s</string>
+    <string name="server_selection_video_totals">Videos: %s, Local videos: %s</string>
 
     <string name="menu_video_options_quality_automated">Automated</string>
     <string name="pref_title_buildtime">Build Time</string>

@@ -1,7 +1,6 @@
-### Version 1.0.45 Tag: v1.0.45 (2020-07-??)
+### Version 1.0.45 Tag: v1.0.45 (2020-07-08)
  * Added token refresh
 
- 
 ### Version 1.0.44 Tag: v1.0.44 (2020-07-05)
  * Completed implementation of Likes & Dislikes (@Poslovitch)
  * Added preview of the current playback speed and video quality in the VideoOptionsFragment (@Poslovitch)

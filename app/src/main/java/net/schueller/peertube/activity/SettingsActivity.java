@@ -18,11 +18,14 @@
 package net.schueller.peertube.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import net.schueller.peertube.BuildConfig;
 import net.schueller.peertube.R;
 
 public class SettingsActivity extends CommonActivity {
@@ -59,6 +62,12 @@ public class SettingsActivity extends CommonActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
+
+            // write Build Time into pref
+            Preference pref = findPreference("pref_buildtime");
+            assert pref != null;
+            pref.setSummary(Long.toString(BuildConfig.BUILD_TIME));
+
         }
     }
 }

@@ -1,6 +1,6 @@
 # Reproducible Builds
 
-Note: reproducible builds work starting version 1.0.44
+Note: reproducible builds work starting version 1.0.45
 
 ## Install Docker
 
@@ -34,8 +34,8 @@ git checkout v1.0.44
 ```shell
 cd ~/peertube-android
 docker build -t thorium-builder .
-docker run --rm -v ~/peertube-android:/home/peertube-android -w /home/peertube-android thorium-builder gradle assembleProdRelease -PkeystorePassword=securePassword -PkeyAliasPassword=securePassword -PkeystoreFile=build.keystore -PbuildTimestamp=1593942384524
-cp app/build/outputs/apk/prod/release/app-prod-release.apk thorium-built.apk
+docker run --rm -v ~/Private/peertube:/home/peertube -w /home/peertube thorium-builder gradle assembleRelease -PkeystorePassword=securePassword -PkeyAliasPassword=securePassword -PkeystoreFile=build.keystore -PbuildTimestamp=1593973044091
+cp app/build/outputs/apk/release/app-release-unsigned.apk thorium-built.apk
 ```
 
 ## Extract the Play Store APK from your phone
@@ -46,7 +46,8 @@ cp app/build/outputs/apk/prod/release/app-prod-release.apk thorium-built.apk
 
 ```shell
 cd ~/peertube-android
-adb pull `adb shell pm path net.schueller.peertube | cut -d':' -f2` thorium-store.apk
+adb shell pm path net.schueller.peertube
+adb pull /data/app/net.schueller.peertube-mCeISw_AujlMBHyPfVhdSg==/base.apk thorium-store.apk
 ```
 
 ## Compare the two files
@@ -56,6 +57,6 @@ adb pull `adb shell pm path net.schueller.peertube | cut -d':' -f2` thorium-stor
 
 ```shell
 cd ~/peertube-android
-python apkdiff.py thorium-built.apk thorium-store.apk
+./apkdiff.py thorium-built.apk thorium-store.apk
 ```
 

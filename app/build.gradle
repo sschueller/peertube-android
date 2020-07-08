@@ -23,11 +23,9 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1044
-        versionName "1.0.44"
-        //buildTime readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
-        //buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
-        //resValue "string", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
+        versionCode 1045
+        versionName "1.0.45"
+        buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
             libVersions = [
@@ -107,7 +105,6 @@ android {
 
     applicationVariants.all { variant ->
         variant.resValue "string", "versionName", variant.versionName
-        variant.resValue "string", "buildTime", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + ''
     }
 }
 

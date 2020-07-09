@@ -37,6 +37,7 @@ import net.schueller.peertube.R;
 
 import net.schueller.peertube.database.Server;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.network.Session;
 import net.schueller.peertube.service.LoginService;
 
 
@@ -88,6 +89,12 @@ public class ServerListAdapter extends RecyclerView.Adapter<ServerListAdapter.Se
 
             editor.putString(mInflater.getContext().getString(R.string.pref_api_base_key), serverUrl);
             editor.apply();
+
+            // Logout if logged in
+            Session session = Session.getInstance();
+            if (session.isLoggedIn()) {
+                session.invalidate();
+            }
 
             // attempt authentication if we have a username
             if (!TextUtils.isEmpty(getServerAtPosition(position).getUsername())) {

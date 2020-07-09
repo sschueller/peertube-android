@@ -87,6 +87,11 @@ public class Session {
 
     }
 
+    public String getRefreshToken() {
+        return sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_token_refresh), null);
+
+    }
+
     public String refreshAccessToken() {
 
         refreshToken();
@@ -107,6 +112,7 @@ public class Session {
         editor.putString(context.getString(R.string.pref_auth_password), null);
         editor.putString(context.getString(R.string.pref_auth_username), null);
         editor.putString(context.getString(R.string.pref_token_access), null);
+        editor.putString(context.getString(R.string.pref_token_refresh), null);
 
         editor.commit();
     }

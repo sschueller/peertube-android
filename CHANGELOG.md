@@ -1,3 +1,6 @@
+### Version 1.0.47 Tag: v1.0.47 (2020-07-10)
+ * Authentication refresh
+
 ### Version 1.0.46 Tag: v1.0.46 (2020-07-08)
  * Revert broken auth
 

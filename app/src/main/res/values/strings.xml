@@ -358,6 +358,8 @@
 
     <string name="menu_video_options_quality_automated">Automated</string>
     <string name="pref_title_buildtime">Build Time</string>
+    <string name="authentication_token_refresh_failed">Token refresh failed</string>
+    <string name="authentication_token_refresh_success">Token refresh successful</string>
 
 
 </resources>

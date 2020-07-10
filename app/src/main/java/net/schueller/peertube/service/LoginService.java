@@ -89,7 +89,7 @@ public class LoginService {
 
                                 assert token != null;
                                 editor.putString(context.getString(R.string.pref_token_access), token.getAccessToken());
-                                editor.putString(context.getString(R.string.pref_token_refresh), token.getExpiresIn());
+                                editor.putString(context.getString(R.string.pref_token_refresh), token.getRefreshToken());
                                 editor.putString(context.getString(R.string.pref_token_type), token.getTokenType());
                                 editor.apply();
 
@@ -162,18 +162,18 @@ public class LoginService {
 
                     assert token != null;
                     editor.putString(context.getString(R.string.pref_token_access), token.getAccessToken());
-                    editor.putString(context.getString(R.string.pref_token_refresh), token.getExpiresIn());
+                    editor.putString(context.getString(R.string.pref_token_refresh), token.getRefreshToken());
                     editor.putString(context.getString(R.string.pref_token_type), token.getTokenType());
                     editor.apply();
 
                     Log.wtf(TAG, "Logged in");
 
-                    Toast.makeText(context, context.getString(R.string.authentication_login_success), Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, context.getString(R.string.authentication_token_refresh_success), Toast.LENGTH_LONG).show();
 
 
                 } else {
                     Log.wtf(TAG, response.toString());
-                    Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, context.getString(R.string.authentication_token_refresh_failed), Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -181,7 +181,7 @@ public class LoginService {
             @Override
             public void onFailure(@NonNull Call<Token> call2, @NonNull Throwable t2) {
                 Log.wtf("err", t2.fillInStackTrace());
-                Toast.makeText(context, context.getString(R.string.authentication_login_failed), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, context.getString(R.string.authentication_token_refresh_failed), Toast.LENGTH_LONG).show();
 
             }
         });

@@ -1,0 +1,2 @@
+json_key_file("../api-7592231789318752674-817790-e2fecb9aaf18.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("net.schueller.peertube") # e.g. com.krausefx.app

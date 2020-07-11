@@ -1,0 +1,52 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+update_fastlane
+
+opt_out_usage
+
+default_platform(:android)
+
+platform :android do
+
+  desc "Builds the release code"
+  lane :buildRelease do
+    gradle(task: "assembleRelease")
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Submit a new Internal Build to Play Store"
+  lane :internal do
+    upload_to_play_store(track: 'internal', apk: 'app/build/outputs/apk/release/app-release.apk')
+  end
+
+  desc "Promote Internal to Alpha"
+  lane :promote_internal_to_alpha do
+    upload_to_play_store(track: 'internal', track_promote_to: 'alpha')
+  end
+
+  desc "Promote Alpha to Beta"
+  lane :promote_alpha_to_beta do
+    upload_to_play_store(track: 'alpha', track_promote_to: 'beta')
+  end
+
+  desc "Promote Beta to Production"
+  lane :promote_beta_to_production do
+    upload_to_play_store(track: 'beta', track_promote_to: 'production')
+  end
+
+end

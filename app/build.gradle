@@ -17,14 +17,28 @@ ext.readPropertyWithDefault = { paramName, defaultValue ->
     }
 }
 
+// Try reading secrets from file
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretProperties = new Properties()
+
+if (secretsPropertiesFile.exists()) {
+    secretProperties.load(new FileInputStream(secretsPropertiesFile))
+}
+// Otherwise read from environment variables, this happens in CI
+else {
+    secretProperties.setProperty("signing_keystore_password", "${System.getenv('signing_keystore_password')}")
+    secretProperties.setProperty("signing_key_password", "${System.getenv('signing_key_password')}")
+    secretProperties.setProperty("signing_key_alias", "${System.getenv('signing_key_alias')}")
+}
+
 android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1047
-        versionName "1.0.47"
+        versionCode Integer.valueOf(System.env.VERSION_CODE ?: 1)
+        versionName "1.1.0-${System.env.VERSION_SHA}"
         buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
@@ -92,10 +106,22 @@ android {
             androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
         }
     }
+    signingConfigs {
+        release {
+            // You need to specify either an absolute path or include the
+            // keystore file in the same directory as the build.gradle file.
+            storeFile file("../android-signing-keystore.jks")
+            storePassword "${secretProperties['signing_keystore_password']}"
+            keyAlias "${secretProperties['signing_key_alias']}"
+            keyPassword "${secretProperties['signing_key_password']}"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
+            testCoverageEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {

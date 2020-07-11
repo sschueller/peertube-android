@@ -8,5 +8,6 @@ RUN apt-get --quiet install --yes vim-common
 # install FastLane
 COPY Gemfile.lock .
 COPY Gemfile .
+RUN gem update --system
 RUN gem install bundler
 RUN bundle install

@@ -12,8 +12,9 @@
 </p>
 
 ## Screenshots
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/shot_01.png" width=160>](fastlane/metadata/android/en-US/images/phoneScreenshots/shot_01.png)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/shot_02.png" width=160>](fastlane/metadata/android/en-US/images/phoneScreenshots/shot_02.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.png" width=160>](fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png" width=160>](fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.png" width=160>](fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.png)
 
 ## Description
 PeerTube is a federated video streaming platform that is community-owned and ad-free, with no vendor lock-in. This client allows you to watch and browse videos on a server of your choice in the PeerTube network.

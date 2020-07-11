@@ -328,7 +328,7 @@
     <string name="settings_activity_video_list_category_title">Videolijst</string>
     <string name="title_activity_settings2">SettingsActivity2</string>
     <string name="title_activity_me">Account</string>
-    <string name="title_activity_select_server">Server kiezen</string>
+    <string name="title_activity_select_server">Server zoeken</string>
     <string name="server_book_del_alert_msg">Weet je zeker dat je deze server wilt verwijderen uit het adresboek\?</string>
     <string name="server_book_del_alert_title">Server verwijderen</string>
     <string name="bn_rBD">Bengaals (Bangladesh)</string>
@@ -339,4 +339,8 @@
     <string name="pref_background_float">Video afspelen in zwevend venster</string>
     <string name="pref_background_stop">Afspelen stoppen</string>
     <string name="pref_background_audio">Audio afspelen op achtergrond</string>
+    <string name="pref_title_buildtime">Bouwtijd</string>
+    <string name="menu_video_options_quality_automated">Geautomatiseerd</string>
+    <string name="server_selection_video_totals">Video\'s: %s - Lokale video\'s: %s</string>
+    <string name="server_selection_nsfw_instance">NSFW-instantie</string>
 </resources>

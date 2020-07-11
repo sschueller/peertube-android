@@ -314,7 +314,7 @@
     <string name="settings_activity_video_playback_category_title">ভিডিও প্লেব্যাক</string>
     <string name="settings_activity_video_list_category_title">ভিডিও এর লিস্ট</string>
     <string name="title_activity_me">আকাউন্ট</string>
-    <string name="title_activity_select_server">সার্ভার পাছন্দ করুন</string>
+    <string name="title_activity_select_server">সার্ভার অনুসন্ধান করুন</string>
     <string name="server_book_del_alert_msg">আপনি কি এই সার্ভার রিমুভ করতে চান সার্ভার বই থেকে\?</string>
     <string name="server_book_del_alert_title">সার্ভার রিমুভ করুন</string>
     <string name="title_activity_server_address_book">এড্রেস বই</string>
@@ -343,4 +343,10 @@
     <string name="pref_language_app">অ্যাপ্লিকেশান এর ভাষা</string>
     <string name="pref_description_back_pause">ভিডিও চলার সময় ব্যাকগ্রাউন্ড প্লে পজ হবে ব্যাক বাটন প্রেস করলে।</string>
     <string name="pref_title_back_pause">ব্যাক বাটন এ পজ</string>
+    <string name="server_selection_nsfw_instance">NSFW ইন্সটান্স</string>
+    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="server_selection_video_totals">ভিডিওঃ %s, স্থানীয় ভিডিওঃ %s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pref_title_buildtime">বিল্ড এর সময়</string>
+    <string name="menu_video_options_quality_automated">স্বয়ংক্রিয়</string>
 </resources>

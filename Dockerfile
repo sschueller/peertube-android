@@ -9,5 +9,5 @@ RUN apt-get --quiet install --yes vim-common
 COPY Gemfile.lock .
 COPY Gemfile .
 RUN gem update --system
-RUN gem install bundle
+RUN gem install bundles
 RUN bundle install

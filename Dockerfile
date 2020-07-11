@@ -1,4 +1,4 @@
-FROM menny/android:1.13.6
+FROM runmymind/docker-android-sdk:latest
 
 # install OS packages
 RUN apt-get --quiet update --yes
@@ -9,5 +9,5 @@ RUN apt-get --quiet install --yes vim-common
 COPY Gemfile.lock .
 COPY Gemfile .
 RUN gem update --system
-RUN gem install bundler
+RUN gem install bundle
 RUN bundle install

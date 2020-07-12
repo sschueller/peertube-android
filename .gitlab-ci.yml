@@ -1,4 +1,3 @@
-
 stages:
   - environment
   - build
@@ -9,15 +8,6 @@ stages:
   - production
   - stop
 
-before_script:
-  - export GRADLE_USER_HOME=$(pwd)/.gradle
-  - chmod +x ./gradlew
-
-
-cache:
-  key: ${CI_PROJECT_ID}
-  paths:
-    - .gradle/
 #
 #.updateContainerJob:
 #  image: docker:stable
@@ -47,7 +37,7 @@ cache:
 #    - docker manifest inspect $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG > /dev/null && exit || true
 
 .build_job:
-#  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: build
   before_script:
     # We store this binary file in a variable as hex with this command, `xxd -p thorium-android-app.jks`
@@ -58,7 +48,7 @@ cache:
     - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
     # Move current version to a new release notes for fastlane
     # This happens for every build, but only on master and tags this change gets submitted as an MR by `buildCreateReleaseNotes` task
-#    - mv ./fastlane/metadata/android/en-GB/changelogs/CURRENT_VERSION.txt "./fastlane/metadata/android/en-GB/changelogs/$VERSION_CODE.txt"
+    - mv ./fastlane/metadata/android/en-GB/changelogs/CURRENT_VERSION.txt "./fastlane/metadata/android/en-GB/changelogs/$VERSION_CODE.txt"
   after_script:
     - rm -f android-signing-keystore.jks || true
   artifacts:

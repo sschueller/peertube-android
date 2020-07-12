@@ -40,4 +40,5 @@ RUN gem update --system 3.0.8 # https://github.com/rubygems/rubygems/issues/3068
 RUN gem install bundler
 RUN bundle install
 
-#RUN echo "org.gradle.jvmargs=-Xmx768m" >> local.properties
+# at least 1.5G memory is required for the gitlab runner to succeed
+#RUN echo "org.gradle.jvmargs=-Xmx1536m" >> local.properties

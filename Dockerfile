@@ -22,7 +22,13 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSIO
 
 # install OS packages
 RUN apt-get --quiet update --yes
-RUN apt-get --quiet install --yes ruby ruby-dev
+
+# Installing build tools
+RUN apt-get update && \
+  apt-get install -y \
+  build-essential \
+  ruby \
+  ruby-dev
 
 # We use this for xxd hex->binary
 RUN apt-get --quiet install --yes vim-common

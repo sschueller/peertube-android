@@ -36,6 +36,8 @@ RUN apt-get --quiet install --yes vim-common
 # install FastLane
 COPY Gemfile.lock .
 COPY Gemfile .
-RUN gem update --system
+RUN gem update --system 3.0.8 # https://github.com/rubygems/rubygems/issues/3068
 RUN gem install bundler
 RUN bundle install
+
+RUN echo "org.gradle.jvmargs=-Xmx1024m" >> local.properties

@@ -57,7 +57,7 @@ ensureContainer:
 buildDebug:
   extends: .build_job
   script:
-    - bundle exec fastlane buildDebug
+    - /usr/local/bin/bundle exec fastlane buildDebug
 
 #buildCreateReleaseNotes:
 #  extends: .build_job

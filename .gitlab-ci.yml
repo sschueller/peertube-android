@@ -77,6 +77,10 @@ buildRelease:
     - bundle exec fastlane buildRelease
   environment:
     name: production
+  only:
+    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
+  except:
+    - branches
 
 testDebug:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG

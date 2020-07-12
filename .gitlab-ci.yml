@@ -1,4 +1,3 @@
-image: vratislav/gitlab-ci-fastlane-android
 
 stages:
   - environment
@@ -67,9 +66,10 @@ cache:
       - app/build/outputs
 
 buildDebug:
+  image: vratislav/gitlab-ci-fastlane-android
   extends: .build_job
   script:
-    - /usr/local/bin/bundle exec fastlane buildDebug
+    - bundle exec fastlane buildDebug
 
 #buildCreateReleaseNotes:
 #  extends: .build_job

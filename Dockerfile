@@ -40,4 +40,4 @@ RUN gem update --system 3.0.8 # https://github.com/rubygems/rubygems/issues/3068
 RUN gem install bundler
 RUN bundle install
 
-RUN echo "org.gradle.jvmargs=-Xmx768m" >> local.properties
+#RUN echo "org.gradle.jvmargs=-Xmx768m" >> local.properties

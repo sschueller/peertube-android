@@ -89,6 +89,8 @@ testDebug:
     - buildDebug
   script:
     - bundle exec fastlane test
+  tags:
+    - docker
 
 publishInternal:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG

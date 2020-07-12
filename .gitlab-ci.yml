@@ -38,8 +38,7 @@ ensureContainer:
     - docker manifest inspect $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG > /dev/null && exit || true
 
 .build_job:
-#  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  image: opengamer/android-sdk-gradle-fastlane
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: build
   before_script:
     # We store this binary file in a variable as hex with this command, `xxd -p thorium-android-app.jks`
@@ -80,8 +79,7 @@ buildRelease:
     name: production
 
 testDebug:
-#  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  image: opengamer/android-sdk-gradle-fastlane
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: test
   dependencies:
     - buildDebug
@@ -89,8 +87,7 @@ testDebug:
     - bundle exec fastlane test
 
 publishInternal:
-  #  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  image: opengamer/android-sdk-gradle-fastlane
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: internal
   dependencies:
     - buildRelease
@@ -103,8 +100,7 @@ publishInternal:
     - bundle exec fastlane internal
 
 .promote_job:
-  #  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  image: opengamer/android-sdk-gradle-fastlane
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   when: manual
   dependencies: []
   before_script:

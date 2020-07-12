@@ -43,7 +43,7 @@ ensureContainer:
   before_script:
     # We store this binary file in a variable as hex with this command, `xxd -p thorium-android-app.jks`
     # Then we convert the hex back to a binary file
-    - echo "$signing_jks_file_hex" | xxd -r -p - > ../android-signing-keystore.jks
+    - echo "$signing_jks_file_hex" | xxd -r -p - > android-signing-keystore.jks
     # We add 1047 to get this high enough above current versionCodes that are published
     - "export VERSION_CODE=$((1047 + $CI_PIPELINE_IID)) && echo $VERSION_CODE"
     - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
@@ -51,7 +51,7 @@ ensureContainer:
     # This happens for every build, but only on master and tags this change gets submitted as an MR by `buildCreateReleaseNotes` task
     # - mv ./fastlane/metadata/android/en-GB/changelogs/CURRENT_VERSION.txt "./fastlane/metadata/android/en-GB/changelogs/$VERSION_CODE.txt"
   after_script:
-    - rm -f ../android-signing-keystore.jks || true
+    - rm -f android-signing-keystore.jks || true
   artifacts:
     paths:
       - app/build/outputs

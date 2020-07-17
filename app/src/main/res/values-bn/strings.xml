@@ -330,7 +330,7 @@
     <string name="server_book_label_is_required">সার্ভার লেবেল দরকার</string>
     <string name="server_book_no_servers_found">সার্ভার বই খালি আছে</string>
     <string name="authentication_login_failed">লগইন সফল হয় নি!</string>
-    <string name="authentication_login_success">লগইন সফল হয়েছে</string>
+    <string name="authentication_login_success">লগইন হয়েছে</string>
     <string name="bn_rBD">বাংলা (বাংলাদেশ)</string>
     <string name="clear_search_history_prompt">আপনি কি পুরোপুরি সার্চ ইতিহাস মুছে ফেলতে চান\?</string>
     <string name="clear_search_history">সার্চ ইতিহাস মুছে ফেলুন</string>
@@ -349,4 +349,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pref_title_buildtime">বিল্ড এর সময়</string>
     <string name="menu_video_options_quality_automated">স্বয়ংক্রিয়</string>
+    <string name="authentication_token_refresh_success">টোকেন রিফ্রেশ হয়েছে</string>
+    <string name="authentication_token_refresh_failed">টোকেন রিফ্রেশ করা যায় নি</string>
 </resources>

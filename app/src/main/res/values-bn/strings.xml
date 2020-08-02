@@ -344,9 +344,9 @@
     <string name="pref_description_back_pause">ভিডিও চলার সময় ব্যাকগ্রাউন্ড প্লে পজ হবে ব্যাক বাটন প্রেস করলে।</string>
     <string name="pref_title_back_pause">ব্যাক বাটন এ পজ</string>
     <string name="server_selection_nsfw_instance">NSFW ইন্সটান্স</string>
-    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="title_activity_settings2">সেটিংস কার্যকলাপ ২</string>
     <string name="server_selection_video_totals">ভিডিওঃ %s, স্থানীয় ভিডিওঃ %s</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">হ্যালো ফাঁকা টুকরা</string>
     <string name="pref_title_buildtime">বিল্ড এর সময়</string>
     <string name="menu_video_options_quality_automated">স্বয়ংক্রিয়</string>
     <string name="authentication_token_refresh_success">টোকেন রিফ্রেশ হয়েছে</string>

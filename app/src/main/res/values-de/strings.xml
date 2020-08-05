@@ -330,4 +330,8 @@
     <string name="settings_permissions_error_float">Die \"Picture in Picture\" Berechtigung wurde für diese App in den Android Einstellungen nicht erteilt</string>
     <string name="pref_background_behavior">Im Hintergrund abspielen Konfiguration</string>
     <string name="pref_background_audio">Im Hintergrund als Audiostream weiterhören</string>
+    <string name="title_activity_me">Konto</string>
+    <string name="bn_rBD">Bengalisch (Bangladesch)</string>
+    <string name="pref_description_back_pause">Unterbrechen der Hintergrundwiedergabe, wenn Sie während der Videowiedergabe zurück drücken.</string>
+    <string name="pref_title_back_pause">Pause bei Zurück-Taste</string>
 </resources>

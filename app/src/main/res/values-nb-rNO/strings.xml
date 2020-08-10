@@ -74,7 +74,7 @@
     <string name="pref_description_torrent_player">Videoavspilling via en torrentstrøm. Dette krever lagringstilgang. (Alfa, ikke stabilt!)</string>
     <string name="pref_title_license">Lisens</string>
     <string name="pref_description_license">
-\n<b>GNU Affero General Public Lisens v3.0</b>
+\n<b>GNU Affero General Public Lisens v3.0</b> 
 \n
 \nRettigheter til denne sterkeste av copyleft-lisenser er prisgitt at hele kildekoden for lisensierte verker og endringer frigis, som inkluderer større utledede arbeider, under samme lisens. Kopirett og lisensmerknader må bevares. Bidragsytere må besørge uttrykt innvilgelse av patentrettigheter. Når en endret versjon brukes for å tilby en tjeneste over et nettverk, må hele kildekoden for den endrede versjonen tilgjengeliggjøres.</string>
     <string name="pref_title_version">Versjon</string>

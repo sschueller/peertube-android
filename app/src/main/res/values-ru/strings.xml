@@ -34,7 +34,7 @@
     <string name="pref_title_torrent_player">Торрент видео плеер</string>
     <string name="pref_description_torrent_player">Воспроизведение видео через торрент поток. Это требует разрешения на хранение. (Альфа, не стабильный!)</string>
     <string name="pref_title_license">Лицензия</string>
-    <string name="pref_description_license"> Strings related to login </string>
+    <string name="pref_description_license"></string>
     <string name="pref_title_version">Версия</string>
     <string name="search_hint">Поиск PeerTube</string>
     <string name="title_activity_search">Поиск</string>

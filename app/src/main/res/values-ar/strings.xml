@@ -24,7 +24,7 @@
     <!-- Strings related to Settings -->
     <string name="pref_title_peertube_server">خادوم PeerTube</string>
     <!-- Strings related to Video meta data -->
-    <string name="meta_data_views">\u0020 مشاهدات</string>
+    <string name="meta_data_views">" مشاهدات"</string>
     <string name="video_row_video_thumbnail">الصورة المصغرة للفيديو</string>
     <string name="video_row_account_avatar">الصورة الرمزية للحساب</string>
     <string name="pref_title_show_nsfw">عرض NSFW</string>
@@ -305,4 +305,42 @@
     <string name="login_current_server_hint">الخادوم الحالي</string>
     <string name="video_speed_075">0.75x</string>
     <string name="video_speed_125">1.25x</string>
+    <string name="pref_description_language_app">حدد اللغة لواجهة التطبيق. أعد تشغيل التطبيق حتى يسري التغيير.</string>
+    <string name="menu_video_options_quality_automated">الآلي</string>
+    <string name="server_selection_video_totals">مقاطع الفيديو: %s، مقاطع الفيديو المحلية: %s</string>
+    <string name="server_selection_nsfw_instance">خادم NSFW</string>
+    <string name="settings_activity_look_and_feel_category_title">الشكل والمظهر</string>
+    <string name="settings_activity_about_category_title">حول</string>
+    <string name="settings_activity_video_playback_category_title">تشغيل الفيديو</string>
+    <string name="settings_activity_video_list_category_title">قائمة الفيديو</string>
+    <string name="title_activity_settings2">إعدادات النشاط2</string>
+    <string name="title_activity_me">حساب</string>
+    <string name="title_activity_select_server">خادم البحث</string>
+    <string name="server_book_del_alert_msg">هل تريد بالتأكيد إزالة هذا الملقم من دفتر العناوين؟</string>
+    <string name="server_book_del_alert_title">إزالة الملقم</string>
+    <string name="title_activity_server_address_book">دليل العناوين</string>
+    <string name="server_book_list_has_login">لديه تسجيل الدخول</string>
+    <string name="server_book_add_add_button">إضافة</string>
+    <string name="server_book_add_password">كلمة المرور</string>
+    <string name="server_book_add_username">اسم المستخدم</string>
+    <string name="server_book_add_pick_server_button">بحث</string>
+    <string name="server_book_add_server_url">عنوان URL للملقم</string>
+    <string name="server_book_add_label">تسميه</string>
+    <string name="me_help_and_feedback_button">المساعدة والتعليقات</string>
+    <string name="me_logout_button">تسجيل الخروج</string>
+    <string name="server_book_valid_url_is_required">مطلوب URL صالح</string>
+    <string name="server_book_label_is_required">تسمية الملقم مطلوبة</string>
+    <string name="authentication_login_failed">فشل تسجيل الدخول!</string>
+    <string name="authentication_login_success">تم تسجيل الدخول</string>
+    <string name="hello_blank_fragment">مرحبا جزء فارغ</string>
+    <string name="bn_rBD">البنغالية (بنغلاديش)</string>
+    <string name="clear_search_history_prompt">هل تريد حذف سجل البحث بشكل دائم؟</string>
+    <string name="clear_search_history">مسح سجل البحث</string>
+    <string name="pref_background_behavior_summary">كيف يستجيب الفيديو أثناء التشغيل عند الانتقال إلى الخلفية</string>
+    <string name="settings_permissions_error_float">تم تعطيل إذن صورة في صورة لهذا التطبيق في إعدادات Android</string>
+    <string name="settings_api_error_float">إصدار Android لا يدعم الفيديو العائم</string>
+    <string name="pref_background_float">استمر في تشغيل الفيديو في النافذة العائمة</string>
+    <string name="pref_language_app">لغة التطبيق</string>
+    <string name="pref_description_back_pause">أوقف التشغيل في الخلفية مؤقتًا عند الضغط على رجوع أثناء تشغيل الفيديو.</string>
+    <string name="pref_title_back_pause">ايقاف عند الضغط على زر العودة</string>
 </resources>

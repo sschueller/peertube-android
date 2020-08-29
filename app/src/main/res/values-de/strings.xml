@@ -20,7 +20,7 @@
     <string name="error_incorrect_password">Dieses Passwort ist falsch</string>
     <string name="action_bar_title_settings">Einstellungen</string>
     <string name="bottom_nav_title_recent">Aktuell</string>
-    <string name="meta_data_views">" Abrufe"</string>
+    <string name="meta_data_views">Aufrufe</string>
     <string name="video_row_video_thumbnail">Video-Vorschaubild</string>
     <string name="video_row_account_avatar">Konto-Avatar</string>
     <string name="pref_title_show_nsfw">NSFW-Inhalt</string>
@@ -287,7 +287,7 @@
     <string name="account_about_joined">Mitglied seit:</string>
     <string name="api_error">Etwas ist schiefgelaufen, bitte versuche es später noch einmal!</string>
     <string name="action_bar_title_server_selection">Server auswählen</string>
-    <string name="permission_rationale">Kontaktberechtigung für die E-Mail-Vervollständigung erteilen.</string>
+    <string name="permission_rationale">Erlaube Kontaktzugriff für E-Mail-Vervollständigung.</string>
     <string name="pref_description_language">Eine Videosprache auswählen, statt alle Videos in allen Sprachen anzuzeigen.</string>
     <string name="pref_description_background_play">Falls aktiviert, werden Videos im Hintergrund weiter abgespielt.</string>
     <string name="server_selection_select_a_server">Wählen Sie einen Server aus der Liste oder geben Sie ihn direkt ein.</string>
@@ -319,4 +319,19 @@
     <string name="settings_activity_video_list_category_title">Videoliste</string>
     <string name="server_selection_video_totals">Videos: %s, Lokale Videos: %s</string>
     <string name="pref_background_stop">Wiedergabe stoppen</string>
+    <string name="authentication_token_refresh_success">Token erneuert</string>
+    <string name="authentication_token_refresh_failed">Konnte das Token nicht erneuern</string>
+    <string name="menu_video_options_quality_automated">Automatisch</string>
+    <string name="settings_activity_look_and_feel_category_title">Aussehen</string>
+    <string name="title_activity_select_server">Server suchen</string>
+    <string name="server_book_del_alert_msg">Sind Sie sicher, dass Sie diesen Server aus ihrem Adressbuch entfernen möchten\?</string>
+    <string name="server_book_del_alert_title">Server entfernen</string>
+    <string name="title_activity_server_address_book">Adressbuch</string>
+    <string name="settings_permissions_error_float">Die \"Picture in Picture\" Berechtigung wurde für diese App in den Android Einstellungen nicht erteilt</string>
+    <string name="pref_background_behavior">Im Hintergrund abspielen Konfiguration</string>
+    <string name="pref_background_audio">Im Hintergrund als Audiostream weiterhören</string>
+    <string name="title_activity_me">Konto</string>
+    <string name="bn_rBD">Bengalisch (Bangladesch)</string>
+    <string name="pref_description_back_pause">Unterbrechen der Hintergrundwiedergabe, wenn Sie während der Videowiedergabe zurück drücken.</string>
+    <string name="pref_title_back_pause">Pause bei Zurück-Taste</string>
 </resources>

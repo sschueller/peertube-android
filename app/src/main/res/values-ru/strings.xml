@@ -26,7 +26,7 @@
     <string name="pref_title_peertube_server">Сервер PeerTube</string>
     <!-- Strings related to Video meta data -->
     <string name="video_row_video_thumbnail">Миниатюра видео</string>
-    <string name="video_row_account_avatar">Аватар</string>
+    <string name="video_row_account_avatar">Аватар аккаунта</string>
     <string name="pref_title_show_nsfw">Показ NSFW ( контекст сексуального характера)</string>
     <string name="pref_description_show_nsfw">Показывать NSFW (контент сексуального характера)</string>
     <string name="pref_language">Фильтр языков</string>
@@ -34,12 +34,15 @@
     <string name="pref_title_torrent_player">Торрент видео плеер</string>
     <string name="pref_description_torrent_player">Воспроизведение видео через торрент поток. Это требует разрешения на хранение. (Альфа, не стабильный!)</string>
     <string name="pref_title_license">Лицензия</string>
-    <string name="pref_description_license"> Strings related to login </string>
+    <string name="pref_description_license">
+\n<b> Стандартная общественная лицензия GNU Affero v3.0 </b>
+\n
+\nРазрешения этой сильнейшей лицензии с авторским левом обусловлены предоставлением полного исходного кода лицензионных произведений и модификаций, которые включают более крупные произведения с использованием лицензионных произведений, по той же лицензии. Уведомления об авторских правах и лицензии должны быть сохранены. Соавторы предоставляют явное предоставление патентных прав. Когда измененная версия используется для предоставления услуги по сети, полный исходный код измененной версии должен быть доступен.</string>
     <string name="pref_title_version">Версия</string>
     <string name="search_hint">Поиск PeerTube</string>
     <string name="title_activity_search">Поиск</string>
     <string name="no_data_available">Нет результатов</string>
-    <string name="descr_overflow_button">Другое</string>
+    <string name="descr_overflow_button">Больше</string>
     <string name="menu_share">Поделиться</string>
     <string name="invalid_url">Недействительная ссылка.</string>
     <string name="pref_title_dark_mode">Темный режим</string>
@@ -245,11 +248,11 @@
     <string name="video_speed_20">2×</string>
     <string name="pref_title_background_play">Фоновое воспроизведение</string>
     <string name="pref_description_background_play">Если включено, продолжает воспроизводить видео в фоновом режиме.</string>
-    <string name="bottom_nav_title_local">Местоположение</string>
+    <string name="bottom_nav_title_local">Локальные</string>
     <string name="title_activity_account">Аккаунт</string>
     <!-- Constants, Don't translate -->
     <string name="action_bar_title_account">Аккаунт</string>
-    <string name="bottom_nav_title_recent">Последний</string>
+    <string name="bottom_nav_title_recent">Недавние</string>
     <string name="meta_data_views">" Представления"</string>
     <string name="ml">Малайский</string>
     <string name="mh">Маршалловых островов</string>
@@ -303,4 +306,49 @@
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="video_speed_125">1,25×</string>
     <string name="video_speed_075">0,75×</string>
+    <string name="title_activity_me">Аккаунт</string>
+    <string name="authentication_token_refresh_success">Токен обновлён</string>
+    <string name="authentication_token_refresh_failed">Не удалось обновить токен</string>
+    <string name="pref_title_buildtime">Время сборки</string>
+    <string name="menu_video_options_quality_automated">Автоматически</string>
+    <string name="server_selection_video_totals">Видео: %s, локальные видео: %s</string>
+    <string name="server_selection_nsfw_instance">Экземпляр NSFW</string>
+    <string name="settings_activity_look_and_feel_category_title">Стиль оформления</string>
+    <string name="settings_activity_about_category_title">О приложении</string>
+    <string name="settings_activity_video_playback_category_title">Проигрывание видео</string>
+    <string name="settings_activity_video_list_category_title">Список видео</string>
+    <string name="title_activity_settings2">НастройкиАктивности2</string>
+    <string name="title_activity_select_server">Поиск сервера</string>
+    <string name="server_book_del_alert_msg">Вы уверены, что хотите удалить этот сервер из адресной книги\?</string>
+    <string name="server_book_del_alert_title">Удалить сервер</string>
+    <string name="title_activity_server_address_book">Адресная книга</string>
+    <string name="server_book_list_has_login">Имеет логин</string>
+    <string name="server_book_add_add_button">Добавить</string>
+    <string name="server_book_add_password">Пароль</string>
+    <string name="server_book_add_username">Имя пользователя</string>
+    <string name="server_book_add_pick_server_button">Поиск</string>
+    <string name="server_book_add_server_url">URL-адрес сервера</string>
+    <string name="server_book_add_label">Метка</string>
+    <string name="me_help_and_feedback_button">Помощь и обратная связь</string>
+    <string name="me_logout_button">Выйти</string>
+    <string name="server_book_valid_url_is_required">Требуется действительный URL</string>
+    <string name="server_book_label_is_required">Требуется метка сервера</string>
+    <string name="server_book_no_servers_found">Серверная книга пуста</string>
+    <string name="authentication_login_failed">Вход не удался!</string>
+    <string name="authentication_login_success">Успешный вход</string>
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="bn_rBD">Бенгальский (Бангладеш)</string>
+    <string name="clear_search_history_prompt">Вы хотите навсегда удалить историю поиска\?</string>
+    <string name="clear_search_history">Очистить историю поиска</string>
+    <string name="pref_background_behavior_summary">Как воспроизводимое видео реагирует на переход в фоновый режим</string>
+    <string name="settings_permissions_error_float">Разрешение \"Картинка в картинке\" отключено для этого приложения в настройках Android</string>
+    <string name="settings_api_error_float">Версия Android не поддерживает плавающее видео</string>
+    <string name="pref_background_behavior">Конфигурация фонового воспроизведения</string>
+    <string name="pref_background_float">Продолжить воспроизведение видео в плавающем окне</string>
+    <string name="pref_background_stop">Остановить все воспроизведения</string>
+    <string name="pref_background_audio">Продолжить как фоновый аудиопоток</string>
+    <string name="pref_description_language_app">Выберите язык интерфейса приложения. Перезапустите приложение, чтобы изменения вступили в силу.</string>
+    <string name="pref_language_app">Язык приложения</string>
+    <string name="pref_description_back_pause">Приостановите фоновое воспроизведение при нажатии назад во время воспроизведения видео.</string>
+    <string name="pref_title_back_pause">Пауза на кнопку Назад</string>
 </resources>

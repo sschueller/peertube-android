@@ -300,4 +300,24 @@
     <string name="login_current_server_hint">Aktuell server</string>
     <string name="video_speed_125">1,25×</string>
     <string name="video_speed_075">0,75×</string>
+    <string name="pref_title_buildtime">Byggtid</string>
+    <string name="settings_activity_about_category_title">Om</string>
+    <string name="settings_activity_video_list_category_title">Video lista</string>
+    <string name="title_activity_me">Konto</string>
+    <string name="title_activity_select_server">Sök Server</string>
+    <string name="server_book_del_alert_title">Ta bort Server</string>
+    <string name="title_activity_server_address_book">Adressbok</string>
+    <string name="server_book_list_has_login">Har inloggning</string>
+    <string name="server_book_add_add_button">Lägg till</string>
+    <string name="server_book_add_password">Lösenord</string>
+    <string name="server_book_add_username">Användarnamn</string>
+    <string name="server_book_add_pick_server_button">Sök</string>
+    <string name="server_book_add_server_url">Server URL</string>
+    <string name="me_help_and_feedback_button">Hjälp &amp; Feedback</string>
+    <string name="me_logout_button">Logga ut</string>
+    <string name="server_book_valid_url_is_required">Giltig URL krävs</string>
+    <string name="authentication_login_failed">Inloggning misslyckades!</string>
+    <string name="authentication_login_success">Inloggad</string>
+    <string name="bn_rBD">Bengali (Bangladesh)</string>
+    <string name="clear_search_history">Rensa sökhistorik</string>
 </resources>

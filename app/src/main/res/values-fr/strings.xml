@@ -306,17 +306,17 @@
     <string name="video_speed_075">0,75×</string>
     <string name="video_speed_125">1,25×</string>
     <string name="title_activity_server_address_book">Carnet d\'adresses</string>
-    <string name="authentication_login_success">Identification réussie</string>
+    <string name="authentication_login_success">Identifié</string>
     <string name="authentication_login_failed">Identification échouée !</string>
     <string name="server_book_list_has_login">a un identifiant</string>
     <string name="server_book_add_add_button">Ajouter</string>
     <string name="server_book_add_password">Mot de passe</string>
     <string name="server_book_add_username">Nom d\'utilisateur</string>
     <string name="server_book_add_pick_server_button">Rechercher</string>
-    <string name="server_book_add_server_url">Url du serveur</string>
+    <string name="server_book_add_server_url">URL du serveur</string>
     <string name="server_book_add_label">Étiquette</string>
     <string name="me_help_and_feedback_button">Aide et commentaire</string>
-    <string name="me_logout_button">Déconnexion</string>
+    <string name="me_logout_button">Déconnecté</string>
     <string name="server_book_valid_url_is_required">Une URL valide est requise</string>
     <string name="server_book_label_is_required">L\'étiquette du serveur est obligatoire</string>
     <string name="server_book_no_servers_found">Le livre des serveurs est vide</string>
@@ -348,4 +348,6 @@
     <string name="hello_blank_fragment">Bonjour ! Fragment vide</string>
     <string name="server_selection_video_totals">Vidéos : %s, Vidéos locales : %s</string>
     <string name="pref_title_buildtime">Temps de construction</string>
+    <string name="authentication_token_refresh_success">Jeton rafraîchi</string>
+    <string name="authentication_token_refresh_failed">Impossible de rafraîchir le jeton</string>
 </resources>

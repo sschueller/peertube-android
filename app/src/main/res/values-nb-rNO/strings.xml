@@ -74,7 +74,7 @@
     <string name="pref_description_torrent_player">Videoavspilling via en torrentstrøm. Dette krever lagringstilgang. (Alfa, ikke stabilt!)</string>
     <string name="pref_title_license">Lisens</string>
     <string name="pref_description_license">
-\n<b>GNU Affero General Public Lisens v3.0</b>
+\n<b>GNU Affero General Public Lisens v3.0</b> 
 \n
 \nRettigheter til denne sterkeste av copyleft-lisenser er prisgitt at hele kildekoden for lisensierte verker og endringer frigis, som inkluderer større utledede arbeider, under samme lisens. Kopirett og lisensmerknader må bevares. Bidragsytere må besørge uttrykt innvilgelse av patentrettigheter. Når en endret versjon brukes for å tilby en tjeneste over et nettverk, må hele kildekoden for den endrede versjonen tilgjengeliggjøres.</string>
     <string name="pref_title_version">Versjon</string>
@@ -137,4 +137,12 @@
     <string name="pref_background_audio">Fortsett som lydstrøm i bakgrunnen</string>
     <string name="pref_description_language_app">Velg språk for programgrensesnittet. Start programmet på ny for å utføre endringene.</string>
     <string name="pref_language_app">Programspråk</string>
+    <string name="server_book_add_server_url">Tjener-nettadresse</string>
+    <string name="server_book_add_pick_server_button">Søk</string>
+    <string name="server_book_add_username">Username</string>
+    <string name="server_book_add_add_button">Legg til</string>
+    <string name="server_book_add_password">Passord</string>
+    <string name="title_activity_server_address_book">Adressebok</string>
+    <string name="server_book_del_alert_title">Fjern tjener</string>
+    <string name="settings_activity_about_category_title">Om</string>
 </resources>

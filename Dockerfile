@@ -19,3 +19,27 @@ RUN $ANDROID_HOME/tools/bin/sdkmanager --update
 RUN $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
+
+# install OS packages
+RUN apt-get --quiet update --yes
+
+# Installing build tools
+RUN apt-get update && \
+  apt-get install -y \
+  build-essential \
+  ruby \
+  jq \
+  ruby-dev
+
+# We use this for xxd hex->binary
+RUN apt-get --quiet install --yes vim-common
+
+# install FastLane
+COPY Gemfile.lock .
+COPY Gemfile .
+RUN gem update --system 3.0.8 # https://github.com/rubygems/rubygems/issues/3068
+RUN gem install bundler
+RUN bundle install
+
+# at least 1.5G memory is required for the gitlab runner to succeed
+#RUN echo "org.gradle.jvmargs=-Xmx1536m" >> local.properties

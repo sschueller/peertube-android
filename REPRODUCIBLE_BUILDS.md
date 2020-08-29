@@ -1,6 +1,6 @@
 # Reproducible Builds
 
-Note: reproducible builds work starting version 1.0.45
+Note: This does not work at this time
 
 ## Install Docker
 

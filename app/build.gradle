@@ -17,14 +17,28 @@ ext.readPropertyWithDefault = { paramName, defaultValue ->
     }
 }
 
+// Try reading secrets from file
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretProperties = new Properties()
+
+if (secretsPropertiesFile.exists()) {
+    secretProperties.load(new FileInputStream(secretsPropertiesFile))
+}
+// Otherwise read from environment variables, this happens in CI
+else {
+    secretProperties.setProperty("signing_keystore_password", "${System.getenv('signing_keystore_password')}")
+    secretProperties.setProperty("signing_key_password", "${System.getenv('signing_key_password')}")
+    secretProperties.setProperty("signing_key_alias", "${System.getenv('signing_key_alias')}")
+}
+
 android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1047
-        versionName "1.0.47"
+        versionCode Integer.valueOf(System.getenv("VERSION_CODE") ?: 1)
+        versionName System.getenv("VERSION_NAME") + "-" + System.getenv("VERSION_SHA")
         buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ext {
@@ -44,12 +58,12 @@ android {
             implementation fileTree(dir: 'libs', include: ['*.jar'])
 
             // Layouts and design
-            implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-            implementation 'androidx.appcompat:appcompat:1.1.0'
+            implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+            implementation 'androidx.appcompat:appcompat:1.2.0'
             implementation 'androidx.cardview:cardview:1.0.0'
             implementation 'androidx.recyclerview:recyclerview:1.1.0'
             implementation 'androidx.legacy:legacy-support-v13:1.0.0'
-            implementation 'com.google.android.material:material:1.1.0'
+            implementation 'com.google.android.material:material:1.2.0'
             implementation 'de.hdodenhof:circleimageview:3.0.0'
 
             // font awesome
@@ -57,7 +71,7 @@ android {
             implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
 
             // http client / REST
-            implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+            implementation 'com.squareup.okhttp3:okhttp:4.8.0'
             implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
             // image downloading and caching library
@@ -87,15 +101,28 @@ android {
             implementation 'org.apache.maven:maven-artifact:3.5.0'
 
             // testing
-            testImplementation 'junit:junit:4.12'
-            androidTestImplementation 'androidx.test:runner:1.2.0'
-            androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+            testImplementation 'junit:junit:4.13'
+            androidTestImplementation 'androidx.test:runner:1.3.0'
+            androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
         }
     }
+    signingConfigs {
+        release {
+            // You need to specify either an absolute path or include the
+            // keystore file in the same directory as the build.gradle file.
+            storeFile file("../android-signing-keystore.jks")
+            storePassword "${secretProperties['signing_keystore_password']}"
+            keyAlias "${secretProperties['signing_key_alias']}"
+            keyPassword "${secretProperties['signing_key_password']}"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            testCoverageEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -113,10 +140,10 @@ dependencies {
     def room_version = "2.2.5"
     def archLifecycleVersion = '2.1.0'
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta7'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.google.android.material:material:1.2.0'
 
     // database lib
     implementation "androidx.room:room-runtime:$room_version"

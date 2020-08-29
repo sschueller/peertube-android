@@ -1,0 +1,159 @@
+stages:
+  - environment
+  - build
+  - test
+  - internal
+  - alpha
+  - beta
+  - production
+  - stop
+
+.updateContainerJob:
+  image: docker:stable
+  stage: environment
+  services:
+    - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG || true
+    - docker build --cache-from $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  tags:
+    - shell
+
+updateContainer:
+  extends: .updateContainerJob
+  only:
+    changes:
+      - Dockerfile
+
+ensureContainer:
+  extends: .updateContainerJob
+  allow_failure: true
+  before_script:
+    - "mkdir -p ~/.docker && echo '{\"experimental\": \"enabled\"}' > ~/.docker/config.json"
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    # Skip update container `script` if the container already exists
+    # via https://gitlab.com/gitlab-org/gitlab-ce/issues/26866#note_97609397 -> https://stackoverflow.com/a/52077071/796832
+    - docker manifest inspect $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG > /dev/null && exit || true
+
+.build_job:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  stage: build
+  before_script:
+    # We store this binary file in a variable as hex with this command, `xxd -p android-signing-keystore.jks > jks.txt` (remove all \n)
+    # Then we convert the hex back to a binary file
+    - pwd
+    - echo "$signing_jks_file_hex" | xxd -r -p - > android-signing-keystore.jks
+    - md5sum android-signing-keystore.jks
+    # get next version from latest changelog
+    - "export VERSION_CODE=`ls -f ./fastlane/metadata/android/en-US/changelogs | cut -d_ -f3 | sort -n | tail -1 | rev | cut -c5- | rev` && echo $VERSION_CODE"
+    # We add 200 to get this high enough above current versionCodes that are published
+    # - "export VERSION_CODE=$((200 + $CI_PIPELINE_IID)) && echo $VERSION_CODE"
+    - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
+    - "export VERSION_NAME=${VERSION_CODE:0:1}.${VERSION_CODE:1:1}.${VERSION_CODE:2} && echo $VERSION_NAME"
+  after_script:
+    - rm -f android-signing-keystore.jks || true
+  artifacts:
+    paths:
+      - app/build/outputs
+  tags:
+    - docker
+
+buildDebug:
+  extends: .build_job
+  script:
+    - bundle exec fastlane buildDebug
+
+buildRelease:
+  extends: .build_job
+  script:
+    - bundle exec fastlane buildRelease
+  environment:
+    name: production
+  only:
+    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
+  except:
+    - branches
+
+testDebug:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  stage: test
+  dependencies:
+    - buildDebug
+  script:
+    - bundle exec fastlane test
+  tags:
+    - docker
+
+publishGithub:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  stage: internal
+  dependencies:
+    - buildRelease
+  when: manual
+  script:
+    - "export VERSION_CODE=`ls -f ./fastlane/metadata/android/en-US/changelogs | cut -d_ -f3 | sort -n | tail -1 | rev | cut -c5- | rev` && echo $VERSION_CODE"
+    - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
+    - "export VERSION_NAME=${VERSION_CODE:0:1}.${VERSION_CODE:1:1}.${VERSION_CODE:2} && echo $VERSION_NAME"
+    - ci-scripts/make-github-release.sh
+  tags:
+    - docker
+  only:
+    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
+
+publishInternal:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  stage: internal
+  dependencies:
+    - buildRelease
+  when: manual
+  before_script:
+    - echo $google_play_service_account_api_key_json > ../google_play_api_key.json
+    - md5sum /builds/sschueller/google_play_api_key.json
+  after_script:
+    - rm -f ../google_play_api_key.json
+  script:
+    - bundle exec fastlane internal
+  tags:
+    - docker
+  only:
+    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
+
+.promote_job:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  when: manual
+  dependencies: []
+  before_script:
+    - echo $google_play_service_account_api_key_json > ../google_play_api_key.json
+    - md5sum ../google_play_api_key.json
+  after_script:
+    - rm -f ../google_play_api_key.json
+
+promoteAlpha:
+  extends: .promote_job
+  stage: alpha
+  script:
+    - bundle exec fastlane promote_internal_to_alpha
+  tags:
+    - docker
+
+promoteBeta:
+  extends: .promote_job
+  stage: beta
+  script:
+    - bundle exec fastlane promote_alpha_to_beta
+  tags:
+    - docker
+
+promoteProduction:
+  extends: .promote_job
+  stage: production
+  # We only allow production promotion on `master` because
+  # it has its own production scoped secret variables
+  only:
+    - tags
+  script:
+    - bundle exec fastlane promote_beta_to_production
+  tags:
+    - docker

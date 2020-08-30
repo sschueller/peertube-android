@@ -137,6 +137,8 @@ promoteAlpha:
     - bundle exec fastlane promote_internal_to_alpha
   tags:
     - docker
+  only:
+    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
 
 promoteBeta:
   extends: .promote_job
@@ -145,6 +147,8 @@ promoteBeta:
     - bundle exec fastlane promote_alpha_to_beta
   tags:
     - docker
+  only:
+    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
 
 promoteProduction:
   extends: .promote_job
@@ -152,7 +156,7 @@ promoteProduction:
   # We only allow production promotion on `master` because
   # it has its own production scoped secret variables
   only:
-    - tags
+    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
   script:
     - bundle exec fastlane promote_beta_to_production
   tags:

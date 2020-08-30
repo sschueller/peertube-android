@@ -33,6 +33,7 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.webkit.URLUtil;
 import androidx.annotation.Nullable;
 
 import android.support.v4.media.MediaDescriptionCompat;
@@ -70,21 +71,25 @@ import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
 public class VideoPlayerService extends Service {
 
     private static final String TAG = "VideoPlayerService";
+
     private static final String MEDIA_SESSION_TAG = "peertube_player";
 
     private final IBinder mBinder = new LocalBinder();
 
     private static final String PLAYBACK_CHANNEL_ID = "playback_channel";
+
     private static final Integer PLAYBACK_NOTIFICATION_ID = 1;
 
     public SimpleExoPlayer player;
 
     private Video currentVideo;
+
     private String currentStreamUrl;
 
     private PlayerNotificationManager playerNotificationManager;
 
     private IntentFilter becomeNoisyIntentFilter = new IntentFilter(AudioManager.ACTION_AUDIO_BECOMING_NOISY);
+
     private BecomingNoisyReceiver myNoisyAudioStreamReceiver = new BecomingNoisyReceiver();
 
     @Override
@@ -105,13 +110,14 @@ public class VideoPlayerService extends Service {
                     registerReceiver(myNoisyAudioStreamReceiver, becomeNoisyIntentFilter);
                 }
 
-                if (playbackState == ACTION_PLAY) { // this means that play is available, hence the audio is paused or stopped
+                if (playbackState
+                        == ACTION_PLAY) { // this means that play is available, hence the audio is paused or stopped
                     Log.v(TAG, "ACTION_PAUSE: " + playbackState);
                     unregisterReceiver(myNoisyAudioStreamReceiver);
-                    myNoisyAudioStreamReceiver=null;
+                    myNoisyAudioStreamReceiver = null;
                 }
             }
-        } );
+        });
 
     }
 
@@ -133,7 +139,7 @@ public class VideoPlayerService extends Service {
         }
         //Was seeing an error when exiting the program about about not unregistering the receiver.
         try {
-            if (null!=myNoisyAudioStreamReceiver) {
+            if (null != myNoisyAudioStreamReceiver) {
                 this.unregisterReceiver(myNoisyAudioStreamReceiver);
             }
         } catch (Exception e) {
@@ -156,22 +162,23 @@ public class VideoPlayerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Context context = this;
         Log.v(TAG, "onStartCommand...");
-        if(currentStreamUrl == null){
-            Toast.makeText(context, "currentStreamUrl must not null", Toast.LENGTH_SHORT).show();
+
+        if (!URLUtil.isValidUrl(currentStreamUrl)) {
+            Toast.makeText(context, "Invalid URL provided. Unable to play video.", Toast.LENGTH_SHORT).show();
+            return START_NOT_STICKY;
+        } else {
+            playVideo();
+            return START_STICKY;
         }
-        playVideo();
-        return START_STICKY;
     }
 
 
-    public void setCurrentVideo(Video video)
-    {
+    public void setCurrentVideo(Video video) {
         Log.v(TAG, "setCurrentVideo...");
         currentVideo = video;
     }
 
-    public void setCurrentStreamUrl(String streamUrl)
-    {
+    public void setCurrentStreamUrl(String streamUrl) {
         Log.v(TAG, "setCurrentStreamUrl..." + streamUrl);
         currentStreamUrl = streamUrl;
     }
@@ -184,6 +191,7 @@ public class VideoPlayerService extends Service {
 
     /**
      * Returns the current playback speed of the player.
+     *
      * @return the current playback speed of the player.
      */
     public float getPlayBackSpeed() {
@@ -192,6 +200,8 @@ public class VideoPlayerService extends Service {
 
     public void playVideo() {
         Context context = this;
+
+        // We need a valid URL
 
         Log.v(TAG, "playVideo...");
 
@@ -242,7 +252,8 @@ public class VideoPlayerService extends Service {
 
                     @Nullable
                     @Override
-                    public Bitmap getCurrentLargeIcon(Player player, PlayerNotificationManager.BitmapCallback callback) {
+                    public Bitmap getCurrentLargeIcon(Player player,
+                            PlayerNotificationManager.BitmapCallback callback) {
                         return null;
                     }
                 }
@@ -297,15 +308,16 @@ public class VideoPlayerService extends Service {
 
         // Audio Focus
         AudioAttributes audioAttributes = new AudioAttributes.Builder()
-            .setUsage(C.USAGE_MEDIA)
-            .setContentType(C.CONTENT_TYPE_MOVIE)
-            .build();
-        player.setAudioAttributes(audioAttributes,true);
+                .setUsage(C.USAGE_MEDIA)
+                .setContentType(C.CONTENT_TYPE_MOVIE)
+                .build();
+        player.setAudioAttributes(audioAttributes, true);
 
     }
 
     // pause playback on audio output change
     private class BecomingNoisyReceiver extends BroadcastReceiver {
+
         @Override
         public void onReceive(Context context, Intent intent) {
             if (AudioManager.ACTION_AUDIO_BECOMING_NOISY.equals(intent.getAction())) {

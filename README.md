@@ -28,6 +28,13 @@ Please note this is app is in beta and is still missing a lot of features.
 * Beta Test on Google Play: https://play.google.com/store/apps/details?id=net.schueller.peertube
 * F-Droid: https://f-droid.org/packages/net.schueller.peertube/
 
+## Releases
+Release Tags are automatically built and deployed to the play store but not released to production right away. 
+To use the latest tagged release download it from github or fdroid (~1 day delay).
+
+## Reproducible Builds
+Reproducible builds currently does not work.
+
 ## Help Translate
 * https://hosted.weblate.org/projects/peertube/
 
@@ -48,11 +55,11 @@ Please note this is app is in beta and is still missing a lot of features.
 * Video speed selection
 * Video quality selection
 * Server selection
+* Video overlay play and draggable video window
 
 ## Coming soon
 
 * Video Playback via WebRTC
-* Video overlay play and draggable video window
 * Comment videos
 * Report Videos
 * User / Channel Overview Page

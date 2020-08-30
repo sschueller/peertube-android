@@ -73,4 +73,4 @@ Whether you have ideas, translations, design changes, code cleaning, or real hea
 
 <noscript><a href="https://liberapay.com/sschueller/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
 
-Bitcoin: 1LoTXo728HzYTtyfbkaf5ewSRvu8ABTDPm 
+Bitcoin: 1LoTXo728HzYTtyfbkaf5ewSRvu8ABTDPm

@@ -1,1 +1,1 @@
-Thorium is an unofficial PeerTube Player
+Unofficial PeerTube player

@@ -451,15 +451,21 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void enterPipMode() {
-        Rational rational = new Rational(239, 100);
-        Log.v(TAG, rational.toString());
-        PictureInPictureParams mParams =
-                new PictureInPictureParams.Builder()
-                        .setAspectRatio(rational)
-//                        .setSourceRectHint(new Rect(0,500,400,600))
-                        .build();
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        final VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById( R.id.video_player_fragment );
 
-        enterPictureInPictureMode(mParams);
+        if ( videoPlayerFragment.getVideoAspectRatio() == 0 ) {
+            Log.i( TAG, "impossible to switch to pip" );
+        } else {
+            Rational rational = new Rational( (int) ( videoPlayerFragment.getVideoAspectRatio() * 100 ), 100 );
+            PictureInPictureParams mParams =
+                    new PictureInPictureParams.Builder()
+                            .setAspectRatio( rational )
+//                          .setSourceRectHint(new Rect(0,500,400,600))
+                            .build();
+
+            enterPictureInPictureMode( mParams );
+        }
     }
 
     @Override

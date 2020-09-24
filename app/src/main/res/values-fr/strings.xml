@@ -109,6 +109,7 @@
     <string name="account_about_description">Description :</string>
     <string name="account_about_joined">Inscrit·e le :</string>
     <string name="api_error">Quelque chose s’est mal passé, veuillez essayer plus tard !</string>
+    <string name="network_error">Problème réseau, veuillez vérifier votre connection</string>
     <string name="action_bar_title_server_selection">Sélectionnez un serveur</string>
     <string name="ab">abkhaze</string>
     <string name="aa">afar</string>

@@ -59,6 +59,7 @@ import com.mikepenz.iconics.Iconics;
 import net.schueller.peertube.R;
 
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.model.File;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
@@ -196,7 +197,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             @Override
             public void onFailure(@NonNull Call<Video> call, @NonNull Throwable t) {
                 Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(context, "Something went wrong: " + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                ErrorHelper.showToastFromCommunicationError( getActivity(), t );
             }
         });
     }

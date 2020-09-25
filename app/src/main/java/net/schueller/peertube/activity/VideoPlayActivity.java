@@ -295,7 +295,11 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         videoPlayerFragment.setIsFullscreen(isLandscape);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if ( isLandscape ) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
     }
 
     @Override

@@ -39,6 +39,7 @@ import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.intents.Intents;
 import net.schueller.peertube.model.Account;
@@ -122,6 +123,7 @@ public class VideoMetaDataFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<Rating> call, Throwable t) {
+                    ErrorHelper.showToastFromCommunicationError( getActivity(), t );
                     // Do nothing.
                 }
             });

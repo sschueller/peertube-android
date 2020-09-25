@@ -35,6 +35,7 @@ import android.widget.Toast;
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.ServerSearchAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.model.ServerList;
 import net.schueller.peertube.network.GetServerListDataService;
 import net.schueller.peertube.network.RetrofitInstance;
@@ -171,7 +172,7 @@ public class SearchServerActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<ServerList> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
-                Toast.makeText(SearchServerActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( SearchServerActivity.this, t );
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }

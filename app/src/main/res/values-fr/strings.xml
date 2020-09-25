@@ -86,6 +86,7 @@
     <string name="server_selection_set_server">Serveur réglé sur : %s</string>
     <string name="server_selection_select_a_server">Sélectionnez un serveur de la liste ci-dessous ou entrez-le directement.</string>
     <string name="server_selection_peertube_server_url">URL du serveur PeerTube</string>
+    <string name="server_selection_filter_hint">Filtrer la liste</string>
     <string name="title_activity_account">Compte</string>
     <string name="menu_video_more_report">Signaler</string>
     <string name="menu_video_more_blacklist">Liste noire</string>

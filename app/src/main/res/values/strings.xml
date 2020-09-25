@@ -292,6 +292,7 @@
     <string name="server_selection_set_server">Server set to: %s</string>
     <string name="server_selection_select_a_server">Select a server from the list below or enter it directly.</string>
     <string name="server_selection_peertube_server_url">PeerTube Server URL</string>
+    <string name="server_selection_filter_hint">Filter list</string>
     <string name="title_activity_account">Account</string>
     <string name="menu_video_more_report">Report</string>
     <string name="menu_video_more_blacklist">Blacklist</string>

@@ -194,6 +194,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
+        android:autoLink="web"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
 
     <LinearLayout

@@ -86,6 +86,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
     private LinearLayout torrentStatus;
+    private float aspectRatio;
 
     private static final String TAG = "VideoPlayerFragment";
     private GestureDetector mDetector;
@@ -110,6 +111,14 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             Log.d(TAG, "onServiceDisconnected");
             simpleExoPlayerView.setPlayer(null);
             mBound = false;
+        }
+    };
+    private AspectRatioFrameLayout.AspectRatioListener aspectRatioListerner = new AspectRatioFrameLayout.AspectRatioListener()
+    {
+        @Override
+        public void onAspectRatioUpdated( float targetAspectRatio, float naturalAspectRatio, boolean aspectRatioMismatch )
+        {
+            aspectRatio = targetAspectRatio;
         }
     };
 
@@ -143,6 +152,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         mDetector = new GestureDetector(context, new MyGestureListener());
         simpleExoPlayerView.setOnTouchListener(touchListener);
+
+        simpleExoPlayerView.setAspectRatioListener( aspectRatioListerner );
 
         torrentStatus = activity.findViewById(R.id.exo_torrent_status);
 
@@ -277,6 +288,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             mService.player.setPlayWhenReady(true);
         }
     }
+
+    public float getVideoAspectRatio() { return aspectRatio; }
 
     public boolean isPaused() {
         return !mService.player.getPlayWhenReady();

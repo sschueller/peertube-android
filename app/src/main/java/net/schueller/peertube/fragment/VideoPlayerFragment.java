@@ -243,17 +243,22 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
 
             //get video qualities
-            String urlToPlay = video.getFiles().get(0).getFileUrl();
-            for (File file : video.getFiles()) {
-                // Set quality if it matches
-                if (file.getResolution().getId().equals(videoQuality)) {
-                    urlToPlay = file.getFileUrl();
+            /// #
+            if (video.getFiles().size() > 0) {
+                String urlToPlay = video.getFiles().get( 0 ).getFileUrl();
+                for ( File file : video.getFiles() ) {
+                    // Set quality if it matches
+                    if ( file.getResolution().getId().equals( videoQuality ) ) {
+                        urlToPlay = file.getFileUrl();
+                    }
                 }
+                mService.setCurrentStreamUrl( urlToPlay );
+                torrentStatus.setVisibility(View.GONE);
+                startPlayer();
+            } else {
+                stopVideo();
+                Toast.makeText(context, R.string.api_error, Toast.LENGTH_LONG).show();
             }
-            mService.setCurrentStreamUrl(urlToPlay);
-
-            torrentStatus.setVisibility(View.GONE);
-            startPlayer();
         }
         Log.v(TAG, "end of load Video");
 

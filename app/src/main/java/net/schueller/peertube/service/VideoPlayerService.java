@@ -113,8 +113,7 @@ public class VideoPlayerService extends Service {
                 if (playbackState
                         == ACTION_PLAY) { // this means that play is available, hence the audio is paused or stopped
                     Log.v(TAG, "ACTION_PAUSE: " + playbackState);
-                    unregisterReceiver(myNoisyAudioStreamReceiver);
-                    myNoisyAudioStreamReceiver = null;
+                    safeUnregisterReceiver();
                 }
             }
         });
@@ -137,19 +136,23 @@ public class VideoPlayerService extends Service {
         if (playerNotificationManager != null) {
             playerNotificationManager.setPlayer(null);
         }
-        //Was seeing an error when exiting the program about about not unregistering the receiver.
-        try {
-            if (null != myNoisyAudioStreamReceiver) {
-                this.unregisterReceiver(myNoisyAudioStreamReceiver);
-            }
-        } catch (Exception e) {
-            Log.e("VideoPlayerService", "attempted to unregister a nonregistered service");
-        }
+        //Was seeing an error when exiting the program about not unregistering the receiver.
+        safeUnregisterReceiver();
+
         if (player != null) {
             player.release();
             player = null;
         }
         super.onDestroy();
+    }
+
+    private void safeUnregisterReceiver()
+    {
+        try {
+            unregisterReceiver(myNoisyAudioStreamReceiver);
+        } catch (Exception e) {
+            Log.e("VideoPlayerService", "attempted to unregister a nonregistered service");
+        }
     }
 
     @Nullable

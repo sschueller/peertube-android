@@ -295,7 +295,11 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         videoPlayerFragment.setIsFullscreen(isLandscape);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if ( isLandscape ) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
     }
 
     @Override
@@ -351,11 +355,17 @@ public class VideoPlayActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+        VideoMetaDataFragment videoMetaDataFragment = (VideoMetaDataFragment) fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
 
         String backgroundBehavior = sharedPref.getString(getString(R.string.pref_background_behavior_key), getString(R.string.pref_background_stop_key));
 
         assert videoPlayerFragment != null;
         assert backgroundBehavior != null;
+        if ( videoMetaDataFragment.isLeaveAppExpected() )
+        {
+            super.onUserLeaveHint();
+            return;
+        }
 
         if (backgroundBehavior.equals(getString(R.string.pref_background_stop_key))) {
             Log.v(TAG, "stop the video");
@@ -451,15 +461,21 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void enterPipMode() {
-        Rational rational = new Rational(239, 100);
-        Log.v(TAG, rational.toString());
-        PictureInPictureParams mParams =
-                new PictureInPictureParams.Builder()
-                        .setAspectRatio(rational)
-//                        .setSourceRectHint(new Rect(0,500,400,600))
-                        .build();
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        final VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById( R.id.video_player_fragment );
 
-        enterPictureInPictureMode(mParams);
+        if ( videoPlayerFragment.getVideoAspectRatio() == 0 ) {
+            Log.i( TAG, "impossible to switch to pip" );
+        } else {
+            Rational rational = new Rational( (int) ( videoPlayerFragment.getVideoAspectRatio() * 100 ), 100 );
+            PictureInPictureParams mParams =
+                    new PictureInPictureParams.Builder()
+                            .setAspectRatio( rational )
+//                          .setSourceRectHint(new Rect(0,500,400,600))
+                            .build();
+
+            enterPictureInPictureMode( mParams );
+        }
     }
 
     @Override

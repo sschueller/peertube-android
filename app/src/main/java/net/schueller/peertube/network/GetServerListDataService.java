@@ -27,7 +27,8 @@ public interface GetServerListDataService {
     @GET("instances/")
     Call<ServerList> getInstancesData(
             @Query("start") int start,
-            @Query("count") int count
+            @Query("count") int count,
+            @Query("search") String text
     );
 
 }

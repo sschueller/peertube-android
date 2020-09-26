@@ -59,6 +59,8 @@ import com.mikepenz.iconics.IconicsDrawable;
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
+import net.schueller.peertube.model.Video;
 import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetUserService;
 import net.schueller.peertube.network.GetVideoDataService;
@@ -348,7 +350,10 @@ public class VideoListActivity extends CommonActivity {
                 }
 
                 if (response.body() != null) {
-                    videoAdapter.setData(response.body().getVideoArrayList());
+                    ArrayList<Video> videoList = response.body().getVideoArrayList();
+                    if (videoList != null) {
+                        videoAdapter.setData(response.body().getVideoArrayList());
+                    }
                 }
 
                 // no results show no results message
@@ -368,7 +373,7 @@ public class VideoListActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<VideoList> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
-                Toast.makeText(VideoListActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( VideoListActivity.this, t );
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }

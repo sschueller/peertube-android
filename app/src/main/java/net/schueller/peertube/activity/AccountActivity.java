@@ -37,6 +37,7 @@ import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.ChannelAdapter;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Account;
 import net.schueller.peertube.model.Avatar;
@@ -206,7 +207,7 @@ public class AccountActivity extends CommonActivity {
                     }
 
                 } else {
-                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                    ErrorHelper.showToastFromCommunicationError( AccountActivity.this, null );
                 }
 
 
@@ -215,7 +216,7 @@ public class AccountActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<Account> call, @NonNull Throwable t) {
                 Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( AccountActivity.this, t );
             }
         });
 
@@ -247,8 +248,7 @@ public class AccountActivity extends CommonActivity {
                     }
 
                 } else{
-                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
-
+                    ErrorHelper.showToastFromCommunicationError( AccountActivity.this, null );
                 }
 
                 isLoadingVideos = false;
@@ -258,7 +258,7 @@ public class AccountActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<VideoList> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
-                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( AccountActivity.this, t );
                 isLoadingVideos = false;
                 swipeRefreshLayoutVideos.setRefreshing(false);
             }
@@ -281,7 +281,7 @@ public class AccountActivity extends CommonActivity {
 
 
                 } else {
-                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                    ErrorHelper.showToastFromCommunicationError( AccountActivity.this, null );
                 }
 
 
@@ -290,7 +290,7 @@ public class AccountActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<ChannelList> call, @NonNull Throwable t) {
                 Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( AccountActivity.this, t );
             }
         });
     }

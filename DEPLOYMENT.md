@@ -5,7 +5,7 @@
   3. Pull github develop
   4. Pull weblate develop
   5. Add change logs (fastlane/metadata/android/en-US/changelogs/XXX.txt)
-  6. Push to gitlab
+  6. Push to gitlab and github
   7. Merge request into master and merge
   8. Add Release Tag on master branch
   9. Release to play store

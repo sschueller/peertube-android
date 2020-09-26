@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.model.Avatar;
 import net.schueller.peertube.model.Me;
 import net.schueller.peertube.network.GetUserService;
@@ -162,6 +163,7 @@ public class MeActivity extends CommonActivity {
 
             @Override
             public void onFailure(@NonNull Call<Me> call, @NonNull Throwable t) {
+                ErrorHelper.showToastFromCommunicationError( MeActivity.this, t );
                 account.setVisibility(View.GONE);
             }
         });

@@ -1,3 +1,15 @@
+### Version 1.0.49 Tag: v1.0.49 (2020-09-26)
+ - add support of hypertext redirection in description (@freeboub)
+ - various crash fixes (@freeboub)
+ - avoid going to pip when leaving the app due to share button (@freeboub)
+ - Add ability to filter server list (@freeboub)
+ - Refactor Toast error management to split network error (@freeboub)
+ - keep video aspect ratio for pip (@freeboub)
+ - navigation bar was not restored when leaving landscape mode (@freeboub)
+
+### Version 1.0.48 Tag: v1.0.48 (2020-09-26)
+ - f-droid release to fix auto deployment
+
 ### Version 1.0.47 Tag: v1.0.47 (2020-07-10)
  * Authentication refresh
 

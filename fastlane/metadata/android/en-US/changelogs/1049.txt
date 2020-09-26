@@ -1,0 +1,7 @@
+ - add support of hypertext redirection in description (@freeboub)
+ - various crash fixes (@freeboub)
+ - avoid going to pip when leaving the app due to share button (@freeboub)
+ - Add ability to filter server list (@freeboub)
+ - Refactor Toast error management to split network error (@freeboub)
+ - keep video aspect ratio for pip (@freeboub)
+ - navigation bar was not restored when leaving landscape mode (@freeboub)

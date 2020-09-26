@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".activity.SearchServerActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_server_selection"
         android:layout_width="match_parent"
@@ -29,11 +34,19 @@
         android:text="@string/no_data_available"
         android:visibility="gone" />
 
+
+    <EditText
+        android:id="@+id/search_server_input_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/server_selection_filter_hint"
+        android:singleLine="true"
+        android:imeOptions="actionGo"/>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/serversSwipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appbar_server_selection"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -45,5 +58,5 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

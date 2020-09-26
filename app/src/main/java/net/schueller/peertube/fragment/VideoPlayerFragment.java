@@ -59,6 +59,7 @@ import com.mikepenz.iconics.Iconics;
 import net.schueller.peertube.R;
 
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.model.File;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
@@ -86,6 +87,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
     private LinearLayout torrentStatus;
+    private float aspectRatio;
 
     private static final String TAG = "VideoPlayerFragment";
     private GestureDetector mDetector;
@@ -110,6 +112,14 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             Log.d(TAG, "onServiceDisconnected");
             simpleExoPlayerView.setPlayer(null);
             mBound = false;
+        }
+    };
+    private AspectRatioFrameLayout.AspectRatioListener aspectRatioListerner = new AspectRatioFrameLayout.AspectRatioListener()
+    {
+        @Override
+        public void onAspectRatioUpdated( float targetAspectRatio, float naturalAspectRatio, boolean aspectRatioMismatch )
+        {
+            aspectRatio = targetAspectRatio;
         }
     };
 
@@ -143,6 +153,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         mDetector = new GestureDetector(context, new MyGestureListener());
         simpleExoPlayerView.setOnTouchListener(touchListener);
+
+        simpleExoPlayerView.setAspectRatioListener( aspectRatioListerner );
 
         torrentStatus = activity.findViewById(R.id.exo_torrent_status);
 
@@ -196,7 +208,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             @Override
             public void onFailure(@NonNull Call<Video> call, @NonNull Throwable t) {
                 Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(context, "Something went wrong: " + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                ErrorHelper.showToastFromCommunicationError( getActivity(), t );
             }
         });
     }
@@ -231,17 +243,22 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
 
             //get video qualities
-            String urlToPlay = video.getFiles().get(0).getFileUrl();
-            for (File file : video.getFiles()) {
-                // Set quality if it matches
-                if (file.getResolution().getId().equals(videoQuality)) {
-                    urlToPlay = file.getFileUrl();
+            /// #
+            if (video.getFiles().size() > 0) {
+                String urlToPlay = video.getFiles().get( 0 ).getFileUrl();
+                for ( File file : video.getFiles() ) {
+                    // Set quality if it matches
+                    if ( file.getResolution().getId().equals( videoQuality ) ) {
+                        urlToPlay = file.getFileUrl();
+                    }
                 }
+                mService.setCurrentStreamUrl( urlToPlay );
+                torrentStatus.setVisibility(View.GONE);
+                startPlayer();
+            } else {
+                stopVideo();
+                Toast.makeText(context, R.string.api_error, Toast.LENGTH_LONG).show();
             }
-            mService.setCurrentStreamUrl(urlToPlay);
-
-            torrentStatus.setVisibility(View.GONE);
-            startPlayer();
         }
         Log.v(TAG, "end of load Video");
 
@@ -277,6 +294,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             mService.player.setPlayWhenReady(true);
         }
     }
+
+    public float getVideoAspectRatio() { return aspectRatio; }
 
     public boolean isPaused() {
         return !mService.player.getPlayWhenReady();

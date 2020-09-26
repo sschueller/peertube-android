@@ -41,17 +41,17 @@ platform :android do
 
   desc "Promote Internal to Alpha"
   lane :promote_internal_to_alpha do
-    upload_to_play_store(track: 'internal', track_promote_to: 'alpha')
+    upload_to_play_store(track: 'internal', track_promote_to: 'alpha', skip_upload_changelogs: true)
   end
 
   desc "Promote Alpha to Beta"
   lane :promote_alpha_to_beta do
-    upload_to_play_store(track: 'alpha', track_promote_to: 'beta')
+    upload_to_play_store(track: 'alpha', track_promote_to: 'beta', skip_upload_changelogs: true)
   end
 
   desc "Promote Beta to Production"
   lane :promote_beta_to_production do
-    upload_to_play_store(track: 'beta', track_promote_to: 'production')
+    upload_to_play_store(track: 'beta', track_promote_to: 'production', skip_upload_changelogs: true)
   end
 
 end

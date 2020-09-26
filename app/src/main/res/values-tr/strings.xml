@@ -360,4 +360,6 @@
     <string name="hello_blank_fragment">Merhaba boş parça</string>
     <string name="authentication_token_refresh_success">Belirteç yenilendi</string>
     <string name="authentication_token_refresh_failed">Belirteç yenilenemedi</string>
+    <string name="network_error">Ağ erişim hatası, lütfen bağlantınızı gözden geçirin</string>
+    <string name="server_selection_filter_hint">Listeyi filtrele</string>
 </resources>

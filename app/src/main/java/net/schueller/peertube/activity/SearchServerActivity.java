@@ -28,7 +28,10 @@ import retrofit2.Response;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,9 +50,13 @@ public class SearchServerActivity extends CommonActivity {
 
     private ServerSearchAdapter serverAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private EditText searchTextView;
+
+    private final static String TAG = "SearchServerActivity";
 
     private int currentStart = 0;
-    private int count = 12;
+    private final int count = 12;
+    private String lastSearchtext = "";
 
     private TextView emptyView;
     private RecyclerView recyclerView;
@@ -78,11 +85,20 @@ public class SearchServerActivity extends CommonActivity {
 
     }
 
+    TextView.OnEditorActionListener onSearchTextValidated = ( textView, i, keyEvent ) -> {
+        if ( keyEvent != null && keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER
+                || i == EditorInfo.IME_ACTION_GO ) {
+            loadServers(currentStart, count, textView.getText().toString());
+        }
+        return false;
+    };
 
     private void loadList() {
 
         recyclerView = findViewById(R.id.serverRecyclerView);
         swipeRefreshLayout = findViewById(R.id.serversSwipeRefreshLayout);
+        searchTextView = findViewById(R.id.search_server_input_field );
+        searchTextView.setOnEditorActionListener( onSearchTextValidated );
 
         emptyView = findViewById(R.id.empty_server_selection_view);
 
@@ -92,7 +108,7 @@ public class SearchServerActivity extends CommonActivity {
         serverAdapter = new ServerSearchAdapter(new ArrayList<>(), this);
         recyclerView.setAdapter(serverAdapter);
 
-        loadServers(currentStart, count);
+        loadServers(currentStart, count, searchTextView.getText().toString() );
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -108,7 +124,7 @@ public class SearchServerActivity extends CommonActivity {
                     if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
                         if (!isLoading) {
                             currentStart = currentStart + count;
-                            loadServers(currentStart, count);
+                            loadServers(currentStart, count, searchTextView.getText().toString());
                         }
                     }
                 }
@@ -120,26 +136,29 @@ public class SearchServerActivity extends CommonActivity {
             // Refresh items
             if (!isLoading) {
                 currentStart = 0;
-                loadServers(currentStart, count);
+                loadServers(currentStart, count, searchTextView.getText().toString());
             }
         });
 
 
     }
 
-
-
-    private void loadServers(int start, int count) {
+    private void loadServers(int start, int count, String searchtext) {
         isLoading = true;
 
         GetServerListDataService service = RetrofitInstance.getRetrofitInstance(
                 APIUrlHelper.getServerIndexUrl(SearchServerActivity.this)
         ).create(GetServerListDataService.class);
 
+        if ( !searchtext.equals( lastSearchtext ) )
+        {
+            currentStart = 0;
+            lastSearchtext = searchtext;
+        }
 
         Call<ServerList> call;
 
-        call = service.getInstancesData(start, count);
+        call = service.getInstancesData(start, count, searchtext);
 
         Log.d("URL Called", call.request().url() + "");
 

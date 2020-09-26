@@ -73,12 +73,26 @@ public class VideoMetaDataFragment extends Fragment {
     private Rating videoRating;
     private ColorStateList defaultTextColor;
 
+    private boolean leaveAppExpected = false;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_video_meta, container, false);
+    }
+
+    @Override
+    public void onPause()
+    {
+        leaveAppExpected = false;
+        super.onPause();
+    }
+
+    public boolean isLeaveAppExpected()
+    {
+        return leaveAppExpected;
     }
 
     public void updateVideoMeta(Video video, VideoPlayerService mService) {
@@ -133,7 +147,11 @@ public class VideoMetaDataFragment extends Fragment {
         Button videoShareButton = activity.findViewById(R.id.video_share);
         videoShareButton.setText(R.string.video_share_icon);
         new Iconics.IconicsBuilder().ctx(context).on(videoShareButton).build();
-        videoShareButton.setOnClickListener(v -> Intents.Share(context, video));
+        videoShareButton.setOnClickListener(v ->
+                                            {
+                                                leaveAppExpected = true;
+                                                Intents.Share( context, video );
+                                            } );
 
         // Download
         Button videoDownloadButton = activity.findViewById(R.id.video_download);
@@ -142,6 +160,7 @@ public class VideoMetaDataFragment extends Fragment {
         videoDownloadButton.setOnClickListener(v -> {
             // get permission to store file
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                leaveAppExpected = true;
                 ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
                 if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     Intents.Download(context, video);

@@ -355,11 +355,17 @@ public class VideoPlayActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         FragmentManager fragmentManager = getSupportFragmentManager();
         VideoPlayerFragment videoPlayerFragment = (VideoPlayerFragment) fragmentManager.findFragmentById(R.id.video_player_fragment);
+        VideoMetaDataFragment videoMetaDataFragment = (VideoMetaDataFragment) fragmentManager.findFragmentById(R.id.video_meta_data_fragment);
 
         String backgroundBehavior = sharedPref.getString(getString(R.string.pref_background_behavior_key), getString(R.string.pref_background_stop_key));
 
         assert videoPlayerFragment != null;
         assert backgroundBehavior != null;
+        if ( videoMetaDataFragment.isLeaveAppExpected() )
+        {
+            super.onUserLeaveHint();
+            return;
+        }
 
         if (backgroundBehavior.equals(getString(R.string.pref_background_stop_key))) {
             Log.v(TAG, "stop the video");

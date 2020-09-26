@@ -1,0 +1,1 @@
+Thorium resmi olmayan bir PeerTube oynatıcısıdır

@@ -351,4 +351,6 @@
     <string name="pref_language_app">Язык приложения</string>
     <string name="pref_description_back_pause">Приостановите фоновое воспроизведение при нажатии назад во время воспроизведения видео.</string>
     <string name="pref_title_back_pause">Пауза на кнопку Назад</string>
+    <string name="network_error">Ошибка доступа к сети, проверьте подключение</string>
+    <string name="server_selection_filter_hint">Список фильтров</string>
 </resources>

@@ -343,4 +343,10 @@
     <string name="pref_language_app">لغة التطبيق</string>
     <string name="pref_description_back_pause">أوقف التشغيل في الخلفية مؤقتًا عند الضغط على رجوع أثناء تشغيل الفيديو.</string>
     <string name="pref_title_back_pause">ايقاف عند الضغط على زر العودة</string>
+    <string name="pref_title_buildtime">تاريخ ووقت البناء</string>
+    <string name="network_error">خطأ في الوصول للشبكة، تحقق من اتصالك</string>
+    <string name="server_selection_filter_hint">فلترة القائمة</string>
+    <string name="pref_background_behavior">إعدادات التشغيل في الخلفية</string>
+    <string name="pref_background_stop">إيقاف تشغيل الكل</string>
+    <string name="pref_background_audio">تابع تشغيل الصوت في الخلفية</string>
 </resources>

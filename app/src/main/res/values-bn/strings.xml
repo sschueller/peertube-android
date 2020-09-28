@@ -351,4 +351,6 @@
     <string name="menu_video_options_quality_automated">স্বয়ংক্রিয়</string>
     <string name="authentication_token_refresh_success">টোকেন রিফ্রেশ হয়েছে</string>
     <string name="authentication_token_refresh_failed">টোকেন রিফ্রেশ করা যায় নি</string>
+    <string name="network_error">নেটওয়ার্ক ত্রটি, দয়া করে সংযোগ দেখো</string>
+    <string name="server_selection_filter_hint">ফিল্টার তালিকা</string>
 </resources>

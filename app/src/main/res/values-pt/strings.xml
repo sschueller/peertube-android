@@ -345,4 +345,5 @@
     <string name="el">Grego moderno (1453-)</string>
     <string name="server_selection_select_a_server">Selecione um servidor da lista abaixo ou digite-o diretamente.</string>
     <string name="lg">Ganda</string>
+    <string name="network_error">Erro de acesso à rede, por favor verifique a sua conectividade</string>
 </resources>

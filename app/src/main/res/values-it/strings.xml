@@ -345,4 +345,6 @@
     <string name="pref_background_audio">Continua come flusso sonoro in sottofondo</string>
     <string name="pref_description_back_pause">Metti la riproduzione di sottofondo in pausa quando premi il tasto indietro durante la lettura del video.</string>
     <string name="pref_title_back_pause">Pausa sul tasto backspace</string>
+    <string name="network_error">Errore di accesso alla rete, controlla la tua connettività</string>
+    <string name="server_selection_filter_hint">Elenco dei filtri</string>
 </resources>

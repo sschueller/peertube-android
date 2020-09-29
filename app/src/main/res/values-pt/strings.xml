@@ -53,7 +53,7 @@
     <string name="uk">Ucraniano</string>
     <string name="fo">Faroese</string>
     <string name="video_row_video_thumbnail">Miniatura do vídeo</string>
-    <string name="settings_permissions_error_float">A permissão Picture-in-Picture está desativada para este aplicação nas Configurações do Android</string>
+    <string name="settings_permissions_error_float">A permissão Picture-in-Picture está desativada para esta app nas Configurações do Android</string>
     <string name="pl">Polonês</string>
     <string name="menu_video_options_quality" formatted="true">Qualidade (%1$s)</string>
     <string name="ba">Bashkir</string>
@@ -61,7 +61,7 @@
     <string name="my">Burmese</string>
     <string name="kj">Kuanyama</string>
     <string name="ki">Kikuyu</string>
-    <string name="pref_description_dark_mode">Reinicie o aplicação para que o Tema Escuro tenha efeito.</string>
+    <string name="pref_description_dark_mode">Reinicie a app para que o Tema Escuro tenha efeito.</string>
     <string name="tlh">Klingon</string>
     <string name="id">Indonésio</string>
     <string name="jsl">Língua japonesa de sinais</string>
@@ -159,7 +159,7 @@
     <string name="avk">Kotava</string>
     <string name="bottom_nav_title_discover">Descobrir</string>
     <string name="account_bottom_menu_channels">Canais</string>
-    <string name="pref_description_app_theme">Reinicie a aplicação para que o tema tenha efeito.</string>
+    <string name="pref_description_app_theme">Reinicie a app para que o tema tenha efeito.</string>
     <string name="sr">Sérvio</string>
     <string name="ts">Tsonga</string>
     <string name="pref_background_behavior">Configuração da reprodução no fundo</string>
@@ -180,7 +180,7 @@
     <string name="pref_background_audio">Continuar como um Stream de áudio no fundo</string>
     <string name="descr_overflow_button">Mais</string>
     <string name="menu_video_more_blacklist">Lista negra</string>
-    <string name="pref_description_language_app">Selecione o idioma para a interface da aplicação. Reinicie a aplicação para que a alteração tenha efeito.</string>
+    <string name="pref_description_language_app">Selecione o idioma para a interface da app. Reinicie a app para que a alteração tenha efeito.</string>
     <string name="pref_description_show_nsfw">Mostrar conteúdo NSFW</string>
     <string name="da">Danish</string>
     <string name="lightgreen">Verde claro</string>

@@ -169,4 +169,21 @@
     <string name="hello_blank_fragment">Hei blanke fragment</string>
     <string name="network_error">Tilknytningsfeil, sjekk tilkoblingen din</string>
     <string name="server_selection_filter_hint">Filterliste</string>
+    <string name="bo">tibetansk</string>
+    <string name="th">thai</string>
+    <string name="te">telugu</string>
+    <string name="ta">tamil</string>
+    <string name="su">sundanesisk</string>
+    <string name="si">sinhala</string>
+    <string name="mn">mongolsk</string>
+    <string name="ml">malayalam</string>
+    <string name="lo">laotisk</string>
+    <string name="kn">kannada</string>
+    <string name="km">khmer</string>
+    <string name="jv">javanesisk</string>
+    <string name="he">hebraisk</string>
+    <string name="gu">gujarati</string>
+    <string name="bn">bengalsk</string>
+    <string name="hy">armensk</string>
+    <string name="server_selection_nsfw_instance">Arbeidsutrygg insans</string>
 </resources>

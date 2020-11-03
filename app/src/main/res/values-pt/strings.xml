@@ -6,7 +6,7 @@
     <string name="nb">Bokmål norueguês</string>
     <string name="ve">Venda</string>
     <string name="title_activity_search">Busca</string>
-    <string name="prompt_email">Email / Nome de utilizador</string>
+    <string name="prompt_email">E-mail / Nome de utilizador</string>
     <string name="search_hint">Busca no PeerTube</string>
     <string name="be">Belarusian</string>
     <string name="error_field_required">Este campo é obrigatório</string>
@@ -166,7 +166,7 @@
     <string name="ht">Haitiano</string>
     <string name="server_book_valid_url_is_required">URL válido é requerido</string>
     <string name="account_bottom_menu_about">Sobre</string>
-    <string name="error_invalid_email">Este e-mail é inválido</string>
+    <string name="error_invalid_email">Este endereço de correio eletrónico é inválido</string>
     <string name="th">Tailandês</string>
     <string name="rn">Rundi</string>
     <string name="cs">Czech</string>

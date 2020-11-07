@@ -349,4 +349,7 @@
     <string name="pref_background_behavior">إعدادات التشغيل في الخلفية</string>
     <string name="pref_background_stop">إيقاف تشغيل الكل</string>
     <string name="pref_background_audio">تابع تشغيل الصوت في الخلفية</string>
+    <string name="authentication_token_refresh_success">تم تحديث الرمز</string>
+    <string name="authentication_token_refresh_failed">تعذر تحديث الرمز المميز</string>
+    <string name="server_book_no_servers_found">كتب الخادم فارغة</string>
 </resources>

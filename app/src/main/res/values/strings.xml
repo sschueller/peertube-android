@@ -67,6 +67,8 @@
     <string name="pref_background_behavior_summary">How a playing video responds when going to background</string>
     <string name="clear_search_history">Clear Search History</string>
     <string name="clear_search_history_prompt">Do you want to permanently delete the search history?</string>
+    <string name="pref_description_accept_insecure">Ignore insecure connections. Use this only if you know the server you are connecting to. Requires App Restart.</string>
+    <string name="pref_title_accept_insecure">Disable SSL Certificate Check</string>
     <!-- languages -->
     <string name="ab">Abkhazian</string>
     <string name="aa">Afar</string>
@@ -353,4 +355,9 @@
     <string name="pref_title_buildtime">Build Time</string>
     <string name="authentication_token_refresh_failed">Could not refresh token</string>
     <string name="authentication_token_refresh_success">Token refreshed</string>
+    <string name="settings_activity_advanced_category_title">Advanced</string>
+    <string name="pref_insecure_confirm_title">Warning!</string>
+    <string name="pref_insecure_confirm_no">No</string>
+    <string name="pref_insecure_confirm_yes">Yes</string>
+    <string name="pref_insecure_confirm_message">You are about the disable all SSL Certification validation in Thorium. Disabling this can be very dangerous if the peertube server is not under your control, because a man-in-the-middle attack could direct traffic to another server without your knowledge. An attacker could record passwords and other personal data.</string>
 </resources>

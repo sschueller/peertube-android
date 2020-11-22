@@ -325,13 +325,13 @@ public class VideoListActivity extends CommonActivity {
         Set<String> languages = sharedPref.getStringSet(getString(R.string.pref_video_language_key), null);
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetVideoDataService.class);
 
         Call<VideoList> call;
         if (!searchQuery.equals("")) {
             call = service.searchVideosData(start, count, sort, nsfw, searchQuery, filter, languages);
         } else if (subscriptions) {
-            GetUserService userService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
+            GetUserService userService = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetUserService.class);
             call = userService.getVideosSubscripions(start, count, sort);
         } else {
             call = service.getVideosData(start, count, sort, nsfw, filter, languages);

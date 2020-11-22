@@ -43,6 +43,11 @@ public class APIUrlHelper{
         return APIUrlHelper.getUrl(context) + "/api/v1/";
     }
 
+    public static Boolean useInsecureConnection(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPref.getBoolean(context.getString(R.string.pref_accept_insecure), false);
+    }
+
     public static String getShareUrl(Context context, String videoUuid) {
         return APIUrlHelper.getUrl(context) + "/videos/watch/" + videoUuid;
     }

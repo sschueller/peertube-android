@@ -184,7 +184,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         // get video details from api
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(GetVideoDataService.class);
 
         Call<Video> call = service.getVideoData(mVideoUuid);
 

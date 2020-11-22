@@ -77,6 +77,17 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/settings_activity_advanced_category_title" app:iconSpaceReserved="false">
+
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="@string/pref_accept_insecure"
+            app:summary="@string/pref_description_accept_insecure"
+            app:title="@string/pref_title_accept_insecure"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/settings_activity_about_category_title" app:iconSpaceReserved="false">
 
         <Preference

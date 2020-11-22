@@ -3,7 +3,7 @@
     <string name="title_activity_settings">Ajustes</string>
     <string name="title_activity_login">Iniciar sesión</string>
     <string name="prompt_server">Servidor</string>
-    <string name="prompt_email">Correo / Usuario</string>
+    <string name="prompt_email">Correo / Nombre de usuario</string>
     <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Iniciar sesión</string>
     <string name="action_sign_in_short">Iniciar sesión</string>
@@ -113,4 +113,5 @@
 \nLos permisos de esta fuerte licencia copyleft están condicionados a hacer disponible el código fuente completo de los trabajos licenciados y las modificaciones, que incluyen trabajos más grandes usando un trabajo licenciado, bajo la misma licencia. Los derechos de autor y los avisos de licencia deben ser preservados. Los colaboradores proporcionan una concesión expresa de los derechos de patente. Cuando se utiliza una versión modificada para proporcionar un servicio a través de una red, el código fuente completo de la versión modificada debe estar disponible.</string>
     <string name="video_speed_125">1,25×</string>
     <string name="video_speed_075">0,75×</string>
+    <string name="pref_language_app">Idioma de la aplicación</string>
 </resources>

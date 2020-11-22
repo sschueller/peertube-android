@@ -8,7 +8,7 @@
     <string name="prompt_password">Mot de passe</string>
     <string name="action_sign_in">Se connecter</string>
     <string name="action_sign_in_short">Se connecter</string>
-    <string name="error_invalid_email">Cette adresse de courriel n\'est pas valide</string>
+    <string name="error_invalid_email">Cette adresse courriel est invalide</string>
     <string name="error_invalid_password">Ce mot de passe est trop court</string>
     <string name="error_incorrect_password">Ce mot de passe est incorrect</string>
     <string name="error_field_required">Ce champ est requis</string>
@@ -110,7 +110,7 @@
     <string name="account_about_description">Description :</string>
     <string name="account_about_joined">Inscrit·e le :</string>
     <string name="api_error">Quelque chose s’est mal passé, veuillez essayer plus tard !</string>
-    <string name="network_error">Problème réseau, veuillez vérifier votre connection</string>
+    <string name="network_error">Problème réseau, veuillez vérifier votre connexion</string>
     <string name="action_bar_title_server_selection">Sélectionnez un serveur</string>
     <string name="ab">abkhaze</string>
     <string name="aa">afar</string>
@@ -189,7 +189,7 @@
     <string name="ja">japonais</string>
     <string name="jsl">langue des signes japonaise</string>
     <string name="jv">javanais</string>
-    <string name="kl">kalaallisut</string>
+    <string name="kl">groenlandais</string>
     <string name="kn">kannada</string>
     <string name="kr">kanuri</string>
     <string name="ks">cachemiri</string>
@@ -317,8 +317,8 @@
     <string name="server_book_add_pick_server_button">Rechercher</string>
     <string name="server_book_add_server_url">URL du serveur</string>
     <string name="server_book_add_label">Étiquette</string>
-    <string name="me_help_and_feedback_button">Aide et commentaire</string>
-    <string name="me_logout_button">Déconnecté</string>
+    <string name="me_help_and_feedback_button">Aide et remarques</string>
+    <string name="me_logout_button">Se déconnecter</string>
     <string name="server_book_valid_url_is_required">Une URL valide est requise</string>
     <string name="server_book_label_is_required">L\'étiquette du serveur est obligatoire</string>
     <string name="server_book_no_servers_found">Le livre des serveurs est vide</string>

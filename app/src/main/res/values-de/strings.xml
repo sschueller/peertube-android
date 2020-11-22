@@ -20,7 +20,7 @@
     <string name="error_incorrect_password">Dieses Passwort ist falsch</string>
     <string name="action_bar_title_settings">Einstellungen</string>
     <string name="bottom_nav_title_recent">Aktuell</string>
-    <string name="meta_data_views">Aufrufe</string>
+    <string name="meta_data_views">" Aufrufe"</string>
     <string name="video_row_video_thumbnail">Video-Vorschaubild</string>
     <string name="video_row_account_avatar">Konto-Avatar</string>
     <string name="pref_title_show_nsfw">NSFW-Inhalt</string>
@@ -36,7 +36,7 @@
     <string name="invalid_url">Ungültige URL.</string>
     <string name="pref_title_dark_mode">Dunkler Modus</string>
     <string name="pref_title_app_theme">Farbschema</string>
-    <string name="error_field_required">Dieses Feld ist erforderlich</string>
+    <string name="error_field_required">Dieses Feld wird benötigt</string>
     <string name="bottom_nav_title_trending">Trends</string>
     <string name="pref_description_dark_mode">Ein Neustart ist erforderlich, um diese Änderung durchzuführen.</string>
     <string name="pref_description_app_theme">Ein Neustart ist erforderlich, um diese Änderung durchzuführen.</string>
@@ -287,7 +287,7 @@
     <string name="account_about_joined">Mitglied seit:</string>
     <string name="api_error">Etwas ist schiefgelaufen, bitte versuche es später noch einmal!</string>
     <string name="action_bar_title_server_selection">Server auswählen</string>
-    <string name="permission_rationale">Erlaube Kontaktzugriff für E-Mail-Vervollständigung.</string>
+    <string name="permission_rationale">Berechtigung zum Auslesen der Kontakte für die E-Mail-Vervollständigung erteilen.</string>
     <string name="pref_description_language">Eine Videosprache auswählen, statt alle Videos in allen Sprachen anzuzeigen.</string>
     <string name="pref_description_background_play">Falls aktiviert, werden Videos im Hintergrund weiter abgespielt.</string>
     <string name="server_selection_select_a_server">Wählen Sie einen Server aus der Liste oder geben Sie ihn direkt ein.</string>
@@ -297,7 +297,7 @@
 \n<b>GNU Affero General Public License v3.0</b> 
 \n 
 \nBerechtigungen dieser stärksten Copyleft-Lizenz bedingen, sämtlichen Quellcode von lizenzierten Werken und Modifikationen, einschließlich größere Werke, die ein lizenziertes Werk verwenden, unter derselben Lizenz bereitzustellen. Urheberrechts- und Lizenzhinweise müssen erhalten bleiben. Mitarbeitende gewähren eine ausdrückliche Genehmigung der Verwertungsrechte. Wenn eine modifizierte Version verwendet wird, um einen Dienst über ein Netzwerk anzubieten, muss der vollständige Quellcode der modifizierten Version verfügbar gemacht werden.</string>
-    <string name="pref_description_torrent_player">Videowiedergabe über einen Torrentstream. Dies erfordert Speicherberechtigungen. (Alphastadium, nicht stabil!)</string>
+    <string name="pref_description_torrent_player">Videowiedergabe via Torrent-Stream. Dies benötigt Speicherberechtigungen. (Alpha, nicht stabil!)</string>
     <string name="video_speed_125">1,25×</string>
     <string name="video_speed_075">0,75×</string>
     <string name="server_book_add_add_button">Hinzufügen</string>
@@ -327,11 +327,24 @@
     <string name="server_book_del_alert_msg">Sind Sie sicher, dass Sie diesen Server aus ihrem Adressbuch entfernen möchten\?</string>
     <string name="server_book_del_alert_title">Server entfernen</string>
     <string name="title_activity_server_address_book">Adressbuch</string>
-    <string name="settings_permissions_error_float">Die \"Picture in Picture\" Berechtigung wurde für diese App in den Android Einstellungen nicht erteilt</string>
-    <string name="pref_background_behavior">Im Hintergrund abspielen Konfiguration</string>
+    <string name="settings_permissions_error_float">Die Bild-in-Bild-Berechtigung ist für diese Anwendung in den Android-Einstellungen deaktiviert</string>
+    <string name="pref_background_behavior">Konfiguration für Hintergrundwiedergabe</string>
     <string name="pref_background_audio">Im Hintergrund als Audiostream weiterhören</string>
     <string name="title_activity_me">Konto</string>
     <string name="bn_rBD">Bengalisch (Bangladesch)</string>
     <string name="pref_description_back_pause">Unterbrechen der Hintergrundwiedergabe, wenn Sie während der Videowiedergabe zurück drücken.</string>
     <string name="pref_title_back_pause">Pause bei Zurück-Taste</string>
+    <string name="title_activity_settings2">Aktivitätseinstellungen2</string>
+    <string name="network_error">Netzwerkfehler, bitte kontrollieren sie ihre Verbindung</string>
+    <string name="pref_background_behavior_summary">Was geschehen soll, wenn ein abspielendes Video in den Hintergrund verschoben wird</string>
+    <string name="settings_api_error_float">Diese Android Version unterstützt keine Wiedergabe im schwebendem Fenster</string>
+    <string name="pref_background_float">In schwebendem Fenster weiterspielen</string>
+    <string name="pref_title_buildtime">Erstellungszeit</string>
+    <string name="server_selection_nsfw_instance">NSWF-Instanz</string>
+    <string name="server_book_list_has_login">Hat Anmeldungsdaten</string>
+    <string name="server_book_add_label">Bezeichnung</string>
+    <string name="server_book_label_is_required">Serverbezeichnung wird benötigt</string>
+    <string name="server_book_no_servers_found">Das Serververzeichnis ist leer</string>
+    <string name="hello_blank_fragment">Hallo leeres Fragment</string>
+    <string name="server_selection_filter_hint">Liste filtern</string>
 </resources>

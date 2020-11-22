@@ -28,8 +28,8 @@
     <string name="meta_data_views">" Görüntüleme"</string>
     <string name="video_row_video_thumbnail">İzleti Küçük Resmi</string>
     <string name="video_row_account_avatar">Hesap Resmi</string>
-    <string name="pref_title_show_nsfw">İş Yeri İçin Uygun Olmayan (NSFW) İçerik</string>
-    <string name="pref_description_show_nsfw">İş yeri için uygun olmayan içeriği göster</string>
+    <string name="pref_title_show_nsfw">Ahlaksız İçerik</string>
+    <string name="pref_description_show_nsfw">Ahlaksız içeriği göster</string>
     <string name="pref_language">Dil süzgeci</string>
     <string name="pref_description_language">Tüm izletileri tüm dillerde göstermek yerine bir izleti dili seçin.</string>
     <string name="title_activity_url_video_play">URL İzleti Oynatma Etkinliği</string>
@@ -353,11 +353,13 @@
     <string name="pref_background_behavior">Arka planda oynatma yapılandırması</string>
     <string name="pref_background_stop">Tüm oynatmaları durdur</string>
     <string name="pref_background_audio">Arka planda ses akışı olarak devam et</string>
-    <string name="server_selection_nsfw_instance">İş Yeri İçin Uygun Olmayan (NSFW) Örnek</string>
+    <string name="server_selection_nsfw_instance">Ahlaksız Örnek</string>
     <string name="server_selection_video_totals">Video: %s, Yerel Video: %s</string>
     <string name="menu_video_options_quality_automated">Otomatik</string>
     <string name="pref_title_buildtime">Oluşturma Zamanı</string>
     <string name="hello_blank_fragment">Merhaba boş parça</string>
     <string name="authentication_token_refresh_success">Belirteç yenilendi</string>
     <string name="authentication_token_refresh_failed">Belirteç yenilenemedi</string>
+    <string name="network_error">Ağ erişim hatası, lütfen bağlantınızı gözden geçirin</string>
+    <string name="server_selection_filter_hint">Listeyi filtrele</string>
 </resources>

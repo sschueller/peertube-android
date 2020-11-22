@@ -1,3 +1,7 @@
+### Version 1.0.50 Tag: v1.0.50 (2020-11-22)
+ - add support for disabling SSL
+ - translations
+
 ### Version 1.0.49 Tag: v1.0.49 (2020-09-26)
  - add support of hypertext redirection in description (@freeboub)
  - various crash fixes (@freeboub)

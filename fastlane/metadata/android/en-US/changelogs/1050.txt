@@ -1,0 +1,2 @@
+ - add support for disabling SSL
+ - translations

@@ -5,11 +5,12 @@
   3. Pull github develop
   4. Pull weblate develop
   5. Add change logs (fastlane/metadata/android/en-US/changelogs/XXX.txt)
-  6. Push to gitlab and github
-  7. Merge request into master and merge
-  8. Add Release Tag on master branch
-  9. Release to play store
-  10. Wait for gitlab -> github sync
-  11. Run publishGithub
+  6. Run ci-script/update-changelog.sh
+  7. Push to gitlab
+  8. Merge request into master and merge
+  9. Add Release Tag on master branch
+  10. Release to play store
+  11. Wait for gitlab -> github sync
+  12. Run publishGithub
 
 

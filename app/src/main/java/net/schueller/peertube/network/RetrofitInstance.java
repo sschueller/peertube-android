@@ -17,6 +17,11 @@
  */
 package net.schueller.peertube.network;
 
+import static net.schueller.peertube.network.UnsafeOkHttpClient.getUnsafeOkHttpClientBuilder;
+
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import net.schueller.peertube.R;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -26,11 +31,17 @@ public class RetrofitInstance {
     private static Retrofit retrofit;
     private static String baseUrl;
 
-    public static Retrofit getRetrofitInstance(String newBaseUrl) {
+    public static Retrofit getRetrofitInstance(String newBaseUrl, boolean insecure) {
         if (retrofit == null || !newBaseUrl.equals(baseUrl)) {
             baseUrl = newBaseUrl;
 
-            OkHttpClient.Builder okhttpClientBuilder = new OkHttpClient.Builder();
+            OkHttpClient.Builder okhttpClientBuilder;
+
+            if (!insecure) {
+                okhttpClientBuilder = new OkHttpClient.Builder();
+            } else {
+                okhttpClientBuilder = getUnsafeOkHttpClientBuilder();
+            }
 
             okhttpClientBuilder.addInterceptor(new AuthorizationInterceptor());
             okhttpClientBuilder.authenticator(new AccessTokenAuthenticator());

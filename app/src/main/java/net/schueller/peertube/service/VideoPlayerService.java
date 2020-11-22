@@ -51,6 +51,8 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.audio.AudioAttributes;
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector;
 import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator;
+import com.google.android.exoplayer2.ext.okhttp.OkHttpDataSource;
+import com.google.android.exoplayer2.ext.okhttp.OkHttpDataSourceFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
@@ -60,13 +62,16 @@ import com.google.android.exoplayer2.util.Util;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.activity.VideoPlayActivity;
+import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Video;
+import okhttp3.OkHttpClient;
 
 import static android.media.session.PlaybackState.ACTION_PAUSE;
 import static android.media.session.PlaybackState.ACTION_PLAY;
 import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
 import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
+import static net.schueller.peertube.network.UnsafeOkHttpClient.getUnsafeOkHttpClientBuilder;
 
 public class VideoPlayerService extends Service {
 
@@ -209,8 +214,18 @@ public class VideoPlayerService extends Service {
         Log.v(TAG, "playVideo...");
 
         // Produces DataSource instances through which media data is loaded.
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getApplicationContext(),
-                Util.getUserAgent(getApplicationContext(), "PeerTube"), null);
+//        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getApplicationContext(),
+//                Util.getUserAgent(getApplicationContext(), "PeerTube"), null);
+
+        OkHttpClient.Builder okhttpClientBuilder;
+
+        if (!APIUrlHelper.useInsecureConnection(this)) {
+            okhttpClientBuilder = new OkHttpClient.Builder();
+        } else {
+            okhttpClientBuilder = getUnsafeOkHttpClientBuilder();
+        }
+
+        DataSource.Factory dataSourceFactory =  new OkHttpDataSourceFactory(okhttpClientBuilder.build(), Util.getUserAgent(getApplicationContext(), "PeerTube"));
 
         // This is the MediaSource representing the media to be played.
         ExtractorMediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)

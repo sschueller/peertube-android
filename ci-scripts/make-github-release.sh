@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-repo="sschueller/easyrepost"
+repo="sschueller/peertube-android"
 username="sschueller"
 
 # set work dir

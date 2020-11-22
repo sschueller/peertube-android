@@ -50,7 +50,7 @@ public class LoginService {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
-        AuthenticationService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(AuthenticationService.class);
+        AuthenticationService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(AuthenticationService.class);
 
         Call<OauthClient> call = service.getOauthClientLocal();
 
@@ -134,7 +134,7 @@ public class LoginService {
 
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        AuthenticationService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(AuthenticationService.class);
+        AuthenticationService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(AuthenticationService.class);
 
         String refreshToken = sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_token_refresh), null);
         String userName = sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_auth_username), null);

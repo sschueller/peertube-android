@@ -97,7 +97,7 @@ public class AccountActivity extends CommonActivity {
 
         apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
-        userService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
+        userService = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetUserService.class);
 
         recyclerViewVideos = findViewById(R.id.account_video_recyclerView);
         recyclerViewChannels = findViewById(R.id.account_channel_recyclerView);
@@ -227,7 +227,7 @@ public class AccountActivity extends CommonActivity {
 
         isLoadingVideos = false;
 
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetVideoDataService.class);
         Call<VideoList> call;
 
         call = service.getAccountVideosData(displayNameAndHost, videosStart, videosCount, videosSort);

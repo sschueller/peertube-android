@@ -93,6 +93,7 @@ android {
             implementation "com.google.android.exoplayer:exoplayer-hls:$libVersions.exoplayer"
             implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:$libVersions.exoplayer"
             implementation "com.google.android.exoplayer:extension-mediasession:$libVersions.exoplayer"
+            implementation "com.google.android.exoplayer:extension-okhttp:$libVersions.exoplayer"
 
             // date formatter
             implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'

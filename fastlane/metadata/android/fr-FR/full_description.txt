@@ -1,1 +1,33 @@
-Thorium est un lecteur non-officiel de PeerTube
+Thorium est un client PeerTube qui peut se connecter à n'importe quel serveur Peertube exécutant la version v1.1.0-alpha.2 ou supérieure.
+
+PeerTube est une plateforme de streaming vidéo fédérée (ActivityPub) utilisant P2P (BitTorrent) directement dans le navigateur Web. Pour plus d'informations, veuillez visiter https://joinpeertube.org/ pour plus d'informations et une liste de serveurs.
+
+Ce client est préconfiguré avec un serveur PeerTube géré par le créateur de l'application – pas le projet PeerTube lui-même, qui en répertorie plus sur http://instances.joinpeertube.org/ – pour vous permettre d'avoir un avant-goût de ce dont le client est capable. Choisissez votre serveur pour optimiser votre expérience !
+
+Caractéristiques actuelles :
+- Connectez-vous à n'importe quel serveur PeerTube
+- Vidéo Torrent ou lecture directe
+- Rechercher PeerTube
+- Télécharger / Partager la vidéo
+- Thèmes / Mode sombre
+- Lecture en arrière-plan
+- Lecture plein écran en paysage
+- Vitesse de lecture
+- Filtrer le contenu NSFW
+- Authentification / Connexion
+- J'aime / n'aime pas la vidéo
+
+Prochainement :
+- Commenter des vidéos
+- S'inscrire
+- Page de présentation des utilisateurs / canaux
+- Signaler des vidéos
+
+Autorisations:
+- Accès au stockage, requis pour le téléchargement Torrent ou le téléchargement vidéo.
+
+Sous licence GNU Affero General Public License v3.0
+
+Les autorisations de cette licence copyleft la plus puissante sont conditionnées à la mise à disposition du code source complet des œuvres sous licence et des modifications, qui incluent des œuvres plus volumineuses utilisant une œuvre sous licence, sous la même licence. Les avis de droit d'auteur et de licence doivent être préservés. Les contributeurs accordent expressément les droits de brevet. Lorsqu'une version modifiée est utilisée pour fournir un service sur un réseau, le code source complet de la version modifiée doit être rendu disponible.
+
+Code source sur : https://github.com/sschueller/peertube-android/

@@ -1,0 +1,1 @@
+- uscita F-Droid per correggere la distribuzione automatica

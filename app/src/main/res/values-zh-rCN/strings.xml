@@ -54,7 +54,7 @@
     <string name="brown">褐色</string>
     <string name="gray">灰色</string>
     <string name="bluegray">蓝灰色</string>
-    <string name="meta_data_views">次观看</string>
+    <string name="meta_data_views">" 次观看"</string>
     <string name="bottom_nav_title_local">本地</string>
     <string name="title_activity_account">帐号</string>
     <string name="pref_language">按语言过滤</string>

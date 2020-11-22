@@ -1,0 +1,1 @@
+- sortie f-droid pour corriger le déploiement automatique

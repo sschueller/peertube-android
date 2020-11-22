@@ -1,0 +1,7 @@
+- açıklamada hipermetin yeniden yönlendirme desteği ekle (@freeboub)
+ - çeşitli çökme düzeltmeleri (@freeboub)
+ - paylaş düğmesi ile uygulamadan ayrılırken pip'e gitmekten kaçın (@freeboub)
+ - sunucu listesini filtreleme yeteneği ekle (@freeboub)
+ - ağ hatalarını ayırmak için Toast hata yönetimini yeniden düzenle (@freeboub)
+ - pip için video en/boy oranını koru (@freeboub)
+ - yatay moddan çıkarken gezinme çubuğu geri yüklenmiyordu (@freeboub)

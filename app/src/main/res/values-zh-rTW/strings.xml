@@ -345,4 +345,6 @@
     <string name="menu_video_options_quality_automated">自動</string>
     <string name="authentication_token_refresh_success">權杖已重新整理</string>
     <string name="authentication_token_refresh_failed">無法重新整理權杖</string>
+    <string name="network_error">網路存取錯誤，請檢查您的網路連線</string>
+    <string name="server_selection_filter_hint">過濾清單</string>
 </resources>

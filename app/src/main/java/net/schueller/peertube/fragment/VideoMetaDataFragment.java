@@ -100,7 +100,7 @@ public class VideoMetaDataFragment extends Fragment {
         Activity activity = getActivity();
 
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
-        GetVideoDataService videoDataService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+        GetVideoDataService videoDataService = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(GetVideoDataService.class);
 
         // Thumbs up
         Button thumbsUpButton = activity.findViewById(R.id.video_thumbs_up);
@@ -326,7 +326,7 @@ public class VideoMetaDataFragment extends Fragment {
             RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json"), "{\"rating\":\"" + ratePayload + "\"}");
 
             String apiBaseURL = APIUrlHelper.getUrlWithVersion(getContext());
-            GetVideoDataService videoDataService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+            GetVideoDataService videoDataService = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(getContext())).create(GetVideoDataService.class);
 
             Call<ResponseBody> call = videoDataService.rateVideo(video.getId(), body);
 

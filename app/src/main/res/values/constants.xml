@@ -15,6 +15,8 @@
     <string name="pref_background_behavior_key" translatable="false">pref_background_behavior</string>
     <string name="pref_torrent_player_key" translatable="false">pref_torrent_player</string>
 
+    <string name="pref_accept_insecure" translatable="false">pref_accept_insecure</string>
+
     <!-- defaults -->
     <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
     <string name="app_default_theme" translatable="false">AppTheme.BLUE</string>

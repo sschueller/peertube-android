@@ -148,7 +148,7 @@ public class SearchServerActivity extends CommonActivity {
 
         GetServerListDataService service = RetrofitInstance.getRetrofitInstance(
                 APIUrlHelper.getServerIndexUrl(SearchServerActivity.this)
-        ).create(GetServerListDataService.class);
+                , APIUrlHelper.useInsecureConnection(this)).create(GetServerListDataService.class);
 
         if ( !searchtext.equals( lastSearchtext ) )
         {

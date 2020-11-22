@@ -337,12 +337,14 @@
     <string name="error_field_required">Este campo é obrigatório</string>
     <string name="error_incorrect_password">Esta senha está incorreta</string>
     <string name="error_invalid_password">Esta senha é muito curta</string>
-    <string name="error_invalid_email">Este e-mail é inválido</string>
+    <string name="error_invalid_email">Este endereço de correio eletrônico é inválido</string>
     <string name="action_sign_in_short">Entrar</string>
     <string name="action_sign_in">Entrar</string>
     <string name="prompt_password">Senha</string>
-    <string name="prompt_email">Email / Nome de usuário</string>
+    <string name="prompt_email">E-mail / Nome de usuário</string>
     <string name="prompt_server">Servidor</string>
     <string name="title_activity_login">Entrar</string>
     <string name="title_activity_settings">Configurações</string>
+    <string name="network_error">Erro de acesso à rede, verifique sua conectividade</string>
+    <string name="server_selection_filter_hint">Filtrar a lista</string>
 </resources>

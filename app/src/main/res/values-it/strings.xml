@@ -3,11 +3,11 @@
     <string name="title_activity_settings">Impostazioni</string>
     <string name="title_activity_login">Accedi</string>
     <string name="prompt_server">Server</string>
-    <string name="prompt_email">Email / Nome utente</string>
+    <string name="prompt_email">E-mail / Nome utente</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Accedi</string>
     <string name="action_sign_in_short">Accedi</string>
-    <string name="error_invalid_email">Questo indirizzo email non è valido</string>
+    <string name="error_invalid_email">Questo indirizzo e-mail non è valido</string>
     <string name="error_invalid_password">La password è troppo corta</string>
     <string name="error_incorrect_password">Questa password non è corretta</string>
     <string name="error_field_required">Questo campo è obbligatorio</string>
@@ -32,10 +32,10 @@
     <string name="descr_overflow_button">Altro</string>
     <string name="menu_share">Condividi</string>
     <string name="invalid_url">URL non valido.</string>
-    <string name="pref_description_dark_mode">Riavviare l\'applicazione affinché la modalità Dark Mode abbia effetto.</string>
+    <string name="pref_description_dark_mode">Riavvia l\'applicazione affinché la modalità scura abbia effetto.</string>
     <string name="pref_title_app_theme">Tema dell\'app</string>
     <string name="pref_description_app_theme">Riavviare l\'applicazione affinché il tema abbia effetto.</string>
-    <string name="pref_title_torrent_player">Lettore Video Torrent</string>
+    <string name="pref_title_torrent_player">Lettore video Torrent</string>
     <string name="pref_description_torrent_player">Riproduzione di Video tramite torrent stream. Questo richiede i permessi di archiviazione. (Alfa, non stabile!)</string>
     <string name="pref_title_license">Licenza</string>
     <string name="pref_title_version">Versione</string>
@@ -46,7 +46,7 @@
     <string name="pref_title_peertube_server">Server PeerTube</string>
     <string name="pref_title_background_play">Riproduzione in sottofondo</string>
     <string name="pref_description_background_play">Se abilitata, continua a riprodurre il video in sottofondo.</string>
-    <string name="pref_title_dark_mode">Modo scuro</string>
+    <string name="pref_title_dark_mode">Modalità scura</string>
     <string name="pref_description_license">
 \n<b>GNU Affero General Public License v3.0</b>
 \n
@@ -345,4 +345,6 @@
     <string name="pref_background_audio">Continua come flusso sonoro in sottofondo</string>
     <string name="pref_description_back_pause">Metti la riproduzione di sottofondo in pausa quando premi il tasto indietro durante la lettura del video.</string>
     <string name="pref_title_back_pause">Pausa sul tasto backspace</string>
+    <string name="network_error">Errore di accesso alla rete, controlla la tua connettività</string>
+    <string name="server_selection_filter_hint">Elenco dei filtri</string>
 </resources>

@@ -6,7 +6,7 @@
     <string name="nb">Bokmål norueguês</string>
     <string name="ve">Venda</string>
     <string name="title_activity_search">Busca</string>
-    <string name="prompt_email">Email / Nome de utilizador</string>
+    <string name="prompt_email">E-mail / Nome de utilizador</string>
     <string name="search_hint">Busca no PeerTube</string>
     <string name="be">Belarusian</string>
     <string name="error_field_required">Este campo é obrigatório</string>
@@ -53,7 +53,7 @@
     <string name="uk">Ucraniano</string>
     <string name="fo">Faroese</string>
     <string name="video_row_video_thumbnail">Miniatura do vídeo</string>
-    <string name="settings_permissions_error_float">A permissão Picture-in-Picture está desativada para este aplicação nas Configurações do Android</string>
+    <string name="settings_permissions_error_float">A permissão Picture-in-Picture está desativada para esta app nas Configurações do Android</string>
     <string name="pl">Polonês</string>
     <string name="menu_video_options_quality" formatted="true">Qualidade (%1$s)</string>
     <string name="ba">Bashkir</string>
@@ -61,7 +61,7 @@
     <string name="my">Burmese</string>
     <string name="kj">Kuanyama</string>
     <string name="ki">Kikuyu</string>
-    <string name="pref_description_dark_mode">Reinicie o aplicação para que o Tema Escuro tenha efeito.</string>
+    <string name="pref_description_dark_mode">Reinicie a app para que o Tema Escuro tenha efeito.</string>
     <string name="tlh">Klingon</string>
     <string name="id">Indonésio</string>
     <string name="jsl">Língua japonesa de sinais</string>
@@ -159,14 +159,14 @@
     <string name="avk">Kotava</string>
     <string name="bottom_nav_title_discover">Descobrir</string>
     <string name="account_bottom_menu_channels">Canais</string>
-    <string name="pref_description_app_theme">Reinicie a aplicação para que o tema tenha efeito.</string>
+    <string name="pref_description_app_theme">Reinicie a app para que o tema tenha efeito.</string>
     <string name="sr">Sérvio</string>
     <string name="ts">Tsonga</string>
     <string name="pref_background_behavior">Configuração da reprodução no fundo</string>
     <string name="ht">Haitiano</string>
     <string name="server_book_valid_url_is_required">URL válido é requerido</string>
     <string name="account_bottom_menu_about">Sobre</string>
-    <string name="error_invalid_email">Este e-mail é inválido</string>
+    <string name="error_invalid_email">Este endereço de correio eletrónico é inválido</string>
     <string name="th">Tailandês</string>
     <string name="rn">Rundi</string>
     <string name="cs">Czech</string>
@@ -180,7 +180,7 @@
     <string name="pref_background_audio">Continuar como um Stream de áudio no fundo</string>
     <string name="descr_overflow_button">Mais</string>
     <string name="menu_video_more_blacklist">Lista negra</string>
-    <string name="pref_description_language_app">Selecione o idioma para a interface da aplicação. Reinicie a aplicação para que a alteração tenha efeito.</string>
+    <string name="pref_description_language_app">Selecione o idioma para a interface da app. Reinicie a app para que a alteração tenha efeito.</string>
     <string name="pref_description_show_nsfw">Mostrar conteúdo NSFW</string>
     <string name="da">Danish</string>
     <string name="lightgreen">Verde claro</string>
@@ -345,4 +345,6 @@
     <string name="el">Grego moderno (1453-)</string>
     <string name="server_selection_select_a_server">Selecione um servidor da lista abaixo ou digite-o diretamente.</string>
     <string name="lg">Ganda</string>
+    <string name="network_error">Erro de acesso à rede, por favor verifique a sua conectividade</string>
+    <string name="server_selection_filter_hint">Filtrar a lista</string>
 </resources>

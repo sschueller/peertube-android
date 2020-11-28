@@ -4,7 +4,7 @@
 
 <p align="center">
 <a href="https://github.com/sschueller/peertube-android/releases/latest" alt="GitHub release"><img src="https://img.shields.io/github/release/sschueller/peertube-android.svg" ></a>
-<a href="https://www.gnu.org/licenses/gpl-3.0" alt="License: GPLv3"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg"></a>
+<a href="https://www.gnu.org/licenses/agpl-3.0" alt="License: AGPLv3"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg"></a>
 <a href="https://f-droid.org/de/packages/net.schueller.peertube/" alt="F-Droid release"><img src="https://img.shields.io/f-droid/v/net.schueller.peertube.svg"></a>
 <a href="https://hosted.weblate.org/projects/peertube/" alt="Translation Status"><img src="https://hosted.weblate.org/widgets/peertube/-/svg-badge.svg"></a>
 <a href="https://www.bountysource.com/teams/peertube-android" alt="Bountysource bounties"><img src="https://img.shields.io/bountysource/team/peertube-android/activity.svg?colorB=cd201f"></a>

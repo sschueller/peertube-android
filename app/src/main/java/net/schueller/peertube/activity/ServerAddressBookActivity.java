@@ -17,13 +17,8 @@
 package net.schueller.peertube.activity;
 
 import android.app.AlertDialog;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -46,7 +41,7 @@ import net.schueller.peertube.fragment.AddServerFragment;
 
 import java.util.Objects;
 
-public class ServerAddressBookActivity extends CommonActivity implements AddServerFragment.OnFragmentInteractionListener {
+public class ServerAddressBookActivity extends CommonActivity {
 
     private String TAG = "ServerAddressBookActivity";
     public static final String EXTRA_REPLY = "net.schueller.peertube.room.REPLY";
@@ -96,10 +91,6 @@ public class ServerAddressBookActivity extends CommonActivity implements AddServ
 
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
@@ -112,7 +103,6 @@ public class ServerAddressBookActivity extends CommonActivity implements AddServ
         RecyclerView recyclerView = findViewById(R.id.server_list_recyclerview);
         final ServerListAdapter adapter = new ServerListAdapter(this);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Delete items on swipe
         ItemTouchHelper helper = new ItemTouchHelper(
@@ -153,32 +143,17 @@ public class ServerAddressBookActivity extends CommonActivity implements AddServ
 
 
         // Update the cached copy of the words in the adapter.
-        mServerViewModel.getAllServers().observe(this, adapter::setServers);
+        mServerViewModel.getAllServers().observe(this, servers -> {
+            adapter.setServers(servers);
 
-    }
+            if (addServerFragment != null) {
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.remove(addServerFragment);
+                fragmentTransaction.commit();
 
-    public void addServer(View view)
-    {
-        Log.d(TAG, "addServer");
-
-        EditText serverLabel = view.findViewById(R.id.serverLabel);
-        EditText serverUrl = view.findViewById(R.id.serverUrl);
-        EditText serverUsername = view.findViewById(R.id.serverUsername);
-        EditText serverPassword = view.findViewById(R.id.serverPassword);
-
-        Server server = new Server(serverLabel.getText().toString());
-
-        server.setServerHost(serverUrl.getText().toString());
-        server.setUsername(serverUsername.getText().toString());
-        server.setPassword(serverPassword.getText().toString());
-
-        mServerViewModel.insert(server);
-
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.remove(addServerFragment);
-        fragmentTransaction.commit();
-
-        floatingActionButton.show();
+                floatingActionButton.show();
+            }
+        });
 
     }
 

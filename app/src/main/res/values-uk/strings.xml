@@ -347,4 +347,11 @@
     <string name="prompt_server">Сервер</string>
     <string name="title_activity_login">Увійти</string>
     <string name="title_activity_settings">Параметри</string>
+    <string name="pref_title_accept_insecure">Вимкнути перевірку SSL сертифіката</string>
+    <string name="pref_description_accept_insecure">Ігнорувати незахищені з\'єднання. Використовуйте це лише якщо знаєте сервер до якого підключаєтесь. Перезапустіть застосунок, щоб зміни набули чинності.</string>
+    <string name="pref_insecure_confirm_yes">Так</string>
+    <string name="pref_insecure_confirm_no">Ні</string>
+    <string name="pref_insecure_confirm_title">Увага!</string>
+    <string name="pref_insecure_confirm_message">"Ви збираєтеся вимкнути всі перевірки сертифікації SSL у Thorium. Це може бути дуже небезпечно якщо peertube сервер вами не контролюється, оскільки атака \"людина посередині\" може направити трафік на інший сервер без вашого відома. Зловмисник може записувати паролі та інші особисті дані. "</string>
+    <string name="settings_activity_advanced_category_title">Додатково</string>
 </resources>

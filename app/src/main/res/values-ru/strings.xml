@@ -353,4 +353,11 @@
     <string name="pref_title_back_pause">Пауза на кнопку Назад</string>
     <string name="network_error">Ошибка доступа к сети, проверьте подключение</string>
     <string name="server_selection_filter_hint">Список фильтров</string>
+    <string name="pref_insecure_confirm_yes">Да</string>
+    <string name="pref_insecure_confirm_no">Нет</string>
+    <string name="pref_title_accept_insecure">Отключить проверку SSL сертификата</string>
+    <string name="settings_activity_advanced_category_title">Дополнительно</string>
+    <string name="pref_insecure_confirm_title">Внимание!</string>
+    <string name="pref_description_accept_insecure">Игнорировать незащищенные соединения. Используйте только если знаете сервер к которому подключаетесь. Требуется перезапуск приложения.</string>
+    <string name="pref_insecure_confirm_message">"Вы собираетесь отключить валидацию всех SSL сертификатов в Thorium. Это может быть очень опасно если peertube сервер вами не контролируется, потому что \"атака посредника\" может направить трафик на другой сервер. Злоумышленник может записывать пароли и другие личные данные."</string>
 </resources>

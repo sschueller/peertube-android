@@ -534,6 +534,7 @@
         <item>ru</item>
         <item>sv</item>
         <item>tr</item>
+        <item>uk</item>
         <item>zh-rCN</item>
         <item>zh-rTW</item>
     </string-array>
@@ -560,6 +561,7 @@
         <item>@string/ru</item>
         <item>@string/sv</item>
         <item>@string/tr</item>
+        <item>@string/uk</item>
         <item>@string/zh</item>
         <item>@string/tw</item>
     </string-array>

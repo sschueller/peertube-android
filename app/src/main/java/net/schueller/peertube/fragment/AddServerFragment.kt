@@ -42,10 +42,17 @@ class AddServerFragment : Fragment() {
 
     private val mServerViewModel: ServerViewModel by activityViewModels()
 
+    private var mServer: Server? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            mServer = it.getParcelable(SERVER_ARG)
+        }
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Log.d(TAG, "onCreateView")
-        // Inflate the layout for this fragment
         mBinding = FragmentAddServerBinding.inflate(inflater, container, false)
         return mBinding.root
     }
@@ -53,22 +60,20 @@ class AddServerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // bind button click
+        initServerEdit()
 
-        mBinding.addServerButton.setOnClickListener { view: View? ->
+        mBinding.addServerButton.setOnClickListener {
             var formValid = true
 
             hideKeyboard()
 
-
-            if (mBinding.serverLabel.text.toString().isNullOrBlank()) {
+            if (mBinding.serverLabel.text.toString().isBlank()) {
                 mBinding.serverLabel.error = getString(R.string.server_book_label_is_required)
                 Toast.makeText(context, R.string.invalid_url, Toast.LENGTH_LONG).show()
                 formValid = false
             }
 
             // validate url
-
             mBinding.serverUrl.apply {
                 APIUrlHelper.cleanServerUrl(text.toString())?.let {
 
@@ -85,7 +90,7 @@ class AddServerFragment : Fragment() {
 
             if (formValid) {
                 mBinding.apply {
-                    val server = Server(serverLabel.text.toString())
+                    val server = Server(serverName = serverLabel.text.toString())
 
                     server.serverHost = serverUrl.text.toString()
                     server.username = serverUsername.text.toString()
@@ -96,20 +101,25 @@ class AddServerFragment : Fragment() {
             }
         }
 
-//        Button testServerButton = mView.findViewById(R.id.testServerButton);
-//        testServerButton.setOnClickListener(view -> {
-//            Activity act = getActivity();
-//            if (act instanceof ServerAddressBookActivity) {
-//                ((ServerAddressBookActivity) act).testServer();
-//            }
-//        });
-
-
         mBinding.pickServerUrl.setOnClickListener {
             val intentServer = Intent(activity, SearchServerActivity::class.java)
             this.startActivityForResult(intentServer, PICK_SERVER)
         }
     }
+
+    private fun initServerEdit() {
+        mServer?.let {
+            mBinding.apply {
+                serverLabel.setText(it.serverName)
+                serverUrl.setText(it.serverHost)
+                serverUsername.setText(it.username)
+                serverPassword.setText(it.password)
+
+                addServerButton.text = getString(R.string.server_book_add_save_button)
+            }
+        }
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -136,7 +146,16 @@ class AddServerFragment : Fragment() {
     }
 
     companion object {
-        const val TAG = "AddServerFragment"
-        const val PICK_SERVER = 1
+        private const val TAG = "AddServerFragment"
+        private const val PICK_SERVER = 1
+
+        private const val SERVER_ARG = "server"
+
+        fun newInstance(server: Server) = AddServerFragment().apply {
+            arguments = Bundle().also {
+                it.putParcelable(SERVER_ARG, server)
+            }
+        }
+
     }
 }

@@ -16,12 +16,16 @@
  */
 package net.schueller.peertube.activity
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentManager
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import net.schueller.peertube.R
@@ -30,6 +34,9 @@ import net.schueller.peertube.database.Server
 import net.schueller.peertube.database.ServerViewModel
 import net.schueller.peertube.databinding.ActivityServerAddressBookBinding
 import net.schueller.peertube.fragment.AddServerFragment
+import net.schueller.peertube.helper.APIUrlHelper
+import net.schueller.peertube.network.Session
+import net.schueller.peertube.service.LoginService
 import java.util.*
 
 class ServerAddressBookActivity : CommonActivity() {
@@ -77,8 +84,32 @@ class ServerAddressBookActivity : CommonActivity() {
         }
     }
 
+    private fun onServerClick(server: Server) {
+
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = sharedPref.edit()
+        val serverUrl = APIUrlHelper.cleanServerUrl(server.serverHost)
+        editor.putString(getString(R.string.pref_api_base_key), serverUrl)
+        editor.apply()
+
+        // Logout if logged in
+        val session = Session.getInstance()
+        if (session.isLoggedIn) {
+            session.invalidate()
+        }
+
+        // attempt authentication if we have a username
+        if (server.username.isNullOrBlank().not()) {
+            LoginService.Authenticate(server.username, server.password)
+        }
+
+        // close this activity
+        finish()
+        Toast.makeText(this, getString(R.string.server_selection_set_server, serverUrl), Toast.LENGTH_LONG).show()
+    }
+
     private fun showServers() {
-        val adapter = ServerListAdapter(this).also {
+        val adapter = ServerListAdapter(mutableListOf()) { onServerClick(it) }.also {
             mBinding.serverListRecyclerview.adapter = it
         }
 
@@ -110,7 +141,7 @@ class ServerAddressBookActivity : CommonActivity() {
 
 
         // Update the cached copy of the words in the adapter.
-        mServerViewModel.allServers.observe(this, { servers: List<Server?>? ->
+        mServerViewModel.allServers.observe(this, { servers: List<Server> ->
             adapter.setServers(servers)
 
             addServerFragment?.let {

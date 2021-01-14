@@ -19,15 +19,16 @@ package net.schueller.peertube.activity;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import net.schueller.peertube.R;
 
 import java.util.Locale;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class CommonActivity extends AppCompatActivity {
 
@@ -51,21 +52,31 @@ public class CommonActivity extends AppCompatActivity {
         );
 
         // Set language
-        String countryCode = sharedPref.getString(getString(R.string.pref_language_app_key), "en");
-        assert countryCode != null;
-        Locale locale = new Locale(countryCode);
+        String countryCode = sharedPref.getString(getString(R.string.pref_language_app_key), null);
+
+        if (countryCode == null) {
+            return;
+        }
+
+        setLocale(countryCode);
+    }
+
+
+    public void setLocale(String languageCode) {
+
+        Locale locale = new Locale(languageCode);
 
         //Neither Chinese language choice was working, found this fix on stack overflow
-        if (countryCode.equals("zh-rCN"))
+        if (languageCode.equals("zh-rCN"))
             locale = Locale.SIMPLIFIED_CHINESE;
-        if (countryCode.equals("zh-rTW"))
+        if (languageCode.equals("zh-rTW"))
             locale = Locale.TRADITIONAL_CHINESE;
 
         Locale.setDefault(locale);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,
-                getBaseContext().getResources().getDisplayMetrics());
-    }
 
+        Resources resources = getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+    }
 }

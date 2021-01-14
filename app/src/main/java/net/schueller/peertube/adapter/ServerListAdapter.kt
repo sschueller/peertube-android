@@ -34,14 +34,7 @@ class ServerListAdapter(private val mServers: MutableList<Server>, private val o
     }
 
     override fun onBindViewHolder(holder: ServerViewHolder, position: Int) {
-
         holder.bind(mServers[position])
-
-//
-//        holder.itemView.setOnLongClickListener(v -> {
-//            Log.v("ServerListAdapter", "setOnLongClickListener " + position);
-//            return true;
-//        });
     }
 
     fun setServers(servers: List<Server>) {
@@ -51,8 +44,6 @@ class ServerListAdapter(private val mServers: MutableList<Server>, private val o
         notifyDataSetChanged()
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mServers has not been updated (means initially, it's null, and we can't return null).
     override fun getItemCount(): Int {
         return mServers.size
     }

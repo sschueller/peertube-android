@@ -108,8 +108,17 @@ class ServerAddressBookActivity : CommonActivity() {
         Toast.makeText(this, getString(R.string.server_selection_set_server, serverUrl), Toast.LENGTH_LONG).show()
     }
 
+    private fun onEditClick(server: Server) {
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        addServerFragment = AddServerFragment.newInstance(server).also {
+            fragmentTransaction.replace(R.id.server_book, it)
+            fragmentTransaction.commit()
+            mBinding.addServer.hide()
+        }
+    }
+
     private fun showServers() {
-        val adapter = ServerListAdapter(mutableListOf()) { onServerClick(it) }.also {
+        val adapter = ServerListAdapter(mutableListOf(), { onServerClick(it) }, { onEditClick(it) }).also {
             mBinding.serverListRecyclerview.adapter = it
         }
 

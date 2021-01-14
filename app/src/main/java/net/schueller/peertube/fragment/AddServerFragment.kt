@@ -89,6 +89,18 @@ class AddServerFragment : Fragment() {
 
 
             if (formValid) {
+                mServer?.apply {
+                    mBinding.let {
+                        serverName = it.serverLabel.text.toString()
+                        serverHost = it.serverUrl.text.toString()
+                        username = it.serverUsername.text.toString()
+                        password = it.serverPassword.text.toString()
+
+                        mServerViewModel.update(this)
+                    }
+                    return@setOnClickListener
+                }
+
                 mBinding.apply {
                     val server = Server(serverName = serverLabel.text.toString())
 

@@ -14,31 +14,26 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.database;
+package net.schueller.peertube.database
 
-import android.app.Application;
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
+@Dao
+interface ServerDao {
 
-import java.util.List;
+    @Insert
+    suspend fun insert(server: Server)
 
-public class ServerViewModel extends AndroidViewModel {
+    @Update
+    suspend fun update(server: Server)
 
-    private ServerRepository mRepository;
+    @Query("DELETE FROM server_table")
+    suspend fun deleteAll()
 
-    private LiveData<List<Server>> mAllServers;
+    @Delete
+    suspend fun delete(server: Server)
 
-    public ServerViewModel (Application application) {
-        super(application);
-        mRepository = new ServerRepository(application);
-        mAllServers = mRepository.getAllServers();
-    }
-
-    public LiveData<List<Server>> getAllServers() { return mAllServers; }
-
-    public void insert(Server server) { mRepository.insert(server); }
-
-    public void delete(Server server) {mRepository.delete(server);}
-    
+    @get:Query("SELECT * from server_table ORDER BY server_name DESC")
+    val allServers: LiveData<List<Server>>
 }

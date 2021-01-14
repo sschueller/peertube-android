@@ -4,7 +4,6 @@
     <PreferenceCategory app:title="@string/settings_activity_look_and_feel_category_title" app:iconSpaceReserved="false">
 
         <ListPreference
-            app:defaultValue="@array/empty_array"
             app:entries="@array/supportedLanguagesArray"
             app:entryValues="@array/supportedLanguagesValues"
             app:key="@string/pref_language_app_key"
@@ -40,7 +39,6 @@
             app:iconSpaceReserved="false"/>
 
         <MultiSelectListPreference
-            app:defaultValue="@array/empty_array"
             app:entries="@array/languageArray"
             app:entryValues="@array/languageValues"
             app:key="@string/pref_video_language_key"

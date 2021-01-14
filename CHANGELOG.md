@@ -1,3 +1,10 @@
+### Version 1.0.51 Tag: v1.0.51 (2021-01-14)
+ - fixed default app language on first start (@kosharskiy)
+ - Settings screen translations uk and ru languages (@kosharskiy)
+ - cleanup app/build.gradle file (@kosharskiy)
+ - fixed video meta data display issue (@kosharskiy)
+ - updated translations
+
 ### Version 1.0.50 Tag: v1.0.50 (2020-11-22)
  - add support for disabling SSL
  - translations

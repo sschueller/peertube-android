@@ -300,4 +300,22 @@
     <string name="pref_title_license">Licencja</string>
     <string name="video_speed_125">1,25×</string>
     <string name="video_speed_075">0,75×</string>
+    <string name="settings_activity_video_playback_category_title">Odtwarzanie Wideo</string>
+    <string name="settings_activity_video_list_category_title">Lista Wideo</string>
+    <string name="title_activity_me">Konto</string>
+    <string name="server_book_add_add_button">Dodaj</string>
+    <string name="server_book_add_password">Hasło</string>
+    <string name="server_book_add_pick_server_button">Wyszukaj</string>
+    <string name="server_book_add_server_url">Serwer URL</string>
+    <string name="me_help_and_feedback_button">Pomoc i Opinie</string>
+    <string name="me_logout_button">Wyloguj</string>
+    <string name="authentication_login_success">Pomyślnie zalogowano</string>
+    <string name="network_error">Błąd dostępu do sieci, sprawdź swoje połączenie</string>
+    <string name="server_selection_filter_hint">Lista filtrów</string>
+    <string name="bn_rBD">Bengalski (Bangladesz)</string>
+    <string name="clear_search_history_prompt">Czy chcesz trwale usunąć historię wyszukiwań\?</string>
+    <string name="clear_search_history">Usuń historię wyszukiwań</string>
+    <string name="pref_background_behavior">Ustawienia odtwarzania w tle</string>
+    <string name="pref_background_float">Kontynuuj odtwarzanie w ruchomym oknie</string>
+    <string name="pref_language_app">Język Aplikacji</string>
 </resources>

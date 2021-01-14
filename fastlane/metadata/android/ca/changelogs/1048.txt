@@ -1,0 +1,1 @@
+- fes servir la versió de f-droid per corretgir el desplegament automatic

@@ -70,6 +70,8 @@ import net.schueller.peertube.service.VideoPlayerService;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import retrofit2.Call;
@@ -321,7 +323,14 @@ public class VideoListActivity extends CommonActivity {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String nsfw = sharedPref.getBoolean(getString(R.string.pref_show_nsfw_key), false) ? "both" : "false";
-        Set<String> languages = sharedPref.getStringSet(getString(R.string.pref_video_language_key), null);
+
+        Locale locale = getResources().getConfiguration().locale;
+        String country = locale.getLanguage();
+
+        HashSet<String> countries = new HashSet<>(1);
+        countries.add(country);
+
+        Set<String> languages = sharedPref.getStringSet(getString(R.string.pref_video_language_key), countries);
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetVideoDataService.class);

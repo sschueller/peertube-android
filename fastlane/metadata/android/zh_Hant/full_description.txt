@@ -1,0 +1,33 @@
+Thorium 為可連線到任何執行 v1.1.0-alpha.2 或更新版本的 PeerTube 伺服器的 PeerTube 客戶端。 
+
+PeerTube 是一個直接在網路瀏覽器中使用 P2P (BitTorrent) 的聯盟式 (ActivityPub) 視訊串流平台。要取得更多資訊，請造訪 https://joinpeertube.org/ 並可取得伺服器列表。
+
+此客戶端帶有一個由應用程式開發者（不是 PeerTube 專案本身，可以在 http://instances.joinpeertube.org/ 看到許多其他伺服器）管理的 PeerTube 伺服器，讓您可以試試看這個客戶端的功能。選擇您的伺服器來調整您的體驗！
+
+目前功能：
+- 連線到任何 PeerTube 伺服器
+- 用 Torrent 播放影片或是直接播放
+- 搜尋 PeerTube
+- 下載／分享影片
+- 佈景主題／深色模式
+- 背景播放
+- 橫向全螢幕播放
+- 播放速度
+- 過濾 NSFW 內容
+- 驗證／登入
+- 喜歡／不喜歡影片
+
+即將釋出：
+- 影片留言
+- 註冊
+- 使用者／頻道概覽頁面
+- 回報影片
+
+權限：
+- 儲存空間，用於下載 torrent 或影片下載。 
+
+以 GNU Affero通用公眾授權條款 v3.0 授權
+
+這個最強的 Copyleft 授權條款是要提供授權作品與修改的完整原始碼，其中也包含了使用授權作品的較大作品，並必須以相同的授權條款釋出。著作權與授權條款也必須保留。貢獻者明確授予專利權。當修改過的版本用於提供網路上的服務時，修改後版本的完整原始碼也必須提供。
+
+原始碼位於：https://github.com/sschueller/peertube-android/

@@ -1,0 +1,7 @@
+- 在描述中心增對超文字重新導向的支援 (@freeboub)
+ - 許多當機修復 (@freeboub)
+ - 避免因為分享按鈕而離開應用程式時出現畫中畫模式 (@freeboub)
+ - 新增過濾伺服器列表的功能 (@freeboub)
+ - 重構 Toast 錯誤管理以分離網路錯誤 (@freeboub)
+ - 保持畫中畫的影片比例 (@freeboub)
+ - 離開橫向模式時導覽列未恢復 (@freeboub)

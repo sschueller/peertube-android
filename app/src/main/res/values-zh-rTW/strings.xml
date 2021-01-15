@@ -347,4 +347,11 @@
     <string name="authentication_token_refresh_failed">無法重新整理權杖</string>
     <string name="network_error">網路存取錯誤，請檢查您的網路連線</string>
     <string name="server_selection_filter_hint">過濾清單</string>
+    <string name="pref_insecure_confirm_message">您將要在 Thorium 中停用所有 SSL 憑證驗證。如果 PeerTube 不在您的掌控之下的話，停用這個可能會非常危險，因為中間人攻擊可能會在您不知不覺中將流量導向另一台伺服器。攻擊者可能會紀錄密碼與其他個人資料。</string>
+    <string name="pref_insecure_confirm_yes">是</string>
+    <string name="pref_insecure_confirm_no">否</string>
+    <string name="pref_insecure_confirm_title">警告！</string>
+    <string name="settings_activity_advanced_category_title">進階</string>
+    <string name="pref_title_accept_insecure">停用 SSL 憑證檢查</string>
+    <string name="pref_description_accept_insecure">忽略不安全的連線。僅在您了解您要連線的伺服器時才使用此選項。需要重新啟動應用程式。</string>
 </resources>

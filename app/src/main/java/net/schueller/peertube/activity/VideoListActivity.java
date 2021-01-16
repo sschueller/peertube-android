@@ -1,19 +1,18 @@
 /*
- * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ * Copyright (C) 2020 Stefan Schüller <sschueller@techdroid.com>
  *
- * License: GPL-3.0+
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU Affero General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package net.schueller.peertube.activity;
@@ -50,7 +49,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +58,8 @@ import com.mikepenz.iconics.IconicsDrawable;
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
+import net.schueller.peertube.model.Video;
 import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetUserService;
 import net.schueller.peertube.network.GetVideoDataService;
@@ -70,6 +70,8 @@ import net.schueller.peertube.service.VideoPlayerService;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import retrofit2.Call;
@@ -320,17 +322,24 @@ public class VideoListActivity extends CommonActivity {
         isLoading = true;
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String nsfw = sharedPref.getBoolean("pref_show_nsfw", false) ? "both" : "false";
-        Set<String> languages = sharedPref.getStringSet("pref_language", null);
+        String nsfw = sharedPref.getBoolean(getString(R.string.pref_show_nsfw_key), false) ? "both" : "false";
+
+        Locale locale = getResources().getConfiguration().locale;
+        String country = locale.getLanguage();
+
+        HashSet<String> countries = new HashSet<>(1);
+        countries.add(country);
+
+        Set<String> languages = sharedPref.getStringSet(getString(R.string.pref_video_language_key), countries);
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetVideoDataService.class);
 
         Call<VideoList> call;
         if (!searchQuery.equals("")) {
             call = service.searchVideosData(start, count, sort, nsfw, searchQuery, filter, languages);
         } else if (subscriptions) {
-            GetUserService userService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
+            GetUserService userService = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetUserService.class);
             call = userService.getVideosSubscripions(start, count, sort);
         } else {
             call = service.getVideosData(start, count, sort, nsfw, filter, languages);
@@ -349,7 +358,10 @@ public class VideoListActivity extends CommonActivity {
                 }
 
                 if (response.body() != null) {
-                    videoAdapter.setData(response.body().getVideoArrayList());
+                    ArrayList<Video> videoList = response.body().getVideoArrayList();
+                    if (videoList != null) {
+                        videoAdapter.setData(response.body().getVideoArrayList());
+                    }
                 }
 
                 // no results show no results message
@@ -369,7 +381,7 @@ public class VideoListActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<VideoList> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
-                Toast.makeText(VideoListActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( VideoListActivity.this, t );
                 isLoading = false;
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -383,7 +395,7 @@ public class VideoListActivity extends CommonActivity {
         // only check when we actually need the permission
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
-                sharedPref.getBoolean("pref_torrent_player", false)) {
+                sharedPref.getBoolean(getString(R.string.pref_torrent_player_key), false)) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }

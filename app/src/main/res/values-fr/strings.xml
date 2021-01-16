@@ -8,7 +8,7 @@
     <string name="prompt_password">Mot de passe</string>
     <string name="action_sign_in">Se connecter</string>
     <string name="action_sign_in_short">Se connecter</string>
-    <string name="error_invalid_email">Cette adresse de courriel n\'est pas valide</string>
+    <string name="error_invalid_email">Cette adresse courriel est invalide</string>
     <string name="error_invalid_password">Ce mot de passe est trop court</string>
     <string name="error_incorrect_password">Ce mot de passe est incorrect</string>
     <string name="error_field_required">Ce champ est requis</string>
@@ -35,7 +35,7 @@
     <string name="pref_title_license">Licence</string>
     <string name="pref_description_license">
 \n<b>GNU Affero General Public License v3.0</b> 
-\n 
+\n
 \nLes autorisations de cette licence de copyleft la plus forte sont conditionnées à la mise à disposition d\'un code source complet des œuvres sous licence et des modifications, qui comprennent des œuvres plus grandes utilisant une œuvre sous licence, sous la même licence. Les avis de droit d\'auteur et de licence doivent être conservés. Les contributeurs accordent expressément des droits de brevet. Lorsqu\'une version modifiée est utilisée pour fournir un service sur un réseau, le code source complet de la version modifiée doit être mis à disposition.</string>
     <string name="pref_title_version">Version</string>
     <string name="search_hint">Rechercher sur PeerTube</string>
@@ -86,6 +86,7 @@
     <string name="server_selection_set_server">Serveur réglé sur : %s</string>
     <string name="server_selection_select_a_server">Sélectionnez un serveur de la liste ci-dessous ou entrez-le directement.</string>
     <string name="server_selection_peertube_server_url">URL du serveur PeerTube</string>
+    <string name="server_selection_filter_hint">Filtrer la liste</string>
     <string name="title_activity_account">Compte</string>
     <string name="menu_video_more_report">Signaler</string>
     <string name="menu_video_more_blacklist">Liste noire</string>
@@ -99,8 +100,8 @@
     <string name="video_meta_button_license">Licence</string>
     <string name="video_meta_button_language">Langue</string>
     <string name="video_meta_button_tags">Étiquettes</string>
-    <string name="menu_video_options_playback_speed">Vitesse de lecture</string>
-    <string name="menu_video_options_quality">Qualité</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Vitesse de lecture (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Qualité (%1$s)</string>
     <string name="account_bottom_menu_videos">Vidéos</string>
     <string name="account_bottom_menu_channels">Chaînes</string>
     <string name="account_bottom_menu_about">À propos</string>
@@ -109,6 +110,7 @@
     <string name="account_about_description">Description :</string>
     <string name="account_about_joined">Inscrit·e le :</string>
     <string name="api_error">Quelque chose s’est mal passé, veuillez essayer plus tard !</string>
+    <string name="network_error">Problème réseau, veuillez vérifier votre connexion</string>
     <string name="action_bar_title_server_selection">Sélectionnez un serveur</string>
     <string name="ab">abkhaze</string>
     <string name="aa">afar</string>
@@ -187,7 +189,7 @@
     <string name="ja">japonais</string>
     <string name="jsl">langue des signes japonaise</string>
     <string name="jv">javanais</string>
-    <string name="kl">kalaallisut</string>
+    <string name="kl">groenlandais</string>
     <string name="kn">kannada</string>
     <string name="kr">kanuri</string>
     <string name="ks">cachemiri</string>
@@ -306,17 +308,17 @@
     <string name="video_speed_075">0,75×</string>
     <string name="video_speed_125">1,25×</string>
     <string name="title_activity_server_address_book">Carnet d\'adresses</string>
-    <string name="authentication_login_success">Identification réussie</string>
+    <string name="authentication_login_success">Identifié</string>
     <string name="authentication_login_failed">Identification échouée !</string>
     <string name="server_book_list_has_login">a un identifiant</string>
     <string name="server_book_add_add_button">Ajouter</string>
     <string name="server_book_add_password">Mot de passe</string>
     <string name="server_book_add_username">Nom d\'utilisateur</string>
     <string name="server_book_add_pick_server_button">Rechercher</string>
-    <string name="server_book_add_server_url">Url du serveur</string>
+    <string name="server_book_add_server_url">URL du serveur</string>
     <string name="server_book_add_label">Étiquette</string>
-    <string name="me_help_and_feedback_button">Aide et commentaire</string>
-    <string name="me_logout_button">Déconnexion</string>
+    <string name="me_help_and_feedback_button">Aide et remarques</string>
+    <string name="me_logout_button">Se déconnecter</string>
     <string name="server_book_valid_url_is_required">Une URL valide est requise</string>
     <string name="server_book_label_is_required">L\'étiquette du serveur est obligatoire</string>
     <string name="server_book_no_servers_found">Le livre des serveurs est vide</string>
@@ -326,8 +328,10 @@
     <string name="pref_language_app">Langue de l\'application</string>
     <string name="pref_description_back_pause">Mettre la lecture d\'arrière-plan en pause en appuyant sur la touche de retour pendant la lecture de la vidéo.</string>
     <string name="pref_title_back_pause">Pause sur le bouton retour</string>
-    <string name="settings_activity_about_category_title">À propos</string>
     <string name="settings_activity_look_and_feel_category_title">Apparence</string>
+    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="bn_rBD">Bengalais (Bangladesh)</string>
+    <string name="settings_activity_about_category_title">À propos</string>
     <string name="title_activity_me">Compte</string>
     <string name="pref_background_behavior">Paramètres de lecture en fond</string>
     <string name="settings_api_error_float">Votre version Android ne supporte pas la lecture de vidéos dans une fenêtre flottante</string>
@@ -338,7 +342,14 @@
     <string name="pref_background_float">Continuer dans une fenêtre flottante</string>
     <string name="pref_background_behavior_summary">Sélectionner le mode de fonctionnement de la lecture de vidéo lorsque l\'application est mise en arrière-plan</string>
     <string name="settings_activity_video_list_category_title">Liste de vidéos</string>
-    <string name="title_activity_select_server">Sélectionner un serveur</string>
+    <string name="title_activity_select_server">Serveur de recherche</string>
     <string name="server_book_del_alert_title">Retirer un serveur</string>
     <string name="server_book_del_alert_msg">Voulez-vous vraiment retirer ce serveur de votre carnet d\'adresses ?</string>
+    <string name="menu_video_options_quality_automated">Automatique</string>
+    <string name="server_selection_nsfw_instance">Instance avec du contenu adulte</string>
+    <string name="hello_blank_fragment">Bonjour ! Fragment vide</string>
+    <string name="server_selection_video_totals">Vidéos : %s, Vidéos locales : %s</string>
+    <string name="pref_title_buildtime">Temps de construction</string>
+    <string name="authentication_token_refresh_success">Jeton rafraîchi</string>
+    <string name="authentication_token_refresh_failed">Impossible de rafraîchir le jeton</string>
 </resources>

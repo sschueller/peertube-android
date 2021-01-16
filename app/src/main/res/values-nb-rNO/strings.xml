@@ -51,8 +51,8 @@
     <string name="video_meta_button_license">Lisens</string>
     <string name="video_meta_button_language">Språk</string>
     <string name="video_meta_button_tags">Etiketter</string>
-    <string name="menu_video_options_playback_speed">Avspillingshastighet</string>
-    <string name="menu_video_options_quality">Kvalitet</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Avspillingshastighet (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Kvalitet (%1$s)</string>
     <string name="account_bottom_menu_videos">Videoer</string>
     <string name="account_bottom_menu_channels">Kanaler</string>
     <string name="account_bottom_menu_about">Om</string>
@@ -74,7 +74,7 @@
     <string name="pref_description_torrent_player">Videoavspilling via en torrentstrøm. Dette krever lagringstilgang. (Alfa, ikke stabilt!)</string>
     <string name="pref_title_license">Lisens</string>
     <string name="pref_description_license">
-\n<b>GNU Affero General Public Lisens v3.0</b>
+\n<b>GNU Affero General Public Lisens v3.0</b> 
 \n
 \nRettigheter til denne sterkeste av copyleft-lisenser er prisgitt at hele kildekoden for lisensierte verker og endringer frigis, som inkluderer større utledede arbeider, under samme lisens. Kopirett og lisensmerknader må bevares. Bidragsytere må besørge uttrykt innvilgelse av patentrettigheter. Når en endret versjon brukes for å tilby en tjeneste over et nettverk, må hele kildekoden for den endrede versjonen tilgjengeliggjøres.</string>
     <string name="pref_title_version">Versjon</string>
@@ -124,4 +124,66 @@
     <string name="vi">Vietnamesisk</string>
     <string name="video_speed_125">1,25×</string>
     <string name="video_speed_075">0,75×</string>
+    <string name="clear_search_history_prompt">Ønsker du å slette all søkehistorikk for godt\?</string>
+    <string name="clear_search_history">Tøm søkehistorikk</string>
+    <string name="pref_background_behavior_summary">Hvordan avspilling av video utføres når den sendes til bakgrunnen</string>
+    <string name="settings_permissions_error_float">Bilde-i-bilde -tilgang er mangler for dette programmet i Android-innstillingene</string>
+    <string name="settings_api_error_float">Android-versjonen støtter ikke flytende video</string>
+    <string name="pref_background_behavior">Oppsett av bakgrunnsavspilling</string>
+    <string name="pref_background_float">Fortsett video|avspilling i flytende vindu</string>
+    <string name="pref_description_back_pause">Opphold i bakgrunnsavspilling når \"Tilbake\" trykkes under videoavspilling.</string>
+    <string name="pref_title_back_pause">Sett på pause med \"Tilbake\"-knapp</string>
+    <string name="pref_background_stop">Stopp all avspilling</string>
+    <string name="pref_background_audio">Fortsett som lydstrøm i bakgrunnen</string>
+    <string name="pref_description_language_app">Velg språk for programgrensesnittet. Start programmet på ny for å utføre endringene.</string>
+    <string name="pref_language_app">Programspråk</string>
+    <string name="server_book_add_server_url">Tjener-nettadresse</string>
+    <string name="server_book_add_pick_server_button">Søk</string>
+    <string name="server_book_add_username">Username</string>
+    <string name="server_book_add_add_button">Legg til</string>
+    <string name="server_book_add_password">Passord</string>
+    <string name="title_activity_server_address_book">Adressebok</string>
+    <string name="server_book_del_alert_title">Fjern tjener</string>
+    <string name="settings_activity_about_category_title">Om</string>
+    <string name="server_book_no_servers_found">Tjeneradressebok tom</string>
+    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="authentication_token_refresh_success">Symbol gjenoppfrisket</string>
+    <string name="authentication_token_refresh_failed">Kunne ikke gjenoppfriske symbol</string>
+    <string name="pref_title_buildtime">Byggtid</string>
+    <string name="menu_video_options_quality_automated">Automatisert</string>
+    <string name="server_selection_video_totals">Videoer: %s, lokale videoer: %s</string>
+    <string name="settings_activity_look_and_feel_category_title">Utseende og oppførsel</string>
+    <string name="settings_activity_video_playback_category_title">Videoavspilling</string>
+    <string name="settings_activity_video_list_category_title">Videoliste</string>
+    <string name="title_activity_me">Konto</string>
+    <string name="title_activity_select_server">Søk i tjener</string>
+    <string name="server_book_del_alert_msg">Er du sikker på at du ønsker å fjerne denne tjeneren fra adresseboken\?</string>
+    <string name="server_book_list_has_login">Har innlogging</string>
+    <string name="server_book_add_label">Etikett</string>
+    <string name="me_help_and_feedback_button">Hjelp og tilbakemelding</string>
+    <string name="me_logout_button">Logg ut</string>
+    <string name="server_book_valid_url_is_required">Gyldig nettadresse kreves</string>
+    <string name="server_book_label_is_required">Tjeneretikett kreves</string>
+    <string name="authentication_login_failed">Kunne ikke logge inn</string>
+    <string name="authentication_login_success">Innlogget</string>
+    <string name="hello_blank_fragment">Hei blanke fragment</string>
+    <string name="network_error">Tilknytningsfeil, sjekk tilkoblingen din</string>
+    <string name="server_selection_filter_hint">Filterliste</string>
+    <string name="bo">tibetansk</string>
+    <string name="th">thai</string>
+    <string name="te">telugu</string>
+    <string name="ta">tamil</string>
+    <string name="su">sundanesisk</string>
+    <string name="si">sinhala</string>
+    <string name="mn">mongolsk</string>
+    <string name="ml">malayalam</string>
+    <string name="lo">laotisk</string>
+    <string name="kn">kannada</string>
+    <string name="km">khmer</string>
+    <string name="jv">javanesisk</string>
+    <string name="he">hebraisk</string>
+    <string name="gu">gujarati</string>
+    <string name="bn">bengalsk</string>
+    <string name="hy">armensk</string>
+    <string name="server_selection_nsfw_instance">Arbeidsutrygg insans</string>
 </resources>

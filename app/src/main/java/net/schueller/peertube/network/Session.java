@@ -1,29 +1,29 @@
 /*
- * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ * Copyright (C) 2020 Stefan Schüller <sschueller@techdroid.com>
  *
- * License: GPL-3.0+
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU Affero General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package net.schueller.peertube.network;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.application.AppApplication;
+
+import static net.schueller.peertube.service.LoginService.refreshToken;
 
 public class Session {
 
@@ -31,13 +31,13 @@ public class Session {
     private static SharedPreferences sharedPreferences;
 
     //private constructor.
-    private Session(){
+    private Session() {
 
         Context context = AppApplication.getContext();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         //Prevent form the reflection api.
-        if (sSoleInstance != null){
+        if (sSoleInstance != null) {
             throw new RuntimeException("Use getInstance() method to get the single instance of this class.");
         }
     }
@@ -58,7 +58,6 @@ public class Session {
     }
 
 
-
     public boolean isLoggedIn() {
         // check if token exist or not
         // return true if exist otherwise false
@@ -67,13 +66,6 @@ public class Session {
         //Log.v("Session", "isLoggedIn: " + (getToken() != null));
 
         return getToken() != null;
-    }
-
-    public void saveToken(String token) {
-        // save the token
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(AppApplication.getContext().getString(R.string.pref_token_access), token);
-        editor.commit();
     }
 
     public String getToken() {
@@ -89,25 +81,22 @@ public class Session {
         return null;
     }
 
-    public void saveUsername(String username) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(AppApplication.getContext().getString(R.string.pref_auth_username), username);
-        editor.commit();
-    }
-
-    public String getEmail() {
-        return sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_auth_username), null);
-    }
-
-    public void savePassword(String password) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(AppApplication.getContext().getString(R.string.pref_auth_password), password);
-        editor.commit();
-    }
-
     public String getPassword() {
         return sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_auth_password), null);
 
+    }
+
+    public String getRefreshToken() {
+        return sharedPreferences.getString(AppApplication.getContext().getString(R.string.pref_token_refresh), null);
+
+    }
+
+    public String refreshAccessToken() {
+
+        refreshToken();
+        // refresh token
+
+        return this.getToken();
     }
 
     public void invalidate() {
@@ -122,6 +111,7 @@ public class Session {
         editor.putString(context.getString(R.string.pref_auth_password), null);
         editor.putString(context.getString(R.string.pref_auth_username), null);
         editor.putString(context.getString(R.string.pref_token_access), null);
+        editor.putString(context.getString(R.string.pref_token_refresh), null);
 
         editor.commit();
     }

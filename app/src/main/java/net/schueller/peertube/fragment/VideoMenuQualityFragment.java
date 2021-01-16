@@ -1,22 +1,22 @@
 /*
- * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ * Copyright (C) 2020 Stefan Schüller <sschueller@techdroid.com>
  *
- * License: GPL-3.0+
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU Affero General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package net.schueller.peertube.fragment;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -44,7 +44,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
     public static final String TAG = "VideoMenuQuality";
     private static File autoQualityFile;
 
-    public static VideoMenuQualityFragment newInstance(ArrayList<File> files) {
+    public static VideoMenuQualityFragment newInstance(Context context, ArrayList<File> files) {
 
         mFiles = files;
 
@@ -53,7 +53,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
             autoQualityFile = new File();
             Resolution autoQualityResolution = new Resolution();
             autoQualityResolution.setId(0);
-            autoQualityResolution.setLabel("Auto");
+            autoQualityResolution.setLabel(context.getString(R.string.menu_video_options_quality_automated));
             autoQualityFile.setId(0);
             autoQualityFile.setResolution(autoQualityResolution);
         }
@@ -74,11 +74,11 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
                 false);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+        Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
 
         for (File file : mFiles) {
 
-            LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, null);
+            LinearLayout menuRow = (LinearLayout) inflater.inflate(R.layout.row_popup_menu, container);
 
             TextView iconView = menuRow.findViewById(R.id.video_quality_icon);
             iconView.setId(file.getResolution().getId());
@@ -90,7 +90,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
             textView.setOnClickListener(view1 -> {
 //                Log.v(TAG, file.getResolution().getLabel());
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putInt("pref_quality", file.getResolution().getId());
+                editor.putInt(getString(R.string.pref_quality_key), file.getResolution().getId());
                 editor.apply();
 
                 for (File fileV : mFiles) {

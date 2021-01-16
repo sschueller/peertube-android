@@ -54,7 +54,7 @@
     <string name="brown">褐色</string>
     <string name="gray">灰色</string>
     <string name="bluegray">蓝灰色</string>
-    <string name="meta_data_views">次观看</string>
+    <string name="meta_data_views">" 次观看"</string>
     <string name="bottom_nav_title_local">本地</string>
     <string name="title_activity_account">帐号</string>
     <string name="pref_language">按语言过滤</string>
@@ -87,7 +87,7 @@
     <string name="lo">老挝语</string>
     <string name="el">现代希腊语（1453年—）</string>
     <string name="mn">蒙古语</string>
-    <string name="or">奥里亚语</string>
+    <string name="or">奥里亚语 (巨集语言)</string>
     <string name="ru">俄语</string>
     <string name="si">僧伽罗字母</string>
     <string name="es">西班牙语</string>
@@ -112,8 +112,8 @@
     <string name="video_meta_button_category">类别</string>
     <string name="video_meta_button_license">许可</string>
     <string name="video_meta_button_tags">标签</string>
-    <string name="menu_video_options_playback_speed">播放速度</string>
-    <string name="menu_video_options_quality">画质</string>
+    <string name="menu_video_options_playback_speed" formatted="true">播放速度 (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">画质 (%1$s)</string>
     <string name="account_bottom_menu_videos">视频</string>
     <string name="account_bottom_menu_channels">频道</string>
     <string name="account_bottom_menu_about">关于</string>

@@ -19,28 +19,29 @@
         android:hint="@string/server_book_add_label"
         android:inputType="textPersonName" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        >
 
         <EditText
-            android:layout_alignParentStart="true"
             android:id="@+id/serverUrl"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:ems="10"
             android:hint="@string/server_book_add_server_url"
             android:inputType="textUri"
-            android:layout_toStartOf="@+id/pickServerUrl"/>
+            />
 
         <Button
-            android:layout_alignParentEnd="true"
             android:id="@+id/pickServerUrl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/server_book_add_pick_server_button" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <EditText
         android:id="@+id/serverUsername"

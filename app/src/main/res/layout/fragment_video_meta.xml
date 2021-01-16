@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="6dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avatar"
         android:layout_width="72dp"
         android:layout_height="72dp"
@@ -16,7 +17,7 @@
         android:paddingEnd="12dp" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/sl_row_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -31,7 +32,7 @@
         android:id="@+id/videoMeta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/sl_row_name"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="6dp"
         android:layout_marginTop="0dp"
@@ -58,7 +59,7 @@
         android:layout_marginStart="-16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="0dp"
-        android:layout_toEndOf="@+id/name"
+        android:layout_toEndOf="@+id/sl_row_name"
         android:background="@null"
         android:contentDescription="@string/descr_overflow_button"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
@@ -194,6 +195,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
+        android:autoLink="web"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
 
     <LinearLayout
@@ -209,7 +211,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-
+            android:gravity="bottom"
             android:orientation="horizontal">
 
             <TextView
@@ -228,8 +230,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center|start"
-                android:text=""
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                tools:text="@tools:sample/lorem/random"
+                android:lines="2"
+                />
 
         </LinearLayout>
 
@@ -238,7 +242,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-
+            android:gravity="bottom"
             android:orientation="horizontal">
 
             <TextView
@@ -257,8 +261,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center|start"
-                android:text=""
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                tools:text="@tools:sample/lorem/random"
+                android:lines="2"
+                />
 
         </LinearLayout>
 
@@ -266,7 +272,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-
+            android:gravity="bottom"
             android:orientation="horizontal">
 
             <TextView
@@ -285,8 +291,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center|start"
-                android:text=""
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                tools:text="@tools:sample/lorem"
+                android:lines="2"
+                />
 
         </LinearLayout>
 
@@ -295,7 +303,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-
+            android:gravity="bottom"
             android:orientation="horizontal">
 
             <TextView
@@ -314,8 +322,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center|start"
-                android:text=""
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                tools:text="@tools:sample/lorem/random"
+                android:lines="2"
+                />
 
         </LinearLayout>
 
@@ -323,7 +333,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-
+            android:gravity="bottom"
             android:orientation="horizontal">
 
             <TextView
@@ -342,7 +352,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center|start"
-                android:text=""
+                tools:text="@tools:sample/lorem/random"
+                android:lines="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
 
         </LinearLayout>

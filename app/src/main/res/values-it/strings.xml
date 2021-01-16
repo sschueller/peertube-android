@@ -3,11 +3,11 @@
     <string name="title_activity_settings">Impostazioni</string>
     <string name="title_activity_login">Accedi</string>
     <string name="prompt_server">Server</string>
-    <string name="prompt_email">Email / Nome utente</string>
+    <string name="prompt_email">E-mail / Nome utente</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Accedi</string>
     <string name="action_sign_in_short">Accedi</string>
-    <string name="error_invalid_email">Questo indirizzo email non è valido</string>
+    <string name="error_invalid_email">Questo indirizzo e-mail non è valido</string>
     <string name="error_invalid_password">La password è troppo corta</string>
     <string name="error_incorrect_password">Questa password non è corretta</string>
     <string name="error_field_required">Questo campo è obbligatorio</string>
@@ -32,10 +32,10 @@
     <string name="descr_overflow_button">Altro</string>
     <string name="menu_share">Condividi</string>
     <string name="invalid_url">URL non valido.</string>
-    <string name="pref_description_dark_mode">Riavviare l\'applicazione affinché la modalità Dark Mode abbia effetto.</string>
+    <string name="pref_description_dark_mode">Riavvia l\'applicazione affinché la modalità scura abbia effetto.</string>
     <string name="pref_title_app_theme">Tema dell\'app</string>
     <string name="pref_description_app_theme">Riavviare l\'applicazione affinché il tema abbia effetto.</string>
-    <string name="pref_title_torrent_player">Lettore Video Torrent</string>
+    <string name="pref_title_torrent_player">Lettore video Torrent</string>
     <string name="pref_description_torrent_player">Riproduzione di Video tramite torrent stream. Questo richiede i permessi di archiviazione. (Alfa, non stabile!)</string>
     <string name="pref_title_license">Licenza</string>
     <string name="pref_title_version">Versione</string>
@@ -46,7 +46,7 @@
     <string name="pref_title_peertube_server">Server PeerTube</string>
     <string name="pref_title_background_play">Riproduzione in sottofondo</string>
     <string name="pref_description_background_play">Se abilitata, continua a riprodurre il video in sottofondo.</string>
-    <string name="pref_title_dark_mode">Modo scuro</string>
+    <string name="pref_title_dark_mode">Modalità scura</string>
     <string name="pref_description_license">
 \n<b>GNU Affero General Public License v3.0</b>
 \n
@@ -286,8 +286,8 @@
     <string name="video_meta_button_license">Licenza</string>
     <string name="video_meta_button_language">Lingua</string>
     <string name="video_meta_button_tags">Parole chiave</string>
-    <string name="menu_video_options_playback_speed">Velocità di riproduzione</string>
-    <string name="menu_video_options_quality">Qualità</string>
+    <string name="menu_video_options_playback_speed" formatted="true">Velocità di riproduzione (%1$s)</string>
+    <string name="menu_video_options_quality" formatted="true">Qualità (%1$s)</string>
     <string name="account_bottom_menu_videos">Video</string>
     <string name="account_bottom_menu_channels">Canali</string>
     <string name="account_bottom_menu_about">A proposito</string>
@@ -316,4 +316,35 @@
     <string name="clear_search_history">Cancella la cronologia delle ricerche</string>
     <string name="pref_description_language_app">Seleziona la lingua per l\'interfaccia dell\'applicazione. Riavvia l\'app per rendere effettive le modifiche.</string>
     <string name="pref_language_app">Lingua dell\'applicazione</string>
+    <string name="pref_background_behavior_summary">Come la riproduzione video risponde quando va in sottofondo</string>
+    <string name="authentication_token_refresh_success">Token aggiornato</string>
+    <string name="authentication_token_refresh_failed">Impossibile aggiornare il token</string>
+    <string name="pref_title_buildtime">Tempo di costruzione</string>
+    <string name="menu_video_options_quality_automated">Automatico</string>
+    <string name="server_selection_video_totals">Videos: %s, Video locali: %s</string>
+    <string name="server_selection_nsfw_instance">Instanza NSFW</string>
+    <string name="settings_activity_look_and_feel_category_title">Aspetto</string>
+    <string name="settings_activity_about_category_title">Info</string>
+    <string name="settings_activity_video_playback_category_title">Riproduzione video</string>
+    <string name="settings_activity_video_list_category_title">Lista dei video</string>
+    <string name="title_activity_settings2">ImpostazioniAttività2</string>
+    <string name="title_activity_me">Account</string>
+    <string name="title_activity_select_server">Cerca server</string>
+    <string name="server_book_del_alert_msg">Sicuro di voler rimuovere questo server dalla rubrica\?</string>
+    <string name="server_book_del_alert_title">Server remoto</string>
+    <string name="title_activity_server_address_book">Rubrica</string>
+    <string name="server_book_add_label">Etichetta</string>
+    <string name="server_book_label_is_required">L\'etichetta del server è obbligatoria</string>
+    <string name="hello_blank_fragment">Ciao frammento vuoto</string>
+    <string name="bn_rBD">Bengalese (Bangladesh)</string>
+    <string name="settings_permissions_error_float">Il permesso della modalità Picture-in-Picture è disattivata per questa app nelle impostazioni Android</string>
+    <string name="settings_api_error_float">Questa versione di Android non supporta la lettura fluttuante del video</string>
+    <string name="pref_background_behavior">Configurazione della lettura in sottfondo</string>
+    <string name="pref_background_float">Continua riproduzione in una finestra fluttuante</string>
+    <string name="pref_background_stop">Ferma la lettura video</string>
+    <string name="pref_background_audio">Continua come flusso sonoro in sottofondo</string>
+    <string name="pref_description_back_pause">Metti la riproduzione di sottofondo in pausa quando premi il tasto indietro durante la lettura del video.</string>
+    <string name="pref_title_back_pause">Pausa sul tasto backspace</string>
+    <string name="network_error">Errore di accesso alla rete, controlla la tua connettività</string>
+    <string name="server_selection_filter_hint">Elenco dei filtri</string>
 </resources>

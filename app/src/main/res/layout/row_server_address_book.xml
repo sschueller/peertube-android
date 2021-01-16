@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="0dp"
+    card_view:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/serverLabelRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            tools:text="@tools:sample/lorem"
+            />
+
+        <TextView
+            android:id="@+id/serverUrlRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintTop_toBottomOf="@id/serverLabelRow"
+            card_view:layout_constraintStart_toStartOf="parent"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+            tools:text="@tools:sample/lorem"
+            />
+
+        <ImageView
+            android:id="@+id/sb_row_has_login_icon"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/server_book_list_has_login"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            />
+
+        <ImageView
+            android:id="@+id/edit_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:layout_constraintTop_toBottomOf="@id/sb_row_has_login_icon"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/server_book_list_has_login"
+            android:src="@drawable/ic_edit_24"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

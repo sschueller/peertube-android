@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Thorium</string>
+
+    <!-- Prefs Settings-->
+    <string name="pref_language_app_key" translatable="false">pref_language_app</string>
+    <string name="pref_theme_key" translatable="false">pref_theme</string>
+    <string name="pref_dark_mode_key" translatable="false">pref_dark_mode</string>
+
+    <string name="pref_show_nsfw_key" translatable="false">pref_show_nsfw</string>
+    <string name="pref_video_language_key" translatable="false">pref_language</string>
+
+    <string name="pref_back_pause_key" translatable="false">pref_back_pause</string>
+    <string name="pref_background_behavior_key" translatable="false">pref_background_behavior</string>
+    <string name="pref_torrent_player_key" translatable="false">pref_torrent_player</string>
+
+    <string name="pref_accept_insecure" translatable="false">pref_accept_insecure</string>
+
+    <!-- defaults -->
+    <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
+    <string name="app_default_theme" translatable="false">AppTheme.BLUE</string>
+
+    <!-- Pref internal -->
+    <string name="pref_token_access" translatable="false">pref_token_access</string>
+    <string name="pref_token_refresh" translatable="false">pref_token_refresh</string>
+    <string name="pref_token_expiration" translatable="false">pref_token_expiration</string>
+    <string name="pref_token_type" translatable="false">pref_token_type</string>
+    <string name="pref_auth_username" translatable="false">pref_auth_username</string>
+    <string name="pref_auth_password" translatable="false">pref_auth_password</string>
+    <string name="pref_client_id" translatable="false">pref_client_id</string>
+    <string name="pref_client_secret" translatable="false">pref_client_secret</string>
+    <string name="pref_api_base_key" translatable="false">pref_api_base</string>
+    <string name="pref_quality_key" translatable="false">pref_quality</string>
+
+    <!-- Pref internal keys -->
+    <string name="pref_background_audio_key" translatable="false">backgroundAudio</string>
+    <string name="pref_background_stop_key" translatable="false">backgroundStop</string>
+    <string name="pref_background_float_key" translatable="false">backgroundFloat</string>
+
+
+    <string name="peertube_required_server_version" translatable="false">1.0.0-alpha.7</string>
+
+    <string name="app_background_audio" translatable="false">BACKGROUND_AUDIO</string>
+
+    <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
+    <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
+    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_quality_active_icon" translatable="false">{faw-check}</string>
+    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
+    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
+    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
+    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
+    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
+    <string name="video_share_icon" translatable="false">{faw-share}</string>
+    <string name="video_download_icon" translatable="false">{faw-download}</string>
+    <string name="video_save_icon" translatable="false">{faw-save}</string>
+
+    <string name="meta_data_owner_seperator" translatable="false">\@</string>
+    <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
+
+    <string name="title_activity_video_play" translatable="false">VideoPlayActivity</string>
+
+    <string name="playback_channel_name" translatable="false">PeerTube</string>
+
+    <string name="peertube_instance_search_default_description" translatable="false">PeerTube, a federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular.</string>
+
+    <string-array name="backgroundBehavior">
+        <item>@string/pref_background_audio</item>
+        <item>@string/pref_background_stop</item>
+        <item>@string/pref_background_float</item>
+    </string-array>
+
+    <string-array name="backgroundBehaviorValues">
+        <item>@string/pref_background_audio_key</item>
+        <item>@string/pref_background_stop_key</item>
+        <item>@string/pref_background_float_key</item>
+    </string-array>
+
+    <string-array name="themeArray">
+        <item>@string/red</item>
+        <item>@string/pink</item>
+        <item>@string/purple</item>
+        <item>@string/deeppurple</item>
+        <item>@string/indigo</item>
+        <item>@string/blue</item>
+        <item>@string/lightblue</item>
+        <item>@string/cyan</item>
+        <item>@string/teal</item>
+        <item>@string/green</item>
+        <item>@string/lightgreen</item>
+        <item>@string/lime</item>
+        <item>@string/yellow</item>
+        <item>@string/amber</item>
+        <item>@string/orange</item>
+        <item>@string/deeporange</item>
+        <item>@string/brown</item>
+        <item>@string/gray</item>
+        <item>@string/bluegray</item>
+    </string-array>
+
+    <string-array name="themeValues">
+        <item>AppTheme.RED</item>
+        <item>AppTheme.PINK</item>
+        <item>AppTheme.PURPLE</item>
+        <item>AppTheme.DEEPPURPLE</item>
+        <item>AppTheme.INDIGO</item>
+        <item>AppTheme.BLUE</item>
+        <item>AppTheme.LIGHTBLUE</item>
+        <item>AppTheme.CYAN</item>
+        <item>AppTheme.TEAL</item>
+        <item>AppTheme.GREEN</item>
+        <item>AppTheme.LIGHTGREEN</item>
+        <item>AppTheme.LIME</item>
+        <item>AppTheme.YELLOW</item>
+        <item>AppTheme.AMBER</item>
+        <item>AppTheme.ORANGE</item>
+        <item>AppTheme.DEEPORANGE</item>
+        <item>AppTheme.BROWN</item>
+        <item>AppTheme.GRAY</item>
+        <item>AppTheme.BLUEGRAY</item>
+    </string-array>
+    <string-array name="languageArray">
+        <item>@string/ab</item>
+        <item>@string/aa</item>
+        <item>@string/af</item>
+        <item>@string/ak</item>
+        <item>@string/sq</item>
+        <item>@string/ase</item>
+        <item>@string/am</item>
+        <item>@string/ar</item>
+        <item>@string/an</item>
+        <item>@string/hy</item>
+        <item>@string/as</item>
+        <item>@string/av</item>
+        <item>@string/ay</item>
+        <item>@string/az</item>
+        <item>@string/bm</item>
+        <item>@string/ba</item>
+        <item>@string/eu</item>
+        <item>@string/be</item>
+        <item>@string/bn</item>
+        <item>@string/bn_rBD</item>
+        <item>@string/bi</item>
+        <item>@string/bs</item>
+        <item>@string/bzs</item>
+        <item>@string/br</item>
+        <item>@string/bfi</item>
+        <item>@string/bg</item>
+        <item>@string/my</item>
+        <item>@string/ca</item>
+        <item>@string/ch</item>
+        <item>@string/ce</item>
+        <item>@string/zh</item>
+        <item>@string/csl</item>
+        <item>@string/cv</item>
+        <item>@string/kw</item>
+        <item>@string/co</item>
+        <item>@string/cr</item>
+        <item>@string/hr</item>
+        <item>@string/cs</item>
+        <item>@string/cse</item>
+        <item>@string/da</item>
+        <item>@string/dsl</item>
+        <item>@string/dv</item>
+        <item>@string/nl</item>
+        <item>@string/dz</item>
+        <item>@string/en</item>
+        <item>@string/eo</item>
+        <item>@string/et</item>
+        <item>@string/ee</item>
+        <item>@string/fo</item>
+        <item>@string/fj</item>
+        <item>@string/fi</item>
+        <item>@string/fr</item>
+        <item>@string/fsl</item>
+        <item>@string/ff</item>
+        <item>@string/gl</item>
+        <item>@string/lg</item>
+        <item>@string/ka</item>
+        <item>@string/de</item>
+        <item>@string/gsg</item>
+        <item>@string/gn</item>
+        <item>@string/gu</item>
+        <item>@string/ht</item>
+        <item>@string/ha</item>
+        <item>@string/he</item>
+        <item>@string/hz</item>
+        <item>@string/hi</item>
+        <item>@string/ho</item>
+        <item>@string/hu</item>
+        <item>@string/is</item>
+        <item>@string/ig</item>
+        <item>@string/id</item>
+        <item>@string/iu</item>
+        <item>@string/ik</item>
+        <item>@string/ga</item>
+        <item>@string/it</item>
+        <item>@string/ja</item>
+        <item>@string/jsl</item>
+        <item>@string/jv</item>
+        <item>@string/kl</item>
+        <item>@string/kn</item>
+        <item>@string/kr</item>
+        <item>@string/ks</item>
+        <item>@string/kk</item>
+        <item>@string/km</item>
+        <item>@string/ki</item>
+        <item>@string/rw</item>
+        <item>@string/ky</item>
+        <item>@string/tlh</item>
+        <item>@string/kv</item>
+        <item>@string/kg</item>
+        <item>@string/ko</item>
+        <item>@string/avk</item>
+        <item>@string/kj</item>
+        <item>@string/ku</item>
+        <item>@string/lo</item>
+        <item>@string/lv</item>
+        <item>@string/li</item>
+        <item>@string/ln</item>
+        <item>@string/lt</item>
+        <item>@string/jbo</item>
+        <item>@string/lu</item>
+        <item>@string/lb</item>
+        <item>@string/mk</item>
+        <item>@string/mg</item>
+        <item>@string/ms</item>
+        <item>@string/ml</item>
+        <item>@string/mt</item>
+        <item>@string/gv</item>
+        <item>@string/mi</item>
+        <item>@string/mr</item>
+        <item>@string/mh</item>
+        <item>@string/el</item>
+        <item>@string/mn</item>
+        <item>@string/na</item>
+        <item>@string/nv</item>
+        <item>@string/ng</item>
+        <item>@string/ne</item>
+        <item>@string/nd</item>
+        <item>@string/se</item>
+        <item>@string/no</item>
+        <item>@string/nb</item>
+        <item>@string/nn</item>
+        <item>@string/ny</item>
+        <item>@string/oc</item>
+        <item>@string/oj</item>
+        <item>@string/or</item>
+        <item>@string/om</item>
+        <item>@string/os</item>
+        <item>@string/pks</item>
+        <item>@string/pa</item>
+        <item>@string/fa</item>
+        <item>@string/pl</item>
+        <item>@string/pt</item>
+        <item>@string/ps</item>
+        <item>@string/qu</item>
+        <item>@string/ro</item>
+        <item>@string/rm</item>
+        <item>@string/rn</item>
+        <item>@string/ru</item>
+        <item>@string/rsl</item>
+        <item>@string/sm</item>
+        <item>@string/sg</item>
+        <item>@string/sc</item>
+        <item>@string/sdl</item>
+        <item>@string/gd</item>
+        <item>@string/sr</item>
+        <item>@string/sh</item>
+        <item>@string/sn</item>
+        <item>@string/ii</item>
+        <item>@string/sd</item>
+        <item>@string/si</item>
+        <item>@string/sk</item>
+        <item>@string/sl</item>
+        <item>@string/so</item>
+        <item>@string/sfs</item>
+        <item>@string/nr</item>
+        <item>@string/st</item>
+        <item>@string/es</item>
+        <item>@string/su</item>
+        <item>@string/sw</item>
+        <item>@string/ss</item>
+        <item>@string/sv</item>
+        <item>@string/swl</item>
+        <item>@string/tl</item>
+        <item>@string/ty</item>
+        <item>@string/tg</item>
+        <item>@string/ta</item>
+        <item>@string/tt</item>
+        <item>@string/te</item>
+        <item>@string/th</item>
+        <item>@string/bo</item>
+        <item>@string/ti</item>
+        <item>@string/to</item>
+        <item>@string/ts</item>
+        <item>@string/tn</item>
+        <item>@string/tr</item>
+        <item>@string/tk</item>
+        <item>@string/tw</item>
+        <item>@string/ug</item>
+        <item>@string/uk</item>
+        <item>@string/ur</item>
+        <item>@string/uz</item>
+        <item>@string/ve</item>
+        <item>@string/vi</item>
+        <item>@string/wa</item>
+        <item>@string/cy</item>
+        <item>@string/fy</item>
+        <item>@string/wo</item>
+        <item>@string/xh</item>
+        <item>@string/yi</item>
+        <item>@string/yo</item>
+        <item>@string/za</item>
+        <item>@string/zu</item>
+    </string-array>
+
+    <string-array name="languageValues">
+        <item>ab</item>
+        <item>aa</item>
+        <item>af</item>
+        <item>ak</item>
+        <item>sq</item>
+        <item>ase</item>
+        <item>am</item>
+        <item>ar</item>
+        <item>an</item>
+        <item>hy</item>
+        <item>as</item>
+        <item>av</item>
+        <item>ay</item>
+        <item>az</item>
+        <item>bm</item>
+        <item>ba</item>
+        <item>eu</item>
+        <item>be</item>
+        <item>bn</item>
+        <item>bn_rBD</item>
+        <item>bi</item>
+        <item>bs</item>
+        <item>bzs</item>
+        <item>br</item>
+        <item>bfi</item>
+        <item>bg</item>
+        <item>my</item>
+        <item>ca</item>
+        <item>ch</item>
+        <item>ce</item>
+        <item>zh</item>
+        <item>csl</item>
+        <item>cv</item>
+        <item>kw</item>
+        <item>co</item>
+        <item>cr</item>
+        <item>hr</item>
+        <item>cs</item>
+        <item>cse</item>
+        <item>da</item>
+        <item>dsl</item>
+        <item>dv</item>
+        <item>nl</item>
+        <item>dz</item>
+        <item>en</item>
+        <item>eo</item>
+        <item>et</item>
+        <item>ee</item>
+        <item>fo</item>
+        <item>fj</item>
+        <item>fi</item>
+        <item>fr</item>
+        <item>fsl</item>
+        <item>ff</item>
+        <item>gl</item>
+        <item>lg</item>
+        <item>ka</item>
+        <item>de</item>
+        <item>gsg</item>
+        <item>gn</item>
+        <item>gu</item>
+        <item>ht</item>
+        <item>ha</item>
+        <item>he</item>
+        <item>hz</item>
+        <item>hi</item>
+        <item>ho</item>
+        <item>hu</item>
+        <item>is</item>
+        <item>ig</item>
+        <item>id</item>
+        <item>iu</item>
+        <item>ik</item>
+        <item>ga</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>jsl</item>
+        <item>jv</item>
+        <item>kl</item>
+        <item>kn</item>
+        <item>kr</item>
+        <item>ks</item>
+        <item>kk</item>
+        <item>km</item>
+        <item>ki</item>
+        <item>rw</item>
+        <item>ky</item>
+        <item>tlh</item>
+        <item>kv</item>
+        <item>kg</item>
+        <item>ko</item>
+        <item>avk</item>
+        <item>kj</item>
+        <item>ku</item>
+        <item>lo</item>
+        <item>lv</item>
+        <item>li</item>
+        <item>ln</item>
+        <item>lt</item>
+        <item>jbo</item>
+        <item>lu</item>
+        <item>lb</item>
+        <item>mk</item>
+        <item>mg</item>
+        <item>ms</item>
+        <item>ml</item>
+        <item>mt</item>
+        <item>gv</item>
+        <item>mi</item>
+        <item>mr</item>
+        <item>mh</item>
+        <item>el</item>
+        <item>mn</item>
+        <item>na</item>
+        <item>nv</item>
+        <item>ng</item>
+        <item>ne</item>
+        <item>nd</item>
+        <item>se</item>
+        <item>no</item>
+        <item>nb</item>
+        <item>nn</item>
+        <item>ny</item>
+        <item>oc</item>
+        <item>oj</item>
+        <item>or</item>
+        <item>om</item>
+        <item>os</item>
+        <item>pks</item>
+        <item>pa</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt</item>
+        <item>ps</item>
+        <item>qu</item>
+        <item>ro</item>
+        <item>rm</item>
+        <item>rn</item>
+        <item>ru</item>
+        <item>rsl</item>
+        <item>sm</item>
+        <item>sg</item>
+        <item>sc</item>
+        <item>sdl</item>
+        <item>gd</item>
+        <item>sr</item>
+        <item>sh</item>
+        <item>sn</item>
+        <item>ii</item>
+        <item>sd</item>
+        <item>si</item>
+        <item>sk</item>
+        <item>sl</item>
+        <item>so</item>
+        <item>sfs</item>
+        <item>nr</item>
+        <item>st</item>
+        <item>es</item>
+        <item>su</item>
+        <item>sw</item>
+        <item>ss</item>
+        <item>sv</item>
+        <item>swl</item>
+        <item>tl</item>
+        <item>ty</item>
+        <item>tg</item>
+        <item>ta</item>
+        <item>tt</item>
+        <item>te</item>
+        <item>th</item>
+        <item>bo</item>
+        <item>ti</item>
+        <item>to</item>
+        <item>ts</item>
+        <item>tn</item>
+        <item>tr</item>
+        <item>tk</item>
+        <item>tw</item>
+        <item>ug</item>
+        <item>uk</item>
+        <item>ur</item>
+        <item>uz</item>
+        <item>ve</item>
+        <item>vi</item>
+        <item>wa</item>
+        <item>cy</item>
+        <item>fy</item>
+        <item>wo</item>
+        <item>xh</item>
+        <item>yi</item>
+        <item>yo</item>
+        <item>za</item>
+        <item>zu</item>
+    </string-array>
+
+    <string-array name="supportedLanguagesValues">
+        <item>ar</item>
+        <item>bn</item>
+        <item>bn_rBD</item>
+        <item>cs</item>
+        <item>de</item>
+        <item>el</item>
+        <item>en</item>
+        <item>es</item>
+        <item>fa</item>
+        <item>fi</item>
+        <item>fr</item>
+        <item>gd</item>
+        <item>hi</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>no</item>
+        <item>nl</item>
+        <item>pl</item>
+        <item>ru</item>
+        <item>sv</item>
+        <item>tr</item>
+        <item>uk</item>
+        <item>zh-rCN</item>
+        <item>zh-rTW</item>
+    </string-array>
+
+    <string-array name="supportedLanguagesArray">
+        <item>@string/ar</item>
+        <item>@string/bn</item>
+        <item>@string/bn_rBD</item>
+        <item>@string/cs</item>
+        <item>@string/de</item>
+        <item>@string/el</item>
+        <item>@string/en</item>
+        <item>@string/es</item>
+        <item>@string/fa</item>
+        <item>@string/fi</item>
+        <item>@string/fr</item>
+        <item>@string/gd</item>
+        <item>@string/hi</item>
+        <item>@string/it</item>
+        <item>@string/ja</item>
+        <item>@string/no</item>
+        <item>@string/nl</item>
+        <item>@string/pl</item>
+        <item>@string/ru</item>
+        <item>@string/sv</item>
+        <item>@string/tr</item>
+        <item>@string/uk</item>
+        <item>@string/zh</item>
+        <item>@string/tw</item>
+    </string-array>
+
+
+    <string-array name="empty_array" />
+
+    <string-array name="quality">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="qualityValues">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+</resources>

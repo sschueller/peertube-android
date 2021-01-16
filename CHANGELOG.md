@@ -1,3 +1,52 @@
+### Version 1.0.51 Tag: v1.0.51 (2021-01-14)
+ - fixed default app language on first start (@kosharskiy)
+ - Settings screen translations uk and ru languages (@kosharskiy)
+ - cleanup app/build.gradle file (@kosharskiy)
+ - fixed video meta data display issue (@kosharskiy)
+ - updated translations
+
+### Version 1.0.50 Tag: v1.0.50 (2020-11-22)
+ - add support for disabling SSL
+ - translations
+
+### Version 1.0.49 Tag: v1.0.49 (2020-09-26)
+ - add support of hypertext redirection in description (@freeboub)
+ - various crash fixes (@freeboub)
+ - avoid going to pip when leaving the app due to share button (@freeboub)
+ - Add ability to filter server list (@freeboub)
+ - Refactor Toast error management to split network error (@freeboub)
+ - keep video aspect ratio for pip (@freeboub)
+ - navigation bar was not restored when leaving landscape mode (@freeboub)
+
+### Version 1.0.48 Tag: v1.0.48 (2020-09-26)
+ - f-droid release to fix auto deployment
+
+### Version 1.0.47 Tag: v1.0.47 (2020-07-10)
+ * Authentication refresh
+
+### Version 1.0.46 Tag: v1.0.46 (2020-07-08)
+ * Revert broken auth
+
+### Version 1.0.45 Tag: v1.0.45 (2020-07-08)
+ * Added token refresh
+
+### Version 1.0.44 Tag: v1.0.44 (2020-07-05)
+ * Completed implementation of Likes & Dislikes (@Poslovitch)
+ * Added preview of the current playback speed and video quality in the VideoOptionsFragment (@Poslovitch)
+ * Lots of code cleanup
+ * Various translations
+
+### Version 1.0.43 Tag: v1.0.43 (2020-07-04)
+ * Fix back button issue
+
+### Version 1.0.42 Tag: v1.0.42 (2020-07-04)
+ * Added appbar at the top of the SettingsActivity (@Poslovitch)
+ * Improved and added some French translations (@Poslovitch)
+ * Removed translations for untranslatable strings (@Poslovitch)
+ * Add stop button to expanded notification, and stop and switch to audio in video window (@dhk2)
+ * More data in Server search
+ * VideoList timestamp fix
+
 ### Version 1.0.41 Tag: v1.0.41 (2020-06-28)
  * Floating window player controls fix (@dhk2)
  * Updated app icons

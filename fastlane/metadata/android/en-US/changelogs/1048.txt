@@ -1,0 +1,1 @@
+ - f-droid release to fix auto deployment

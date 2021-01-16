@@ -1,19 +1,18 @@
 /*
- * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ * Copyright (C) 2020 Stefan Schüller <sschueller@techdroid.com>
  *
- * License: GPL-3.0+
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU Affero General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package net.schueller.peertube.activity;
@@ -37,6 +36,7 @@ import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.ChannelAdapter;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Account;
 import net.schueller.peertube.model.Avatar;
@@ -96,7 +96,7 @@ public class AccountActivity extends CommonActivity {
 
         apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
-        userService = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
+        userService = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetUserService.class);
 
         recyclerViewVideos = findViewById(R.id.account_video_recyclerView);
         recyclerViewChannels = findViewById(R.id.account_channel_recyclerView);
@@ -206,7 +206,7 @@ public class AccountActivity extends CommonActivity {
                     }
 
                 } else {
-                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                    ErrorHelper.showToastFromCommunicationError( AccountActivity.this, null );
                 }
 
 
@@ -215,7 +215,7 @@ public class AccountActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<Account> call, @NonNull Throwable t) {
                 Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( AccountActivity.this, t );
             }
         });
 
@@ -226,7 +226,7 @@ public class AccountActivity extends CommonActivity {
 
         isLoadingVideos = false;
 
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetVideoDataService.class);
         Call<VideoList> call;
 
         call = service.getAccountVideosData(displayNameAndHost, videosStart, videosCount, videosSort);
@@ -247,8 +247,7 @@ public class AccountActivity extends CommonActivity {
                     }
 
                 } else{
-                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
-
+                    ErrorHelper.showToastFromCommunicationError( AccountActivity.this, null );
                 }
 
                 isLoadingVideos = false;
@@ -258,7 +257,7 @@ public class AccountActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<VideoList> call, @NonNull Throwable t) {
                 Log.wtf("err", t.fillInStackTrace());
-                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( AccountActivity.this, t );
                 isLoadingVideos = false;
                 swipeRefreshLayoutVideos.setRefreshing(false);
             }
@@ -281,7 +280,7 @@ public class AccountActivity extends CommonActivity {
 
 
                 } else {
-                    Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                    ErrorHelper.showToastFromCommunicationError( AccountActivity.this, null );
                 }
 
 
@@ -290,7 +289,7 @@ public class AccountActivity extends CommonActivity {
             @Override
             public void onFailure(@NonNull Call<ChannelList> call, @NonNull Throwable t) {
                 Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(AccountActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                ErrorHelper.showToastFromCommunicationError( AccountActivity.this, t );
             }
         });
     }

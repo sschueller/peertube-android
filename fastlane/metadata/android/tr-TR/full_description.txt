@@ -1,0 +1,33 @@
+Thorium, sürüm v1.1.0-alpha.2 veya daha üstünü çalıştıran herhangi bir PeerTube sunucusuna bağlanabilen bir PeerTube istemcisidir. 
+
+PeerTube, doğrudan web tarayıcısında P2P (BitTorrent) kullanan bir federe (ActivityPub) video yayınlama platformudur. Daha fazla bilgi ve sunucu listesi için lütfen https://joinpeertube.org/ adresini ziyaret edin.
+
+Bu istemci, uygulamanın yaratıcısı tarafından - PeerTube projesinin kendisi değil, http://instances.joinpeertube.org/ adresinde daha fazlasını listelemektedir - yönetilen bir PeerTube sunucusuyla önceden yapılandırılmış olarak gelir, böylece istemcinin neler yapabileceğini görebilirsiniz. Deneyiminizi kendinize göre ayarlamak için sunucunuzu seçin!
+
+Mevcut Özellikler:
+- Herhangi bir PeerTube sunucusuna bağlanın
+- Videoyu torrent ile paylaşma veya doğrudan oynatma
+- PeerTube'de arayın
+- Video indirin / paylaşın
+- Temalar / Karanlık mod
+- Arka planda oynatma
+- Yatay modda tam ekran oynatma
+- Oynatma hızı
+- Uygunsuz (NSFW) içeriği filtreleyin
+- Kimlik doğrulama / Oturum açma
+- Video beğenin / beğenmeyin
+
+Yakında Gelecekler:
+- Videolara yorum yapma
+- Kaydolma
+- Kullanıcı / Kanal genel görünüm sayfası
+- Videoları şikayet etme
+
+İzinler:
+- Depolama erişimi, torrent veya video indirme için gerekli. 
+
+GNU Affero Genel Kamu Lisansı v3.0 altında lisanslanmıştır.
+
+Bu en güçlü copyleft lisansının izinleri, lisanslı bir çalışmayı içeren daha büyük çalışmalar dahil, lisanslı çalışmanın ve değişikliklerinin tüm kaynak kodlarının aynı lisans altında açık olarak sunulmasını gerektirmektedir. Telif hakkı ve lisans uyarıları korunmalıdır. Katkıda bulunanlar, açık bir patent hakları verirler. Değiştirilmiş bir sürüm ağ üzerinden bir hizmet sağlamak için kullanıldığında, değiştirilmiş sürümün tam kaynak kodu açık olarak sunulmalıdır.
+
+Kaynak kodları: https://github.com/sschueller/peertube-android/

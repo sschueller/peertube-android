@@ -1,0 +1,7 @@
+- Afegir suport de hypertext redirection en la descripció (@freeboub)
+- Correcció de diversos errors fatals (@freeboub)
+- Eludir anar a pip quan surts de l'app pel share button (@freeboub)
+- Afegida la possibilitat de filtrar el llistat de servidors (@freeboub)
+- Refactor Toast error management to split network error (@freeboub)
+- Mantenir la relació d'aspecte per a pip(@freeboub)
+- La barra de navegació no va ser restaurada en sortir del mode horitzontal(@freeboub)

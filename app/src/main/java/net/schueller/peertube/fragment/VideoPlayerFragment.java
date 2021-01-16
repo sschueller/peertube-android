@@ -1,24 +1,22 @@
 /*
- * Copyright 2018 Stefan Schüller <sschueller@techdroid.com>
+ * Copyright (C) 2020 Stefan Schüller <sschueller@techdroid.com>
  *
- * License: GPL-3.0+
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU Affero General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package net.schueller.peertube.fragment;
 
 import android.app.Activity;
-import android.app.AppOpsManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -60,20 +58,22 @@ import com.mikepenz.iconics.Iconics;
 import net.schueller.peertube.R;
 
 import net.schueller.peertube.helper.APIUrlHelper;
+import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.model.File;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 import net.schueller.peertube.service.VideoPlayerService;
 
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static net.schueller.peertube.helper.VideoHelper.canEnterPipMode;
 
 public class VideoPlayerFragment extends Fragment implements VideoRendererEventListener {
 
@@ -86,6 +86,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     private VideoPlayerService mService;
     private TorrentStream torrentStream;
     private LinearLayout torrentStatus;
+    private float aspectRatio;
 
     private static final String TAG = "VideoPlayerFragment";
     private GestureDetector mDetector;
@@ -112,6 +113,14 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             mBound = false;
         }
     };
+    private AspectRatioFrameLayout.AspectRatioListener aspectRatioListerner = new AspectRatioFrameLayout.AspectRatioListener()
+    {
+        @Override
+        public void onAspectRatioUpdated( float targetAspectRatio, float naturalAspectRatio, boolean aspectRatioMismatch )
+        {
+            aspectRatio = targetAspectRatio;
+        }
+    };
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -134,6 +143,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         progressBar = activity.findViewById(R.id.torrent_progress);
         progressBar.setMax(100);
 
+        assert context != null;
         simpleExoPlayerView = new PlayerView(context);
         simpleExoPlayerView = activity.findViewById(R.id.video_view);
 
@@ -142,6 +152,8 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         mDetector = new GestureDetector(context, new MyGestureListener());
         simpleExoPlayerView.setOnTouchListener(touchListener);
+
+        simpleExoPlayerView.setAspectRatioListener( aspectRatioListerner );
 
         torrentStatus = activity.findViewById(R.id.exo_torrent_status);
 
@@ -171,7 +183,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
         // get video details from api
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
-        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetVideoDataService.class);
+        GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(GetVideoDataService.class);
 
         Call<Video> call = service.getVideoData(mVideoUuid);
 
@@ -195,30 +207,31 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             @Override
             public void onFailure(@NonNull Call<Video> call, @NonNull Throwable t) {
                 Log.wtf(TAG, t.fillInStackTrace());
-                Toast.makeText(context, "Something went wrong: "+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                ErrorHelper.showToastFromCommunicationError( getActivity(), t );
             }
         });
     }
-    public void useController(boolean value){
-        if (mBound){
+
+    public void useController(boolean value) {
+        if (mBound) {
             simpleExoPlayerView.setUseController(value);
         }
     }
+
     private void playVideo(Video video) {
 
         Context context = getContext();
 
         // video Meta fragment
-        assert getFragmentManager() != null;
         VideoMetaDataFragment videoMetaDataFragment = (VideoMetaDataFragment)
-                getFragmentManager().findFragmentById(R.id.video_meta_data_fragment);
+                requireActivity().getSupportFragmentManager().findFragmentById(R.id.video_meta_data_fragment);
 
         assert videoMetaDataFragment != null;
         videoMetaDataFragment.updateVideoMeta(video, mService);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
-        if (sharedPref.getBoolean("pref_torrent_player", false)) {
+        if (sharedPref.getBoolean(getString(R.string.pref_torrent_player_key), false)) {
             torrentStatus.setVisibility(View.VISIBLE);
             String stream = video.getFiles().get(0).getTorrentUrl();
             Log.v(TAG, "getTorrentUrl : " + video.getFiles().get(0).getTorrentUrl());
@@ -226,20 +239,25 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             torrentStream.startStream(stream);
         } else {
 
-            Integer videoQuality = sharedPref.getInt("pref_quality", 0);
+            Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
 
             //get video qualities
-            String urlToPlay = video.getFiles().get(0).getFileUrl();
-            for (File file :video.getFiles()) {
-                // Set quality if it matches
-                if (file.getResolution().getId().equals(videoQuality)) {
-                    urlToPlay = file.getFileUrl();
+            /// #
+            if (video.getFiles().size() > 0) {
+                String urlToPlay = video.getFiles().get( 0 ).getFileUrl();
+                for ( File file : video.getFiles() ) {
+                    // Set quality if it matches
+                    if ( file.getResolution().getId().equals( videoQuality ) ) {
+                        urlToPlay = file.getFileUrl();
+                    }
                 }
+                mService.setCurrentStreamUrl( urlToPlay );
+                torrentStatus.setVisibility(View.GONE);
+                startPlayer();
+            } else {
+                stopVideo();
+                Toast.makeText(context, R.string.api_error, Toast.LENGTH_LONG).show();
             }
-            mService.setCurrentStreamUrl(urlToPlay);
-
-            torrentStatus.setVisibility(View.GONE);
-            startPlayer();
         }
         Log.v(TAG, "end of load Video");
 
@@ -247,7 +265,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     }
 
     private void startPlayer() {
-        Util.startForegroundService(Objects.requireNonNull(getContext()), videoPlayerIntent);
+        Util.startForegroundService(requireContext(), videoPlayerIntent);
     }
 
 
@@ -259,30 +277,37 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     }
 
     public void pauseVideo() {
-        if (mBound){
+        if (mBound) {
             mService.player.setPlayWhenReady(false);
         }
     }
+
     public void pauseToggle() {
         if (mBound) {
             mService.player.setPlayWhenReady(!mService.player.getPlayWhenReady());
         }
     }
+
     public void unPauseVideo() {
         if (mBound) {
             mService.player.setPlayWhenReady(true);
         }
     }
-    public boolean isPaused(){
+
+    public float getVideoAspectRatio() { return aspectRatio; }
+
+    public boolean isPaused() {
         return !mService.player.getPlayWhenReady();
     }
-    public void showControls(boolean value){
+
+    public void showControls(boolean value) {
         simpleExoPlayerView.setUseController(value);
     }
+
     public void stopVideo() {
 
         if (mBound) {
-            Objects.requireNonNull(getContext()).unbindService(mConnection);
+            requireContext().unbindService(mConnection);
             mBound = false;
         }
     }
@@ -290,7 +315,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     public void setIsFullscreen(Boolean fullscreen) {
         isFullscreen = fullscreen;
 
-        TextView fullscreenButton = getActivity().findViewById(R.id.exo_fullscreen);
+        TextView fullscreenButton = requireActivity().findViewById(R.id.exo_fullscreen);
         if (fullscreen) {
             fullscreenButton.setText(R.string.video_compress_icon);
         } else {
@@ -302,15 +327,17 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
     public Boolean getIsFullscreen() {
         return isFullscreen;
     }
+
     public void fullScreenToggle() {
         if (!isFullscreen) {
             setIsFullscreen(true);
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         } else {
             setIsFullscreen(false);
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
+
     /**
      * Torrent Playback
      *
@@ -404,18 +431,6 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         Log.v(TAG, "onVideoDisabled()...");
     }
 
-    public static boolean canEnterPipMode(Context context) {
-        Log.v(TAG,"api version "+Build.VERSION.SDK_INT);
-        if (Build.VERSION.SDK_INT<28){
-            return false;
-        }
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        if (!"BackgroundFloat".equals(sharedPref.getString("pref_background_behavior","backgroundStop"))){
-            return false;
-        }
-        AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
-        return (AppOpsManager.MODE_ALLOWED== appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE, android.os.Process.myUid(), context.getPackageName()));
-    }
     View.OnTouchListener touchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -423,62 +438,64 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         }
 
     };
-    public String getVideoUuid(){
+
+    public String getVideoUuid() {
         return mVideoUuid;
     }
+
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-/*
-        @Override
-        public boolean onDown(MotionEvent event) {
-            Log.d("TAG","onDown: ");
-            return true;
-        }
+        /*
+                @Override
+                public boolean onDown(MotionEvent event) {
+                    Log.d("TAG","onDown: ");
+                    return true;
+                }
 
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            Log.i("TAG", "onSingleTapConfirmed: ");
-            pauseToggle();
-            return true;
-        }
+                @Override
+                public boolean onSingleTapConfirmed(MotionEvent e) {
+                    Log.i("TAG", "onSingleTapConfirmed: ");
+                    pauseToggle();
+                    return true;
+                }
 
-        @Override
-        public void onLongPress(MotionEvent e) {
-            Log.i("TAG", "onLongPress: ");
-        }
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    Log.i("TAG", "onLongPress: ");
+                }
 
-        @Override
-        public boolean onDoubleTap(MotionEvent e) {
-            Log.i("TAG", "onDoubleTap: ");
-            return true;
-        }
+                @Override
+                public boolean onDoubleTap(MotionEvent e) {
+                    Log.i("TAG", "onDoubleTap: ");
+                    return true;
+                }
 
-        @Override
-        public boolean onScroll(MotionEvent e1, MotionEvent e2,
-                                float distanceX, float distanceY) {
-            Log.i("TAG", "onScroll: ");
-            return true;
-        }
-*/
+                @Override
+                public boolean onScroll(MotionEvent e1, MotionEvent e2,
+                                        float distanceX, float distanceY) {
+                    Log.i("TAG", "onScroll: ");
+                    return true;
+                }
+        */
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public boolean onFling(MotionEvent event1, MotionEvent event2,
                                float velocityX, float velocityY) {
-            Log.d(TAG ,event1.toString());
-            Log.d(TAG,event2.toString());
+            Log.d(TAG, event1.toString());
+            Log.d(TAG, event2.toString());
             Log.d(TAG, String.valueOf(velocityX));
-            Log.d(TAG , String.valueOf(velocityY));
+            Log.d(TAG, String.valueOf(velocityY));
             //arbitrarily velocity speeds that seem to work to differentiate events.
-            if (velocityY>4000){
-                Log.d(TAG,"we have a drag down event");
+            if (velocityY > 4000) {
+                Log.d(TAG, "we have a drag down event");
                 if (canEnterPipMode(getContext())) {
-                    getActivity().enterPictureInPictureMode();
+                    requireActivity().enterPictureInPictureMode();
                 }
             }
-            if ((velocityX>2000) && (Math.abs(velocityY) <2000)){
-                Log.d(TAG,"swipe right "+velocityY);
+            if ((velocityX > 2000) && (Math.abs(velocityY) < 2000)) {
+                Log.d(TAG, "swipe right " + velocityY);
             }
-            if ((velocityX<2000) && (Math.abs(velocityY)<2000)){
-                Log.d(TAG,"swipe left "+velocityY);
+            if ((velocityX < 2000) && (Math.abs(velocityY) < 2000)) {
+                Log.d(TAG, "swipe left " + velocityY);
             }
             return true;
         }

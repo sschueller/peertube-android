@@ -1,7 +1,0 @@
-- Aggiunto il supporto del reindirizzamento ipertestuale nella descrizione (@freeboub)
-- vari crash fix (@freeboub)
-- evitare di andare a pip quando si esce dall'applicazione a causa del pulsante di condivisione (@freeboub)
-- Aggiunto la possibilità di filtrare la lista dei server (@freeboub)
-- Gestione degli errori del rifattore Toast per dividere l'errore di rete (@freeboub)
-- Mantenere il rapporto d'aspetto video per pip (@freeboub)
-- la barra di navigazione non è stata ripristinata

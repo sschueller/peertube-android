@@ -14,31 +14,31 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.database;
+package net.schueller.peertube.database
 
-import android.app.Application;
+import android.os.Parcelable
+import androidx.room.PrimaryKey
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import kotlinx.android.parcel.Parcelize
 
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
+@Parcelize
+@Entity(tableName = "server_table")
+data class Server(
 
-import java.util.List;
+        @PrimaryKey(autoGenerate = true)
+        var id: Int = 0,
 
-public class ServerViewModel extends AndroidViewModel {
+        @ColumnInfo(name = "server_name")
+        var serverName: String,
 
-    private ServerRepository mRepository;
+        @ColumnInfo(name = "server_host")
+        var serverHost: String? = null,
 
-    private LiveData<List<Server>> mAllServers;
+        @ColumnInfo(name = "username")
+        var username: String? = null,
 
-    public ServerViewModel (Application application) {
-        super(application);
-        mRepository = new ServerRepository(application);
-        mAllServers = mRepository.getAllServers();
-    }
+        @ColumnInfo(name = "password")
+        var password: String? = null
 
-    public LiveData<List<Server>> getAllServers() { return mAllServers; }
-
-    public void insert(Server server) { mRepository.insert(server); }
-
-    public void delete(Server server) {mRepository.delete(server);}
-    
-}
+) : Parcelable

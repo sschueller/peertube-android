@@ -335,6 +335,7 @@
     <string name="server_book_add_username">Username</string>
     <string name="server_book_add_password">Password</string>
     <string name="server_book_add_add_button">Add</string>
+    <string name="server_book_add_save_button">Save</string>
     <string name="server_book_list_has_login">Has Login</string>
     <string name="login_current_server_hint">Current Server</string>
     <string name="title_activity_server_address_book">Address Book</string>

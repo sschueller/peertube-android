@@ -14,29 +14,26 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.database;
+package net.schueller.peertube.database
 
-import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
-
-import java.util.List;
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
-public interface ServerDao {
+interface ServerDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(Server server);
+    @Insert
+    suspend fun insert(server: Server)
+
+    @Update
+    suspend fun update(server: Server)
 
     @Query("DELETE FROM server_table")
-    void deleteAll();
+    suspend fun deleteAll()
 
     @Delete
-    void delete(Server server);
+    suspend fun delete(server: Server)
 
-    @Query("SELECT * from server_table ORDER BY server_name DESC")
-    LiveData<List<Server>> getAllServers();
+    @get:Query("SELECT * from server_table ORDER BY server_name DESC")
+    val allServers: LiveData<List<Server>>
 }

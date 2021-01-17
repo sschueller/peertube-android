@@ -1,9 +1,6 @@
-### Version 1.0.51 Tag: v1.0.51 (2021-01-17)
- - fixed default app language on first start (@kosharskiy)
- - Settings screen translations uk and ru languages (@kosharskiy)
- - cleanup app/build.gradle file (@kosharskiy)
- - fixed video meta data display issue (@kosharskiy)
- - updated translations
+### Version 1.0.52 Tag: v1.0.52 (2021-01-17)
+ - IOmplemented edit server in server book (@kosharskiy)
+ - Updated translations
 
 ### Version 1.0.51 Tag: v1.0.51 (2021-01-14)
  - fixed default app language on first start (@kosharskiy)

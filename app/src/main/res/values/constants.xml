@@ -17,6 +17,7 @@
 
     <string name="pref_accept_insecure" translatable="false">pref_accept_insecure</string>
 
+    <string name ="pref_clear_history_key" translatable="false">pref_clear_history</string>
     <!-- defaults -->
     <string name="pref_default_api_base_url" formatted="false" translatable="false">https://troll.tv</string>
     <string name="app_default_theme" translatable="false">AppTheme.BLUE</string>

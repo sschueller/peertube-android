@@ -20,6 +20,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
+import android.provider.SearchRecentSuggestions;
 import android.util.Log;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog.Builder;
@@ -30,6 +31,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 import net.schueller.peertube.BuildConfig;
 import net.schueller.peertube.R;
+import net.schueller.peertube.provider.SearchSuggestionsProvider;
 
 public class SettingsActivity extends CommonActivity {
 
@@ -108,6 +110,28 @@ public class SettingsActivity extends CommonActivity {
                     return true;
                 });
             }
+            //clear search history buttonish
+            Preference button = findPreference(getString(R.string.pref_clear_history_key));
+            button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    new Builder(preference.getContext())
+                            .setTitle(R.string.clear_search_history)
+                            .setMessage(R.string.clear_search_history_prompt)
+                            .setIcon(R.drawable.ic_info_black_24dp)
+                            .setNegativeButton(R.string.pref_insecure_confirm_no, (dialog, whichButton) -> {
+                                // do nothing
+                            })
+                            .setPositiveButton(R.string.pref_insecure_confirm_yes, (dialog, whichButton) -> {
+                                // OK has been pressed
+                                SearchRecentSuggestions suggestions = new SearchRecentSuggestions(getContext(),
+                                        SearchSuggestionsProvider.AUTHORITY,
+                                        SearchSuggestionsProvider.MODE);
+                                suggestions.clearHistory();
+                            }).create().show();
+                    return true;
+                }
+            });
         }
     }
 }

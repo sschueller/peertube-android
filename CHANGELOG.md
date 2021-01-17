@@ -1,5 +1,5 @@
 ### Version 1.0.52 Tag: v1.0.52 (2021-01-17)
- - IOmplemented edit server in server book (@kosharskiy)
+ - Implemented edit server in server book (@kosharskiy)
  - Updated translations
 
 ### Version 1.0.51 Tag: v1.0.51 (2021-01-14)

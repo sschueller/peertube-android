@@ -1,2 +1,2 @@
- - IOmplemented edit server in server book (@kosharskiy)
+ - Implemented edit server in server book (@kosharskiy)
  - Updated translations

@@ -352,6 +352,6 @@
     <string name="pref_insecure_confirm_yes">Так</string>
     <string name="pref_insecure_confirm_no">Ні</string>
     <string name="pref_insecure_confirm_title">Увага!</string>
-    <string name="pref_insecure_confirm_message">"Ви збираєтеся вимкнути всі перевірки сертифікації SSL у Thorium. Це може бути дуже небезпечно якщо peertube сервер вами не контролюється, оскільки атака \"людина посередині\" може направити трафік на інший сервер без вашого відома. Зловмисник може записувати паролі та інші особисті дані. "</string>
+    <string name="pref_insecure_confirm_message">Ви збираєтеся вимкнути всі перевірки сертифікатів SSL у Thorium. Це може бути дуже небезпечно якщо ви не контролюєте сервер peertube, оскільки атака «людина посередині» може направити трафік на інший сервер без вашого відома. Зловмисник може записувати паролі та інші особисті дані.</string>
     <string name="settings_activity_advanced_category_title">Додатково</string>
 </resources>

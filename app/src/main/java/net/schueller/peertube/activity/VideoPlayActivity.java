@@ -71,6 +71,7 @@ public class VideoPlayActivity extends AppCompatActivity {
     private static final String TAG = "VideoPlayActivity";
 
     static boolean floatMode = false;
+    static boolean fullStop=true;
 
     private static final int REQUEST_CODE = 101;
     private BroadcastReceiver receiver;
@@ -138,6 +139,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                fullStop=true;
                 String action = intent.getAction();
                 assert action != null;
                 if (action.equals(ACTION_PAUSE)) {
@@ -150,11 +152,12 @@ public class VideoPlayActivity extends AppCompatActivity {
                 }
 
                 if (action.equals(getString(R.string.app_background_audio))) {
-                    unregisterReceiver(receiver);
+                    safeUnregisterReceiver();
+                    fullStop=false;
                     finish();
                 }
                 if (action.equals(ACTION_STOP)) {
-                    unregisterReceiver(receiver);
+                    safeUnregisterReceiver();
                     finishAndRemoveTask();
                 }
             }
@@ -173,7 +176,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         assert videoPlayerFragment != null;
         videoPlayerFragment.showControls(true);
         if (receiver != null) {
-            unregisterReceiver(receiver);
+            safeUnregisterReceiver();
         }
         Log.v(TAG, "switched to normal");
         floatMode = false;
@@ -333,9 +336,13 @@ public class VideoPlayActivity extends AppCompatActivity {
                 getSupportFragmentManager().findFragmentById(R.id.video_player_fragment);
 
         assert videoPlayerFragment != null;
-        videoPlayerFragment.stopVideo();
-
         Log.v(TAG, "onStop()...");
+        safeUnregisterReceiver();
+        if (fullStop) {
+            stopService(new Intent(this, VideoPlayerService.class));
+            finishAndRemoveTask();
+        }
+        finish();
     }
 
     @Override
@@ -498,5 +505,12 @@ public class VideoPlayActivity extends AppCompatActivity {
             Log.e(TAG, "videoPlayerFragment is NULL");
         }
     }
-
+    private void safeUnregisterReceiver()
+    {
+        try {
+            unregisterReceiver(receiver);
+        } catch (Exception e) {
+            Log.e("VideoPlayerService", "attempted to unregister a nonregistered service");
+        }
+    }
 }

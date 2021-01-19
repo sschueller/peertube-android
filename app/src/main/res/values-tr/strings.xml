@@ -28,8 +28,8 @@
     <string name="meta_data_views">" Görüntüleme"</string>
     <string name="video_row_video_thumbnail">İzleti Küçük Resmi</string>
     <string name="video_row_account_avatar">Hesap Resmi</string>
-    <string name="pref_title_show_nsfw">Ahlaksız İçerik</string>
-    <string name="pref_description_show_nsfw">Ahlaksız içeriği göster</string>
+    <string name="pref_title_show_nsfw">Uygunsuz İçerik</string>
+    <string name="pref_description_show_nsfw">Uygunsuz içeriği göster</string>
     <string name="pref_language">Dil süzgeci</string>
     <string name="pref_description_language">Tüm izletileri tüm dillerde göstermek yerine bir izleti dili seçin.</string>
     <string name="title_activity_url_video_play">URL İzleti Oynatma Etkinliği</string>
@@ -353,7 +353,7 @@
     <string name="pref_background_behavior">Arka planda oynatma yapılandırması</string>
     <string name="pref_background_stop">Tüm oynatmaları durdur</string>
     <string name="pref_background_audio">Arka planda ses akışı olarak devam et</string>
-    <string name="server_selection_nsfw_instance">Ahlaksız Örnek</string>
+    <string name="server_selection_nsfw_instance">Uygunsuz Örnek</string>
     <string name="server_selection_video_totals">Video: %s, Yerel Video: %s</string>
     <string name="menu_video_options_quality_automated">Otomatik</string>
     <string name="pref_title_buildtime">Oluşturma Zamanı</string>
@@ -362,4 +362,11 @@
     <string name="authentication_token_refresh_failed">Belirteç yenilenemedi</string>
     <string name="network_error">Ağ erişim hatası, lütfen bağlantınızı gözden geçirin</string>
     <string name="server_selection_filter_hint">Listeyi filtrele</string>
+    <string name="pref_insecure_confirm_message">Thorium\'daki tüm SSL sertifika denetimlerini devre dışı bırakmak üzeresiniz. Peertube sunucusu denetiminiz altında değilse, bunu devre dışı bırakmak çok tehlikeli olabilir; çünkü ortadaki adam saldırısı, bilginiz olmadan trafiği başka bir sunucuya yönlendirebilir. Bir saldırgan, parolaları ve diğer kişisel verileri kaydedebilir.</string>
+    <string name="pref_insecure_confirm_yes">Evet</string>
+    <string name="pref_insecure_confirm_no">Hayır</string>
+    <string name="pref_insecure_confirm_title">Uyarı!</string>
+    <string name="settings_activity_advanced_category_title">Gelişmiş</string>
+    <string name="pref_title_accept_insecure">SSL Sertifika Denetimini Devre Dışı Bırak</string>
+    <string name="pref_description_accept_insecure">Güvenli olmayan bağlantıları yok sayın. Bunu yalnızca bağlandığınız sunucuyu biliyorsanız kullanın. Uygulamanın yeniden başlatılmasını gerektirir.</string>
 </resources>

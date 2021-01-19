@@ -1,0 +1,2 @@
+- SSL devre dışı bırakma desteği ekle
+ - çeviriler

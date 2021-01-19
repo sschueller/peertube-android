@@ -347,4 +347,11 @@
     <string name="pref_title_back_pause">ব্যাক বাটন এ পজ</string>
     <string name="pref_title_peertube_server">পিয়ারটিউব সার্ভার</string>
     <string name="pref_title_license">অনুমতিপত্র</string>
+    <string name="pref_insecure_confirm_message">তুমি থোরিয়াম এর সকল এসএসএল প্রত্যয়ন বৈধতা নিষ্ক্রিয় করতে যাচ্ছ। এটি নিষ্ক্রিয় করা খুবই বিপজ্জনক হতে পারে যদি পিয়ারটিউব সার্ভারটি তোমার নিয়ন্ত্রণে না থাকে, কারণ একটি ম্যান-ইন-দ্য-মিডল আক্রমণ তোমার অজান্তেই অন্য সার্ভারে ট্রাফিক পরিচালনা করতে পারে। একজন আক্রমণকারী পাসওয়ার্ড এবং অন্যান্য ব্যক্তিগত তথ্য রেকর্ড করতে পারে।</string>
+    <string name="pref_insecure_confirm_yes">হ্যাঁ</string>
+    <string name="pref_insecure_confirm_no">না</string>
+    <string name="pref_insecure_confirm_title">সতর্কতা!</string>
+    <string name="settings_activity_advanced_category_title">উন্নত</string>
+    <string name="pref_title_accept_insecure">এসএসএল সার্টিফিকেট চেক নিষ্ক্রিয় করো</string>
+    <string name="pref_description_accept_insecure">অনিরাপদ সংযোগ উপেক্ষা করো। তুমি যে সার্ভারের সাথে সংযুক্ত হচ্ছো তা জানলে তবেই এটি ব্যবহার করো। অ্যাপ পুনর্সূচনা প্রয়োজন।</string>
 </resources>

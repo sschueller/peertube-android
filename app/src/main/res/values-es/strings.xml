@@ -174,4 +174,21 @@
     <string name="pref_background_audio">Continuar como audio en segundo plano</string>
     <string name="pref_description_language_app">Selecciona el idioma de la interfaz de la aplicación. Reinicia para que los cambios se apliquen.</string>
     <string name="pref_title_back_pause">Pausar con el botón de retroceso</string>
+    <string name="bzs">Portugués Brasileño (Lenguaje de Señas)</string>
+    <string name="csl">Chino (Lenguaje de señas)</string>
+    <string name="zh">Chino</string>
+    <string name="ce">Checheno</string>
+    <string name="ch">Chamorro</string>
+    <string name="ca">Catalán</string>
+    <string name="my">Birmano</string>
+    <string name="bg">Búlgaro</string>
+    <string name="bfi">Idioma de Señas Británico</string>
+    <string name="br">Bretón</string>
+    <string name="bs">Bosnio</string>
+    <string name="bi">Bislama</string>
+    <string name="bn_rBD">Bengalí (Bangladés)</string>
+    <string name="pref_title_accept_insecure">Inhabilitar certificación SSL</string>
+    <string name="pref_description_accept_insecure">Ignorar conexiones inseguras. Usa esta opción únicamente si conoces el servidor al que te vas a conectar. Requiere reiniciar la aplicación.</string>
+    <string name="pref_background_behavior_summary">La manera en que un vídeo responde al ser enviado al fondo</string>
+    <string name="pref_description_back_pause">Pausa la reproducción de fondo al presionar atrás durante la reproducción de vídeo.</string>
 </resources>

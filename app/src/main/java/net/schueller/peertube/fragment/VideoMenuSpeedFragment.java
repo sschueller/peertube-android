@@ -100,7 +100,7 @@ public class VideoMenuSpeedFragment extends BottomSheetDialogFragment {
         videoPlayerService.setPlayBackSpeed(speed);
 
         icon.setText(R.string.video_speed_active_icon);
-        new Iconics.IconicsBuilder().ctx(getContext()).on(icon).build();
+        new Iconics.Builder().on(icon).build();
     }
 
 }

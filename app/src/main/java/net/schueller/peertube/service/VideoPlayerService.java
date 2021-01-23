@@ -44,6 +44,7 @@ import android.widget.Toast;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -53,6 +54,8 @@ import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator;
 import com.google.android.exoplayer2.ext.okhttp.OkHttpDataSource;
 import com.google.android.exoplayer2.ext.okhttp.OkHttpDataSourceFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
 import com.google.android.exoplayer2.upstream.DataSource;
@@ -102,7 +105,9 @@ public class VideoPlayerService extends Service {
 
         super.onCreate();
 
-        player = ExoPlayerFactory.newSimpleInstance(getApplicationContext(), new DefaultTrackSelector());
+        player = new SimpleExoPlayer.Builder(getApplicationContext())
+                .setTrackSelector(new DefaultTrackSelector(getApplicationContext()))
+                .build();
 
         // Stop player if audio device changes, e.g. headphones unplugged
         player.addListener(new Player.EventListener() {
@@ -224,14 +229,18 @@ public class VideoPlayerService extends Service {
             okhttpClientBuilder = getUnsafeOkHttpClientBuilder();
         }
 
+        // Create a data source factory.
         DataSource.Factory dataSourceFactory =  new OkHttpDataSourceFactory(okhttpClientBuilder.build(), Util.getUserAgent(getApplicationContext(), "PeerTube"));
 
-        // This is the MediaSource representing the media to be played.
-        ExtractorMediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(Uri.parse(currentStreamUrl));
+        // Create a progressive media source pointing to a stream uri.
+        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
+                .createMediaSource(MediaItem.fromUri(Uri.parse(currentStreamUrl)));
 
-        // Prepare the player with the source.
-        player.prepare(videoSource);
+        // Set the media source to be played.
+        player.setMediaSource(mediaSource);
+
+        // Prepare the player.
+        player.prepare();
 
         // Auto play
         player.setPlayWhenReady(true);

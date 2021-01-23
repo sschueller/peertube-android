@@ -162,7 +162,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         FrameLayout fullscreenButton = activity.findViewById(R.id.exo_fullscreen_button);
 
         fullscreenText.setText(R.string.video_expand_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(fullscreenText).build();
+        new Iconics.Builder().on(fullscreenText).build();
 
         fullscreenButton.setOnClickListener(view -> {
             Log.d(TAG, "Fullscreen");
@@ -239,12 +239,12 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             torrentStream.startStream(stream);
         } else {
 
-            Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
+            Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 999999);
 
-            //get video qualities
-            /// #
+            // get video qualities
+            // TODO: if auto is set all versions except 0p should be added to a track and have exoplayer auto select optimal bitrate
             if (video.getFiles().size() > 0) {
-                String urlToPlay = video.getFiles().get( 0 ).getFileUrl();
+                String urlToPlay = video.getFiles().get( 0 ).getFileUrl(); // default, take first found, usually highest res
                 for ( File file : video.getFiles() ) {
                     // Set quality if it matches
                     if ( file.getResolution().getId().equals( videoQuality ) ) {
@@ -321,7 +321,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
         } else {
             fullscreenButton.setText(R.string.video_expand_icon);
         }
-        new Iconics.IconicsBuilder().ctx(getContext()).on(fullscreenButton).build();
+        new Iconics.Builder().on(fullscreenButton).build();
     }
 
     public Boolean getIsFullscreen() {

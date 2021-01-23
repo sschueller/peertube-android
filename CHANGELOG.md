@@ -1,3 +1,12 @@
+### Version 1.0.53 Tag: v1.0.53 (2021-01-24)
+ - Making X in pip mode stop background audio properly (@dhk2)
+ - Adding clear search history option to settings menu (@dhk2)
+ - Fix no language selected defaults to all video languages
+ - Updated icon library
+ - Added buffering indicator to video playback
+ - Fixed blank video issues on servers offering 0p video.
+ - Updated translations
+
 ### Version 1.0.52 Tag: v1.0.52 (2021-01-17)
  - Implemented edit server in server book (@kosharskiy)
  - Updated translations

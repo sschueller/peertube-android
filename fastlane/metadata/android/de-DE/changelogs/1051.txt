@@ -1,0 +1,5 @@
+- Standardsprache der App beim ersten Start festgelegt (@kosharskiy)
+- Bildschirmeinstellungen Übersetzungen uk und ru Sprache (@kosharskiy)
+- app/build.gradle-Datei aufgeräumt (@kosharskiy)
+- Problem mit der Anzeige von Video-Metadaten behoben (@kosharskiy)
+- Übersetzungen aktualisiert

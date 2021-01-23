@@ -40,4 +40,9 @@
     <string name="video_speed_20">2×</string>
     <string name="video_speed_15">1,5×</string>
     <string name="video_speed_05">0,5×</string>
+    <string name="pref_title_background_play">Αναπαραγωγή στο παρασκήνιο</string>
+    <string name="pref_title_peertube_server">Εξυπηρετητής PeerTube</string>
+    <string name="pref_description_language">Επιλογή γλώσσας βίντεο, αντί να εμφανίζονται όλα τα βίντεο σε όλες τις γλώσσες.</string>
+    <string name="pref_title_version">Έκδοση</string>
+    <string name="pref_title_license">Άδεια χρήσης</string>
 </resources>

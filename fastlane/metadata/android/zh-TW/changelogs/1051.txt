@@ -1,0 +1,5 @@
+- 修復第一次啟動時的預設應用程式語言 (@kosharskiy)
+ - 英式英語與俄語的設定畫面翻譯 (@kosharskiy)
+ - 清理 app/build.gradle 檔案 (@kosharskiy)
+ - 已修復影片詮釋資料顯示問題 (@kosharskiy)
+ - 更新翻譯

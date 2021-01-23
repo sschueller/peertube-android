@@ -1,0 +1,2 @@
+- Sunucu defterinde sunucu düzenleme uygulandı (@kosharskiy)
+ - Çeviriler güncellendi

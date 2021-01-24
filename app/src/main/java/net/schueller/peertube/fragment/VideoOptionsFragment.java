@@ -77,7 +77,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
 
 
         iconView.setText(R.string.video_option_speed_icon);
-        new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
+        new Iconics.Builder().on(iconView).build();
         textView.setOnClickListener(view1 -> {
             VideoMenuSpeedFragment videoMenuSpeedFragment =
                     VideoMenuSpeedFragment.newInstance(videoPlayerService);
@@ -92,7 +92,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
         TextView textView2 = menuRow2.findViewById(R.id.video_quality_text);
         textView2.setText(String.format(getString(R.string.menu_video_options_quality), getCurrentVideoQuality(files)));
         iconView2.setText(R.string.video_option_quality_icon);
-        new Iconics.IconicsBuilder().ctx(getContext()).on(iconView2).build();
+        new Iconics.Builder().on(iconView2).build();
         textView2.setOnClickListener(view1 -> {
             VideoMenuQualityFragment videoMenuQualityFragment =
                     VideoMenuQualityFragment.newInstance(getContext(), files);
@@ -107,7 +107,7 @@ public class VideoOptionsFragment extends BottomSheetDialogFragment {
 
     private String getCurrentVideoQuality(ArrayList<File> files) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
+        Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 999999);
 
         for (File file : files) {
             if (videoQuality.equals(file.getResolution().getId())) {

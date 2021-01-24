@@ -39,6 +39,7 @@
             app:iconSpaceReserved="false"/>
 
         <MultiSelectListPreference
+            app:defaultValue="@array/empty_array"
             app:entries="@array/languageArray"
             app:entryValues="@array/languageValues"
             app:key="@string/pref_video_language_key"
@@ -83,6 +84,13 @@
             app:summary="@string/pref_description_accept_insecure"
             app:title="@string/pref_title_accept_insecure"
             app:iconSpaceReserved="false"/>
+
+            <Preference
+            app:title="@string/clear_search_history"
+            app:key="@string/pref_clear_history_key"
+            app:summary="@string/clear_search_history_prompt"
+            app:iconSpaceReserved="false"/>
+            />
 
     </PreferenceCategory>
 

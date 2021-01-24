@@ -1,1 +1,1 @@
-Thorium неоф. клієнт PeerTube
+Thorium — неофіційний клієнт PeerTube

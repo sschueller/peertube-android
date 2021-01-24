@@ -105,7 +105,7 @@ public class VideoMetaDataFragment extends Fragment {
         Button thumbsUpButton = activity.findViewById(R.id.video_thumbs_up);
         defaultTextColor = thumbsUpButton.getTextColors();
         thumbsUpButton.setText(R.string.video_thumbs_up_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(thumbsUpButton).build();
+        new Iconics.Builder().on(thumbsUpButton).build();
         thumbsUpButton.setOnClickListener(v -> {
             rateVideo(true, video);
         });
@@ -113,7 +113,7 @@ public class VideoMetaDataFragment extends Fragment {
         // Thumbs Down
         Button thumbsDownButton = activity.findViewById(R.id.video_thumbs_down);
         thumbsDownButton.setText(R.string.video_thumbs_down_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(thumbsDownButton).build();
+        new Iconics.Builder().on(thumbsDownButton).build();
         thumbsDownButton.setOnClickListener(v -> {
             rateVideo(false, video);
         });
@@ -145,7 +145,7 @@ public class VideoMetaDataFragment extends Fragment {
         // Share
         Button videoShareButton = activity.findViewById(R.id.video_share);
         videoShareButton.setText(R.string.video_share_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(videoShareButton).build();
+        new Iconics.Builder().on(videoShareButton).build();
         videoShareButton.setOnClickListener(v ->
                                             {
                                                 leaveAppExpected = true;
@@ -155,7 +155,7 @@ public class VideoMetaDataFragment extends Fragment {
         // Download
         Button videoDownloadButton = activity.findViewById(R.id.video_download);
         videoDownloadButton.setText(R.string.video_download_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(videoDownloadButton).build();
+        new Iconics.Builder().on(videoDownloadButton).build();
         videoDownloadButton.setOnClickListener(v -> {
             // get permission to store file
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -235,7 +235,7 @@ public class VideoMetaDataFragment extends Fragment {
         // more button
         TextView moreButton = activity.findViewById(R.id.moreButton);
         moreButton.setText(R.string.video_more_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(moreButton).build();
+        new Iconics.Builder().on(moreButton).build();
 
         moreButton.setOnClickListener(v -> {
             PopupMenu popup = new PopupMenu(context, v);
@@ -260,7 +260,7 @@ public class VideoMetaDataFragment extends Fragment {
         // video player options
         TextView videoOptions = activity.findViewById(R.id.exo_more);
         videoOptions.setText(R.string.video_more_icon);
-        new Iconics.IconicsBuilder().ctx(context).on(videoOptions).build();
+        new Iconics.Builder().on(videoOptions).build();
 
         videoOptions.setOnClickListener(v -> {
             VideoOptionsFragment videoOptionsFragment =

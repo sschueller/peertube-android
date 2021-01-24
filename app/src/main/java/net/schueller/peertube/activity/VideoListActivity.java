@@ -50,11 +50,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
+import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome;
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
@@ -130,15 +129,15 @@ public class VideoListActivity extends CommonActivity {
 
         // Set an icon in the ActionBar
         menu.findItem(R.id.action_account).setIcon(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle).actionBar());
+                new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle));
 
         menu.findItem(R.id.action_server_address_book).setIcon(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_server).actionBar());
+                new IconicsDrawable(this, FontAwesome.Icon.faw_server));
 
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
         searchMenuItem.setIcon(
-                new IconicsDrawable(this, FontAwesome.Icon.faw_search).actionBar());
+                new IconicsDrawable(this, FontAwesome.Icon.faw_search));
 
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -324,13 +323,16 @@ public class VideoListActivity extends CommonActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String nsfw = sharedPref.getBoolean(getString(R.string.pref_show_nsfw_key), false) ? "both" : "false";
 
-        Locale locale = getResources().getConfiguration().locale;
-        String country = locale.getLanguage();
+//
+//        Locale locale = getResources().getConfiguration().locale;
+//        String country = locale.getLanguage();
+//
+//        HashSet<String> countries = new HashSet<>(1);
+//        countries.add(country);
 
-        HashSet<String> countries = new HashSet<>(1);
-        countries.add(country);
+        // We set this to default to null so that on initial start there are videos listed.
+        Set<String> languages = sharedPref.getStringSet(getString(R.string.pref_video_language_key), null);
 
-        Set<String> languages = sharedPref.getStringSet(getString(R.string.pref_video_language_key), countries);
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
         GetVideoDataService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(GetVideoDataService.class);

@@ -52,9 +52,9 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
         if (autoQualityFile == null) {
             autoQualityFile = new File();
             Resolution autoQualityResolution = new Resolution();
-            autoQualityResolution.setId(0);
+            autoQualityResolution.setId(999999);
             autoQualityResolution.setLabel(context.getString(R.string.menu_video_options_quality_automated));
-            autoQualityFile.setId(0);
+            autoQualityFile.setId(999999);
             autoQualityFile.setResolution(autoQualityResolution);
         }
         if (!mFiles.contains(autoQualityFile)) {
@@ -74,7 +74,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
                 false);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 0);
+        Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 999999);
 
         for (File file : mFiles) {
 
@@ -95,11 +95,13 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
 
                 for (File fileV : mFiles) {
                     TextView iconViewV = view.findViewById(fileV.getResolution().getId());
-                    iconViewV.setText("");
+                    if (iconViewV != null) {
+                        iconViewV.setText("");
+                    }
                 }
 
                 iconView.setText(R.string.video_quality_active_icon);
-                new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
+                new Iconics.Builder().on(iconView).build();
 
                 //TODO: set new video quality on running video
 
@@ -112,7 +114,7 @@ public class VideoMenuQualityFragment extends BottomSheetDialogFragment {
             // Set current
             if (videoQuality.equals(file.getResolution().getId())) {
                 iconView.setText(R.string.video_quality_active_icon);
-                new Iconics.IconicsBuilder().ctx(getContext()).on(iconView).build();
+                new Iconics.Builder().on(iconView).build();
             }
 
         }

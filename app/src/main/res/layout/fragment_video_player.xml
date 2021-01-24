@@ -13,7 +13,7 @@
         android:background="@color/videoBackgroundColor"
         app:controller_layout_id="@layout/video_playback_controls"
         app:resize_mode="fixed_width"
-
+        app:show_buffering="always"
         />
 
 

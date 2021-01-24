@@ -119,7 +119,7 @@ public class ServerSearchAdapter extends RecyclerView.Adapter<ServerSearchAdapte
 //
 //
 //        holder.moreButton.setText(R.string.video_more_icon);
-//        new Iconics.IconicsBuilder().ctx(context).on(holder.moreButton).build();
+//        new Iconics.Builder().on(holder.moreButton).build();
 //
 //        holder.moreButton.setOnClickListener(v -> {
 //

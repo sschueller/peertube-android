@@ -1,0 +1,5 @@
+- ilk başlangıçta öntanımlı uygulama dili düzeltildi (@kosharskiy)
+ - Ayarlar ekranı uk ve ru dilleri çevirileri (@kosharskiy)
+ - app/build.gradle dosyası temizlendi (@kosharskiy)
+ - video üst verisi görüntüleme sorunu düzeltildi (@kosharskiy)
+ - çeviriler güncellendi

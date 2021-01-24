@@ -60,10 +60,18 @@ public class Video {
 
     private Channel channel;
     private Account account;
-    private ArrayList tags;
+    private ArrayList<String> tags;
 
     private Boolean commentsEnabled;
+    private Boolean downloadEnabled;
+    private Boolean waitTranscoding;
+
+    private State state;
+    private ArrayList<String> trackerUrls;
+
     private ArrayList<File> files;
+
+    private ArrayList<StreamingPlaylist> streamingPlaylists;
 
     public Video() {
 
@@ -253,11 +261,11 @@ public class Video {
         this.account = account;
     }
 
-    public ArrayList getTags() {
+    public ArrayList<String> getTags() {
         return tags;
     }
 
-    public void setTags(ArrayList tags) {
+    public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
 
@@ -277,7 +285,45 @@ public class Video {
         this.files = files;
     }
 
+    public Boolean getDownloadEnabled() {
+        return downloadEnabled;
+    }
 
+    public void setDownloadEnabled(final Boolean downloadEnabled) {
+        this.downloadEnabled = downloadEnabled;
+    }
+
+    public Boolean getWaitTranscoding() {
+        return waitTranscoding;
+    }
+
+    public void setWaitTranscoding(final Boolean waitTranscoding) {
+        this.waitTranscoding = waitTranscoding;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(final State state) {
+        this.state = state;
+    }
+
+    public ArrayList<String> getTrackerUrls() {
+        return trackerUrls;
+    }
+
+    public void setTrackerUrls(final ArrayList<String> trackerUrls) {
+        this.trackerUrls = trackerUrls;
+    }
+
+    public ArrayList<StreamingPlaylist> getStreamingPlaylists() {
+        return streamingPlaylists;
+    }
+
+    public void setStreamingPlaylists(final ArrayList<StreamingPlaylist> streamingPlaylists) {
+        this.streamingPlaylists = streamingPlaylists;
+    }
 
     public static MediaDescriptionCompat getMediaDescription(Context context, Video video) {
 

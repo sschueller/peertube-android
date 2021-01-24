@@ -241,17 +241,29 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
 
             Integer videoQuality = sharedPref.getInt(getString(R.string.pref_quality_key), 999999);
 
+            String urlToPlay = null;
+            boolean isHLS = false;
+
+            // try HLS stream first
             // get video qualities
             // TODO: if auto is set all versions except 0p should be added to a track and have exoplayer auto select optimal bitrate
-            if (video.getFiles().size() > 0) {
-                String urlToPlay = video.getFiles().get( 0 ).getFileUrl(); // default, take first found, usually highest res
-                for ( File file : video.getFiles() ) {
-                    // Set quality if it matches
-                    if ( file.getResolution().getId().equals( videoQuality ) ) {
-                        urlToPlay = file.getFileUrl();
+            if (video.getStreamingPlaylists().size() > 0) {
+                urlToPlay = video.getStreamingPlaylists().get( 0 ).getPlaylistUrl();
+                isHLS = true;
+            } else {
+                if (video.getFiles().size() > 0) {
+                    urlToPlay = video.getFiles().get( 0 ).getFileUrl(); // default, take first found, usually highest res
+                    for ( File file : video.getFiles() ) {
+                        // Set quality if it matches
+                        if ( file.getResolution().getId().equals( videoQuality ) ) {
+                            urlToPlay = file.getFileUrl();
+                        }
                     }
                 }
-                mService.setCurrentStreamUrl( urlToPlay );
+            }
+
+            if (!urlToPlay.isEmpty()) {
+                mService.setCurrentStreamUrl( urlToPlay, isHLS);
                 torrentStatus.setVisibility(View.GONE);
                 startPlayer();
             } else {
@@ -357,7 +369,7 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
             public void onStreamReady(Torrent torrent) {
                 String videopath = Uri.fromFile(torrent.getVideoFile()).toString();
                 Log.d(TAG, "Ready! torrentStream videopath:" + videopath);
-                mService.setCurrentStreamUrl(videopath);
+                mService.setCurrentStreamUrl(videopath, false);
                 startPlayer();
             }
 

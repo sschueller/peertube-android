@@ -56,6 +56,7 @@ import com.google.android.exoplayer2.ext.okhttp.OkHttpDataSourceFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
+import com.google.android.exoplayer2.source.hls.HlsMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
 import com.google.android.exoplayer2.upstream.DataSource;
@@ -92,6 +93,8 @@ public class VideoPlayerService extends Service {
     private Video currentVideo;
 
     private String currentStreamUrl;
+
+    private boolean currentStreamUrlIsHLS;
 
     private PlayerNotificationManager playerNotificationManager;
 
@@ -190,8 +193,9 @@ public class VideoPlayerService extends Service {
         currentVideo = video;
     }
 
-    public void setCurrentStreamUrl(String streamUrl) {
+    public void setCurrentStreamUrl(String streamUrl, boolean isHLS) {
         Log.v(TAG, "setCurrentStreamUrl..." + streamUrl);
+        currentStreamUrlIsHLS = isHLS;
         currentStreamUrl = streamUrl;
     }
 
@@ -233,8 +237,14 @@ public class VideoPlayerService extends Service {
         DataSource.Factory dataSourceFactory =  new OkHttpDataSourceFactory(okhttpClientBuilder.build(), Util.getUserAgent(getApplicationContext(), "PeerTube"));
 
         // Create a progressive media source pointing to a stream uri.
-        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(MediaItem.fromUri(Uri.parse(currentStreamUrl)));
+        MediaSource mediaSource;
+        if (currentStreamUrlIsHLS) {
+            mediaSource = new HlsMediaSource.Factory(dataSourceFactory)
+                    .createMediaSource(MediaItem.fromUri(Uri.parse(currentStreamUrl)));
+        } else {
+            mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
+                    .createMediaSource(MediaItem.fromUri(Uri.parse(currentStreamUrl)));
+        }
 
         // Set the media source to be played.
         player.setMediaSource(mediaSource);

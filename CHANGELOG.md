@@ -1,3 +1,6 @@
+### Version 1.0.54 Tag: v1.0.54 (2021-01-24)
+ - Added HLS playback support
+
 ### Version 1.0.53 Tag: v1.0.53 (2021-01-24)
  - Making X in pip mode stop background audio properly (@dhk2)
  - Adding clear search history option to settings menu (@dhk2)

@@ -24,7 +24,7 @@ public class StreamingPlaylist {
     private Integer type;
     private String playlistUrl;
     private String segmentsSha256Url;
-    private ArrayList<String> redundancies;
+    private ArrayList<Redundancy> redundancies;
     private ArrayList<File> files;
 
     public Integer getId() {
@@ -59,11 +59,11 @@ public class StreamingPlaylist {
         this.segmentsSha256Url = segmentsSha256Url;
     }
 
-    public ArrayList<String> getRedundancies() {
+    public ArrayList<Redundancy> getRedundancies() {
         return redundancies;
     }
 
-    public void setRedundancies(final ArrayList<String> redundancies) {
+    public void setRedundancies(final ArrayList<Redundancy> redundancies) {
         this.redundancies = redundancies;
     }
 

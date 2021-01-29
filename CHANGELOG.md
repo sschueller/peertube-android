@@ -1,3 +1,6 @@
+### Version 1.0.55 Tag: v1.0.55 (2021-01-29)
+ - Fixed incorrect model preventing video playback
+
 ### Version 1.0.54 Tag: v1.0.54 (2021-01-24)
  - Added HLS playback support
 

@@ -34,7 +34,7 @@
     <string name="pref_description_language">ভিডিওর ভাষা পছন্দ করো, কিছু পছন্দ না করলে সব ভাষার ভিডিও দেখা যাবে।</string>
     <string name="title_activity_url_video_play">ইউআরএলভিডিওপ্লেক্রিয়া</string>
     <string name="pref_title_torrent_player">টরেন্ট ভিডিও প্লেয়ার</string>
-    <string name="pref_description_torrent_player">একটি টরেন্ট স্ট্রিমের মাধ্যমে ভিডিও প্লেব্যাক করুন। এর জন্য স্টোরেজ অনুমতির প্রয়োজন । (আলফা, স্থিতিশীল নয়!)</string>
+    <string name="pref_description_torrent_player">একটি টরেন্ট স্ট্রিমের মাধ্যমে ভিডিও প্লেব্যাক করো। এর জন্য স্টোরেজ অনুমতির প্রয়োজন । (আলফা, স্থিতিশীল নয়!)</string>
     <string name="pref_title_license">অনুমতিপত্র</string>
     <string name="pref_description_license">
 \n<b>গাহ্নু অফেরও সাধারণ গণ অনুমতিপত্র সং.৩.০</b> 
@@ -273,7 +273,7 @@
     <string name="menu_video_more_blacklist">নিষিদ্ধ তালিকা</string>
     <string name="video_download_permission_error">লেখার অনুমতি ছাড়া ভিডিও ডাউনলোড করা যাবে না</string>
     <string name="video_rating_failed">রেটিং ব্যর্থ</string>
-    <string name="video_login_required_for_service">এই সেবা ব্যবহারের জন্য লগ ইন করুন</string>
+    <string name="video_login_required_for_service">এই সেবা ব্যবহারের জন্য লগ ইন করো</string>
     <string name="video_meta_button_share">শেয়ার</string>
     <string name="video_meta_button_download">ডাউনলোড</string>
     <string name="video_meta_button_privacy">Privacy</string>
@@ -292,14 +292,14 @@
     <string name="account_bottom_menu_about">সম্পর্কিত</string>
     <string name="account_about_account">একাউন্ট:</string>
     <string name="account_about_subscribers">গ্রাহক সমূহ:</string>
-    <string name="account_about_description">বিবরণ:</string>
-    <string name="account_about_joined">যুক্ত হয়েছেন:</string>
-    <string name="api_error">কিছু সমস্যা হয়েছে, অনুগ্রহ করে পরে চেষ্টা করুন!</string>
-    <string name="action_set_url">সার্ভার পছন্দ করুন</string>
+    <string name="account_about_description">বিস্তারিত:</string>
+    <string name="account_about_joined">যুক্ত হয়েছে:</string>
+    <string name="api_error">কিছু সমস্যা হয়েছে, অনুগ্রহ করে পরে চেষ্টা করো!</string>
+    <string name="action_set_url">সার্ভার পছন্দ করো</string>
     <string name="server_selection_signup_allowed_yes">হ্যা</string>
     <string name="server_selection_signup_allowed_no">না</string>
     <string name="server_selection_peertube_server_url">পিয়ারটিউব সার্ভার URL</string>
-    <string name="action_bar_title_server_selection">সার্ভার নির্বাচন করুন</string>
+    <string name="action_bar_title_server_selection">সার্ভার নির্বাচন করো</string>
     <string name="server_selection_set_server">সেট করা সার্ভার: %s</string>
     <string name="server_selection_signup_allowed">সাইন আপ করা যাবে: %s</string>
     <string name="login_current_server_hint">বর্তমান সার্ভার</string>
@@ -309,14 +309,14 @@
     <string name="pref_background_behavior">ব্যাকগ্রউন্ড প্লে এর কনফিগারেশন</string>
     <string name="settings_activity_look_and_feel_category_title">লুক এবং ফিল</string>
     <string name="server_book_list_has_login">লগইন আছে</string>
-    <string name="pref_background_audio">পেছনে অডিও স্ট্রিম হিসেবে চালু রাখুন</string>
+    <string name="pref_background_audio">পিছনে অডিও স্ট্রিম হিসেবে চালু রাখো</string>
     <string name="settings_activity_about_category_title">সম্পর্কিত</string>
     <string name="settings_activity_video_playback_category_title">ভিডিও প্লেব্যাক</string>
     <string name="settings_activity_video_list_category_title">ভিডিও এর লিস্ট</string>
     <string name="title_activity_me">আকাউন্ট</string>
-    <string name="title_activity_select_server">সার্ভার অনুসন্ধান করুন</string>
+    <string name="title_activity_select_server">সার্ভার অনুসন্ধান করো</string>
     <string name="server_book_del_alert_msg">আপনি কি এই সার্ভার রিমুভ করতে চান সার্ভার বই থেকে\?</string>
-    <string name="server_book_del_alert_title">সার্ভার রিমুভ করুন</string>
+    <string name="server_book_del_alert_title">সার্ভার সরাও</string>
     <string name="title_activity_server_address_book">এড্রেস বই</string>
     <string name="server_book_add_add_button">যোগ</string>
     <string name="server_book_add_password">পাসওয়ার্ড</string>
@@ -333,13 +333,13 @@
     <string name="authentication_login_success">লগইন হয়েছে</string>
     <string name="bn_rBD">বাংলা (বাংলাদেশ)</string>
     <string name="clear_search_history_prompt">আপনি কি পুরোপুরি সার্চ ইতিহাস মুছে ফেলতে চান\?</string>
-    <string name="clear_search_history">সার্চ ইতিহাস মুছে ফেলুন</string>
+    <string name="clear_search_history">সার্চ ইতিহাস মুছে ফেলো</string>
     <string name="pref_background_behavior_summary">চালু ভিডিও কি করবে যখন পেছনে যাবে</string>
     <string name="settings_permissions_error_float">অ্যান্ড্রয়েড সেটিং এ পিকচার ইন পিকচার পারমিশন বন্ধ আছে এই আয়াপ এ</string>
     <string name="settings_api_error_float">অ্যান্ড্রয়েড ভার্সন ভাসমান ভিডিও সাপোর্ট করে</string>
-    <string name="pref_background_float">ভাসমান উইন্ডো তে ভিডিও চালু রাখুন</string>
-    <string name="pref_background_stop">সব প্লেব্যাক বন্ধ করুন</string>
-    <string name="pref_description_language_app">ভাষা পছন্দ করুন অ্যাপ্লিকেশান এর জন্য। রিস্টার্ট করুন পরিবর্তন দেখার জন্য।</string>
+    <string name="pref_background_float">ভাসমান উইন্ডোতে ভিডিও চালু রাখো</string>
+    <string name="pref_background_stop">সব প্লেব্যাক বন্ধ করো</string>
+    <string name="pref_description_language_app">ভাষা পছন্দ করো অ্যাপ্লিকেশানের জন্য। রিস্টার্ট করো পরিবর্তন দেখার জন্য।</string>
     <string name="pref_language_app">অ্যাপ্লিকেশান এর ভাষা</string>
     <string name="pref_description_back_pause">ভিডিও চলার সময় ব্যাকগ্রাউন্ড প্লে পজ হবে ব্যাক বাটন প্রেস করলে।</string>
     <string name="pref_title_back_pause">ব্যাক বাটন এ পজ</string>
@@ -360,4 +360,5 @@
     <string name="pref_insecure_confirm_no">না</string>
     <string name="pref_insecure_confirm_title">সতর্কতা!</string>
     <string name="settings_activity_advanced_category_title">উন্নত</string>
+    <string name="server_book_add_save_button">সংরক্ষন</string>
 </resources>

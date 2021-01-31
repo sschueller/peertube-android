@@ -69,6 +69,8 @@ Reproducible builds currently does not work.
 ## Contribution
 Whether you have ideas, translations, design changes, code cleaning, or real heavy code changes, help is always welcome.
 
+For your commits please follow: https://www.conventionalcommits.org
+
 ## Donate
 
 <noscript><a href="https://liberapay.com/sschueller/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>

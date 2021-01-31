@@ -1,0 +1,2 @@
+- Server bearbeiten im Serverbuch implementiert (@kosharskiy)
+- Übersetzungen aktualisiert

@@ -1,12 +1,13 @@
 stages:
   - environment
+  - fetch-version
   - build
   - test
+  - release
   - internal
   - alpha
   - beta
   - production
-  - stop
 
 .updateContainerJob:
   image: docker:stable
@@ -46,17 +47,59 @@ ensureContainer:
     - pwd
     - echo "$signing_jks_file_hex" | xxd -r -p - > android-signing-keystore.jks
     - md5sum android-signing-keystore.jks
-    # get next version from latest changelog
-    - "export VERSION_CODE=`ls -f ./fastlane/metadata/android/en-US/changelogs | cut -d_ -f3 | sort -n | tail -1 | rev | cut -c5- | rev` && echo $VERSION_CODE"
-    # We add 200 to get this high enough above current versionCodes that are published
-    # - "export VERSION_CODE=$((200 + $CI_PIPELINE_IID)) && echo $VERSION_CODE"
-    - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
-    - "export VERSION_NAME=${VERSION_CODE:0:1}.${VERSION_CODE:1:1}.${VERSION_CODE:2} && echo $VERSION_NAME"
   after_script:
     - rm -f android-signing-keystore.jks || true
   artifacts:
     paths:
       - app/build/outputs
+      - app/build.gradle
+  tags:
+    - docker
+
+# https://levelup.gitconnected.com/semantic-versioning-and-release-automation-on-gitlab-9ba16af0c21
+fetch-semantic-version:
+  image: node:13
+  stage: fetch-version
+  only:
+    refs:
+    - master
+    - alpha
+    - /^(([0-9]+)\.)?([0-9]+)\.x/ # This matches maintenance branches
+    - /^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/ # This matches pre-releases
+  script:
+    - npm install @semantic-release/gitlab @semantic-release/exec @semantic-release/changelog @semantic-release/git -D
+    - npx semantic-release --generate-notes false --dry-run
+    - export VERSION_CODE=`grep -oP "versionCode[\s]*(\d)+" app/build.gradle | awk '{ print $2 }'`
+    - export VERSION_CODE=$((${VERSION_CODE}+1)) && echo ${VERSION_CODE}
+    - export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo ${VERSION_SHA}
+    - export VERSION=`cat VERSION.txt` && echo ${VERSION}
+    - export VERSION_NAME=${VERSION}-${VERSION_SHA} && echo ${VERSION_NAME}
+    - sed -i -e "s/versionCode .*/versionCode ${VERSION_CODE}/g" app/build.gradle
+    - sed -i -e "s/versionName .*/versionName \"${VERSION_NAME}\"/g" app/build.gradle
+    - echo ${VERSION_CODE} > VERSION_CODE.txt
+    - echo ${VERSION_NAME} > VERSION_NAME.txt
+  artifacts:
+    paths:
+    - VERSION.txt
+    - VERSION_CODE.txt
+    - VERSION_NAME.txt
+    - app/build.gradle
+  tags:
+    - docker
+
+generate-non-semantic-version:
+  stage: fetch-version
+  except:
+    refs:
+    - master
+    - alpha
+    - /^(([0-9]+)\.)?([0-9]+)\.x/ # This matches maintenance branches
+    - /^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/ # This matches pre-releases
+  script:
+    - echo build-$CI_PIPELINE_ID > VERSION.txt    
+  artifacts:
+    paths:
+    - VERSION.txt
   tags:
     - docker
 
@@ -64,6 +107,16 @@ buildDebug:
   extends: .build_job
   script:
     - bundle exec fastlane buildDebug
+
+testDebug:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  stage: test
+  dependencies:
+    - buildDebug
+  script:
+    - bundle exec fastlane test
+  tags:
+    - docker
 
 buildRelease:
   extends: .build_job
@@ -76,32 +129,26 @@ buildRelease:
   except:
     - branches
 
-testDebug:
-  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  stage: test
-  dependencies:
-    - buildDebug
-  script:
-    - bundle exec fastlane test
-  tags:
-    - docker
-
-publishGithub:
-  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  stage: internal
-  dependencies:
-    - buildRelease
-  when: manual
-  script:
-    - "export VERSION_CODE=`ls -f ./fastlane/metadata/android/en-US/changelogs | cut -d_ -f3 | sort -n | tail -1 | rev | cut -c5- | rev` && echo $VERSION_CODE"
-    - "export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo $VERSION_SHA"
-    - "export VERSION_NAME=${VERSION_CODE:0:1}.${VERSION_CODE:1:1}.${VERSION_CODE:2} && echo $VERSION_NAME"
-    - ci-scripts/make-github-release.sh
-  tags:
-    - docker
+release:
+  image: node:13
+  stage: release
   only:
-    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
-
+    refs:
+    - master
+    - alpha
+    # This matches maintenance branches
+    - /^(([0-9]+)\.)?([0-9]+)\.x/
+    # This matches pre-releases
+    - /^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/ 
+  script:
+    - npm install @semantic-release/gitlab @semantic-release/exec @semantic-release/changelog @semantic-release/git -D
+    - npx semantic-release
+  artifacts:
+    paths:
+    - CHANGELOG.md
+  tags:
+    - docker
+        
 publishInternal:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: internal
@@ -115,6 +162,21 @@ publishInternal:
     - rm -f ../google_play_api_key.json
   script:
     - bundle exec fastlane internal
+  tags:
+    - docker
+  only:
+    - /^v[0-9]*\.[0-9]*\.[0-9]*$/i
+
+publishGithub:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  stage: internal
+  dependencies:
+    - buildRelease
+  when: manual
+  script:
+    - export VERSION_CODE=`cat VERSION_CODE.txt`
+    - export VERSION_NAME=`cat VERSION_NAME.txt`    
+    - ci-scripts/make-github-release.sh
   tags:
     - docker
   only:

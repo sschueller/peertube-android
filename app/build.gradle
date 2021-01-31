@@ -44,8 +44,8 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode Integer.valueOf(System.getenv("VERSION_CODE") ?: 1)
-        versionName System.getenv("VERSION_NAME") + "-" + System.getenv("VERSION_SHA")
+        versionCode 1055
+        versionName "1.0.55-73487634"
         buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

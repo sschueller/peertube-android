@@ -1,0 +1,2 @@
+- lisää tuen poistaa käytöstä SSL
+- käännökset

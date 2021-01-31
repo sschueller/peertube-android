@@ -1,0 +1,25 @@
+---
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - - "@semantic-release/release-notes-generator"
+    - linkReferences: false
+      linkCompare: false
+  - - "@semantic-release/exec"
+    - verifyReleaseCmd: "echo ${nextRelease.version} > VERSION.txt"
+      generateNotesCmd: "if [[ ! -f RELEASE_NOTES.txt ]]; then echo '${nextRelease.notes.trim()}' > RELEASE_NOTES.txt; fi && echo '${nextRelease.notes.trim()}' > fastlane/metadata/android/en-US/changelogs/$(cat VERSION_CODE.txt).txt"
+  - - "@semantic-release/changelog"
+    - changelogFile: CHANGELOG.md
+  - - "@semantic-release/git"
+    - assets:
+        - 'app/build.gradle'
+        - 'CHANGELOG.md'
+        - 'VERSION.txt'
+        - "fastlane/metadata/android/en-US/changelogs/*.txt"
+      message: "chore(release): ${nextRelease.version} [only cd]\n\n${nextRelease.notes}"
+  - "@semantic-release/gitlab"
+
+branches:
+  - "master"
+  - "+([0-9])?(.{+([0-9]),x}).x"
+  - name: "alpha"
+    prerelease: "alpha"

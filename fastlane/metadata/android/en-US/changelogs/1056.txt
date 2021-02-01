@@ -1,0 +1,6 @@
+# 1.1.0 (2021-02-01)
+
+
+### Features
+
+* **lang:** Finnish Added 02bcd74

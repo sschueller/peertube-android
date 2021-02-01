@@ -1,3 +1,10 @@
+# 1.1.0 (2021-02-01)
+
+
+### Features
+
+* **lang:** Finnish Added 02bcd74
+
 ### Version 1.0.55 Tag: v1.0.55 (2021-01-29)
  - Fixed incorrect model preventing video playback
 

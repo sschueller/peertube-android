@@ -1,0 +1,6 @@
+# 1.1.0 (2021-02-01)
+
+
+### Özellikler
+
+* **dil:** Fince eklendi 02bcd74

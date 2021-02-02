@@ -1,0 +1,7 @@
+- X'in pip modunda arka plan sesini düzgün şekilde durdurması sağlandı (@dhk2)
+ - Ayarlar menüsüne arama geçmişini temizle seçeneği eklendi (@dhk2)
+ - Hiçbir dil seçilmediğinde tüm video dillerinin öntanımlı olması düzeltildi
+ - Simge kütüphanesi güncellendi
+ - Video oynatma için arabelleğe alma göstergesi eklendi
+ - 0p video sunan sunuculardaki boş video sorunları düzeltildi.
+ - Çeviriler güncellendi

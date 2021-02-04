@@ -44,5 +44,8 @@
     <string name="pref_title_peertube_server">Εξυπηρετητής PeerTube</string>
     <string name="pref_description_language">Επιλογή γλώσσας βίντεο, αντί να εμφανίζονται όλα τα βίντεο σε όλες τις γλώσσες.</string>
     <string name="pref_title_version">Έκδοση</string>
-    <string name="pref_title_license">Άδεια χρήσης</string>
+    <string name="pref_title_license">Άδεια</string>
+    <string name="video_meta_button_tags">Ετικέτες</string>
+    <string name="video_meta_button_language">Γλώσσα</string>
+    <string name="video_meta_button_license">Άδεια</string>
 </resources>

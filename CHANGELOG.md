@@ -1,3 +1,10 @@
+## 1.1.1 (2021-02-05)
+
+
+### Bug Fixes
+
+* Removed SHA from version name to fix fdroid builds 9dc7d54
+
 # 1.1.0 (2021-02-01)
 
 

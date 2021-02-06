@@ -73,7 +73,7 @@ fetch-semantic-version:
     - export VERSION_CODE=$((${VERSION_CODE}+1)) && echo ${VERSION_CODE}
     - export VERSION_SHA=`echo ${CI_COMMIT_SHA:0:8}` && echo ${VERSION_SHA}
     - export VERSION=`cat VERSION.txt` && echo ${VERSION}
-    - export VERSION_NAME=${VERSION}-${VERSION_SHA} && echo ${VERSION_NAME}
+    - export VERSION_NAME=${VERSION} && echo ${VERSION_NAME}
     - sed -i -e "s/versionCode .*/versionCode ${VERSION_CODE}/g" app/build.gradle
     - sed -i -e "s/versionName .*/versionName \"${VERSION_NAME}\"/g" app/build.gradle
     - echo ${VERSION_CODE} > VERSION_CODE.txt

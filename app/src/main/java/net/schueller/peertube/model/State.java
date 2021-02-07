@@ -18,6 +18,12 @@ package net.schueller.peertube.model;
 
 public class State {
 
+    public static final int PUBLISHED = 1;
+    public static final int TO_TRANSCODE = 2;
+    public static final int TO_IMPORT = 3;
+    public static final int WAITING_FOR_LIVE = 4;
+    public static final int LIVE_ENDED = 5;
+
     private Integer id;
     private String label;
 

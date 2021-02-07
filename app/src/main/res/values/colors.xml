@@ -5,7 +5,9 @@
     <color name="themeSelected">#e300aaff</color>
     <color name="seperator">#7ca6a6a6</color>
     <color name="videoBackgroundColor">#000000</color>
-
+    <color name="durationBackgroundColor">#232323</color>
+    <color name="durationLiveBackgroundColor">#ff0000</color>
+    <color name="durationTextColor">#ffffff</color>
 
     <!-- RED Theme -->
     <color name="primaryColorRed">#F44336</color>

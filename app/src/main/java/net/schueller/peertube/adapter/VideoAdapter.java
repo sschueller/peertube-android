@@ -88,8 +88,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         // set Name
         holder.name.setText(videoList.get(position).getName());
 
-        // set duration
-        holder.videoDuration.setText(MetaDataHelper.getDuration(videoList.get(position).getDuration().longValue()));
+        // set duration (if not live stream)
+        if (videoList.get(position).getLive()) {
+            holder.videoDuration.setText(R.string.video_list_live_marker);
+            holder.videoDuration.setBackgroundColor(context.getResources().getColor(R.color.durationLiveBackgroundColor));
+        } else {
+            holder.videoDuration.setText(MetaDataHelper.getDuration(videoList.get(position).getDuration().longValue()));
+            holder.videoDuration.setBackgroundColor(context.getResources().getColor(R.color.durationBackgroundColor));
+        }
 
         // set age and view count
         holder.videoMeta.setText(

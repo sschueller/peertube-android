@@ -42,8 +42,8 @@
                 android:id="@+id/video_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
-                android:background="#232323"/>
+                android:textColor="@color/durationTextColor"
+                android:background="@color/durationBackgroundColor"/>
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/avatar"

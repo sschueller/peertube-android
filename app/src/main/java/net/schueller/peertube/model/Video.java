@@ -43,6 +43,7 @@ public class Video {
     private Boolean nsfw;
     private String description;
     private Boolean isLocal;
+    private Boolean isLive;
     private Integer duration;
     private Integer views;
     private Integer likes;
@@ -147,6 +148,14 @@ public class Video {
 
     public void setLocal(Boolean local) {
         isLocal = local;
+    }
+
+    public Boolean getLive() {
+        return isLive;
+    }
+
+    public void setLive(final Boolean live) {
+        isLive = live;
     }
 
     public Integer getDuration() {

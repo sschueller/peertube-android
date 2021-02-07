@@ -33,10 +33,10 @@ postdata="{\"tag_name\":\"${CI_COMMIT_TAG}\",\"target_commitish\":\"master\",\"n
 
 # Generate Release
 echo "Generate Release..."
-echo "${postdata}" | jq
+echo "${postdata}" | jq .
 
 res=$(curl -s -X POST -H "Content-Type:application/json" -H "Authorization: token ${github_token}" https://${username}@api.github.com/repos/${repo}/releases -d "${postdata}")
-echo "${res}" | jq
+echo "${res}" | jq .
 
 release_id=$(echo "${res}" | jq '.id')
 

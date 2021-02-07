@@ -352,4 +352,12 @@
     <string name="pref_title_buildtime">Temps de construction</string>
     <string name="authentication_token_refresh_success">Jeton rafraîchi</string>
     <string name="authentication_token_refresh_failed">Impossible de rafraîchir le jeton</string>
+    <string name="pref_insecure_confirm_message">Vous êtes sur le point de désactiver toutes les validations des certificats SSL dans Thorium. Le désactiver peut être vraiment dangereux si le serveur Peertube n\'est pas sous votre contrôle, car une attaque du type « attaque de l\'homme du milieu » (anglais: « man in the middle attack ») peut diriger le trafic vers un autre serveur à votre insu. Un attaquant peut enregistrer les mots de passe et d\'autres informations personnelles.</string>
+    <string name="pref_insecure_confirm_yes">Oui</string>
+    <string name="pref_insecure_confirm_no">Non</string>
+    <string name="pref_insecure_confirm_title">Attention !</string>
+    <string name="settings_activity_advanced_category_title">Avancé</string>
+    <string name="server_book_add_save_button">Sauvegarder</string>
+    <string name="pref_title_accept_insecure">Désactiver la vérification des certificats SSL</string>
+    <string name="pref_description_accept_insecure">Ignorer les connections non sécurisées. Utiliser cette option uniquement si vous connaissez le serveur auquel vous vous connectez. Requiert un redémarrage de l\'application.</string>
 </resources>

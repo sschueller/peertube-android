@@ -248,7 +248,7 @@
     <string name="pref_description_accept_insecure">忽略不安全的连接。只有当你知道你要连接的服务器时才使用此功能。需要重新启动应用程序。</string>
     <string name="clear_search_history_prompt">你想永久删除搜索历史吗？</string>
     <string name="clear_search_history">清除搜索历史</string>
-    <string name="pref_background_behavior_summary">播放视频在进行后台播放时如何响应</string>
+    <string name="pref_background_behavior_summary">播放中的视频在转到后台时如何响应</string>
     <string name="settings_permissions_error_float">在 Android 设置中禁用了此应用的画中画权限</string>
     <string name="settings_api_error_float">Android 版本不支持悬浮视频</string>
     <string name="pref_background_behavior">后台播放配置</string>
@@ -261,4 +261,51 @@
 \n<b>GNU Affero 通用公共许可证 v3.0 版本</b>
 \n
 \n这个最强的copyleft许可的条件是，在同一许可下，提供授权作品和修改的完整源代码，其中包括使用授权作品的大型作品。版权和许可声明必须保存。贡献者提供明确的专利权授予。当使用修改后的版本通过网络提供服务时，必须提供修改后版本的完整源代码。</string>
+    <string name="wo">沃洛夫语</string>
+    <string name="fy">西弗里斯兰语</string>
+    <string name="cy">威尔士语</string>
+    <string name="wa">瓦隆语</string>
+    <string name="vi">越南语</string>
+    <string name="ve">文达语</string>
+    <string name="uz">乌兹别克语</string>
+    <string name="ur">乌尔都语</string>
+    <string name="uk">乌克兰语</string>
+    <string name="ug">维吾尔语</string>
+    <string name="tw">契维语</string>
+    <string name="tk">土库曼语</string>
+    <string name="tr">土耳其语</string>
+    <string name="tn">茨瓦纳语</string>
+    <string name="ts">聪加语</string>
+    <string name="to">汤加语（汤加群岛）</string>
+    <string name="ti">提格利尼亚语</string>
+    <string name="bo">藏语</string>
+    <string name="th">泰语</string>
+    <string name="tt">鞑靼语</string>
+    <string name="tg">塔吉克语</string>
+    <string name="ty">塔希提语</string>
+    <string name="tl">塔加洛语</string>
+    <string name="swl">瑞典手语</string>
+    <string name="sv">瑞典语</string>
+    <string name="ss">斯威士语</string>
+    <string name="st">南索托语</string>
+    <string name="nr">南恩德贝勒语</string>
+    <string name="sfs">南非手语</string>
+    <string name="so">索马里语</string>
+    <string name="sl">斯洛文尼亚语</string>
+    <string name="sk">斯洛伐克语</string>
+    <string name="sd">信德语</string>
+    <string name="ii">四川彝语</string>
+    <string name="sn">绍纳语</string>
+    <string name="sh">塞尔维亚－克罗地亚语</string>
+    <string name="sr">塞尔维亚语</string>
+    <string name="gd">苏格兰盖尔语</string>
+    <string name="sdl">沙特阿拉伯手语</string>
+    <string name="sc">萨丁尼亚语</string>
+    <string name="sg">桑戈语</string>
+    <string name="sm">萨摩亚语</string>
+    <string name="rn">隆迪语</string>
+    <string name="rm">罗曼什语</string>
+    <string name="ro">罗马尼亚语</string>
+    <string name="qu">克丘亚语</string>
+    <string name="ps">普什图语</string>
 </resources>

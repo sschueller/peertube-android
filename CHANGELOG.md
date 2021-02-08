@@ -1,3 +1,10 @@
+# 1.2.0 (2021-02-07)
+
+
+### Features
+
+* Mark live videos in video lists 8518b80
+
 ## 1.1.1 (2021-02-05)
 
 

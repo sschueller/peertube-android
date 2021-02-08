@@ -1,2 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="video_list_live_marker">LANGSUNG</string>
+    <string name="search_hint">Cari PeerTube</string>
+    <string name="pref_title_license">Lisensi</string>
+    <string name="video_row_account_avatar">Avatar Akun</string>
+    <string name="pref_title_torrent_player">Pemutar Video Torrent</string>
+    <string name="pref_description_app_theme">Mulai ulang aplikasi agar tema berfungsi.</string>
+    <string name="pref_title_app_theme">Tema Aplikasi</string>
+    <string name="pref_description_dark_mode">Mulai ulang aplikasi agar mode gelap berfungsi.</string>
+    <string name="pref_title_dark_mode">Mode gelap</string>
+    <string name="invalid_url">URL Tidak valid.</string>
+    <string name="menu_share">Bagikan</string>
+    <string name="descr_overflow_button">Lebih banyak</string>
+    <string name="no_data_available">Tidak ada hasil</string>
+    <string name="title_activity_search">Cari</string>
+    <string name="meta_data_views">" Tampilan"</string>
+    <string name="bottom_nav_title_account">Akun</string>
+    <string name="bottom_nav_title_subscriptions">Langganan</string>
+    <string name="bottom_nav_title_local">Lokal</string>
+    <string name="bottom_nav_title_recent">Terbaru</string>
+    <string name="bottom_nav_title_trending">Sedang tren</string>
+    <string name="bottom_nav_title_discover">Temukan</string>
+    <string name="action_bar_title_account">Akun</string>
+    <string name="action_bar_title_logout">Keluar</string>
+    <string name="action_bar_title_settings">Pengaturan</string>
+    <string name="action_bar_title_search">Cari</string>
+    <string name="permission_rationale">Berikan izin kontak untuk penyelesaian surel.</string>
+    <string name="error_field_required">Bagian ini harap diisi</string>
+    <string name="error_incorrect_password">Kata sandi keliru</string>
+    <string name="error_invalid_password">Kata sandi terlalu pendek</string>
+    <string name="error_invalid_email">Alamat surel ini tidak valid</string>
+    <string name="action_sign_in_short">Masuk</string>
+    <string name="action_sign_in">Masuk</string>
+    <string name="prompt_password">Kata sandi</string>
+    <string name="prompt_email">Surel / Nama Pengguna</string>
+    <string name="prompt_server">Server</string>
+    <string name="title_activity_login">Masuk</string>
+    <string name="title_activity_settings">Pengaturan</string>
+</resources>

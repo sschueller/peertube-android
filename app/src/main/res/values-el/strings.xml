@@ -30,7 +30,7 @@
     <string name="title_activity_search">Αναζήτηση</string>
     <string name="no_data_available">Χωρίς αποτελέσματα</string>
     <string name="descr_overflow_button">Περισσότερα</string>
-    <string name="menu_share">Μοιραστείτε</string>
+    <string name="menu_share">Κοινοποίηση</string>
     <string name="invalid_url">Μη έγκυρο URL.</string>
     <string name="pref_title_dark_mode">Σκοτεινή λειτουργία</string>
     <string name="pref_description_dark_mode">Επανεκκινήστε την εφαρμογή για να τεθεί σε ισχύ η σκοτεινή λειτουργία.</string>

@@ -354,4 +354,6 @@
     <string name="settings_activity_advanced_category_title">উন্নত</string>
     <string name="pref_title_accept_insecure">এসএসএল সার্টিফিকেট চেক নিষ্ক্রিয় করো</string>
     <string name="pref_description_accept_insecure">অনিরাপদ সংযোগ উপেক্ষা করো। তুমি যে সার্ভারের সাথে সংযুক্ত হচ্ছো তা জানলে তবেই এটি ব্যবহার করো। অ্যাপ পুনর্সূচনা প্রয়োজন।</string>
+    <string name="video_list_live_marker">লাইভ</string>
+    <string name="server_book_add_save_button">সংরক্ষন</string>
 </resources>

@@ -14,42 +14,38 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.helper;
+package net.schueller.peertube.helper
 
-import android.content.Context;
+import android.content.Context
+import android.text.format.DateUtils
+import net.schueller.peertube.R.string
+import org.ocpsoft.prettytime.PrettyTime
+import java.util.Date
+import java.util.Locale
 
-import android.text.format.DateUtils;
+object MetaDataHelper {
 
-import net.schueller.peertube.R;
-
-import org.ocpsoft.prettytime.PrettyTime;
-
-import java.util.Date;
-import java.util.Locale;
-
-
-public class MetaDataHelper {
-
-
-    public static String getMetaString(Date getCreatedAt, Integer viewCount, Context context) {
+    @JvmStatic
+    fun getMetaString(getCreatedAt: Date, viewCount: Int, context: Context): String {
 
         // Compatible with SDK 21+
-        String currentLanguage = Locale.getDefault().getDisplayLanguage();
-        PrettyTime p = new PrettyTime(currentLanguage);
-        String relativeTime = p.format(new Date(getCreatedAt.getTime()));
-
-        return (relativeTime +
-                context.getResources().getString(R.string.meta_data_seperator) +
-                viewCount + context.getResources().getString(R.string.meta_data_views));
+        val currentLanguage = Locale.getDefault().displayLanguage
+        val p = PrettyTime(currentLanguage)
+        val relativeTime = p.format(Date(getCreatedAt.time))
+        return relativeTime +
+                context.resources.getString(string.meta_data_seperator) +
+                viewCount + context.resources.getString(string.meta_data_views)
     }
 
-    public static String getOwnerString(String accountName, String serverHost, Context context) {
+    @JvmStatic
+    fun getOwnerString(accountName: String, serverHost: String, context: Context): String {
         return accountName +
-                context.getResources().getString(R.string.meta_data_owner_seperator) +
-                serverHost;
+                context.resources.getString(string.meta_data_owner_seperator) +
+                serverHost
     }
 
-    public static String getDuration(Long duration) {
-        return DateUtils.formatElapsedTime(duration);
+    @JvmStatic
+    fun getDuration(duration: Long?): String {
+        return DateUtils.formatElapsedTime(duration!!)
     }
 }

@@ -361,4 +361,5 @@
     <string name="pref_insecure_confirm_title">সতর্কতা!</string>
     <string name="settings_activity_advanced_category_title">উন্নত</string>
     <string name="server_book_add_save_button">সংরক্ষন</string>
+    <string name="video_list_live_marker">লাইভ</string>
 </resources>

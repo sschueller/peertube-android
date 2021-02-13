@@ -1,3 +1,16 @@
+# 1.3.0 (2021-02-13)
+
+
+### Bug Fixes
+
+* Converted videolist to Kotlin to fix broken top menu 06ace0d
+
+
+### Features
+
+* Added video thumb placehoder for loading and errors 830b197
+* Converted meta date helper to kotlin 1c34556
+
 # 1.2.0 (2021-02-07)
 
 

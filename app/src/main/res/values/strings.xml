@@ -321,7 +321,7 @@
     <string name="network_error">Network access error, please check your connectivity</string>
     <string name="action_bar_title_server_selection">Select Server</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="action_bar_title_address_book"/>
+    <string name="action_bar_title_address_book">Address Book</string>
     <string name="authentication_login_success">Logged in</string>
     <string name="authentication_login_failed">Login Failed!</string>
     <string name="server_book_no_servers_found">Server Books is empty</string>

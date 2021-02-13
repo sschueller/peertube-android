@@ -19,6 +19,7 @@ package net.schueller.peertube.adapter;
 import android.content.Context;
 import android.content.Intent;
 
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
@@ -74,8 +75,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         Picasso.get()
                 .load(baseUrl + videoList.get(position).getPreviewPath())
+                .placeholder(R.drawable.test_image)
+                .error(R.drawable.test_image)
                 .into(holder.thumb);
-
 
         Avatar avatar = videoList.get(position).getAccount().getAvatar();
         if (avatar != null) {

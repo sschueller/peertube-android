@@ -27,7 +27,7 @@
     <!-- Strings related to Video meta data -->
     <string name="video_row_video_thumbnail">Миниатюра видео</string>
     <string name="video_row_account_avatar">Аватар аккаунта</string>
-    <string name="pref_title_show_nsfw">Показ NSFW ( контекст сексуального характера)</string>
+    <string name="pref_title_show_nsfw">Показ NSFW (контент сексуального характера)</string>
     <string name="pref_description_show_nsfw">Показывать NSFW (контент сексуального характера)</string>
     <string name="pref_language">Фильтр языков</string>
     <string name="pref_description_language">Выберите язык видео, чтобы не показывались видео на всех языках.</string>
@@ -361,4 +361,5 @@
     <string name="pref_description_accept_insecure">Игнорировать незащищенные соединения. Используйте только если знаете сервер к которому подключаетесь. Требуется перезапуск приложения.</string>
     <string name="pref_insecure_confirm_message">"Вы собираетесь отключить валидацию всех SSL сертификатов в Thorium. Это может быть очень опасно если peertube сервер вами не контролируется, потому что \"атака посредника\" может направить трафик на другой сервер. Злоумышленник может записывать пароли и другие личные данные."</string>
     <string name="server_book_add_save_button">Сохранить</string>
+    <string name="video_list_live_marker">В ЭФИРЕ</string>
 </resources>

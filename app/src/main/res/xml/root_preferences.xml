@@ -51,6 +51,15 @@
 
     <PreferenceCategory app:title="@string/settings_activity_video_playback_category_title" app:iconSpaceReserved="false">
 
+        <ListPreference
+            app:defaultValue="1.0"
+            app:entries="@array/videoSpeed"
+            app:entryValues="@array/videoSpeedValues"
+            app:key="@string/pref_video_speed_key"
+            app:summary="@string/pref_description_video_speed"
+            app:title="@string/pref_title_video_speed"
+            app:iconSpaceReserved="false"/>
+
         <SwitchPreference
             app:defaultValue="true"
             app:key="@string/pref_back_pause_key"

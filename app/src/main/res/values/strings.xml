@@ -54,6 +54,8 @@
     <string name="pref_title_peertube_server">PeerTube Server</string>
     <string name="pref_title_background_play">Background Playback</string>
     <string name="pref_description_background_play">If enabled, continues to play video in background.</string>
+    <string name="pref_title_video_speed">Default Playback Speed</string>
+    <string name="pref_description_video_speed">Select the global Video Playback Speed</string>
     <string name="pref_title_back_pause">Pause on back button</string>
     <string name="pref_description_back_pause">Pause background play when pressing back during video playback.</string>
     <string name="pref_language_app">Application Language</string>

@@ -16,7 +16,9 @@
  */
 package net.schueller.peertube.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,8 +74,7 @@ public class VideoMenuSpeedFragment extends BottomSheetDialogFragment {
         TextView speed15 = view.findViewById(R.id.video_speed15);
         TextView speed20 = view.findViewById(R.id.video_speed20);
 
-        // Default
-        setVideoSpeed(1.0f, speed10Icon);
+        setDefaultVideoSpeed();
 
         // Attach the listener
         speed05.setOnClickListener(v -> setVideoSpeed(0.5f, speed05Icon));
@@ -101,6 +102,32 @@ public class VideoMenuSpeedFragment extends BottomSheetDialogFragment {
 
         icon.setText(R.string.video_speed_active_icon);
         new Iconics.Builder().on(icon).build();
+    }
+
+    private void setDefaultVideoSpeed() {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String speed = sharedPref.getString(getString(R.string.pref_video_speed_key), "1.0");
+
+        switch (speed) {
+            case "0.5":
+                setVideoSpeed(0.5f, speed05Icon);
+                break;
+            case "0.75":
+                setVideoSpeed(0.75f, speed075Icon);
+                break;
+            case "1.0":
+                setVideoSpeed(1.0f, speed10Icon);
+                break;
+            case "1.25":
+                setVideoSpeed(1.25f, speed125Icon);
+                break;
+            case "1.5":
+                setVideoSpeed(1.5f, speed15Icon);
+                break;
+            case "2.0":
+                setVideoSpeed(2.0f, speed20Icon);
+                break;
+        }
     }
 
 }

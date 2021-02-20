@@ -1,3 +1,15 @@
+# 1.4.0 (2021-02-20)
+
+
+### Bug Fixes
+
+* Crashing of devices sdk 21,22,23,24 on start, fixes [#262](https://git.techdroid.com/sschueller/peertube/issues/262) 5622b76
+
+
+### Features
+
+* add global playback speed setting fa79b2d
+
 # 1.3.0 (2021-02-13)
 
 

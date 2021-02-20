@@ -24,6 +24,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
@@ -32,6 +33,7 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.webkit.URLUtil;
 import androidx.annotation.Nullable;
 
@@ -255,8 +257,11 @@ public class VideoPlayerService extends Service {
         // Auto play
         player.setPlayWhenReady(true);
 
-        //reset playback speed
-        this.setPlayBackSpeed(1.0f);
+        //set playback speed to global default
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        float speed = Float.parseFloat(sharedPref.getString(getString(R.string.pref_video_speed_key), "1.0"));
+
+        this.setPlayBackSpeed(speed);
 
         playerNotificationManager = PlayerNotificationManager.createWithNotificationChannel(
                 context, PLAYBACK_CHANNEL_ID, R.string.playback_channel_name,

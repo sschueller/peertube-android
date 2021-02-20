@@ -140,8 +140,8 @@ dependencies {
     implementation "com.google.android.exoplayer:extension-mediasession:$exoplayer"
     implementation "com.google.android.exoplayer:extension-okhttp:$exoplayer"
 
-    // date formatter
-    implementation 'org.ocpsoft.prettytime:prettytime:5.0.0.Final'
+    // date formatter, do not update past 4.0.4 https://github.com/sschueller/peertube-android/issues/262
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
 
     // Version comparison
     implementation 'org.apache.maven:maven-artifact:3.6.3'

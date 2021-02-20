@@ -11,6 +11,7 @@
     <string name="pref_show_nsfw_key" translatable="false">pref_show_nsfw</string>
     <string name="pref_video_language_key" translatable="false">pref_language</string>
 
+    <string name="pref_video_speed_key" translatable="false">pref_video_speed</string>
     <string name="pref_back_pause_key" translatable="false">pref_back_pause</string>
     <string name="pref_background_behavior_key" translatable="false">pref_background_behavior</string>
     <string name="pref_torrent_player_key" translatable="false">pref_torrent_player</string>
@@ -580,6 +581,24 @@
         <item>Low</item>
         <item>Medium</item>
         <item>High</item>
+    </string-array>
+
+    <string-array name="videoSpeed">
+        <item>0.5x</item>
+        <item>0.75x</item>
+        <item>Normal</item>
+        <item>1.25x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+    </string-array>
+
+    <string-array name="videoSpeedValues">
+        <item>0.5</item>
+        <item>0.75</item>
+        <item>1.0</item>
+        <item>1.25</item>
+        <item>1.5</item>
+        <item>2.0</item>
     </string-array>
 
 </resources>

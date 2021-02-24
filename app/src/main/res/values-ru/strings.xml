@@ -253,7 +253,7 @@
     <!-- Constants, Don't translate -->
     <string name="action_bar_title_account">Аккаунт</string>
     <string name="bottom_nav_title_recent">Недавние</string>
-    <string name="meta_data_views">" Представления"</string>
+    <string name="meta_data_views">" Просмотров"</string>
     <string name="ml">Малайский</string>
     <string name="mh">Маршалловых островов</string>
     <string name="ng">Ндонга</string>

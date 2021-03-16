@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_activity_settings">সেটিংস</string>
+    <string name="title_activity_settings">পছন্দসমূহ</string>
     <string name="title_activity_login">সাইন ইন</string>
     <!-- Strings related to login -->
     <string name="prompt_server">সার্ভার</string>
@@ -11,16 +11,16 @@
     <string name="error_invalid_email">ভুল ইমেইল আইডি</string>
     <string name="error_invalid_password">পাসওয়ার্ড খুব ছোট</string>
     <string name="error_incorrect_password">ভুল পাসওয়ার্ড</string>
-    <string name="error_field_required">এটি প্রয়োজনীয় ফিল্ড</string>
+    <string name="error_field_required">এটি প্রয়োজনীয় ভুক্তি</string>
     <string name="permission_rationale">ই-মেইল পূরণ করার জন্য কন্টাক্ট-এর অনুমতি দিন।</string>
     <!-- Action bar -->
-    <string name="action_bar_title_search">সার্চ</string>
-    <string name="action_bar_title_settings">সেটিংস</string>
+    <string name="action_bar_title_search">খুজো</string>
+    <string name="action_bar_title_settings">পছন্দসমূহ</string>
     <string name="action_bar_title_logout">লগ আউট</string>
     <!-- Bottom navigation bar -->
     <string name="bottom_nav_title_discover">আবিষ্কার</string>
     <string name="bottom_nav_title_trending">আলোচিত</string>
-    <string name="bottom_nav_title_subscriptions">সাবস্ক্রিপশন</string>
+    <string name="bottom_nav_title_subscriptions">সদস্যতা</string>
     <string name="bottom_nav_title_account">অ্যাকাউন্ট</string>
     <!-- Strings related to Settings -->
     <string name="pref_title_peertube_server">পিয়ারটিউব সার্ভার</string>

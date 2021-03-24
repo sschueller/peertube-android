@@ -1,0 +1,5 @@
+- corretta la lingua predefinita dell'app al primo avvio (@kosharskiy)
+- Traduzioni della schermata delle impostazioni nelle lingue uk e ru (@kosharskiy)
+- pulizia file app/build.gradle (@kosharskiy)
+- risolto il problema di visualizzazione dei metadati video (@kosharskiy)
+- traduzioni aggiornate

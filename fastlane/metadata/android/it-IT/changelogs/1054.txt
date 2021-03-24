@@ -1,0 +1,1 @@
+- Aggiunto il support per la riproduzione HLS

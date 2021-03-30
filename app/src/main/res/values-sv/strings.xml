@@ -320,4 +320,5 @@
     <string name="authentication_login_success">Inloggad</string>
     <string name="bn_rBD">Bengali (Bangladesh)</string>
     <string name="clear_search_history">Rensa sökhistorik</string>
+    <string name="pref_title_back_pause">Pausa med bakåtknappen</string>
 </resources>

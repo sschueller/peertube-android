@@ -71,7 +71,7 @@
     <string name="prompt_email">ইমেল / ব্যবহারকারীর নাম</string>
     <string name="prompt_server">সার্ভার</string>
     <string name="title_activity_login">সাইন ইন</string>
-    <string name="title_activity_settings">সেটিংস</string>
+    <string name="title_activity_settings">পছন্দসমূহ</string>
     <string name="authentication_token_refresh_success">টোকেন রিফ্রেশ হয়েছে</string>
     <string name="authentication_token_refresh_failed">টোকেন রিফ্রেশ করা যায় নি</string>
     <string name="pref_title_buildtime">বিল্ড এর সময়</string>
@@ -94,8 +94,8 @@
     <string name="server_book_list_has_login">লগইন আছে</string>
     <string name="server_book_add_add_button">যোগ</string>
     <string name="server_book_add_password">পাসওয়ার্ড</string>
-    <string name="server_book_add_username">ইউজারনেম</string>
-    <string name="server_book_add_pick_server_button">সার্চ</string>
+    <string name="server_book_add_username">ব্যবহারকারীর নাম</string>
+    <string name="server_book_add_pick_server_button">অনুসন্ধান</string>
     <string name="server_book_add_server_url">সার্ভার ইউআরএল</string>
     <string name="server_book_add_label">লেবেল</string>
     <string name="me_help_and_feedback_button">সাহায্য ও মতামত</string>

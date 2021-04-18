@@ -1,0 +1,5 @@
+- Correction de la langue par défaut de l'application au premier démarrage (@kosharskiy)
+- Traductions de l'écran des paramètres langues uk et ru (@kosharskiy)
+- Nettoyage du fuchier app/build.gradle (@kosharskiy)
+- Correction du problème d'affichage des métadonnées vidéo (@kosharskiy)
+- traductions mises à jour

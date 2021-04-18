@@ -1,0 +1,2 @@
+- ajout de la prise en charge de la désactivation de SSL
+- traductions

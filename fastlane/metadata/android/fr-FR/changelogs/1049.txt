@@ -1,0 +1,7 @@
+- Support de la redirection hypertexte dans la description (@freeboub)
+- Corrections de crash (@freeboub)
+- Éviter d'aller à pip en quittant l'app en raison du bouton de partage (@freeboub)
+- Possibilité de filtrer la liste des serveurs (@freeboub)
+- Refactoriser la gestion des erreurs Toast pour fractionner l'erreur réseau (@freeboub)
+- Conserver le rapport hauteur/largeur de la vidéo pour pip (@freeboub)
+- La barre de navigation n'était pas restaurée en quittant le mode paysage (@freeboub)

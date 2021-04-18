@@ -1,0 +1,6 @@
+## 1.1.1 (2021-02-05)
+
+
+### Corrections de bogues
+
+* Suppression de SHA du nom de version pour corriger les builds fdroid 9dc7d54

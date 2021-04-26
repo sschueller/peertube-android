@@ -21,7 +21,7 @@ PeerTube is a federated video streaming platform that is community-owned and ad-
 
 This client comes preconfigured with one PeerTube server managed by the application creator - not the PeerTube project itself, which lists more on http://instances.joinpeertube.org/ - to allow you to have a taste of what the client is capable of. Choose your server to tune your experience!
 
-Please note this is app is in beta and is still missing a lot of features.
+Please note this app is in beta and is still missing a lot of features.
 
 
 ## Download

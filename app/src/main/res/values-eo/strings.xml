@@ -10,4 +10,6 @@
     <string name="prompt_server">Servilo</string>
     <string name="title_activity_login">Ensaluti</string>
     <string name="title_activity_settings">Agordoj</string>
+    <string name="pref_insecure_confirm_no">Ne</string>
+    <string name="pref_insecure_confirm_yes">Jes</string>
 </resources>

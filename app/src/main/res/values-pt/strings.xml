@@ -32,7 +32,7 @@
     <string name="kw">Cornish</string>
     <string name="bo">Tibetano</string>
     <string name="indigo">Índigo</string>
-    <string name="video_download_permission_error">Não é possível fazer o download do vídeo sem permissão de gravação</string>
+    <string name="video_download_permission_error">Não é possível descarregar o vídeo sem permissão de gravação</string>
     <string name="video_speed_20">2x</string>
     <string name="as">Assamese</string>
     <string name="pref_title_peertube_server">Servidor de PeerTube</string>

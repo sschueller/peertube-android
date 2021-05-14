@@ -100,4 +100,6 @@
     <string name="api_error">不明なエラーが発生しました。後で再試行してください！</string>
     <string name="action_bar_title_server_selection">サーバー選択</string>
     <string name="login_current_server_hint">現在のサーバー</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_05">0.5x</string>
 </resources>

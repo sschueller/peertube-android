@@ -1,0 +1,7 @@
+- adicionar suporte de redirecionamento de hipertexto na descrição (@freeboub)
+ - várias correções de encravamento (@freeboub)
+ - evitar ir para o 'pip' ao sair da aplicação devido ao botão de partilha (@freeboub)
+ - adicionada capacidade de filtrar a lista de servidores (@freeboub)
+ - refatorização da gestão de erros Toast para dividir o erro da rede(@freeboub)
+ - manter a proporção do vídeo para 'pip' (@freeboub)
+ - barra de navegação não foi restaurada ao deixar o modo paisagem (@freeboub)

@@ -284,7 +284,7 @@
     <string name="menu_video_options_quality" formatted="true">Качество (%1$s)</string>
     <string name="account_about_description">Описание:</string>
     <string name="api_error">Что-то пошло не так, пожалуйста, попробуйте позже!</string>
-    <string name="action_set_url">Выберите сервер</string>
+    <string name="action_set_url">Выбрать сервер</string>
     <string name="server_selection_signup_allowed">Регистрация разрешена: %s</string>
     <string name="server_selection_signup_allowed_yes">Да</string>
     <string name="server_selection_signup_allowed_no">Нет</string>
@@ -301,7 +301,7 @@
     <string name="account_about_account">Учетная запись:</string>
     <string name="account_about_subscribers">Подписчики:</string>
     <string name="account_about_joined">Присоединились:</string>
-    <string name="action_bar_title_server_selection">Выберите сервер</string>
+    <string name="action_bar_title_server_selection">Выбрать сервер</string>
     <string name="server_selection_set_server">Сервер: %s</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
     <string name="video_speed_125">1,25×</string>

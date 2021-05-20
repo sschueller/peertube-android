@@ -1,33 +1,33 @@
-Thorium est un client PeerTube qui peut se connecter à n'importe quel serveur Peertube exécutant la version v1.1.0-alpha.2 ou supérieure.
+Thorium est un client PeerTube qui peut se connecter à tout serveur PeerTube exécutant la version v1.1.0-alpha.2 ou supérieure. 
 
-PeerTube est une plateforme de streaming vidéo fédérée (ActivityPub) utilisant P2P (BitTorrent) directement dans le navigateur Web. Pour plus d'informations, veuillez visiter https://joinpeertube.org/ pour plus d'informations et une liste de serveurs.
+PeerTube est une plateforme de streaming vidéo fédérée (ActivityPub) utilisant le P2P (BitTorrent) directement dans le navigateur web. Pour plus d'informations, veuillez visiter https://joinpeertube.org/ pour plus d'informations et une liste de serveurs.
 
-Ce client est préconfiguré avec un serveur PeerTube géré par le créateur de l'application – pas le projet PeerTube lui-même, qui en répertorie plus sur http://instances.joinpeertube.org/ – pour vous permettre d'avoir un avant-goût de ce dont le client est capable. Choisissez votre serveur pour optimiser votre expérience !
+Ce client est livré préconfiguré avec un serveur PeerTube géré par le créateur de l'application - et non par le projet PeerTube lui-même, dont la liste est disponible sur http://instances.joinpeertube.org/ - afin de vous permettre d'avoir un avant-goût de ce dont le client est capable. Choisissez votre serveur pour affiner votre expérience !
 
-Caractéristiques actuelles :
-- Connectez-vous à n'importe quel serveur PeerTube
-- Vidéo Torrent ou lecture directe
-- Rechercher PeerTube
-- Télécharger / Partager la vidéo
+Caractéristiques actuelles :
+- Connexion à n'importe quel serveur PeerTube
+- Torrent vidéo ou lecture directe
+- Recherche dans PeerTube
+- Télécharger / Partager des vidéos
 - Thèmes / Mode sombre
 - Lecture en arrière-plan
-- Lecture plein écran en paysage
+- Lecture en plein écran en mode paysage
 - Vitesse de lecture
 - Filtrer le contenu NSFW
 - Authentification / Connexion
-- J'aime / n'aime pas la vidéo
+- J'aime/je n'aime pas la vidéo
 
-Prochainement :
-- Commenter des vidéos
+Bientôt disponible :
+- Commentaires sur les vidéos
 - S'inscrire
-- Page de présentation des utilisateurs / canaux
+- Page de présentation de l'utilisateur / de la chaîne
 - Signaler des vidéos
 
-Autorisations:
-- Accès au stockage, requis pour le téléchargement Torrent ou le téléchargement vidéo.
+Permissions :
+- Accès au stockage, requis pour le téléchargement de torrents ou de vidéos. 
 
 Sous licence GNU Affero General Public License v3.0
 
-Les autorisations de cette licence copyleft la plus puissante sont conditionnées à la mise à disposition du code source complet des œuvres sous licence et des modifications, qui incluent des œuvres plus volumineuses utilisant une œuvre sous licence, sous la même licence. Les avis de droit d'auteur et de licence doivent être préservés. Les contributeurs accordent expressément les droits de brevet. Lorsqu'une version modifiée est utilisée pour fournir un service sur un réseau, le code source complet de la version modifiée doit être rendu disponible.
+Les autorisations de cette licence de gauche d'auteur la plus forte sont conditionnées à la mise à disposition du code source complet des travaux sous licence et des modifications, qui incluent des travaux plus importants utilisant un travail sous licence, sous la même licence. Les mentions de copyright et de licence doivent être préservées. Les contributeurs accordent expressément des droits de brevet. Lorsqu'une version modifiée est utilisée pour fournir un service sur un réseau, le code source complet de la version modifiée doit être mis à disposition.
 
-Code source sur : https://github.com/sschueller/peertube-android/
+Code source à l'adresse : https://github.com/sschueller/peertube-android/

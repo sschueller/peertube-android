@@ -1,2 +1,2 @@
-- ajout de la prise en charge de la désactivation de SSL
+- ajout support pour désactiver SSL
 - traductions

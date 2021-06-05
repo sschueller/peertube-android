@@ -1,0 +1,7 @@
+- Hacer que X en modo pip detenga correctamente el audio de fondo (@dhk2)
+ - Añadiendo la opción de borrar historial de búsqueda al menú de configuración (@dhk2)
+ - Corregido los valores predeterminados de ningún idioma seleccionado para todos los idiomas de video
+ - Biblioteca de iconos actualizada
+ - Indicador de almacenamiento en búfer agregado a la reproducción de video
+ - Se corrigieron problemas de video en blanco en servidores que ofrecen video 0p.
+ - Traducciones actualizadas

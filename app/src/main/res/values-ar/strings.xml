@@ -4,7 +4,7 @@
     <string name="title_activity_login">تسجيل الدخول</string>
     <!-- Strings related to login -->
     <string name="prompt_server">الخادوم</string>
-    <string name="prompt_email">أسم المستخدم / البريد الإلكتروني</string>
+    <string name="prompt_email">اسم المستخدم / البريد الإلكتروني</string>
     <string name="prompt_password">كلمة السر</string>
     <string name="action_sign_in">تسجيل الدخول</string>
     <string name="action_sign_in_short">تسجيل الدخول</string>
@@ -17,9 +17,9 @@
     <string name="action_bar_title_search">البحث</string>
     <string name="action_bar_title_settings">الإعدادات</string>
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_discover">الرئيسية</string>
+    <string name="bottom_nav_title_discover">استكشف</string>
     <string name="bottom_nav_title_trending">المتصدرة</string>
-    <string name="bottom_nav_title_subscriptions">الإشتراكات</string>
+    <string name="bottom_nav_title_subscriptions">الاشتراكات</string>
     <string name="bottom_nav_title_account">الحساب</string>
     <!-- Strings related to Settings -->
     <string name="pref_title_peertube_server">خادوم PeerTube</string>
@@ -30,10 +30,10 @@
     <string name="pref_title_show_nsfw">عرض NSFW</string>
     <string name="pref_description_show_nsfw">عند التنشيط سيتم عرض محتويات NSFW</string>
     <string name="pref_language">فلتر اللغات</string>
-    <string name="pref_description_language">أختيار لغة ليتم عرض الفيدوهات التي تحتويها بدلا من كل اللغات.</string>
+    <string name="pref_description_language">اختيار لغة ليتم عرض الفيدوهات التي تحتويها بدلْا من كل اللغات.</string>
     <string name="title_activity_url_video_play">رابط نشاط تشغيل الفيديو</string>
     <string name="pref_title_torrent_player">مشغل فيديو التورنت</string>
-    <string name="pref_description_torrent_player">تشغيل الفيديو عبر بث التورنت . يتطلب أذونات التخزين. (ألفا ، غير مستقر!)</string>
+    <string name="pref_description_torrent_player">تشغيل الفيديو عبر بث التورنت. يتطلب أذونات التخزين. (ألفا، غير مستقر!)</string>
     <string name="pref_title_license">الرخصة</string>
     <string name="pref_description_license">
 \n<b>رخصة جنو العمومية v3.0</b>
@@ -42,7 +42,7 @@
     <string name="pref_title_version">الإصدار</string>
     <string name="search_hint">مشاركة PeerTube</string>
     <string name="title_activity_search">بحث</string>
-    <string name="no_data_available">لاتوجد نتائج</string>
+    <string name="no_data_available">لا توجد نتائج</string>
     <string name="descr_overflow_button">المزيد</string>
     <string name="menu_share">مشاركة</string>
     <string name="invalid_url">الرابط غير صالح.</string>
@@ -78,7 +78,7 @@
     <string name="pref_title_background_play">التشغيل في الخلفية</string>
     <string name="pref_description_background_play">إن تم تنشيطه، سيستمر تشغيل الفيديو في الخلفية.</string>
     <string name="bottom_nav_title_local">المحلية</string>
-    <string name="action_bar_title_logout">تسجيل خروج</string>
+    <string name="action_bar_title_logout">تسجيل الخروج</string>
     <string name="action_bar_title_account">الحساب</string>
     <string name="bottom_nav_title_recent">الأخيرة</string>
     <string name="ab">الأبخازية</string>

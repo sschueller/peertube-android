@@ -40,7 +40,7 @@
 \n
 \nإن أذونات هذا الترخيص الأقوى للحقوق المتروكة مشروطة بإتاحة الشفرة المصدرية الكاملة للأعمال والتعديلات المرخصة ، والتي تشتمل على أعمال أكبر باستخدام عمل مرخص ، تحت نفس الترخيص. يجب الحفاظ على حقوق النشر وإشعارات الترخيص. يقدم المساهمون منحة صريحة لحقوق البراءة. عند استخدام إصدار معدل لتوفير خدمة عبر شبكة ، يجب توفير شفرة المصدر الكاملة للإصدار المعدل.</string>
     <string name="pref_title_version">الإصدار</string>
-    <string name="search_hint">مشاركة PeerTube</string>
+    <string name="search_hint">ابحث PeerTube</string>
     <string name="title_activity_search">بحث</string>
     <string name="no_data_available">لا توجد نتائج</string>
     <string name="descr_overflow_button">المزيد</string>

@@ -1,0 +1,7 @@
+- Lisätty tuki hypertekstin uudelleenohjaukselle kuvauskentässä (@freeboub)
+- Sekalaisia kaatumiskorjauksia (@freeboub)
+- Estetty menemästä PIP-tilaan, kun poistutaan sovelluksesta jakamisnappia painamalla (@freeboub)
+- Lisätty mahdollisuus suodattaa palvelinlistaa (@freeboub)
+- Refactor Toast -virheenhallinta verkkoyhteysvirheen jakamiseksi (@freeboub)
+- Säilytä videon kuvasuhde PIP-tilassa (@freeboub)
+- Navigointipalkki ei palautunut, kun poistuttiin maisematilasta (@freeboub)

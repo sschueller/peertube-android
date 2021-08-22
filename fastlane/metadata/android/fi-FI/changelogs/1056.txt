@@ -1,0 +1,6 @@
+# 1.1.0 (2021-02-01)
+
+
+### Ominaisuudet
+
+* **lang:** Suomen kieli lisätty 02bcd74

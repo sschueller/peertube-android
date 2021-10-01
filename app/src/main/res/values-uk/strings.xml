@@ -11,7 +11,7 @@
 \nДозволи цієї найсильнішої ліцензії на копілефт обумовлені наданням повного джерельного коду ліцензованих творів та модифікацій, які включають більші твори з використанням ліцензованої роботи, за тією самою ліцензією. Повідомлення про авторські права та ліцензії повинні зберігатися. Учасники надають явне надання патентних прав. Коли модифікована версія використовується для надання послуги через мережу, повинен бути доступний повний джерельний код модифікованої версії.</string>
     <string name="bottom_nav_title_discover">Огляд</string>
     <string name="menu_video_options_quality_automated">Автоматизовано</string>
-    <string name="server_selection_video_totals">Відео: %s, Локальні відео: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Відео: %s, Локальні відео: %s</string>
     <string name="server_selection_nsfw_instance">Екземпляр NSFW</string>
     <string name="settings_activity_video_playback_category_title">Відтворення відео</string>
     <string name="settings_activity_video_list_category_title">Список відео</string>

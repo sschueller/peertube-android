@@ -327,7 +327,7 @@
     <string name="pref_insecure_confirm_title">Varning!</string>
     <string name="settings_activity_advanced_category_title">Avancerad</string>
     <string name="menu_video_options_quality_automated">Automatiserad</string>
-    <string name="server_selection_video_totals">Videos: %s, Lokala Videos: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Videos: %s, Lokala Videos: %s</string>
     <string name="server_selection_nsfw_instance">NSFW Instans</string>
     <string name="settings_activity_look_and_feel_category_title">Utseende</string>
     <string name="settings_activity_video_playback_category_title">Videouppspelning</string>

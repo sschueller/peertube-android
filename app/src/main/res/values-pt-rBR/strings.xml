@@ -302,7 +302,7 @@
     <string name="authentication_token_refresh_failed">Não foi possível atualizar o token</string>
     <string name="pref_title_buildtime">Build Time</string>
     <string name="menu_video_options_quality_automated">Automático</string>
-    <string name="server_selection_video_totals">Vídeos: %s, Vídeos locais: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Vídeos: %s, Vídeos locais: %s</string>
     <string name="pref_description_show_nsfw">Mostrar conteúdo NSFW</string>
     <string name="pref_title_show_nsfw">Conteúdo NSFW</string>
     <string name="pref_title_version">Versão</string>

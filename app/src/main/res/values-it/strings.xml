@@ -321,7 +321,7 @@
     <string name="authentication_token_refresh_failed">Impossibile aggiornare il token</string>
     <string name="pref_title_buildtime">Tempo di costruzione</string>
     <string name="menu_video_options_quality_automated">Automatico</string>
-    <string name="server_selection_video_totals">Videos: %s, Video locali: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Videos: %s, Video locali: %s</string>
     <string name="server_selection_nsfw_instance">Instanza NSFW</string>
     <string name="settings_activity_look_and_feel_category_title">Aspetto</string>
     <string name="settings_activity_about_category_title">Info</string>

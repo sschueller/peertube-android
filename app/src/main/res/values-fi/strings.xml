@@ -323,7 +323,7 @@
     <string name="clear_search_history_prompt">Haluatko poistaa hakuhistorian pysyvästi\?</string>
     <string name="network_error">Verkkoyhteysvirhe, tarkista verkkoyhteys</string>
     <string name="settings_api_error_float">Android-versio ei tue kuva-kuvassa -tilaa</string>
-    <string name="server_selection_video_totals">Videoita: %s, Paikallisia videoita: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Videoita: %s, Paikallisia videoita: %s</string>
     <string name="settings_activity_look_and_feel_category_title">Ulkoasu</string>
     <string name="pref_background_stop">Pysäytä kaikki toistot</string>
     <string name="me_help_and_feedback_button">Ohje ja palaute</string>

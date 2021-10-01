@@ -76,7 +76,7 @@
     <string name="authentication_token_refresh_failed">টোকেন রিফ্রেশ করা যায় নি</string>
     <string name="pref_title_buildtime">বিল্ড এর সময়</string>
     <string name="menu_video_options_quality_automated">স্বয়ংক্রিয়</string>
-    <string name="server_selection_video_totals">ভিডিওঃ %s, স্থানীয় ভিডিওঃ %s</string>
+    <string name="server_selection_video_totals" formatted="false">ভিডিওঃ %s, স্থানীয় ভিডিওঃ %s</string>
     <string name="server_selection_nsfw_instance">NSFW ইন্সটান্স</string>
     <string name="settings_activity_look_and_feel_category_title">লুক এবং ফিল</string>
     <string name="settings_activity_about_category_title">সম্পর্কিত</string>

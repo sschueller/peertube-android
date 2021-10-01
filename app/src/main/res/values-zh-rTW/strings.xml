@@ -339,7 +339,7 @@
     <string name="pref_background_float">繼續以懸浮視窗播放影片</string>
     <string name="pref_background_stop">停止所有播放</string>
     <string name="pref_background_audio">以背景音訊串流繼續</string>
-    <string name="server_selection_video_totals">影片：%s，本地影片：%s</string>
+    <string name="server_selection_video_totals" formatted="false">影片：%s，本地影片：%s</string>
     <string name="server_selection_nsfw_instance">NSFW 站臺</string>
     <string name="pref_title_buildtime">建構時間</string>
     <string name="menu_video_options_quality_automated">自動</string>

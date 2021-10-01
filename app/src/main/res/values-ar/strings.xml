@@ -307,7 +307,7 @@
     <string name="video_speed_125">1.25x</string>
     <string name="pref_description_language_app">حدد اللغة لواجهة التطبيق. أعد تشغيل التطبيق حتى يسري التغيير.</string>
     <string name="menu_video_options_quality_automated">الآلي</string>
-    <string name="server_selection_video_totals">مقاطع الفيديو: %s، مقاطع الفيديو المحلية: %s</string>
+    <string name="server_selection_video_totals" formatted="false">مقاطع الفيديو: %s، مقاطع الفيديو المحلية: %s</string>
     <string name="server_selection_nsfw_instance">خادم NSFW</string>
     <string name="settings_activity_look_and_feel_category_title">الشكل والمظهر</string>
     <string name="settings_activity_about_category_title">حول</string>

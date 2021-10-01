@@ -311,7 +311,7 @@
     <string name="authentication_token_refresh_failed">Не удалось обновить токен</string>
     <string name="pref_title_buildtime">Время сборки</string>
     <string name="menu_video_options_quality_automated">Автоматически</string>
-    <string name="server_selection_video_totals">Видео: %s, локальные видео: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Видео: %s, локальные видео: %s</string>
     <string name="server_selection_nsfw_instance">Экземпляр NSFW</string>
     <string name="settings_activity_look_and_feel_category_title">Стиль оформления</string>
     <string name="settings_activity_about_category_title">О приложении</string>

@@ -333,7 +333,7 @@
     <string name="tw">Twi</string>
     <string name="fj">Fijian</string>
     <string name="brown">Marrom</string>
-    <string name="server_selection_video_totals">Vídeos: %s, vídeos locais: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Vídeos: %s, vídeos locais: %s</string>
     <string name="sn">Shona</string>
     <string name="kk">Kazakh</string>
     <string name="pref_description_back_pause">Pausar a reprodução em segundo plano ao pressionar o botão voltar durante a reprodução do vídeo.</string>

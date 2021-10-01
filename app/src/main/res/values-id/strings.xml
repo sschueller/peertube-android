@@ -117,7 +117,7 @@
     <string name="authentication_token_refresh_failed">Tidak dapat menyegarkan token</string>
     <string name="pref_title_buildtime">Waktu pembuatan</string>
     <string name="menu_video_options_quality_automated">Otomatis</string>
-    <string name="server_selection_video_totals">Video: %s, Video Lokal: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Video: %s, Video Lokal: %s</string>
     <string name="settings_activity_look_and_feel_category_title">Tampilan &amp; Nuansa</string>
     <string name="settings_activity_about_category_title">Tentang</string>
     <string name="settings_activity_video_playback_category_title">Pemutaran Video</string>

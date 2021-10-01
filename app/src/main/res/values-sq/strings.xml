@@ -21,7 +21,7 @@
     <string name="authentication_token_refresh_success">Token-i u rifreskua</string>
     <string name="authentication_token_refresh_failed">S’u rifreskua dot token-i</string>
     <string name="menu_video_options_quality_automated">E automatizuar</string>
-    <string name="server_selection_video_totals">Video: %s, Video Vendore: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Video: %s, Video Vendore: %s</string>
     <string name="server_selection_nsfw_instance">Instancë NSFW</string>
     <string name="settings_activity_look_and_feel_category_title">Pamje &amp; Ndjesi</string>
     <string name="settings_activity_about_category_title">Mbi</string>

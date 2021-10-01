@@ -348,7 +348,7 @@
     <string name="menu_video_options_quality_automated">Automatique</string>
     <string name="server_selection_nsfw_instance">Instance avec du contenu adulte</string>
     <string name="hello_blank_fragment">Bonjour ! Fragment vide</string>
-    <string name="server_selection_video_totals">Vidéos : %s, Vidéos locales : %s</string>
+    <string name="server_selection_video_totals" formatted="false">Vidéos : %s, Vidéos locales : %s</string>
     <string name="pref_title_buildtime">Temps de construction</string>
     <string name="authentication_token_refresh_success">Jeton rafraîchi</string>
     <string name="authentication_token_refresh_failed">Impossible de rafraîchir le jeton</string>

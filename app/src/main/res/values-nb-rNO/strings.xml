@@ -151,7 +151,7 @@
     <string name="authentication_token_refresh_failed">Kunne ikke gjenoppfriske symbol</string>
     <string name="pref_title_buildtime">Byggtid</string>
     <string name="menu_video_options_quality_automated">Automatisert</string>
-    <string name="server_selection_video_totals">Videoer: %s, lokale videoer: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Videoer: %s, lokale videoer: %s</string>
     <string name="settings_activity_look_and_feel_category_title">Utseende og oppførsel</string>
     <string name="settings_activity_video_playback_category_title">Videoavspilling</string>
     <string name="settings_activity_video_list_category_title">Videoliste</string>

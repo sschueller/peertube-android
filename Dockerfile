@@ -1,4 +1,4 @@
-FROM gradle:6.1.1-jdk8
+FROM gradle:7.0.2-jdk8
 
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 ENV ANDROID_SDK_CHECKSUM 444e22ce8ca0f67353bda4b85175ed3731cae3ffa695ca18119cbacef1c1bea0

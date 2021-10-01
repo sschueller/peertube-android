@@ -3,7 +3,8 @@ FROM gradle:7-jdk16
 # get link at bottom of https://developer.android.com/studio
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
 ENV ANDROID_SDK_CHECKSUM 124f2d5115eee365df6cf3228ffbca6fc3911d16f8025bebd5b1c6e2fcfa7faf
-ENV ANDROID_BUILD_TOOLS_VERSION 29.0.3
+# https://developer.android.com/studio/releases/platform-tools
+ENV ANDROID_BUILD_TOOLS_VERSION 31.0.3
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 ENV ANDROID_VERSION 29
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools

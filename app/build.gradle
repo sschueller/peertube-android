@@ -149,7 +149,7 @@ dependencies {
     // database lib
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
     // Lifecycle components
     kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"

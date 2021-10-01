@@ -18,9 +18,9 @@ RUN mkdir "$ANDROID_HOME" .android && \
     mkdir cmdline-tools && \
     mv latest cmdline-tools/.
 
-RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
-RUN $ANDROID_HOME/tools/bin/sdkmanager --update
-RUN $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
+RUN yes | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses
+RUN $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --update
+RUN $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
 

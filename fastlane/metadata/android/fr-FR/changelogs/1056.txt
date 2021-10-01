@@ -1,0 +1,6 @@
+# 1.1.0 (2021-02-01)
+
+
+### Fonctionnalités
+
+* **langue :** Finnois Ajouté 02bcd74

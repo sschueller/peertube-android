@@ -1,0 +1,7 @@
+- shtim mbulimi ridrejtimesh hipertekst në përshkrime (@freeboub)
+ - ndreqje vithisjesh të ndryshme (@freeboub)
+ - shmangie e kalimit në pip, kur dilet nga aplikacioni, për shkak butoni ndarjesh me të tjerë (@freeboub)
+ - Shtim aftësie për të filtruar listën e shërbyesve (@freeboub)
+ - Refactor Toast error management to split network error (@freeboub)
+ - ruajtje e përpjesëtimeve të videos për pip (@freeboub)
+ - shtylla e lëvizjeve s’rikthehej, kur dilej nga mënyra peizazh (@freeboub)

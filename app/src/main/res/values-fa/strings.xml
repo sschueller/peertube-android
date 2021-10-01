@@ -89,7 +89,7 @@
     <string name="fr">فرانسوی</string>
     <string name="fi">فنلاندی</string>
     <string name="en">انگلیسی</string>
-    <string name="as"></string>
+    <string name="as"/>
     <string name="da">دانمارکی</string>
     <string name="zh">چینی</string>
     <string name="bg">بلغاری</string>
@@ -106,4 +106,15 @@
 \nمجوزهای این پروانه که قوی‌ترین پروانه کپی‌لفت است مشروط به دردسترس قرار دادن کامل کد منبع کارهای تحت پروانه و نسخه‌های تغییریافته‌شان است که شامل کارهای بزرگ‌تری که تحت همین پروانه × از این کار استفاده می‌کنند می‌شود. تذکر پروانه و کپی‌رایت باید محفوظ بماند. مشارکت‌کنندگان باید واگذاری حقوق پتنت را اعلام کنند. وقتی نسخه تغییر یافته برای ارائه خدمت روی شبکه استفاده شود، کد منبع نسخه تغییر یافته بایستی به صورت کامل دردسترس قرار بگیرد.</string>
     <string name="pref_description_torrent_player">پخش ویدئو از طریق جریان تورنت. این ویژگی، نیازمند مجور دسترسی به فضای ذخیره‌سازی است. (آلفا، ناپایدار!)</string>
     <string name="bottom_nav_title_discover">نوار ناوبری پایین</string>
+    <string name="settings_api_error_float">نسخه اندروید از ویدئوی شناور پشتیبانی نمی کند</string>
+    <string name="pref_background_behavior">پیکربندی پخش در پس زمینه</string>
+    <string name="pref_background_float">پخش ویدیو را در پنجره شناور ادامه دهید</string>
+    <string name="pref_background_stop">تمام پخش را متوقف کنید</string>
+    <string name="pref_background_audio">به عنوان جریان صوتی پس زمینه ادامه دهید</string>
+    <string name="pref_description_language_app">انتخاب زبان برای رابط برنامه برای اعمال تغییرات ، برنامه را مجدداً راه اندازی کنید.</string>
+    <string name="pref_language_app">زبان برنامه</string>
+    <string name="pref_description_back_pause">هنگام فشار دادن به عقب در حین پخش ویدئو ، پخش پس زمینه را متوقف کنید.</string>
+    <string name="pref_title_back_pause">دکمه پشت مکث</string>
+    <string name="title_activity_url_video_play">فعالیت پخش ویدئو Url</string>
+    <string name="permission_rationale">برای تکمیل ایمیل مجوز تماس بگیرید.</string>
 </resources>

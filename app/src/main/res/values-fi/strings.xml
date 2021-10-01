@@ -303,16 +303,16 @@
     <string name="pref_description_language_app">Valitse kieli sovelluksen käyttöliittymälle. Käynnistä sovellus uudelleen, jotta muutos tulee voimaan.</string>
     <string name="pref_language_app">Sovelluksen kieli</string>
     <string name="pref_title_buildtime">Kokoamisnumero</string>
-    <string name="title_activity_settings2">AsetuksetToiminta2(SettingsActivity2)</string>
-    <string name="pref_description_accept_insecure">Ohita epävarmat yhteydet. Käytä tätä, jos tiedät palvelimen, johon olet yhdistämässä. Vaatii sovelluksen uudelleen käynnistämisen.</string>
-    <string name="pref_insecure_confirm_message">Olet poistamassa käytöstä SSL-varmenteiden tarkituksen Thromiumissa. Tämän poistaminen käytöstä voi olla erittäin vaarallista, jos peertube-palvelin ei ole sinun hallinassasi, koska välistävetohyökkäys voi ohjata liikenteen toiseen palvelimeen tietämättäsi. Hyökkääjä voi tallentaa salasanojasi ja muita henkilötietojasi.</string>
+    <string name="title_activity_settings2">SettingsActivity2</string>
+    <string name="pref_description_accept_insecure">Ohita epävarmat yhteydet. Käytä tätä vain, jos tunnet palvelimen, johon olet yhdistämässä. Vaatii sovelluksen uudelleenkäynnistämisen.</string>
+    <string name="pref_insecure_confirm_message">Olet poistamassa käytöstä SSL-varmenteiden tarkistuksen Thoriumissa. Tämän poistaminen käytöstä voi olla erittäin vaarallista, jos PeerTube-palvelin ei ole sinun hallinnassasi, koska välistävetohyökkäys voi ohjata liikenteen toiseen palvelimeen tietämättäsi. Hyökkääjä voi tallentaa salasanojasi ja muita henkilötietojasi.</string>
     <string name="authentication_token_refresh_success">Tunnus päivitetty</string>
     <string name="authentication_token_refresh_failed">Tunnuksen päivittäminen epäonnistui</string>
     <string name="server_book_valid_url_is_required">Kelvollinen URL-osoite vaaditaan</string>
     <string name="server_book_label_is_required">Palvelimen tunniste vaaditaan</string>
     <string name="server_book_no_servers_found">Palvelinkirja on tyhjä</string>
     <string name="hello_blank_fragment">Hei tyhjä osa</string>
-    <string name="server_selection_filter_hint">Suodatetut</string>
+    <string name="server_selection_filter_hint">Suodata lista</string>
     <string name="pref_title_accept_insecure">Poista SSL-varmenteen tarkistus käytöstä</string>
     <string name="pref_background_behavior">Taustatoisto</string>
     <string name="pref_background_audio">Jatka äänen taustatoistolla</string>
@@ -355,4 +355,5 @@
     <string name="server_book_add_username">Käyttäjänimi</string>
     <string name="server_book_add_pick_server_button">Hae</string>
     <string name="server_book_add_label">Leima</string>
+    <string name="video_list_live_marker">SUORA</string>
 </resources>

@@ -1,0 +1,6 @@
+## 1.1.1 (2021-02-05)
+
+
+### Perbaikan Bug
+
+* Menghapus SHA dari nama versi untuk memperbaiki build fdroid 9dc7d54

@@ -1,0 +1,33 @@
+Thorium është një klient për PeerTube që mund të lidhe me çfarëdo shërbyesi peertube që xhiron versionin v1.1.0-alpha.2 ose më sipër. 
+
+PeerTube është një platformë e federuar transmetimi videosh (ActivityPub) që përdor P2P (BitTorrent) drejt e në shfletues. Për më tepër hollësi dhe një listë shërbyesish, ju lutemi, vizitoni https://joinpeertube.org/.
+
+Ky klient vjen i paraformësuar me një shërbyes PeerTube nën administrimin e krijuesit të aplikacionit - jo nga vetë projekti PeerTube, i cili ofron më tepër, në http://instances.joinpeertube.org/ - për t’ju lejuar të keni një ide se çështë i zoti të bëjë klienti. Zgjidhni shërbyesin tuaj, që ta bëni punimin si doni!
+
+Veçori të Tanishme:
+- Lidhje me çfarëdo shërbyesi PeerTube
+- Video torrent ose luajtje e drejtpërdrejtë
+- Kërkim në PeerTube
+- Shkarkim / Dhënie videosh
+- Tema / mënyrë E errët
+- Luajtje në sfond
+- Luajtje sa krejt ekrani nën mënyrën peizazh
+- Shpejtësi luajtjeje
+- Filtrim lënde NSFW
+- Mirëfilltësim / Hyrje
+- Pëlqim/mospëlqim videosh
+
+S’afërmi:
+- Komentim videosh
+- Regjistrim
+- Faqe Përmbledhje për Përdorues / Kanal
+- Raportim Videosh
+
+Leje:
+- Përdorim depozite, e domosdoshme për shkarkim torrent ose shkarkim videosh. 
+
+Licencuar sipas GNU Affero General Public License v3.0
+
+Lejet e kësaj licence nga më të fortat e llojit <em>copyleft</em> kushtëzohen me bërjen të passhme të krejt kodit burim të punëve të licencuara dhe të ndryshimeve, çka përfshin punë më të mëdha që përdorin një punë të licencuar, nën të njëjtën licencë. Shënimet mbi të drejta kopjimi dhe licenca duhet të ruhen. Kontribuesit furnizojnë një dhënie shprehimisht të të drejtave mbi patenta. Kur një version i ndryshuar përdoret për të dhënë një shërbim përmes një rrjeti, duhet të bëhet i passhëm kodi i plotë burim i versionit të ndryshuar.
+
+Source Code at: https://github.com/sschueller/peertube-android/

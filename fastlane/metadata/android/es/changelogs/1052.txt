@@ -1,0 +1,2 @@
+- Servidor de edición implementado en el libro del servidor (@kosharskiy)
+ - Traducciones actualizadas

@@ -98,8 +98,8 @@
     <string name="bluegray">Сіро-блакитний</string>
     <string name="gray">Сірий</string>
     <string name="brown">Коричневий</string>
-    <string name="deeporange">Темно-помаранчевий</string>
-    <string name="orange">Помаранчевий</string>
+    <string name="deeporange">Насичений жовтогарячий</string>
+    <string name="orange">Жовтогарячий</string>
     <string name="amber">Бурштиновий</string>
     <string name="yellow">Жовтий</string>
     <string name="lime">Лаймовий</string>
@@ -355,4 +355,5 @@
     <string name="pref_insecure_confirm_message">Ви збираєтеся вимкнути всі перевірки сертифікатів SSL у Thorium. Це може бути дуже небезпечно якщо ви не контролюєте сервер peertube, оскільки атака «людина посередині» може направити трафік на інший сервер без вашого відома. Зловмисник може записувати паролі та інші особисті дані.</string>
     <string name="settings_activity_advanced_category_title">Додатково</string>
     <string name="server_book_add_save_button">Зберегти</string>
+    <string name="video_list_live_marker">НАЖИВО</string>
 </resources>

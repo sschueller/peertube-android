@@ -1,0 +1,2 @@
+- Implementato modifica server nella rubrica dei server (@kosharskiy)
+- Traduzioni aggiornate

@@ -1,0 +1,7 @@
+- X:n tekeminen PIP-tilassa pysäyttää taustaäänet oikeaoppisesti (@dhk2)
+- Lisätty selkeä hakuhistoriapainike päävalikkoon (@dhk2)
+- Korjattu ei kieltä määritelty -oletusasetukset kaikille videon kielille
+- Päivitetty kuvakekirjasto
+- Lisätty puskuroinnin tunnusmerkki videon toistoon
+- Korjattu tyhjän videon ongelma palvelimilla, jotka tarjoavat 0p-laatuisia videoita.
+- Päivitettyjä käännöksiä

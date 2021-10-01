@@ -347,4 +347,13 @@
     <string name="pref_title_back_pause">Pausa sul tasto backspace</string>
     <string name="network_error">Errore di accesso alla rete, controlla la tua connettività</string>
     <string name="server_selection_filter_hint">Elenco dei filtri</string>
+    <string name="pref_insecure_confirm_message">Stai per disabilitare tutta la convalida della certificazione SSL in Thorium. Disattivarla può essere molto pericoloso se non controlli il server Peertube, perché un attacco man-in-the-middle potrebbe indirizzare il traffico a un altro server a tua insaputa. Un utente malintenzionato potrebbe registrare password e altri dati personali.</string>
+    <string name="pref_title_accept_insecure">Disabilita il controllo del certificato SSL</string>
+    <string name="video_list_live_marker">DIRETTA</string>
+    <string name="pref_insecure_confirm_yes">Sì</string>
+    <string name="pref_insecure_confirm_no">No</string>
+    <string name="pref_insecure_confirm_title">Attenzione!</string>
+    <string name="settings_activity_advanced_category_title">Avanzato</string>
+    <string name="server_book_add_save_button">Salva</string>
+    <string name="pref_description_accept_insecure">Ignora le connessioni insicure. Usalo solo se conosci il server a cui ti stai connettendo. Richiede il riavvio dell\'applicazione.</string>
 </resources>

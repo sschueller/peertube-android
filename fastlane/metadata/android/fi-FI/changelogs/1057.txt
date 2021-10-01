@@ -1,0 +1,6 @@
+## 1.1.1 (2021-02-05)
+
+
+### Bugikorjauksia
+
+* Poistettu SHA versionimestä fdroid-koontien korjaamiseksi 9dc7d54

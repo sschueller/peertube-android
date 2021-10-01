@@ -1,0 +1,2 @@
+- ajout support pour désactiver SSL
+- traductions

@@ -1,0 +1,6 @@
+## 1.1.1 (5 Şubat 2012)
+
+
+### Hata Düzeltmeleri
+
+* F-Droid derlemelerini düzeltmek için sürüm adından SHA değeri kaldırıldı. 9dc7d54

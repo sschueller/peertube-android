@@ -1,0 +1,1 @@
+- Se corrigió el modelo incorrecto que impedía la reproducción de video

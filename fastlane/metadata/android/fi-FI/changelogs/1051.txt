@@ -1,0 +1,5 @@
+- Korjattu sovelluksen oletuskieli ensimmäisellä käynnistyskerralla (@kosharskiy)
+- Asetukset-ruudun käännökset englanniksi ja venäjäksi (@kosharskiy)
+- Sovellus/koonti.gradle -tiedoston siivous(@kosharskiy)
+- Korjattu videon metadatan näyttöongelmat (@kosharskiy)
+- Päivitettyjä käännöksiä

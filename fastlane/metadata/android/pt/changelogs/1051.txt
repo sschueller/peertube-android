@@ -1,0 +1,5 @@
+- idioma padrão da aplicação fixo na primeira inicialização (@kosharskiy)
+- traduções do ecrã de definições em uk e ru (@kosharskiy)
+- ficheiro de limpeza app/build.gradle (@kosharskiy)
+- problema de visualização de dados meta de vídeo fixo (@kosharskiy)
+- traduções atualizadas

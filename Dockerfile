@@ -14,7 +14,9 @@ RUN mkdir "$ANDROID_HOME" .android && \
     echo "${ANDROID_SDK_CHECKSUM}  sdk.zip" | sha256sum -c - && \
     unzip sdk.zip && \
     rm sdk.zip && \
-    mv cmdline-tools tools
+    mv cmdline-tools latest && \
+    mkdir cmdline-tools && \
+    mv latest cmdline-tools/.
 
 RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses
 RUN $ANDROID_HOME/tools/bin/sdkmanager --update

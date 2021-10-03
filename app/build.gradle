@@ -154,7 +154,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     // Lifecycle components
-    annotationProcessor  "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    kapt  "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"

@@ -30,6 +30,12 @@ allprojects {
             url 'https://jitpack.io'
         }
     }
+    // https://issuetracker.google.com/issues/174695268?pli=1#comment9
+    configurations.all {
+        resolutionStrategy {
+            force 'org.xerial:sqlite-jdbc:3.34.0'
+        }
+    }
 }
 
 task clean(type: Delete) {

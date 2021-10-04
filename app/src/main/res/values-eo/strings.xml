@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_incorrect_password">Ĉi tiu pasvorto ne estas ĝusta</string>
+    <string name="error_invalid_password">Ĉi tiu pasvorto estas tro mallonga</string>
+    <string name="error_invalid_email">Ĉi tiu retadreso estas nevalida</string>
+    <string name="action_sign_in_short">Ensaluti</string>
+    <string name="action_sign_in">Ensaluti</string>
+    <string name="prompt_password">Pasvorto</string>
+    <string name="prompt_email">Retpoŝto / Uzantnomo</string>
+    <string name="prompt_server">Servilo</string>
+    <string name="title_activity_login">Ensaluti</string>
+    <string name="title_activity_settings">Agordoj</string>
+    <string name="pref_insecure_confirm_no">Ne</string>
+    <string name="pref_insecure_confirm_yes">Jes</string>
+</resources>

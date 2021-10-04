@@ -1,0 +1,7 @@
+- agregar soporte de redirección de hipertexto en la descripción (@freeboub)
+ - corrección de errores varios (@freeboub)
+ - no ir a pip al salir de la aplicación debido al botón de compartir (@freeboub)
+ - agregar opción de filtrar la lista de servidores (@freeboub)
+ - refactorizar la gestión de errores de Toast para dividir el error de red (@freeboub)
+ - mantener la relación de aspecto de video para pip (@freeboub)
+ - la barra de navegación no se restauró al salir del modo landscape (@freeboub)

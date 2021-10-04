@@ -354,7 +354,7 @@
     <string name="pref_background_stop">Tüm oynatmaları durdur</string>
     <string name="pref_background_audio">Arka planda ses akışı olarak devam et</string>
     <string name="server_selection_nsfw_instance">Uygunsuz Örnek</string>
-    <string name="server_selection_video_totals">Video: %s, Yerel Video: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Video: %s, Yerel Video: %s</string>
     <string name="menu_video_options_quality_automated">Otomatik</string>
     <string name="pref_title_buildtime">Oluşturma Zamanı</string>
     <string name="hello_blank_fragment">Merhaba boş parça</string>
@@ -370,4 +370,5 @@
     <string name="pref_title_accept_insecure">SSL Sertifika Denetimini Devre Dışı Bırak</string>
     <string name="pref_description_accept_insecure">Güvenli olmayan bağlantıları yok sayın. Bunu yalnızca bağlandığınız sunucuyu biliyorsanız kullanın. Uygulamanın yeniden başlatılmasını gerektirir.</string>
     <string name="server_book_add_save_button">Kaydet</string>
+    <string name="video_list_live_marker">CANLI</string>
 </resources>

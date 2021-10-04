@@ -341,7 +341,7 @@
     <string name="pref_background_audio">Audio afspelen op achtergrond</string>
     <string name="pref_title_buildtime">Bouwtijd</string>
     <string name="menu_video_options_quality_automated">Geautomatiseerd</string>
-    <string name="server_selection_video_totals">Video\'s: %s - Lokale video\'s: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Video\'s: %s - Lokale video\'s: %s</string>
     <string name="server_selection_nsfw_instance">NSFW-instantie</string>
     <string name="authentication_token_refresh_success">Toegangssleutel verversd</string>
     <string name="authentication_token_refresh_failed">Kan toegangssleutel niet verversen</string>

@@ -36,9 +36,11 @@ else {
     secretProperties.setProperty("signing_key_alias", "${System.getenv('signing_key_alias')}")
 }
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "net.schueller.peertube"
@@ -92,10 +94,10 @@ android {
 
 }
 
-def room_version = "2.2.6"
-def lifecycleVersion = '2.2.0'
+def room_version = "2.3.0"
+def lifecycleVersion = '2.3.1'
 def exoplayer = '2.12.3'
-def fragment_version = "1.2.5"
+def fragment_version = "1.3.6"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -103,9 +105,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Layouts and design
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
@@ -116,7 +118,7 @@ dependencies {
     implementation 'com.mikepenz:fontawesome-typeface:5.9.0.2-kotlin@aar'
 
     // http client / REST
-    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
     // image downloading and caching library
@@ -152,19 +154,17 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     // Lifecycle components
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-    kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+    kapt  "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
-
 
     implementation 'androidx.preference:preference-ktx:1.1.1'
 
     // testing
     testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test:runner:1.3.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.room:room-testing:$room_version"
 }
 

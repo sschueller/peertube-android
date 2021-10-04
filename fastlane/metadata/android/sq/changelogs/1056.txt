@@ -1,0 +1,6 @@
+# 1.1.0 (01.02.2021)
+
+
+### Veçori
+
+* **lang:** U shtua finlandishtja 02bcd74

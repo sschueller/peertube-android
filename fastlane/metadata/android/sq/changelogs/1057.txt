@@ -1,0 +1,6 @@
+## 1.1.1 (05.02.2021)
+
+
+### Ndreqje të Metash
+
+* U hoq SHA nga emër versioni për të ndrequr montime fdroid 9dc7d54

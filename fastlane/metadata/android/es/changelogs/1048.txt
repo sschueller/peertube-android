@@ -1,0 +1,1 @@
+- Lanzamiento de f-droid para arreglar la implementación automática

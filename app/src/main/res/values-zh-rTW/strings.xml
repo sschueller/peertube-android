@@ -339,7 +339,7 @@
     <string name="pref_background_float">繼續以懸浮視窗播放影片</string>
     <string name="pref_background_stop">停止所有播放</string>
     <string name="pref_background_audio">以背景音訊串流繼續</string>
-    <string name="server_selection_video_totals">影片：%s，本地影片：%s</string>
+    <string name="server_selection_video_totals" formatted="false">影片：%s，本地影片：%s</string>
     <string name="server_selection_nsfw_instance">NSFW 站臺</string>
     <string name="pref_title_buildtime">建構時間</string>
     <string name="menu_video_options_quality_automated">自動</string>
@@ -355,4 +355,5 @@
     <string name="pref_title_accept_insecure">停用 SSL 憑證檢查</string>
     <string name="pref_description_accept_insecure">忽略不安全的連線。僅在您了解您要連線的伺服器時才使用此選項。需要重新啟動應用程式。</string>
     <string name="server_book_add_save_button">儲存</string>
+    <string name="video_list_live_marker">直播</string>
 </resources>

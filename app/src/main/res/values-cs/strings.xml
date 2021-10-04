@@ -3,11 +3,11 @@
     <string name="title_activity_settings">Nastavení</string>
     <string name="title_activity_login">Přihlásit se</string>
     <string name="prompt_server">Server</string>
-    <string name="prompt_email">Email / Uživatelské jméno</string>
+    <string name="prompt_email">E-mail / Uživatelské jméno</string>
     <string name="prompt_password">Heslo</string>
     <string name="action_sign_in">Přihlásit se</string>
     <string name="action_sign_in_short">Přihlásit se</string>
-    <string name="error_invalid_email">Tato emailové adresa je neplatná</string>
+    <string name="error_invalid_email">Tato e-mailové adresa je neplatná</string>
     <string name="error_incorrect_password">Toto heslo je neplatné</string>
     <string name="error_field_required">Toto pole je povinné</string>
     <string name="action_bar_title_search">Hledat</string>
@@ -37,4 +37,5 @@
     <string name="video_speed_15">1,5×</string>
     <string name="video_speed_10">Normální</string>
     <string name="video_speed_05">0,5×</string>
+    <string name="permission_rationale">Udělit pravomoce k přístupu ke kontaktu pro dokončení e-mailu.</string>
 </resources>

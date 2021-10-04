@@ -1,0 +1,5 @@
+- u ndreq gjuha parazgjedhje e aplikacionit për nisjen e parë (@kosharskiy)
+ - Përkthime për skenën e rregullimeve për gjuhët uk dhe ru (@kosharskiy)
+ - pastrim i kartelës app/build.gradle (@kosharskiy)
+ - u ndreq problem shfaqjeje të dhënash meta për videot (@kosharskiy)
+ - u përditësuan përkthime

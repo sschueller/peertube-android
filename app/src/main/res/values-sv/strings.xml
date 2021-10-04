@@ -320,4 +320,20 @@
     <string name="authentication_login_success">Inloggad</string>
     <string name="bn_rBD">Bengali (Bangladesh)</string>
     <string name="clear_search_history">Rensa sökhistorik</string>
+    <string name="pref_title_back_pause">Pausa med bakåtknappen</string>
+    <string name="video_list_live_marker">LIVE</string>
+    <string name="pref_insecure_confirm_yes">Ja</string>
+    <string name="pref_insecure_confirm_no">Nej</string>
+    <string name="pref_insecure_confirm_title">Varning!</string>
+    <string name="settings_activity_advanced_category_title">Avancerad</string>
+    <string name="menu_video_options_quality_automated">Automatiserad</string>
+    <string name="server_selection_video_totals" formatted="false">Videos: %s, Lokala Videos: %s</string>
+    <string name="server_selection_nsfw_instance">NSFW Instans</string>
+    <string name="settings_activity_look_and_feel_category_title">Utseende</string>
+    <string name="settings_activity_video_playback_category_title">Videouppspelning</string>
+    <string name="server_book_del_alert_msg">Är du säker på att du vill ta bort den här servern från adressboken\?</string>
+    <string name="server_book_add_save_button">Spara</string>
+    <string name="network_error">Nätverksåtkomstfel, kontrollera din anslutning</string>
+    <string name="pref_title_accept_insecure">Inaktivera SSL-certifikatkontroll</string>
+    <string name="clear_search_history_prompt">Vill du radera sökhistoriken permanent\?</string>
 </resources>

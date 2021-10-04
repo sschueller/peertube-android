@@ -191,4 +191,6 @@
     <string name="pref_description_accept_insecure">Ignorar conexiones inseguras. Usa esta opción únicamente si conoces el servidor al que te vas a conectar. Requiere reiniciar la aplicación.</string>
     <string name="pref_background_behavior_summary">La manera en que un vídeo responde al ser enviado al fondo</string>
     <string name="pref_description_back_pause">Pausa la reproducción de fondo al presionar atrás durante la reproducción de vídeo.</string>
+    <string name="video_list_live_marker">EN VIVO</string>
+    <string name="co">Corso</string>
 </resources>

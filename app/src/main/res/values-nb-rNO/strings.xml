@@ -151,7 +151,7 @@
     <string name="authentication_token_refresh_failed">Kunne ikke gjenoppfriske symbol</string>
     <string name="pref_title_buildtime">Byggtid</string>
     <string name="menu_video_options_quality_automated">Automatisert</string>
-    <string name="server_selection_video_totals">Videoer: %s, lokale videoer: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Videoer: %s, lokale videoer: %s</string>
     <string name="settings_activity_look_and_feel_category_title">Utseende og oppførsel</string>
     <string name="settings_activity_video_playback_category_title">Videoavspilling</string>
     <string name="settings_activity_video_list_category_title">Videoliste</string>
@@ -186,4 +186,13 @@
     <string name="bn">bengalsk</string>
     <string name="hy">armensk</string>
     <string name="server_selection_nsfw_instance">Arbeidsutrygg insans</string>
+    <string name="pref_insecure_confirm_yes">Ja</string>
+    <string name="pref_insecure_confirm_no">Nei</string>
+    <string name="pref_insecure_confirm_title">Advarsel!</string>
+    <string name="settings_activity_advanced_category_title">Avansert</string>
+    <string name="server_book_add_save_button">Lagre</string>
+    <string name="pref_insecure_confirm_message">Du er i ferd med å skru av all SSL-sertifisering i Thorium. Å skru av dette kan være veldig farlig hvis Peertube ikke er under din kontroll, fordi mellommanns-angrep kan sende trafikk til en annen tjener uten at du vet det. En angriper kan da se passordene når de blir brukt, og annen personlig data.</string>
+    <string name="video_list_live_marker">Sanntid</string>
+    <string name="pref_title_accept_insecure">Skru av SSL-sertifikatssjekk</string>
+    <string name="pref_description_accept_insecure">Ignorer usikre tilkoblinger. Kun bruk dette hvis du vet hvilken tjener du kobler til. Krever programomstart.</string>
 </resources>

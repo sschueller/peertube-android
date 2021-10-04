@@ -353,7 +353,7 @@
     <string name="settings_activity_about_category_title">About</string>
     <string name="settings_activity_look_and_feel_category_title"><![CDATA[Look & Feel]]></string>
     <string name="server_selection_nsfw_instance">NSFW Instance</string>
-    <string name="server_selection_video_totals">Videos: %s, Local Videos: %s</string>
+    <string name="server_selection_video_totals" formatted="false">Videos: %s, Local Videos: %s</string>
     <string name="menu_video_options_quality_automated">Automated</string>
     <string name="pref_title_buildtime">Build Time</string>
     <string name="authentication_token_refresh_failed">Could not refresh token</string>

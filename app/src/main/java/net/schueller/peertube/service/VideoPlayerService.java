@@ -16,36 +16,33 @@
  */
 package net.schueller.peertube.service;
 
+import static android.media.session.PlaybackState.ACTION_PAUSE;
+import static android.media.session.PlaybackState.ACTION_PLAY;
+import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
+import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
+import static net.schueller.peertube.network.UnsafeOkHttpClient.getUnsafeOkHttpClientBuilder;
+
 import android.app.Notification;
 import android.app.PendingIntent;
-import android.app.PictureInPictureParams;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Binder;
-import android.os.Build;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.webkit.URLUtil;
-import androidx.annotation.Nullable;
-
 import android.support.v4.media.MediaDescriptionCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
-import android.util.Rational;
+import android.webkit.URLUtil;
 import android.widget.Toast;
-
+import androidx.annotation.Nullable;
 import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
@@ -53,30 +50,20 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.audio.AudioAttributes;
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector;
 import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator;
-import com.google.android.exoplayer2.ext.okhttp.OkHttpDataSource;
 import com.google.android.exoplayer2.ext.okhttp.OkHttpDataSourceFactory;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.source.hls.HlsMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerNotificationManager;
 import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
-
 import net.schueller.peertube.R;
 import net.schueller.peertube.activity.VideoPlayActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.model.Video;
 import okhttp3.OkHttpClient;
-
-import static android.media.session.PlaybackState.ACTION_PAUSE;
-import static android.media.session.PlaybackState.ACTION_PLAY;
-import static com.google.android.exoplayer2.ui.PlayerNotificationManager.ACTION_STOP;
-import static net.schueller.peertube.activity.VideoListActivity.EXTRA_VIDEOID;
-import static net.schueller.peertube.network.UnsafeOkHttpClient.getUnsafeOkHttpClientBuilder;
 
 public class VideoPlayerService extends Service {
 

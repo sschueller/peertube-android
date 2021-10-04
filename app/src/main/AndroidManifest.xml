@@ -25,7 +25,8 @@
         <activity
             android:name=".activity.VideoListActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />
@@ -68,7 +69,8 @@
 
         <service android:name=".service.VideoPlayerService" />
 
-        <receiver android:name="androidx.media.session.MediaButtonReceiver" >
+        <receiver android:name="androidx.media.session.MediaButtonReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>

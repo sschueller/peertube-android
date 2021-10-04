@@ -1,0 +1,2 @@
+- shtim mbulimi për çaktivizim SSL-je
+ - përkthime

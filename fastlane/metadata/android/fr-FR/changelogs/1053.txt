@@ -1,0 +1,7 @@
+- Faire en sorte que X en mode pip arrête correctement l'audio d'arrière-plan (@ dhk2)
+- Ajout d'une option d'historique de recherche claire au menu des paramètres (@ dhk2)
+- Correction de la langue sélectionnée par défaut pour toutes les langues vidéo
+- Bibliothèque d'icônes mise à jour
+- Ajout d'un indicateur de mise en mémoire tampon à la lecture vidéo
+- Correction de problèmes de vidéo vierge sur les serveurs offrant une vidéo 0p.
+- Traductions mises à jour

@@ -3,7 +3,7 @@
     <string name="title_activity_settings">設定</string>
     <string name="title_activity_login">サインイン</string>
     <string name="prompt_server">サーバー</string>
-    <string name="prompt_email">Eメール/ユーザー名</string>
+    <string name="prompt_email">電子メール/ユーザー名</string>
     <string name="prompt_password">パスワード</string>
     <string name="action_sign_in">サインイン</string>
     <string name="action_sign_in_short">サインイン</string>
@@ -25,7 +25,7 @@
     <string name="meta_data_views">" 視聴回数"</string>
     <string name="video_row_video_thumbnail">ビデオ サムネイル</string>
     <string name="video_row_account_avatar">アバター</string>
-    <string name="title_activity_url_video_play"></string>
+    <string name="title_activity_url_video_play"/>
     <string name="search_hint">PeerTube内を検索</string>
     <string name="title_activity_search">検索</string>
     <string name="no_data_available">検索結果なし</string>
@@ -100,4 +100,6 @@
     <string name="api_error">不明なエラーが発生しました。後で再試行してください！</string>
     <string name="action_bar_title_server_selection">サーバー選択</string>
     <string name="login_current_server_hint">現在のサーバー</string>
+    <string name="video_speed_15">1.5x</string>
+    <string name="video_speed_05">0.5x</string>
 </resources>

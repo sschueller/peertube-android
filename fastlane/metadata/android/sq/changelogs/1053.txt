@@ -1,0 +1,7 @@
+- Bërje e X-it nën mënyrën pip të ndalë si duhet zërin në sfond (@dhk2)
+ - Shtim mundësie spastrimi historiku kërkimesh te menuja e rregullimeve (@dhk2)
+ - Ndreqje parazgjedhjesh për gjuhë të papërzgjedhur te krejt gjuhët e videove
+ - U përditësua biblioteka e ikonave
+ - Shtim treguesi për “buffering” te luajtje videosh
+ - Ndreqje problemesh videosh të zbrazëta në shërbyes që ofrojnë video 0p.
+ - U përditësuan përkthime

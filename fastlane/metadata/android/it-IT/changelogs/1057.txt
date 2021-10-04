@@ -1,0 +1,6 @@
+## 1.1.1 (2021-02-05)
+
+
+### Problemi risulti
+
+* Rimosso SHA dal nome della versione per risolvere fdroid builds 9dc7d54

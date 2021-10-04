@@ -1,0 +1,1 @@
+- F-Droid julkaisu automaattisen käyttöönoton korjaamiseksi

@@ -1,0 +1,7 @@
+- Fatto in modo che X in modalità pip interrompa correttamente l'audio in background (@ dhk2)
+- Aggiunta l'opzione di cancellazione della cronologia delle ricerche al menu delle impostazioni (@ dhk2)
+- Risolti i valori predefiniti per nessuna lingua selezionata per tutte le lingue del video
+- Libreria di icone aggiornata
+- Aggiunto indicatore di buffering alla riproduzione video
+- Risolti i problemi di video vuoto sui server che offrono video 0p.
+- Traduzioni aggiornate

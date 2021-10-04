@@ -1,0 +1,6 @@
+## 1.1.1 (05-02-2021)
+
+
+### Errores Corregidos
+
+* SHA eliminado del nombre de la versión para arreglar las builds de fdroid 9dc7d54

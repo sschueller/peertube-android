@@ -58,7 +58,7 @@ ensureContainer:
 
 # https://levelup.gitconnected.com/semantic-versioning-and-release-automation-on-gitlab-9ba16af0c21
 fetch-semantic-version:
-  image: node:13
+  image: node:14
   stage: fetch-version
   only:
     refs:

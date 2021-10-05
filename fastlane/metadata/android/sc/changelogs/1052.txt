@@ -1,0 +1,2 @@
+- implementada sa modìfica de serbidore in sa rubrica de is serbidores (@kosharskiy)
+- Tradutziones agiornadas

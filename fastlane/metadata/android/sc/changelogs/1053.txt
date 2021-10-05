@@ -1,0 +1,7 @@
+- Fatu X de manera chi in modalidade pip firmet s'àudiu de isfundu de manera curreta (@dhk2)
+- Annànghida s'optzione de iscantzellare sa cronologia de chirca a su menù de impostatziones (@dhk2)
+- Currègidos is valores predefinidos de peruna limba seletzionada in totu is limbas de vìdeu
+- Agiornada biblioteca de iconas
+- Annànghidu indicadore de carrigamentu a sa riprodutzione vìdeu
+- Currègidos problemas de vìdeu bòidu in serbidores chi oferint vìdeu 0p
+- Tradutziones agiornadas

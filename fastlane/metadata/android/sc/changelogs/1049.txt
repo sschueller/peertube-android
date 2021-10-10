@@ -1,7 +1,0 @@
-- agiuntu suportu de rediretzione de ipertestu in descritzione (@freeboub)
-- curretzione de errores vàrios (@freeboub)
-- No andare a modalidade PiP cando essis dae s'aplicatzione pro more de su butone pro cumpartzire (@freeboub)
-- Agiunta optzione pro filtrare lista de serbidores (@freeboub)
-- Gestione de errore Refactor Toast pro separare s'errore de retza (@freeboub)
-- Mantènnere proportzione vìdeu in modalidade PiP
-- Non torraiat sa barra de navigatzione cando essis dae modalidade orizontale

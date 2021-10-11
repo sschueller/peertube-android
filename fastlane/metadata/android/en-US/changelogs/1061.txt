@@ -1,0 +1,90 @@
+# 1.5.0 (2021-10-05)
+
+
+### Bug Fixes
+
+* Added missing description files required for fastlane 38eb072
+* android update 9fc9804
+* android update 9800140
+* android update 5f1ea69
+* android update 2ccb9fd
+* android update be6f946
+* android update 3a7ca15
+* android update f71aeb2
+* android update 48007d3
+* android update 1996d30
+* android update 18c390d
+* android update 011a605
+* android update 4d198df
+* android update 20d41d5
+* android update cb9801b
+* android update 3e168e6
+* android update eb28e81
+* jdk update 8889ab1
+* jdk update ddb0f73
+* **lang:**  Weblate translation (Albanian) 0c2de46
+* **lang:**  Weblate translation (Albanian) 20ee0aa
+* **lang:**  Weblate translation (Bengali (Bangladesh)) e2ced85
+* **lang:**  Weblate translation (Bengali (Bangladesh)) 0da8653
+* **lang:**  Weblate translation (Bengali) cc34d94
+* **lang:**  Weblate translation (Finnish) cd64314
+* **lang:**  Weblate translation (French) 5b539f9
+* **lang:**  Weblate translation (French) 2a02143
+* **lang:**  Weblate translation (Indonesian) eea466c
+* **lang:**  Weblate translation (Italian) 8b2f5e5
+* **lang:**  Weblate translation (Persian) 7bff5f1
+* **lang:**  Weblate translation (Portuguese) d0dd108
+* **lang:**  Weblate translation (Russian (ru_CARES)) be41b42
+* **lang:**  Weblate translation (Russian) cc6a1b8
+* **lang:**  Weblate translation (Sardinian) 952eb36
+* **lang:**  Weblate translation (Sinhala) 1b7007a
+* **lang:**  Weblate translation (Spanish) f94374c
+* **lang:** Weblate translation (Albanian) 970c27a
+* **lang:** Weblate translation (Arabic) 4f1d27f
+* **lang:** Weblate translation (Arabic) 5d811cc
+* **lang:** Weblate translation (Arabic) 53047c9
+* **lang:** Weblate translation (Bengali (Bangladesh)) 2e21b02
+* **lang:** Weblate translation (Bengali (Bangladesh)) a6fbe44
+* **lang:** Weblate translation (Bengali) 937175d
+* **lang:** Weblate translation (Bengali) 9cdce0c
+* **lang:** Weblate translation (Bengali) 9686f61
+* **lang:** Weblate translation (Czech) 2824300
+* **lang:** Weblate translation (Esperanto) 841d711
+* **lang:** Weblate translation (Esperanto) 8d69ea5
+* **lang:** Weblate translation (Finnish) bfb80c4
+* **lang:** Weblate translation (French) 8a05579
+* **lang:** Weblate translation (French) 6ff05b5
+* **lang:** Weblate translation (German) 8fef278
+* **lang:** Weblate translation (German) 8028936
+* **lang:** Weblate translation (Greek) 553869d
+* **lang:** Weblate translation (Greek) 05f0369
+* **lang:** Weblate translation (Indonesian) ebae5e2
+* **lang:** Weblate translation (Indonesian) ae5462a
+* **lang:** Weblate translation (Italian) 4adbe6f
+* **lang:** Weblate translation (Japanese) d873254
+* **lang:** Weblate translation (Japanese) e7cf39d
+* **lang:** Weblate translation (Norwegian Bokmål) fc02ce1
+* **lang:** Weblate translation (Persian) 71ab54e
+* **lang:** Weblate translation (Portuguese (Brazil)) 3887cda
+* **lang:** Weblate translation (Portuguese) ce48913
+* **lang:** Weblate translation (Portuguese) 7d790d3
+* **lang:** Weblate translation (Russian) a464d50
+* **lang:** Weblate translation (Russian) 632af1a
+* **lang:** Weblate translation (Russian) 5f115d3
+* **lang:** Weblate translation (Sinhala) abca190
+* **lang:** Weblate translation (Spanish) 63324bc
+* **lang:** Weblate translation (Swedish) 5608c0d
+* **lang:** Weblate translation (Swedish) 376e05c
+* **lang:** Weblate translation (Ukrainian) 3dc4867
+* node version 36b840f
+* node version 3ee6071
+* Updated gradle in docker 79c9e97
+
+
+### Features
+
+* Android lib updates, gradle update 5f2847c
+* **lang:** Added translation using Weblate (Albanian) 773f108
+* **lang:** Added translation using Weblate (Esperanto) a2880f7
+* **lang:** Added translation using Weblate (Sardinian) ccc7723
+* **lang:** Added translation using Weblate (Sinhala) 4d48100

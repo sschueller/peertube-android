@@ -356,4 +356,7 @@
     <string name="server_book_add_pick_server_button">Hae</string>
     <string name="server_book_add_label">Leima</string>
     <string name="video_list_live_marker">SUORA</string>
+    <string name="pref_title_video_speed">Oletusarvoinen toistonopeus</string>
+    <string name="pref_description_video_speed">Valitse yleinen videon toistonopeus</string>
+    <string name="action_bar_title_address_book">Osoitekirja</string>
 </resources>

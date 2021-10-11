@@ -1,12 +1,12 @@
 Thorium, sürüm v1.1.0-alpha.2 veya daha üstünü çalıştıran herhangi bir PeerTube sunucusuna bağlanabilen bir PeerTube istemcisidir. 
 
-PeerTube, doğrudan web tarayıcısında P2P (BitTorrent) kullanan bir federe (ActivityPub) video yayınlama platformudur. Daha fazla bilgi ve sunucu listesi için lütfen https://joinpeertube.org/ adresini ziyaret edin.
+PeerTube, doğrudan web tarayıcısında P2P (BitTorrent) kullanan bir dağıtık (ActivityPub) video yayınlama platformudur. Daha fazla bilgi için lütfen https://joinpeertube.org/ adresini ziyaret edin.
 
-Bu istemci, uygulamanın yaratıcısı tarafından - PeerTube projesinin kendisi değil, http://instances.joinpeertube.org/ adresinde daha fazlasını listelemektedir - yönetilen bir PeerTube sunucusuyla önceden yapılandırılmış olarak gelir, böylece istemcinin neler yapabileceğini görebilirsiniz. Deneyiminizi kendinize göre ayarlamak için sunucunuzu seçin!
+Bu istemci, uygulamanın yaratıcısı tarafından yönetilen - PeerTube projesinin kendisi değil, http://instances.joinpeertube.org/ adresinde daha fazlası listelenmektedir - bir PeerTube sunucusuyla önceden yapılandırılmış olarak gelir, böylece istemcinin neler yapabileceğini görebilirsiniz. Deneyiminizi kendinize göre ayarlamak için sunucunuzu seçin!
 
 Mevcut Özellikler:
 - Herhangi bir PeerTube sunucusuna bağlanın
-- Videoyu torrent ile paylaşma veya doğrudan oynatma
+- Videoyu torrent aracılığıyla paylaşın veya doğrudan oynatın
 - PeerTube'de arayın
 - Video indirin / paylaşın
 - Temalar / Karanlık mod

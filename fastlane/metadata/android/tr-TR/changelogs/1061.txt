@@ -1,0 +1,17 @@
+# 1.5.0 (5 Ekim 2021)
+
+
+### Hata Düzeltmeleri
+
+* Fastlane için gerekli eksik açıklama dosyaları eklendi 38eb072
+* android güncellemesi
+* jdk güncellemesi
+* **lang:** Weblate çeviri güncellemeleri
+* node sürümü
+* Docker'da gradle güncellendi 79c9e97
+
+
+### Özellikler
+
+* Android kütüphane ve gradle güncellemeleri 5f2847c
+* **lang:** Weblate kullanılarak Arnavutça, Esperanto, Sardinyaca ve Sinhala çevirileri eklendi

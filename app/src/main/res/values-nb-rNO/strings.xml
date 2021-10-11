@@ -195,4 +195,9 @@
     <string name="video_list_live_marker">Sanntid</string>
     <string name="pref_title_accept_insecure">Skru av SSL-sertifikatssjekk</string>
     <string name="pref_description_accept_insecure">Ignorer usikre tilkoblinger. Kun bruk dette hvis du vet hvilken tjener du kobler til. Krever programomstart.</string>
+    <string name="es">Spansk</string>
+    <string name="id">Indonesisk</string>
+    <string name="action_bar_title_address_book">Adressebok</string>
+    <string name="pref_title_video_speed">Forvalgt avspillingshastighet</string>
+    <string name="pref_description_video_speed">Velg videoavspillingshastighet for hele systemet</string>
 </resources>

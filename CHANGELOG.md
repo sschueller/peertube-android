@@ -1,3 +1,10 @@
+## 1.5.2 (2021-10-11)
+
+
+### Bug Fixes
+
+* removed incompatible languages (android play) 4fd8ff9
+
 ## 1.5.1 (2021-10-10)
 
 

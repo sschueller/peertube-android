@@ -356,4 +356,7 @@
     <string name="settings_activity_advanced_category_title">Додатково</string>
     <string name="server_book_add_save_button">Зберегти</string>
     <string name="video_list_live_marker">НАЖИВО</string>
+    <string name="pref_title_video_speed">Типова швидкість відтворення</string>
+    <string name="pref_description_video_speed">Вибрати загальну швидкість відтворення відео</string>
+    <string name="action_bar_title_address_book">Адресна книга</string>
 </resources>

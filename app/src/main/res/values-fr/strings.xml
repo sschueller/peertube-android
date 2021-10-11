@@ -171,7 +171,7 @@
     <string name="de">allemand</string>
     <string name="gsg">langue des signes allemande</string>
     <string name="gn">guarani</string>
-    <string name="gu">goudjarâtî</string>
+    <string name="gu">goudjarati</string>
     <string name="ht">haïtien</string>
     <string name="ha">haoussa</string>
     <string name="he">hébreu</string>
@@ -361,4 +361,7 @@
     <string name="pref_title_accept_insecure">Désactiver la vérification des certificats SSL</string>
     <string name="pref_description_accept_insecure">Ignorer les connexions non sécuritaires. Utiliser ceci seulement si vous connaissez le serveur sur lequel vous vous connectez. Requiert un redémarrage de l\'application.</string>
     <string name="video_list_live_marker">DIRECT</string>
+    <string name="pref_title_video_speed">Vitesse de lecture par défaut</string>
+    <string name="pref_description_video_speed">Sélectionnez la vitesse globale de lecture vidéo</string>
+    <string name="action_bar_title_address_book">Carnet d\'adresses</string>
 </resources>

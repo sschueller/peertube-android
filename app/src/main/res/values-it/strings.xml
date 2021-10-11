@@ -356,4 +356,7 @@
     <string name="settings_activity_advanced_category_title">Avanzato</string>
     <string name="server_book_add_save_button">Salva</string>
     <string name="pref_description_accept_insecure">Ignora le connessioni insicure. Usalo solo se conosci il server a cui ti stai connettendo. Richiede il riavvio dell\'applicazione.</string>
+    <string name="action_bar_title_address_book">Rubrica</string>
+    <string name="pref_title_video_speed">Velocità di riproduzione predefinita</string>
+    <string name="pref_description_video_speed">Seleziona la velocità globale di riproduzione video</string>
 </resources>

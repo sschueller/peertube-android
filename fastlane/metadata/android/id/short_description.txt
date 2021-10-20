@@ -1,1 +1,1 @@
-Thorium adalah unoffical pemutar PeerTube
+Thorium adalah Aplikasi pemutar media bukan dari PeerTube

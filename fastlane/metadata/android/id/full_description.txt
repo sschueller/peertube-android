@@ -1,6 +1,6 @@
-Thorium adalah klien PeerTube yang dapat terhubung ke server peertube yang menjalankan versi v1.1.0-alpha.2 atau yang lebih tinggi. 
+Thorium adalah klien PeerTube yang dapat terhubung ke jaringan PeerTube yang menjalankan versi v1.1.0-alpha.2 atau yang lebih tinggi. 
 
-PeerTube adalah platform streaming video federated (ActivityPub) menggunakan P2P (BitTorrent) via browser web. Untuk informasi lebih lanjut, silakan kunjungi https://joinpeertube.org/ .
+PeerTube adalah platform federasi streaming video (ActivityPub) menggunakan P2P (BitTorrent) via browser web. Untuk informasi lebih lanjut, silakan kunjungi https://joinpeertube.org/ .
 
 Klien ini hadir dengan prakonfigurasi satu server PeerTube yang dikelola oleh pembuat aplikasi - bukan proyek PeerTube itu sendiri, lihat daftar lainnya di http://instances.joinpeertube.org/ - untuk memungkinkan Anda memiliki selera apa yang mampu dilakukan klien. Pilih server Anda untuk menyelaraskan pengalaman Anda!
 

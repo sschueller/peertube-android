@@ -1,0 +1,11 @@
+# 1.4.0 (2021-02-20)
+
+
+### Correções
+
+* Falha de dispositivos SDK 21,22,23,24 no início, correções [# 262] (https://git.techdroid.com/sschueller/peertube/issues/262) 5622b76
+
+
+### Recursos
+
+* adicionada configuração de velocidade de reprodução global fa79b2d

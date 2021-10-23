@@ -1,0 +1,12 @@
+# 1.3.0 (2021-02-13)
+
+
+### Correções
+
+* Lista de vídeos convertidas em Kotlin para corrigir o menu no topo 06ace0d
+
+
+### Recursos
+
+* Adicionado local para miniaturas de vídeo para carregamento e erros 830b197
+* Ajudante de metadados convertido em kotlin 1c34556

@@ -28,8 +28,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <fragment android:name="net.schueller.peertube.fragment.VideoMetaDataFragment"
+                <fragment
                     android:id="@+id/video_meta_data_fragment"
+                    android:name="net.schueller.peertube.fragment.VideoMetaDataFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

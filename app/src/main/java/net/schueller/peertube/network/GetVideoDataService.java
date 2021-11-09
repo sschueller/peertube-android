@@ -48,6 +48,11 @@ public interface GetVideoDataService {
             @Path(value = "id", encoded = true) String id
     );
 
+    @GET("videos/{id}/description")
+    Call<Object> getVideoFullDescription(
+            @Path(value = "id", encoded = true) String id
+    );
+
     @GET("search/videos/")
     Call<VideoList> searchVideosData(
             @Query("start") int start,

@@ -53,6 +53,7 @@ import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
+import com.google.gson.internal.LinkedTreeMap;
 import com.mikepenz.iconics.Iconics;
 
 import net.schueller.peertube.R;
@@ -200,7 +201,29 @@ public class VideoPlayerFragment extends Fragment implements VideoRendererEventL
                     return;
                 }
 
-                playVideo(video);
+                // Now we get the description before we play the video
+                Call<Object> videoDescriptionCall = service.getVideoFullDescription(mVideoUuid);
+                videoDescriptionCall.enqueue(new Callback<Object>() {
+                    @Override
+                    public void onResponse(@NonNull Call<Object> call, @NonNull Response<Object> response) {
+                        String videoDescription = ((LinkedTreeMap) response.body()).get("description").toString(); // FIXME: BAD
+                        if (videoDescription == null) {
+                            Toast.makeText(context, "Unable to retrieve video description, try again later.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        // Set the description to the video
+                        video.setDescription(videoDescription);
+
+                        playVideo(video);
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<Object> call, @NonNull Throwable t) {
+                        Log.wtf(TAG, t.fillInStackTrace());
+                        ErrorHelper.showToastFromCommunicationError( getActivity(), t );
+                    }
+                });
 
             }
 

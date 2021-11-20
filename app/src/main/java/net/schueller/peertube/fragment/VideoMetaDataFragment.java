@@ -36,6 +36,7 @@ import android.widget.Toast;
 import com.mikepenz.iconics.Iconics;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.ErrorHelper;
@@ -43,6 +44,7 @@ import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.intents.Intents;
 import net.schueller.peertube.model.Account;
 import net.schueller.peertube.model.Avatar;
+import net.schueller.peertube.model.Description;
 import net.schueller.peertube.model.Rating;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.network.GetVideoDataService;
@@ -210,7 +212,29 @@ public class VideoMetaDataFragment extends Fragment {
 
         // description
         TextView videoDescription = activity.findViewById(R.id.description);
-        videoDescription.setText(video.getDescription());
+        String shortDescription = video.getDescription();
+        if (shortDescription != null && Objects.requireNonNull(shortDescription).length() > 237) {
+            shortDescription += "\n" + getString(R.string.video_description_read_more);
+            videoDescription.setOnClickListener(v -> {
+                Call<Description> call = videoDataService.getVideoFullDescription(video.getUuid());
+                call.enqueue(new Callback<Description>() {
+                    @Override
+                    public void onResponse(Call<Description> call, Response<Description> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            new Description();
+                            Description videoFullDescription;
+                            videoFullDescription = response.body();
+                            videoDescription.setText(videoFullDescription.getDescription());
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<Description> call, Throwable t) {
+                        Toast.makeText(getContext(), getString(R.string.video_get_full_description_failed), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            });
+        }
+        videoDescription.setText(shortDescription);
 
         // video privacy
         TextView videoPrivacy = activity.findViewById(R.id.video_privacy);

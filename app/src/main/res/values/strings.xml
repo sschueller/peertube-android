@@ -364,4 +364,6 @@
     <string name="pref_insecure_confirm_yes">Yes</string>
     <string name="pref_insecure_confirm_message">You are about the disable all SSL Certification validation in Thorium. Disabling this can be very dangerous if the peertube server is not under your control, because a man-in-the-middle attack could direct traffic to another server without your knowledge. An attacker could record passwords and other personal data.</string>
     <string name="video_list_live_marker">LIVE</string>
+    <string name="video_get_full_description_failed">Getting full video description failed</string>
+    <string name="video_description_read_more">Read More</string>
 </resources>

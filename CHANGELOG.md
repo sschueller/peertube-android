@@ -1,3 +1,10 @@
+# 1.7.0 (2021-11-21)
+
+
+### Features
+
+* Android target SDK bump 116bc3e
+
 # 1.6.0 (2021-11-20)
 
 

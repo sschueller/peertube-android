@@ -1,0 +1,1 @@
+- La til støtte for HLS-avspilling

@@ -60,10 +60,10 @@
     <string name="account_about_subscribers">Abonnenter:</string>
     <string name="account_about_description">Beskrivelse:</string>
     <string name="account_about_joined">Tok del:</string>
-    <string name="api_error">Noe gikk galt, prøv igjen senere.</string>
+    <string name="api_error">Noe gikk galt, prøv igjen senere!</string>
     <string name="permission_rationale">Innvilg kontakttilgang for fullføring av e-postadresser.</string>
     <string name="bottom_nav_title_trending">Populært</string>
-    <string name="meta_data_views">" visninger"</string>
+    <string name="meta_data_views">" Visninger"</string>
     <string name="video_row_video_thumbnail">Video-miniatyrbilde</string>
     <string name="pref_title_show_nsfw">VOKSENT innhold</string>
     <string name="pref_description_show_nsfw">Vis VOKSENT innhold</string>
@@ -103,7 +103,7 @@
     <string name="server_selection_signup_allowed_yes">Ja</string>
     <string name="server_selection_signup_allowed_no">Nei</string>
     <string name="server_selection_set_server">Tjener satt til: %s</string>
-    <string name="server_selection_select_a_server">Velg en tjener fra listen, eller skriv den inn direkte</string>
+    <string name="server_selection_select_a_server">Velg en tjener fra listen under, eller skriv inn tjenernavn direkte.</string>
     <string name="server_selection_peertube_server_url">PeerTube tjenernettadresse</string>
     <string name="action_bar_title_server_selection">Velg tjener</string>
     <string name="da">Dansk</string>
@@ -139,7 +139,7 @@
     <string name="pref_language_app">Programspråk</string>
     <string name="server_book_add_server_url">Tjener-nettadresse</string>
     <string name="server_book_add_pick_server_button">Søk</string>
-    <string name="server_book_add_username">Username</string>
+    <string name="server_book_add_username">Brukernavn</string>
     <string name="server_book_add_add_button">Legg til</string>
     <string name="server_book_add_password">Passord</string>
     <string name="title_activity_server_address_book">Adressebok</string>
@@ -164,7 +164,7 @@
     <string name="me_logout_button">Logg ut</string>
     <string name="server_book_valid_url_is_required">Gyldig nettadresse kreves</string>
     <string name="server_book_label_is_required">Tjeneretikett kreves</string>
-    <string name="authentication_login_failed">Kunne ikke logge inn</string>
+    <string name="authentication_login_failed">Kunne ikke logge inn!</string>
     <string name="authentication_login_success">Innlogget</string>
     <string name="hello_blank_fragment">Hei blanke fragment</string>
     <string name="network_error">Tilknytningsfeil, sjekk tilkoblingen din</string>
@@ -191,13 +191,14 @@
     <string name="pref_insecure_confirm_title">Advarsel!</string>
     <string name="settings_activity_advanced_category_title">Avansert</string>
     <string name="server_book_add_save_button">Lagre</string>
-    <string name="pref_insecure_confirm_message">Du er i ferd med å skru av all SSL-sertifisering i Thorium. Å skru av dette kan være veldig farlig hvis Peertube ikke er under din kontroll, fordi mellommanns-angrep kan sende trafikk til en annen tjener uten at du vet det. En angriper kan da se passordene når de blir brukt, og annen personlig data.</string>
+    <string name="pref_insecure_confirm_message">Du er i ferd med å skru av all kontroll av SSL-sertifikater i Thorium. Å skru av dette kan være veldig farlig hvis Peertube-tjeneren ikke er under din kontroll, fordi mellommanns-angrep kan styre trafikk til en annen tjener uten at du vet det. En angriper kan da registrere passord, og annen personlig data.</string>
     <string name="video_list_live_marker">Sanntid</string>
     <string name="pref_title_accept_insecure">Skru av SSL-sertifikatssjekk</string>
-    <string name="pref_description_accept_insecure">Ignorer usikre tilkoblinger. Kun bruk dette hvis du vet hvilken tjener du kobler til. Krever programomstart.</string>
+    <string name="pref_description_accept_insecure">Ignorer usikre tilkoblinger. Bruk kun dette hvis du vet hvilken tjener du kobler til. Krever programomstart.</string>
     <string name="es">Spansk</string>
     <string name="id">Indonesisk</string>
     <string name="action_bar_title_address_book">Adressebok</string>
     <string name="pref_title_video_speed">Forvalgt avspillingshastighet</string>
     <string name="pref_description_video_speed">Velg videoavspillingshastighet for hele systemet</string>
+    <string name="ab">Abkhasisk</string>
 </resources>

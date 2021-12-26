@@ -17,6 +17,7 @@
 package net.schueller.peertube.network;
 
 import net.schueller.peertube.model.Description;
+import net.schueller.peertube.model.Overview;
 import net.schueller.peertube.model.Rating;
 import net.schueller.peertube.model.Video;
 import net.schueller.peertube.model.VideoList;
@@ -27,7 +28,6 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -84,6 +84,11 @@ public interface GetVideoDataService {
             @Query("start") int start,
             @Query("count") int count,
             @Query("sort") String sort
+    );
+
+    @GET("overviews/videos")
+    Call<Overview> getOverviewVideosData(
+            @Query("page") int page
     );
 
 }

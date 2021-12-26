@@ -86,7 +86,9 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.AccountV
         holder.name.setText(videoList.get(position).getName());
 
         // set duration
-        holder.videoDuration.setText( MetaDataHelper.getDuration(videoList.get(position).getDuration().longValue()));
+
+// TODO
+//        holder.videoDuration.setText( MetaDataHelper.getDuration(videoList.get(position).getDuration().toLong()));
 
         // set age and view count
         holder.videoMeta.setText(
@@ -106,7 +108,6 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.AccountV
 
         holder.mView.setOnClickListener(v -> {
 
-            // Log.v("VideoAdapter", "click: " + videoList.get(position).getName());
 
             Intent intent = new Intent(context,VideoPlayActivity.class);
             intent.putExtra(EXTRA_VIDEOID, videoList.get(position).getUuid());

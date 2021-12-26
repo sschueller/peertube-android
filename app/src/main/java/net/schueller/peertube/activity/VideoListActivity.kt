@@ -43,23 +43,14 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomnavigation.LabelVisibilityMode
-import com.mikepenz.iconics.IconicsDrawable
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome.Icon.faw_fire
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome.Icon.faw_folder
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome.Icon.faw_globe
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome.Icon.faw_home
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome.Icon.faw_plus_circle
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome.Icon.faw_search
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome.Icon.faw_server
-import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome.Icon.faw_user_circle
-import com.mikepenz.iconics.utils.actionBar
+import com.google.android.material.navigation.NavigationBarView
 import net.schueller.peertube.R
 import net.schueller.peertube.R.id
 import net.schueller.peertube.R.layout
-import net.schueller.peertube.adapter.VideoAdapter
+import net.schueller.peertube.adapter.MultiViewRecycleViewAdapter
 import net.schueller.peertube.helper.APIUrlHelper
 import net.schueller.peertube.helper.ErrorHelper
+import net.schueller.peertube.model.Overview
 import net.schueller.peertube.model.VideoList
 import net.schueller.peertube.network.GetUserService
 import net.schueller.peertube.network.GetVideoDataService
@@ -70,15 +61,15 @@ import net.schueller.peertube.service.VideoPlayerService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
 
 private const val TAG = "_VideoListActivity"
 
 class VideoListActivity : CommonActivity() {
 
-    private var videoAdapter: VideoAdapter? = null
+    private var mMultiViewAdapter: MultiViewRecycleViewAdapter? = null
     private var swipeRefreshLayout: SwipeRefreshLayout? = null
     private var currentStart = 0
+    private var currentPage = 1
     private val count = 12
     private var sort = "-createdAt"
     private var filter: String? = null
@@ -87,6 +78,7 @@ class VideoListActivity : CommonActivity() {
     private var emptyView: TextView? = null
     private var recyclerView: RecyclerView? = null
     private var isLoading = false
+    private var overViewActive = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_video_list)
@@ -107,10 +99,10 @@ class VideoListActivity : CommonActivity() {
         inflater.inflate(R.menu.menu_top_videolist, menu)
 
         // Set an icon in the ActionBar
-        menu.findItem(id.action_account).icon = IconicsDrawable(this, faw_user_circle).actionBar()
-        menu.findItem(id.action_server_address_book).icon = IconicsDrawable(this, faw_server).actionBar()
+        menu.findItem(id.action_account).setIcon(R.drawable.ic_user)
+        menu.findItem(id.action_server_address_book).setIcon(R.drawable.ic_server)
         val searchMenuItem = menu.findItem(id.action_search)
-        searchMenuItem.icon = IconicsDrawable(this, faw_search).actionBar()
+        searchMenuItem.setIcon(R.drawable.ic_search)
 
         // Get the SearchView and set the searchable configuration
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
@@ -236,9 +228,14 @@ class VideoListActivity : CommonActivity() {
         emptyView = findViewById(id.empty_view)
         val layoutManager: LayoutManager = LinearLayoutManager(this@VideoListActivity)
         recyclerView?.layoutManager = layoutManager
-        videoAdapter = VideoAdapter(ArrayList(), this@VideoListActivity)
-        recyclerView?.adapter = videoAdapter
-        loadVideos(currentStart, count, sort, filter)
+
+        mMultiViewAdapter = MultiViewRecycleViewAdapter()
+        recyclerView?.adapter = mMultiViewAdapter
+
+//        loadVideos(currentStart, count, sort, filter)
+        overViewActive = true
+        loadOverview(currentPage)
+
         recyclerView?.addOnScrollListener(object : OnScrollListener() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -246,8 +243,13 @@ class VideoListActivity : CommonActivity() {
                     // is at end of list?
                     if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
                         if (!isLoading) {
-                            currentStart += count
-                            loadVideos(currentStart, count, sort, filter)
+                            if (overViewActive) {
+                                currentPage++
+                                loadOverview(currentPage)
+                            } else {
+                                currentStart += count
+                                loadVideos(currentStart, count, sort, filter)
+                            }
                         }
                     }
                 }
@@ -256,10 +258,73 @@ class VideoListActivity : CommonActivity() {
         swipeRefreshLayout?.setOnRefreshListener {
             // Refresh items
             if (!isLoading) {
-                currentStart = 0
-                loadVideos(currentStart, count, sort, filter)
+                if (overViewActive) {
+                    currentPage = 1
+                    loadOverview(currentPage)
+                } else {
+                    currentStart = 0
+                    loadVideos(currentStart, count, sort, filter)
+                }
             }
         }
+    }
+
+    private fun loadOverview(page: Int) {
+        isLoading = true
+
+        // We set this to default to null so that on initial start there are videos listed.
+        val apiBaseURL = APIUrlHelper.getUrlWithVersion(this)
+        val service =
+            RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(this)).create(
+                GetVideoDataService::class.java
+            )
+        val call: Call<Overview>? = service.getOverviewVideosData(page)
+
+        call?.enqueue(object : Callback<Overview?> {
+            override fun onResponse(call: Call<Overview?>, response: Response<Overview?>) {
+                if (page == 1) {
+                    mMultiViewAdapter?.clearData()
+                }
+                if (response.body() != null) {
+                    val overview = response.body()
+                    if (overview != null) {
+                        if (overview.categories.isNotEmpty()) {
+                            mMultiViewAdapter?.setCategoryTitle(overview.categories[0].category)
+                            mMultiViewAdapter?.setVideoData(overview.categories[0].videos)
+                        }
+                        if (overview.channels.isNotEmpty()) {
+                            mMultiViewAdapter?.setChannelTitle(overview.channels[0].channel)
+                            mMultiViewAdapter?.setVideoData(overview.channels[0].videos)
+                        }
+                        if (overview.tags.isNotEmpty()) {
+                            mMultiViewAdapter?.setTagTitle(overview.tags[0])
+                            mMultiViewAdapter?.setVideoData(overview.tags[0].videos)
+                        }
+
+                    }
+                }
+
+                // no results show no results message
+                if (mMultiViewAdapter?.itemCount == 0) {
+                    emptyView!!.visibility = View.VISIBLE
+                    recyclerView!!.visibility = View.GONE
+                } else {
+                    emptyView!!.visibility = View.GONE
+                    recyclerView!!.visibility = View.VISIBLE
+                }
+                isLoading = false
+                swipeRefreshLayout!!.isRefreshing = false
+            }
+
+            override fun onFailure(call: Call<Overview?>, t: Throwable) {
+                Log.wtf("err", t.fillInStackTrace())
+                ErrorHelper.showToastFromCommunicationError(this@VideoListActivity, t)
+                isLoading = false
+                swipeRefreshLayout!!.isRefreshing = false
+            }
+        })
+
+
     }
 
     private fun loadVideos(start: Int, count: Int, sort: String, filter: String?) {
@@ -303,17 +368,17 @@ class VideoListActivity : CommonActivity() {
         call.enqueue(object : Callback<VideoList?> {
             override fun onResponse(call: Call<VideoList?>, response: Response<VideoList?>) {
                 if (currentStart == 0) {
-                    videoAdapter!!.clearData()
+                    mMultiViewAdapter!!.clearData()
                 }
                 if (response.body() != null) {
-                    val videoList = response.body()!!.videoArrayList
+                    val videoList = response.body()
                     if (videoList != null) {
-                        videoAdapter!!.setData(response.body()!!.videoArrayList)
+                        mMultiViewAdapter!!.setVideoListData(videoList)
                     }
                 }
 
                 // no results show no results message
-                if (currentStart == 0 && videoAdapter!!.itemCount == 0) {
+                if (currentStart == 0 && mMultiViewAdapter!!.itemCount == 0) {
                     emptyView!!.visibility = View.VISIBLE
                     recyclerView!!.visibility = View.GONE
                 } else {
@@ -383,15 +448,15 @@ class VideoListActivity : CommonActivity() {
         val navigation = findViewById<BottomNavigationView>(id.navigation)
 
         // Always show text label
-        navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+        navigation.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
 
         // Add Icon font
         val navMenu = navigation.menu
-        navMenu.findItem(id.navigation_overview).icon = IconicsDrawable(this, faw_globe)
-        navMenu.findItem(id.navigation_trending).icon = IconicsDrawable(this, faw_fire)
-        navMenu.findItem(id.navigation_recent).icon = IconicsDrawable(this, faw_plus_circle)
-        navMenu.findItem(id.navigation_local).icon = IconicsDrawable(this, faw_home)
-        navMenu.findItem(id.navigation_subscriptions).icon = IconicsDrawable(this, faw_folder)
+        navMenu.findItem(id.navigation_overview).setIcon(R.drawable.ic_globe)
+        navMenu.findItem(id.navigation_trending).setIcon(R.drawable.ic_trending)
+        navMenu.findItem(id.navigation_recent).setIcon(R.drawable.ic_plus_circle)
+        navMenu.findItem(id.navigation_local).setIcon(R.drawable.ic_local)
+        navMenu.findItem(id.navigation_subscriptions).setIcon(R.drawable.ic_subscriptions)
         //        navMenu.findItem(R.id.navigation_account).setIcon(
 //                new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle));
 
@@ -401,17 +466,16 @@ class VideoListActivity : CommonActivity() {
                 id.navigation_overview -> {
                     // TODO
                     if (!isLoading) {
-                        sort = "-createdAt"
-                        currentStart = 0
-                        filter = null
-                        subscriptions = false
-                        loadVideos(currentStart, count, sort, filter)
+                        currentPage = 1
+                        loadOverview(currentPage)
+                        overViewActive = true
                     }
                     return@setOnNavigationItemSelectedListener true
                 }
                 id.navigation_trending -> {
                     //Log.v(TAG, "navigation_trending");
                     if (!isLoading) {
+                        overViewActive = false
                         sort = "-trending"
                         currentStart = 0
                         filter = null
@@ -422,6 +486,7 @@ class VideoListActivity : CommonActivity() {
                 }
                 id.navigation_recent -> {
                     if (!isLoading) {
+                        overViewActive = false
                         sort = "-createdAt"
                         currentStart = 0
                         filter = null
@@ -433,6 +498,7 @@ class VideoListActivity : CommonActivity() {
                 id.navigation_local -> {
                     //Log.v(TAG, "navigation_trending");
                     if (!isLoading) {
+                        overViewActive = false
                         sort = "-publishedAt"
                         filter = "local"
                         currentStart = 0
@@ -450,6 +516,7 @@ class VideoListActivity : CommonActivity() {
                         return@setOnNavigationItemSelectedListener false
                     } else {
                         if (!isLoading) {
+                            overViewActive = false
                             sort = "-publishedAt"
                             filter = null
                             currentStart = 0

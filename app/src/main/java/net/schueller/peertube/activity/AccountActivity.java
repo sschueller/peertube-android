@@ -27,13 +27,14 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.android.material.navigation.NavigationBarView;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome;
 import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.ChannelAdapter;
-import net.schueller.peertube.adapter.VideoAdapter;
+import net.schueller.peertube.adapter.MultiViewRecycleViewAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.ErrorHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
@@ -71,7 +72,7 @@ public class AccountActivity extends CommonActivity {
     private Set<String> videosLanguages;
 
     private ChannelAdapter channelAdapter;
-    private VideoAdapter videoAdapter;
+    private MultiViewRecycleViewAdapter mMultiViewRecycleViewAdapter;
 
     private RecyclerView recyclerViewVideos;
     private RecyclerView recyclerViewChannels;
@@ -110,8 +111,8 @@ public class AccountActivity extends CommonActivity {
         RecyclerView.LayoutManager layoutManagerVideosChannels = new LinearLayoutManager(AccountActivity.this);
         recyclerViewChannels.setLayoutManager(layoutManagerVideosChannels);
 
-        videoAdapter = new VideoAdapter(new ArrayList<>(), AccountActivity.this);
-        recyclerViewVideos.setAdapter(videoAdapter);
+        mMultiViewRecycleViewAdapter = new MultiViewRecycleViewAdapter();
+        recyclerViewVideos.setAdapter(mMultiViewRecycleViewAdapter);
 
         channelAdapter = new ChannelAdapter(new ArrayList<>(), AccountActivity.this);
         recyclerViewChannels.setAdapter(channelAdapter);
@@ -184,7 +185,7 @@ public class AccountActivity extends CommonActivity {
                     ownerStringView.setText(owner);
 
                     TextView followers = findViewById(R.id.account_followers);
-                    followers.setText(account.getFollowersCount().toString());
+                    followers.setText(String.valueOf(account.getFollowersCount()));
 
                     TextView description = findViewById(R.id.account_description);
                     description.setText(account.getDescription());
@@ -238,11 +239,11 @@ public class AccountActivity extends CommonActivity {
 
                 if (response.isSuccessful()) {
                     if (videosCurrentStart == 0) {
-                        videoAdapter.clearData();
+                        mMultiViewRecycleViewAdapter.clearData();
                     }
 
                     if (response.body() != null) {
-                        videoAdapter.setData(response.body().getVideoArrayList());
+                        mMultiViewRecycleViewAdapter.setVideoData(response.body().getVideos());
                     }
 
                 } else{
@@ -301,7 +302,7 @@ public class AccountActivity extends CommonActivity {
         BottomNavigationView navigation = findViewById(R.id.account_navigation);
 
         // Always show text label
-        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+        navigation.setLabelVisibilityMode(NavigationBarView.LABEL_VISIBILITY_LABELED);
 
         // Add Icon font
         Menu navMenu = navigation.getMenu();

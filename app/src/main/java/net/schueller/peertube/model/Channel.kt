@@ -14,18 +14,24 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.model;
+package net.schueller.peertube.model
 
-import com.google.gson.annotations.SerializedName;
-import java.util.ArrayList;
+import net.schueller.peertube.model.ui.OverviewRecycleViewItem
+import java.util.Date
 
-public class VideoList {
-
-    @SerializedName("data")
-    private ArrayList<Video> videoList;
-
-    public ArrayList<Video> getVideoArrayList() {
-        return videoList;
-    }
-
-}
+class Channel(
+    val id: Int,
+    val url: String,
+    val uuid: String,
+    val name: String,
+    val host: String,
+    val followingCount: Int,
+    val followersCount: Int,
+    val avatar: Avatar?,
+    val createdAt: Date,
+    val updatedAt: Date,
+    val displayName: String,
+    val description: String,
+    val support: String,
+    val local: Boolean
+): OverviewRecycleViewItem()

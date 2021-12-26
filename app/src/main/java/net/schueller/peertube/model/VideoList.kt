@@ -14,26 +14,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.model;
+package net.schueller.peertube.model
 
-public class Category {
+import com.google.gson.annotations.SerializedName
+import java.util.ArrayList
 
-    private Integer id;
-    private String label;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-}
+class VideoList(
+    @SerializedName("data")
+    val videos: ArrayList<Video>
+)

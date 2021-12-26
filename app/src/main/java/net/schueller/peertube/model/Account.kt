@@ -14,37 +14,21 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.model;
+package net.schueller.peertube.model
 
-import java.util.Date;
+import java.util.Date
 
-public class Avatar {
-
-    private String path;
-    private Date createdAt;
-    private Date updatedAt;
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-}
+class Account(
+    var id: Int,
+    var url: String,
+    var uuid: String,
+    var name: String,
+    var host: String,
+    var followingCount: Int,
+    var followersCount: Int,
+    var avatar: Avatar?,
+    var createdAt: Date,
+    var updatedAt: Date,
+    var displayName: String,
+    var description: String
+)

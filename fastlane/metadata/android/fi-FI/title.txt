@@ -1,1 +1,1 @@
-Thorium epävirallinen PeerTube -asiakasohjelma
+Thorium a PeerTube client

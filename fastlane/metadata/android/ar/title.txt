@@ -1,1 +1,1 @@
-الثوريوم عميل غير رسمي لشركة P
+Thorium a PeerTube client

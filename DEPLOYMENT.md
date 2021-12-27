@@ -11,3 +11,7 @@
   9. Run publishGithub
 
 
+## fastlane update
+```
+bundle update
+```

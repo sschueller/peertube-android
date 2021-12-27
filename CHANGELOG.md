@@ -1,3 +1,10 @@
+## 1.8.1 (2021-12-27)
+
+
+### Bug Fixes
+
+* updated play store video link ffa7d40
+
 # 1.8.0 (2021-12-26)
 
 

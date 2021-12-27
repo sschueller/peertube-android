@@ -1,3 +1,10 @@
+## 1.8.3 (2021-12-27)
+
+
+### Bug Fixes
+
+* new play store shorter app name requirement 37229a0
+
 ## 1.8.2 (2021-12-27)
 
 

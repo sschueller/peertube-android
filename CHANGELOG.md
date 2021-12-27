@@ -1,3 +1,19 @@
+# 1.8.0 (2021-12-26)
+
+
+### Features
+
+* Overview 335bbbb
+
+## 1.7.1 (2021-11-21)
+
+
+### Bug Fixes
+
+* CI updates, android SDK version d021919
+* CI updates, android SDK version b6d149e
+* CI updates, android SDK version be9f5ef
+
 # 1.7.0 (2021-11-21)
 
 

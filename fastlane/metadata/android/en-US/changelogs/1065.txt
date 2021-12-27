@@ -1,6 +1,8 @@
-# 1.7.0 (2021-11-21)
+## 1.7.1 (2021-11-21)
 
 
-### Features
+### Bug Fixes
 
-* Android target SDK bump 116bc3e
+* CI updates, android SDK version d021919
+* CI updates, android SDK version b6d149e
+* CI updates, android SDK version be9f5ef

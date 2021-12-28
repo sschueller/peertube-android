@@ -356,4 +356,7 @@
     <string name="pref_description_accept_insecure">忽略不安全的連線。僅在您了解您要連線的伺服器時才使用此選項。需要重新啟動應用程式。</string>
     <string name="server_book_add_save_button">儲存</string>
     <string name="video_list_live_marker">直播</string>
+    <string name="pref_title_video_speed">預設播放速度</string>
+    <string name="pref_description_video_speed">選取全域影片播放速度</string>
+    <string name="action_bar_title_address_book">通訊錄</string>
 </resources>

@@ -1,6 +1,6 @@
 Thorium 為可連線到任何執行 v1.1.0-alpha.2 或更新版本的 PeerTube 伺服器的 PeerTube 客戶端。 
 
-PeerTube 是一個直接在網路瀏覽器中使用 P2P (BitTorrent) 的聯盟式 (ActivityPub) 視訊串流平台。要取得更多資訊，請造訪 https://joinpeertube.org/ 並可取得伺服器列表。
+PeerTube 是一個直接在網路瀏覽器中使用 P2P (BitTorrent) 的聯盟式 (ActivityPub) 視訊串流平台。要取得更多資訊，請造訪 https://joinpeertube.org/。
 
 此客戶端帶有一個由應用程式開發者（不是 PeerTube 專案本身，可以在 http://instances.joinpeertube.org/ 看到許多其他伺服器）管理的 PeerTube 伺服器，讓您可以試試看這個客戶端的功能。選擇您的伺服器來調整您的體驗！
 

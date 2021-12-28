@@ -1,0 +1,6 @@
+# 1.2.0 (7 Şubat 2021)
+
+
+### Özellikler
+
+* Video listelerinde canlı videoları işaretle 8518b80

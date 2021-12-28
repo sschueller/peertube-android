@@ -1,6 +1,6 @@
 Thorium è un client PeerTube in grado di connettersi a qualsiasi server peertube che esegue la versione v1.1.0-alpha.2 o successiva. 
 
-PeerTube è una piattaforma di streaming video federata (ActivityPub) che utilizza P2P (BitTorrent) direttamente nel browser web. Per ulteriori informazioni, visitare https://joinpeertube.org/ per ulteriori informazioni e un elenco dei server.
+PeerTube è una piattaforma di streaming video federata (ActivityPub) che utilizza P2P (BitTorrent) direttamente nel browser web. Per ulteriori informazioni, visitare https://joinpeertube.org/
 
 Questo client viene preconfigurato con un server PeerTube gestito dal creatore dell'applicazione – non il progetto PeerTube stesso, che elenca di più su http://instances.joinpeertube.org/ – per consentire di avere un assaggio di ciò che il client è in grado di. Scegli il tuo server per ottimizzare la tua esperienza!
 

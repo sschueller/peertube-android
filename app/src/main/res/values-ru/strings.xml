@@ -362,4 +362,7 @@
     <string name="pref_insecure_confirm_message">"Вы собираетесь отключить валидацию всех SSL сертификатов в Thorium. Это может быть очень опасно если peertube сервер вами не контролируется, потому что \"атака посредника\" может направить трафик на другой сервер. Злоумышленник может записывать пароли и другие личные данные."</string>
     <string name="server_book_add_save_button">Сохранить</string>
     <string name="video_list_live_marker">В ЭФИРЕ</string>
+    <string name="action_bar_title_address_book">Адресная книга</string>
+    <string name="pref_title_video_speed">Скорость воспроизведения по умолчанию</string>
+    <string name="pref_description_video_speed">Выберите глобальную скорость воспроизведения видео</string>
 </resources>

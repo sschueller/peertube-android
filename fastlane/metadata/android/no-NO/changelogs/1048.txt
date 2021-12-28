@@ -1,0 +1,1 @@
+- f-droid-utgave for å fikse automatisk utrulling

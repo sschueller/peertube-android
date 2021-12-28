@@ -1,0 +1,6 @@
+## 1.1.1 (2021-02-05)
+
+
+### Faddinas Currègidas
+
+* Bogadu SHA dae su nòmine de versione pro currègere is versiones de fdroid 9dc7d54

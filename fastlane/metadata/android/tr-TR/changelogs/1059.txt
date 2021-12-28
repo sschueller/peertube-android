@@ -1,0 +1,12 @@
+# 1.3.0 (13 Şubat 2021)
+
+
+### Hata Düzeltmeleri
+
+* Bozuk üst menüyü düzeltmek için video listesi Kotlin'e dönüştürüldü 06ace0d
+
+
+### Özellikler
+
+* Yükleme ve hatalar için video küçük resmi yer tutucusu eklendi 830b197
+* Üst tarih yardımcısı Kotlin'e dönüştürüldü 1c34556

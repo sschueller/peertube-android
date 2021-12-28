@@ -1,0 +1,6 @@
+# 1.2.0 (2021-02-07)
+
+
+### Fonctionnalités
+
+* Marquer les vidéos en direct dans les listes de vidéos 8518b80

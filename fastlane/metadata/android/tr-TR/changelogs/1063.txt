@@ -1,0 +1,6 @@
+## 1.5.2 (11 Ekim 2021)
+
+
+### Hata Düzeltmeleri
+
+* uyumsuz diller kaldırıldı (android play) 4fd8ff9

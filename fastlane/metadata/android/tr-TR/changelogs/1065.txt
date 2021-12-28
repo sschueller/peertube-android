@@ -1,0 +1,8 @@
+## 1.7.1 (2021-11-21)
+
+
+### Hata Düzeltmeleri
+
+* CI güncellemeleri, android SDK sürümü d021919
+* CI güncellemeleri, android SDK sürümü b6d149e
+* CI güncellemeleri, android SDK sürümü be9f5ef

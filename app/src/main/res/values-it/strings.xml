@@ -359,4 +359,6 @@
     <string name="action_bar_title_address_book">Rubrica</string>
     <string name="pref_title_video_speed">Velocità di riproduzione predefinita</string>
     <string name="pref_description_video_speed">Seleziona la velocità globale di riproduzione video</string>
+    <string name="video_get_full_description_failed">Impossibile ottenere la descrizione completa del video</string>
+    <string name="video_description_read_more">Leggi di più</string>
 </resources>

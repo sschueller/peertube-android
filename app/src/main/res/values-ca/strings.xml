@@ -1,2 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_activity_login">Accés</string>
+    <string name="action_bar_title_search">Cerca</string>
+    <string name="action_sign_in">Accés</string>
+    <string name="action_sign_in_short">Accés</string>
+    <string name="bottom_nav_title_discover">Inici</string>
+    <string name="bottom_nav_title_trending">Tendències</string>
+    <string name="bottom_nav_title_recent">Recent</string>
+    <string name="bottom_nav_title_local">Local</string>
+    <string name="bottom_nav_title_subscriptions">Subscripcions</string>
+    <string name="bottom_nav_title_account">Compte</string>
+    <string name="meta_data_views">" Vistes"</string>
+    <string name="video_row_video_thumbnail">Miniatura de vídeo</string>
+    <string name="video_row_account_avatar">Avatar del compte</string>
+    <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
+    <string name="search_hint">Cerca a PerrTube</string>
+    <string name="title_activity_search">Cerca</string>
+    <string name="descr_overflow_button">Més</string>
+    <string name="menu_share">Comparteix</string>
+    <string name="invalid_url">URL no vàlida</string>
+    <string name="pref_title_dark_mode">Mode fosc</string>
+    <string name="pref_title_app_theme">Tema de l\'aplicació</string>
+    <string name="pref_description_app_theme">Reiniciar perquè s\'activi el tema.</string>
+    <string name="pref_title_torrent_player">Reproductor de vídeo Torrent</string>
+    <string name="pref_title_license">Llicència</string>
+    <string name="prompt_email">Email / Nom d\'usuari</string>
+    <string name="title_activity_settings">Configuració</string>
+    <string name="prompt_server">Servidor</string>
+    <string name="prompt_password">Contrasenya</string>
+    <string name="no_data_available">Sense resultats</string>
+    <string name="error_invalid_password">La contrasenya és massa curta</string>
+    <string name="error_field_required">Aquest camp és obligatori</string>
+    <string name="action_bar_title_settings">Configuració</string>
+    <string name="action_bar_title_logout">Tanca</string>
+    <string name="action_bar_title_account">Compte</string>
+    <string name="error_invalid_email">Aquest email no és vàlid</string>
+    <string name="error_incorrect_password">La contrasenya és incorrecta</string>
+    <string name="permission_rationale">Dona permís al contacte per completar l\'email.</string>
+    <string name="pref_description_dark_mode">Reiniciar perquè s\'apliqui el mode obscur</string>
+    <string name="pref_description_torrent_player">Reproducció de vídeo per flux de torrent. Requereix permisos d\'emmagatzematge. (Alfa, no estable!)</string>
+</resources>

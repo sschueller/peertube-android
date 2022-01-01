@@ -1,6 +1,0 @@
-# 1.1.0 (2021-02-01)
-
-
-### Funtzionalidades
-
-* **lang:** Annànghidu Finlandesu 02bcd74

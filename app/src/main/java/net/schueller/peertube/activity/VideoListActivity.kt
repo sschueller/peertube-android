@@ -19,6 +19,7 @@ package net.schueller.peertube.activity
 import android.Manifest.permission
 import android.R.drawable
 import android.R.string
+import android.app.Activity
 import android.app.AlertDialog.Builder
 import android.app.SearchManager
 import android.content.Context
@@ -33,6 +34,7 @@ import android.view.MenuItem
 import android.view.MenuItem.OnActionExpandListener
 import android.view.View
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnSuggestionListener
 import androidx.appcompat.widget.Toolbar
@@ -116,7 +118,7 @@ class VideoListActivity : CommonActivity() {
             Builder(this@VideoListActivity)
                 .setTitle(getString(R.string.clear_search_history))
                 .setMessage(getString(R.string.clear_search_history_prompt))
-                .setPositiveButton(string.yes) { _, _ ->
+                .setPositiveButton(string.ok) { _, _ ->
                     val suggestions = SearchRecentSuggestions(
                         applicationContext,
                         SearchSuggestionsProvider.AUTHORITY,
@@ -124,7 +126,7 @@ class VideoListActivity : CommonActivity() {
                     )
                     suggestions.clearHistory()
                 }
-                .setNegativeButton(string.no, null)
+                .setNegativeButton(string.cancel, null)
                 .setIcon(drawable.ic_dialog_alert)
                 .show()
             true
@@ -160,8 +162,7 @@ class VideoListActivity : CommonActivity() {
                     position
                 ) as Cursor
                 return cursor.getString(
-                    cursor
-                        .getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1)
+                    cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1)
                 )
             }
 
@@ -178,13 +179,24 @@ class VideoListActivity : CommonActivity() {
         stopService(Intent(this, VideoPlayerService::class.java))
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SWITCH_INSTANCE) {
-            if (resultCode == RESULT_OK) {
-                loadVideos(currentStart, count, sort, filter)
-            }
+//    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == SWITCH_INSTANCE) {
+//            if (resultCode == RESULT_OK) {
+//                loadVideos(currentStart, count, sort, filter)
+//            }
+//        }
+//    }
+
+    private var resultLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            loadVideos(currentStart, count, sort, filter)
         }
+    }
+
+    private fun openActivityForResult(intent: Intent) {
+        resultLauncher.launch(intent)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -213,7 +225,7 @@ class VideoListActivity : CommonActivity() {
             }
             id.action_server_address_book -> {
                 val addressBookActivityIntent = Intent(this, ServerAddressBookActivity::class.java)
-                this.startActivityForResult(addressBookActivityIntent, SWITCH_INSTANCE)
+                openActivityForResult(addressBookActivityIntent)
                 return false
             }
             else -> {
@@ -461,7 +473,7 @@ class VideoListActivity : CommonActivity() {
 //                new IconicsDrawable(this, FontAwesome.Icon.faw_user_circle));
 
         // Click Listener
-        navigation.setOnNavigationItemSelectedListener { menuItem: MenuItem ->
+        navigation.setOnItemSelectedListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
                 id.navigation_overview -> {
                     // TODO
@@ -470,7 +482,7 @@ class VideoListActivity : CommonActivity() {
                         loadOverview(currentPage)
                         overViewActive = true
                     }
-                    return@setOnNavigationItemSelectedListener true
+                    return@setOnItemSelectedListener true
                 }
                 id.navigation_trending -> {
                     //Log.v(TAG, "navigation_trending");
@@ -482,7 +494,7 @@ class VideoListActivity : CommonActivity() {
                         subscriptions = false
                         loadVideos(currentStart, count, sort, filter)
                     }
-                    return@setOnNavigationItemSelectedListener true
+                    return@setOnItemSelectedListener true
                 }
                 id.navigation_recent -> {
                     if (!isLoading) {
@@ -493,7 +505,7 @@ class VideoListActivity : CommonActivity() {
                         subscriptions = false
                         loadVideos(currentStart, count, sort, filter)
                     }
-                    return@setOnNavigationItemSelectedListener true
+                    return@setOnItemSelectedListener true
                 }
                 id.navigation_local -> {
                     //Log.v(TAG, "navigation_trending");
@@ -505,15 +517,15 @@ class VideoListActivity : CommonActivity() {
                         subscriptions = false
                         loadVideos(currentStart, count, sort, filter)
                     }
-                    return@setOnNavigationItemSelectedListener true
+                    return@setOnItemSelectedListener true
                 }
                 id.navigation_subscriptions ->                     //Log.v(TAG, "navigation_subscriptions");
                     if (!Session.getInstance().isLoggedIn) {
 //                        Intent intent = new Intent(this, LoginActivity.class);
 //                        this.startActivity(intent);
                         val addressBookActivityIntent = Intent(this, ServerAddressBookActivity::class.java)
-                        this.startActivityForResult(addressBookActivityIntent, SWITCH_INSTANCE)
-                        return@setOnNavigationItemSelectedListener false
+                        openActivityForResult(addressBookActivityIntent)
+                        return@setOnItemSelectedListener false
                     } else {
                         if (!isLoading) {
                             overViewActive = false
@@ -523,7 +535,7 @@ class VideoListActivity : CommonActivity() {
                             subscriptions = true
                             loadVideos(currentStart, count, sort, filter)
                         }
-                        return@setOnNavigationItemSelectedListener true
+                        return@setOnItemSelectedListener true
                     }
             }
             false
@@ -574,6 +586,5 @@ class VideoListActivity : CommonActivity() {
 
         const val EXTRA_VIDEOID = "VIDEOID"
         const val EXTRA_ACCOUNTDISPLAYNAME = "ACCOUNTDISPLAYNAMEANDHOST"
-        const val SWITCH_INSTANCE = 2
     }
 }

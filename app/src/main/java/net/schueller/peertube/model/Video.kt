@@ -35,7 +35,7 @@ class Video(
     var licence: Licence,
     var language: Language,
     var nsfw: Boolean,
-    var description: String,
+    var description: String? = null,
     var local: Boolean,
     var live: Boolean,
     var duration: Int,
@@ -66,7 +66,7 @@ class Video(
     companion object {
 
         @JvmStatic
-        fun getMediaDescription(context: Context?, video: Video): MediaDescriptionCompat {
+        fun getMediaDescription(video: Video): MediaDescriptionCompat {
 
 //        String apiBaseURL = APIUrlHelper.getUrlWithVersion(context);
 

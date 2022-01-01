@@ -41,7 +41,7 @@ import java.util.*
 
 class ServerAddressBookActivity : CommonActivity() {
 
-    private val TAG = "ServerAddressBookActivity"
+    private val TAG = "ServerAddBookAct"
 
     private val mServerViewModel: ServerViewModel by viewModels()
     private var addServerFragment: AddServerFragment? = null
@@ -133,15 +133,15 @@ class ServerAddressBookActivity : CommonActivity() {
                         AlertDialog.Builder(this@ServerAddressBookActivity)
                                 .setTitle(getString(R.string.server_book_del_alert_title))
                                 .setMessage(getString(R.string.server_book_del_alert_msg))
-                                .setPositiveButton(android.R.string.yes) { _: DialogInterface?, _: Int ->
-                                    val position = viewHolder.adapterPosition
+                                .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
+                                    val position = viewHolder.bindingAdapterPosition
                                     val server = adapter.getServerAtPosition(position)
 //                                    Toast.makeText(ServerAddressBookActivity.this, "Deleting " +
 //                                            server.getServerName(), Toast.LENGTH_LONG).show();
                                     // Delete the server
                                     mServerViewModel.delete(server)
                                 }
-                                .setNegativeButton(android.R.string.no) { _: DialogInterface?, _: Int -> adapter.notifyItemChanged(viewHolder.adapterPosition) }
+                                .setNegativeButton(android.R.string.cancel) { _: DialogInterface?, _: Int -> adapter.notifyItemChanged(viewHolder.bindingAdapterPosition) }
                                 .setIcon(android.R.drawable.ic_dialog_alert)
                                 .show()
                     }

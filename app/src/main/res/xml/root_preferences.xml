@@ -76,12 +76,12 @@
             app:title="@string/pref_background_behavior"
             app:iconSpaceReserved="false"/>
 
-        <SwitchPreference
-            app:defaultValue="false"
-            app:key="@string/pref_torrent_player_key"
-            app:summary="@string/pref_description_torrent_player"
-            app:title="@string/pref_title_torrent_player"
-            app:iconSpaceReserved="false"/>
+<!--        <SwitchPreference-->
+<!--            app:defaultValue="false"-->
+<!--            app:key="@string/pref_torrent_player_key"-->
+<!--            app:summary="@string/pref_description_torrent_player"-->
+<!--            app:title="@string/pref_title_torrent_player"-->
+<!--            app:iconSpaceReserved="false"/>-->
 
     </PreferenceCategory>
 

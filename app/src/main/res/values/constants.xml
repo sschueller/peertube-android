@@ -64,6 +64,7 @@
     <string name="title_activity_video_play" translatable="false">VideoPlayActivity</string>
 
     <string name="playback_channel_name" translatable="false">PeerTube</string>
+    <string name="playback_channel_description" translatable="false">playback_channel</string>
 
     <string name="peertube_instance_search_default_description" translatable="false">PeerTube, a federated (ActivityPub) video streaming platform using P2P (BitTorrent) directly in the web browser with WebTorrent and Angular.</string>
 

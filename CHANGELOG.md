@@ -1,3 +1,10 @@
+# 1.9.0 (2022-01-01)
+
+
+### Features
+
+* New player, updates to newest android SDK, New details view, Removed torrent playback (stopped working correctly), Subscribe / unsubscribe if logged in 5a19390
+
 ## 1.8.4 (2022-01-01)
 
 

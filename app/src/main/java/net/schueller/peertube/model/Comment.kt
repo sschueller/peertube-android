@@ -14,31 +14,25 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.database
+package net.schueller.peertube.model
 
-import android.os.Parcelable
-import androidx.room.PrimaryKey
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import kotlinx.parcelize.Parcelize
+import java.util.*
 
-@Parcelize
-@Entity(tableName = "server_table")
-data class Server(
 
-        @PrimaryKey(autoGenerate = true)
-        var id: Int = 0,
+class Comment(
 
-        @ColumnInfo(name = "server_name")
-        var serverName: String,
+    val id: Int,
+    val url: String,
+    val text: String,
+    val threadId: Int,
+    val inReplyToCommentId: Int? = null,
+    val videoId: Int,
+    val createdAt: Date,
+    val updatedAt: Date,
+    val deletedAt: Date? = null,
+    val isDeleted: Boolean,
+    val totalRepliesFromVideoAuthor: Int,
+    val totalReplies: Int,
+    val account: Account
 
-        @ColumnInfo(name = "server_host")
-        var serverHost: String? = null,
-
-        @ColumnInfo(name = "username")
-        var username: String? = null,
-
-        @ColumnInfo(name = "password")
-        var password: String? = null
-
-) : Parcelable
+)

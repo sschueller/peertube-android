@@ -19,12 +19,13 @@ package net.schueller.peertube.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import net.schueller.peertube.R
@@ -52,7 +53,7 @@ class AddServerFragment : Fragment() {
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mBinding = FragmentAddServerBinding.inflate(inflater, container, false)
         return mBinding.root
     }
@@ -115,7 +116,7 @@ class AddServerFragment : Fragment() {
 
         mBinding.pickServerUrl.setOnClickListener {
             val intentServer = Intent(activity, SearchServerActivity::class.java)
-            this.startActivityForResult(intentServer, PICK_SERVER)
+            openActivityForResult(intentServer)
         }
     }
 
@@ -132,35 +133,24 @@ class AddServerFragment : Fragment() {
         }
     }
 
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode != PICK_SERVER) {
-            return
-        }
-
-        if (resultCode != Activity.RESULT_OK) {
-            return
-        }
-
-        val serverUrlTest = data?.getStringExtra("serverUrl")
-        //Log.d(TAG, "serverUrl " + serverUrlTest);
-
-        mBinding.serverUrl.setText(serverUrlTest)
-
-        mBinding.serverLabel.apply {
-            if (text.toString().isBlank()) {
-                setText(data?.getStringExtra("serverName"))
+    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = result.data
+            val serverUrlTest = intent?.getStringExtra("serverUrl")
+            mBinding.serverUrl.setText(serverUrlTest)
+            mBinding.serverLabel.apply {
+                if (text.toString().isBlank()) {
+                    setText(intent?.getStringExtra("serverName"))
+                }
             }
         }
+    }
 
+    private fun openActivityForResult(intent: Intent) {
+        resultLauncher.launch(intent)
     }
 
     companion object {
-        private const val TAG = "AddServerFragment"
-        private const val PICK_SERVER = 1
-
         private const val SERVER_ARG = "server"
 
         fun newInstance(server: Server) = AddServerFragment().apply {

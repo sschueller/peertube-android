@@ -8,7 +8,7 @@ ENV ANDROID_SDK_CHECKSUM 124f2d5115eee365df6cf3228ffbca6fc3911d16f8025bebd5b1c6e
 # higher version casues Warning: Failed to find package
 ENV ANDROID_BUILD_TOOLS_VERSION 30.0.2
 ENV ANDROID_SDK_ROOT /usr/local/android-sdk-linux
-ENV ANDROID_VERSION 30
+ENV ANDROID_VERSION 32
 # ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 ENV PATH ${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/cmdline-tools/tools/bin
 

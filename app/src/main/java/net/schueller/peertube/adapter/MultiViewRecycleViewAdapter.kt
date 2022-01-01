@@ -4,19 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import net.schueller.peertube.R
-import net.schueller.peertube.databinding.ItemCategoryTitleBinding
-import net.schueller.peertube.databinding.ItemChannelTitleBinding
-import net.schueller.peertube.databinding.ItemTagTitleBinding
-import net.schueller.peertube.databinding.RowVideoListBinding
-import net.schueller.peertube.model.Category
-import net.schueller.peertube.model.Channel
-import net.schueller.peertube.model.TagVideo
-import net.schueller.peertube.model.Video
-import net.schueller.peertube.model.VideoList
+import net.schueller.peertube.databinding.*
+import net.schueller.peertube.fragment.VideoMetaDataFragment
+import net.schueller.peertube.model.*
 import net.schueller.peertube.model.ui.OverviewRecycleViewItem
+import net.schueller.peertube.model.ui.VideoMetaViewItem
 import java.util.ArrayList
 
-class MultiViewRecycleViewAdapter : RecyclerView.Adapter<MultiViewRecyclerViewHolder>() {
+class MultiViewRecycleViewAdapter(private val videoMetaDataFragment: VideoMetaDataFragment? = null) : RecyclerView.Adapter<MultiViewRecyclerViewHolder>() {
 
     private var items = ArrayList<OverviewRecycleViewItem>()
         set(value) {
@@ -34,6 +29,11 @@ class MultiViewRecycleViewAdapter : RecyclerView.Adapter<MultiViewRecyclerViewHo
         notifyDataSetChanged()
     }
 
+    fun setVideoMeta(videoMetaViewItem: VideoMetaViewItem) {
+        items.add(videoMetaViewItem)
+        notifyDataSetChanged()
+    }
+
     fun setCategoryTitle(category: Category) {
         items.add(category)
         notifyDataSetChanged()
@@ -46,6 +46,11 @@ class MultiViewRecycleViewAdapter : RecyclerView.Adapter<MultiViewRecyclerViewHo
 
     fun setTagTitle(tag: TagVideo) {
         items.add(tag)
+        notifyDataSetChanged()
+    }
+
+    fun setVideoComment(commentThread: CommentThread) {
+        items.add(commentThread)
         notifyDataSetChanged()
     }
 
@@ -83,6 +88,21 @@ class MultiViewRecycleViewAdapter : RecyclerView.Adapter<MultiViewRecyclerViewHo
                     false
                 )
             )
+            R.layout.item_video_meta -> MultiViewRecyclerViewHolder.VideoMetaViewHolder(
+                ItemVideoMetaBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                ),
+                videoMetaDataFragment
+            )
+            R.layout.item_video_comments_overview -> MultiViewRecyclerViewHolder.VideoCommentsViewHolder(
+                ItemVideoCommentsOverviewBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
             else -> throw IllegalArgumentException("Invalid ViewType Provided")
         }
     }
@@ -93,6 +113,8 @@ class MultiViewRecycleViewAdapter : RecyclerView.Adapter<MultiViewRecyclerViewHo
             is MultiViewRecyclerViewHolder.CategoryViewHolder -> holder.bind(items[position] as Category)
             is MultiViewRecyclerViewHolder.ChannelViewHolder -> holder.bind(items[position] as Channel)
             is MultiViewRecyclerViewHolder.TagViewHolder -> holder.bind(items[position] as TagVideo)
+            is MultiViewRecyclerViewHolder.VideoMetaViewHolder -> holder.bind(items[position] as VideoMetaViewItem)
+            is MultiViewRecyclerViewHolder.VideoCommentsViewHolder -> holder.bind(items[position] as CommentThread)
         }
     }
 
@@ -104,6 +126,8 @@ class MultiViewRecycleViewAdapter : RecyclerView.Adapter<MultiViewRecyclerViewHo
             is Channel -> R.layout.item_channel_title
             is Category -> R.layout.item_category_title
             is TagVideo -> R.layout.item_tag_title
+            is VideoMetaViewItem -> R.layout.item_video_meta
+            is CommentThread -> R.layout.item_video_comments_overview
             else -> { return 0}
         }
     }

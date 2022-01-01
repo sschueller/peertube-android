@@ -2,11 +2,11 @@
 
 buildscript {
 
-    ext.kotlin_version = '1.5.31'
+    ext.kotlin_version = '1.6.10'
     
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
@@ -21,7 +21,6 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
         maven {
             url 'https://oss.sonatype.org/content/repositories/snapshots'

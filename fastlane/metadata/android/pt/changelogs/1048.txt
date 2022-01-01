@@ -1,1 +1,0 @@
-- lançamento f-droid para corrigir a implantação automática

@@ -108,6 +108,13 @@ buildDebug:
   script:
     - bundle exec fastlane buildDebug
 
+testFastlane:
+  stage: test
+  script:
+    - ./ci-scripts/validate-play-store-lang.sh
+  tags:
+    - docker
+
 testDebug:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: test

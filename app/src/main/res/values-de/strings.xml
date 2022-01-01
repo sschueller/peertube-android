@@ -359,4 +359,6 @@
     <string name="pref_title_video_speed">Standard-Wiedergabegeschwindigkeit</string>
     <string name="pref_description_video_speed">Wählen Sie die globale Videowiedergabegeschwindigkeit</string>
     <string name="action_bar_title_address_book">Adressbuch</string>
+    <string name="video_get_full_description_failed">Das Abrufen der vollständigen Videobeschreibung ist fehlgeschlagen</string>
+    <string name="video_description_read_more">Mehr lesen</string>
 </resources>

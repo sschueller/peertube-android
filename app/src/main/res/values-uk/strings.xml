@@ -39,16 +39,16 @@
     <string name="pref_background_behavior_summary">Поведінка відтворюваного відео після переходу в фоновий режим</string>
     <string name="settings_permissions_error_float">Дозвіл на зображення в зображенні вимкнено для цього застосунку в Налаштуваннях Android</string>
     <string name="settings_api_error_float">Версія Android не підтримує плаваюче відео</string>
-    <string name="pref_background_behavior">Налаштування відтворення у тлі</string>
+    <string name="pref_background_behavior">Налаштування відтворення у фоні</string>
     <string name="pref_background_float">Продовжити відтворення відео у плаваючому вікні</string>
     <string name="pref_background_stop">Зупинити все відтворення</string>
     <string name="pref_background_audio">Продовжити фоновим аудіопотоком</string>
     <string name="pref_description_language_app">Виберіть мову інтерфейсу застосунку. Перезапустіть застосунок, щоб зміни набули чинності.</string>
     <string name="pref_language_app">Мова застосунку</string>
-    <string name="pref_description_back_pause">Зупиняти відтворення в тлі натисканням кнопки назад під час відтворення відео.</string>
+    <string name="pref_description_back_pause">Зупиняти відтворення у фоні натисканням кнопки назад під час відтворення відео.</string>
     <string name="pref_title_back_pause">Зупиняти кнопкою назад</string>
     <string name="pref_description_background_play">Якщо ввімкнено, продовжує відтворювати відео у фоновому режимі.</string>
-    <string name="pref_title_background_play">Відтворення в тлі</string>
+    <string name="pref_title_background_play">Відтворення у фоні</string>
     <string name="pref_title_peertube_server">Сервер PeerTube</string>
     <string name="pref_description_language">Виберіть мову відео, замість перегляду всіх відео всіма мовами.</string>
     <string name="pref_language">Фільтр мов</string>
@@ -312,7 +312,7 @@
     <string name="pref_title_torrent_player">Торрент-програвач відео</string>
     <string name="pref_description_app_theme">Перезапустіть застосунок, щоб темний режим набув чинності.</string>
     <string name="pref_title_app_theme">Тема застосунку</string>
-    <string name="pref_description_dark_mode">Перезапустіть програму, щоб темний режим набув чинності.</string>
+    <string name="pref_description_dark_mode">Перезапустіть застосунок, щоб темний режим набув чинності.</string>
     <string name="pref_title_dark_mode">Темний режим</string>
     <string name="invalid_url">Недійсна URL-адреса.</string>
     <string name="menu_share">Поділитися</string>
@@ -325,9 +325,9 @@
     <string name="video_row_video_thumbnail">Ескіз відео</string>
     <string name="meta_data_views">" переглядів"</string>
     <string name="bottom_nav_title_subscriptions">Підписки</string>
-    <string name="bottom_nav_title_local">Локальне</string>
-    <string name="bottom_nav_title_recent">Нещодавнє</string>
-    <string name="bottom_nav_title_trending">Популярне</string>
+    <string name="bottom_nav_title_local">Локальні</string>
+    <string name="bottom_nav_title_recent">Нещодавні</string>
+    <string name="bottom_nav_title_trending">Популярні</string>
     <string name="action_bar_title_search">Шукати</string>
     <string name="permission_rationale">Надайте доступ до контактів для заповнення електронної пошти.</string>
     <string name="prompt_password">Пароль</string>
@@ -343,12 +343,12 @@
     <string name="title_activity_me">Обліковий запис</string>
     <string name="action_bar_title_account">Обліковий запис</string>
     <string name="action_bar_title_logout">Вийти</string>
-    <string name="action_bar_title_settings">Параметри</string>
+    <string name="action_bar_title_settings">Налаштування</string>
     <string name="prompt_server">Сервер</string>
     <string name="title_activity_login">Увійти</string>
-    <string name="title_activity_settings">Параметри</string>
+    <string name="title_activity_settings">Налаштування</string>
     <string name="pref_title_accept_insecure">Вимкнути перевірку SSL сертифіката</string>
-    <string name="pref_description_accept_insecure">Ігнорувати незахищені з\'єднання. Використовуйте це лише якщо знаєте сервер до якого підключаєтесь. Перезапустіть застосунок, щоб зміни набули чинності.</string>
+    <string name="pref_description_accept_insecure">Ігнорувати незахищені з\'єднання. Використовуйте лише якщо знаєте сервер до якого підʼєднуєтесь. Перезапустіть застосунок, щоб зміни набули чинності.</string>
     <string name="pref_insecure_confirm_yes">Так</string>
     <string name="pref_insecure_confirm_no">Ні</string>
     <string name="pref_insecure_confirm_title">Увага!</string>
@@ -359,4 +359,6 @@
     <string name="pref_title_video_speed">Типова швидкість відтворення</string>
     <string name="pref_description_video_speed">Вибрати загальну швидкість відтворення відео</string>
     <string name="action_bar_title_address_book">Адресна книга</string>
+    <string name="video_get_full_description_failed">Не вдалося отримати повний опис відео</string>
+    <string name="video_description_read_more">Детальніше</string>
 </resources>

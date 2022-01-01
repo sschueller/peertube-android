@@ -359,4 +359,6 @@
     <string name="pref_title_video_speed">預設播放速度</string>
     <string name="pref_description_video_speed">選取全域影片播放速度</string>
     <string name="action_bar_title_address_book">通訊錄</string>
+    <string name="video_get_full_description_failed">取得完整影片描述失敗</string>
+    <string name="video_description_read_more">閱讀更多資訊</string>
 </resources>

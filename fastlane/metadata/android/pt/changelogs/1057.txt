@@ -1,6 +1,0 @@
-## 1.1.1 (2021-02-05)
-
-
-### Correção de erros
-
-* Removido SHA do nome da versão para corrigir as compilações fdroid 9dc7d54

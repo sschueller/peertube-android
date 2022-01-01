@@ -376,4 +376,12 @@
     <string name="subscribe">Subscribe</string>
     <string name="unsubscribe">Unsubscribe</string>
     <string name="video_comments_title">Comments</string>
+    <plurals name="video_channel_subscribers">
+        <item quantity="one">%1$d subscriber</item>
+        <item quantity="other">%1$d subscribers</item>
+    </plurals>
+    <string name="video_by_line">By %1$s</string>
+    <string name="video_owner_fqdn_line">%1$s@%2$s</string>
+    <string name="video_sub_del_alert_title">Unsubscribe</string>
+    <string name="video_sub_del_alert_msg">Are you sure you would like to unsubscribe?</string>
 </resources>

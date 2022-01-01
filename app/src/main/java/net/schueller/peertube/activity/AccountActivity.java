@@ -175,10 +175,10 @@ public class AccountActivity extends CommonActivity {
                 if (response.isSuccessful()) {
                     Account account = response.body();
 
-                    String owner = MetaDataHelper.getOwnerString(account.getName(),
-                            account.getHost(),
-                            AccountActivity.this
+                    String owner = MetaDataHelper.getOwnerString(account,
+                            AccountActivity.this, true
                     );
+
 
                     // set view data
                     TextView ownerStringView = findViewById(R.id.account_owner_string);

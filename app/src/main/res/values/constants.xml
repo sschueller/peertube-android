@@ -58,7 +58,6 @@
     <string name="video_download_icon" translatable="false">{faw-download}</string>
     <string name="video_save_icon" translatable="false">{faw-save}</string>
 
-    <string name="meta_data_owner_seperator" translatable="false">\@</string>
     <string name="meta_data_seperator" translatable="false">\u0020-\u0020</string>
 
     <string name="title_activity_video_play" translatable="false">VideoPlayActivity</string>

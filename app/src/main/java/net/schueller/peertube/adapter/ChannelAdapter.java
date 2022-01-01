@@ -94,15 +94,15 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.AccountV
         holder.videoMeta.setText(
                 MetaDataHelper.getMetaString(videoList.get(position).getCreatedAt(),
                         videoList.get(position).getViews(),
-                        context
+                        context,
+                        false
                 )
         );
 
         // set owner
         holder.videoOwner.setText(
-                MetaDataHelper.getOwnerString(videoList.get(position).getAccount().getName(),
-                        videoList.get(position).getAccount().getHost(),
-                        context
+                MetaDataHelper.getOwnerString(videoList.get(position).getAccount(),
+                        context, true
                 )
         );
 

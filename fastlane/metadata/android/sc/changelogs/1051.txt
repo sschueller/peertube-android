@@ -1,5 +1,0 @@
-- currègida sa limba predefinida de s'aplicatzione a su primu incumintzu (@kosharskiy)
-- Tradutziones de s'ischermada de impostatziones de is limbas uk e ru (@kosharskiy)
-- limpiadura de su documentu app/build.gradle (@kosharskiy)
-- currègidu problema de visualizatzione de is meta-datos de vìdeu (@kosharskiy)
-- tradutziones agiornadas

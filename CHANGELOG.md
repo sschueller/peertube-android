@@ -1,3 +1,11 @@
+## 1.10.1 (2022-01-01)
+
+
+### Bug Fixes
+
+* fixed broken languages 784c69f
+* Removed unsupported language in Google Play store and added test script to ci 18e4949
+
 # 1.10.0 (2022-01-01)
 
 

@@ -16,7 +16,9 @@
  */
 package net.schueller.peertube.adapter
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.util.Log
 import android.view.MenuItem
@@ -39,10 +41,14 @@ import net.schueller.peertube.helper.MetaDataHelper.getDuration
 import net.schueller.peertube.helper.MetaDataHelper.getMetaString
 import net.schueller.peertube.helper.MetaDataHelper.getOwnerString
 import com.mikepenz.iconics.Iconics.Builder
+import net.schueller.peertube.R
 import net.schueller.peertube.R.id
 import net.schueller.peertube.R.menu
 import net.schueller.peertube.databinding.*
 import net.schueller.peertube.fragment.VideoMetaDataFragment
+import net.schueller.peertube.helper.MetaDataHelper.getCreatorAvatar
+import net.schueller.peertube.helper.MetaDataHelper.getCreatorString
+import net.schueller.peertube.helper.MetaDataHelper.getTagsString
 import net.schueller.peertube.intents.Intents
 import net.schueller.peertube.model.*
 import net.schueller.peertube.model.ui.VideoMetaViewItem
@@ -55,7 +61,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import net.schueller.peertube.R
+import net.schueller.peertube.helper.MetaDataHelper.isChannel
 import net.schueller.peertube.network.GetUserService
 
 
@@ -190,10 +196,26 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                     binding.videoDownloadWrapper.visibility = GONE
                 }
 
-                val account = video.account
+                // created at / views
+                binding.videoMeta.text = getMetaString(
+                    video.createdAt,
+                    video.views,
+                    context,
+                    true
+                )
+
+                // owner / creator
+                val displayNameAndHost = getOwnerString(video.account, context)
+                if (isChannel(video)) {
+                    binding.videoBy.text = context.resources.getString(string.video_by_line, displayNameAndHost)
+                } else {
+                    binding.videoBy.visibility = GONE
+                }
+
+                binding.videoOwner.text = getCreatorString(video, context)
 
                 // owner / creator Avatar
-                val avatar = account.avatar
+                val avatar = getCreatorAvatar(video, context)
                 if (avatar != null) {
                     val baseUrl = APIUrlHelper.getUrl(context)
                     val avatarPath = avatar.path
@@ -201,22 +223,25 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                         .load(baseUrl + avatarPath)
                         .into(binding.avatar)
                 }
-                // created at / views
-                binding.videoMeta.text = getMetaString(
-                    video.createdAt,
-                    video.views,
-                    context!!
-                )
-
-                // owner / creator
-                binding.videoOwner.text = getOwnerString(
-                    video.account.name,
-                    video.account.host,
-                    context
-                )
 
                 // videoOwnerSubscribers
-                binding.videoOwnerSubscribers.text = video.account.followersCount.toString()
+                binding.videoOwnerSubscribers.text = context.resources.getQuantityString(R.plurals.video_channel_subscribers, video.channel.followersCount, video.channel.followersCount)
+
+
+                // video owner click
+                binding.videoCreatorInfo.setOnClickListener {
+                    val intent = Intent(context, AccountActivity::class.java)
+                    intent.putExtra(VideoListActivity.EXTRA_ACCOUNTDISPLAYNAME, displayNameAndHost)
+                    context.startActivity(intent)
+                }
+
+                // avatar click
+                binding.avatar.setOnClickListener {
+                    val intent = Intent(context, AccountActivity::class.java)
+                    intent.putExtra(Companion.EXTRA_ACCOUNTDISPLAYNAME, displayNameAndHost)
+                    context.startActivity(intent)
+                }
+
 
 
                 // get subscription status
@@ -231,7 +256,7 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                                 // {"video.channel.name + "@" + video.channel.host":true}
                                 if (response.body()?.get(video.channel.name + "@" + video.channel.host)!!.asBoolean) {
                                     binding.videoOwnerSubscribeButton.setText(string.unsubscribe)
-                                    isSubscribed = true;
+                                    isSubscribed = true
                                 } else {
                                     binding.videoOwnerSubscribeButton.setText(string.subscribe)
                                 }
@@ -244,6 +269,7 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
 
                 }
 
+                // TODO: update subscriber count
                 binding.videoOwnerSubscribeButton.setOnClickListener {
                     if (Session.getInstance().isLoggedIn) {
                         if (!isSubscribed) {
@@ -265,22 +291,33 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                                 }
                             })
                         } else {
-                            val payload = video.channel.name + "@" + video.channel.host
-                            val call = userService.unsubscribe(payload)
-                            call.enqueue(object : Callback<ResponseBody?> {
-                                override fun onResponse(
-                                    call: Call<ResponseBody?>,
-                                    response: Response<ResponseBody?>
-                                ) {
-                                    if (response.isSuccessful) {
-                                        binding.videoOwnerSubscribeButton.setText(string.subscribe)
-                                        isSubscribed = false
-                                    }
+                            AlertDialog.Builder(context)
+                                .setTitle(context.getString(string.video_sub_del_alert_title))
+                                .setMessage(context.getString(string.video_sub_del_alert_msg))
+                                .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
+                                    // Yes
+                                    val payload = video.channel.name + "@" + video.channel.host
+                                    val call = userService.unsubscribe(payload)
+                                    call.enqueue(object : Callback<ResponseBody?> {
+                                        override fun onResponse(
+                                            call: Call<ResponseBody?>,
+                                            response: Response<ResponseBody?>
+                                        ) {
+                                            if (response.isSuccessful) {
+                                                binding.videoOwnerSubscribeButton.setText(string.subscribe)
+                                                isSubscribed = false
+                                            }
+                                        }
+                                        override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+                                            // Do nothing.
+                                        }
+                                    })
                                 }
-                                override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
-                                    // Do nothing.
+                                .setNegativeButton(android.R.string.cancel) { _: DialogInterface?, _: Int ->
+                                    // No
                                 }
-                            })
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show()
                         }
                     } else {
                         Toast.makeText(
@@ -337,7 +374,7 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                 .into(binding.thumb)
 
             // Avatar
-            val avatar: Avatar? = video.account.avatar
+            val avatar = getCreatorAvatar(video, context)
             if (avatar != null) {
                 val avatarPath = avatar.path
                 Picasso.get()
@@ -364,12 +401,8 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
             )
 
             // set owner
-            val displayNameAndHost = getOwnerString(
-                video.account.name,
-                video.account.host,
-                context
-            )
-            binding.videoOwner.text = displayNameAndHost
+            val displayNameAndHost = getOwnerString(video.account, context, true)
+            binding.videoOwner.text = getCreatorString(video, context, true)
 
             // video owner click
             binding.videoOwner.setOnClickListener {

@@ -13,6 +13,7 @@
 
         <!-- Video Title Block -->
         <RelativeLayout
+            android:background="?android:selectableItemBackground"
             android:id="@+id/video_title_block"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -331,20 +332,20 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/avatar"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/video_row_account_avatar"
-                android:paddingStart="12dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="12dp" />
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp" />
 
             <LinearLayout
+                android:id="@+id/video_creator_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="6dp"
                 android:layout_toEndOf="@+id/avatar"
                 android:orientation="vertical">
 
@@ -353,6 +354,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
+
+                <TextView
+                    android:id="@+id/videoBy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
 
                 <TextView
                     android:id="@+id/videoOwnerSubscribers"
@@ -367,11 +375,13 @@
                 android:id="@+id/videoOwnerSubscribeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="0dp"
                 android:gravity="end"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
                 android:text=""
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Button" />
 

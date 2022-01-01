@@ -1,0 +1,6 @@
+# 1.6.0 (2021-11-20)
+
+
+### Özellikler
+
+* Tam açıklamayı yükle 2f89538

@@ -1,1 +1,1 @@
-Thorium a PeerTube client
+توریم یک کارخواه پیرتیوب است

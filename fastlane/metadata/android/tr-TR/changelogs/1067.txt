@@ -1,0 +1,6 @@
+## 1.8.1 (2021-12-27)
+
+
+### Hata Düzeltmeleri
+
+* play store video bağlantısı güncellendi ffa7d40

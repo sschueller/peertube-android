@@ -1,0 +1,43 @@
+## 1.8.4 (2022-01-01)
+
+
+### Bug Fixes
+
+* **lang:**  Weblate translation (Chinese (Traditional)) 8280bfb
+* **lang:**  Weblate translation (French) 85c8c8e
+* **lang:**  Weblate translation (French) 6707cec
+* **lang:**  Weblate translation (Indonesian) ada03b3
+* **lang:**  Weblate translation (Italian) ed28fe3
+* **lang:**  Weblate translation (Norwegian Bokmål) 2742ed6
+* **lang:**  Weblate translation (Persian) 7648633
+* **lang:**  Weblate translation (Portuguese (Brazil)) 60eca32
+* **lang:**  Weblate translation (Portuguese (Portugal)) cc6b424
+* **lang:**  Weblate translation (Portuguese) daebed8
+* **lang:**  Weblate translation (Portuguese) 4bd0393
+* **lang:**  Weblate translation (Russian) 49a579d
+* **lang:**  Weblate translation (Sardinian) 792bf89
+* **lang:**  Weblate translation (Spanish) cceec2f
+* **lang:**  Weblate translation (Turkish) 42a01d4
+* **lang:**  Weblate translation (Ukrainian) 68a57c8
+* **lang:** Weblate translation (Arabic) 9453b5a
+* **lang:** Weblate translation (Arabic) 96246dc
+* **lang:** Weblate translation (Bengali) 45ac673
+* **lang:** Weblate translation (Chinese (Simplified)) 490d8e3
+* **lang:** Weblate translation (Chinese (Traditional)) fc07026
+* **lang:** Weblate translation (Finnish) 5fe4353
+* **lang:** Weblate translation (French) 5c9c90c
+* **lang:** Weblate translation (German) a5b7279
+* **lang:** Weblate translation (Indonesian) b98e2ae
+* **lang:** Weblate translation (Italian) 76ef906
+* **lang:** Weblate translation (Norwegian Bokmål) 08393e8
+* **lang:** Weblate translation (Norwegian Bokmål) 672760a
+* **lang:** Weblate translation (Persian) 514cd65
+* **lang:** Weblate translation (Portuguese (Brazil)) 694c52e
+* **lang:** Weblate translation (Portuguese) 60abc3b
+* **lang:** Weblate translation (Portuguese) 1995e62
+* **lang:** Weblate translation (Russian) 6f4ad5d
+* **lang:** Weblate translation (Sardinian) 697044f
+* **lang:** Weblate translation (Spanish) 18e1221
+* **lang:** Weblate translation (Turkish) 3f51020
+* **lang:** Weblate translation (Turkish) 1202dec
+* **lang:** Weblate translation (Ukrainian) 3ec9283

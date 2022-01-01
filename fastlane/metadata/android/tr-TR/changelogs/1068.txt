@@ -1,0 +1,8 @@
+## 1.8.2 (2021-12-27)
+
+
+### Hata Düzeltmeleri
+
+* fastlane güncellendi 0f10497
+* fastlane güncellendi 110e5da
+* fastlane güncellendi f75114b

@@ -364,4 +364,6 @@
     <string name="pref_title_video_speed">Vitesse de lecture par défaut</string>
     <string name="pref_description_video_speed">Sélectionnez la vitesse globale de lecture vidéo</string>
     <string name="action_bar_title_address_book">Carnet d\'adresses</string>
+    <string name="video_get_full_description_failed">L\'obtention de la description complète de la vidéo a échoué</string>
+    <string name="video_description_read_more">Lire la suite</string>
 </resources>

@@ -366,4 +366,14 @@
     <string name="video_list_live_marker">LIVE</string>
     <string name="video_get_full_description_failed">Getting full video description failed</string>
     <string name="video_description_read_more">Read More</string>
+    <string name="player_time_seperator">/</string>
+    <string name="video_meta_show_description">Show Description</string>
+    <string name="video_meta_title_description">Description</string>
+    <string name="video_add_to_playlist">Save</string>
+    <string name="video_block">Block</string>
+    <string name="video_flag">Flag</string>
+    <string name="video_feature_not_yet_implemented">This feature has not yet been implemented. Coming soon!</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="unsubscribe">Unsubscribe</string>
+    <string name="video_comments_title">Comments</string>
 </resources>

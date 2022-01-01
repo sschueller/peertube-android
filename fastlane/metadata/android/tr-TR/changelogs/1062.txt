@@ -1,0 +1,6 @@
+## 1.5.1 (10 Ekim 2021)
+
+
+### Hata Düzeltmeleri
+
+* uyumsuz diller (android play) b4efa27

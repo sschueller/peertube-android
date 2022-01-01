@@ -17,7 +17,6 @@
 package net.schueller.peertube.database
 
 import android.app.Application
-import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

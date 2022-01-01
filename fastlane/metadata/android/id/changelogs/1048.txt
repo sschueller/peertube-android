@@ -1,0 +1,1 @@
+- f-droid dikeluarkan untuk memperbaharui deploy otomatis

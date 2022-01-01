@@ -16,6 +16,7 @@
  */
 package net.schueller.peertube.network;
 
+import net.schueller.peertube.model.CommentThread;
 import net.schueller.peertube.model.Description;
 import net.schueller.peertube.model.Overview;
 import net.schueller.peertube.model.Rating;
@@ -91,4 +92,12 @@ public interface GetVideoDataService {
             @Query("page") int page
     );
 
+    // https://troll.tv/api/v1/videos/{id}/comment-threads?start=0&count=10&sort=-createdAt
+    @GET("videos/{id}/comment-threads")
+    Call<CommentThread> getCommentThreads(
+            @Path(value = "id", encoded = true) Integer id,
+            @Query("start") int start,
+            @Query("count") int count,
+            @Query("sort") String sort
+    );
 }

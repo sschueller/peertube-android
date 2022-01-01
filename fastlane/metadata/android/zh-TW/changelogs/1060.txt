@@ -1,0 +1,11 @@
+# 1.4.0 (2021-02-20)
+
+
+### 臭蟲修復
+
+* 修復啟動時在裝置 sdk 21,22,23,24 上的當機問題 [#262](https://git.techdroid.com/sschueller/peertube/issues/262) 5622b76
+
+
+### 功能
+
+* 新增全域播放速度設定 fa79b2d

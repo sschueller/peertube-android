@@ -1,0 +1,33 @@
+Thorium é um cliente PeerTube que pode se conectar a qualquer servidor PeerTube rodando a versão v1.1.0-alpha.2 ou superior.
+
+PeerTube é uma plataforma de transmissão de vídeo federada (ActivityPub) usando P2P (BitTorrent) diretamente no seu navegador. Para mais informações, visite https://joinpeertube.org/.
+
+Este app vem pré-configurado com um servidor PeerTube gerido pelo criador da aplicação - não pelo próprio projeto PeerTube, que lista mais servidores em http://instances.joinpeertube.org/ - para lhe permitir ter uma ideia do que o app é capaz de fazer. Escolha o seu servidor para adaptar à sua experiência!
+
+Características atuais:
+- Conecte-se a qualquer servidor PeerTube
+- Baixe ou reproduza vídeos diretamente via Torrent
+- Pesquise no PeerTube
+- Baixe / Compartilhe vídeos
+- Temas / Modo escuro
+- Reprodução de fundo
+- Reprodução em tela cheia no modo paisagem
+- Controle da velocidade de reprodução
+- Filtro de conteúdo NSFW
+- Autenticação / Login
+- Likes/dislikes nos vídeos
+
+Em breve:
+- Comente vídeos
+- Registre-se
+- Página de Visão Geral do Usuário / Canal
+- Reportar Vídeos
+
+Permissões:
+- Acesso ao armazenamento, necessário para download de torrent ou download de vídeo.
+
+Licenciado sob a GNU Affero General Public License v3.0
+
+As permissões desta licença mais forte de copyleft estão condicionadas a disponibilizar o código fonte completo de obras licenciadas e modificações, que incluem obras maiores usando uma obra licenciada, sob a mesma licença. Os avisos de direitos autorais e de licença devem ser preservados. Os contribuidores fornecem uma concessão expressa de direitos de patente. Quando uma versão modificada é usada para fornecer um serviço através de uma rede, o código fonte completo da versão modificada deve ser disponibilizado.
+
+Código fonte em: https://github.com/sschueller/peertube-android/

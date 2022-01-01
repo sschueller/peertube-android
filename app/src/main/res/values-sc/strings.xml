@@ -1,2 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="title_activity_login">Intra</string>
+    <string name="prompt_password">Crae</string>
+    <string name="action_bar_title_search">Chirca</string>
+    <string name="action_bar_title_account">Contu</string>
+    <string name="bottom_nav_title_account">Contu</string>
+    <string name="action_bar_title_settings">impostatziones</string>
+    <string name="action_sign_in">Intra</string>
+    <string name="action_sign_in_short">Intra</string>
+    <string name="bottom_nav_title_recent">Reghente</string>
+    <string name="bottom_nav_title_local">Locale</string>
+    <string name="descr_overflow_button">Àteru</string>
+    <string name="menu_share">Cumpartzi</string>
+    <string name="pref_title_dark_mode">Modalidade iscura</string>
+    <string name="pref_title_app_theme">Tema de s\'aplicatzione</string>
+    <string name="pref_title_torrent_player">Riprodusidore de vìdeu Torrent</string>
+    <string name="pref_title_version">Versione</string>
+    <string name="pref_title_show_nsfw">Cuntenutu pro adultos</string>
+    <string name="pref_description_show_nsfw">Ammustra cuntenutu pro adultos</string>
+    <string name="pref_title_peertube_server">Serbidore PeerTube</string>
+    <string name="invalid_url">URL non bàlidu.</string>
+    <string name="pref_title_background_play">Riprodutzione in isfundu</string>
+    <string name="account_about_account">Contu:</string>
+    <string name="account_about_subscribers">Sutiscritos:</string>
+    <string name="server_book_add_username">Nòmine usuàriu</string>
+    <string name="server_book_add_password">Crae</string>
+    <string name="server_book_add_add_button">Annanghe</string>
+    <string name="settings_activity_about_category_title">A pitzu de</string>
+    <string name="pref_insecure_confirm_title">Atentzione!</string>
+    <string name="title_activity_search">Chirca</string>
+    <string name="title_activity_settings">Impostatziones</string>
+    <string name="search_hint">Chirca PeerTube</string>
+    <string name="prompt_server">Serbidore</string>
+    <string name="no_data_available">Perunu resurtadu</string>
+    <string name="pref_language">Filtru de limba</string>
+    <string name="pref_title_license">Litzèntzia</string>
+    <string name="pref_insecure_confirm_yes">Eja</string>
+    <string name="server_book_add_label">Eticheta</string>
+    <string name="account_about_description">Descritzione:</string>
+    <string name="account_bottom_menu_about">A pitzu de</string>
+    <string name="server_book_add_pick_server_button">Chirca</string>
+    <string name="server_book_add_save_button">Sarva</string>
+    <string name="video_speed_075">0.75x</string>
+    <string name="video_speed_125">1.25x</string>
+    <string name="title_activity_settings2">ImpostatzionesAtividade2</string>
+    <string name="title_activity_me">Contu</string>
+    <string name="pref_insecure_confirm_no">Nono</string>
+    <string name="video_list_live_marker">IN DIRETA</string>
+</resources>

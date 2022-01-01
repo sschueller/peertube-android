@@ -1,0 +1,7 @@
+- Fazer X no modo 'pip' para o áudio de fundo corretamente (@dhk2)
+- Adicionada a opção clara de histórico de pesquisa ao menu de configurações (@dhk2)
+- Não corrigir nenhum idioma selecionado por padrão para todos os idiomas de vídeo
+- Biblioteca de ícones atualizada
+- Adicionado indicador de 'buffer' à reprodução de vídeo
+- Corrigidos problemas de vídeo em branco nos servidores que fornecem vídeo 0p.
+- Traduções atualizadas

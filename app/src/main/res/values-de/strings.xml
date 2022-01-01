@@ -356,4 +356,7 @@
     <string name="pref_title_accept_insecure">SSL-Zertifikatsprüfung deaktivieren</string>
     <string name="pref_description_accept_insecure">Unsichere Verbindungen ignorieren. Verwenden Sie dies nur, wenn Sie den Server kennen, mit dem Sie sich verbinden. Erfordert einen Neustart der Anwendung.</string>
     <string name="video_list_live_marker">LIVE</string>
+    <string name="pref_title_video_speed">Standard-Wiedergabegeschwindigkeit</string>
+    <string name="pref_description_video_speed">Wählen Sie die globale Videowiedergabegeschwindigkeit</string>
+    <string name="action_bar_title_address_book">Adressbuch</string>
 </resources>

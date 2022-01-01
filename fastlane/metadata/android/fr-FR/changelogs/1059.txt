@@ -1,0 +1,12 @@
+# 1.3.0 (2021-02-13)
+
+
+### Corrections de Bug
+
+* Ai converti videolist en Kotlin pour réparer le menu du haut cassé 06ace0d
+
+
+### Fonctionnalités
+
+* Ajout du placeholder pour la miniature de la vidéo lors du chargement et en cas d'erreurs 830b197
+* Convertion du helper de "meta date" en Kotlin 1c34556

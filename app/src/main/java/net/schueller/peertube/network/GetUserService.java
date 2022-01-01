@@ -16,15 +16,23 @@
  */
 package net.schueller.peertube.network;
 
+import com.google.gson.JsonObject;
+
 import net.schueller.peertube.model.Account;
 import net.schueller.peertube.model.Channel;
 import net.schueller.peertube.model.ChannelList;
 import net.schueller.peertube.model.Me;
 import net.schueller.peertube.model.VideoList;
 
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -52,5 +60,18 @@ public interface GetUserService {
             @Path(value = "displayName", encoded = true) String displayName
     );
 
+    @GET("users/me/subscriptions/exist")
+    Call<JsonObject> subscriptionsExist(
+            @Query("uris") String videoChannelNameAndHost
+    );
 
+    @POST("users/me/subscriptions")
+    Call<ResponseBody> subscribe(
+            @Body RequestBody params
+    );
+
+    @DELETE("users/me/subscriptions/{videoChannelNameAndHost}")
+    Call<ResponseBody> unsubscribe(
+            @Path(value = "videoChannelNameAndHost", encoded = true) String videoChannelNameAndHost
+    );
 }

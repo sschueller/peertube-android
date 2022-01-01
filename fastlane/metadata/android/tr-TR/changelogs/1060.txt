@@ -1,0 +1,11 @@
+# 1.4.0 (20 Şubat 2021)
+
+
+### Hata Düzeltmeleri
+
+* SDK 21,22,23,24 aygıtlarının başlangıçta çökmesi, [#262](https://git.techdroid.com/sschueller/peertube/issues/262) düzeltildi 5622b76
+
+
+### Özellikler
+
+* Genel oynatma hızı ayarı eklendi fa79b2d

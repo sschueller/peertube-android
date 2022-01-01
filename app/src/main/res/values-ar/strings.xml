@@ -345,7 +345,7 @@
     <string name="pref_title_back_pause">ايقاف عند الضغط على زر العودة</string>
     <string name="pref_title_buildtime">تاريخ ووقت البناء</string>
     <string name="network_error">خطأ في الوصول للشبكة، تحقق من اتصالك</string>
-    <string name="server_selection_filter_hint">فلترة القائمة</string>
+    <string name="server_selection_filter_hint">تنقيح القائمة</string>
     <string name="pref_background_behavior">إعدادات التشغيل في الخلفية</string>
     <string name="pref_background_stop">إيقاف تشغيل الكل</string>
     <string name="pref_background_audio">تابع تشغيل الصوت في الخلفية</string>
@@ -361,4 +361,7 @@
     <string name="server_book_add_save_button">حفظ</string>
     <string name="pref_title_accept_insecure">تعطيل التحقق من شهادة SSL</string>
     <string name="pref_description_accept_insecure">تجاهل الاتصالات غير الآمنة. استخدم هذا فقط إذا كنت تعرف الخادم الذي تتصل به. يتطلب إعادة تشغيل التطبيق.</string>
+    <string name="pref_title_video_speed">سرعة التشغيل الافتراضية</string>
+    <string name="pref_description_video_speed">حدد سرعة تشغيل الفيديو العامة</string>
+    <string name="action_bar_title_address_book">دفتر العناوين</string>
 </resources>

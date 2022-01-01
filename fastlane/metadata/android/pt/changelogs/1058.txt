@@ -1,0 +1,6 @@
+# 1.2.0 (2021-02-07)
+
+
+### Características
+
+* Marcar vídeos ao vivo em listas de vídeo 8518b80

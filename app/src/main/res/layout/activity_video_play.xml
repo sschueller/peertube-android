@@ -6,36 +6,31 @@
     android:keepScreenOn="true"
     tools:context="net.schueller.peertube.activity.VideoPlayActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <fragment android:name="net.schueller.peertube.fragment.VideoPlayerFragment"
+        <fragment
             android:id="@+id/video_player_fragment"
+            android:name="net.schueller.peertube.fragment.VideoPlayerFragment"
             android:layout_width="match_parent"
             android:layout_height="250dp" />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/video_player_fragment"
+        android:layout_marginTop="250dp"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/video_player_fragment"
-            android:orientation="vertical">
-
-            <ScrollView
-                android:id="@+id/login_form"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <fragment android:name="net.schueller.peertube.fragment.VideoMetaDataFragment"
-                    android:id="@+id/video_meta_data_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </ScrollView>
-        </RelativeLayout>
-
+    <fragment
+        android:id="@+id/video_meta_data_fragment"
+        android:name="net.schueller.peertube.fragment.VideoMetaDataFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
 
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

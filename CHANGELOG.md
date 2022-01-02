@@ -1,3 +1,57 @@
+## 1.10.4 (2022-01-02)
+
+
+### Bug Fixes
+
+* Temp removal of videos in fastlane config 1d25be1
+
+## 1.10.3 (2022-01-02)
+
+
+### Bug Fixes
+
+* fixed bad video URL 0370a12
+
+## 1.10.2 (2022-01-02)
+
+
+### Bug Fixes
+
+* fixed bad video URL 0dd2254
+
+## 1.10.1 (2022-01-01)
+
+
+### Bug Fixes
+
+* fixed broken languages 784c69f
+* Removed unsupported language in Google Play store and added test script to ci 18e4949
+
+# 1.10.0 (2022-01-01)
+
+
+### Bug Fixes
+
+* **lang:**  Weblate translation (Persian) 9c41d96
+* **lang:**  Weblate translation (Turkish) c91da28
+* **lang:**  Weblate translation (Ukrainian) c0025bf
+* **lang:** Weblate translation (Arabic) 61d0a77
+* **lang:** Weblate translation (Catalan) a8b670c
+* **lang:** Weblate translation (Chinese (Traditional)) 059a020
+* **lang:** Weblate translation (Finnish) 9873349
+* **lang:** Weblate translation (French) 8a146a8
+* **lang:** Weblate translation (German) d8c48ce
+* **lang:** Weblate translation (Italian) 7150d7d
+* **lang:** Weblate translation (Persian) 0cd5a39
+* **lang:** Weblate translation (Turkish) 42de46c
+* **lang:** Weblate translation (Ukrainian) 9eda11e
+* Removed unsupported language in Google Play store c8b23e9
+
+
+### Features
+
+* **lang:** Added translation using Weblate (Catalan) a082878
+
 # 1.9.0 (2022-01-01)
 
 

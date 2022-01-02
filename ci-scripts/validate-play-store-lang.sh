@@ -56,6 +56,11 @@ for d in fastlane/metadata/android/* ; do
         exitcode=1
       fi
     fi
+
+#    if test -f "$d/video.txt"; then
+#      fcontents=$(cat "$d/video.txt")
+#      echo -e "$d/video.txt -> ${Blue}$fcontents${Color_Off}"
+#    fi
 done
 
 exit $exitcode

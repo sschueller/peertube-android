@@ -1,3 +1,10 @@
+## 1.10.4 (2022-01-02)
+
+
+### Bug Fixes
+
+* Temp removal of videos in fastlane config 1d25be1
+
 ## 1.10.3 (2022-01-02)
 
 

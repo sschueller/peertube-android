@@ -1,0 +1,6 @@
+## 1.10.3 (2022-01-02)
+
+
+### Bug Fixes
+
+* fixed bad video URL 0370a12

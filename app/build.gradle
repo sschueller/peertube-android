@@ -46,8 +46,8 @@ android {
         applicationId "net.schueller.peertube"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 1073
-        versionName "1.10.1"
+        versionCode 1074
+        versionName "1.10.2"
         buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

@@ -39,7 +39,7 @@ fi
 
 # check we have required files
 
-requiredfiles=(title.txt full_description.txt short_description.txt video.txt)
+requiredfiles=(title.txt full_description.txt short_description.txt)
 
 for d in fastlane/metadata/android/* ; do
     [ -L "${d%/}" ] && continue
@@ -57,13 +57,13 @@ for d in fastlane/metadata/android/* ; do
       fi
     fi
 
-    if test -f "$d/video.txt"; then
-      fcontents=$(cat "$d/video.txt")
-      if [[ "$fcontents" != "https://www.youtube.com/watch?v=lVJs26gE2Ek" ]]; then
-        exitcode=1
-        echo -e "${Blue}$fcontents${Color_Off}  --> $d/video.txt - not correct video URL"
-      fi
-    fi
+#    if test -f "$d/video.txt"; then
+#      fcontents=$(cat "$d/video.txt")
+#      if [[ "$fcontents" != "https://www.youtube.com/watch?v=lVJs26gE2Ek" ]]; then
+#        exitcode=1
+#        echo -e "${Blue}$fcontents${Color_Off}  --> $d/video.txt - not correct video URL"
+#      fi
+#    fi
 done
 
 exit $exitcode

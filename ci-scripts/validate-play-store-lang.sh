@@ -57,10 +57,13 @@ for d in fastlane/metadata/android/* ; do
       fi
     fi
 
-#    if test -f "$d/video.txt"; then
-#      fcontents=$(cat "$d/video.txt")
-#      echo -e "$d/video.txt -> ${Blue}$fcontents${Color_Off}"
-#    fi
+    if test -f "$d/video.txt"; then
+      fcontents=$(cat "$d/video.txt")
+      if [[ "$fcontents" != "https://www.youtube.com/watch?v=lVJs26gE2Ek" ]]; then
+        exitcode=1
+        echo -e "${Blue}$fcontents${Color_Off}  --> $d/video.txt - not correct video URL"
+      fi
+    fi
 done
 
 exit $exitcode

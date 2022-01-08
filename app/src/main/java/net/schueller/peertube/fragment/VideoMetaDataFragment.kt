@@ -220,7 +220,7 @@ class VideoMetaDataFragment : Fragment() {
     }
 
     fun saveToPlaylist(video: Video) {
-        val playlistVideo: net.schueller.peertube.database.Video = net.schueller.peertube.database.Video(videoName = video.name, videoDescription = video.description)
+        val playlistVideo: net.schueller.peertube.database.Video = net.schueller.peertube.database.Video(videoUUID = video.uuid, videoName = video.name, videoDescription = video.description)
         mVideoViewModel.insert(playlistVideo)
     }
 

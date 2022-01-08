@@ -136,7 +136,7 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                 // Add to playlist
                 binding.videoAddToPlaylistWrapper.setOnClickListener {
                     videoMetaDataFragment.saveToPlaylist(video)
-                    Toast.makeText(context, "Saved to playlist", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(string.saved_to_playlist), Toast.LENGTH_SHORT).show()
                 }
 
                 binding.videoBlockWrapper.setOnClickListener {

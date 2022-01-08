@@ -5,12 +5,16 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
+import java.util.*
 
 @Parcelize
 @Entity(tableName = "watch_later")
 data class Video(
         @PrimaryKey(autoGenerate = true)
         var id: Int = 0,
+
+        @ColumnInfo(name = "video_uuid")
+        var videoUUID: String,
 
         @ColumnInfo(name = "video_name")
         var videoName: String,

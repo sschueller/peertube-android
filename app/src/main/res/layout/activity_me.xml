@@ -116,7 +116,7 @@
                         android:drawablePadding="16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Playlist"
+                        android:text="@string/playlist"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"/>
             </LinearLayout>
 

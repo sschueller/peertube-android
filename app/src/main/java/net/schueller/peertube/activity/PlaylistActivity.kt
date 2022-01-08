@@ -18,12 +18,13 @@ package net.schueller.peertube.activity
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import net.schueller.peertube.R
+import net.schueller.peertube.adapter.MultiViewRecyclerViewHolder
 import net.schueller.peertube.adapter.PlaylistAdapter
 import net.schueller.peertube.database.Video
 import net.schueller.peertube.database.VideoViewModel
@@ -58,7 +59,9 @@ class PlaylistActivity : CommonActivity() {
     }
 
     private fun onVideoClick(video: Video) {
-        Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, VideoPlayActivity::class.java)
+        intent.putExtra(MultiViewRecyclerViewHolder.EXTRA_VIDEOID, video.videoUUID)
+        startActivity(intent)
     }
 
     private fun showServers() {
@@ -75,8 +78,8 @@ class PlaylistActivity : CommonActivity() {
 
                     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                         AlertDialog.Builder(this@PlaylistActivity)
-                                .setTitle("Remove Video")
-                                .setMessage("Are you sure you want to remove this video from playlist?")
+                                .setTitle(getString(R.string.remove_video))
+                                .setMessage(getString(R.string.remove_video_warning_message))
                                 .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
                                     val position = viewHolder.bindingAdapterPosition
                                     val video = adapter.getVideoAtPosition(position)

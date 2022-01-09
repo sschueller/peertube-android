@@ -27,7 +27,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import com.squareup.picasso.Picasso;
 import net.schueller.peertube.R;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.ErrorHelper;
@@ -36,17 +38,11 @@ import net.schueller.peertube.model.Me;
 import net.schueller.peertube.network.GetUserService;
 import net.schueller.peertube.network.RetrofitInstance;
 import net.schueller.peertube.network.Session;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-
-import com.squareup.picasso.Picasso;
-
-import java.util.Objects;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import java.util.Objects;
 
 import static net.schueller.peertube.application.AppApplication.getContext;
 
@@ -85,11 +81,16 @@ public class MeActivity extends CommonActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
 
         LinearLayout account = findViewById(R.id.a_me_account_line);
+        LinearLayout playlist = findViewById(R.id.a_me_playlist);
         LinearLayout settings = findViewById(R.id.a_me_settings);
         LinearLayout help = findViewById(R.id.a_me_helpnfeedback);
 
         TextView logout = findViewById(R.id.a_me_logout);
 
+        playlist.setOnClickListener(view -> {
+            Intent playlistActivity = new Intent(getContext(), PlaylistActivity.class);
+            startActivity(playlistActivity);
+        });
 
         settings.setOnClickListener(view -> {
             Intent settingsActivity = new Intent(getContext(), SettingsActivity.class);
@@ -124,7 +125,7 @@ public class MeActivity extends CommonActivity {
 
         call.enqueue(new Callback<Me>() {
 
-            LinearLayout account = findViewById(R.id.a_me_account_line);
+            final LinearLayout account = findViewById(R.id.a_me_account_line);
 
             @Override
             public void onResponse(@NonNull Call<Me> call, @NonNull Response<Me> response) {
@@ -162,7 +163,7 @@ public class MeActivity extends CommonActivity {
 
             @Override
             public void onFailure(@NonNull Call<Me> call, @NonNull Throwable t) {
-                ErrorHelper.showToastFromCommunicationError( MeActivity.this, t );
+                ErrorHelper.showToastFromCommunicationError(MeActivity.this, t);
                 account.setVisibility(View.GONE);
             }
         });

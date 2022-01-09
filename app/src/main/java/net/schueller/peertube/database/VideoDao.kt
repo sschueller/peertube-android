@@ -14,14 +14,26 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package net.schueller.peertube.database;
+package net.schueller.peertube.database
 
-import androidx.room.Database;
-import androidx.room.RoomDatabase;
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
-@Database(entities = {Server.class, Video.class}, version = 1)
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract ServerDao serverDao();
+@Dao
+interface VideoDao {
 
-    public abstract VideoDao videoDao();
+    @Insert
+    suspend fun insert(video: Video)
+
+    @Update
+    suspend fun update(video: Video)
+
+    @Query("DELETE FROM watch_later")
+    suspend fun deleteAll()
+
+    @Delete
+    suspend fun delete(video: Video)
+
+    @get:Query("SELECT * from watch_later ORDER BY video_name DESC")
+    val allVideos: LiveData<List<Video>>
 }

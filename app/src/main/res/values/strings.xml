@@ -384,4 +384,8 @@
     <string name="video_owner_fqdn_line">%1$s@%2$s</string>
     <string name="video_sub_del_alert_title">Unsubscribe</string>
     <string name="video_sub_del_alert_msg">Are you sure you would like to unsubscribe?</string>
+    <string name="saved_to_playlist">Saved to playlist</string>
+    <string name="remove_video">Remove Video</string>
+    <string name="remove_video_warning_message">Are you sure you want to remove this video from playlist?</string>
+    <string name="playlist">Playlist</string>
 </resources>

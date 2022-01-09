@@ -1,3 +1,10 @@
+# 1.11.0 (2022-01-09)
+
+
+### Features
+
+* Open playlist video in player, string update c23c17d
+
 ## 1.10.4 (2022-01-02)
 
 

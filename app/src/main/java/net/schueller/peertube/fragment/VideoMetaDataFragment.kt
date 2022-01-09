@@ -16,54 +16,36 @@
  */
 package net.schueller.peertube.fragment
 
-import android.Manifest
-import net.schueller.peertube.helper.MetaDataHelper.getMetaString
-import net.schueller.peertube.helper.MetaDataHelper.getOwnerString
-import android.content.res.ColorStateList
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.os.Bundle
-import net.schueller.peertube.R
-import net.schueller.peertube.service.VideoPlayerService
 import android.app.Activity
 import android.content.Context
-import net.schueller.peertube.helper.APIUrlHelper
-import net.schueller.peertube.network.GetVideoDataService
-import net.schueller.peertube.network.RetrofitInstance
-import net.schueller.peertube.helper.ErrorHelper
-import androidx.core.app.ActivityCompat
-import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import com.squareup.picasso.Picasso
-import android.widget.TextView
-import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mikepenz.iconics.Iconics
+import net.schueller.peertube.R
 import net.schueller.peertube.adapter.MultiViewRecycleViewAdapter
-import net.schueller.peertube.intents.Intents
+import net.schueller.peertube.database.VideoViewModel
+import net.schueller.peertube.helper.APIUrlHelper
+import net.schueller.peertube.helper.ErrorHelper
 import net.schueller.peertube.model.CommentThread
 import net.schueller.peertube.model.Rating
 import net.schueller.peertube.model.Video
 import net.schueller.peertube.model.VideoList
 import net.schueller.peertube.model.ui.VideoMetaViewItem
-import net.schueller.peertube.network.GetUserService
-import net.schueller.peertube.network.Session
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.toRequestBody
-import okhttp3.ResponseBody
+import net.schueller.peertube.network.GetVideoDataService
+import net.schueller.peertube.network.RetrofitInstance
+import net.schueller.peertube.service.VideoPlayerService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
 class VideoMetaDataFragment : Fragment() {
     private var videoRating: Rating? = null
@@ -73,12 +55,14 @@ class VideoMetaDataFragment : Fragment() {
 
     private lateinit var videoDescriptionFragment: VideoDescriptionFragment
 
+    private val mVideoViewModel: VideoViewModel by activityViewModels()
+
     var isLeaveAppExpected = false
         private set
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
         // Inflate the layout for this fragment
@@ -94,11 +78,11 @@ class VideoMetaDataFragment : Fragment() {
         // show full description fragment
         videoDescriptionFragment = VideoDescriptionFragment.newInstance(video, this)
         childFragmentManager.beginTransaction()
-            .add(R.id.video_meta_data_fragment, videoDescriptionFragment, VideoDescriptionFragment.TAG).commit()
+                .add(R.id.video_meta_data_fragment, videoDescriptionFragment, VideoDescriptionFragment.TAG).commit()
     }
 
     fun hideDescriptionFragment() {
-        val fragment: Fragment?  = childFragmentManager.findFragmentByTag(VideoDescriptionFragment.TAG)
+        val fragment: Fragment? = childFragmentManager.findFragmentByTag(VideoDescriptionFragment.TAG)
         if (fragment != null) {
             childFragmentManager.beginTransaction().remove(fragment).commit()
         }
@@ -113,10 +97,10 @@ class VideoMetaDataFragment : Fragment() {
         val activity: Activity? = activity
         val apiBaseURL = APIUrlHelper.getUrlWithVersion(context)
         val videoDataService = RetrofitInstance.getRetrofitInstance(
-            apiBaseURL,
-            APIUrlHelper.useInsecureConnection(context)
+                apiBaseURL,
+                APIUrlHelper.useInsecureConnection(context)
         ).create(
-            GetVideoDataService::class.java
+                GetVideoDataService::class.java
         )
 
         // related videos
@@ -149,8 +133,8 @@ class VideoMetaDataFragment : Fragment() {
         videoOptions.setOnClickListener {
             val videoOptionsFragment = VideoOptionsFragment.newInstance(mService, video.files)
             videoOptionsFragment.show(
-                getActivity()!!.supportFragmentManager,
-                VideoOptionsFragment.TAG
+                    getActivity()!!.supportFragmentManager,
+                    VideoOptionsFragment.TAG
             )
         }
     }
@@ -166,9 +150,9 @@ class VideoMetaDataFragment : Fragment() {
         // We set this to default to null so that on initial start there are videos listed.
         val apiBaseURL = APIUrlHelper.getUrlWithVersion(context)
         val service =
-            RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(
-                GetVideoDataService::class.java
-            )
+                RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(
+                        GetVideoDataService::class.java
+                )
         val call: Call<CommentThread> = service.getCommentThreads(videoId, start, count, sort)
 
         call.enqueue(object : Callback<CommentThread?> {
@@ -176,7 +160,7 @@ class VideoMetaDataFragment : Fragment() {
                 if (response.body() != null) {
                     val commentThread = response.body()
                     if (commentThread != null) {
-                        mMultiViewAdapter!!.setVideoComment(commentThread);
+                        mMultiViewAdapter!!.setVideoComment(commentThread)
                     }
                 }
             }
@@ -197,8 +181,8 @@ class VideoMetaDataFragment : Fragment() {
         val filter: String? = null
 
         val sharedPref = context?.getSharedPreferences(
-            context.packageName + "_preferences",
-            Context.MODE_PRIVATE
+                context.packageName + "_preferences",
+                Context.MODE_PRIVATE
         )
 
         var nsfw = "false"
@@ -211,9 +195,9 @@ class VideoMetaDataFragment : Fragment() {
         // We set this to default to null so that on initial start there are videos listed.
         val apiBaseURL = APIUrlHelper.getUrlWithVersion(context)
         val service =
-            RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(
-                GetVideoDataService::class.java
-            )
+                RetrofitInstance.getRetrofitInstance(apiBaseURL, APIUrlHelper.useInsecureConnection(context)).create(
+                        GetVideoDataService::class.java
+                )
         val call: Call<VideoList> = service.getVideosData(start, count, sort, nsfw, filter, languages)
 
         /*Log the URL called*/Log.d("URL Called", call.request().url.toString() + "")
@@ -234,6 +218,12 @@ class VideoMetaDataFragment : Fragment() {
             }
         })
     }
+
+    fun saveToPlaylist(video: Video) {
+        val playlistVideo: net.schueller.peertube.database.Video = net.schueller.peertube.database.Video(videoUUID = video.uuid, videoName = video.name, videoDescription = video.description)
+        mVideoViewModel.insert(playlistVideo)
+    }
+
     companion object {
         const val TAG = "VMDF"
     }

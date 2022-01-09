@@ -30,28 +30,26 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.google.gson.JsonObject
+import com.mikepenz.iconics.Iconics.Builder
 import com.squareup.picasso.Picasso
-import net.schueller.peertube.R.color
-import net.schueller.peertube.R.string
+import net.schueller.peertube.R
+import net.schueller.peertube.R.*
 import net.schueller.peertube.activity.AccountActivity
 import net.schueller.peertube.activity.VideoListActivity
 import net.schueller.peertube.activity.VideoPlayActivity
+import net.schueller.peertube.databinding.*
+import net.schueller.peertube.fragment.VideoMetaDataFragment
 import net.schueller.peertube.helper.APIUrlHelper
+import net.schueller.peertube.helper.MetaDataHelper.getCreatorAvatar
+import net.schueller.peertube.helper.MetaDataHelper.getCreatorString
 import net.schueller.peertube.helper.MetaDataHelper.getDuration
 import net.schueller.peertube.helper.MetaDataHelper.getMetaString
 import net.schueller.peertube.helper.MetaDataHelper.getOwnerString
-import com.mikepenz.iconics.Iconics.Builder
-import net.schueller.peertube.R
-import net.schueller.peertube.R.id
-import net.schueller.peertube.R.menu
-import net.schueller.peertube.databinding.*
-import net.schueller.peertube.fragment.VideoMetaDataFragment
-import net.schueller.peertube.helper.MetaDataHelper.getCreatorAvatar
-import net.schueller.peertube.helper.MetaDataHelper.getCreatorString
-import net.schueller.peertube.helper.MetaDataHelper.getTagsString
+import net.schueller.peertube.helper.MetaDataHelper.isChannel
 import net.schueller.peertube.intents.Intents
 import net.schueller.peertube.model.*
 import net.schueller.peertube.model.ui.VideoMetaViewItem
+import net.schueller.peertube.network.GetUserService
 import net.schueller.peertube.network.GetVideoDataService
 import net.schueller.peertube.network.RetrofitInstance
 import net.schueller.peertube.network.Session
@@ -61,8 +59,6 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import net.schueller.peertube.helper.MetaDataHelper.isChannel
-import net.schueller.peertube.network.GetUserService
 
 
 sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -70,13 +66,13 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
     var videoRating: Rating? = null
     var isLeaveAppExpected = false
 
-    class CategoryViewHolder(private val binding: ItemCategoryTitleBinding): MultiViewRecyclerViewHolder(binding) {
+    class CategoryViewHolder(private val binding: ItemCategoryTitleBinding) : MultiViewRecyclerViewHolder(binding) {
         fun bind(category: Category) {
             binding.textViewTitle.text = category.label
         }
     }
 
-    class VideoCommentsViewHolder(private val binding: ItemVideoCommentsOverviewBinding): MultiViewRecyclerViewHolder(binding) {
+    class VideoCommentsViewHolder(private val binding: ItemVideoCommentsOverviewBinding) : MultiViewRecyclerViewHolder(binding) {
         fun bind(commentThread: CommentThread) {
 
             binding.videoCommentsTotalCount.text = commentThread.total.toString()
@@ -90,8 +86,8 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                     val baseUrl = APIUrlHelper.getUrl(binding.videoHighlightedAvatar.context)
                     val avatarPath = avatar.path
                     Picasso.get()
-                        .load(baseUrl + avatarPath)
-                        .into(binding.videoHighlightedAvatar)
+                            .load(baseUrl + avatarPath)
+                            .into(binding.videoHighlightedAvatar)
                 }
                 binding.videoHighlightedComment.text = highlightedComment.text
             }
@@ -99,7 +95,7 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
     }
 
 
-    class VideoMetaViewHolder(private val binding: ItemVideoMetaBinding, private val videoMetaDataFragment: VideoMetaDataFragment?): MultiViewRecyclerViewHolder(binding) {
+    class VideoMetaViewHolder(private val binding: ItemVideoMetaBinding, private val videoMetaDataFragment: VideoMetaDataFragment?) : MultiViewRecyclerViewHolder(binding) {
         fun bind(videoMetaViewItem: VideoMetaViewItem) {
 
             val video = videoMetaViewItem.video
@@ -109,16 +105,16 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                 val context = binding.avatar.context
                 val apiBaseURL = APIUrlHelper.getUrlWithVersion(context)
                 val videoDataService = RetrofitInstance.getRetrofitInstance(
-                    apiBaseURL,
-                    APIUrlHelper.useInsecureConnection(context)
+                        apiBaseURL,
+                        APIUrlHelper.useInsecureConnection(context)
                 ).create(
-                    GetVideoDataService::class.java
+                        GetVideoDataService::class.java
                 )
                 val userService = RetrofitInstance.getRetrofitInstance(
-                    apiBaseURL,
-                    APIUrlHelper.useInsecureConnection(context)
+                        apiBaseURL,
+                        APIUrlHelper.useInsecureConnection(context)
                 ).create(
-                    GetUserService::class.java
+                        GetUserService::class.java
                 )
 
                 // Title
@@ -137,27 +133,25 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                     rateVideo(false, video, context, binding)
                 }
 
+                // Add to playlist
                 binding.videoAddToPlaylistWrapper.setOnClickListener {
-                    Toast.makeText(
-                        context,
-                        context.getString(string.video_feature_not_yet_implemented),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    videoMetaDataFragment.saveToPlaylist(video)
+                    Toast.makeText(context, context.getString(string.saved_to_playlist), Toast.LENGTH_SHORT).show()
                 }
 
                 binding.videoBlockWrapper.setOnClickListener {
                     Toast.makeText(
-                        context,
-                        context.getString(string.video_feature_not_yet_implemented),
-                        Toast.LENGTH_SHORT
+                            context,
+                            context.getString(string.video_feature_not_yet_implemented),
+                            Toast.LENGTH_SHORT
                     ).show()
                 }
 
                 binding.videoFlagWrapper.setOnClickListener {
                     Toast.makeText(
-                        context,
-                        context.getString(string.video_feature_not_yet_implemented),
-                        Toast.LENGTH_SHORT
+                            context,
+                            context.getString(string.video_feature_not_yet_implemented),
+                            Toast.LENGTH_SHORT
                     ).show()
                 }
 
@@ -198,10 +192,10 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
 
                 // created at / views
                 binding.videoMeta.text = getMetaString(
-                    video.createdAt,
-                    video.views,
-                    context,
-                    true
+                        video.createdAt,
+                        video.views,
+                        context,
+                        true
                 )
 
                 // owner / creator
@@ -220,8 +214,8 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                     val baseUrl = APIUrlHelper.getUrl(context)
                     val avatarPath = avatar.path
                     Picasso.get()
-                        .load(baseUrl + avatarPath)
-                        .into(binding.avatar)
+                            .load(baseUrl + avatarPath)
+                            .into(binding.avatar)
                 }
 
                 // videoOwnerSubscribers
@@ -243,7 +237,6 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                 }
 
 
-
                 // get subscription status
                 var isSubscribed = false
 
@@ -262,6 +255,7 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                                 }
                             }
                         }
+
                         override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                             // Do nothing.
                         }
@@ -278,52 +272,54 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
                             val call = userService.subscribe(body)
                             call.enqueue(object : Callback<ResponseBody?> {
                                 override fun onResponse(
-                                    call: Call<ResponseBody?>,
-                                    response: Response<ResponseBody?>
+                                        call: Call<ResponseBody?>,
+                                        response: Response<ResponseBody?>
                                 ) {
                                     if (response.isSuccessful) {
                                         binding.videoOwnerSubscribeButton.setText(string.unsubscribe)
                                         isSubscribed = true
                                     }
                                 }
+
                                 override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
                                     // Do nothing.
                                 }
                             })
                         } else {
                             AlertDialog.Builder(context)
-                                .setTitle(context.getString(string.video_sub_del_alert_title))
-                                .setMessage(context.getString(string.video_sub_del_alert_msg))
-                                .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
-                                    // Yes
-                                    val payload = video.channel.name + "@" + video.channel.host
-                                    val call = userService.unsubscribe(payload)
-                                    call.enqueue(object : Callback<ResponseBody?> {
-                                        override fun onResponse(
-                                            call: Call<ResponseBody?>,
-                                            response: Response<ResponseBody?>
-                                        ) {
-                                            if (response.isSuccessful) {
-                                                binding.videoOwnerSubscribeButton.setText(string.subscribe)
-                                                isSubscribed = false
+                                    .setTitle(context.getString(string.video_sub_del_alert_title))
+                                    .setMessage(context.getString(string.video_sub_del_alert_msg))
+                                    .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
+                                        // Yes
+                                        val payload = video.channel.name + "@" + video.channel.host
+                                        val call = userService.unsubscribe(payload)
+                                        call.enqueue(object : Callback<ResponseBody?> {
+                                            override fun onResponse(
+                                                    call: Call<ResponseBody?>,
+                                                    response: Response<ResponseBody?>
+                                            ) {
+                                                if (response.isSuccessful) {
+                                                    binding.videoOwnerSubscribeButton.setText(string.subscribe)
+                                                    isSubscribed = false
+                                                }
                                             }
-                                        }
-                                        override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
-                                            // Do nothing.
-                                        }
-                                    })
-                                }
-                                .setNegativeButton(android.R.string.cancel) { _: DialogInterface?, _: Int ->
-                                    // No
-                                }
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show()
+
+                                            override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+                                                // Do nothing.
+                                            }
+                                        })
+                                    }
+                                    .setNegativeButton(android.R.string.cancel) { _: DialogInterface?, _: Int ->
+                                        // No
+                                    }
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show()
                         }
                     } else {
                         Toast.makeText(
-                            context,
-                            context.getString(string.video_login_required_for_service),
-                            Toast.LENGTH_SHORT
+                                context,
+                                context.getString(string.video_login_required_for_service),
+                                Toast.LENGTH_SHORT
                         ).show()
                     }
                 }
@@ -333,7 +329,7 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
         }
     }
 
-    class ChannelViewHolder(private val binding: ItemChannelTitleBinding): MultiViewRecyclerViewHolder(binding) {
+    class ChannelViewHolder(private val binding: ItemChannelTitleBinding) : MultiViewRecyclerViewHolder(binding) {
         fun bind(channel: Channel) {
 
             val context = binding.avatar.context
@@ -344,22 +340,22 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
             if (avatar != null) {
                 val avatarPath = avatar.path
                 Picasso.get()
-                    .load(baseUrl + avatarPath)
-                    .placeholder(R.drawable.test_image)
-                    .into(binding.avatar)
+                        .load(baseUrl + avatarPath)
+                        .placeholder(R.drawable.test_image)
+                        .into(binding.avatar)
             }
 
             binding.textViewTitle.text = channel.displayName
         }
     }
 
-    class TagViewHolder(private val binding: ItemTagTitleBinding): MultiViewRecyclerViewHolder(binding) {
+    class TagViewHolder(private val binding: ItemTagTitleBinding) : MultiViewRecyclerViewHolder(binding) {
         fun bind(tag: TagVideo) {
             binding.textViewTitle.text = tag.tag
         }
     }
 
-    class VideoViewHolder(private val binding: RowVideoListBinding): MultiViewRecyclerViewHolder(binding) {
+    class VideoViewHolder(private val binding: RowVideoListBinding) : MultiViewRecyclerViewHolder(binding) {
 
         fun bind(video: Video) {
 
@@ -368,18 +364,18 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
 
             // Temp Loading Image
             Picasso.get()
-                .load(baseUrl + video.previewPath)
-                .placeholder(R.drawable.test_image)
-                .error(R.drawable.test_image)
-                .into(binding.thumb)
+                    .load(baseUrl + video.previewPath)
+                    .placeholder(R.drawable.test_image)
+                    .error(R.drawable.test_image)
+                    .into(binding.thumb)
 
             // Avatar
             val avatar = getCreatorAvatar(video, context)
             if (avatar != null) {
                 val avatarPath = avatar.path
                 Picasso.get()
-                    .load(baseUrl + avatarPath)
-                    .into(binding.avatar)
+                        .load(baseUrl + avatarPath)
+                        .into(binding.avatar)
             }
             // set Name
             binding.slRowName.text = video.name
@@ -395,9 +391,9 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
 
             // set age and view count
             binding.videoMeta.text = getMetaString(
-                video.createdAt,
-                video.views,
-                context
+                    video.createdAt,
+                    video.views,
+                    context
             )
 
             // set owner
@@ -431,8 +427,8 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
 
             binding.moreButton.setOnClickListener { v: View? ->
                 val popup = PopupMenu(
-                    context,
-                    v!!
+                        context,
+                        v!!
                 )
                 popup.setOnMenuItemClickListener { menuItem: MenuItem ->
                     when (menuItem.itemId) {
@@ -492,17 +488,17 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
 
             val apiBaseURL = APIUrlHelper.getUrlWithVersion(context)
             val videoDataService = RetrofitInstance.getRetrofitInstance(
-                apiBaseURL, APIUrlHelper.useInsecureConnection(
+                    apiBaseURL, APIUrlHelper.useInsecureConnection(
                     context
-                )
+            )
             ).create(
-                GetVideoDataService::class.java
+                    GetVideoDataService::class.java
             )
             val call = videoDataService.rateVideo(video.id, body)
             call.enqueue(object : Callback<ResponseBody?> {
                 override fun onResponse(
-                    call: Call<ResponseBody?>,
-                    response: Response<ResponseBody?>
+                        call: Call<ResponseBody?>,
+                        response: Response<ResponseBody?>
                 ) {
                     // if 20x, update likes/dislikes
                     if (response.isSuccessful) {
@@ -539,17 +535,17 @@ sealed class MultiViewRecyclerViewHolder(binding: ViewBinding) : RecyclerView.Vi
 
                 override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
                     Toast.makeText(
-                        context,
-                        context.getString(string.video_rating_failed),
-                        Toast.LENGTH_SHORT
+                            context,
+                            context.getString(string.video_rating_failed),
+                            Toast.LENGTH_SHORT
                     ).show()
                 }
             })
         } else {
             Toast.makeText(
-                context,
-                context.getString(string.video_login_required_for_service),
-                Toast.LENGTH_SHORT
+                    context,
+                    context.getString(string.video_login_required_for_service),
+                    Toast.LENGTH_SHORT
             ).show()
         }
     }

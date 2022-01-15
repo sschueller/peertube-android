@@ -318,4 +318,7 @@
     <string name="pref_background_behavior">Ustawienia odtwarzania w tle</string>
     <string name="pref_background_float">Kontynuuj odtwarzanie w ruchomym oknie</string>
     <string name="pref_language_app">Język Aplikacji</string>
+    <string name="pref_title_video_speed">Domyślna prędkość odtwarzania</string>
+    <string name="pref_description_video_speed">Wybierz globalną szybkość odtwarzania wideo</string>
+    <string name="pref_title_back_pause">Wstrzymanie po naciśnięciu przycisku wstecz</string>
 </resources>

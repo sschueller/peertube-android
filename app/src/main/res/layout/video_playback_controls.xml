@@ -10,24 +10,25 @@
     android:orientation="vertical"
     tools:targetApi="32">
 
-        <FrameLayout
-            android:id="@+id/exo_more_button"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="end">
+    <FrameLayout
+        android:id="@+id/exo_more_button"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="end">
 
-            <TextView
-                android:id="@+id/exo_more"
-                android:layout_width="24dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:paddingTop="12dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:textColor="#FFBEBEBE"
-                android:textSize="18sp" />
+        <ImageButton
+            android:id="@+id/exo_more"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:contentDescription="More"
+            android:src="@drawable/ic_more_vertical"
+            />
 
-        </FrameLayout>
+    </FrameLayout>
 
 
 
@@ -159,15 +160,17 @@
             android:layout_height="48dp"
             android:layout_gravity="end">
 
-            <TextView
+            <ImageButton
                 android:id="@+id/exo_fullscreen"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:textColor="#FFBEBEBE"
-                android:textSize="18sp" />
+                android:background="@android:color/transparent"
+                android:contentDescription="Fullscreen"
+                android:src="@drawable/ic_maximize"
+                />
 
         </FrameLayout>
 
@@ -190,20 +193,20 @@
 
     </LinearLayout>
 
-<!--    <LinearLayout-->
-<!--        android:visibility="gone"-->
-<!--        android:id="@+id/exo_torrent_status"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
+    <!--    <LinearLayout-->
+    <!--        android:visibility="gone"-->
+    <!--        android:id="@+id/exo_torrent_status"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
 
-<!--        <ProgressBar-->
-<!--            android:id="@+id/torrent_progress"-->
-<!--            style="?android:attr/progressBarStyleHorizontal"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:indeterminate="false"-->
-<!--            android:max="100" />-->
+    <!--        <ProgressBar-->
+    <!--            android:id="@+id/torrent_progress"-->
+    <!--            style="?android:attr/progressBarStyleHorizontal"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:indeterminate="false"-->
+    <!--            android:max="100" />-->
 
-<!--    </LinearLayout>-->
+    <!--    </LinearLayout>-->
 
 </LinearLayout>

@@ -1,86 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="net.schueller.peertube">
+    package="net.schueller.peertube">
+
+    <!-- connect to peertube server -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- required to play video in background via notification -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/> <!-- connect to peertube server -->
-    <uses-permission android:name="android.permission.INTERNET"/> <!-- required for torrent downloading -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <!-- Download video -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-            android:name=".application.AppApplication"
-            android:allowBackup="true"
-            android:fullBackupContent="@xml/backup_descriptor"
-            android:icon="@mipmap/ic_launcher"
+        android:name="net.schueller.peertube.PeerTubeApplication"
+        android:allowBackup="true"
+        android:supportsPictureInPicture="true"
+        android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Peertube">
+        <activity
+            android:name="net.schueller.peertube.presentation.MainActivity"
+            android:exported="true"
             android:label="@string/app_name"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            tools:ignore="GoogleAppIndexingWarning">
-
-        <!-- Server Address Book -->
-        <activity
-                android:name=".activity.ServerAddressBookActivity"
-                android:label="@string/title_activity_server_address_book"
-                android:theme="@style/AppTheme.NoActionBar"/> <!-- Video Lists -->
-        <activity
-                android:name=".activity.VideoListActivity"
-                android:launchMode="singleTop"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:exported="true">
+            android:theme="@style/Theme.Peertube.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                    android:name="android.app.searchable"
-                    android:resource="@xml/searchable"/>
-        </activity> <!-- Video Player -->
-        <activity
-                android:name=".activity.VideoPlayActivity"
-                android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-                android:label="@string/title_activity_video_play"
-                android:launchMode="singleInstance"
-                android:supportsPictureInPicture="true"
-                android:theme="@style/AppTheme.NoActionBar"/>
-        <!-- Playlist -->
-        <activity android:name=".activity.PlaylistActivity"
-                  android:label="Playlist"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-        <!-- Settings -->
-        <activity
-                android:name=".activity.SettingsActivity"
-                android:label="@string/title_activity_settings"
-                android:theme="@style/AppTheme.NoActionBar"/> <!-- Server Selection -->
-        <activity
-                android:name=".activity.SearchServerActivity"
-                android:label="@string/title_activity_select_server"
-                android:theme="@style/AppTheme.NoActionBar"/> <!-- Me -->
-        <activity
-                android:name=".activity.MeActivity"
-                android:label="@string/title_activity_me"
-                android:theme="@style/AppTheme.NoActionBar"/> <!-- Account -->
-        <activity
-                android:name=".activity.AccountActivity"
-                android:label="@string/title_activity_account"
-                android:theme="@style/AppTheme.NoActionBar"/> <!-- Content provider for search suggestions -->
-        <provider
-                android:name=".provider.SearchSuggestionsProvider"
-                android:authorities="net.schueller.peertube.provider.SearchSuggestionsProvider"
-                android:enabled="true"
-                android:exported="false"/>
-
-        <service android:name=".service.VideoPlayerService"/>
-
-        <receiver android:name="androidx.media.session.MediaButtonReceiver"
-                  android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MEDIA_BUTTON"/>
-            </intent-filter>
-        </receiver>
-
+        </activity>
     </application>
 
 </manifest>
+
+
+

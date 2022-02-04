@@ -1,46 +1,53 @@
 package net.schueller.peertube.feature_video.data.repository
 
-import retrofit2.converter.gson.GsonConverterFactory
-
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit;
-
 import android.annotation.SuppressLint
 import android.util.Log
-import net.schueller.peertube.common.Constants.BASE_URL
+import net.schueller.peertube.common.UrlHelper
+import net.schueller.peertube.feature_video.data.remote.PeerTubeApi
 import net.schueller.peertube.feature_video.data.remote.auth.AccessTokenAuthenticator
 import net.schueller.peertube.feature_video.data.remote.auth.AuthorizationInterceptor
-import net.schueller.peertube.feature_video.data.remote.PeerTubeApi
-import java.lang.Exception
-import java.lang.RuntimeException
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
 import javax.inject.Inject
-import javax.inject.Singleton
 import javax.net.ssl.*
 
-@Singleton
+
 class RetrofitInstance @Inject constructor(
     private val authorizationInterceptor: AuthorizationInterceptor,
-    private val accessTokenAuthenticator: AccessTokenAuthenticator
+    private val accessTokenAuthenticator: AccessTokenAuthenticator,
+    private val urlHelper: UrlHelper
 ) {
-    private val tag = "RetrofitInstance"
+    private val tag = "RFI"
 
-    private var retrofitInstance = build(BASE_URL, false)
+    companion object {
+        private var retrofitInstance : PeerTubeApi? = null
+    }
 
-    fun updateBaseUrl(
-        baseUrl: String = BASE_URL,
+    // TODO: this doesn't work, existing UseCases keep using previous instance
+    fun updateRetrofitInstance(
         insecure: Boolean = false
     ) {
-        retrofitInstance = build(baseUrl, insecure)
+        retrofitInstance = build(insecure)
     }
 
+    @Synchronized
     fun getRetrofitInstance(): PeerTubeApi {
-        return retrofitInstance;
+        if (retrofitInstance == null) {
+            retrofitInstance = build( false)
+        }
+        return retrofitInstance as PeerTubeApi
     }
 
-    fun build(baseUrl: String = BASE_URL,
-              insecure: Boolean = false): PeerTubeApi {
+    fun build(insecure: Boolean = false): PeerTubeApi {
+
+        val apiUrl = urlHelper.getUrlWithVersion()
+
+        Log.v(tag, "current Url: $apiUrl")
+
         val okhttpClientBuilder: OkHttpClient.Builder = if (!insecure) {
             Log.v(tag, "Secure Instance")
             OkHttpClient.Builder()
@@ -48,16 +55,26 @@ class RetrofitInstance @Inject constructor(
             Log.v(tag, "Unsafe Instance")
             getUnsafeOkHttpClient()
         }
+
+        // TODO: Remove debug
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
+        okhttpClientBuilder.addInterceptor(logging)
+
+        // Add auth
         okhttpClientBuilder.addInterceptor(authorizationInterceptor)
         okhttpClientBuilder.authenticator(accessTokenAuthenticator)
+
         return Retrofit.Builder()
             .client(okhttpClientBuilder.build())
-            .baseUrl(baseUrl)
+            .baseUrl(apiUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(PeerTubeApi::class.java)
     }
 
+
 }
+
 
 
 fun getUnsafeOkHttpClient(): OkHttpClient.Builder {

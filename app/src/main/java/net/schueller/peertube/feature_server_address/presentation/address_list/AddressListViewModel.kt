@@ -1,7 +1,6 @@
 package net.schueller.peertube.feature_server_address.presentation.address_list
 
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -18,7 +17,6 @@ import net.schueller.peertube.feature_server_address.domain.model.ServerAddress
 import net.schueller.peertube.feature_server_address.domain.use_case.ServerAddressUseCases
 import net.schueller.peertube.feature_server_address.domain.util.OrderType
 import net.schueller.peertube.feature_server_address.domain.util.ServerAddressOrder
-import net.schueller.peertube.feature_server_address.presentation.address_add_edit.AddEditAddressViewModel
 import javax.inject.Inject
 
 @HiltViewModel
@@ -44,14 +42,14 @@ class AddressListViewModel @Inject constructor(
         when (event) {
             is AddressListEvent.DeleteServerAddress -> {
                 viewModelScope.launch {
-                    serverAddressUseCases.deleteServerAddress(event.serverAddress)
+                    serverAddressUseCases.deleteServerAddressUseCase(event.serverAddress)
                     recentlyDeletedServerAddress = event.serverAddress
                 }
             }
             is AddressListEvent.SelectServerAddress -> {
                 viewModelScope.launch {
                     try {
-                        serverAddressUseCases.selectServerAddress(
+                        serverAddressUseCases.selectServerAddressUseCase(
                             event.serverAddress
                         )
                         _eventFlow.emit(UiEvent.SelectServerAddress)
@@ -66,7 +64,7 @@ class AddressListViewModel @Inject constructor(
             }
             is AddressListEvent.RestoreServerAddress -> {
                 viewModelScope.launch {
-                    serverAddressUseCases.addServerAddress(recentlyDeletedServerAddress ?: return@launch)
+                    serverAddressUseCases.addServerAddressUseCase(recentlyDeletedServerAddress ?: return@launch)
                     recentlyDeletedServerAddress = null
                 }
             }
@@ -78,7 +76,7 @@ class AddressListViewModel @Inject constructor(
 
     private fun getServerAddresses(serverAddressOrder: ServerAddressOrder) {
         getServerAddressesJob?.cancel()
-        getServerAddressesJob = serverAddressUseCases.getServerAddresses(serverAddressOrder)
+        getServerAddressesJob = serverAddressUseCases.getServerAddressesUseCase(serverAddressOrder)
             .onEach { serverAddresses ->
                 _state.value = state.value.copy(
                     serverAddresses = serverAddresses,

@@ -3,9 +3,27 @@ package net.schueller.peertube.common
 import net.schueller.peertube.feature_video.domain.model.Video
 import javax.inject.Inject
 import javax.inject.Singleton
+import android.app.AppOpsManager
+
+import android.os.Build
+
+import android.R
+import android.content.Context
+
+import android.preference.PreferenceManager
+
+import android.content.SharedPreferences
+import android.os.Process
+import dagger.hilt.android.qualifiers.ApplicationContext
+import net.schueller.peertube.common.Constants.PREF_BACKGROUND_BEHAVIOR_KEY
+import net.schueller.peertube.common.Constants.PREF_BACKGROUND_FLOAT_KEY
+
 
 @Singleton
-class VideoHelper @Inject constructor() {
+class VideoHelper @Inject constructor(
+) {
+
+
 
     fun pickPlaybackResolution(video: Video, preferredQuality: Int = 999999): String?
     {
@@ -27,5 +45,33 @@ class VideoHelper @Inject constructor() {
 
         return urlToPlay
     }
+
+
+    fun canEnterPipMode(context: Context): Boolean {
+        val sharedPreferences = context.getSharedPreferences(context.packageName + "_preferences", Context.MODE_PRIVATE)
+
+        // pref is disabled
+        if (!PREF_BACKGROUND_FLOAT_KEY.equals(
+                sharedPreferences.getString(
+                    PREF_BACKGROUND_BEHAVIOR_KEY,
+                    PREF_BACKGROUND_FLOAT_KEY
+                )
+            )
+        ) {
+            return false
+        }
+
+        // api does not support it
+        if (Build.VERSION.SDK_INT > 27) {
+            val appOpsManager = context.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+            return AppOpsManager.MODE_ALLOWED == appOpsManager.checkOp(
+                AppOpsManager.OPSTR_PICTURE_IN_PICTURE,
+                Process.myUid(),
+                context.packageName
+            )
+        }
+        return false
+    }
+
 }
 

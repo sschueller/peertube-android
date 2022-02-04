@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,47 +52,71 @@ fun MeScreen (
                         .fillMaxSize()
                         .padding(16.dp)
                 ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.clickable {
+                    if (viewModel.isLoggedIn) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.clickable {
 
+                            }
+                        ) {
+                            MeAvatar(
+                                avatar = viewModel.stateMe.value.me?.account?.avatar,
+                                onItemClick = {}
+                            )
+                            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                            Text(
+                                text = viewModel.stateMe.value.me?.username ?: "",
+                                fontWeight = FontWeight.Normal,
+                                style = MaterialTheme.typography.body1,
+                                modifier = Modifier.padding(6.dp)
+                            )
                         }
-                    ) {
-                        MeAvatar(
-                            avatar = viewModel.stateMe.value.me?.account?.avatar,
-                            onItemClick = {}
-                        )
-                        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                        Text(
-                            text = viewModel.stateMe.value.me?.username ?: "",
-                            fontWeight = FontWeight.Normal,
-                            style = MaterialTheme.typography.body1,
-                            modifier = Modifier.padding(6.dp)
-                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.clickable {
+                                viewModel.onEvent(MeEvent.Logout)
+                                navController.navigateUp()
+                            }
+                        ) {
+                            Icon(
+                                Icons.Filled.ExitToApp,
+                                modifier = Modifier
+                                    .height(48.dp)
+                                    .width(48.dp)
+                                    .padding(8.dp),
+                                contentDescription = "Logout",
+                            )
+                            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                            Text(
+                                text = "Logout",
+                                fontWeight = FontWeight.Normal,
+                                style = MaterialTheme.typography.body1,
+                                modifier = Modifier.padding(6.dp)
+                            )
+                        }
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.clickable {
-
+                            navController.navigate("settings_screen")
                         }
                     ) {
                         Icon(
-                            Icons.Filled.ExitToApp,
+                            Icons.Filled.Settings,
                             modifier = Modifier
                                 .height(48.dp)
                                 .width(48.dp)
                                 .padding(8.dp),
-                            contentDescription = "Logout",
+                            contentDescription = "Settings",
                         )
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                         Text(
-                            text = "Logout",
+                            text = "Settings",
                             fontWeight = FontWeight.Normal,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier.padding(6.dp)
                         )
                     }
-
                 }
             }
 //        }

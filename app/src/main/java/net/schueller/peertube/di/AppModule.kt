@@ -9,7 +9,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import net.schueller.peertube.common.Constants
-import net.schueller.peertube.common.UrlHelper
 import net.schueller.peertube.feature_server_address.data.data_source.database.ServerAddressDatabase
 import net.schueller.peertube.feature_video.data.remote.PeerTubeApi
 import net.schueller.peertube.feature_server_address.data.data_source.remote.ServerInstanceApi
@@ -53,31 +52,24 @@ object AppModule {
         repository: ServerAddressRepository,
         @ApplicationContext context: Context,
         session: Session,
-        loginService: LoginService
+        loginService: LoginService,
+        retrofitInstance: RetrofitInstance
     ): ServerAddressUseCases {
         return ServerAddressUseCases(
-            getServerAddresses = GetServerAddresses(repository),
-            deleteServerAddress = DeleteServerAddress(repository),
-            addServerAddress = AddServerAddress(repository),
-            getServerAddress = GetServerAddress(repository),
-            selectServerAddress = SelectServerAddress(context,session,loginService)
+            getServerAddressesUseCase = GetServerAddressesUseCase(repository),
+            deleteServerAddressUseCase = DeleteServerAddressUseCase(repository),
+            addServerAddressUseCase = AddServerAddressUseCase(repository),
+            getServerAddressUseCase = GetServerAddressUseCase(repository),
+            selectServerAddressUseCase = SelectServerAddressUseCase(context,session,loginService, retrofitInstance)
         )
     }
 
 
     @Provides
-    @Singleton
     fun providePeerTubeApi(
         retrofitInstance: RetrofitInstance
     ): PeerTubeApi {
-
         return retrofitInstance.getRetrofitInstance()
-
-//        return Retrofit.Builder()
-//            .baseUrl(Constants.BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(PeerTubeApi::class.java)
     }
 
     @Provides

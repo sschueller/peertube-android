@@ -1,6 +1,7 @@
 package net.schueller.peertube.feature_video.domain.repository
 
 import net.schueller.peertube.feature_video.domain.model.*
+import okhttp3.Response
 import okhttp3.ResponseBody
 
 interface VideoRepository {
@@ -13,7 +14,7 @@ interface VideoRepository {
 
     suspend fun getVideoDescriptionByUuid(uuid: String): Description
 
-    suspend fun rateVideo(id: Int, upVote: Boolean): ResponseBody
+    suspend fun rateVideo(id: Int, upVote: Boolean)
 
     suspend fun getVideoRating(id: Int): Rating
 

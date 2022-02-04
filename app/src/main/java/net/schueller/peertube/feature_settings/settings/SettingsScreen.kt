@@ -12,6 +12,16 @@ import com.jamal.composeprefs.ui.PrefsScreen
 import com.jamal.composeprefs.ui.prefs.*
 import net.schueller.peertube.presentation.dataStore
 import net.schueller.peertube.R
+import net.schueller.peertube.common.Constants.PREF_ACCEPT_INSECURE_KEY
+import net.schueller.peertube.common.Constants.PREF_BACKGROUND_AUDIO_KEY
+import net.schueller.peertube.common.Constants.PREF_BACKGROUND_BEHAVIOR_KEY
+import net.schueller.peertube.common.Constants.PREF_BACKGROUND_FLOAT_KEY
+import net.schueller.peertube.common.Constants.PREF_BACKGROUND_STOP_KEY
+import net.schueller.peertube.common.Constants.PREF_BACK_PAUSE_KEY
+import net.schueller.peertube.common.Constants.PREF_DARK_MODE_KEY
+import net.schueller.peertube.common.Constants.PREF_SHOW_NSFW_KEY
+import net.schueller.peertube.common.Constants.PREF_THEME_KEY
+import net.schueller.peertube.common.Constants.PREF_VIDEO_SPEED_KEY
 
 @ExperimentalMaterialApi
 @ExperimentalComposeUiApi
@@ -231,7 +241,7 @@ fun SettingsScreen() {
                 }
                 prefsItem {
                     ListPref(
-                        key = "pref_theme_key",
+                        key = PREF_THEME_KEY,
                         title = stringResource(R.string.pref_title_app_theme),
                         useSelectedAsSummary = true,
                         entries = mapOf(
@@ -243,7 +253,7 @@ fun SettingsScreen() {
                 }
                 prefsItem {
                     SwitchPref(
-                        key = "pref_dark_mode_key",
+                        key = PREF_DARK_MODE_KEY,
                         title = stringResource(R.string.pref_title_dark_mode),
                         summary = stringResource(R.string.pref_description_dark_mode)
                     )
@@ -259,7 +269,7 @@ fun SettingsScreen() {
             }) {
                 prefsItem {
                     SwitchPref(
-                        key = "pref_show_nsfw_key",
+                        key = PREF_SHOW_NSFW_KEY,
                         title = stringResource(R.string.pref_title_show_nsfw),
                         summary = stringResource(R.string.pref_description_show_nsfw)
                     )
@@ -307,34 +317,35 @@ fun SettingsScreen() {
             }) {
                 prefsItem {
                     ListPref(
-                        key = "pref_video_speed_key",
+                        key = PREF_VIDEO_SPEED_KEY,
                         title = stringResource(R.string.pref_title_video_speed),
                         useSelectedAsSummary = true,
                         entries = mapOf(
-                            "0" to "Entry 1",
-                            "1" to "Entry 2",
-                            "2" to "Entry 3",
-                            "3" to "Entry 4",
-                            "4" to "Entry 5"
+                            "0.5" to "0.5x",
+                            "0.75" to "0.75x",
+                            "1.0" to "Normal",
+                            "1.25" to "1.25x",
+                            "1.5" to "1.5x",
+                            "2" to "2x",
                         )
                     )
                 }
                 prefsItem {
                     SwitchPref(
-                        key = "pref_back_pause_key",
+                        key = PREF_BACK_PAUSE_KEY,
                         title = stringResource(R.string.pref_title_back_pause),
                         summary = stringResource(R.string.pref_description_back_pause)
                     )
                 }
                 prefsItem {
                     ListPref(
-                        key = "pref_background_behavior_key",
+                        key = PREF_BACKGROUND_BEHAVIOR_KEY,
                         title = stringResource(R.string.pref_background_behavior),
                         useSelectedAsSummary = true,
                         entries = mapOf(
-                            "0" to "Entry 1",
-                            "1" to "Entry 2",
-                            "2" to "Entry 3"
+                            PREF_BACKGROUND_AUDIO_KEY to stringResource(R.string.pref_background_audio),
+                            PREF_BACKGROUND_STOP_KEY to stringResource(R.string.pref_background_stop),
+                            PREF_BACKGROUND_FLOAT_KEY to stringResource(R.string.pref_background_float),
                         )
                     )
                 }
@@ -348,7 +359,7 @@ fun SettingsScreen() {
             }) {
                 prefsItem {
                     SwitchPref(
-                        key = "pref_accept_insecure",
+                        key = PREF_ACCEPT_INSECURE_KEY,
                         title = stringResource(R.string.pref_title_accept_insecure),
                         summary = stringResource(R.string.pref_description_accept_insecure)
                     )

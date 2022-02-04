@@ -12,11 +12,12 @@
 
     <FrameLayout
         android:id="@+id/exo_more_button"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_gravity="end">
 
         <ImageButton
+            android:clickable="false"
             android:id="@+id/exo_more"
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -161,7 +162,8 @@
             android:layout_gravity="end">
 
             <ImageButton
-                android:id="@+id/exo_fullscreen"
+                android:clickable="false"
+                android:id="@+id/exo_fullscreen_enable"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
@@ -170,7 +172,23 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="Fullscreen"
                 android:src="@drawable/ic_maximize"
+                android:visibility="gone"
                 />
+
+            <ImageButton
+                android:clickable="false"
+                android:id="@+id/exo_fullscreen_disable"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:contentDescription="Exit Fullscreen"
+                android:src="@drawable/ic_maximize"
+                android:visibility="gone"
+                />
+
 
         </FrameLayout>
 

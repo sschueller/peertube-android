@@ -3,7 +3,6 @@ package net.schueller.peertube.feature_video.data.remote.auth
 import android.content.Context
 
 import android.util.Log
-import android.widget.Toast
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +25,7 @@ class LoginService @Inject constructor(
     @ApplicationContext private val context: Context,
     private val api: PeerTubeApi
 ){
-    private val TAG = "authserv"
+    private val tag = "LoginService"
     private val sharedPreferences = context.getSharedPreferences(context.packageName + "_preferences", Context.MODE_PRIVATE)
 
     fun authenticate(username: String?, password: String?) {
@@ -42,13 +41,13 @@ class LoginService @Inject constructor(
                 editor.putString(PREF_CLIENT_SECRET, oauthClientDto.clientSecret)
                 editor.apply()
 
-                Log.wtf(TAG, "sharedPreferences save")
+                Log.wtf(tag, "sharedPreferences save")
 
 
-                Log.wtf(TAG, "getAuthenticationToken 1")
+                Log.wtf(tag, "getAuthenticationToken 1")
 
 
-                Log.wtf(TAG, "getAuthenticationToken 2")
+                Log.wtf(tag, "getAuthenticationToken 2")
 
                 val response = api.getAuthenticationToken(
                     oauthClientDto.clientId,
@@ -64,23 +63,24 @@ class LoginService @Inject constructor(
 
                 if (response.isSuccessful && tokenDto != null) {
 
-                    Log.wtf(TAG, "getAuthenticationToken $tokenDto")
+                    Log.wtf(tag, "accessToken: "  + tokenDto.accessToken)
 
                     editor.putString(PREF_TOKEN_ACCESS, tokenDto.accessToken)
                     editor.putString(PREF_TOKEN_REFRESH, tokenDto.refreshToken)
                     editor.putString(PREF_TOKEN_EXPIRATION, tokenDto.tokenType)
+
                     editor.apply()
 
                 } else {
-                    Log.wtf(TAG, "Login failed")
+                    Log.wtf(tag, "Login failed")
                 }
 
             }
 
         } catch (e: HttpException) {
-            Log.wtf(TAG, e.localizedMessage)
+            Log.wtf(tag, e.localizedMessage)
         } catch (e: IOException) {
-            Log.wtf(TAG, "Login Error")
+            Log.wtf(tag, "Login Error")
         }
 
     }
@@ -113,17 +113,17 @@ class LoginService @Inject constructor(
                     editor.putString(PREF_TOKEN_REFRESH, tokenDto.refreshToken)
                     editor.putString(PREF_TOKEN_TYPE, tokenDto.tokenType)
                     editor.apply()
-                    Log.wtf(TAG, "Logged in")
+                    Log.wtf(tag, "Logged in")
                 } else {
-                    Log.wtf(TAG, "Login failed")
+                    Log.wtf(tag, "Login failed")
                 }
 
             }
 
         }  catch (e: HttpException) {
-            Log.wtf(TAG, e.localizedMessage)
+            Log.wtf(tag, e.localizedMessage)
         } catch (e: IOException) {
-            Log.wtf(TAG, "Refresh Error")
+            Log.wtf(tag, "Refresh Error")
         }
 
     }

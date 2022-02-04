@@ -38,7 +38,7 @@ interface PeerTubeApi {
 
     @GET("users/me/videos/{id}/rating")
     suspend fun getVideoRating(
-        @Path(value = "id", encoded = true) id: Int?
+        @Path(value = "id") id: Int?
     ): RatingDto
 
     @GET("videos/{uuid}/description")
@@ -51,7 +51,7 @@ interface PeerTubeApi {
     suspend fun rateVideo(
         @Path(value = "id", encoded = true) id: Int?,
         @Body params: RequestBody?
-    ): ResponseBody
+    ): Response<Unit> // https://github.com/square/retrofit/issues/3075
 
     @GET("accounts/{displayNameAndHost}/videos")
     suspend fun getAccountVideos(

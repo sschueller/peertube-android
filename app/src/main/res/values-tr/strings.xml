@@ -263,18 +263,6 @@
     <string name="video_speed_10">Normal</string>
     <string name="video_speed_15">1,5×</string>
     <string name="video_speed_20">2×</string>
-    <string name="video_option_speed_icon" translatable="false">{faw-play-circle}</string>
-    <string name="video_option_quality_icon" translatable="false">{faw-cog}</string>
-    <string name="video_speed_active_icon" translatable="false">{faw-check}</string>
-    <string name="video_quality_active_icon" translatable="false">{faw-check}</string>
-    <string name="video_expand_icon" translatable="false">{faw-expand}</string>
-    <string name="video_compress_icon" translatable="false">{faw-compress}</string>
-    <string name="video_more_icon" translatable="false">{faw-ellipsis-v}</string>
-    <string name="video_thumbs_up_icon" translatable="false">{faw-thumbs-up}</string>
-    <string name="video_thumbs_down_icon" translatable="false">{faw-thumbs-down}</string>
-    <string name="video_share_icon" translatable="false">{faw-share}</string>
-    <string name="video_download_icon" translatable="false">{faw-download}</string>
-    <string name="video_save_icon" translatable="false">{faw-save}</string>
     <string name="pref_title_background_play">Arka Planda Oynatma</string>
     <string name="pref_description_background_play">Etkinleştirilirse, arka planda izleti oynatmaya devam eder.</string>
     <string name="bottom_nav_title_local">Yerel</string>

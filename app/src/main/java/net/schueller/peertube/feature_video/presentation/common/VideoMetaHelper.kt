@@ -1,5 +1,6 @@
 package net.schueller.peertube.feature_video.presentation.common
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import net.schueller.peertube.R
@@ -95,7 +96,12 @@ fun getCreatorAvatarUrl(avatar: Avatar?): String {
 
 @Composable
 fun getImageUrl(image: String?): String {
-    return Constants.BASE_IMAGE_URL + image
+
+    val context = LocalContext.current
+    val sharedPreferences = context.getSharedPreferences(context.packageName + "_preferences", Context.MODE_PRIVATE)
+    val baseUrl = sharedPreferences.getString(Constants.PREF_API_BASE_KEY, "")
+
+    return baseUrl + image
 }
 
 @Composable

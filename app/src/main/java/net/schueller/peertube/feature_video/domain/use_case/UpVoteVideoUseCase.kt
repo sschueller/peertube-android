@@ -1,5 +1,6 @@
 package net.schueller.peertube.feature_video.domain.use_case
 
+import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import net.schueller.peertube.common.Resource
@@ -15,11 +16,14 @@ class UpVoteVideoUseCase @Inject constructor(
     operator fun invoke(video: Video): Flow<Resource<Video>> = flow {
         try {
             emit(Resource.Loading<Video>())
+            Log.v("UpVoteVideoUseCase", "UpVote: " + video.id)
             repository.rateVideo(video.id, true)
             emit(Resource.Success<Video>(video))
         } catch(e: HttpException) {
+            Log.v("UpVoteVideoUseCase", "Error: " + e.localizedMessage)
             emit(Resource.Error<Video>(e.localizedMessage ?: "An unexpected error occurred"))
         } catch(e: IOException) {
+            Log.v("UpVoteVideoUseCase", "Error: ??" )
             emit(Resource.Error<Video>("Couldn't reach server. Check your internet connection."))
         }
     }

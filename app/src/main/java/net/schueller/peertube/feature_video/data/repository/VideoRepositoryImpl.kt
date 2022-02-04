@@ -8,7 +8,9 @@ import net.schueller.peertube.feature_video.domain.model.*
 import net.schueller.peertube.feature_video.domain.repository.VideoRepository
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
 import okhttp3.ResponseBody
+import org.json.JSONObject
 import javax.inject.Inject
 
 class VideoRepositoryImpl @Inject constructor(
@@ -27,17 +29,18 @@ class VideoRepositoryImpl @Inject constructor(
         return api.getVideoFullDescription(uuid).toDescription()
     }
 
-    override suspend fun rateVideo(id: Int, upVote: Boolean): ResponseBody {
-        data class JsonDataParser(
-            @SerializedName("rating") val rating: String,
-        )
-        val payload = if (upVote) {
-            JsonDataParser(rating = RATING_LIKE)
+    override suspend fun rateVideo(id: Int, upVote: Boolean) {
+
+        val rating = if (upVote) {
+            RATING_LIKE
         } else {
-            JsonDataParser(rating = RATING_DISLIKE)
+            RATING_DISLIKE
         }
-        val gson = Gson()
-        return api.rateVideo(id, gson.toJson(payload).toRequestBody("application/json".toMediaType()))
+        val jsonObject = JSONObject()
+        jsonObject.put("rating", rating)
+        val jsonObjectString = jsonObject.toString()
+
+        api.rateVideo(id, jsonObjectString.toRequestBody("application/json".toMediaType()))
     }
 
     override suspend fun getVideoRating(id: Int): Rating {

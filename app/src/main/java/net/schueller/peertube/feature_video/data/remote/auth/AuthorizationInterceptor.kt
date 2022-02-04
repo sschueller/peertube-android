@@ -11,6 +11,8 @@ class AuthorizationInterceptor @Inject constructor(
 ) :Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 
+        val tag = "AInterc"
+
         val mainResponse: Response
         val mainRequest: Request = chain.request()
         val token = session.getToken()
@@ -21,7 +23,7 @@ class AuthorizationInterceptor @Inject constructor(
             val builder: Request.Builder =
                 mainRequest.newBuilder().header("Authorization", token)
                     .method(mainRequest.method, mainRequest.body)
-            // Log.v("Authorization", "Intercept: " + session.getToken());
+            Log.v(tag, "Intercept: " + session.getToken());
 
             // build request
             val req: Request = builder.build()
@@ -30,9 +32,10 @@ class AuthorizationInterceptor @Inject constructor(
             // logout on auth error
             if (401 or 403 == mainResponse.code) {
                 session.invalidate()
-                Log.v("Authorization", "Intercept: Logout forced")
+                Log.v(tag, "Intercept: Logout forced")
             }
         } else {
+            Log.v(tag, "Mot logged in or no token")
             mainResponse = chain.proceed(chain.request())
         }
 

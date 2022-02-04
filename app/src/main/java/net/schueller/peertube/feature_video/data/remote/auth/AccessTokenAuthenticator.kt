@@ -15,13 +15,18 @@ class AccessTokenAuthenticator @Inject constructor(
 
     override fun authenticate(route: Route?, response: Response): Request? {
 
+        Log.v(tag, "authenticate")
+
         // check if we are using tokens
         val accessToken = session.getToken()
+        Log.v(tag, "accessToken: " + accessToken)
         if (!isRequestWithAccessToken(response) || accessToken == null) {
+            Log.v(tag, "isRequestWithAccessToken")
             return null
         }
         synchronized(this) {
             val newAccessToken = session.getToken()
+            Log.v(tag, "newAccessToken: " + newAccessToken)
             // Access token is refreshed in another thread.
             if (accessToken != newAccessToken) {
                 Log.v(tag, "Access token is refreshed in another thread")
@@ -57,16 +62,21 @@ class AccessTokenAuthenticator @Inject constructor(
     }
 
     private fun isRequestWithAccessToken(response: Response): Boolean {
+        Log.v(tag, "isRequestWithAccessToken")
         val header = response.request.header("Authorization")
         return header != null && header.startsWith("Bearer")
     }
 
     private fun newRequestWithAccessToken(request: Request, accessToken: String): Request {
+        Log.v(tag, "newRequestWithAccessToken")
+
         return request.newBuilder()
             .header("Authorization", accessToken)
             .build()
     }
     private fun newRequestWithOutAccessToken(request: Request): Request {
+        Log.v(tag, "newRequestWithOutAccessToken")
+
         return request.newBuilder()
             .build()
     }

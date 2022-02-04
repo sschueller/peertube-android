@@ -9,12 +9,16 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import net.schueller.peertube.common.Resource
+import net.schueller.peertube.feature_video.data.remote.auth.Session
 import net.schueller.peertube.feature_video.domain.use_case.GetMeUseCase
+import net.schueller.peertube.feature_video.domain.use_case.LogoutUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class MeViewModel @Inject constructor(
-    private val getMeUseCase: GetMeUseCase
+    private val getMeUseCase: GetMeUseCase,
+    private val logoutUseCase: LogoutUseCase,
+    private val session: Session
 ) : ViewModel() {
 
     private val _stateMe = mutableStateOf(MeState())
@@ -23,6 +27,8 @@ class MeViewModel @Inject constructor(
     init {
         getMe()
     }
+
+    val isLoggedIn = session.isLoggedIn()
 
     private fun getMe() {
         // get description data
@@ -43,4 +49,14 @@ class MeViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
+
+
+    fun onEvent(event: MeEvent) {
+        when (event) {
+            MeEvent.Logout -> {
+                logoutUseCase()
+            }
+        }
+    }
+
 }

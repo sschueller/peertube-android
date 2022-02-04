@@ -45,7 +45,7 @@ class AddEditAddressViewModel @Inject constructor(
         savedStateHandle.get<Int>("serverAddressId")?.let { serverAddressId ->
             if(serverAddressId != -1) {
                 viewModelScope.launch {
-                    serverAddressUseCases.getServerAddress(serverAddressId)?.also { serverAddress ->
+                    serverAddressUseCases.getServerAddressUseCase(serverAddressId)?.also { serverAddress ->
                         currentServerAddressId = serverAddress.id
                         _serverName.value = serverName.value.copy(
                             text = serverAddress.serverName
@@ -125,7 +125,7 @@ class AddEditAddressViewModel @Inject constructor(
             is AddEditAddressEvent.SaveServerAddress -> {
                 viewModelScope.launch {
                     try {
-                        serverAddressUseCases.addServerAddress(
+                        serverAddressUseCases.addServerAddressUseCase(
                             ServerAddress(
                                 serverName = serverName.value.text,
                                 serverHost = serverHost.value.text,

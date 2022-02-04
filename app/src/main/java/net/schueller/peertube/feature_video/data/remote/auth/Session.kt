@@ -1,6 +1,7 @@
 package net.schueller.peertube.feature_video.data.remote.auth
 
 import android.content.Context
+import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import net.schueller.peertube.common.Constants.PREF_AUTH_PASSWORD
 import net.schueller.peertube.common.Constants.PREF_AUTH_USERNAME
@@ -31,10 +32,11 @@ class Session @Inject constructor(
 
     fun getToken(): String? {
         // return the token that was saved earlier
-        val token = sharedPreferences.getString(PREF_TOKEN_ACCESS, null
-        )
-        val type = sharedPreferences.getString(PREF_TOKEN_TYPE, "Bearer"
-        )
+        val token = sharedPreferences.getString(PREF_TOKEN_ACCESS, null)
+        val type = sharedPreferences.getString(PREF_TOKEN_TYPE, "Bearer")
+
+        Log.v("Session", "token: " + token)
+
         return if (token != null) {
             "$type $token"
         } else null

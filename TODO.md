@@ -30,7 +30,7 @@ Issues:
 - Memory issue on explore list
 - Word "Subscribe" too long in app bar
 - VideoList meta bar can't be dynamic height, causes scroll back issue.
-- Refreshing video list causes odd loading order of video items
+x Refreshing video list causes odd loading order of video items
 - playback rotate on click doesn't re-hide buttons
 - Explore list is memory intensive, leak??
 - Access Token refresh circular injection problem

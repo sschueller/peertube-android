@@ -180,7 +180,7 @@ fun VideoListScreen(
                     } else {
                         itemsIndexed(lazyVideoItems) { item, video ->
                             if (video != null) {
-//                                Log.v("VLV", video.id.toString() + "-" + item.toString())
+                                Log.v("VLV", video.id.toString() + "-" + item.toString())
                                 VideoListItem(
                                     video = video,
                                     onItemClick = {

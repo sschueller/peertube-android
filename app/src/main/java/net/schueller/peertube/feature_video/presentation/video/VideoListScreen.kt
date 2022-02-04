@@ -59,24 +59,6 @@ fun VideoListScreen(
     val context = LocalContext.current
 
 
-    // Events
-    LaunchedEffect(key1 = true) {
-        viewModel.eventFlow.collectLatest { event ->
-            when(event) {
-                is VideoListViewModel.UiEvent.ScrollToTop -> {
-                    listState.scrollToItem(index = 0)
-                }
-                is VideoListViewModel.UiEvent.ShowToast -> {
-                    Toast.makeText(
-                        context,
-                        event.message,
-                        event.length
-                    ).show()
-                }
-            }
-        }
-    }
-
     // Auto hide top appbar
     val toolBarHeight = 56.dp
     val toolBarHeightPx = with(LocalDensity.current) { toolBarHeight.roundToPx().toFloat()}
@@ -91,6 +73,27 @@ fun VideoListScreen(
             }
         }
     }
+
+    // Events
+    LaunchedEffect(key1 = true) {
+        viewModel.eventFlow.collectLatest { event ->
+            when(event) {
+                is VideoListViewModel.UiEvent.ScrollToTop -> {
+                    listState.scrollToItem(index = 0)
+                    // reset toolbar to visible
+                    toolBarOffsetHeightPx.value = 0f
+                }
+                is VideoListViewModel.UiEvent.ShowToast -> {
+                    Toast.makeText(
+                        context,
+                        event.message,
+                        event.length
+                    ).show()
+                }
+            }
+        }
+    }
+
 
     Box(
         Modifier

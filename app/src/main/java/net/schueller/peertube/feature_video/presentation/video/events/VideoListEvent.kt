@@ -10,4 +10,7 @@ sealed class VideoListEvent {
     data class UpdateQuery(
         val set: String?
     ): VideoListEvent()
+    data class UpdateSearchQuery(
+        val text: String?
+    ): VideoListEvent()
 }

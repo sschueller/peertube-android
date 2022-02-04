@@ -21,6 +21,10 @@ class VideoRepositoryImpl @Inject constructor(
         return api.getVideos(start, count, sort, nsfw, filter, languages).toVideoList()
     }
 
+    override suspend fun searchVideos(start: Int, count: Int, sort: String?,nsfw: String?, searchQuery: String?, filter: String?, languages: Set<String?>?): List<Video> {
+        return api.searchVideos(start, count, sort, nsfw, searchQuery, filter, languages).toVideoList()
+    }
+
     override suspend fun getVideoByUuid(uuid: String): Video {
         return api.getVideo(uuid).toVideo()
     }

@@ -8,6 +8,8 @@ interface VideoRepository {
 
     suspend fun getVideos(start: Int,count: Int,sort: String?,nsfw: String?,filter: String?,languages: Set<String?>?): List<Video>
 
+    suspend fun searchVideos(start: Int, count: Int, sort: String?,nsfw: String?, searchQuery: String?, filter: String?, languages: Set<String?>?): List<Video>
+
     suspend fun getOverviewVideos(page: Int): List<Overview>
 
     suspend fun getVideoByUuid(uuid: String): Video

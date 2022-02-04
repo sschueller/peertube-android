@@ -10,16 +10,20 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.jamal.composeprefs.ui.ifNotNullThen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import net.schueller.peertube.common.Constants.VIDEOS_API_PAGE_SIZE
+import net.schueller.peertube.feature_server_address.presentation.address_add_edit.AddressTextFieldState
 import net.schueller.peertube.feature_video.data.remote.auth.Session
 import net.schueller.peertube.feature_video.domain.model.Video
 import net.schueller.peertube.feature_video.domain.repository.VideoRepository
+import net.schueller.peertube.feature_video.domain.source.SearchPagingSource
 import net.schueller.peertube.feature_video.domain.source.VideoPagingSource
 import net.schueller.peertube.feature_video.presentation.video.events.*
 import net.schueller.peertube.feature_video.presentation.video.states.VideoListState
+import net.schueller.peertube.feature_video.presentation.video.states.VideoSearchState
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +34,9 @@ class VideoListViewModel @Inject constructor(
 
     private val _state = mutableStateOf(VideoListState())
     val state: State<VideoListState> = _state
+
+    private val _videoSearchState = mutableStateOf(VideoSearchState())
+    val videoSearchState: State<VideoSearchState> = _videoSearchState
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
@@ -42,7 +49,9 @@ class VideoListViewModel @Inject constructor(
         getVideos()
     }
 
-    private fun getVideos() {
+    var noSearchResults = false
+
+    fun getVideos() {
         viewModelScope.launch {
             Pager(
                 PagingConfig(
@@ -50,14 +59,26 @@ class VideoListViewModel @Inject constructor(
                     maxSize = 100
                 )
             ) {
-                VideoPagingSource(
-                    repository,
-                    _state.value.sort,
-                    _state.value.nsfw,
-                    _state.value.filter,
-                    _state.value.languages
-                )
+                if (videoSearchState.value.text.isNotEmpty()) {
+                    SearchPagingSource(
+                        repository,
+                        _state.value.sort,
+                        _state.value.nsfw,
+                        videoSearchState.value.text,
+                        _state.value.filter,
+                        _state.value.languages
+                    )
+                } else {
+                    VideoPagingSource(
+                        repository,
+                        _state.value.sort,
+                        _state.value.nsfw,
+                        _state.value.filter,
+                        _state.value.languages
+                    )
+                }
             }.flow.cachedIn(viewModelScope).collect {
+                noSearchResults = it.equals(null)
                 _videos.value = it
             }
         }
@@ -127,6 +148,13 @@ class VideoListViewModel @Inject constructor(
                     _eventFlow.emit(UiEvent.ScrollToTop)
                 }
 
+            }
+            is VideoListEvent.UpdateSearchQuery -> {
+                viewModelScope.launch {
+                    _videoSearchState.value = videoSearchState.value.copy(
+                        text = event.text ?: ""
+                    )
+                }
             }
         }
     }

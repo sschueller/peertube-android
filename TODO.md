@@ -34,4 +34,4 @@ Issues:
 - playback rotate on click doesn't re-hide buttons
 - Explore list is memory intensive, leak??
 - Access Token refresh circular injection problem
-
+- app crashes when clicking items in background list while player is visible (minimode)

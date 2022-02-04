@@ -10,8 +10,3 @@
   8. Wait for gitlab -> github sync
   9. Run publishGithub
 
-
-## fastlane update
-```
-bundle update
-```

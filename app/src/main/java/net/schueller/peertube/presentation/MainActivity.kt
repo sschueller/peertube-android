@@ -62,10 +62,10 @@ class MainActivity : ComponentActivity() {
 
     private val videoHelper = VideoHelper()
 
-    @ExperimentalCoilApi
-    @ExperimentalPermissionsApi
-    @ExperimentalComposeUiApi
-    @ExperimentalMaterialApi
+    @OptIn(ExperimentalPermissionsApi::class,
+        androidx.compose.material.ExperimentalMaterialApi::class,
+        androidx.compose.ui.ExperimentalComposeUiApi::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

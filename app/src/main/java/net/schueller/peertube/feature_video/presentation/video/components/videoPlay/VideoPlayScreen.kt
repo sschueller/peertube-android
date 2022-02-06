@@ -1,7 +1,9 @@
 package net.schueller.peertube.feature_video.presentation.video.components.videoPlay
 
 import android.content.res.Configuration
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.*
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -375,10 +377,9 @@ fun VideoPlayScreen(
             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
     }
-//    BackHandler(enabled = true) {
-//        Log.v("back", "back pressed")
-//
-//        enterPIPMode(activity)
-//    }
+    BackHandler(enabled = true) {
+        Log.v("back", "back pressed")
+        videoPlayViewModel.playerVisible.value = false
+    }
 }
 

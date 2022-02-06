@@ -102,11 +102,11 @@ class AddEditAddressViewModel @Inject constructor(
             is AddEditAddressEvent.PrefillServerFromSearch -> {
 
                 onEvent(AddEditAddressEvent.EnteredServerName(event.server.name ?: ""))
-                onEvent(AddEditAddressEvent.EnteredServerHost(event.server.host ?: ""))
+//                onEvent(AddEditAddressEvent.EnteredServerHost(event.server.host ?: ""))
 
                 viewModelScope.launch {
 
-                    Log.v("AEAVM", "Selected Server: " + event.server.host.toString())
+                    Log.v("AEAVM", "Selected Server: " + event.server.host)
 
                     // TODO: doesn't work, textfield is not updated
 

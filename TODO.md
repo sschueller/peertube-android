@@ -23,11 +23,16 @@ x discover view
 - Permissions for download
 - subscribe / unsubscribe
 x CI pipeline (gradle?)
+- add language filter support
+- add app language selection
+- add themes and selection
+- Add NSFW filter
+- Translate all strings
+- Swipe player down and up
 
 Issues:
 - Server change doesn't work until restart (retrofit)
 - Login/logout needs to update UI
-- Memory issue on explore list
 - Word "Subscribe" too long in app bar
 - VideoList meta bar can't be dynamic height, causes scroll back issue.
 x Refreshing video list causes odd loading order of video items

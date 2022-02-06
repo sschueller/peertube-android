@@ -12,6 +12,25 @@ import com.jamal.composeprefs.ui.PrefsScreen
 import com.jamal.composeprefs.ui.prefs.*
 import net.schueller.peertube.presentation.dataStore
 import net.schueller.peertube.R
+import net.schueller.peertube.common.Constants.COLOR_PREF_AMBER
+import net.schueller.peertube.common.Constants.COLOR_PREF_BLUE
+import net.schueller.peertube.common.Constants.COLOR_PREF_BLUEGRAY
+import net.schueller.peertube.common.Constants.COLOR_PREF_BROWN
+import net.schueller.peertube.common.Constants.COLOR_PREF_CYAN
+import net.schueller.peertube.common.Constants.COLOR_PREF_DEEPORANGE
+import net.schueller.peertube.common.Constants.COLOR_PREF_DEEPPURPLE
+import net.schueller.peertube.common.Constants.COLOR_PREF_GRAY
+import net.schueller.peertube.common.Constants.COLOR_PREF_GREEN
+import net.schueller.peertube.common.Constants.COLOR_PREF_INDIGO
+import net.schueller.peertube.common.Constants.COLOR_PREF_LIGHTBLUE
+import net.schueller.peertube.common.Constants.COLOR_PREF_LIGHTGREEN
+import net.schueller.peertube.common.Constants.COLOR_PREF_LIME
+import net.schueller.peertube.common.Constants.COLOR_PREF_ORANGE
+import net.schueller.peertube.common.Constants.COLOR_PREF_PINK
+import net.schueller.peertube.common.Constants.COLOR_PREF_PURPLE
+import net.schueller.peertube.common.Constants.COLOR_PREF_RED
+import net.schueller.peertube.common.Constants.COLOR_PREF_TEAL
+import net.schueller.peertube.common.Constants.COLOR_PREF_YELLOW
 import net.schueller.peertube.common.Constants.PREF_ACCEPT_INSECURE_KEY
 import net.schueller.peertube.common.Constants.PREF_BACKGROUND_AUDIO_KEY
 import net.schueller.peertube.common.Constants.PREF_BACKGROUND_BEHAVIOR_KEY
@@ -245,9 +264,25 @@ fun SettingsScreen() {
                         title = stringResource(R.string.pref_title_app_theme),
                         useSelectedAsSummary = true,
                         entries = mapOf(
-                            "0" to "Entry 1",
-                            "1" to "Entry 2",
-                            "2" to "Entry 3"
+                           COLOR_PREF_RED to stringResource(R.string.red),
+                           COLOR_PREF_PINK to stringResource(R.string.pink),
+                           COLOR_PREF_PURPLE to stringResource(R.string.purple),
+                           COLOR_PREF_DEEPPURPLE to stringResource(R.string.deeppurple),
+                           COLOR_PREF_INDIGO to stringResource(R.string.indigo),
+                           COLOR_PREF_BLUE to stringResource(R.string.blue),
+                           COLOR_PREF_LIGHTBLUE to stringResource(R.string.lightblue),
+                           COLOR_PREF_CYAN to stringResource(R.string.cyan),
+                           COLOR_PREF_TEAL to stringResource(R.string.teal),
+                           COLOR_PREF_GREEN to stringResource(R.string.green),
+                           COLOR_PREF_LIGHTGREEN to stringResource(R.string.lightgreen),
+                           COLOR_PREF_LIME to stringResource(R.string.lime),
+                           COLOR_PREF_YELLOW to stringResource(R.string.yellow),
+                           COLOR_PREF_AMBER to stringResource(R.string.amber),
+                           COLOR_PREF_ORANGE to stringResource(R.string.orange),
+                           COLOR_PREF_DEEPORANGE to stringResource(R.string.deeporange),
+                           COLOR_PREF_BROWN to stringResource(R.string.brown),
+                           COLOR_PREF_GRAY to stringResource(R.string.gray),
+                           COLOR_PREF_BLUEGRAY to stringResource(R.string.bluegray)
                         )
                     )
                 }

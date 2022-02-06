@@ -1,76 +1,90 @@
 package net.schueller.peertube.presentation.ui.theme
 
+import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.lightColorScheme
-import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import net.schueller.peertube.common.Constants
+import net.schueller.peertube.common.Constants.COLOR_PREF_BLUE
+import net.schueller.peertube.common.Constants.COLOR_PREF_GREEN
+import net.schueller.peertube.common.Constants.COLOR_PREF_RED
+import net.schueller.peertube.presentation.dataStore
 
-private val LightThemeColors = lightColorScheme(
 
-    primary = md_theme_light_primary,
-    onPrimary = md_theme_light_onPrimary,
-    primaryContainer = md_theme_light_primaryContainer,
-    onPrimaryContainer = md_theme_light_onPrimaryContainer,
-    secondary = md_theme_light_secondary,
-    onSecondary = md_theme_light_onSecondary,
-    secondaryContainer = md_theme_light_secondaryContainer,
-    onSecondaryContainer = md_theme_light_onSecondaryContainer,
-    tertiary = md_theme_light_tertiary,
-    onTertiary = md_theme_light_onTertiary,
-    tertiaryContainer = md_theme_light_tertiaryContainer,
-    onTertiaryContainer = md_theme_light_onTertiaryContainer,
-    error = md_theme_light_error,
-    errorContainer = md_theme_light_errorContainer,
-    onError = md_theme_light_onError,
-    onErrorContainer = md_theme_light_onErrorContainer,
-    background = md_theme_light_background,
-    onBackground = md_theme_light_onBackground,
-    surface = md_theme_light_surface,
-    onSurface = md_theme_light_onSurface,
-    surfaceVariant = md_theme_light_surfaceVariant,
-    onSurfaceVariant = md_theme_light_onSurfaceVariant,
-    outline = md_theme_light_outline,
-    inverseOnSurface = md_theme_light_inverseOnSurface,
-    inverseSurface = md_theme_light_inverseSurface,
-)
-private val DarkThemeColors = darkColorScheme(
-
-    primary = md_theme_dark_primary,
-    onPrimary = md_theme_dark_onPrimary,
-    primaryContainer = md_theme_dark_primaryContainer,
-    onPrimaryContainer = md_theme_dark_onPrimaryContainer,
-    secondary = md_theme_dark_secondary,
-    onSecondary = md_theme_dark_onSecondary,
-    secondaryContainer = md_theme_dark_secondaryContainer,
-    onSecondaryContainer = md_theme_dark_onSecondaryContainer,
-    tertiary = md_theme_dark_tertiary,
-    onTertiary = md_theme_dark_onTertiary,
-    tertiaryContainer = md_theme_dark_tertiaryContainer,
-    onTertiaryContainer = md_theme_dark_onTertiaryContainer,
-    error = md_theme_dark_error,
-    errorContainer = md_theme_dark_errorContainer,
-    onError = md_theme_dark_onError,
-    onErrorContainer = md_theme_dark_onErrorContainer,
-    background = md_theme_dark_background,
-    onBackground = md_theme_dark_onBackground,
-    surface = md_theme_dark_surface,
-    onSurface = md_theme_dark_onSurface,
-    surfaceVariant = md_theme_dark_surfaceVariant,
-    onSurfaceVariant = md_theme_dark_onSurfaceVariant,
-    outline = md_theme_dark_outline,
-    inverseOnSurface = md_theme_dark_inverseOnSurface,
-    inverseSurface = md_theme_dark_inverseSurface,
-)
 @Composable
 fun PeertubeTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
-    val colors = if (!useDarkTheme) {
-        LightThemeColors
+
+    val context = LocalContext.current
+    val sharedPreferences = context.getSharedPreferences(context.packageName + "_preferences", Context.MODE_PRIVATE)
+
+
+    // TODO: get pref out of dataStore, migrate old prefs
+
+//    val EXAMPLE_COUNTER = booleanPreferencesKey(Constants.PREF_DARK_MODE_KEY)
+//    val useDarkMode: Flow<Boolean> = LocalContext.current.dataStore.data
+//        .map { preferences ->
+//            preferences[EXAMPLE_COUNTER] ?: useDarkTheme
+//    }
+//
+
+
+    val useDarkMode = sharedPreferences.getBoolean(
+        Constants.PREF_DARK_MODE_KEY,
+        useDarkTheme
+    )
+
+    Log.v("TH", "userdark: "+useDarkMode)
+
+    val theme = sharedPreferences.getString(
+        Constants.PREF_THEME_KEY,
+        COLOR_PREF_BLUE
+    )
+    Log.v("TH", "theme: "+theme)
+
+
+    // Support existing saved preferences in older version
+    // https://material-foundation.github.io/material-theme-builder/
+    val colors = if (!useDarkMode) {
+        when (theme) {
+            COLOR_PREF_BLUE -> {
+                net.schueller.peertube.presentation.ui.theme.colors.blue.LightThemeColors
+            }
+            COLOR_PREF_RED -> {
+                net.schueller.peertube.presentation.ui.theme.colors.red.LightThemeColors
+            }
+            COLOR_PREF_GREEN -> {
+                net.schueller.peertube.presentation.ui.theme.colors.green.LightThemeColors
+            }
+            else -> {
+                net.schueller.peertube.presentation.ui.theme.colors.def.LightThemeColors
+            }
+        }
     } else {
-        DarkThemeColors
+        when (theme) {
+            COLOR_PREF_BLUE -> {
+                net.schueller.peertube.presentation.ui.theme.colors.blue.DarkThemeColors
+            }
+            COLOR_PREF_RED -> {
+                net.schueller.peertube.presentation.ui.theme.colors.red.DarkThemeColors
+            }
+            COLOR_PREF_GREEN -> {
+                Log.v("TH", "use green : "+COLOR_PREF_GREEN)
+
+                net.schueller.peertube.presentation.ui.theme.colors.green.DarkThemeColors
+            }
+            else -> {
+                net.schueller.peertube.presentation.ui.theme.colors.def.DarkThemeColors
+            }
+        }
     }
 
     MaterialTheme(

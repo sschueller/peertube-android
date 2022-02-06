@@ -43,4 +43,26 @@ object Constants {
 
     const val APP_BACKGROUND_AUDIO_INTENT = "BACKGROUND_AUDIO"
 
+    // legacy color prefs
+    const val COLOR_PREF_RED = "AppTheme.RED"
+    const val COLOR_PREF_PINK = "AppTheme.PINK"
+    const val COLOR_PREF_PURPLE = "AppTheme.PURPLE"
+    const val COLOR_PREF_DEEPPURPLE = "AppTheme.DEEPPURPLE"
+    const val COLOR_PREF_INDIGO = "AppTheme.INDIGO"
+    const val COLOR_PREF_BLUE = "AppTheme.BLUE"
+    const val COLOR_PREF_LIGHTBLUE = "AppTheme.LIGHTBLUE"
+    const val COLOR_PREF_CYAN = "AppTheme.CYAN"
+    const val COLOR_PREF_TEAL = "AppTheme.TEAL"
+    const val COLOR_PREF_GREEN = "AppTheme.GREEN"
+    const val COLOR_PREF_LIGHTGREEN = "AppTheme.LIGHTGREEN"
+    const val COLOR_PREF_LIME = "AppTheme.LIME"
+    const val COLOR_PREF_YELLOW = "AppTheme.YELLOW"
+    const val COLOR_PREF_AMBER = "AppTheme.AMBER"
+    const val COLOR_PREF_ORANGE = "AppTheme.ORANGE"
+    const val COLOR_PREF_DEEPORANGE = "AppTheme.DEEPORANGE"
+    const val COLOR_PREF_BROWN = "AppTheme.BROWN"
+    const val COLOR_PREF_GRAY = "AppTheme.GRAY"
+    const val COLOR_PREF_BLUEGRAY = "AppTheme.BLUEGRAY"
+
+
 }

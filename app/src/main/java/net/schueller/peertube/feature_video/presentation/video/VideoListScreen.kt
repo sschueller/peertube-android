@@ -35,7 +35,6 @@ import net.schueller.peertube.feature_video.presentation.video.components.appBar
 import net.schueller.peertube.feature_video.presentation.video.components.videoPlay.VideoPlayScreen
 import net.schueller.peertube.feature_video.presentation.video.events.VideoPlayEvent
 import net.schueller.peertube.feature_video.presentation.video.player.ExoPlayerHolder
-import net.schueller.peertube.presentation.Screen
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterialApi::class)

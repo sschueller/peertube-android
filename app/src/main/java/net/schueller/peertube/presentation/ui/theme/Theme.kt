@@ -28,6 +28,11 @@ fun PeertubeTheme(
 
 
     // TODO: get pref out of dataStore, migrate old prefs
+//    LocalContext.current.dataStore.data.map {
+//
+//    }
+
+
 
 //    val EXAMPLE_COUNTER = booleanPreferencesKey(Constants.PREF_DARK_MODE_KEY)
 //    val useDarkMode: Flow<Boolean> = LocalContext.current.dataStore.data

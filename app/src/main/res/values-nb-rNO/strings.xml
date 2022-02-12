@@ -201,4 +201,6 @@
     <string name="pref_title_video_speed">Forvalgt avspillingshastighet</string>
     <string name="pref_description_video_speed">Velg videoavspillingshastighet for hele systemet</string>
     <string name="ab">Abkhasisk</string>
+    <string name="video_description_read_more">Les mer</string>
+    <string name="video_get_full_description_failed">Kunne ikke hente full videobeskrivelse</string>
 </resources>

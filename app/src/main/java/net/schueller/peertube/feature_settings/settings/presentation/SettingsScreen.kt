@@ -1,4 +1,4 @@
-package net.schueller.peertube.feature_settings.settings
+package net.schueller.peertube.feature_settings.settings.presentation
 
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -7,7 +7,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.jamal.composeprefs.ui.GroupHeader
 import com.jamal.composeprefs.ui.PrefsScreen
 import com.jamal.composeprefs.ui.prefs.*
 import net.schueller.peertube.presentation.dataStore

@@ -15,10 +15,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -27,7 +25,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import coil.annotation.ExperimentalCoilApi
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
@@ -40,7 +37,7 @@ import net.schueller.peertube.common.Constants.PREF_BACKGROUND_STOP_KEY
 import net.schueller.peertube.common.Constants.PREF_BACK_PAUSE_KEY
 import net.schueller.peertube.common.VideoHelper
 import net.schueller.peertube.feature_server_address.presentation.address_add_edit.AddEditAddressScreen
-import net.schueller.peertube.feature_settings.settings.SettingsScreen
+import net.schueller.peertube.feature_settings.settings.presentation.SettingsScreen
 import net.schueller.peertube.presentation.ui.theme.PeertubeTheme
 import net.schueller.peertube.feature_video.presentation.video.VideoListScreen
 import net.schueller.peertube.feature_server_address.presentation.ServerAddressScreen
@@ -64,7 +61,8 @@ class MainActivity : ComponentActivity() {
 
     @OptIn(ExperimentalPermissionsApi::class,
         androidx.compose.material.ExperimentalMaterialApi::class,
-        androidx.compose.ui.ExperimentalComposeUiApi::class
+        androidx.compose.ui.ExperimentalComposeUiApi::class,
+        coil.annotation.ExperimentalCoilApi::class
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,7 +93,9 @@ class MainActivity : ComponentActivity() {
 //                    }
 //                )
 
-                Surface(color = MaterialTheme.colors.background) {
+                Surface(
+                    color = MaterialTheme.colors.background
+                ) {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,

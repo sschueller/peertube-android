@@ -19,6 +19,8 @@ import net.schueller.peertube.feature_server_address.domain.repository.ServerAdd
 import net.schueller.peertube.feature_server_address.domain.repository.ServerRepository
 import net.schueller.peertube.feature_video.domain.repository.VideoRepository
 import net.schueller.peertube.feature_server_address.domain.use_case.*
+import net.schueller.peertube.feature_settings.settings.data.repository.SettingsRepositoryImpl
+import net.schueller.peertube.feature_settings.settings.domain.repository.SettingsRepository
 import net.schueller.peertube.feature_video.data.remote.auth.LoginService
 import net.schueller.peertube.feature_video.data.remote.auth.Session
 import net.schueller.peertube.feature_video.data.repository.RetrofitInstance
@@ -76,6 +78,12 @@ object AppModule {
     @Singleton
     fun provideVideoRepository(api: PeerTubeApi): VideoRepository {
         return VideoRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSettingsRepository(@ApplicationContext context: Context): SettingsRepository {
+        return SettingsRepositoryImpl(context)
     }
 
     @Provides

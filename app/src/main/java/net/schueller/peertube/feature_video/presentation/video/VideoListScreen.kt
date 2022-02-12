@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -15,6 +16,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -35,6 +37,7 @@ import net.schueller.peertube.feature_video.presentation.video.components.appBar
 import net.schueller.peertube.feature_video.presentation.video.components.videoPlay.VideoPlayScreen
 import net.schueller.peertube.feature_video.presentation.video.events.VideoPlayEvent
 import net.schueller.peertube.feature_video.presentation.video.player.ExoPlayerHolder
+import net.schueller.peertube.presentation.ui.theme.PeertubeTheme
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterialApi::class)

@@ -1,96 +1,77 @@
 package net.schueller.peertube.presentation.ui.theme
 
-import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import net.schueller.peertube.common.Constants
+import androidx.hilt.navigation.compose.hiltViewModel
 import net.schueller.peertube.common.Constants.COLOR_PREF_BLUE
 import net.schueller.peertube.common.Constants.COLOR_PREF_GREEN
 import net.schueller.peertube.common.Constants.COLOR_PREF_RED
-import net.schueller.peertube.presentation.dataStore
-
+import net.schueller.peertube.common.Constants.PREF_DARK_MODE_AUTO
+import net.schueller.peertube.common.Constants.PREF_DARK_MODE_DARK
 
 @Composable
 fun PeertubeTheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
+    viewModel: ThemeViewModel = hiltViewModel(),
     content: @Composable() () -> Unit
 ) {
 
-    val context = LocalContext.current
-    val sharedPreferences = context.getSharedPreferences(context.packageName + "_preferences", Context.MODE_PRIVATE)
-
-
-    // TODO: get pref out of dataStore, migrate old prefs
-//    LocalContext.current.dataStore.data.map {
-//
-//    }
-
-
-
-//    val EXAMPLE_COUNTER = booleanPreferencesKey(Constants.PREF_DARK_MODE_KEY)
-//    val useDarkMode: Flow<Boolean> = LocalContext.current.dataStore.data
-//        .map { preferences ->
-//            preferences[EXAMPLE_COUNTER] ?: useDarkTheme
-//    }
-//
-
-
-    val useDarkMode = sharedPreferences.getBoolean(
-        Constants.PREF_DARK_MODE_KEY,
+    val useDarkMode = if (viewModel.themeState.value.darkMode == PREF_DARK_MODE_AUTO) {
         useDarkTheme
-    )
+    } else viewModel.themeState.value.darkMode == PREF_DARK_MODE_DARK
 
-    Log.v("TH", "userdark: "+useDarkMode)
-
-    val theme = sharedPreferences.getString(
-        Constants.PREF_THEME_KEY,
-        COLOR_PREF_BLUE
-    )
-    Log.v("TH", "theme: "+theme)
-
+    Log.v("TH", "useDarkMode : "+useDarkMode)
+    Log.v("TH", "viewModel : "+viewModel.themeState.value.currentTheme)
 
     // Support existing saved preferences in older version
     // https://material-foundation.github.io/material-theme-builder/
     val colors = if (!useDarkMode) {
-        when (theme) {
+        when (viewModel.themeState.value.currentTheme) {
             COLOR_PREF_BLUE -> {
+                Log.v("TH", "use COLOR_PREF_BLUE : "+COLOR_PREF_BLUE)
+
                 net.schueller.peertube.presentation.ui.theme.colors.blue.LightThemeColors
             }
             COLOR_PREF_RED -> {
+                Log.v("TH", "use COLOR_PREF_RED : "+COLOR_PREF_RED)
+
                 net.schueller.peertube.presentation.ui.theme.colors.red.LightThemeColors
             }
             COLOR_PREF_GREEN -> {
+                Log.v("TH", "use COLOR_PREF_GREEN : "+COLOR_PREF_GREEN)
+
                 net.schueller.peertube.presentation.ui.theme.colors.green.LightThemeColors
             }
             else -> {
+                Log.v("TH", "else : ")
+
                 net.schueller.peertube.presentation.ui.theme.colors.def.LightThemeColors
             }
         }
     } else {
-        when (theme) {
+        when (viewModel.themeState.value.currentTheme) {
             COLOR_PREF_BLUE -> {
+                Log.v("TH", "use COLOR_PREF_BLUE : "+COLOR_PREF_BLUE)
                 net.schueller.peertube.presentation.ui.theme.colors.blue.DarkThemeColors
             }
             COLOR_PREF_RED -> {
+                Log.v("TH", "use COLOR_PREF_RED : "+COLOR_PREF_RED)
                 net.schueller.peertube.presentation.ui.theme.colors.red.DarkThemeColors
             }
             COLOR_PREF_GREEN -> {
-                Log.v("TH", "use green : "+COLOR_PREF_GREEN)
-
+                Log.v("TH", "use COLOR_PREF_GREEN : "+COLOR_PREF_GREEN)
                 net.schueller.peertube.presentation.ui.theme.colors.green.DarkThemeColors
             }
             else -> {
+                Log.v("TH", "else : ")
                 net.schueller.peertube.presentation.ui.theme.colors.def.DarkThemeColors
             }
         }
     }
+
+    Log.v("TH", "colors : " + colors.primary)
 
     MaterialTheme(
         colorScheme = colors,

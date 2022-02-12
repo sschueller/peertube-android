@@ -29,6 +29,7 @@ x CI pipeline (gradle?)
 - Add NSFW filter
 - Translate all strings
 - Swipe player down and up
+- implement preferences using data stores
 
 Issues:
 - Server change doesn't work until restart (retrofit)

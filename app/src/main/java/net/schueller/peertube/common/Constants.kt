@@ -3,8 +3,7 @@ package net.schueller.peertube.common
 object Constants {
 
     const val PREF_LANG_APP_KEY = "pref_language_app"
-    const val PREF_THEME_KEY = "pref_theme"
-    const val PREF_DARK_MODE_KEY = "pref_dark_mode"
+
     const val PREF_SHOW_NSFW_KEY = "pref_show_nsfw"
     const val PREF_VIDEO_LANG_KEY = "pref_show_nsfw"
     const val PREF_VIDEO_SPEED_KEY = "pref_video_speed"
@@ -43,7 +42,14 @@ object Constants {
 
     const val APP_BACKGROUND_AUDIO_INTENT = "BACKGROUND_AUDIO"
 
+    const val PREF_THEME_KEY = "pref_theme"
+    const val PREF_DARK_MODE_KEY = "pref_dark_mode_2"
+    const val PREF_DARK_MODE_DARK = "dark"
+    const val PREF_DARK_MODE_LIGHT = "light"
+    const val PREF_DARK_MODE_AUTO = "auto"
+
     // legacy color prefs
+    const val COLOR_PREF_DEFAULT = "AppTheme.RED"
     const val COLOR_PREF_RED = "AppTheme.RED"
     const val COLOR_PREF_PINK = "AppTheme.PINK"
     const val COLOR_PREF_PURPLE = "AppTheme.PURPLE"

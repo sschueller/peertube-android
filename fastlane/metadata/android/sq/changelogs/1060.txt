@@ -1,0 +1,11 @@
+# 1.4.0 (20 shkurt, 2021)
+
+
+### Ndreqje të Metash
+
+* Vithisje sdk-je 21,22,23,24 pajisjesh gjatë nisjes, ndreqje [#262](https://git.techdroid.com/sschueller/peertube/issues/262) 5622b76
+
+
+### Veçori
+
+* shtim rregullimi shpejtësie luajtjeje të videove globalisht fa79b2d

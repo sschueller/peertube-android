@@ -1,0 +1,6 @@
+# 1.6.0 (20 nëntor, 2021)
+
+
+### Veçori
+
+* Ngarkim përshkrimi të plotë 2f89538

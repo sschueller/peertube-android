@@ -1,0 +1,6 @@
+# 1.2.0 (7 shkurt, 2021)
+
+
+### Veçori
+
+* Tregim i videove të drejtpërdrejta te lista videosh 8518b80

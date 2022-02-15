@@ -350,4 +350,11 @@
     <string name="prompt_server">Shërbyes</string>
     <string name="title_activity_login">Hyni</string>
     <string name="title_activity_settings">Rregullime</string>
+    <string name="action_bar_title_address_book">Libër Adresash</string>
+    <string name="video_get_full_description_failed">S’u pru dot përshkrimi i plotë i videos</string>
+    <string name="video_description_read_more">Lexoni Më Tepër</string>
+    <string name="pref_description_video_speed">Përzgjidhni Shpejtësi globale për Luajtje Videosh</string>
+    <string name="pref_title_video_speed">Shpejtësi Parazgjedhje Luajtjeje</string>
+    <string name="rm">Romansh</string>
+    <string name="pref_title_buildtime">Kohë Montimi</string>
 </resources>

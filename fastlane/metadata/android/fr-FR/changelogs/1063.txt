@@ -1,0 +1,6 @@
+## 1.5.2 (2021-10-11)
+
+
+### Corrections
+
+* retrait des langues incompatibles (android play) 4fd8ff9

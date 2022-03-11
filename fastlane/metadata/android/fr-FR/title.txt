@@ -1,1 +1,1 @@
-Thorium a PeerTube client
+Thorium est un client PeerTube

@@ -1,0 +1,6 @@
+## 1.8.1 (2021-12-27)
+
+
+### Corrections
+
+* mise à jour du lien de la vidéo du play store ffa7d40

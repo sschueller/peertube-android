@@ -1,0 +1,6 @@
+## 1.5.1 (2021-10-10)
+
+
+### Corrections
+
+* langues incompatible (android play) b4efa27

@@ -1,0 +1,11 @@
+# 1.4.0 (2021-02-20)
+
+
+### Correction
+
+* Le plantage des appareils avec le sdk 21, 22, 23 et 24 au démarrage a été corrigé [#262](https://git.techdroid.com/sschueller/peertube/issues/262) 5622b76
+
+
+### Fonctionnalité
+
+* ajout d'un réglage global pour la vitesse de lecture fa79b2d

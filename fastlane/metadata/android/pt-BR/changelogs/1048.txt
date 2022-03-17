@@ -1,0 +1,1 @@
+- versão f-droid para corrigir o auto deployment

@@ -87,7 +87,7 @@
     <string name="pref_title_dark_mode">Mørkt modus</string>
     <string name="pref_description_dark_mode">Start programmet for å ikle mørk drakt.</string>
     <string name="pref_title_app_theme">Programdrakt</string>
-    <string name="pref_description_app_theme">Start programmet på ny for å ikle drakt.</string>
+    <string name="pref_description_app_theme">Start programmet på nytt for å ikle drakt.</string>
     <string name="indigo">Indigo</string>
     <string name="cyan">Turkis</string>
     <string name="lime">Lime</string>
@@ -95,7 +95,7 @@
     <string name="video_speed_05">0,5×</string>
     <string name="video_speed_15">1,5×</string>
     <string name="video_speed_20">2×</string>
-    <string name="pref_description_background_play">Hvis påskrudd vil videoer spilles videre i bakgrunnen.</string>
+    <string name="pref_description_background_play">Video spiller videre i bakgrunnen om dette aktiveres.</string>
     <string name="video_login_required_for_service">Du må logge inn for å bruke denne tjenesten</string>
     <string name="ko">Koreansk</string>
     <string name="action_set_url">Velg tjener</string>
@@ -202,5 +202,8 @@
     <string name="pref_description_video_speed">Velg videoavspillingshastighet for hele systemet</string>
     <string name="ab">Abkhasisk</string>
     <string name="video_description_read_more">Les mer</string>
-    <string name="video_get_full_description_failed">Kunne ikke hente full videobeskrivelse</string>
+    <string name="video_get_full_description_failed">Kunne ikke hente komplett videobeskrivelse</string>
+    <string name="so">Somalisk</string>
+    <string name="sk"></string>
+    <string name="sfs">Sørafrikansk tegnspråk</string>
 </resources>

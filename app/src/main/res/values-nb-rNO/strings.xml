@@ -65,8 +65,8 @@
     <string name="bottom_nav_title_trending">Populært</string>
     <string name="meta_data_views">" Visninger"</string>
     <string name="video_row_video_thumbnail">Video-miniatyrbilde</string>
-    <string name="pref_title_show_nsfw">VOKSENT innhold</string>
-    <string name="pref_description_show_nsfw">Vis VOKSENT innhold</string>
+    <string name="pref_title_show_nsfw">innhold upassende på jobb</string>
+    <string name="pref_description_show_nsfw">Vis innhold som er upassende på jobb</string>
     <string name="pref_language">Språkfilter</string>
     <string name="pref_description_language">Velg videospråk, istedenfor å vise alle videoer på alle språk.</string>
     <string name="title_activity_url_video_play">UrlVideoPlayActivity</string>
@@ -132,7 +132,7 @@
     <string name="pref_background_behavior">Oppsett av bakgrunnsavspilling</string>
     <string name="pref_background_float">Fortsett video|avspilling i flytende vindu</string>
     <string name="pref_description_back_pause">Opphold i bakgrunnsavspilling når \"Tilbake\" trykkes under videoavspilling.</string>
-    <string name="pref_title_back_pause">Sett på pause med \"Tilbake\"-knapp</string>
+    <string name="pref_title_back_pause">Pause når tilbake-knappen brukes</string>
     <string name="pref_background_stop">Stopp all avspilling</string>
     <string name="pref_background_audio">Fortsett som lydstrøm i bakgrunnen</string>
     <string name="pref_description_language_app">Velg språk for programgrensesnittet. Start programmet på ny for å utføre endringene.</string>
@@ -185,7 +185,7 @@
     <string name="gu">gujarati</string>
     <string name="bn">bengalsk</string>
     <string name="hy">armensk</string>
-    <string name="server_selection_nsfw_instance">Arbeidsutrygg insans</string>
+    <string name="server_selection_nsfw_instance">jobb-upassende instans</string>
     <string name="pref_insecure_confirm_yes">Ja</string>
     <string name="pref_insecure_confirm_no">Nei</string>
     <string name="pref_insecure_confirm_title">Advarsel!</string>
@@ -204,6 +204,6 @@
     <string name="video_description_read_more">Les mer</string>
     <string name="video_get_full_description_failed">Kunne ikke hente komplett videobeskrivelse</string>
     <string name="so">Somalisk</string>
-    <string name="sk"></string>
+    <string name="sk">Slovakisk</string>
     <string name="sfs">Sørafrikansk tegnspråk</string>
 </resources>

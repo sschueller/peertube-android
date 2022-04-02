@@ -4,11 +4,12 @@
   2. Locally switch to develop
   3. Pull github develop
   4. Pull weblate develop
-  5. Push to develop gitlab and github
+  5. Push to develop gitlab
   6. Merge develop into master and merge
   7. Wait for Release Build and release to play store
   8. Wait for gitlab -> github sync
   9. Run publishGithub
+ 10. Merge master into develop, push to github
 
 
 ## fastlane update

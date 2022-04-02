@@ -1,3 +1,11 @@
+## 1.12.2 (2022-04-02)
+
+
+### Bug Fixes
+
+* Removed videos, fastlane cant upload them d98bf8c
+* Update fastlane cef0043
+
 ## 1.12.1 (2022-04-02)
 
 

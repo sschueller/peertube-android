@@ -1,6 +1,5 @@
 FROM gradle:7-jdk16
 
-
 # get link at bottom of https://developer.android.com/studio
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
 ENV ANDROID_SDK_CHECKSUM 124f2d5115eee365df6cf3228ffbca6fc3911d16f8025bebd5b1c6e2fcfa7faf

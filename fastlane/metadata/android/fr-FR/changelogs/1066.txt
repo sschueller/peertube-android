@@ -1,0 +1,6 @@
+# 1.8.0 (2021-12-26)
+
+
+### Fonctionnalités
+
+* Aperçu 335bbbb

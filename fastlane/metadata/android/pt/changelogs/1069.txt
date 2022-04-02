@@ -1,0 +1,6 @@
+## 1.8.3 (2021-12-27)
+
+
+### Correções
+
+* novo requisito do nome da aplicação mais curto na Play Store 37229a0

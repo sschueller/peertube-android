@@ -1,0 +1,8 @@
+## 1.8.2 (2021-12-27)
+
+
+### Correções
+
+* fastlane atualizada 0f10497
+* fastlane atualizada 110e5da
+* fastlane atualizada f75114b

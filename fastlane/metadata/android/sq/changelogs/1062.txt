@@ -1,0 +1,6 @@
+## 1.5.1 (10 tetor, 2021)
+
+
+### Ndreqje të Metash
+
+* gjuhë të papërputhshme (android play) b4efa27

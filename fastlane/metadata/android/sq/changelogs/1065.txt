@@ -1,0 +1,8 @@
+## 1.7.1 (21 nëntor, 2021)
+
+
+### Ndreqje të Metash
+
+* Përditësime CI, version SDK-je për android d021919
+* Përditësime CI, version SDK-je për android b6d149e
+* Përditësime CI, version SDK-je për android be9f5ef

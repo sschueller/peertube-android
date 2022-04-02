@@ -1,0 +1,8 @@
+## 1.7.1 (2021-11-21)
+
+
+### Correções
+
+* Atualizações CI, versão do android SDK d021919
+* Atualizações CI, versão do android SDK b6d149e
+* Atualizações CI, versão do android SDK be9f5ef

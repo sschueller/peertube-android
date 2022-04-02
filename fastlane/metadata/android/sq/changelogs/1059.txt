@@ -1,0 +1,12 @@
+# 1.3.0 (13 shkurt, 2021)
+
+
+### Ndreqje të Metash
+
+* U shndërrua listë videosh në Kotlin, për të ndrequr prishje menuje të epërme 06ace0d
+
+
+### Veçori
+
+* U shtua vendmbajtëse miniature vidoeje për ngarkim dhe gabime 830b197
+* U shndërrua në Kotlin ndihmues meta për datat 1c34556

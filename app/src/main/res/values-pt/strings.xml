@@ -359,4 +359,6 @@
     <string name="pref_title_video_speed">Velocidade de reprodução predefinida</string>
     <string name="pref_description_video_speed">Selecione a velocidade de reprodução de vídeo global</string>
     <string name="action_bar_title_address_book">Lista de contactos</string>
+    <string name="video_get_full_description_failed">Não foi possível obter a descrição completa do vídeo</string>
+    <string name="video_description_read_more">Leia mais</string>
 </resources>

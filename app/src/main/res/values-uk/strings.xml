@@ -12,7 +12,7 @@
     <string name="bottom_nav_title_discover">Огляд</string>
     <string name="menu_video_options_quality_automated">Автоматизовано</string>
     <string name="server_selection_video_totals" formatted="false">Відео: %s, Локальні відео: %s</string>
-    <string name="server_selection_nsfw_instance">Екземпляр NSFW</string>
+    <string name="server_selection_nsfw_instance">Сервер NSFW</string>
     <string name="settings_activity_video_playback_category_title">Відтворення відео</string>
     <string name="settings_activity_video_list_category_title">Список відео</string>
     <string name="title_activity_settings2">SettingsActivity2</string>
@@ -115,7 +115,7 @@
     <string name="pink">Рожевий</string>
     <string name="red">Червоний</string>
     <string name="zu">зулуська</string>
-    <string name="za">чуанг</string>
+    <string name="za">чжуанська</string>
     <string name="yo">йоруба</string>
     <string name="yi">ідиш</string>
     <string name="xh">коса</string>

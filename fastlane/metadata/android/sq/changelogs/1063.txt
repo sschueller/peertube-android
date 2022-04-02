@@ -1,0 +1,6 @@
+## 1.5.2 (11 tetor, 2021)
+
+
+### Ndreqje të Metash
+
+* u hoqën gjuhë të papërputhshme (android play) 4fd8ff9

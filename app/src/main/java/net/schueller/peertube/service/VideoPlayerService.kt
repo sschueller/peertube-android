@@ -16,6 +16,7 @@
  */
 package net.schueller.peertube.service
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import net.schueller.peertube.helper.MetaDataHelper.getMetaString
 import net.schueller.peertube.model.Video.Companion.getMediaDescription
@@ -46,6 +47,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.net.Uri
 import android.os.Binder
+import android.os.Build
 import android.util.Log
 import android.webkit.URLUtil
 import androidx.core.app.NotificationCompat
@@ -217,11 +219,15 @@ class VideoPlayerService : Service() {
                         return currentVideo!!.name
                     }
 
+                    @SuppressLint("UnspecifiedImmutableFlag")
                     override fun createCurrentContentIntent(player: Player): PendingIntent? {
                         val intent = Intent(context, VideoPlayActivity::class.java)
                         intent.putExtra(VideoListActivity.EXTRA_VIDEOID, currentVideo!!.uuid)
-                        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
+                        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                            PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+                        else
+                            PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
                     }
 
                     override fun getCurrentContentText(player: Player): CharSequence {

@@ -364,6 +364,6 @@
     <string name="pref_title_video_speed">سرعة التشغيل الافتراضية</string>
     <string name="pref_description_video_speed">حدد سرعة تشغيل الفيديو العامة</string>
     <string name="action_bar_title_address_book">دفتر العناوين</string>
-    <string name="video_get_full_description_failed">فشل في الحصول على وصف فيديو كامل</string>
+    <string name="video_get_full_description_failed">تعذر جلب وصف الفيديو الكامل</string>
     <string name="video_description_read_more">اقرأ المزيد</string>
 </resources>

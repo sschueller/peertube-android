@@ -1,0 +1,6 @@
+## 1.8.3 (27 dhjetor, 2021)
+
+
+### Ndreqje të Metash
+
+* domosdoshmëri e re për emër më të shkurtër aplikacioni në Play Store 37229a0

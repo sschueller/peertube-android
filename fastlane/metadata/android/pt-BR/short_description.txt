@@ -1,1 +1,1 @@
-Thorium é um reprodutor de PeerTube não oficial
+Thorium é um reprodutor PeerTube não-oficial

@@ -1,0 +1,6 @@
+# 1.8.0 (26 dhjetor, 2021)
+
+
+### Veçori
+
+* Përmbledhje 335bbbb

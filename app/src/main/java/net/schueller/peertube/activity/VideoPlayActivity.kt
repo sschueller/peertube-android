@@ -54,9 +54,10 @@ class VideoPlayActivity : CommonActivity() {
         val videoPlayerFragment =
             fragmentManager.findFragmentById(R.id.video_player_fragment) as VideoPlayerFragment?
         val actions = ArrayList<RemoteAction>()
+        val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0
         var actionIntent = Intent(getString(R.string.app_background_audio))
         var pendingIntent =
-            PendingIntent.getBroadcast(applicationContext, REQUEST_CODE, actionIntent, 0)
+            PendingIntent.getBroadcast(applicationContext, REQUEST_CODE, actionIntent, flags)
         @SuppressLint("NewApi", "LocalSuppress") var icon = Icon.createWithResource(
             applicationContext, android.R.drawable.stat_sys_speakerphone
         )
@@ -65,7 +66,7 @@ class VideoPlayActivity : CommonActivity() {
         actions.add(remoteAction)
         actionIntent = Intent(PlayerNotificationManager.ACTION_STOP)
         pendingIntent =
-            PendingIntent.getBroadcast(applicationContext, REQUEST_CODE, actionIntent, 0)
+            PendingIntent.getBroadcast(applicationContext, REQUEST_CODE, actionIntent, flags)
         icon = Icon.createWithResource(
             applicationContext,
             com.google.android.exoplayer2.ui.R.drawable.exo_notification_stop
@@ -77,7 +78,7 @@ class VideoPlayActivity : CommonActivity() {
             Log.e(TAG, "setting actions with play button")
             actionIntent = Intent(PlayerNotificationManager.ACTION_PLAY)
             pendingIntent =
-                PendingIntent.getBroadcast(applicationContext, REQUEST_CODE, actionIntent, 0)
+                PendingIntent.getBroadcast(applicationContext, REQUEST_CODE, actionIntent, flags)
             icon = Icon.createWithResource(
                 applicationContext,
                 com.google.android.exoplayer2.ui.R.drawable.exo_notification_play
@@ -87,7 +88,7 @@ class VideoPlayActivity : CommonActivity() {
             Log.e(TAG, "setting actions with pause button")
             actionIntent = Intent(PlayerNotificationManager.ACTION_PAUSE)
             pendingIntent =
-                PendingIntent.getBroadcast(applicationContext, REQUEST_CODE, actionIntent, 0)
+                PendingIntent.getBroadcast(applicationContext, REQUEST_CODE, actionIntent, flags)
             icon = Icon.createWithResource(
                 applicationContext,
                 com.google.android.exoplayer2.ui.R.drawable.exo_notification_pause

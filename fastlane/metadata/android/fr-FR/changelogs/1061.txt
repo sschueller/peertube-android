@@ -1,0 +1,17 @@
+# 1.5.0 (2021-10-05)
+
+
+### Corrections
+
+* Ajout des fichiers de description requis par fastlane 38eb072
+* mises à jour android
+* mises à jour jdk
+* **lang:** traductions Weblate
+* versions de node
+* Mise à jour de gradle dans docker 79c9e97
+
+
+### Fonctionnalités
+
+* Mise à jour des bibliothèques Android, et de gradle 5f2847c
+* **lang:** Ajout de nouvelles tranductions via Weblate

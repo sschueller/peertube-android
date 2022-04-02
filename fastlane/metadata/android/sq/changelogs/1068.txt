@@ -1,0 +1,8 @@
+## 1.8.2 (27 dhjetor, 2021)
+
+
+### Ndreqje të Metash
+
+* u përditësua fastlane 0f10497
+* u përditësua fastlane 110e5da
+* u përditësua fastlane f75114b

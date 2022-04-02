@@ -1,0 +1,6 @@
+# 1.6.0 (2021-11-20)
+
+
+### Características
+
+* Carregar descrição completa 2f89538

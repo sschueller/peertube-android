@@ -365,4 +365,6 @@
     <string name="action_bar_title_address_book">Адресная книга</string>
     <string name="pref_title_video_speed">Скорость воспроизведения по умолчанию</string>
     <string name="pref_description_video_speed">Выберите глобальную скорость воспроизведения видео</string>
+    <string name="video_description_read_more">Подробнее</string>
+    <string name="video_get_full_description_failed">Не удалось получить полное описание видео</string>
 </resources>

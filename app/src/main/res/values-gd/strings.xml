@@ -297,4 +297,5 @@
     <string name="api_error">Chaidh rudeigin ceàrr, feuch ris a-rithist an ceann greis!</string>
     <string name="action_bar_title_server_selection">Tagh frithealaiche</string>
     <string name="login_current_server_hint">Am frithealaiche làithreach</string>
+    <string name="bottom_nav_title_discover">Foir-shealladh</string>
 </resources>

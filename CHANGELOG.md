@@ -1,3 +1,10 @@
+## 1.12.1 (2022-04-02)
+
+
+### Bug Fixes
+
+* Too long play store update notes fe187e5
+
 # 1.12.0 (2022-04-02)
 
 

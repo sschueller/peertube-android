@@ -12,7 +12,7 @@
  10. Merge master into develop, push to github
 
 
-## fastlane update
+## fastlane update (install ruby and "gem install bundler")
 ```
 bundle update
 ```

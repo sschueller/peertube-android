@@ -1,3 +1,43 @@
+# 1.12.0 (2022-04-02)
+
+
+### Bug Fixes
+
+* **lang:**  Weblate translation (Albanian) faa840a
+* **lang:**  Weblate translation (Albanian) e312176
+* **lang:**  Weblate translation (French) a2f5882
+* **lang:**  Weblate translation (Portuguese (Brazil)) 527c385
+* **lang:**  Weblate translation (Portuguese) 33e6fbb
+* **lang:**  Weblate translation (Portuguese) 530b979
+* **lang:** Weblate translation (Albanian) ca6c4da
+* **lang:** Weblate translation (Arabic) 89f978e
+* **lang:** Weblate translation (Bengali) dba93fa
+* **lang:** Weblate translation (Chinese (Traditional)) e1be0e8
+* **lang:** Weblate translation (English) 90b99c2
+* **lang:** Weblate translation (French) 797fe99
+* **lang:** Weblate translation (Gaelic) 80e67ee
+* **lang:** Weblate translation (German) 8a2782a
+* **lang:** Weblate translation (Italian) 5e28585
+* **lang:** Weblate translation (Norwegian Bokmål) 7aee682
+* **lang:** Weblate translation (Norwegian Bokmål) 1468d9c
+* **lang:** Weblate translation (Norwegian Bokmål) 0c51070
+* **lang:** Weblate translation (Polish) db39e94
+* **lang:** Weblate translation (Polish) 270da31
+* **lang:** Weblate translation (Portuguese (Brazil)) 78adff6
+* **lang:** Weblate translation (Portuguese) aee7c1e
+* **lang:** Weblate translation (Portuguese) abdcb87
+* **lang:** Weblate translation (Russian) 5f16f19
+* **lang:** Weblate translation (Ukrainian) 0153ff1
+* Remove unsupported play store language pt a31cd54
+* set required (im)mutable flag when creating pending intent 0a48cb5
+* Shortened too long title fr-FR 2401de9
+
+
+### Features
+
+* **lang:** Added translation using Weblate (Interlingua) 699da52
+* weblate merge 21261b0
+
 # 1.11.0 (2022-01-09)
 
 

@@ -1,16 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        compose_version = '1.2.0-alpha02'
+        compose_version = '1.2.0-alpha08'
+        exo_player_version = '2.17.1'
         koltin_version = '1.6.10'
-        room_version = "2.4.1"
+        room_version = '2.4.2'
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.android.tools.build:gradle:7.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$koltin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.38.1"
 

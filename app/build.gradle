@@ -55,6 +55,12 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
     signingConfigs {
         release {
@@ -132,6 +138,9 @@ dependencies {
     implementation "com.google.android.exoplayer:exoplayer:$exo_player_version"
     implementation "com.google.android.exoplayer:exoplayer-core:$exo_player_version"
     implementation "com.google.android.exoplayer:exoplayer-hls:$exo_player_version"
+    implementation "com.google.android.exoplayer:exoplayer-dash:$exo_player_version"
+    implementation "com.google.android.exoplayer:exoplayer-rtsp:$exo_player_version"
+    implementation "com.google.android.exoplayer:exoplayer-transformer:$exo_player_version"
     implementation "com.google.android.exoplayer:exoplayer-ui:$exo_player_version"
 
     // Compose dependencies

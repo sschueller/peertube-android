@@ -16,6 +16,7 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.google.android.exoplayer2.ui.StyledPlayerView
 import net.schueller.peertube.R
 import net.schueller.peertube.feature_video.presentation.video.events.VideoPlayEvent
 import net.schueller.peertube.feature_video.presentation.video.VideoPlayViewModel
@@ -58,7 +59,7 @@ fun VideoScreen(
             Log.v("VideoScreen", "playerView assign")
 
 
-            PlayerView.switchTargetView(
+            StyledPlayerView.switchTargetView(
                 player,
                 PlayerViewPool.currentPlayerView,
                 playerView
@@ -78,7 +79,7 @@ fun VideoScreen(
 
 
             // Video More Button
-            val videoMoreButton = playerView.findViewById<FrameLayout>(R.id.exo_more_button)
+            val videoMoreButton = playerView.findViewById<ImageButton>(R.id.exo_more)
             videoMoreButton.setOnClickListener {
                 viewModel.onEvent(VideoPlayEvent.MoreButton)
             }

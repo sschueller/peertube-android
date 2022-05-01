@@ -13,6 +13,7 @@ sealed class VideoPlayEvent {
     data class OpenDescription(val video: Video): VideoPlayEvent()
     object CloseDescription: VideoPlayEvent()
     object MoreButton: VideoPlayEvent()
+    object MiniPlayerButton: VideoPlayEvent()
     data class PlayVideo(val video: Video): VideoPlayEvent()
     object CloseVideo: VideoPlayEvent()
 }

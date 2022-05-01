@@ -28,7 +28,7 @@ x CI pipeline (gradle?)
 - add themes and selection
 - Add NSFW filter
 - Translate all strings
-- Swipe player down and up
+- Swipe miniplayer down and up 
 - implement preferences using data stores
 
 Issues:
@@ -40,4 +40,5 @@ x Refreshing video list causes odd loading order of video items
 - playback rotate on click doesn't re-hide buttons
 - Explore list is memory intensive, leak??
 - Access Token refresh circular injection problem
-- app crashes when clicking items in background list while player is visible (minimode)
+x app crashes when clicking items in background list while player is visible (minimode)
+- Opening more in player stops player in background

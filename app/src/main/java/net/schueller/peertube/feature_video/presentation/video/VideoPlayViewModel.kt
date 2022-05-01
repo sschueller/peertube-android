@@ -221,6 +221,12 @@ class VideoPlayViewModel @Inject constructor(
                     _eventFlow.emit(UiEvent.ShowMore)
                 }
             }
+            is VideoPlayEvent.MiniPlayerButton -> {
+                Log.v("VPVM", "Video Miniplayer Pressed")
+                viewModelScope.launch {
+                    _eventFlow.emit(UiEvent.ShowMiniPlayer)
+                }
+            }
             is VideoPlayEvent.PlayVideo -> {
                 // Load new video
                 getVideo(event.video.uuid)
@@ -259,5 +265,7 @@ class VideoPlayViewModel @Inject constructor(
         object HideDescription : UiEvent()
         object ShowMore : UiEvent()
         object HideMore : UiEvent()
+        object ShowMiniPlayer : UiEvent()
+        object HideMiniPlayer : UiEvent()
     }
 }

@@ -46,6 +46,10 @@
             <ImageButton android:id="@+id/exo_more"
                 style="@style/ExoStyledControls.Button.Bottom.Settings"/>
 
+            <ImageButton android:id="@+id/exo_miniplayer"
+                style="@style/ExoStyledControls.Button.Bottom.OverflowHide"/>
+
+
 
             <FrameLayout
                 android:id="@+id/exo_fullscreen_button"

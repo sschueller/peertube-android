@@ -108,10 +108,11 @@ fun VideoListScreen(
             bottomBar = {
                 BottomBarComponent(navController)
             }
-        ) {
-            // Pull to refresh
+        ) { contentPadding ->
+        // Pull to refresh
             // TODO: fix appbar blank issue
             SwipeRefresh(
+                modifier = Modifier.padding(contentPadding),
                 state = rememberSwipeRefreshState(
                     isRefreshing = (lazyVideoItems.loadState.refresh is LoadState.Loading) || (lazyVideoExploreItems.loadState.refresh is LoadState.Loading)
                 ),

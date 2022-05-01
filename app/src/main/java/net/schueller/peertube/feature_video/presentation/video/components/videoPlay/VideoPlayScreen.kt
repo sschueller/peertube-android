@@ -27,7 +27,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.*
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
@@ -53,10 +52,11 @@ fun VideoPlayScreen(
     val state = videoPlayViewModel.state.value
     val context = LocalContext.current
 
+    var miniPlayerVisible by remember { mutableStateOf(false) }
+
     var descriptionVisible by remember { mutableStateOf(false) }
     var moreVisible by remember { mutableStateOf(false) }
 
-    // Show toasts
     LaunchedEffect(key1 = true) {
         videoPlayViewModel.eventFlow.collectLatest { event ->
             when(event) {
@@ -79,6 +79,12 @@ fun VideoPlayScreen(
                 is VideoPlayViewModel.UiEvent.HideMore -> {
                     moreVisible = false
                 }
+                is VideoPlayViewModel.UiEvent.ShowMiniPlayer -> {
+                    miniPlayerVisible = true
+                }
+                is VideoPlayViewModel.UiEvent.HideMiniPlayer -> {
+                    miniPlayerVisible = false
+                }
             }
         }
     }
@@ -95,9 +101,9 @@ fun VideoPlayScreen(
 
         val configuration = LocalConfiguration.current
 
-        var animateToEnd by remember { mutableStateOf(false) }
+
         val progress by animateFloatAsState(
-            targetValue = if (animateToEnd) 1f else 0f,
+            targetValue = if (miniPlayerVisible) 1f else 0f,
             animationSpec = tween(250)
         )
 
@@ -239,8 +245,10 @@ fun VideoPlayScreen(
                             Box(
                                 modifier = Modifier
                                     .layoutId("background", "box")
-                                    .background(Color.Blue)
-                                    .clickable(onClick = { animateToEnd = !animateToEnd })
+                                    .background(Color.White)
+                                    .clickable(onClick = {
+                                        miniPlayerVisible = false
+                                    })
                             )
 
                             VideoScreen(exoPlayerHolder, video,
@@ -252,7 +260,9 @@ fun VideoPlayScreen(
                             Text(
                                 text = "MotionLayout in Compose",
                                 modifier = Modifier.layoutId("title")
-                                    .clickable(onClick = { animateToEnd = !animateToEnd }),
+                                    .clickable(onClick = {
+                                        miniPlayerVisible = false
+                                    }),
                                 color = MaterialTheme.colors.onBackground,
                                 fontSize = motionProperties("title").value.fontSize("textSize")
                             )
@@ -379,7 +389,12 @@ fun VideoPlayScreen(
     }
     BackHandler(enabled = true) {
         Log.v("back", "back pressed")
-        videoPlayViewModel.playerVisible.value = false
+        if (!miniPlayerVisible) {
+            miniPlayerVisible = true;
+        } else {
+            videoPlayViewModel.playerVisible.value = false
+        }
+
     }
 }
 

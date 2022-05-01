@@ -86,6 +86,12 @@ fun VideoScreen(
 
             Log.v("VideoScreen", "videoMoreButton")
 
+            // Video MiniPlayer Button
+            val videoMiniplayerButton = playerView.findViewById<ImageButton>(R.id.exo_miniplayer)
+            videoMiniplayerButton.setOnClickListener {
+                viewModel.onEvent(VideoPlayEvent.MiniPlayerButton)
+            }
+
 
             // TODO: does not update on orientation gesture
             val enterFullscreenIcon = playerView.findViewById<ImageButton>(R.id.exo_fullscreen_enable)
